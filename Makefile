@@ -1,4 +1,6 @@
-JS_FILES=$(shell find app -name '*.jsx' -or -name '*.js' -or -name '*.json') config/package.json
+export
+	JS_FILES=$(shell find app -name '*.jsx' -or -name '*.js' -or -name '*.json') config/package.json
+	NODE_ENV=development
 
 dist: ui chrome-app-package build/jquery.min.js
 	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
