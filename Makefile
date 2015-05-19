@@ -1,30 +1,32 @@
 JS_FILES=$(shell find app -name '*.jsx' -or -name '*.js' -or -name '*.json') config/package.json
 
-chrome: ui build/manifest.json build/background.js build/index.html
+dist: ui chrome-app-package build/jquery.min.js
 	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
 		--load-and-launch-app=$$(pwd)/build/ \
 		&> /dev/null
 
-ui: node_modules lintspaces jsxhint build/react.js
+ui: node_modules lintspaces jsxhint build/react.min.js
 	@browserify \
 		--transform reactify \
-		--exclude react \
-		app/main.jsx > build/main.js
+		app/index.jsx > build/index.js
 
-build/manifest.json: app/manifest.json
-	@cp $< build/
+chrome-app-package: build/manifest.json build/background.js build/index.html
 
-build/background.js: app/background.js
-	@cp $< build/
+build/manifest.json: build app/manifest.json
+	@cp app/manifest.json build/
 
-build/index.html: app/index.html
-	@cp $< build/
+build/background.js: build app/background.js
+	@cp app/background.js build/
 
-build/react.js: build 
-	@browserify \
-		--require react \
-		| uglifyjs \
-		> build/react.js
+build/index.html: build app/index.html
+	@cp app/index.html build/
+
+build/react.min.js: build
+	@cp node_modules/react/dist/react.min.js build/
+
+build/jquery.min.js: build
+	@cp node_modules/jquery/dist/jquery.min.js build/
+	@cp node_modules/jquery/dist/jquery.min.map build/
 
 build:
 	@mkdir build

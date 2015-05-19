@@ -21,7 +21,7 @@
     "require": false,
     "module": false,
 
-    "React": true,
+    "React": false,
     "document": false
   },
 

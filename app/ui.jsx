@@ -1,7 +1,5 @@
 'use strict';
 
-var React = require('react');
-
 var UI = React.createClass({
   render: function() {
     return (
