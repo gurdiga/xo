@@ -20,9 +20,10 @@
   "globals": {
     "require": false,
     "module": false,
-
-    "React": false,
-    "document": false
+    "console": false,
+    "process": false,
+    "document": false,
+    "React": false
   },
 
   "predef": [ "-Promise" ]

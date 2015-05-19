@@ -8,4 +8,8 @@ var UI = React.createClass({
   }
 });
 
+if (process.env.NODE_ENV === "development") UI.test = function() {
+  console.log('testing UI');
+};
+
 module.exports = UI;

@@ -8,6 +8,7 @@ dist: ui chrome-app-package build/jquery.min.js
 ui: node_modules lintspaces jsxhint build/react.min.js
 	@browserify \
 		--transform reactify \
+		--transform envify \
 		app/index.jsx > build/index.js
 
 chrome-app-package: build/manifest.json build/background.js build/index.html
