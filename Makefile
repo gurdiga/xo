@@ -16,7 +16,10 @@ build:
 	@mkdir build
 
 jsxhint:
-	@jsxhint --show-non-errors app/
+	@jsxhint \
+		--show-non-errors \
+		--config config/jshint.json \
+		app/**/*.js* manifest.json
 
 deps: node_modules
 
