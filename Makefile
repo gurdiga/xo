@@ -1,4 +1,6 @@
-ui: node_modules jsxhint build/react.js
+JS_FILES=$(shell find app -name '*.js*') manifest.json
+
+ui: node_modules lintspaces jsxhint build/react.js
 	@browserify \
 		--transform reactify \
 		--exclude react \
@@ -15,20 +17,31 @@ build/react.js: build
 build:
 	@mkdir build
 
-jsxhint:
+jsxhint: config/jshint.json
+
+config/jshint.json: $(JS_FILES)
 	@jsxhint \
 		--show-non-errors \
-		--config config/jshint.json \
-		app/**/*.js* manifest.json
-
-deps: node_modules
+		--config $@ \
+		$? \
+	&& touch $@
 
 node_modules:
 	@npm install \
 		browserify \
 		react \
 		react-tools \
-		reactify
+		reactify \
+		jsxhint \
+		lintspaces-cli
+
+lintspaces:
+	@lintspaces \
+		--newline \
+		--maxnewlines 2 \
+		--trailingspaces \
+		--indentation spaces \
+		$(JS_FILES)
 
 server:
 	~/src/nginx-server/nginx-server.py ./
