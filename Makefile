@@ -21,7 +21,10 @@ build/index.html: app/index.html
 	@cp $< build/
 
 build/react.js: build 
-	@browserify --require react > build/react.js
+	@browserify \
+		--require react \
+		| uglifyjs \
+		> build/react.js
 
 build:
 	@mkdir build

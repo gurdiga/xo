@@ -7,10 +7,11 @@
   "devDependencies": {
     "react": "0.13.3",
     "react-tools": "0.13.3",
-    "browserify": "10.2.0",
-    "reactify": "1.1.1",
-    "jsxhint": "0.15.0",
-    "lintspaces-cli": "0.0.4"
+    "browserify": "10.2.x",
+    "uglifyjs": "2.4.x",
+    "reactify": "1.1.x",
+    "jsxhint": "0.15.x",
+    "lintspaces-cli": "0.0.x"
   },
   "scripts": {
     "test": "make"
