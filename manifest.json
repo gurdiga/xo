@@ -1,0 +1,13 @@
+{
+  "name": "XO",
+  "description": "A productivity app for bailiffs",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": [
+        "app/chrome-app-background.js"
+      ]
+    }
+  }
+}
