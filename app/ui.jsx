@@ -4,9 +4,11 @@ var NewCaseDialog = require('./ui/new-case-dialog.jsx');
 
 var UI = React.createClass({
   render: function() {
-    return <div>
-      <NewCaseDialog/>
-    </div>;
+    return (
+      <div>
+        <NewCaseDialog/>
+      </div>
+    );
   }
 });
 
