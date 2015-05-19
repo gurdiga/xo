@@ -1,4 +1,4 @@
-JS_FILES=$(shell find app -name '*.js*') manifest.json
+JS_FILES=$(shell find app config -name '*.js*') manifest.json
 
 ui: node_modules lintspaces jsxhint build/react.js
 	@browserify \
@@ -26,14 +26,12 @@ config/jshint.json: $(JS_FILES)
 		$? \
 	&& touch $@
 
-node_modules:
-	@npm install \
-		browserify \
-		react \
-		react-tools \
-		reactify \
-		jsxhint \
-		lintspaces-cli
+deps: node_modules
+node_modules: package.json
+	@npm install && touch node_modules
+
+package.json:
+	ln -s config/package.json .
 
 lintspaces:
 	@lintspaces \
