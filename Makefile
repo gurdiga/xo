@@ -1,4 +1,4 @@
-JS_FILES=$(shell find app config -name '*.js*') manifest.json
+JS_FILES=$(shell find app -name '*.jsx') $(shell find app -name '*.js') manifest.json config/package.json
 
 ui: node_modules lintspaces jsxhint build/react.js
 	@browserify \
