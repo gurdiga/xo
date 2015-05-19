@@ -3,7 +3,8 @@ export
 	NODE_ENV=development
 
 dist: ui chrome-app-package open-app
-pre-commit: dist
+
+pre-commit: lint-force dist
 
 open-app:
 	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
