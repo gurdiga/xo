@@ -1,5 +1,5 @@
 export
-	JS_FILES=$(shell find app -name '*.jsx' -or -name '*.js' -or -name '*.json') config/package.json
+	JS_FILES=$(shell find app config -name '*.jsx' -or -name '*.js' -or -name '*.json')
 	NODE_ENV=development
 
 dist: ui chrome-app-package build/jquery.min.js
@@ -7,7 +7,7 @@ dist: ui chrome-app-package build/jquery.min.js
 		--load-and-launch-app=$$(pwd)/build/ \
 		&> /dev/null
 
-ui: node_modules lintspaces jsxhint build/react.min.js
+ui: deps testing-tools lintspaces jsxhint build/react-with-addons.min.js
 	@browserify \
 		--transform reactify \
 		--transform envify \
@@ -24,12 +24,25 @@ build/background.js: build app/background.js
 build/index.html: build app/index.html
 	@cp app/index.html build/
 
-build/react.min.js: build
-	@cp node_modules/react/dist/react.min.js build/
+build/react-with-addons.min.js: build
+	@cp node_modules/react/dist/react-with-addons.min.js build/
+
+testing-tools: build/jquery.min.js build/mocha.js build/WebConsole.js build/chai.js build/chai-jquery.js
 
 build/jquery.min.js: build
 	@cp node_modules/jquery/dist/jquery.min.js build/
-	@cp node_modules/jquery/dist/jquery.min.map build/
+
+build/mocha.js:
+	@cp node_modules/mocha/mocha.js build/
+
+build/WebConsole.js:
+	@cp bower_components/WebConsole/WebConsole.js build/
+
+build/chai.js:
+	@cp node_modules/chai/chai.js build/
+
+build/chai-jquery.js:
+	@cp node_modules/chai-jquery/chai-jquery.js build/
 
 build:
 	@mkdir build
@@ -40,12 +53,19 @@ jsxhint:
 		--config config/jshint.json \
 		$(JS_FILES)
 
-deps: node_modules
+deps: node_modules bower_modules
+
 node_modules: package.json
 	@npm install && touch node_modules
 
 package.json:
-	ln -s config/package.json .
+	@ln -s config/package.json .
+
+bower_modules: bower.json
+	@bower install
+
+bower.json:
+	@ln -s config/bower.json
 
 lintspaces:
 	@lintspaces \

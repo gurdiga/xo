@@ -1,4 +1,9 @@
 node_modules/
+bower_components/
 build/
+
 package.json
 !config/package.json
+
+bower.json
+!config/bower.json

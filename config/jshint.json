@@ -22,8 +22,18 @@
     "module": false,
     "console": false,
     "process": false,
+    "window": false,
     "document": false,
-    "React": false
+    "chrome": false,
+    "React": false,
+
+    "describe": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "it": false,
+    "expect": false
   },
 
   "predef": [ "-Promise" ]
