@@ -46,3 +46,6 @@ lintspaces:
 		--trailingspaces \
 		--indentation spaces \
 		$(JS_FILES)
+
+clean:
+	rm -rf build/
