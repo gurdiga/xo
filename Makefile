@@ -1,4 +1,9 @@
-JS_FILES=$(shell find app -name '*.jsx') $(shell find app -name '*.js') manifest.json config/package.json
+JS_FILES=$(shell find app -name '*.jsx' -or -name '*.js' -or -name '*.json') config/package.json
+
+chrome: ui build/manifest.json build/background.js build/index.html
+	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+		--load-and-launch-app=$$(pwd)/build/ \
+		&> /dev/null
 
 ui: node_modules lintspaces jsxhint build/react.js
 	@browserify \
@@ -6,10 +11,14 @@ ui: node_modules lintspaces jsxhint build/react.js
 		--exclude react \
 		app/main.jsx > build/main.js
 
-chrome: ui
-	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-		--load-and-launch-app=$$(pwd) \
-		&> /dev/null
+build/manifest.json: app/manifest.json
+	@cp $< build/
+
+build/background.js: app/background.js
+	@cp $< build/
+
+build/index.html: app/index.html
+	@cp $< build/
 
 build/react.js: build 
 	@browserify --require react > build/react.js
@@ -17,14 +26,11 @@ build/react.js: build
 build:
 	@mkdir build
 
-jsxhint: config/jshint.json
-
-config/jshint.json: $(JS_FILES)
+jsxhint:
 	@jsxhint \
 		--show-non-errors \
-		--config $@ \
-		$? \
-	&& touch $@
+		--config config/jshint.json \
+		$(JS_FILES)
 
 deps: node_modules
 node_modules: package.json
@@ -40,6 +46,3 @@ lintspaces:
 		--trailingspaces \
 		--indentation spaces \
 		$(JS_FILES)
-
-server:
-	~/src/nginx-server/nginx-server.py ./
