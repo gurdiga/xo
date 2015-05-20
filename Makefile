@@ -1,5 +1,5 @@
 export
-	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json')
+	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
 	NODE_ENV=development
 
 dist: ui chrome-app-package open-app
