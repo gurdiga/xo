@@ -4,7 +4,7 @@ export
 
 dist: ui chrome-app-package open-app
 
-pre-commit: lint-force dist
+pre-commit: clean lint-force dist
 
 open-app:
 	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
@@ -15,9 +15,10 @@ ui: deps testing-tools lint build/react-with-addons.min.js
 	@browserify \
 		--transform reactify \
 		--transform envify \
-		app/index.jsx > build/index.js
+		app/index.jsx \
+		> build/index.js
 
 clean:
-	rm -rf build/ node_modules/ bower_components/
+	rm -rf build/
 
 include $(shell find makefiles -name '*.mk' | sort)
