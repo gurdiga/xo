@@ -13,10 +13,21 @@ var NewCaseButton = React.createClass({
   render: function() {
     return (
       <div>
-        <button onClick={this.open}>Procedură nouă</button>
         {this.drawDialog()}
+        <button onClick={this.open} style={this.getStyle()}>Procedură nouă</button>
       </div>
     );
+  },
+
+  getStyle: function() {
+    return {
+      padding: '.5em 1em',
+      fontSize: '1.5em',
+      fontWeight: 'bold',
+      background: 'white',
+      border: '1px solid #ccc',
+      borderRadius: '5px'
+    };
   },
 
   drawDialog: function() {

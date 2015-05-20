@@ -8,10 +8,18 @@ var UI = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div style={this.getStyle()}>
         <NewCaseButton/>
       </div>
     );
+  },
+
+  getStyle: function() {
+    return {
+      width: '960px',
+      margin: '1em auto',
+      position: 'relative'
+    };
   }
 });
 
