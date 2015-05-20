@@ -1,6 +1,5 @@
 export
 	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
-	NODE_ENV=development
 
 dist: ui chrome-app-package open-app
 
@@ -14,7 +13,6 @@ open-app:
 ui: deps lint build/react.js
 	@browserify \
 		--transform reactify \
-		--transform envify \
 		app/index.jsx \
 		> build/index.js
 

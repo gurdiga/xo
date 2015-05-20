@@ -8,7 +8,6 @@
     "react": "0.13.3",
     "browserify": "10.2.x",
     "reactify": "1.1.x",
-    "envify": "3.4.x",
     "jsxhint": "0.15.x",
     "lintspaces-cli": "0.0.x"
   },
