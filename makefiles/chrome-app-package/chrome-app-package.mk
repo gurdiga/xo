@@ -1,4 +1,4 @@
-chrome-app-package: build build/manifest.json build/background.js build/index.html
+chrome-app-package: build build/manifest.json build/background.js build/style.css build/index.html
 
 build/manifest.json: app/manifest.json
 	cp app/manifest.json build/
@@ -11,6 +11,9 @@ build/index.html: app/index.html
 
 build/react.js: build node_modules/react/dist/react.min.js
 	cp node_modules/react/dist/react.min.js build/react.js
+
+build/style.css: app/style.css
+	cp app/style.css build/style.css
 
 build:
 	mkdir build
