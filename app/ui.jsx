@@ -1,19 +1,19 @@
 'use strict';
 
-var NewCaseDialog = require('./ui/new-case-dialog.jsx');
+var NewCaseButton = require('./ui/new-case-button.jsx');
 
 var UI = React.createClass({
   render: function() {
     return (
       <div>
-        <NewCaseDialog/>
+        <NewCaseButton/>
       </div>
     );
   }
 });
 
 if (process.env.NODE_ENV === "development") UI.test = function() {
-  NewCaseDialog.test();
+  NewCaseButton.test();
 
   describe('UI', function() {
     it('runs', function() {

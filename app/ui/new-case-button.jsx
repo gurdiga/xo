@@ -1,6 +1,6 @@
 'use strict';
 
-var NewCaseDialog = React.createClass({
+var NewCaseButton = React.createClass({
   getInitialState: function() {
     return { opened: false };
   },
@@ -34,12 +34,12 @@ var NewCaseDialog = React.createClass({
   }
 });
 
-if (process.env.NODE_ENV === "development") NewCaseDialog.test = function() {
-  describe('NewCaseDialog', function() {
+if (process.env.NODE_ENV === "development") NewCaseButton.test = function() {
+  describe('NewCaseButton', function() {
     it('runs', function() {
       expect(this).to.exist;
     });
   });
 };
 
-module.exports = NewCaseDialog;
+module.exports = NewCaseButton;
