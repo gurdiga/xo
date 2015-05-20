@@ -9,7 +9,8 @@
     "browserify": "10.2.x",
     "reactify": "1.1.x",
     "jsxhint": "0.15.x",
-    "lintspaces-cli": "0.0.x"
+    "lintspaces-cli": "0.0.x",
+    "moment": "2.10.3"
   },
   "scripts": {
     "test": "make"

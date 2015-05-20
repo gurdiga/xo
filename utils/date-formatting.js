@@ -2,7 +2,13 @@
 
 var DateFormatting = {
   format: function(date, mask) {
-    return 'formatted date';
+    /*global moment*/
+    var momentSpecificMask = mask
+      .replace('mm', 'MM')
+      .replace('dd', 'DD')
+      .replace('yyyy', 'YYYY');
+
+    return moment(date).format(momentSpecificMask);
   }
 };
 
