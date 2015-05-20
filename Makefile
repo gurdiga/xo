@@ -11,7 +11,7 @@ open-app:
 		--load-and-launch-app=$$(pwd)/build/ \
 		&> /dev/null
 
-ui: deps testing-tools lint build/react-with-addons.min.js
+ui: deps lint build/react.js
 	@browserify \
 		--transform reactify \
 		--transform envify \

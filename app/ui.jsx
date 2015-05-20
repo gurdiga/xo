@@ -15,14 +15,4 @@ var UI = React.createClass({
   }
 });
 
-if (process.env.NODE_ENV === "development") UI.test = function() {
-  NewCaseButton.test();
-
-  describe('UI', function() {
-    it('runs', function() {
-      expect(this).to.exist;
-    });
-  });
-};
-
 module.exports = UI;

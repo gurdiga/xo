@@ -38,12 +38,4 @@ var NewCaseButton = React.createClass({
   }
 });
 
-if (process.env.NODE_ENV === "development") NewCaseButton.test = function() {
-  describe('NewCaseButton', function() {
-    it('runs', function() {
-      expect(this).to.exist;
-    });
-  });
-};
-
 module.exports = NewCaseButton;
