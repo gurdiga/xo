@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "xo",
+  "version": "1.0.0",
+  "description": "A productivity app for bailiffs",
+  "main": "app/index.js",
+  "dependencies": {
+    "jquery": "2.1.4",
+    "react": "0.13.3",
+    "react-tools": "0.13.3",
+    "browserify": "10.2.x",
+    "reactify": "1.1.x",
+    "envify": "3.4.x",
+    "jsxhint": "0.15.x",
+    "lintspaces-cli": "0.0.x",
+    "mocha": "2.2.5",
+    "chai": "2.3.0",
+    "chai-jquery": "2.0.0"
+  },
+  "scripts": {
+    "test": "make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurdiga/xo.git"
+  },
+  "keywords": [
+    "productivity",
+    "bailiffs"
+  ],
+  "author": "Vlad GURDIGA",
+  "license": "MIT"
+}

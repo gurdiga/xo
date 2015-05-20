@@ -3,7 +3,7 @@ bower_components/
 build/
 
 package.json
-!config/package.json
+!makefiles/deps/package.json
 
 bower.json
-!config/bower.json
+!makefiles/deps/bower.json
