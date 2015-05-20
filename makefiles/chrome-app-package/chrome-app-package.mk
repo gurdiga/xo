@@ -9,8 +9,8 @@ build/background.js: app/background.js
 build/index.html: app/index.html
 	cp app/index.html build/
 
-build/react.js: build node_modules/react/dist/react.min.js
-	cp node_modules/react/dist/react.min.js build/react.js
+build/react.js: build node_modules/react/dist/react.js
+	cp node_modules/react/dist/react.js build/react.js
 
 build/style.css: app/style.css
 	cp app/style.css build/style.css
