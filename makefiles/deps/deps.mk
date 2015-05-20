@@ -1,4 +1,4 @@
-deps: install-npm-packages install-bower-packages
+deps: install-npm-packages install-bower-packages node_modules/mixins
 
 install-npm-packages: package.json node_modules
 
@@ -17,3 +17,6 @@ bower.json:
 bower_components:
 	bower prune && \
 	bower install
+
+node_modules/mixins:
+	ln --force --symbolic ../mixins --target node_modules
