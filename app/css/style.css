@@ -1,0 +1,12 @@
+html {
+  background-image: url('../images/bg.png');
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  color: blue;
+  opacity: 1;
+}

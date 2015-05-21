@@ -1,6 +1,11 @@
 export
 	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
 
+open: ui chrome-app-package open-in-browser
+
+open-in-browser:
+	@open build/index.html
+
 dist: ui chrome-app-package open-app
 
 pre-commit: clean lint-force dist
