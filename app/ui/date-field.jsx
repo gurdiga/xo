@@ -8,9 +8,9 @@ var DateField = React.createClass({
     return (
       <TextField
         label={this.props.label}
-        id='data-intentării'
+        id={this.props.id}
         defaultValue={this.getDefaultValue()}
-        inputStyle={{ width: '5.8em' }}
+        style={{ width: '5.8em' }}
       />
     );
   },

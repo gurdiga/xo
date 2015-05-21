@@ -1,16 +1,16 @@
 'use strict';
 
-var DateField = require('./date-field.jsx');
-
 var NewCaseDialog = React.createClass({
   render: function() {
     return (
       <div style={this.getStyle()}>
         <h1>Procedură de orgin general</h1>
 
-        <DateField label='Data intentării' defaultValue='currentDate' />
+        <DateField label='Data intentării' id='instituting-date' defaultValue='currentDate' />
+        <PersonSection label='Creditor' />
 
         {this.getCloseButton()}
+
       </div>
     );
   },
@@ -50,3 +50,6 @@ var NewCaseDialog = React.createClass({
 });
 
 module.exports = NewCaseDialog;
+
+var DateField = require('./date-field.jsx');
+var PersonSection = require('./person-section.jsx');
