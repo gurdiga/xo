@@ -1,8 +1,11 @@
 'use strict';
 
 var NewCaseDialog = require('./new-case-dialog.jsx');
+var WithStyleAttribute = require('mixins/with-style-attribute.js');
 
 var NewCaseButton = React.createClass({
+  mixins: [WithStyleAttribute],
+
   getInitialState: function() {
     return { opened: false };
   },
@@ -21,15 +24,13 @@ var NewCaseButton = React.createClass({
     this.open();
   },
 
-  getStyle: function() {
-    return {
-      padding: '.5em 1em',
-      fontSize: '1.5em',
-      fontWeight: 'bold',
-      background: 'white',
-      border: '1px solid #ccc',
-      borderRadius: '5px'
-    };
+  style: {
+    padding: '.5em 1em',
+    fontSize: '1.5em',
+    fontWeight: 'bold',
+    background: 'white',
+    border: '1px solid #ccc',
+    borderRadius: '5px'
   },
 
   drawDialog: function() {

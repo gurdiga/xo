@@ -1,6 +1,12 @@
 'use strict';
 
+var WithStyleAttribute = require('mixins/with-style-attribute.js');
+var DateField = require('./date-field.jsx');
+var PersonSection = require('./person-section.jsx');
+
 var NewCaseDialog = React.createClass({
+  mixins: [WithStyleAttribute],
+
   render: function() {
     return (
       <div style={this.getStyle()}>
@@ -15,16 +21,14 @@ var NewCaseDialog = React.createClass({
     );
   },
 
-  getStyle: function() {
-    return {
-      background: 'white',
-      border: '1px solid #ddd',
-      boxShadow: '2px 2px 7px rgba(0, 0, 0, 0.3)',
-      padding: '10px 10px 90px 50px',
-      position: 'absolute',
-      width: '100%',
-      height: '400px'
-    };
+  style: {
+    background: 'white',
+    border: '1px solid #ddd',
+    boxShadow: '2px 2px 7px rgba(0, 0, 0, 0.3)',
+    padding: '10px 10px 90px 50px',
+    position: 'absolute',
+    width: '100%',
+    height: '400px'
   },
 
   getCloseButton: function() {
@@ -50,6 +54,3 @@ var NewCaseDialog = React.createClass({
 });
 
 module.exports = NewCaseDialog;
-
-var DateField = require('./date-field.jsx');
-var PersonSection = require('./person-section.jsx');

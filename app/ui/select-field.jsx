@@ -1,5 +1,7 @@
 'use strict';
 
+var FieldLabel = require('./field-label.jsx');
+
 var SelectField = React.createClass({
   render: function() {
     return (
@@ -15,5 +17,3 @@ var SelectField = React.createClass({
 });
 
 module.exports = SelectField;
-
-var FieldLabel = require('./field-label.jsx');
