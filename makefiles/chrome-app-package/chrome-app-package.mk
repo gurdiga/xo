@@ -3,6 +3,7 @@ chrome-app-package: \
 	build/manifest.json \
 	build/background.js \
 	build/index.html \
+	build/react.js \
 	build/moment.js \
 	build/css/style.css \
 	build/images

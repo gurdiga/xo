@@ -1,9 +1,9 @@
 export
 	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
 
-open: ui chrome-app-package open-in-browser
+default: ui
 
-open-in-browser:
+open-in-browser: ui chrome-app-package
 	@open build/index.html
 
 dist: ui chrome-app-package open-app
@@ -15,7 +15,7 @@ open-app:
 		--load-and-launch-app=$$(pwd)/build/ \
 		&> /dev/null
 
-ui: deps lint build/react.js
+ui: build deps lint
 	@browserify \
 		--transform reactify \
 		app/index.jsx \
