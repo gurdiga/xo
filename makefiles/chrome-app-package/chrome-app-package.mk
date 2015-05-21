@@ -6,7 +6,7 @@ chrome-app-package: \
 	build/react.js \
 	build/moment.js \
 	build/css/style.css \
-	build/images
+	images
 
 build/manifest.json: app/manifest.json
 	cp app/manifest.json build/
@@ -29,7 +29,7 @@ build/css:
 build/moment.js: build node_modules/moment/min/moment.min.js
 	cp node_modules/moment/min/moment.min.js build/moment.js
 
-build/images:
+images:
 	@rsync \
 		--delete \
 		--quiet \
