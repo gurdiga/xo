@@ -10,17 +10,17 @@ var DateField = React.createClass({
         label={this.props.label}
         id='data-intentării'
         defaultValue={this.getDefaultValue()}
-        className='date-field'
+        inputStyle={{ width: '5.8em' }}
       />
     );
   },
 
   getDefaultValue: function() {
-    if (this.props.defaultValue === 'currentDate') return currentDate();
+    if (this.props.defaultValue === 'currentDate') return getCurrentDateFormatted();
     else return this.props.defaultValue;
 
-    function currentDate() {
-      return DateFormatting.format(new Date(), 'dd/mm/yyyy');
+    function getCurrentDateFormatted() {
+      return DateFormatting.format(new Date(), 'dd.mm.yyyy');
     }
   }
 });
