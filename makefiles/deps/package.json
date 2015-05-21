@@ -3,7 +3,7 @@
   "name": "xo",
   "version": "1.0.0",
   "description": "A productivity app for bailiffs",
-  "main": "app/index.js",
+  "main": "app/main.js",
   "dependencies": {
     "react": "0.13.3",
     "browserify": "10.2.x",

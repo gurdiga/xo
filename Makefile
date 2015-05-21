@@ -19,8 +19,8 @@ ui: build deps lint
 	@browserify \
 		--debug \
 		--transform reactify \
-		app/index.jsx \
-		> build/index.js
+		app/main.jsx \
+		> build/main.js
 
 clean:
 	rm -rf build/
