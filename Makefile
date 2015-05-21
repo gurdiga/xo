@@ -1,5 +1,5 @@
 export
-	JS_FILES=$(shell find app makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
+	JS_FILES=$(shell find app mixins utils makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
 
 default: ui
 
@@ -17,6 +17,7 @@ open-app:
 
 ui: build deps lint
 	@browserify \
+		--debug \
 		--transform reactify \
 		app/index.jsx \
 		> build/index.js
