@@ -16,6 +16,11 @@ var NewCaseButton = React.createClass({
     );
   },
 
+  componentDidMount: function() {
+    // REMOVEMELATER
+    this.open();
+  },
+
   getStyle: function() {
     return {
       padding: '.5em 1em',
