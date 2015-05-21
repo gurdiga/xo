@@ -1,12 +1,8 @@
 'use strict';
 
-var AddReactNameAttribute = require('mixins/add-react-name-attribute.js');
-
 var DateField = require('./date-field.jsx');
 
 var NewCaseDialog = React.createClass({
-  mixins: [AddReactNameAttribute],
-
   render: function() {
     return (
       <div style={this.getStyle()}>

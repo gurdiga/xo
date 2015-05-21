@@ -1,13 +1,9 @@
 'use strict';
 
-var AddReactNameAttribute = require('mixins/add-react-name-attribute.js');
 var DateFormatting = require('utils/date-formatting.js');
-
 var TextField = require('./text-field.jsx');
 
 var DateField = React.createClass({
-  mixins: [AddReactNameAttribute],
-
   render: function() {
     return (
       <TextField

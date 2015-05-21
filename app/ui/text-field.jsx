@@ -1,10 +1,6 @@
 'use strict';
 
-var AddReactNameAttribute = require('mixins/add-react-name-attribute.js');
-
 var TextField = React.createClass({
-  mixins: [AddReactNameAttribute],
-
   render: function() {
     return (
       <div>

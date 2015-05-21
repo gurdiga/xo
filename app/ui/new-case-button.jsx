@@ -1,11 +1,8 @@
 'use strict';
 
-var AddReactNameAttribute = require('mixins/add-react-name-attribute.js');
 var NewCaseDialog = require('./new-case-dialog.jsx');
 
 var NewCaseButton = React.createClass({
-  mixins: [AddReactNameAttribute],
-
   getInitialState: function() {
     return { opened: false };
   },
