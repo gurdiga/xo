@@ -14,7 +14,7 @@ var NewCaseButton = React.createClass({
     return (
       <div>
         {this.drawDialog()}
-        <button onClick={this.open} style={this.getStyle()}>Procedură nouă</button>
+        <button onClick={this.open} {...this.makeStyled()}>Procedură nouă</button>
       </div>
     );
   },

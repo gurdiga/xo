@@ -3,6 +3,12 @@
 var _ = require('utils/_.js');
 
 var Styled = {
+  makeStyled: function() {
+    return {
+      style: this.getStyle()
+    };
+  },
+
   getStyle: function() {
     verifyStyleIsAnObject('this.style', this.style);
     verifyStyleIsAnObject('this.props.style', this.props.style);

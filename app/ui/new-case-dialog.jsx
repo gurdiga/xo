@@ -9,11 +9,14 @@ var NewCaseDialog = React.createClass({
 
   render: function() {
     return (
-      <div style={this.getStyle()}>
+      <div {...this.makeStyled()}>
         <h1>Procedură de orgin general</h1>
 
-        <DateField label='Data intentării' id='instituting-date' defaultValue='currentDate' style={{ marginBottom: '15px' }} />
+        <DateField label='Data intentării' id='instituting-date' value='<current date>'
+          style={{ marginBottom: '15px', width: '5.8em' }} />
+
         <PersonSection label='Creditor' />
+        <PersonSection label='Debitor' personType='fizică' />
 
         {this.getCloseButton()}
 
@@ -27,8 +30,7 @@ var NewCaseDialog = React.createClass({
     boxShadow: '2px 2px 7px rgba(0, 0, 0, 0.3)',
     padding: '10px 10px 90px 50px',
     position: 'absolute',
-    width: '100%',
-    height: '400px'
+    width: '100%'
   },
 
   getCloseButton: function() {

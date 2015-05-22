@@ -7,7 +7,7 @@ var Section = React.createClass({
 
   render: function() {
     return (
-      <fieldset style={this.getStyle()}>
+      <fieldset {...this.makeStyled()}>
         <legend style={this.legendStyle}>{this.props.label}</legend>
 
         { this.props.children }
@@ -18,9 +18,9 @@ var Section = React.createClass({
 
   style: {
     display: 'inline-block',
-    width: '50%',
+    width: '43%',
     border: 'none',
-    margin: '0 70px 30px 0',
+    margin: '0 7% 30px 0',
     padding: '5px 0'
   },
 
@@ -30,7 +30,7 @@ var Section = React.createClass({
     width: '100%',
     fontWeight: 'bold',
     fontSize: '22px',
-    padding: '5px 0 5px 6px',
+    padding: '8px 0 8px 6px',
     marginBottom: '5px'
   }
 });

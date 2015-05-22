@@ -1,22 +1,23 @@
 'use strict';
 
+var Styled = require('mixins/styled.js');
 var NewCaseButton = require('./ui/new-case-button.jsx');
 
 var UI = React.createClass({
+  mixins: [Styled],
+
   render: function() {
     return (
-      <div style={this.getStyle()}>
+      <div {...this.makeStyled()}>
         <NewCaseButton/>
       </div>
     );
   },
 
-  getStyle: function() {
-    return {
-      width: '960px',
-      margin: '1em auto',
-      position: 'relative'
-    };
+  style: {
+    width: '960px',
+    margin: '1em auto',
+    position: 'relative'
   }
 });
 

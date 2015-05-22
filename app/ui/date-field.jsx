@@ -1,30 +1,27 @@
 'use strict';
 
-var Styled = require('mixins/styled');
+var Styled = require('mixins/styled.js');
+var InheritProps = require('mixins/inherit-props.js');
+
 var DateFormatting = require('utils/date-formatting.js');
 var TextField = require('./text-field.jsx');
 
 var DateField = React.createClass({
-  mixins: [Styled],
+  mixins: [Styled, InheritProps],
 
   render: function() {
     return (
       <TextField
-        label={this.props.label}
-        id={this.props.id}
-        defaultValue={this.getDefaultValue()}
-        style={this.getStyle()}
+        value={this.getValue()}
+        {...this.makeInheritProps('label', 'id')}
+        {...this.makeStyled()}
       />
     );
   },
 
-  style: {
-    width: '5.8em'
-  },
-
-  getDefaultValue: function() {
-    if (this.props.defaultValue === 'currentDate') return getCurrentDateFormatted();
-    else return this.props.defaultValue;
+  getValue: function() {
+    if (this.props.value === '<current date>') return getCurrentDateFormatted();
+    else return this.props.value;
 
     function getCurrentDateFormatted() {
       return DateFormatting.format(new Date(), 'dd.mm.yyyy');

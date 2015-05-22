@@ -8,12 +8,12 @@ var InheritProps = require('mixins/inherit-props.js');
 var FieldContainer = require('./field-container.jsx');
 var FieldLabel = require('./field-label.jsx');
 
-var TextField = React.createClass({
+var LargeTextField = React.createClass({
   mixins: [Styled, Editable, OutlinedOnFocus, InheritProps],
 
   getInitialState: function() {
     return {
-      value: this.props.value
+      value: ''
     };
   },
 
@@ -22,27 +22,32 @@ var TextField = React.createClass({
       <FieldContainer>
         <FieldLabel htmlFor={this.props.id}>{this.props.label}</FieldLabel>
 
-        <input
+        <textarea
           {...this.makeInheritProps('id', 'value')}
           {...this.makeStyled()}
           {...this.makeEditable()}
           {...this.makeOutlinedOnFocus()}
-        />
+        >
+        </textarea>
       </FieldContainer>
     );
   },
 
   style: {
     color: 'black',
-    padding: '4px',
+    padding: '3px 4px 4px',
+    margin: '0 0 0 1em',
     font: 'bold 14px sans-serif',
-    width: '16em',
+    lineHeight: '1.75',
+    width: '26em',
+    height: '5.8em',
     backgroundImage: 'url("data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7")',
-    backgroundPosition: '0 -4px',
+    backgroundPosition: '0 -1px',
     borderRadius: '2px',
     border: 'none',
-    outline: 'none'
+    outline: 'none',
+    resize: 'none'
   }
 });
 
-module.exports = TextField;
+module.exports = LargeTextField;

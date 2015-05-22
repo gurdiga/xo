@@ -9,7 +9,7 @@ var FieldLabel = React.createClass({
     return (
       <label
         htmlFor={this.props.htmlFor}
-        style={this.getStyle()}
+        {...this.makeStyled()}
       >{this.props.children}</label>
     );
   },

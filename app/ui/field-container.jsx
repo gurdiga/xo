@@ -7,7 +7,7 @@ var FieldContainer = React.createClass({
 
   render: function() {
     return (
-      <div style={this.getStyle()}>
+      <div {...this.makeStyled()}>
         {this.props.children}
       </div>
     );
