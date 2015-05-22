@@ -1,7 +1,8 @@
 'use strict';
 
-var FieldLabel = require('./field-label.jsx');
 var Styled = require('mixins/styled');
+var FieldContainer = require('./field-container.jsx');
+var FieldLabel = require('./field-label.jsx');
 
 var TextField = React.createClass({
   mixins: [Styled],
@@ -14,7 +15,7 @@ var TextField = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <FieldContainer>
         <FieldLabel htmlFor={this.props.id}>{this.props.label}</FieldLabel>
 
         <input
@@ -26,7 +27,7 @@ var TextField = React.createClass({
           onFocus={this.onFocus}
           onBlur={this.onBlur}
         />
-      </div>
+      </FieldContainer>
     );
   },
 
@@ -52,8 +53,7 @@ var TextField = React.createClass({
     backgroundPosition: '0 -4px',
     borderRadius: '2px',
     border: 'none',
-    outline: 'none',
-    margin: '0'
+    outline: 'none'
   }
 });
 
