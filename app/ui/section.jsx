@@ -17,7 +17,7 @@ var Section = React.createClass({
   },
 
   style: {
-    display: 'inline-block',
+    float: 'left',
     width: '43%',
     border: 'none',
     margin: '0 7% 30px 0',

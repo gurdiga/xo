@@ -1,8 +1,10 @@
 'use strict';
 
 var Styled = require('mixins/styled');
+
 var DateField = require('./date-field.jsx');
 var PersonSection = require('./person-section.jsx');
+var CloseButton = require('./close-button.jsx');
 
 var NewCaseDialog = React.createClass({
   mixins: [Styled],
@@ -18,7 +20,7 @@ var NewCaseDialog = React.createClass({
         <PersonSection label='Creditor' />
         <PersonSection label='Debitor' personType='fizică' />
 
-        {this.getCloseButton()}
+        <CloseButton onClick={this.props.close} />
 
       </div>
     );
@@ -31,27 +33,6 @@ var NewCaseDialog = React.createClass({
     padding: '10px 10px 90px 50px',
     position: 'absolute',
     width: '100%'
-  },
-
-  getCloseButton: function() {
-    return (
-      <button onClick={this.props.close} style={getStyle()}>×</button>
-    );
-
-    function getStyle() {
-      return {
-        background: 'transparent',
-        padding: '.1em .4em',
-        position: 'absolute',
-        right: '0',
-        top: '0',
-        font: 'inherit',
-        fontSize: '20px',
-        fontWeight: 'bold',
-        lineHeight: '1',
-        border: 'none'
-      };
-    }
   }
 });
 
