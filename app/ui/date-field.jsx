@@ -1,18 +1,25 @@
 'use strict';
 
+var Styled = require('mixins/styled');
 var DateFormatting = require('utils/date-formatting.js');
 var TextField = require('./text-field.jsx');
 
 var DateField = React.createClass({
+  mixins: [Styled],
+
   render: function() {
     return (
       <TextField
         label={this.props.label}
         id={this.props.id}
         defaultValue={this.getDefaultValue()}
-        style={{ width: '5.8em' }}
+        style={this.getStyle()}
       />
     );
+  },
+
+  style: {
+    width: '5.8em'
   },
 
   getDefaultValue: function() {

@@ -12,7 +12,7 @@ var NewCaseDialog = React.createClass({
       <div style={this.getStyle()}>
         <h1>Procedură de orgin general</h1>
 
-        <DateField label='Data intentării' id='instituting-date' defaultValue='currentDate' />
+        <DateField label='Data intentării' id='instituting-date' defaultValue='currentDate' style={{ marginBottom: '15px' }} />
         <PersonSection label='Creditor' />
 
         {this.getCloseButton()}

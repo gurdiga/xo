@@ -20,8 +20,8 @@ var FieldLabel = React.createClass({
     display: 'inline-block',
     width: '11em',
     color: '#555',
-    marginBottom: '2px',
-    position: 'relative'
+    position: 'relative',
+    padding: '3px 0 3px 6px'
   }
 });
 
