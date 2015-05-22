@@ -1,6 +1,8 @@
 'use strict';
 
-var WithStyleAttribute = {
+var _ = require('utils/_.js');
+
+var Styled = {
   getStyle: function() {
     verifyStyleIsAnObject('this.style', this.style);
     verifyStyleIsAnObject('this.props.style', this.props.style);
@@ -24,6 +26,4 @@ var WithStyleAttribute = {
   }
 };
 
-module.exports = WithStyleAttribute;
-
-var _ = require('utils/_.js');
+module.exports = Styled;

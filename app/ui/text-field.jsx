@@ -1,10 +1,10 @@
 'use strict';
 
 var FieldLabel = require('./field-label.jsx');
-var WithStyleAttribute = require('mixins/with-style-attribute.js');
+var Styled = require('mixins/styled');
 
 var TextField = React.createClass({
-  mixins: [WithStyleAttribute],
+  mixins: [Styled],
 
   getInitialState: function() {
     return {

@@ -1,10 +1,10 @@
 'use strict';
 
 var NewCaseDialog = require('./new-case-dialog.jsx');
-var WithStyleAttribute = require('mixins/with-style-attribute.js');
+var Styled = require('mixins/styled');
 
 var NewCaseButton = React.createClass({
-  mixins: [WithStyleAttribute],
+  mixins: [Styled],
 
   getInitialState: function() {
     return { opened: false };

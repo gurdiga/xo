@@ -1,11 +1,11 @@
 'use strict';
 
-var WithStyleAttribute = require('mixins/with-style-attribute.js');
+var Styled = require('mixins/styled');
 var DateField = require('./date-field.jsx');
 var PersonSection = require('./person-section.jsx');
 
 var NewCaseDialog = React.createClass({
-  mixins: [WithStyleAttribute],
+  mixins: [Styled],
 
   render: function() {
     return (

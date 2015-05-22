@@ -1,9 +1,9 @@
 'use strict';
 
-var WithStyleAttribute = require('mixins/with-style-attribute.js');
+var Styled = require('mixins/styled');
 
 var FieldLabel = React.createClass({
-  mixins: [WithStyleAttribute],
+  mixins: [Styled],
 
   render: function() {
     return (
