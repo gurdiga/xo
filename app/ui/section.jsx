@@ -20,7 +20,7 @@ var Section = React.createClass({
     float: 'left',
     width: '43%',
     border: 'none',
-    margin: '0 7% 30px 0',
+    margin: '0 7% 10px 0',
     padding: '5px 0'
   },
 
