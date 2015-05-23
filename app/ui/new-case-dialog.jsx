@@ -12,7 +12,7 @@ var NewCaseDialog = React.createClass({
   render: function() {
     return (
       <div {...this.makeStyled()}>
-        <h1>Procedură de orgin general</h1>
+        <h1>Procedură de ordin general</h1>
 
         <DateField label='Data intentării' id='instituting-date' value='<current date>'
           style={{ marginBottom: '15px', width: '5.8em' }} />
