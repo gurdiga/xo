@@ -18,18 +18,18 @@ var Styled = {
     evalFunctions(style);
 
     return style;
-
-    function verifyStyleIsAnObject(label, style) {
-      if (!style) return;
-      if (!_.isPlainObject(style)) throw 'TextField: the inputStyle prop should be an object: ' + label;
-    }
-
-    function evalFunctions(style) {
-      _.each(style, function(name, value) {
-        if (_.isFunction(value)) style[name] = value();
-      });
-    }
   }
 };
+
+function verifyStyleIsAnObject(label, style) {
+  if (!style) return;
+  if (!_.isPlainObject(style)) throw 'TextField: the inputStyle prop should be an object: ' + label;
+}
+
+function evalFunctions(style) {
+  _.each(style, function(name, value) {
+    if (_.isFunction(value)) style[name] = value();
+  });
+}
 
 module.exports = Styled;
