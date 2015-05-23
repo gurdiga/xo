@@ -1,27 +1,14 @@
 'use strict';
 
-var NewCaseDialog = require('./new-case-dialog.jsx');
 var Styled = require('mixins/styled');
 
 var NewCaseButton = React.createClass({
   mixins: [Styled],
 
-  getInitialState: function() {
-    return { opened: false };
-  },
-
   render: function() {
     return (
-      <div>
-        {this.drawDialog()}
-        <button onClick={this.open} {...this.makeStyled()}>Procedură nouă</button>
-      </div>
+      <button onClick={this.props.onClick} {...this.makeStyled()}>Procedură nouă</button>
     );
-  },
-
-  componentDidMount: function() {
-    // REMOVEMELATER
-    this.open();
   },
 
   style: {
@@ -31,19 +18,6 @@ var NewCaseButton = React.createClass({
     background: 'white',
     border: '1px solid #ccc',
     borderRadius: '5px'
-  },
-
-  drawDialog: function() {
-    if (!this.state.opened) return;
-    else return <NewCaseDialog close={this.close} />;
-  },
-
-  open: function() {
-    this.setState({ opened: true });
-  },
-
-  close: function() {
-    this.setState({ opened: false });
   }
 });
 

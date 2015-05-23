@@ -10,6 +10,8 @@ var NewCaseDialog = React.createClass({
   mixins: [Styled],
 
   render: function() {
+    if (!this.props.isOpened) return null;
+
     return (
       <div {...this.makeStyled()}>
         <h1>Procedură de ordin general</h1>
@@ -20,7 +22,7 @@ var NewCaseDialog = React.createClass({
         <PersonSection label='Creditor' />
         <PersonSection label='Debitor' personType='fizică' />
 
-        <CloseButton onClick={this.props.close} />
+        <CloseButton onClick={this.props.onClose} />
 
       </div>
     );
