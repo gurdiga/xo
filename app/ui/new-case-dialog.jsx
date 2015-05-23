@@ -5,6 +5,7 @@ var Styled = require('mixins/styled');
 var DateField = require('./date-field.jsx');
 var PersonSection = require('./person-section.jsx');
 var CloseButton = require('./close-button.jsx');
+var NakedButton = require('./naked-button.jsx');
 
 var NewCaseDialog = React.createClass({
   mixins: [Styled],
@@ -21,6 +22,8 @@ var NewCaseDialog = React.createClass({
 
         <PersonSection label='Creditor' />
         <PersonSection label='Debitor' personType='fizică' />
+
+        <NakedButton onClick={this.addThirdParty}>+ adaugă persoană terţă</NakedButton>
 
         <CloseButton onClick={this.props.onClose} />
 

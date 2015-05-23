@@ -4,6 +4,7 @@ var Styled = require('mixins/styled.js');
 var InheritProps = require('mixins/inherit-props.js');
 
 var DateFormatting = require('utils/date-formatting.js');
+
 var TextField = require('./text-field.jsx');
 
 var DateField = React.createClass({
