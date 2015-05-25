@@ -3,13 +3,11 @@
 var Styled = require('mixins/styled.js');
 var Editable = require('mixins/editable.js');
 var OutlinedOnFocus = require('mixins/outlined-on-focus.js');
-var InheritProps = require('mixins/inherit-props.js');
 
-var FieldContainer = require('./field-container.jsx');
 var FieldLabel = require('./field-label.jsx');
 
 var TextField = React.createClass({
-  mixins: [Styled, Editable, OutlinedOnFocus, InheritProps],
+  mixins: [Styled, Editable, OutlinedOnFocus],
 
   getInitialState: function() {
     return {
@@ -19,16 +17,14 @@ var TextField = React.createClass({
 
   render: function() {
     return (
-      <FieldContainer>
-        <FieldLabel htmlFor={this.props.id}>{this.props.label}</FieldLabel>
-
+      <FieldLabel label={this.props.label}>
         <input
-          {...this.makeInheritProps('id', 'value')}
+          value={this.props.value}
           {...this.makeStyled()}
           {...this.makeEditable()}
           {...this.makeOutlinedOnFocus()}
         />
-      </FieldContainer>
+      </FieldLabel>
     );
   },
 

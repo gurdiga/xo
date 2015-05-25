@@ -1,27 +1,28 @@
 'use strict';
 
-var Styled = require('mixins/styled');
+var Styled = require('mixins/styled.js');
 
 var FieldLabel = React.createClass({
   mixins: [Styled],
 
   render: function() {
     return (
-      <label
-        htmlFor={this.props.htmlFor}
-        {...this.makeStyled()}
-      >{this.props.children}</label>
+      <label {...this.makeStyled()}>
+        <span style={this.spanStyle}>{this.props.label}</span>
+        {this.props.children}
+      </label>
     );
   },
 
   style: {
+    display: 'block',
     fontSize: '14px',
-    fontFamily: 'sans-serif',
+    margin: '0 0 3px 5px'
+  },
+
+  spanStyle: {
     display: 'inline-block',
-    width: '11em',
-    color: '#555',
-    position: 'relative',
-    padding: '3px 0 3px 6px'
+    width: '11em'
   }
 });
 

@@ -24,7 +24,6 @@ var PersonSection = React.createClass({
 
         <SelectField
           label='Gen persoană'
-          id='person-type'
           value={this.state.personType}
           {...this.makeInherit('onChange')}
         >
@@ -46,11 +45,11 @@ var PersonSection = React.createClass({
   getFieldsForIndividual: function() {
     return (
       <div>
-        <TextField label='Nume' id='name' />
-        <TextField label='IDNP' id='personal-id' />
-        <DateField label='Data naşterii' id='birth-date' />
-        <LargeTextField label='Domiciliu' id='address' />
-        <LargeTextField label='Note' id='notes' />
+        <TextField label='Nume' />
+        <TextField label='IDNP' />
+        <DateField label='Data naşterii' />
+        <LargeTextField label='Domiciliu' />
+        <LargeTextField label='Note' />
       </div>
     );
   },
@@ -58,11 +57,11 @@ var PersonSection = React.createClass({
   getFieldsForCompany: function() {
     return (
       <div>
-        <TextField label='Denumire' id='name' />
-        <TextField label='IDNO' id='registration-id' />
-        <LargeTextField label='Sediu' id='address' />
-        <TextField label='Persoană de contact' id='contact-person' />
-        <LargeTextField label='Note' id='notes' />
+        <TextField label='Denumire' />
+        <TextField label='IDNO' />
+        <LargeTextField label='Sediu' />
+        <TextField label='Persoană de contact' />
+        <LargeTextField label='Note' />
       </div>
     );
   },

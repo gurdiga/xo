@@ -17,7 +17,7 @@ var NewCaseDialog = React.createClass({
       <div {...this.makeStyled()}>
         <h1>Procedură de ordin general</h1>
 
-        <DateField label='Data intentării' id='instituting-date' value='<current date>'
+        <DateField label='Data intentării' value='<current date>'
           style={{ marginBottom: '15px', width: '5.8em' }} />
 
         <PersonSection label='Creditor' />
