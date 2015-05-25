@@ -1,16 +1,23 @@
 'use strict';
 
 var Styled = require('mixins/styled.js');
-var InheritProps = require('mixins/inherit-props.js');
+
+var a = React.PropTypes;
+var an = a;
 
 var NewCaseButton = React.createClass({
-  mixins: [Styled, InheritProps],
+  mixins: [Styled],
+
+  propTypes: {
+    onClick: a.func.isRequired,
+    style: an.object
+  },
 
   render: function() {
     return (
       <button
+        onClick={this.props.onClick}
         {...this.makeStyled()}
-        {...this.makeInheritProps('onClick')}
       >Procedură nouă</button>
     );
   },

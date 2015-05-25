@@ -1,31 +1,33 @@
 'use strict';
 
-var InheritProps = require('mixins/inherit-props.js');
-var Inherits = require('mixins/inherits.js');
-
 var Section = require('./section.jsx');
 var SelectField = require('./select-field.jsx');
 var DateField = require('./date-field.jsx');
 var TextField = require('./text-field.jsx');
 var LargeTextField = require('./large-text-field.jsx');
 
+var a = React.PropTypes;
+
 var PersonSection = React.createClass({
-  mixins: [InheritProps, Inherits],
+  propTypes: {
+    label: a.string.isRequired,
+    personType: a.oneOf(['juridică', 'fizică']).isRequired
+  },
 
   getInitialState: function() {
     return {
-      personType: this.props.personType || 'juridică'
+      personType: this.props.personType
     };
   },
 
   render: function() {
     return (
-      <Section {...this.makeInheritProps('label')}>
+      <Section label={this.props.label}>
 
         <SelectField
           label='Gen persoană'
           value={this.state.personType}
-          {...this.makeInherit('onChange')}
+          onChange={this.onChange}
         >
           <option>juridică</option>
           <option>fizică</option>

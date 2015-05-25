@@ -2,8 +2,16 @@
 
 var Styled = require('mixins/styled.js');
 
+var a = React.PropTypes;
+var an = a;
+
 var Section = React.createClass({
   mixins: [Styled],
+
+  propTypes: {
+    label: a.string.isRequired,
+    children: an.arrayOf(an.element.isRequired)
+  },
 
   render: function() {
     return (

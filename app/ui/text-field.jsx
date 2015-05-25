@@ -6,8 +6,17 @@ var OutlinedOnFocus = require('mixins/outlined-on-focus.js');
 
 var FieldLabel = require('./field-label.jsx');
 
+var a = React.PropTypes;
+var an = a;
+
 var TextField = React.createClass({
   mixins: [Styled, Editable, OutlinedOnFocus],
+
+  propTypes: {
+    label: a.string.isRequired,
+    value: a.string,
+    style: an.object
+  },
 
   getInitialState: function() {
     return {

@@ -2,16 +2,24 @@
 
 var Styled = require('mixins/styled.js');
 var Inherits = require('mixins/inherits.js');
-var InheritProps = require('mixins/inherit-props.js');
+
+var a = React.PropTypes;
+var an = a;
 
 var NakedButton = React.createClass({
-  mixins: [Styled, Inherits, InheritProps],
+  mixins: [Styled, Inherits],
+
+  propTypes: {
+    children: a.oneOfType([a.string.isRequired]),
+    onClick: a.func.isRequired,
+    style: an.object
+  },
 
   render: function() {
     return (
       <button
+        onClick={this.props.onClick}
         {...this.makeStyled()}
-        {...this.makeInheritProps('onClick')}
         {...this.makeInherit('onMouseLeave', 'onMouseEnter', 'onBlur', 'onFocus')}
       >{this.props.children}</button>
     );

@@ -2,8 +2,17 @@
 
 var Styled = require('mixins/styled.js');
 
+var a = React.PropTypes;
+var an = a;
+
 var FieldLabel = React.createClass({
   mixins: [Styled],
+
+  propTypes: {
+    label: a.string.isRequired,
+    children: an.element,
+    style: an.object
+  },
 
   render: function() {
     return (

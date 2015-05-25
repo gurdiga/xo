@@ -1,17 +1,24 @@
 'use strict';
 
 var Styled = require('mixins/styled.js');
-var InheritProps = require('mixins/inherit-props.js');
 
 var NakedButton = require('./naked-button.jsx');
 
+var a = React.PropTypes;
+var an = a;
+
 var CloseButton = React.createClass({
-  mixins: [Styled, InheritProps],
+  mixins: [Styled],
+
+  propTypes: {
+    onClick: a.func.isRequired,
+    style: an.object
+  },
 
   render: function() {
     return (
       <NakedButton
-        {...this.makeInheritProps('onClick')}
+        onClick={this.props.onClick}
         {...this.makeStyled()}
       >×</NakedButton>
     );
