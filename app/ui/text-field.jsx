@@ -2,6 +2,7 @@
 
 var Styled = require('mixins/styled.js');
 var Editable = require('mixins/editable.js');
+var Valuable = require('mixins/valuable.js');
 var OutlinedOnFocus = require('mixins/outlined-on-focus.js');
 
 var FieldLabel = require('./field-label.jsx');
@@ -10,7 +11,7 @@ var a = React.PropTypes;
 var an = a;
 
 var TextField = React.createClass({
-  mixins: [Styled, Editable, OutlinedOnFocus],
+  mixins: [Styled, Valuable, Editable, OutlinedOnFocus],
 
   propTypes: {
     label: a.string.isRequired,
@@ -28,7 +29,7 @@ var TextField = React.createClass({
     return (
       <FieldLabel label={this.props.label}>
         <input
-          value={this.props.value}
+          value={this.state.value}
           {...this.makeStyled()}
           {...this.makeEditable()}
           {...this.makeOutlinedOnFocus()}

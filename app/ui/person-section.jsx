@@ -1,5 +1,7 @@
 'use strict';
 
+var Valuable = require('mixins/valuable.js');
+
 var Section = require('./section.jsx');
 var SelectField = require('./select-field.jsx');
 var DateField = require('./date-field.jsx');
@@ -7,16 +9,31 @@ var TextField = require('./text-field.jsx');
 var LargeTextField = require('./large-text-field.jsx');
 
 var a = React.PropTypes;
+var anObjectOfShape = React.PropTypes.shape;
+
+var COMPANY = 'juridică';
+var INDIVIDUAL = 'fizică';
+var PERSON_TYPES = [COMPANY, INDIVIDUAL];
+PERSON_TYPES.COMPANY = COMPANY;
+PERSON_TYPES.INDIVIDUAL = INDIVIDUAL;
 
 var PersonSection = React.createClass({
+  mixins: [Valuable],
+
+  statics: {
+    PERSON_TYPES: PERSON_TYPES
+  },
+
   propTypes: {
     label: a.string.isRequired,
-    personType: a.oneOf(['juridică', 'fizică']).isRequired
+    value: anObjectOfShape({
+      'gen-persoană': a.oneOf(PERSON_TYPES)
+    })
   },
 
   getInitialState: function() {
     return {
-      personType: this.props.personType
+      value: this.props.value
     };
   },
 
@@ -24,52 +41,51 @@ var PersonSection = React.createClass({
     return (
       <Section label={this.props.label}>
 
-        <SelectField
-          label='Gen persoană'
-          value={this.state.personType}
-          onChange={this.onChange}
-        >
-          <option>juridică</option>
-          <option>fizică</option>
+        <SelectField label='Gen persoană' onChange={this.onPersonTypeChange} {...this.makeValuable('gen-persoană')}>
+          {this.personTypeOptions()}
         </SelectField>
 
         {this.getSectionFields()}
-
       </Section>
     );
   },
 
+  personTypeOptions: function() {
+    return PERSON_TYPES.map(function(personType) {
+      return <option key={personType}>{personType}</option>;
+    });
+  },
+
   getSectionFields: function() {
-    if (this.state.personType === 'fizică') return this.getFieldsForIndividual();
-    else return this.getFieldsForCompany();
+    if (this.state.value['gen-persoană'] === INDIVIDUAL) {
+      return this.getFieldsForIndividual();
+    } else {
+      return this.getFieldsForCompany();
+    }
   },
 
   getFieldsForIndividual: function() {
-    return (
-      <div>
-        <TextField label='Nume' />
-        <TextField label='IDNP' />
-        <DateField label='Data naşterii' />
-        <LargeTextField label='Domiciliu' />
-        <LargeTextField label='Note' />
-      </div>
-    );
+    return [
+      <TextField label='Nume' {...this.makeValuable('nume')} />,
+      <TextField label='IDNP' {...this.makeValuable('idnp')} />,
+      <DateField label='Data naşterii' {...this.makeValuable('data-naşterii')} />,
+      <LargeTextField label='Domiciliu' {...this.makeValuable('domiciliu')} />,
+      <LargeTextField label='Note' {...this.makeValuable('note')} />
+    ];
   },
 
   getFieldsForCompany: function() {
-    return (
-      <div>
-        <TextField label='Denumire' />
-        <TextField label='IDNO' />
-        <LargeTextField label='Sediu' />
-        <TextField label='Persoană de contact' />
-        <LargeTextField label='Note' />
-      </div>
-    );
+    return [
+      <TextField label='Denumire' {...this.makeValuable('denumire')} />,
+      <TextField label='IDNO' {...this.makeValuable('idno')} />,
+      <LargeTextField label='Sediu' {...this.makeValuable('sediu')} />,
+      <TextField label='Persoană de contact' {...this.makeValuable('persoană-de-contact')} />,
+      <LargeTextField label='Note' {...this.makeValuable('note')} />
+    ];
   },
 
-  onChange: function(e) {
-    this.setState({ personType: e.target.value });
+  onPersonTypeChange: function(e) {
+    this.setState({ value: { 'gen-persoană': e.target.value }});
   }
 });
 

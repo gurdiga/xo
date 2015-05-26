@@ -1,6 +1,7 @@
 'use strict';
 
 var Styled = require('mixins/styled.js');
+var Valuable = require('mixins/valuable.js');
 
 var DateFormatting = require('utils/date-formatting.js');
 
@@ -8,38 +9,39 @@ var TextField = require('./text-field.jsx');
 
 var a = React.PropTypes;
 var an = a;
+var aDate = require('utils/proptype-a-date.js');
 
 var DateField = React.createClass({
-  mixins: [Styled],
+  mixins: [Styled, Valuable],
 
   propTypes: {
     label: a.string.isRequired,
-    value: a.oneOfType([
-      //a.number, // UNIX timestamp
-      //a.string, // 2015-05-25 14:54:31
-      a.oneOf(['<today>'])
-    ]),
+    value: aDate,
     style: an.object
+  },
+
+  getInitialState: function() {
+    return { value: getDateFromProps(this) };
   },
 
   render: function() {
     return (
       <TextField
-        value={this.getValue()}
+        value={this.state.value}
         label={this.props.label}
         {...this.makeStyled()}
       />
     );
   },
-
-  getValue: function() {
-    if (this.props.value === '<today>') return getCurrentDateFormatted();
-    else return this.props.value;
-
-    function getCurrentDateFormatted() {
-      return DateFormatting.format(new Date(), 'dd.mm.yyyy');
-    }
-  }
 });
+
+function getDateFromProps(component) {
+  if (component.props.value === '<today>') return getCurrentDateFormatted();
+  else return component.props.value;
+}
+
+function getCurrentDateFormatted() {
+  return DateFormatting.format(new Date(), 'dd.mm.yyyy');
+}
 
 module.exports = DateField;

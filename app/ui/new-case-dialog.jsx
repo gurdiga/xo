@@ -1,6 +1,7 @@
 'use strict';
 
-var Styled = require('mixins/styled');
+var Styled = require('mixins/styled.js');
+var Valuable = require('mixins/valuable.js');
 
 var DateField = require('./date-field.jsx');
 var PersonSection = require('./person-section.jsx');
@@ -8,18 +9,44 @@ var CloseButton = require('./close-button.jsx');
 var NakedButton = require('./naked-button.jsx');
 
 var a = React.PropTypes;
+var anObjectOfShape = React.PropTypes.shape;
+var aDate = require('utils/proptype-a-date.js');
 
 var NewCaseDialog = React.createClass({
-  mixins: [Styled],
+  mixins: [Styled, Valuable],
 
   propTypes: {
     isOpened: a.bool,
-    onClose: a.func.isRequired
+    onClose: a.func.isRequired,
+    value: anObjectOfShape({
+      'data-intentării': aDate.isRequired,
+      'creditorul': anObjectOfShape({
+        'gen-persoană': a.oneOf(PersonSection.PERSON_TYPES)
+      }).isRequired,
+      'debitorul': anObjectOfShape({
+        'gen-persoană': a.oneOf(PersonSection.PERSON_TYPES)
+      }).isRequired
+    }).isRequired
   },
 
   getDefaultProps: function() {
     return {
-      isOpened: false
+      isOpened: false,
+      value: {
+        'data-intentării': '<today>',
+        'creditorul': {
+          'gen-persoană': PersonSection.PERSON_TYPES.COMPANY
+        },
+        'debitorul': {
+          'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
+        }
+      }
+    };
+  },
+
+  getInitialState: function() {
+    return {
+      value: this.props.value
     };
   },
 
@@ -30,11 +57,11 @@ var NewCaseDialog = React.createClass({
       <div {...this.makeStyled()}>
         <h1>Procedură de ordin general</h1>
 
-        <DateField label='Data intentării' value='<today>'
+        <DateField label='Data intentării' {...this.makeValuable('data-intentării')}
           style={{ marginBottom: '15px', width: '5.8em' }} />
 
-        <PersonSection label='Creditor' personType='juridică' />
-        <PersonSection label='Debitor' personType='fizică' />
+        <PersonSection label='Creditor' {...this.makeValuable('creditorul')} />
+        <PersonSection label='Debitor' {...this.makeValuable('debitorul')} />
 
         <NakedButton onClick={this.addThirdParty}>+ adaugă persoană terţă</NakedButton>
 
@@ -45,6 +72,7 @@ var NewCaseDialog = React.createClass({
   },
 
   addThirdParty: function() {
+    console.log('getValue', this.getValue());
   },
 
   style: {

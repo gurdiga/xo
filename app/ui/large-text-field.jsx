@@ -2,6 +2,7 @@
 
 var Styled = require('mixins/styled.js');
 var Editable = require('mixins/editable.js');
+var Valuable = require('mixins/valuable.js');
 var OutlinedOnFocus = require('mixins/outlined-on-focus.js');
 
 var FieldLabel = require('./field-label.jsx');
@@ -9,23 +10,15 @@ var FieldLabel = require('./field-label.jsx');
 var a = React.PropTypes;
 
 var LargeTextField = React.createClass({
-  mixins: [Styled, Editable, OutlinedOnFocus],
+  mixins: [Styled, Editable, Valuable, OutlinedOnFocus],
 
   propTypes: {
     label: a.string.isRequired,
-    value: a.string.isRequired
-  },
-
-  getDefaultProps: function() {
-    return {
-      value: ''
-    };
+    value: a.string
   },
 
   getInitialState: function() {
-    return {
-      value: ''
-    };
+    return { value: this.props.value };
   },
 
   render: function() {
