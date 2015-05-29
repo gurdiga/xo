@@ -1,5 +1,6 @@
 'use strict';
 
+var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
 
 var NakedButton = require('./naked-button.jsx');
@@ -8,7 +9,7 @@ var a = React.PropTypes;
 var an = a;
 
 var CloseButton = React.createClass({
-  mixins: [Styled],
+  mixins: [Testable, Styled],
 
   propTypes: {
     onClick: a.func.isRequired,

@@ -26,14 +26,7 @@
     "document": false,
     "chrome": false,
     "React": false,
-
-    "describe": false,
-    "before": false,
-    "beforeEach": false,
-    "after": false,
-    "afterEach": false,
-    "it": false,
-    "expect": false
+    "tape": false
   },
 
   "predef": [ "-Promise" ]

@@ -1,5 +1,6 @@
 'use strict';
 
+var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
 var Valuable = require('mixins/valuable.js');
 
@@ -14,7 +15,7 @@ var anObjectOfShape = React.PropTypes.shape;
 var aDate = require('utils/proptype-a-date.js');
 
 var NewCaseDialog = React.createClass({
-  mixins: [Styled, Valuable],
+  mixins: [Testable, Styled, Valuable],
 
   propTypes: {
     isOpened: a.bool,

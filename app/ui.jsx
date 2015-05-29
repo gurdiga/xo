@@ -1,11 +1,13 @@
 'use strict';
 
+var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
+
 var NewCaseButton = require('./ui/new-case-button.jsx');
 var NewCaseDialog = require('./ui/new-case-dialog.jsx');
 
 var UI = React.createClass({
-  mixins: [Styled],
+  mixins: [Testable, Styled],
 
   getInitialState: function() {
     return { newCaseDialogOpened: true };

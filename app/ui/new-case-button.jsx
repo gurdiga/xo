@@ -1,12 +1,13 @@
 'use strict';
 
 var Styled = require('mixins/styled.js');
+var Testable = require('mixins/testable.js');
 
 var a = React.PropTypes;
 var an = a;
 
 var NewCaseButton = React.createClass({
-  mixins: [Styled],
+  mixins: [Testable, Styled],
 
   propTypes: {
     onClick: a.func.isRequired,
