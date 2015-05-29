@@ -5,35 +5,62 @@ var _ = require('utils/_.js');
 var i = 0;
 
 var Valuable = {
-  makeValuable: function(name, explicitValue) {
+  makeValuable: function(refName, explicitValue) {
+    var isArrayRef = !!explicitValue;
+    var value;
+
+    if (isArrayRef) {
+      var arrayIndex = this.state.value[refName].indexOf(explicitValue);
+      refName = refName + '[' + arrayIndex + ']';
+      value = explicitValue;
+    } else {
+      value = this.state.value[refName];
+    }
+
     return {
-      ref: name,
-      value: explicitValue || getValueFromState(this.state, name),
+      ref: refName,
+      value: value,
       isValuable: true,
       key: ++i
     };
   },
 
   getValue: function() {
-    var hasValuableRefs = _.any(this.refs, 'props.isValuable');
+    var isValuableContainer = _.any(this.refs, 'props.isValuable');
 
-    if (hasValuableRefs) return getValueOfValuableRefs(this);
+    if (isValuableContainer) return getValueOfValuableRefs(this);
     else return this.state.value;
   }
 };
 
-function getValueFromState(state, name) {
-  return state.value[name];
-}
+
+var ARRAY_REF_FORMAT = /(.+)\[\d+\]$/;
 
 function getValueOfValuableRefs(component) {
   var values = {};
 
   _.each(component.refs, function(ref, refName) {
-    if (ref.props.isValuable) values[refName] = ref.getValue();
+    if (!ref.props.isValuable) return;
+
+    if (isArrayRefName(refName)) {
+      refName = getRefName(refName);
+      if (!values[refName]) values[refName] = [];
+      values[refName].push(ref.getValue());
+    } else {
+      values[refName] = ref.getValue();
+    }
   });
 
   return values;
+}
+
+function isArrayRefName(refName) {
+  return ARRAY_REF_FORMAT.test(refName);
+}
+
+function getRefName(arrayRefName) {
+  var parts = arrayRefName.match(ARRAY_REF_FORMAT);
+  return parts[1];
 }
 
 module.exports = Valuable;

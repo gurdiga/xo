@@ -9,6 +9,7 @@ var CloseButton = require('./close-button.jsx');
 var NakedButton = require('./naked-button.jsx');
 
 var a = React.PropTypes;
+var an = a;
 var anObjectOfShape = React.PropTypes.shape;
 var aDate = require('utils/proptype-a-date.js');
 
@@ -25,7 +26,8 @@ var NewCaseDialog = React.createClass({
       }).isRequired,
       'debitorul': anObjectOfShape({
         'gen-persoană': a.oneOf(PersonSection.PERSON_TYPES)
-      }).isRequired
+      }).isRequired,
+      'persoane-terţe': an.arrayOf(an.object)
     }).isRequired
   },
 
@@ -39,7 +41,8 @@ var NewCaseDialog = React.createClass({
         },
         'debitorul': {
           'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
-        }
+        },
+        'persoane-terţe': []
       }
     };
   },
@@ -63,7 +66,14 @@ var NewCaseDialog = React.createClass({
         <PersonSection label='Creditor' {...this.makeValuable('creditorul')} />
         <PersonSection label='Debitor' {...this.makeValuable('debitorul')} />
 
-        <NakedButton onClick={this.addThirdParty}>+ adaugă persoană terţă</NakedButton>
+        { this.state.value['persoane-terţe'].map(this.drawThirdPerson) }
+
+        <NakedButton
+          onClick={this.addThirdParty}
+          style={{ clear: 'left', float: 'left' }}
+        >+ adaugă persoană terţă</NakedButton>
+
+        <div style={{ clear: 'left', left: 'left' }}><button onClick={this.showValue}>Show value</button></div>
 
         <CloseButton onClick={this.props.onClose} />
 
@@ -72,7 +82,15 @@ var NewCaseDialog = React.createClass({
   },
 
   addThirdParty: function() {
-    console.log('getValue', this.getValue());
+    this.setState({ value: { 'persoane-terţe': this.state.value['persoane-terţe'].concat([{}]) }});
+  },
+
+  drawThirdPerson: function(data) {
+    return <PersonSection label='Persoană terţă' {...this.makeValuable('persoane-terţe', data)} />;
+  },
+
+  showValue: function() {
+    console.log(this.getValue());
   },
 
   style: {
