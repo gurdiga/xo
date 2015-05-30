@@ -5,6 +5,8 @@ chrome-app-package: \
 	build/index.html \
 	build/react.js \
 	build/moment.js \
+	build/tape.js \
+	build/_.js \
 	build/css/style.css \
 	images
 
@@ -17,17 +19,23 @@ build/background.js: app/background.js
 build/index.html: app/index.html
 	cp app/index.html build/
 
-build/react.js: build node_modules/react/dist/react.js
-	cp node_modules/react/dist/react.js build/react.js
-
 build/css/style.css: build/css app/css/style.css
 	cp app/css/style.css build/css/style.css
 
 build/css:
 	mkdir build/css
 
-build/moment.js: build node_modules/moment/min/moment.min.js
+build/react.js: build deps
+	cp node_modules/react/dist/react.js build/react.js
+
+build/moment.js: build deps
 	cp node_modules/moment/min/moment.min.js build/moment.js
+
+build/tape.js: build deps
+	browserify --require tape --standalone tape | uglifyjs > build/tape.js
+
+build/_.js: build deps
+	browserify --require lodash --standalone _ | uglifyjs > build/_.js
 
 images:
 	@rsync \

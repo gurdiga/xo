@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('utils/_.js');
-
 var Styled = {
   makeStyled: function() {
     return {

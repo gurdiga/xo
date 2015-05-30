@@ -1,4 +1,7 @@
-deps: install-npm-packages node_modules/utils node_modules/mixins
+deps: \
+	install-npm-packages \
+	node_modules/utils \
+	node_modules/mixins
 
 install-npm-packages: package.json node_modules
 

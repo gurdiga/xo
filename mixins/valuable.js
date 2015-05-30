@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('utils/_.js');
-
 var i = 0;
 
 var Valuable = {

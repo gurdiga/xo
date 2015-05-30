@@ -1,9 +1,8 @@
 'use strict';
 
-var test = require('tape');
 var ui = document.querySelector('[component-name="UI"]');
 
-test('UI', function(t) {
+tape('UI', function(t) {
   t.ok(ui, 'UI was rendered');
 
   var button = ui.querySelector('[component-name="NewCaseButton"]');

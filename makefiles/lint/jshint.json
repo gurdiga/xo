@@ -26,7 +26,8 @@
     "document": false,
     "chrome": false,
     "React": false,
-    "tape": false
+    "tape": false,
+    "_": false
   },
 
   "predef": [ "-Promise" ]
