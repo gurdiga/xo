@@ -67,7 +67,7 @@ var NewCaseDialog = React.createClass({
         <PersonSection label='Creditor' {...this.makeValuable('creditorul')} />
         <PersonSection label='Debitor' {...this.makeValuable('debitorul')} />
 
-        { this.state.value['persoane-terţe'].map(this.drawThirdPerson) }
+        { this.state.value['persoane-terţe'].map(this.drawThirdParty) }
 
         <NakedButton
           onClick={this.addThirdParty}
@@ -86,7 +86,7 @@ var NewCaseDialog = React.createClass({
     this.setState({ value: { 'persoane-terţe': this.state.value['persoane-terţe'].concat([{}]) }});
   },
 
-  drawThirdPerson: function(data) {
+  drawThirdParty: function(data) {
     return <PersonSection label='Persoană terţă' {...this.makeValuable('persoane-terţe', data)} />;
   },
 
