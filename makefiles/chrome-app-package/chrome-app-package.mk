@@ -26,7 +26,7 @@ build/css:
 	mkdir build/css
 
 build/react.js: build deps
-	cp node_modules/react/dist/react.js build/react.js
+	cp node_modules/react/dist/react-with-addons.js build/react.js
 
 build/moment.js: build deps
 	cp node_modules/moment/min/moment.min.js build/moment.js
