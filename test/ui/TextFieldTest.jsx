@@ -43,9 +43,9 @@ test('TextField label text CSS', function(t) {
 });
 
 test('TextField input', function(t) {
-  var input = sandbox.querySelector('input[type="text"]');
+  var input = sandbox.querySelector('label>input[type="text"]');
 
-  t.ok(input, 'it renders an <input type="text"/> element');
+  t.ok(input, 'is renders <input type="text"> element inside <label> for binding (accessibility)');
   t.equal(input.value, fieldValue,
     'the <intput /> has the value given in the TextField “value” attribute');
   t.equal(textField.getValue(), input.value,
