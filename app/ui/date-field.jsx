@@ -5,7 +5,7 @@ var Valuable = require('mixins/valuable.js');
 
 var DateFormatting = require('utils/date-formatting.js');
 
-var TextField = require('./text-field.jsx');
+var TextField = require('./TextField.jsx');
 
 var a = React.PropTypes;
 var an = a;
