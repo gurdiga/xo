@@ -4,8 +4,7 @@ var TextField = {};
 
 TextField.render = function() {
   return (
-    <label style={labelLayoutStyle}>
-      <span style={labelTextStyle}>{ this.props.label }</span>
+    <FieldLabel text={this.props.label}>
       <input
         type='text'
         value={this.state.value}
@@ -13,7 +12,7 @@ TextField.render = function() {
         {...this.makeStyled()}
         {...this.makeOutlinedOnFocus()}
       />
-    </label>
+    </FieldLabel>
   );
 };
 
@@ -27,18 +26,6 @@ TextField.style = {
   borderRadius: '2px',
   border: 'none',
   outline: 'none'
-};
-
-var labelLayoutStyle = {
-  display: 'block',
-  margin: '0 0 3px 5px'
-};
-
-var labelTextStyle = {
-  color: '#555',
-  fontSize: '14px',
-  display: 'inline-block',
-  width: '11em'
 };
 
 TextField.getInitialState = function() {
@@ -56,5 +43,7 @@ TextField.mixins = [
   require('mixins/styled.js'),
   require('mixins/outlined-on-focus.js')
 ];
+
+var FieldLabel = require('./FieldLabel.jsx');
 
 module.exports = React.createClass(TextField);
