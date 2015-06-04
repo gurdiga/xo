@@ -58,6 +58,7 @@ test('TextField input', function(t) {
   t.equal(newFieldValue, input.value, 'it is editable');
   t.equal(textField.getValue(), newFieldValue,
     'its getValue() method returns the changed <input> value');
+
   t.end();
 });
 
