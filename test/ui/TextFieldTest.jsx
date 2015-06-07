@@ -16,7 +16,7 @@ var textField = React.render(
 
 test('TextField label', function(t) {
   var label = sandbox.querySelector('label');
-  t.ok(label, 'It renders a <label> element');
+  t.ok(label, 'it renders a <label> element');
 
   var labelSpan = label.querySelector('span');
   t.equal(labelSpan.textContent, labelText,
