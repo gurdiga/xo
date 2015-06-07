@@ -4,7 +4,7 @@ var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
 var Valuable = require('mixins/valuable.js');
 
-var DateField = require('./date-field.jsx');
+var DateField = require('./DateField.jsx');
 var PersonSection = require('./person-section.jsx');
 var CloseButton = require('./close-button.jsx');
 var NakedButton = require('./naked-button.jsx');

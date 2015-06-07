@@ -11,4 +11,5 @@ if (process.env.NODE_ENV === 'development') {
   require('../test/ui/LargeTextFieldTest.jsx');
   require('../test/ui/SelectFieldTest.jsx');
   require('../test/ui/FieldLabelTest.jsx');
+  require('../test/ui/DateFieldTest.jsx');
 }
