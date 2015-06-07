@@ -15,7 +15,7 @@ var DateFormatting = {
   },
 
   parse: function(dateString, mask) {
-    assert(_.isString(dateString),
+    assert(!!dateString && _.isString(dateString),
       'DateFormatting.parse: the first argument is required and has to be a string representing the date');
     assert(_.isString(mask),
       'DateFormatting.parse: the second argument is required and has to be a string representing the date format mask');

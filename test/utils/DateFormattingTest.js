@@ -43,6 +43,13 @@ test('DateFormatting.parse', function(t) {
     'throws a meaningful exception when the first argument is not given'
   );
 
+  t.throws(function runWithEmptyStringAsFirstArgument() {
+    DateFormatting.parse('');
+  },
+    /DateFormatting.parse: the first argument is required and has to be a string representing the date/,
+    'empty string is considered missing'
+  );
+
   t.throws(function runWithoutTheSecondArgument() {
     DateFormatting.parse('2015-06-07');
   },
