@@ -6,7 +6,7 @@ var Section = require('./section.jsx');
 var SelectField = require('./SelectField.jsx');
 var DateField = require('./date-field.jsx');
 var TextField = require('./TextField.jsx');
-var LargeTextField = require('./large-text-field.jsx');
+var LargeTextField = require('./LargeTextField.jsx');
 
 var a = React.PropTypes;
 var anObjectOfShape = React.PropTypes.shape;

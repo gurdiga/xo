@@ -21,6 +21,7 @@ test('TextField label', function(t) {
   var labelSpan = label.querySelector('span');
   t.equal(labelSpan.textContent, labelText,
     '<label> contains a <span> with the text given in the “label” attribute');
+
   t.end();
 });
 
