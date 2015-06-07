@@ -3,7 +3,7 @@
 var Styled = require('mixins/styled.js');
 var Valuable = require('mixins/valuable.js');
 
-var DateFormatting = require('utils/date-formatting.js');
+var DateFormatting = require('utils/DateFormatting.js');
 
 var TextField = require('./TextField.jsx');
 
