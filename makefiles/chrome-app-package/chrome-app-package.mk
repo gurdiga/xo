@@ -25,16 +25,16 @@ build/css/style.css: build/css app/css/style.css
 build/css:
 	mkdir build/css
 
-build/react.js: build deps
+build/react.js: build node_modules/moment/min/moment.min.js
 	cp node_modules/react/dist/react-with-addons.js build/react.js
 
-build/moment.js: build deps
+build/moment.js: build node_modules/moment/min/moment.min.js
 	cp node_modules/moment/min/moment.min.js build/moment.js
 
-build/tape.js: build deps
+build/tape.js: build node_modules/uglify-js node_modules/browserify node_modules/tape
 	browserify --require tape --standalone tape | uglifyjs > build/tape.js
 
-build/_.js: build deps
+build/_.js: build node_modules/uglify-js node_modules/browserify node_modules/lodash
 	browserify --require lodash --standalone _ | uglifyjs > build/_.js
 
 images:

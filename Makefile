@@ -2,7 +2,7 @@ export
 	JS_FILES=$(shell find test app mixins utils makefiles -name '*.jsx' -or -name '*.js' -or -name '*.json' -and -not -name 'jshint.json')
 	NODE_ENV=development
 
-default: ui
+default: ui chrome-app-package
 
 open-in-browser: ui chrome-app-package
 	@open build/index.html
