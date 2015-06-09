@@ -4,11 +4,10 @@
 
 var DateField = require('../../app/ui/DateField.jsx');
 var test = tape;
-var DateFormatting = require('utils/DateFormatting.js');
 
 var sandbox = document.createElement('div');
 var labelText = 'My date-field component';
-var fieldValue = '2015-06-07';
+var fieldValue = '22.03.2015';
 
 var dateField = React.render(
   <DateField
@@ -53,17 +52,16 @@ test('DateField label text CSS', function(t) {
 
 test('DateField value handling', function(t) {
   var input = sandbox.querySelector('label>input[type="text"]');
-  var date = DateFormatting.parse(fieldValue, DateField.INTERNAL_DATE_FORMAT);
 
   t.ok(input, 'is renders <input type="text"> element inside <label> for binding (accessibility)');
   t.equal(
     input.value,
-    DateFormatting.format(date, DateField.UI_DATE_FORMAT),
-    'the <intput /> has the value given in the DateField “value” attribute formatted according to DateField.UI_DATE_FORMAT');
+    fieldValue,
+    'the <intput /> has the value given in the DateField “value” attribute');
   t.equal(
     dateField.getValue(),
-    DateFormatting.format(date, DateField.INTERNAL_DATE_FORMAT),
-    'its getValue() method returns the <input> value formatted according to DateField.INTERNAL_DATE_FORMAT');
+    fieldValue,
+    'its getValue() method returns the <input> value');
 
   t.end();
 });
@@ -94,7 +92,7 @@ test('DateField outlines <input/> on focus', function(t) {
   React.render(
     <DateField
       label='Some label'
-      value='2015-07-06'
+      value='22/03/2015'
     />,
     sandbox
   );
@@ -120,7 +118,7 @@ test('DateField input editability', function(t) {
   React.addons.TestUtils.Simulate.change(input);
 
   t.equal(newFieldValue, input.value, 'it is editable');
-  t.equal(dateField.getValue(), '2010-10-20',
+  t.equal(dateField.getValue(), newFieldValue,
     'its getValue() method returns the changed <input> value');
 
   t.end();
