@@ -4,7 +4,7 @@ var Valuable = require('mixins/valuable.js');
 
 var Section = require('./section.jsx');
 var SelectField = require('./SelectField.jsx');
-var DateField = require('./date-field.jsx');
+var DateField = require('./DateField.jsx');
 var TextField = require('./TextField.jsx');
 var LargeTextField = require('./LargeTextField.jsx');
 

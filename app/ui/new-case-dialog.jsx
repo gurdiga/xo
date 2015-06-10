@@ -4,6 +4,8 @@ var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
 var Valuable = require('mixins/valuable.js');
 
+var DateFormatting = require('utils/DateFormatting.js');
+
 var DateField = require('./DateField.jsx');
 var PersonSection = require('./person-section.jsx');
 var CloseButton = require('./close-button.jsx');
@@ -36,7 +38,7 @@ var NewCaseDialog = React.createClass({
     return {
       isOpened: false,
       value: {
-        'data-intentării': '<today>',
+        'data-intentării': DateFormatting.format(new Date(), 'dd.mm.yyyy'),
         'creditorul': {
           'gen-persoană': PersonSection.PERSON_TYPES.COMPANY
         },
