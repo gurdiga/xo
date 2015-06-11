@@ -13,8 +13,7 @@ pre-commit: clean lint-force dist
 
 open-app:
 	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-		--load-and-launch-app=$$(pwd)/build/ \
-		&> /dev/null
+		--load-and-launch-app=$$(pwd)/build/
 
 ui: build deps lint
 	@browserify \

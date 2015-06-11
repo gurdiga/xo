@@ -5,7 +5,7 @@ chrome-app-package: \
 	build/react.js \
 	build/moment.js \
 	build/tape.js \
-	build/_.js \
+	build/lodash.js \
 	build/css/style.css \
 	images
 
@@ -33,8 +33,8 @@ build/moment.js: node_modules/moment/min/moment.min.js | build
 build/tape.js: node_modules/uglify-js node_modules/browserify node_modules/tape | build
 	browserify --require tape --standalone tape | uglifyjs > build/tape.js
 
-build/_.js: node_modules/uglify-js node_modules/browserify node_modules/lodash | build
-	browserify --require lodash --standalone _ | uglifyjs > build/_.js
+build/lodash.js: node_modules/uglify-js node_modules/browserify node_modules/lodash | build
+	browserify --require lodash --standalone _ | uglifyjs > build/lodash.js
 
 images: | build
 	@rsync \
