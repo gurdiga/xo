@@ -2,7 +2,7 @@
 
 var UI = require('./ui.jsx');
 
-React.render(<UI/>, document.body);
+React.render(<UI/>, document.getElementById('ui'));
 
 if (process.env.NODE_ENV === 'development') {
   require('../test/utils/DateFormattingTest.js');
