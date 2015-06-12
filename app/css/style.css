@@ -18,3 +18,30 @@ select {
 button {
   cursor: pointer;
 }
+
+/* Pikaday theme begin */
+
+.pika-single.xo {
+  position: absolute;
+  display: inline-block;
+  margin-top: 22px;
+}
+
+.xo .pika-button:hover {
+  background: #333;
+  border-radius: 0;
+}
+
+.xo .pika-lendar {
+  width: 190px;
+}
+
+.xo .is-today .pika-button {
+  color: black;
+}
+
+.xo .is-today .pika-button:hover {
+  color: white;
+}
+
+/* Pikaday theme end */

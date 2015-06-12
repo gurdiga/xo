@@ -14,7 +14,8 @@
     "lintspaces-cli": "0.0.x",
     "moment": "2.10.x",
     "lodash": "3.9.x",
-    "uglify-js": "2.4.x"
+    "uglify-js": "2.4.x",
+    "Pikaday": "dbushell/Pikaday"
   },
   "scripts": {
     "test": "make"

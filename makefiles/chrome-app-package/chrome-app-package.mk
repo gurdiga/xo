@@ -6,6 +6,8 @@ chrome-app-package: \
 	build/moment.js \
 	build/tape.js \
 	build/lodash.js \
+	build/pikaday.js \
+	build/css/pikaday.css \
 	build/css/style.css \
 	images
 
@@ -35,6 +37,12 @@ build/tape.js: node_modules/uglify-js node_modules/browserify node_modules/tape 
 
 build/lodash.js: node_modules/uglify-js node_modules/browserify node_modules/lodash | build
 	browserify --require lodash --standalone _ | uglifyjs > build/lodash.js
+
+build/pikaday.js: node_modules/pikaday/pikaday.js | build
+	cp node_modules/pikaday/pikaday.js build/pikaday.js
+
+build/css/pikaday.css: node_modules/pikaday/css/pikaday.css | build/css
+	cp node_modules/pikaday/css/pikaday.css build/css/pikaday.css
 
 images: | build
 	@rsync \

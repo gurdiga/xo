@@ -124,20 +124,9 @@ test('DateField input editability', function(t) {
   t.end();
 });
 
-test.skip('DateField value validation', function(t) {
-  var sandbox = document.createElement('div');
-
-  t.throws(function() {
-    React.render(
-      <DateField
-        label='Some label'
-        value={undefined}
-      />,
-      sandbox
-    );
-  },
-    /DateField: “value” attribute is expected to be a date formatted as #{DateField.INTERNAL_DATE_FORMAT}/,
-    'shows a meaningful error message');
+test('Date picker button', function(t) {
+  var button = sandbox.querySelector('label>button');
+  t.ok(button);
 
   t.end();
 });
