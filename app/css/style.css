@@ -27,7 +27,8 @@ button {
   margin-top: 22px;
 }
 
-.xo .pika-button:hover {
+.xo .pika-button:hover,
+.xo .is-selected .pika-button {
   background: #333;
   border-radius: 0;
 }
@@ -40,7 +41,8 @@ button {
   color: black;
 }
 
-.xo .is-today .pika-button:hover {
+.xo .is-today .pika-button:hover,
+.xo .is-selected .pika-button {
   color: white;
 }
 

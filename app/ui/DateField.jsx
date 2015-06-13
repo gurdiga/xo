@@ -7,23 +7,51 @@ DateField.render = function() {
     <FieldLabel text={this.props.label}>
       <TextFieldInput
         ref='input'
-        value={this.props.value}
+        value={this.state.value}
       />
-      <button style={buttonStyle} onClick={this.showCalendar}>cal</button>
+      <button style={buttonStyle} onClick={this.showDatePicker}>cal</button>
     </FieldLabel>
   );
 };
 
-DateField.getValue = function() {
-  return this.refs.input.getValue();
+DateField.getInitialState = function() {
+  return {
+    value: this.props.value
+  };
 };
 
-DateField.showCalendar = function() {
+DateField.getValue = function() {
+  return this.state.value;
+};
+
+DateField.dateForPicker = function() {
+  var date = DateFormatting.parse(this.state.value, DATE_FORMAT);
+  return DateFormatting.format(date, DATE_PICKER_DATE_FORMAT);
+};
+
+DateField.datePickerUpdate = function() {
+  var DO_NOT_TRIIGER_ON_SELECT;
+  datePicker.setDate(this.dateForPicker(), DO_NOT_TRIIGER_ON_SELECT = true);
+};
+
+DateField.datePickerInsert = function() {
   var inputDomElement = React.findDOMNode(this.refs.input);
-  positionDatePickerUnder(inputDomElement);
+  inputDomElement.parentNode.insertBefore(datePicker.el, inputDomElement);
+};
+
+DateField.showDatePicker = function() {
+  this.datePickerInsert();
+  this.datePickerUpdate();
+  DateField.current = this;
+};
+
+DateField.update = function(newDate) {
+  var formattedDate = DateFormatting.format(newDate, DATE_FORMAT);
+  DateField.current.setState({value: formattedDate});
 };
 
 var DATE_FORMAT = 'dd.mm.yyyy';
+var DATE_PICKER_DATE_FORMAT = 'yyyy-mm-dd';
 
 DateField.statics = {
   DATE_FORMAT: DATE_FORMAT
@@ -31,6 +59,10 @@ DateField.statics = {
 
 /*global Pikaday*/
 var datePicker = new Pikaday({
+  onSelect: function(newDate) {
+    DateField.current.update(newDate);
+    datePicker.hide();
+  },
   bound: false,
   theme: 'xo',
   firstDay: 1,
@@ -43,10 +75,6 @@ var datePicker = new Pikaday({
   }
 });
 
-function positionDatePickerUnder(inputDomElement) {
-  inputDomElement.parentNode.insertBefore(datePicker.el, inputDomElement);
-}
-
 var buttonStyle = {
   marginLeft: '-2em',
   position: 'absolute'
@@ -54,5 +82,6 @@ var buttonStyle = {
 
 var FieldLabel = require('./FieldLabel.jsx');
 var TextFieldInput = require('./TextFieldInput.jsx');
+var DateFormatting = require('utils/DateFormatting');
 
 module.exports = React.createClass(DateField);
