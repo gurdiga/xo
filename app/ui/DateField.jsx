@@ -5,63 +5,69 @@ var DateField = {};
 DateField.render = function() {
   return (
     <FieldLabel text={this.props.label}>
-      <TextFieldInput
+
+      <input
         ref='input'
+        type='text'
         value={this.state.value}
+        {...this.makeEditable()}
+        {...this.makeStyled()}
+        {...this.makeOutlinedOnFocus()}
       />
-      <button style={buttonStyle} onClick={this.showDatePicker}>cal</button>
+
+      <button
+        style={buttonStyle}
+        onClick={toggleDatePickerFor(this)}
+        title='Deschide calendarul'
+      ></button>
+
     </FieldLabel>
   );
 };
 
-DateField.getInitialState = function() {
-  return {
-    value: this.props.value
+function toggleDatePickerFor(dateField) {
+  return function() {
+    if (datePickerIsAlreadyDisplayedFor(dateField)) {
+      hideDatePicker();
+    } else {
+      showDatePickerNextTo(dateField);
+      syncDatePickerToReflectValueIn(dateField);
+    }
   };
-};
+}
 
-DateField.getValue = function() {
-  return this.state.value;
-};
+function datePickerIsAlreadyDisplayedFor(dateField) {
+  return DateField.current === dateField;
+}
 
-DateField.dateForPicker = function() {
-  var date = DateFormatting.parse(this.state.value, DATE_FORMAT);
-  return DateFormatting.format(date, DATE_PICKER_DATE_FORMAT);
-};
+function hideDatePicker() {
+  datePicker.hide();
+  document.body.appendChild(datePicker.el);
+  DateField.current = null;
+}
 
-DateField.datePickerUpdate = function() {
-  var DO_NOT_TRIIGER_ON_SELECT;
-  datePicker.setDate(this.dateForPicker(), DO_NOT_TRIIGER_ON_SELECT = true);
-};
-
-DateField.datePickerInsert = function() {
-  var inputDomElement = React.findDOMNode(this.refs.input);
+function showDatePickerNextTo(dateField) {
+  var inputDomElement = React.findDOMNode(dateField.refs.input);
   inputDomElement.parentNode.insertBefore(datePicker.el, inputDomElement);
-};
+  datePicker.show();
+  DateField.current = dateField;
+}
 
-DateField.showDatePicker = function() {
-  this.datePickerInsert();
-  this.datePickerUpdate();
-  DateField.current = this;
-};
+function syncDatePickerToReflectValueIn(dateField) {
+  var DO_NOT_TRIIGER_SELECT;
+  datePicker.setDate(getDateFormattedForDatePicker(dateField), DO_NOT_TRIIGER_SELECT = true);
+}
 
-DateField.update = function(newDate) {
-  var formattedDate = DateFormatting.format(newDate, DATE_FORMAT);
-  DateField.current.setState({value: formattedDate});
-};
-
-var DATE_FORMAT = 'dd.mm.yyyy';
-var DATE_PICKER_DATE_FORMAT = 'yyyy-mm-dd';
-
-DateField.statics = {
-  DATE_FORMAT: DATE_FORMAT
-};
+function getDateFormattedForDatePicker(dateField) {
+  var date = DateFormatting.parse(dateField.getValue(), DATE_FORMAT);
+  return DateFormatting.format(date, DATE_PICKER_DATE_FORMAT);
+}
 
 /*global Pikaday*/
 var datePicker = new Pikaday({
   onSelect: function(newDate) {
-    DateField.current.update(newDate);
-    datePicker.hide();
+    setFieldValueTo(newDate);
+    hideDatePicker();
   },
   bound: false,
   theme: 'xo',
@@ -75,13 +81,51 @@ var datePicker = new Pikaday({
   }
 });
 
+function setFieldValueTo(newDate) {
+  var formattedDate = DateFormatting.format(newDate, DATE_FORMAT);
+  DateField.current.setState({value: formattedDate});
+}
+
+var DATE_FORMAT = 'dd.mm.yyyy';
+var DATE_PICKER_DATE_FORMAT = 'yyyy-mm-dd';
+
+DateField.getInitialState = function() {
+  return {
+    value: this.props.value
+  };
+};
+
+DateField.getValue = function() {
+  return this.state.value;
+};
+
+DateField.statics = {
+  DATE_FORMAT: DATE_FORMAT
+};
+
 var buttonStyle = {
-  marginLeft: '-2em',
+  width: '20px',
+  height: '20px',
+  padding: '0',
+  border: 'none',
+  backgroundColor: 'transparent',
+  backgroundImage: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAJCAYAAAF4VF24AAAAAXNSR0IArs4c6QAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAG9JREFUGBltTu0RgCAIFc4FWiHdoJ1sptqpWVrAg3x2eHTGDx+8DyQEVEqp9CbkNSvhwTiaV/PMLFnIsK9C0Ig54lW4GISvT0RJ906Q0iksV8MDbggsvDUs3VClLn6N9ZHjPc4BiU/tPJujuYF/mx55tzEWYjQMAAAAAABJRU5ErkJggg==)',
+  backgroundPosition: 'center center',
+  backgroundRepeat: 'no-repeat',
+  marginLeft: '-18px',
   position: 'absolute'
 };
 
+DateField.mixins = [
+  require('mixins/editable.js'),
+  require('mixins/styled.js'),
+  require('mixins/outlined-on-focus.js')
+];
+
 var FieldLabel = require('./FieldLabel.jsx');
-var TextFieldInput = require('./TextFieldInput.jsx');
 var DateFormatting = require('utils/DateFormatting');
+
+var TextFieldInput = require('./TextFieldInput.jsx');
+DateField.style = TextFieldInput.style;
 
 module.exports = React.createClass(DateField);

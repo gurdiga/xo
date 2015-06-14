@@ -64,7 +64,7 @@ var NewCaseDialog = React.createClass({
         <h1>Procedură de ordin general</h1>
 
         <DateField label='Data intentării' {...this.makeValuable('data-intentării')}
-          style={{ marginBottom: '15px', width: '5.8em' }} />
+          style={{ marginBottom: '15px', width: '7.8em' }} />
 
         <PersonSection label='Creditor' {...this.makeValuable('creditorul')} />
         <PersonSection label='Debitor' {...this.makeValuable('debitorul')} />

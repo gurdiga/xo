@@ -19,11 +19,9 @@ var dateField = React.render(
 
 test('DateField label', function(t) {
   var label = sandbox.querySelector('label');
-
   t.ok(label, 'it renders a <label> element');
 
   var labelSpan = label.querySelector('span');
-
   t.equal(labelSpan.textContent, labelText,
     '<label> contains a <span> with the text given in the “label” attribute');
 
@@ -32,7 +30,6 @@ test('DateField label', function(t) {
 
 test('DateField label layout CSS', function(t) {
   var css = sandbox.querySelector('label').style;
-
   t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
   t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -57,7 +54,7 @@ test('DateField value handling', function(t) {
   t.equal(
     input.value,
     fieldValue,
-    'the <intput /> has the value given in the DateField “value” attribute');
+    'the <intput/> has the value given in the DateField “value” attribute');
   t.equal(
     dateField.getValue(),
     fieldValue,
@@ -92,13 +89,12 @@ test('DateField outlines <input/> on focus', function(t) {
   React.render(
     <DateField
       label='Some label'
-      value='22/03/2015'
+      value='22.03.2015'
     />,
     sandbox
   );
 
   var input = sandbox.querySelector('input');
-
   t.equal(input.style.boxShadow, '', 'does not have the CSS box-shadow property set');
 
   React.addons.TestUtils.Simulate.focus(input);
@@ -112,7 +108,7 @@ test('DateField outlines <input/> on focus', function(t) {
 
 test('DateField input editability', function(t) {
   var input = sandbox.querySelector('label>input[type="text"]');
-  var newFieldValue = '20/10/2010';
+  var newFieldValue = '20.10.2010';
 
   input.value = newFieldValue;
   React.addons.TestUtils.Simulate.change(input);
@@ -124,9 +120,87 @@ test('DateField input editability', function(t) {
   t.end();
 });
 
-test('Date picker button', function(t) {
-  var button = sandbox.querySelector('label>button');
-  t.ok(button);
+test('Date picker button CSS', function(t) {
+  var button = sandbox.querySelector('label>input+button');
+  t.ok(button, 'it’s positioned at the right side of input');
+
+  var css = button.style;
+  t.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
+  t.equal(css.marginLeft, '-18px', 'uses 18px of negative left margin to look as being inside of the field');
+  t.equal(css.width, '20px', 'is 20px wide to accommodate clicking');
+  t.equal(css.height, '20px', 'is 20px high to accommodate clicking');
+  t.equal(css.padding, '0px', 'has no padding');
+  t.equal(css.backgroundColor, 'transparent', 'is transparent to be less intrusive');
+  t.ok(/^url\(.+\)/.test(css.backgroundImage), 'has a date picker image on the background');
+  t.equal(css.backgroundPosition, '50% 50%', 'its background image is centered');
+  t.equal(css.backgroundRepeat, 'no-repeat', 'background image is not repeated');
 
   t.end();
 });
+
+test('Date picker behavior', function(t) {
+  // this is needed to be able to work with the “singleton” Pikaday widget
+  document.body.appendChild(sandbox);
+
+  var button = sandbox.querySelector('label>button');
+  t.equal(button.title, 'Deschide calendarul', 'has the appropriate tool-tip');
+
+  var datePicker = sandbox.querySelector('label>.pika-single.xo');
+  t.equal(datePicker, null, 'date picker is not there before clicking the button');
+
+  button.click();
+  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  t.ok(datePicker, 'inserts the date picker');
+
+  var input = sandbox.querySelector('label>input');
+  t.equal(getDatePickerSelectedDate(), input.value, 'when opened, date picker reflects input’s value');
+
+  var newDate = nextDay(input.value);
+  selectDateInDatePicker(newDate);
+  t.equal(getDatePickerSelectedDate(), newDate, 'when selected, it updates input value accordingly');
+  t.equal(dateField.getValue(), newDate, 'when selected, getValue() returns the new value');
+
+  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  t.equal(datePicker, null, 'hides the date picker when a date is selected');
+
+  button.click();
+  button.click();
+  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  t.equal(datePicker, null, 'hides the date picker when clicked again');
+
+  document.body.removeChild(sandbox);
+
+  t.end();
+
+  function getDatePickerSelectedDate() {
+    var selectedDate = datePicker.querySelector('.is-selected .pika-day');
+    assert(selectedDate, 'getDatePickerSelectedDate() expects a selected date in the date picker');
+
+    var year =  selectedDate.getAttribute('data-pika-year');
+    var month = selectedDate.getAttribute('data-pika-month');
+    var day =   selectedDate.getAttribute('data-pika-day');
+
+    return DateFormatting.format(new Date(year, month, day), DateField.DATE_FORMAT);
+  }
+
+  function nextDay(initialFormattedDate) {
+    var initialDate = DateFormatting.parse(initialFormattedDate, DateField.DATE_FORMAT);
+    var nextDate = new Date(initialDate.getFullYear(), initialDate.getMonth(), initialDate.getDate() + 1);
+
+    return DateFormatting.format(nextDate, DateField.DATE_FORMAT);
+  }
+
+  function selectDateInDatePicker(newDate) {
+    var date = DateFormatting.parse(newDate, DateField.DATE_FORMAT);
+    var selectorForDate = '.pika-day' +
+      '[data-pika-year="' + date.getFullYear() + '"]' +
+      '[data-pika-month="' + date.getMonth() + '"]' +
+      '[data-pika-day="' + date.getDate() + '"]';
+
+    var correspondingDate = datePicker.querySelector(selectorForDate);
+    correspondingDate.dispatchEvent(new window.Event('mousedown'));
+  }
+});
+
+var DateFormatting = require('utils/DateFormatting');
+var assert = require('utils/assert');

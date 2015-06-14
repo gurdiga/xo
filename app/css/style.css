@@ -22,7 +22,8 @@ button {
 /* Pikaday theme begin */
 
 .pika-single.xo {
-  position: absolute;
+  /* importance is necessary here because datePicker.show() sets it to “static” */
+  position: absolute !important;
   display: inline-block;
   margin-top: 22px;
 }
