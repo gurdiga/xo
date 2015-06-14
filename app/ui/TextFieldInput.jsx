@@ -43,3 +43,4 @@ TextFieldInput.mixins = [
 ];
 
 module.exports = React.createClass(TextFieldInput);
+module.exports.style = TextFieldInput.style;
