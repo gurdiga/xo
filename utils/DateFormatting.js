@@ -38,6 +38,6 @@ function getMomentMask(appMask) {
   }, appMask);
 }
 
-var assert = require('assert');
+var assert = require('utils/assert');
 
 module.exports = DateFormatting;
