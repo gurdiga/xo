@@ -95,7 +95,7 @@ test('LargeTextField textarea CSS', function(t) {
   t.equal(textarea.style.boxShadow, 'rgb(181, 213, 255) 0px 0px 3px 2px', 'has CSS box-shadow property set when focused');
 
   React.addons.TestUtils.Simulate.blur(textarea);
-  t.equal(textarea.style.boxShadow, 'none', 'has CSS box-shadow property removed when loses focus');
+  t.equal(textarea.style.boxShadow, '', 'has CSS box-shadow property removed when loses focus');
 
   t.end();
 });

@@ -17,7 +17,7 @@ var OutlinedOnFocus = {
   },
 
   onBlur: function() {
-    this.style.boxShadow = 'none';
+    this.style.boxShadow = '';
     this.forceUpdate();
   }
 };
