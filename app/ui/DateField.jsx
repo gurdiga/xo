@@ -59,7 +59,9 @@ function syncDatePickerToReflectValueIn(dateField) {
 }
 
 function getDateFormattedForDatePicker(dateField) {
-  var date = DateFormatting.parse(dateField.getValue(), DATE_FORMAT);
+  var currentValue = dateField.getValue();
+  var date = currentValue ? DateFormatting.parse(dateField.getValue(), DATE_FORMAT) : new Date();
+
   return DateFormatting.format(date, DATE_PICKER_DATE_FORMAT);
 }
 
@@ -69,6 +71,7 @@ var datePicker = new Pikaday({
     setFieldValueTo(newDate);
     hideDatePicker();
   },
+  onClose: focusDateField,
   bound: false,
   theme: 'xo',
   firstDay: 1,
@@ -84,6 +87,17 @@ var datePicker = new Pikaday({
 function setFieldValueTo(newDate) {
   var formattedDate = DateFormatting.format(newDate, DATE_FORMAT);
   DateField.current.setState({value: formattedDate});
+}
+
+function focusDateField() {
+  var inputDomElement = React.findDOMNode(DateField.current.refs.input);
+
+  /* setTimeout here is needed because onSelect is triggered
+   * by mousedown, and because the click is not finished,
+   * synchronous focus() doesn’t work as expected */
+  window.setTimeout(function() {
+    inputDomElement.focus();
+  });
 }
 
 var DATE_FORMAT = 'dd.mm.yyyy';

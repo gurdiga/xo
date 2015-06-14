@@ -163,14 +163,27 @@ test('Date picker behavior', function(t) {
   datePicker = sandbox.querySelector('label>.pika-single.xo');
   t.equal(datePicker, null, 'hides the date picker when a date is selected');
 
+  input.value = '';
+  React.addons.TestUtils.Simulate.change(input);
   button.click();
+
+  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  t.ok(datePicker, 'date picker is displayed with en empty field value');
+
+  var todayDate = DateFormatting.format(new Date(), DateField.DATE_FORMAT);
+  t.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
+
   button.click();
   datePicker = sandbox.querySelector('label>.pika-single.xo');
   t.equal(datePicker, null, 'hides the date picker when clicked again');
 
-  document.body.removeChild(sandbox);
+  /* this setTimeout call is required because focus() call is async too */
+  window.setTimeout(function() {
+    t.equal(document.activeElement, input, 'when tha date picker id closed, the input get focus again');
 
-  t.end();
+    document.body.removeChild(sandbox);
+    t.end();
+  });
 
   function getDatePickerSelectedDate() {
     var selectedDate = datePicker.querySelector('.is-selected .pika-day');
