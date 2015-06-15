@@ -181,6 +181,11 @@ test('Date picker behavior', function(t) {
   window.setTimeout(function() {
     t.equal(document.activeElement, input, 'when tha date picker id closed, the input get focus again');
 
+    button.click();
+    document.body.click();
+    datePicker = sandbox.querySelector('label>.pika-single.xo');
+    t.equal(datePicker, null, 'hides the date picker when clicked outside');
+
     document.body.removeChild(sandbox);
     t.end();
   });

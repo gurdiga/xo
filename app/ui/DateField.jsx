@@ -18,12 +18,14 @@ DateField.render = function() {
       <button
         style={buttonStyle}
         onClick={toggleDatePickerFor(this)}
-        title='Deschide calendarul'
+        title={BUTTON_TITLE}
       ></button>
 
     </FieldLabel>
   );
 };
+
+var BUTTON_TITLE = 'Deschide calendarul';
 
 function toggleDatePickerFor(dateField) {
   return function() {
@@ -47,10 +49,14 @@ function hideDatePicker() {
 }
 
 function showDatePickerNextTo(dateField) {
-  var inputDomElement = React.findDOMNode(dateField.refs.input);
+  var inputDomElement = getInputElement(dateField);
   inputDomElement.parentNode.insertBefore(datePicker.el, inputDomElement);
   datePicker.show();
   DateField.current = dateField;
+}
+
+function getInputElement(dateField) {
+  return React.findDOMNode(dateField.refs.input);
 }
 
 function syncDatePickerToReflectValueIn(dateField) {
@@ -90,7 +96,7 @@ function setFieldValueTo(newDate) {
 }
 
 function focusDateField() {
-  var inputDomElement = React.findDOMNode(DateField.current.refs.input);
+  var inputDomElement = getInputElement(DateField.current);
 
   /* setTimeout here is needed because onSelect is triggered
    * by mousedown, and because the click is not finished,
@@ -98,6 +104,17 @@ function focusDateField() {
   window.setTimeout(function() {
     inputDomElement.focus();
   });
+}
+
+document.body.addEventListener('click', function(e) {
+  if (!DateField.current) return;
+  if (e.target === getButtonOfCurrentDateField()) return;
+  hideDatePicker();
+});
+
+function getButtonOfCurrentDateField() {
+  var inputDomElement = getInputElement(DateField.current);
+  return inputDomElement.nextSibling;
 }
 
 var DATE_FORMAT = 'dd.mm.yyyy';
