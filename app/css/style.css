@@ -26,6 +26,7 @@ button {
   position: absolute !important;
   display: inline-block;
   margin-top: 22px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .xo .pika-button:hover,
