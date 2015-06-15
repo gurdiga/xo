@@ -117,6 +117,12 @@ function getButtonOfCurrentDateField() {
   return inputDomElement.nextSibling;
 }
 
+document.body.addEventListener('keydown', function(e) {
+  if (!DateField.current) return;
+  var isEscapeKey = e.keyCode === 27;
+  if (isEscapeKey) hideDatePicker();
+});
+
 var DATE_FORMAT = 'dd.mm.yyyy';
 var DATE_PICKER_DATE_FORMAT = 'yyyy-mm-dd';
 

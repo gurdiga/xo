@@ -186,6 +186,11 @@ test('Date picker behavior', function(t) {
     datePicker = sandbox.querySelector('label>.pika-single.xo');
     t.equal(datePicker, null, 'hides the date picker when clicked outside');
 
+    button.click();
+    simulateEscapeKey();
+    datePicker = sandbox.querySelector('label>.pika-single.xo');
+    t.equal(datePicker, null, 'hides the date picker when pressing Escape key');
+
     document.body.removeChild(sandbox);
     t.end();
   });
@@ -217,6 +222,12 @@ test('Date picker behavior', function(t) {
 
     var correspondingDate = datePicker.querySelector(selectorForDate);
     correspondingDate.dispatchEvent(new window.Event('mousedown'));
+  }
+
+  function simulateEscapeKey() {
+    var keydownEvent = new window.Event('keydown');
+    keydownEvent.keyCode = 27;
+    document.body.dispatchEvent(keydownEvent);
   }
 });
 
