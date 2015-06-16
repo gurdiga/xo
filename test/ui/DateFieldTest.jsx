@@ -1,7 +1,5 @@
 'use strict';
 
-// TODO: accommodate time?
-
 var DateField = require('../../app/ui/DateField.jsx');
 var test = tape;
 
