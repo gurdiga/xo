@@ -145,12 +145,26 @@ test('Date picker behavior', function(t) {
   var button = sandbox.querySelector('label>button');
   t.equal(button.title, 'Deschide calendarul', 'has the appropriate tool-tip');
 
-  var datePicker = sandbox.querySelector('label>.pika-single.xo');
+  var datePicker = sandbox.querySelector('label>.pika-single');
   t.equal(datePicker, null, 'date picker is not there before clicking the button');
 
   button.click();
-  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  datePicker = sandbox.querySelector('label>.pika-single');
   t.ok(datePicker, 'inserts the date picker');
+  t.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
+
+  var firstMonth = datePicker.querySelector('.pika-select-month option');
+  t.equal(firstMonth.textContent, 'Ianuarie', 'month names are translated');
+
+  var firstWeekDay = datePicker.querySelector('.pika-table th abbr');
+  t.equal(firstWeekDay.title, 'Luni', 'first day of the wiik is Monday');
+  t.equal(firstWeekDay.textContent, 'Lu', 'short week day names are translated');
+
+  var prevMonthButton = datePicker.querySelector('button.pika-prev');
+  t.equal(prevMonthButton.textContent, 'luna precedentă', 'the button to go to previous month is translated');
+
+  var nextMonthButton = datePicker.querySelector('button.pika-next');
+  t.equal(nextMonthButton.textContent, 'luna următoare', 'the button to go to next month is translated');
 
   var input = sandbox.querySelector('label>input');
   t.equal(getDatePickerSelectedDate(), input.value, 'when opened, date picker reflects input’s value');
@@ -160,21 +174,21 @@ test('Date picker behavior', function(t) {
   t.equal(getDatePickerSelectedDate(), newDate, 'when selected, it updates input value accordingly');
   t.equal(dateField.getValue(), newDate, 'when selected, getValue() returns the new value');
 
-  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  datePicker = sandbox.querySelector('label>.pika-single');
   t.equal(datePicker, null, 'hides the date picker when a date is selected');
 
   input.value = '';
   React.addons.TestUtils.Simulate.change(input);
   button.click();
 
-  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  datePicker = sandbox.querySelector('label>.pika-single');
   t.ok(datePicker, 'date picker is displayed with en empty field value');
 
   var todayDate = DateFormatting.format(new Date(), DateField.DATE_FORMAT);
   t.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
 
   button.click();
-  datePicker = sandbox.querySelector('label>.pika-single.xo');
+  datePicker = sandbox.querySelector('label>.pika-single');
   t.equal(datePicker, null, 'hides the date picker when clicked again');
 
   /* this setTimeout call is required because focus() call is async too */
@@ -183,12 +197,12 @@ test('Date picker behavior', function(t) {
 
     button.click();
     document.body.click();
-    datePicker = sandbox.querySelector('label>.pika-single.xo');
+    datePicker = sandbox.querySelector('label>.pika-single');
     t.equal(datePicker, null, 'hides the date picker when clicked outside');
 
     button.click();
     simulateEscapeKey();
-    datePicker = sandbox.querySelector('label>.pika-single.xo');
+    datePicker = sandbox.querySelector('label>.pika-single');
     t.equal(datePicker, null, 'hides the date picker when pressing Escape key');
 
     document.body.removeChild(sandbox);
