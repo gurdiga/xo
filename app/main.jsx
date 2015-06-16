@@ -1,12 +1,12 @@
 'use strict';
 
-var UI = require('./ui.jsx');
+var UI = require('./UI.jsx');
 
 React.render(<UI/>, document.getElementById('ui'));
 
 if (process.env.NODE_ENV === 'development') {
   require('../test/utils/DateFormattingTest.js');
-  require('../test/ui.jsx');
+  require('../test/UITest.jsx');
   require('../test/ui/TextFieldTest.jsx');
   require('../test/ui/LargeTextFieldTest.jsx');
   require('../test/ui/SelectFieldTest.jsx');
