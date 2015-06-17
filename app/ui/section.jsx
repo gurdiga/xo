@@ -27,7 +27,7 @@ var Section = React.createClass({
     width: '43%',
     border: 'none',
     margin: '0 7% 10px 0',
-    padding: '5px 0'
+    padding: '10px 0 0'
   },
 
   legendStyle: {
@@ -36,8 +36,7 @@ var Section = React.createClass({
     width: '100%',
     fontWeight: 'bold',
     fontSize: '22px',
-    padding: '8px 0 8px 6px',
-    marginBottom: '5px'
+    padding: '8px 0 8px 6px'
   }
 });
 
