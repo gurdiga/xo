@@ -6,7 +6,8 @@ var test = tape;
 var sandbox = document.createElement('div');
 var labelText = 'My section';
 var content = <p>section content</p>;
-var section = React.render(
+
+React.render(
   <Section
     label={labelText}
   >{content}</Section>,
@@ -25,7 +26,6 @@ test('Section label', function(t) {
   var content = fieldset.querySelector('p');
   t.equal(content.textContent, 'section content', 'renders its children as children of the <fieldset>');
 
-  t.ok(section); // TODO: remove me
   t.end();
 });
 
@@ -60,5 +60,3 @@ test('Section legend CSS', function(t) {
 
   t.end();
 });
-
-// TODO: how do I test propTypes? should I?

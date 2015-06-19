@@ -1,43 +1,38 @@
 'use strict';
+var Section = {};
 
-var Styled = require('mixins/styled.js');
+Section.render = function() {
+  return (
+    <fieldset style={style}>
+      <legend style={legendStyle}>{this.props.label}</legend>
+
+      { this.props.children }
+
+    </fieldset>
+  );
+};
 
 var a = React.PropTypes;
 
-var Section = React.createClass({
-  mixins: [Styled],
+Section.propTypes = {
+  label: a.string.isRequired
+};
 
-  propTypes: {
-    label: a.string.isRequired
-  },
+var style = {
+  float: 'left',
+  width: '43%',
+  border: 'none',
+  margin: '0 7% 10px 0',
+  padding: '10px 0 0'
+};
 
-  render: function() {
-    return (
-      <fieldset {...this.makeStyled()}>
-        <legend style={this.legendStyle}>{this.props.label}</legend>
+var legendStyle = {
+  color: 'white',
+  backgroundColor: '#333',
+  width: '100%',
+  fontWeight: 'bold',
+  fontSize: '22px',
+  padding: '8px 0 8px 6px'
+};
 
-        { this.props.children }
-
-      </fieldset>
-    );
-  },
-
-  style: {
-    float: 'left',
-    width: '43%',
-    border: 'none',
-    margin: '0 7% 10px 0',
-    padding: '10px 0 0'
-  },
-
-  legendStyle: {
-    color: 'white',
-    backgroundColor: '#333',
-    width: '100%',
-    fontWeight: 'bold',
-    fontSize: '22px',
-    padding: '8px 0 8px 6px'
-  }
-});
-
-module.exports = Section;
+module.exports = React.createClass(Section);
