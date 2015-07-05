@@ -20,6 +20,8 @@ var selectField = React.render(
   sandbox
 );
 
+document.body.appendChild(sandbox);
+
 test('SelectField label', function(t) {
   var label = sandbox.querySelector('label');
   t.ok(label, 'it renders a <label>');
@@ -32,7 +34,7 @@ test('SelectField label', function(t) {
 });
 
 test('SelectField label layout CSS', function(t) {
-  var css = sandbox.querySelector('label').style;
+  var css = window.getComputedStyle(sandbox.querySelector('label'));
   t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
   t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -40,11 +42,11 @@ test('SelectField label layout CSS', function(t) {
 });
 
 test('SelectField label text CSS', function(t) {
-  var css = sandbox.querySelector('label>span').style;
+  var css = window.getComputedStyle(sandbox.querySelector('label>span'));
   t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
   t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
   t.equal(css.display, 'inline-block', 'is inline-block to be able to have it’s own width');
-  t.equal(css.width, '11em', 'is 11em wide');
+  t.equal(css.width, '154px', 'is 11em wide');
 
   t.end();
 });
@@ -61,9 +63,9 @@ test('SelectField options', function(t) {
 });
 
 test('SelectField select CSS', function(t) {
-  var css = sandbox.querySelector('select').style;
-  t.equal(css.width, '16em', 'is 16em wide too (as TextField input is)');
-  t.equal(css.fontSize, '14px', 'has 14px font size (as TextField input does)');
+  var css = window.getComputedStyle(sandbox.querySelector('select'));
+  t.equal(css.width, '224px', 'is 16em wide too (as TextField input is)');
+  t.equal(css.fontSize, '11px', 'has 11px font size (unlike TextField input does, because selects are funky)');
   t.equal(css.position, 'absolute', 'is absolutely-positioned to allow for precise vertical alignment without bothering the <label>');
   t.equal(css.marginTop, '-2px', 'is shifted up 2px to vertically align with the <label>');
 
@@ -107,7 +109,6 @@ test('SelectField value', function(t) {
 });
 
 test('SelectField onChange callback', function(t) {
-  var sandbox = document.createElement('div');
   var changed = false;
   var event;
 
@@ -128,5 +129,6 @@ test('SelectField onChange callback', function(t) {
   t.equal(changed, true, 'triggers the onChange callback when changing');
   t.ok('nativeEvent' in event, 'the callback receives the original change event');
 
+  document.body.removeChild(sandbox);
   t.end();
 });

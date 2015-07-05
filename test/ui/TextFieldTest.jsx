@@ -6,6 +6,7 @@ var test = tape;
 var sandbox = document.createElement('div');
 var labelText = 'My text-field component';
 var fieldValue = 'Hi!';
+
 var textField = React.render(
   <TextField
     label={labelText}
@@ -13,6 +14,8 @@ var textField = React.render(
   />,
   sandbox
 );
+
+document.body.appendChild(sandbox);
 
 test('TextField label', function(t) {
   var label = sandbox.querySelector('label');
@@ -26,7 +29,7 @@ test('TextField label', function(t) {
 });
 
 test('TextField label layout CSS', function(t) {
-  var css = sandbox.querySelector('label').style;
+  var css = window.getComputedStyle(sandbox.querySelector('label'));
   t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
   t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -34,11 +37,11 @@ test('TextField label layout CSS', function(t) {
 });
 
 test('TextField label text CSS', function(t) {
-  var css = sandbox.querySelector('label>span').style;
+  var css = window.getComputedStyle(sandbox.querySelector('label>span'));
   t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
   t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
   t.equal(css.display, 'inline-block', 'is inline-block to be able to have it’s own width');
-  t.equal(css.width, '11em', 'is 11em wide');
+  t.equal(css.width, '154px', 'is 11em wide');
 
   t.end();
 });
@@ -64,11 +67,11 @@ test('TextField input', function(t) {
 });
 
 test('TextField input CSS', function(t) {
-  var css = sandbox.querySelector('input').style;
-  t.equal(css.color, 'black', 'its text renders in black color');
+  var css = window.getComputedStyle(sandbox.querySelector('input'));
+  t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
   t.equal(css.padding, '4px', 'has 4 px padding');
-  t.equal(css.font, 'bold 14px sans-serif', 'the text is rendered with “bold 14px sans-serif”');
-  t.equal(css.width, '16em', 'is 16em wide');
+  t.equal(css.font, 'normal normal bold normal 14px/normal sans-serif', 'the text is rendered with “bold 14px sans-serif”');
+  t.equal(css.width, '224px', 'is 16em wide');
   t.equal(
     css.backgroundImage,
     'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
@@ -77,19 +80,18 @@ test('TextField input CSS', function(t) {
   t.equal(css.backgroundPosition, '0px -4px',
     'the background image is vertically positioned -4px to match the input padding');
   t.equal(css.borderRadius, '2px', 'has nice rounded corners');
-  t.equal(css.border, 'none', 'it has no border, it’s role is taken on by the background image');
-  t.equal(css.outline, 'none', 'it has no outline, it’s role is taken on by the box-shadow');
+  t.equal(css.border, '0px none rgb(0, 0, 0)', 'it has no border, it’s role is taken on by the background image');
+  t.equal(css.outline, 'rgb(0, 0, 0) none 0px', 'it has no outline, it’s role is taken on by the box-shadow');
 
   t.end();
 });
 
 test('TextField accepts custom input CSS through the “style” attribute', function(t) {
   var customCSS = {
-    color: 'red',
-    width: '20em'
+    color: 'rgb(255, 0, 0)',
+    width: '280px'
   };
 
-  var sandbox = document.createElement('div');
   React.render(
     <TextField
       label='Some label'
@@ -100,7 +102,8 @@ test('TextField accepts custom input CSS through the “style” attribute', fun
   );
 
   var input = sandbox.querySelector('input');
-  t.deepEqual(_.pick(input.style, passedCustomPorperties), customCSS, 'applies the given CSS properties to <input/>');
+  var css = window.getComputedStyle(input);
+  t.deepEqual(_.pick(css, passedCustomPorperties), customCSS, 'applies the given CSS properties to <input/>');
   t.end();
 
   function passedCustomPorperties(propertyValue, propertyName) {
@@ -109,7 +112,6 @@ test('TextField accepts custom input CSS through the “style” attribute', fun
 });
 
 test('TextField outlines <input/> on focus', function(t) {
-  var sandbox = document.createElement('div');
   React.render(
     <TextField
       label='Some label'
@@ -127,6 +129,7 @@ test('TextField outlines <input/> on focus', function(t) {
   React.addons.TestUtils.Simulate.blur(input);
   t.equal(input.style.boxShadow, '', 'has CSS box-shadow property removed when loses focus');
 
+  document.body.removeChild(sandbox);
   t.end();
 });
 
