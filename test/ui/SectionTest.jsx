@@ -32,9 +32,15 @@ test('Section label', function(t) {
 });
 
 test('Section fieldset CSS', function(t) {
-  var css = window.getComputedStyle(sandbox.querySelector('fieldset'));
+  var fieldset = sandbox.querySelector('fieldset');
+  var css = window.getComputedStyle(fieldset);
+  var parentCss = window.getComputedStyle(fieldset.parentNode);
   t.equal(css.float, 'left', 'is floated left to allow for two columns');
-  t.equal(css.width, '612.3125px', 'is 43% wide to accommodate 2 columns and some spacing between them');
+
+  var width = Math.round(parseInt(css.width));
+  var parentWidth = Math.round(parseInt(parentCss.width));
+  t.equal(width, parseInt(parentWidth * 0.43), 'is 43% wide to accommodate 2 columns and some spacing between them');
+
   t.equal(css.marginRight, '99.671875px', 'spacing with the width get to half of the horizontal space');
   t.equal(css.marginLeft, '0px', 'no left spacing');
   t.equal(css.marginTop, '0px', 'no spacing at the top');
