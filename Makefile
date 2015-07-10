@@ -48,17 +48,9 @@ build/%.json: app/%.json
 	cp $< $@
 
 #build/index.html: app/index.jade build/js-list.diff
-#	jade --pretty --obj $$(<build/js-list.json) < $< > $@
+#	node makefiles/common/compile-index.js < build/js-list.txt > $@
 
 build/js-list.diff:: # double colon means “allways build”
 	@mv build/js-list.txt build/js-list.txt.prev || touch build/js-list.txt.prev
 	@find app test -type f -name '*.jsx' -or -name '*.js' > build/js-list.txt
-	@sed \
-			-e 's/^/"/;s/$$/",/' \
-			-e 's/jsx/js/' \
-			-e '1s/^/{"files":[/' \
-			-e '$$s/,$$/]}/' \
-		build/js-list.txt \
-		| tr --delete '\n' \
-		> build/js-list.json
 	@diff --new-file build/js-list.txt build/js-list.txt.prev || touch $@

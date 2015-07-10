@@ -14,5 +14,5 @@ html
 		script(src="pikaday.js")
 		link(rel="stylesheet", href="css/pikaday.css")
 
-		each file in files
+		each file in files.sort(keepingAtTop(['app/main.js', 'app/UI.js']))
 			script(src=file)

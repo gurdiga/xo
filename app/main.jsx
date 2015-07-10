@@ -14,4 +14,5 @@ if (process.env.NODE_ENV === 'development') {
   require('../test/ui/DateFieldTest.jsx');
   require('../test/ui/SectionTest.jsx');
   require('../test/ui/NewCaseButtonTest.jsx');
+  require('../test/utils/keepingAtTopTest.js');
 }
