@@ -18,9 +18,14 @@ function getFileList() {
   return fs.readFileSync('/dev/stdin')
     .toString()
     .split('\n')
-    .filter(nonEmpty);
+    .filter(nonEmpty)
+    .map(translateExtension);
 }
 
 function nonEmpty(line) {
   return line.trim().length > 0;
+}
+
+function translateExtension(path) {
+  return path.replace(/jsx/g, 'js');
 }
