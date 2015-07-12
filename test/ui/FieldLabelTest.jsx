@@ -4,7 +4,7 @@ var FieldLabel = require('../../app/ui/FieldLabel.jsx');
 var test = tape;
 
 var sandbox = document.createElement('div');
-var labelText = 'My field-label component';
+var labelText = 'My FieldLabel component';
 var childText = 'Child 1';
 
 React.render(
