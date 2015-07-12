@@ -4,7 +4,7 @@ var DateField = require('../../app/ui/DateField.jsx');
 var test = tape;
 
 var sandbox = document.createElement('div');
-var labelText = 'My date-field component';
+var labelText = 'My DateField component';
 var fieldValue = '22.03.2015';
 
 var dateField = React.render(
