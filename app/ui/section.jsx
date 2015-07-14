@@ -1,24 +1,23 @@
 'use strict';
-var Section = {};
 
-Section.render = function() {
-  return (
-    <fieldset style={style}>
-      <legend style={legendStyle}>{this.props.label}</legend>
+var Section = React.createClass({
+  render: function() {
+    return (
+      <fieldset style={fieldsetStyle}>
+        <legend style={legendStyle}>{this.props.label}</legend>
 
-      { this.props.children }
+        { this.props.children }
 
-    </fieldset>
-  );
-};
+      </fieldset>
+    );
+  },
 
-var a = React.PropTypes;
+  propTypes: {
+    label: React.PropTypes.string.isRequired
+  }
+});
 
-Section.propTypes = {
-  label: a.string.isRequired
-};
-
-var style = {
+var fieldsetStyle = {
   float: 'left',
   width: '43%',
   border: 'none',
@@ -35,4 +34,4 @@ var legendStyle = {
   padding: '8px 0 8px 6px'
 };
 
-module.exports = React.createClass(Section);
+module.exports = Section;

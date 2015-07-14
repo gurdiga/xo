@@ -1,31 +1,53 @@
 'use strict';
 
-var DateField = {};
+var DATE_FORMAT = 'dd.mm.yyyy';
 
-DateField.render = function() {
-  return (
-    <FieldLabel text={this.props.label}>
+var DateField = React.createClass({
+  render: function() {
+    return (
+      <FieldLabel text={this.props.label}>
 
-      <input
-        ref='input'
-        type='text'
-        value={this.state.value}
-        {...this.makeEditable()}
-        {...this.makeStyled()}
-        {...this.makeOutlinedOnFocus()}
-      />
+        <input
+          ref='input'
+          type='text'
+          value={this.state.value}
+          {...this.makeEditable()}
+          {...this.makeStyled()}
+          {...this.makeOutlinedOnFocus()}
+        />
 
-      <button
-        style={buttonStyle}
-        onClick={toggleDatePickerFor(this)}
-        title={BUTTON_TITLE}
-      ></button>
+        <button
+          style={datePickerButtonStyle}
+          onClick={toggleDatePickerFor(this)}
+          title='Deschide calendarul'
+        ></button>
 
-    </FieldLabel>
-  );
-};
+      </FieldLabel>
+    );
+  },
 
-var BUTTON_TITLE = 'Deschide calendarul';
+  getInitialState: function() {
+    return {
+      value: this.props.value
+    };
+  },
+
+  getValue: function() {
+    return this.state.value;
+  },
+
+  statics: {
+    DATE_FORMAT: DATE_FORMAT
+  },
+
+  mixins: [
+    require('mixins/editable.js'),
+    require('mixins/styled.js'),
+    require('mixins/outlined-on-focus.js')
+  ],
+
+  style: require('./TextFieldInput.jsx').style
+});
 
 function toggleDatePickerFor(dateField) {
   return function() {
@@ -68,7 +90,9 @@ function getDateFormattedForDatePicker(dateField) {
   var currentValue = dateField.getValue();
   var date = currentValue ? DateFormatting.parse(dateField.getValue(), DATE_FORMAT) : new Date();
 
-  return DateFormatting.format(date, DATE_PICKER_DATE_FORMAT);
+  var DATE_PICKER_INTERNAL_DATE_FORMAT = 'yyyy-mm-dd';
+
+  return DateFormatting.format(date, DATE_PICKER_INTERNAL_DATE_FORMAT);
 }
 
 /*global Pikaday*/
@@ -123,24 +147,7 @@ document.body.addEventListener('keydown', function(e) {
   if (isEscapeKey) hideDatePicker();
 });
 
-var DATE_FORMAT = 'dd.mm.yyyy';
-var DATE_PICKER_DATE_FORMAT = 'yyyy-mm-dd';
-
-DateField.getInitialState = function() {
-  return {
-    value: this.props.value
-  };
-};
-
-DateField.getValue = function() {
-  return this.state.value;
-};
-
-DateField.statics = {
-  DATE_FORMAT: DATE_FORMAT
-};
-
-var buttonStyle = {
+var datePickerButtonStyle = {
   width: '20px',
   height: '20px',
   padding: '0',
@@ -153,16 +160,7 @@ var buttonStyle = {
   position: 'absolute'
 };
 
-DateField.mixins = [
-  require('mixins/editable.js'),
-  require('mixins/styled.js'),
-  require('mixins/outlined-on-focus.js')
-];
-
 var FieldLabel = require('./FieldLabel.jsx');
 var DateFormatting = require('utils/DateFormatting');
 
-var TextFieldInput = require('./TextFieldInput.jsx');
-DateField.style = TextFieldInput.style;
-
-module.exports = React.createClass(DateField);
+module.exports = DateField;

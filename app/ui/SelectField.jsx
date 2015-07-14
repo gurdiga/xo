@@ -1,28 +1,32 @@
 'use strict';
 
-var SelectField = {};
+var SelectField = React.createClass({
+  render: function() {
+    return (
+      <FieldLabel text={this.props.label}>
+        <select style={selectStyle} onChange={this.onChange} value={this.state.value}>
+          { this.props.children }
+        </select>
+      </FieldLabel>
+    );
+  },
 
-SelectField.render = function() {
-  return (
-    <FieldLabel text={this.props.label}>
-      <select style={selectStyle} onChange={this.onChange} value={this.state.value}>
-        { this.props.children }
-      </select>
-    </FieldLabel>
-  );
-};
+  getInitialState: function() {
+    return {
+      value: this.props.value
+    };
+  },
 
-SelectField.getInitialState = function() {
-  return {
-    value: this.props.value
-  };
-};
+  onChange: function(e) {
+    this.setState({ value: e.target.value });
 
-SelectField.onChange = function(e) {
-  this.setState({ value: e.target.value });
+    if (this.props.onChange) this.props.onChange(e);
+  },
 
-  if (this.props.onChange) this.props.onChange(e);
-};
+  getValue: function() {
+    return this.state.value;
+  }
+});
 
 var selectStyle = {
   width: '16em',
@@ -31,10 +35,6 @@ var selectStyle = {
   marginTop: '-2px'
 };
 
-SelectField.getValue = function() {
-  return this.state.value;
-};
-
 var FieldLabel = require('./FieldLabel.jsx');
 
-module.exports = React.createClass(SelectField);
+module.exports = SelectField;

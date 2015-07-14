@@ -1,15 +1,15 @@
 'use strict';
 
-var FieldLabel = {};
-
-FieldLabel.render = function() {
-  return (
-    <label style={labelLayoutStyle}>
-      <span style={labelTextStyle}>{ this.props.text }</span>
-      { this.props.children }
-    </label>
-  );
-};
+var FieldLabel = React.createClass({
+  render: function() {
+    return (
+      <label style={labelLayoutStyle}>
+        <span style={labelTextStyle}>{ this.props.text }</span>
+        { this.props.children }
+      </label>
+    );
+  }
+});
 
 var labelLayoutStyle = {
   display: 'block',
@@ -23,4 +23,4 @@ var labelTextStyle = {
   width: '11em'
 };
 
-module.exports = React.createClass(FieldLabel);
+module.exports = FieldLabel;
