@@ -7,9 +7,9 @@ var Valuable = require('mixins/valuable.js');
 var DateFormatting = require('utils/DateFormatting.js');
 
 var DateField = require('./DateField.jsx');
-var PersonSection = require('./person-section.jsx');
-var CloseButton = require('./close-button.jsx');
-var NakedButton = require('./naked-button.jsx');
+var PersonSection = require('./PersonSection.jsx');
+var CloseButton = require('./CloseButton.jsx');
+var NakedButton = require('./NakedButton.jsx');
 
 var a = React.PropTypes;
 var an = a;

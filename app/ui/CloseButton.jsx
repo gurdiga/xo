@@ -3,7 +3,7 @@
 var Testable = require('mixins/testable.js');
 var Styled = require('mixins/styled.js');
 
-var NakedButton = require('./naked-button.jsx');
+var NakedButton = require('./NakedButton.jsx');
 
 var a = React.PropTypes;
 var an = a;
