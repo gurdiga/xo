@@ -1,13 +1,13 @@
 'use strict';
 
-var Testable = require('mixins/testable.js');
+var Identifiable = require('mixins/identifiable.js');
 var Styled = require('mixins/styled.js');
 
 var a = React.PropTypes;
 var an = a;
 
 var CloseButton = React.createClass({
-  mixins: [Testable, Styled],
+  mixins: [Identifiable, Styled],
 
   propTypes: {
     onClick: a.func.isRequired,
