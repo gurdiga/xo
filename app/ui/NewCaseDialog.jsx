@@ -9,7 +9,6 @@ var DateFormatting = require('utils/DateFormatting.js');
 var DateField = require('./DateField.jsx');
 var PersonSection = require('./PersonSection.jsx');
 var CloseButton = require('./CloseButton.jsx');
-var NakedButton = require('./NakedButton.jsx');
 
 var a = React.PropTypes;
 var an = a;
@@ -71,10 +70,10 @@ var NewCaseDialog = React.createClass({
 
         { this.state.value['persoane-terţe'].map(this.drawThirdParty) }
 
-        <NakedButton
+        <button
           onClick={this.addThirdParty}
           style={{ clear: 'left', float: 'left' }}
-        >+ adaugă persoană terţă</NakedButton>
+        >+ adaugă persoană terţă</button>
 
         <div style={{ clear: 'left', left: 'left' }}><button onClick={this.showValue}>Show value</button></div>
 
