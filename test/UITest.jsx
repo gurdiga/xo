@@ -13,7 +13,7 @@ test('UI', function(t) {
   var dialog = ui.querySelector('[component-name="NewCaseDialog"]');
   t.ok(dialog, 'a NewCaseDialog is expected');
 
-  var closeButton = dialog.querySelector('[component-name="CloseButton"]');
+  var closeButton = dialog.querySelector('[data-test-id="close-button"]');
   t.ok(closeButton, 'the dialog should have a CloseButton');
 
   closeButton.click();

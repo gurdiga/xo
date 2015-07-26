@@ -8,7 +8,6 @@ var DateFormatting = require('utils/DateFormatting.js');
 
 var DateField = require('./DateField.jsx');
 var PersonSection = require('./PersonSection.jsx');
-var CloseButton = require('./CloseButton.jsx');
 
 var a = React.PropTypes;
 var an = a;
@@ -77,7 +76,11 @@ var NewCaseDialog = React.createClass({
 
         <div style={{ clear: 'left', left: 'left' }}><button onClick={this.showValue}>Show value</button></div>
 
-        <CloseButton onClick={this.props.onClose} />
+        <button
+          onClick={this.props.onClose}
+          style={this.closeButtonStyle}
+          data-test-id="close-button"
+        >×</button>
 
       </div>
     );
@@ -102,6 +105,18 @@ var NewCaseDialog = React.createClass({
     padding: '10px 10px 90px 50px',
     position: 'absolute',
     width: '100%'
+  },
+
+  closeButtonStyle: {
+    padding: '.1em .3em',
+    position: 'absolute',
+    right: '0',
+    top: '0',
+    fontSize: '20px',
+    fontWeight: 'normal',
+    lineHeight: '1',
+    background: 'transparent',
+    border: 'none'
   }
 });
 
