@@ -1,6 +1,6 @@
 'use strict';
 
-var Testable = {
+var Identifiable = {
   componentDidMount: function() {
     var domNode = React.findDOMNode(this);
     if (domNode) domNode.setAttribute('component-name', this.constructor.displayName);
@@ -12,4 +12,4 @@ var Testable = {
   }
 };
 
-module.exports = Testable;
+module.exports = Identifiable;
