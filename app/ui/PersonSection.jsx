@@ -39,7 +39,7 @@ var PersonSection = React.createClass({
 
   render: function() {
     return (
-      <Section label={this.props.label}>
+      <Section label={this.props.label} ref='section'>
 
         <SelectField label='Gen persoană' onChange={this.onPersonTypeChange} {...this.makeValuable('gen-persoană')}>
           {this.personTypeOptions()}
