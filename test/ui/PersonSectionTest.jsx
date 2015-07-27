@@ -24,11 +24,21 @@ test('PersonSection', function(t) {
   t.equal(section.props.label, label, 'section has the appropriate label');
 
   t.test('person type field', function(t) {
-    var personTypeField = section.props.children[0]; // TODO: make this more clear?
+    var personTypeField = personSection.refs['gen-persoană'];
     t.ok(personTypeField, 'is rendered');
-    t.equal(personTypeField.ref, 'gen-persoană', 'has the appropriate ref');
     t.equal(personTypeField.props.label, 'Gen persoană', 'has the appropriate label');
     t.equal(personTypeField.props.onChange, personSection.onPersonTypeChange, 'has the appropriate onChange');
+    t.equal(personTypeField.props.isValuable, true, 'is marked as valuable');
+    t.equal(personTypeField.props.value, PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
+
+    var optionDOMElements = personTypeField.getDOMNode().querySelectorAll('select option');
+    var optionTexts = [].map.call(optionDOMElements, function(option) {
+      return option.textContent;
+    });
+
+    PersonSection.PERSON_TYPES.forEach(function(type) {
+      t.ok(optionTexts.indexOf(type) > -1, 'has the “' + type + '” option');
+    });
 
     t.end();
   });
