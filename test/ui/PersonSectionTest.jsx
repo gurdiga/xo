@@ -43,6 +43,21 @@ test('PersonSection', function(t) {
     t.end();
   });
 
+  t.end();
+});
+
+test('PersonSection when it’s “fizică”', function(t) {
+  var select = personSection.refs['gen-persoană'].getDOMNode().querySelector('select');
+  select.value = PersonSection.PERSON_TYPES.INDIVIDUAL;
+  React.addons.TestUtils.Simulate.change(select);
+
+  // TODO: find a better way?
+  // Maybe make the components identifiable and then identify them here by component names and props?
+  // The intent in the end is to make sure that the right components are passed the right props.
+  var expectedFields = ['section', 'gen-persoană', 'nume', 'idnp', 'data-naşterii', 'domiciliu', 'note'];
+  var fields = Object.keys(personSection.refs);
+  t.deepEqual(fields, expectedFields, 'shows the corresponding fields');
+
   document.body.removeChild(sandbox);
   t.end();
 });
