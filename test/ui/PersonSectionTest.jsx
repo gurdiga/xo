@@ -3,20 +3,14 @@
 var PersonSection = require('../../app/ui/PersonSection.jsx');
 var test = tape;
 
-var sandbox = document.createElement('div');
-var value = { 'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL };
+var value = {
+  'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL,
+  'nume': 'John DOE'
+};
 var label = 'Test person section';
+var renderIntoDocument = React.addons.TestUtils.renderIntoDocument;
 
-var personSection = React.render(
-  <PersonSection
-    label={label}
-    value={value}
-  >
-  </PersonSection>,
-  sandbox
-);
-
-document.body.appendChild(sandbox);
+var personSection = renderIntoDocument(<PersonSection label={label} value={value}/>);
 
 test('PersonSection', function(t) {
   var section = personSection.refs.section;
@@ -46,18 +40,22 @@ test('PersonSection', function(t) {
   t.end();
 });
 
-test('PersonSection when it’s “fizică”', function(t) {
-  var select = personSection.refs['gen-persoană'].getDOMNode().querySelector('select');
-  select.value = PersonSection.PERSON_TYPES.INDIVIDUAL;
-  React.addons.TestUtils.Simulate.change(select);
+test('PersonSection when it’s “' + value['gen-persoană'] + '”', function(t) {
+  var component = renderShallowly(<PersonSection label={label} value={value}/>);
+  var fieldComponents = component.props.children[1];
 
-  // TODO: find a better way?
-  // Maybe make the components identifiable and then identify them here by component names and props?
-  // The intent in the end is to make sure that the right components are passed the right props.
-  var expectedFields = ['section', 'gen-persoană', 'nume', 'idnp', 'data-naşterii', 'domiciliu', 'note'];
-  var fields = Object.keys(personSection.refs);
-  t.deepEqual(fields, expectedFields, 'shows the corresponding fields');
+  var nameFieldComponent = fieldComponents[0];
+  var expectedProps = { isValuable: true, label: 'Nume', value: 'John DOE' };
+  t.equal(nameFieldComponent.type, TextField, 'name field component is of the appropriate type');
+  t.deepEqual(nameFieldComponent.props, expectedProps, 'name field component is passed the appropriate props');
 
-  document.body.removeChild(sandbox);
   t.end();
 });
+
+function renderShallowly(component) {
+  var renderer = React.addons.TestUtils.createRenderer();
+  renderer.render(component);
+  return renderer.getRenderOutput();
+}
+
+var TextField = require('../../app/ui/TextField.jsx');
