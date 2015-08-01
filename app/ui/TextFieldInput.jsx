@@ -3,13 +3,14 @@
 var TextFieldInput = React.createClass({
   render: function() {
     return (
-      <input
-        type='text'
-        value={this.state.value}
-        {...this.makeEditable()}
-        {...this.makeStyled()}
-        {...this.makeOutlinedOnFocus()}
-      />
+      e('input', _.merge({
+        type: 'text',
+        value: this.state.value
+      },
+        this.makeEditable(),
+        this.makeStyled(),
+        this.makeOutlinedOnFocus()
+      ))
     );
   },
 
