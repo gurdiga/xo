@@ -3,11 +3,15 @@
 var SelectField = React.createClass({
   render: function() {
     return (
-      <FieldLabel text={this.props.label}>
-        <select style={selectStyle} onChange={this.onChange} value={this.state.value}>
-          { this.props.children }
-        </select>
-      </FieldLabel>
+      e(FieldLabel, {text: this.props.label},
+        e('select', {
+          style: selectStyle,
+          onChange: this.onChange,
+          value: this.state.value
+        },
+          this.props.children
+        )
+      )
     );
   },
 
