@@ -58,31 +58,40 @@ var NewCaseDialog = React.createClass({
     if (!this.props.isOpened) return null;
 
     return (
-      <div {...this.makeStyled()}>
-        <h1>Procedură de ordin general</h1>
+      e('div', this.makeStyled(),
+        e('h1', {}, 'Procedură de ordin general'),
 
-        <DateField label='Data intentării' {...this.makeValuable('data-intentării')}
-          style={{ marginBottom: '15px', width: '7.8em' }} />
+        e(DateField, _.merge({
+          label: 'Data intentării',
+          style: { marginBottom: '15px', width: '7.8em' }
+        },
+          this.makeValuable('data-intentării')
+        )),
 
-        <PersonSection label='Creditor' {...this.makeValuable('creditorul')} />
-        <PersonSection label='Debitor' {...this.makeValuable('debitorul')} />
+        e(PersonSection, _.merge({label: 'Creditor'}, this.makeValuable('creditorul'))),
+        e(PersonSection, _.merge({label: 'Debitor'}, this.makeValuable('debitorul'))),
 
-        { this.state.value['persoane-terţe'].map(this.drawThirdParty) }
+        this.state.value['persoane-terţe'].map(this.drawThirdParty),
 
-        <button
-          onClick={this.addThirdParty}
-          style={{ clear: 'left', float: 'left' }}
-        >+ adaugă persoană terţă</button>
+        e('button', {
+          onClick: this.addThirdParty,
+          style: { clear: 'left', float: 'left' }
+        },
+          '+ adaugă persoană terţă'
+        ),
 
-        <div style={{ clear: 'left', left: 'left' }}><button onClick={this.showValue}>Show value</button></div>
+        e('div', {style: {clear: 'left', left: 'left'}},
+          e('button', {onClick: this.showValue}, 'Show value')
+        ),
 
-        <button
-          onClick={this.props.onClose}
-          style={this.closeButtonStyle}
-          data-test-id="close-button"
-        >×</button>
-
-      </div>
+        e('button', {
+          onClick: this.props.onClose,
+          style: this.closeButtonStyle,
+          'data-test-id': 'close-button'
+        },
+          '×'
+        )
+      )
     );
   },
 
@@ -91,7 +100,7 @@ var NewCaseDialog = React.createClass({
   },
 
   drawThirdParty: function(data) {
-    return <PersonSection label='Persoană terţă' {...this.makeValuable('persoane-terţe', data)} />;
+    return e(PersonSection, _.merge({label: 'Persoană terţă'}, this.makeValuable('persoane-terţe', data)));
   },
 
   showValue: function() {
