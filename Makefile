@@ -20,7 +20,7 @@ pre-commit: clean lint-force dist
 
 open-app:
 	@open --new -a "Google Chrome" --args \
-		--load-and-launch-app=$$(pwd)
+		--load-and-launch-app=$$(pwd)/build
 
 ui: build deps lint
 	@browserify \
