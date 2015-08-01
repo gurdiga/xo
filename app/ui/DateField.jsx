@@ -5,24 +5,24 @@ var DATE_FORMAT = 'dd.mm.yyyy';
 var DateField = React.createClass({
   render: function() {
     return (
-      <FieldLabel text={this.props.label}>
+      e(FieldLabel, {text: this.props.label},
 
-        <input
-          ref='input'
-          type='text'
-          value={this.state.value}
-          {...this.makeEditable()}
-          {...this.makeStyled()}
-          {...this.makeOutlinedOnFocus()}
-        />
+        e('input', _.merge({
+          ref: 'input',
+          type: 'text',
+          value: this.state.value
+        },
+          this.makeEditable(),
+          this.makeStyled(),
+          this.makeOutlinedOnFocus()
+        )),
 
-        <button
-          style={datePickerButtonStyle}
-          onClick={toggleDatePickerFor(this)}
-          title='Deschide calendarul'
-        ></button>
-
-      </FieldLabel>
+        e('button', {
+          style: datePickerButtonStyle,
+          onClick: toggleDatePickerFor(this),
+          title: 'Deschide calendarul'
+        })
+      )
     );
   },
 
