@@ -8,10 +8,10 @@ var labelText = 'My DateField component';
 var fieldValue = '22.03.2015';
 
 var dateField = React.render(
-  <DateField
-    label={labelText}
-    value={fieldValue}
-  />,
+  e(DateField, {
+    label: labelText,
+    value: fieldValue
+  }),
   sandbox
 );
 document.body.appendChild(sandbox);
@@ -86,10 +86,10 @@ test('DateField outlines <input/> on focus', function(t) {
   var sandbox = document.createElement('div');
 
   React.render(
-    <DateField
-      label='Some label'
-      value='22.03.2015'
-    />,
+    e(DateField, {
+      label: 'Some label',
+      value: '22.03.2015'
+    }),
     sandbox
   );
 
