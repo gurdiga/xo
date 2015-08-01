@@ -39,20 +39,25 @@ var PersonSection = React.createClass({
 
   render: function() {
     return (
-      <Section label={this.props.label} ref='section'>
+      e(Section, {label: this.props.label, ref: 'section'},
 
-        <SelectField label='Gen persoană' onChange={this.onPersonTypeChange} {...this.makeValuable('gen-persoană')}>
-          {this.personTypeOptions()}
-        </SelectField>
+        e(SelectField, _.merge({
+          label: 'Gen persoană',
+          onChange: this.onPersonTypeChange
+        },
+          this.makeValuable('gen-persoană')
+        ),
+          this.personTypeOptions()
+        ),
 
-        {this.getSectionFields()}
-      </Section>
+        this.getSectionFields()
+      )
     );
   },
 
   personTypeOptions: function() {
     return PERSON_TYPES.map(function(personType) {
-      return <option key={personType}>{personType}</option>;
+      return e('option', {key: personType}, personType);
     });
   },
 
@@ -66,21 +71,21 @@ var PersonSection = React.createClass({
 
   getFieldsForIndividual: function() {
     return [
-      <TextField label='Nume' {...this.makeValuable('nume')} />,
-      <TextField label='IDNP' {...this.makeValuable('idnp')} />,
-      <DateField label='Data naşterii' {...this.makeValuable('data-naşterii')} />,
-      <LargeTextField label='Domiciliu' {...this.makeValuable('domiciliu')} />,
-      <LargeTextField label='Note' {...this.makeValuable('note')} />
+      e(TextField, _.merge({label: 'Nume'}, this.makeValuable('nume'))),
+      e(TextField, _.merge({label: 'IDNP'}, this.makeValuable('idnp'))),
+      e(DateField, _.merge({label: 'Data naşterii'}, this.makeValuable('data-naşterii'))),
+      e(LargeTextField, _.merge({label: 'Domiciliu'}, this.makeValuable('domiciliu'))),
+      e(LargeTextField, _.merge({label: 'Note'}, this.makeValuable('note')))
     ];
   },
 
   getFieldsForCompany: function() {
     return [
-      <TextField label='Denumire' {...this.makeValuable('denumire')} />,
-      <TextField label='IDNO' {...this.makeValuable('idno')} />,
-      <LargeTextField label='Sediu' {...this.makeValuable('sediu')} />,
-      <TextField label='Persoană de contact' {...this.makeValuable('persoană-de-contact')} />,
-      <LargeTextField label='Note' {...this.makeValuable('note')} />
+      e(TextField, _.merge({label: 'Denumire'}, this.makeValuable('denumire'))),
+      e(TextField, _.merge({label: 'IDNO'}, this.makeValuable('idno'))),
+      e(LargeTextField, _.merge({label: 'Sediu'}, this.makeValuable('sediu'))),
+      e(TextField, _.merge({label: 'Persoană de contact'}, this.makeValuable('persoană-de-contact'))),
+      e(LargeTextField, _.merge({label: 'Note'}, this.makeValuable('note')))
     ];
   },
 
