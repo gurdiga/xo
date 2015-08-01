@@ -3,6 +3,7 @@ chrome-app-package: \
 	build/background.js \
 	build/index.html \
 	build/react.js \
+	build/react-helpers.js \
 	build/moment.js \
 	build/tape.js \
 	build/lodash.js \
@@ -28,6 +29,9 @@ build/css: | build
 
 build/react.js: node_modules/moment/min/moment.min.js | build
 	cp node_modules/react/dist/react-with-addons.js build/react.js
+
+build/react-helpers.js: app/react-helpers.js | build
+	cp $< $@
 
 build/moment.js: node_modules/moment/min/moment.min.js | build
 	cp node_modules/moment/min/moment.min.js build/moment.js

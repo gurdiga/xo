@@ -15,15 +15,15 @@ var UI = React.createClass({
 
   render: function() {
     return (
-      <div {...this.makeStyled()}>
-        <NewCaseDialog
-          onClose={this.closeNewCaseDialog}
-          isOpened={this.state.newCaseDialogOpened}
-          data={{}}
-        />
+      e('div', this.makeStyled(),
+        e(NewCaseDialog, {
+          onClose: this.closeNewCaseDialog,
+          isOpened: this.state.newCaseDialogOpened,
+          data: {}
+        }),
 
-        <NewCaseButton onClick={this.openNewCaseDialog} />
-      </div>
+        e(NewCaseButton, {onClick: this.openNewCaseDialog})
+      )
     );
   },
 
