@@ -3,13 +3,13 @@
 var TextField = React.createClass({
   render: function() {
     return (
-      <FieldLabel text={this.props.label}>
-        <TextFieldInput
-          ref='input'
-          value={this.props.value}
-          style={this.props.style}
-        />
-      </FieldLabel>
+      e(FieldLabel, {text: this.props.label},
+        e(TextFieldInput, {
+          ref: 'input',
+          value: this.props.value,
+          style: this.props.style
+        })
+      )
     );
   },
 
