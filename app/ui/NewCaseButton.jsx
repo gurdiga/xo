@@ -16,10 +16,13 @@ var NewCaseButton = React.createClass({
 
   render: function() {
     return (
-      <button
-        onClick={this.props.onClick}
-        {...this.makeStyled()}
-      >Procedură nouă</button>
+      e('button', _.merge({
+        onClick: this.props.onClick
+      },
+        this.makeStyled()
+      ),
+      'Procedură nouă'
+      )
     );
   },
 
