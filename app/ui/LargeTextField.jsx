@@ -3,14 +3,15 @@
 var LargeTextField = React.createClass({
   render: function() {
     return (
-      <FieldLabel text={this.props.label}>
-        <textarea
-          value={this.state.value}
-          onChange={this.onChange}
-          style={this.style}
-          {...this.makeOutlinedOnFocus()}
-        />
-      </FieldLabel>
+      e(FieldLabel, {text: this.props.label},
+        e('textarea', _.merge({
+          value: this.state.value,
+          onChange: this.onChange,
+          style: this.style
+        },
+          this.makeOutlinedOnFocus()
+        ))
+      )
     );
   },
 
