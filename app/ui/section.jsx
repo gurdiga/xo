@@ -3,12 +3,10 @@
 var Section = React.createClass({
   render: function() {
     return (
-      <fieldset style={fieldsetStyle}>
-        <legend style={legendStyle}>{this.props.label}</legend>
-
-        { this.props.children }
-
-      </fieldset>
+      e('fieldset', {style: fieldsetStyle},
+        e('legend', {style: legendStyle}, this.props.label),
+        this.props.children
+      )
     );
   },
 
