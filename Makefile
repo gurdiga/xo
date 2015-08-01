@@ -19,8 +19,8 @@ dist: ui chrome-app-package open-app
 pre-commit: clean lint-force dist
 
 open-app:
-	@/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-		--load-and-launch-app=$$(pwd)/build/
+	@open --new -a "Google Chrome" --args \
+		--load-and-launch-app=$$(pwd)
 
 ui: build deps lint
 	@browserify \
