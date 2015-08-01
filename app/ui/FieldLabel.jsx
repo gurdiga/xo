@@ -3,10 +3,10 @@
 var FieldLabel = React.createClass({
   render: function() {
     return (
-      <label style={labelLayoutStyle}>
-        <span style={labelTextStyle}>{ this.props.text }</span>
-        { this.props.children }
-      </label>
+      e('label', {style: labelLayoutStyle},
+        e('span', {style: labelTextStyle}, this.props.text),
+        this.props.children
+      )
     );
   }
 });
