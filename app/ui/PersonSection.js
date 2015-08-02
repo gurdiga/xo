@@ -5,7 +5,7 @@ var Valuable = require('mixins/valuable.js');
 var Section = require('./Section.js');
 var SelectField = require('./SelectField.js');
 var DateField = require('./DateField.js');
-var TextField = require('./TextField.jsx');
+var TextField = require('./TextField.js');
 var LargeTextField = require('./LargeTextField.js');
 
 var a = React.PropTypes;
