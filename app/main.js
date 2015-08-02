@@ -1,6 +1,6 @@
 'use strict';
 
-var UI = require('./UI.js');
+var UI = window.App.UI;
 
 React.render(e(UI), document.getElementById('ui'));
 
