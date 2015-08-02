@@ -48,6 +48,6 @@ var LargeTextField = React.createClass({
   ]
 });
 
-var FieldLabel = require('./FieldLabel.jsx');
+var FieldLabel = require('./FieldLabel.js');
 
 module.exports = LargeTextField;

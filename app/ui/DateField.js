@@ -160,7 +160,7 @@ var datePickerButtonStyle = {
   position: 'absolute'
 };
 
-var FieldLabel = require('./FieldLabel.jsx');
+var FieldLabel = require('./FieldLabel.js');
 var DateFormatting = require('utils/DateFormatting');
 
 module.exports = DateField;

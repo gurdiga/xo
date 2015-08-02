@@ -39,6 +39,6 @@ var selectStyle = {
   marginTop: '-2px'
 };
 
-var FieldLabel = require('./FieldLabel.jsx');
+var FieldLabel = require('./FieldLabel.js');
 
 module.exports = SelectField;
