@@ -6,7 +6,7 @@ var Valuable = require('mixins/valuable.js');
 
 var DateFormatting = require('utils/DateFormatting.js');
 
-var DateField = require('./DateField.js');
+var DateField = window.App.DateField;
 var PersonSection = require('./PersonSection.js');
 
 var a = React.PropTypes;

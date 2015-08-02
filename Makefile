@@ -30,7 +30,8 @@ ui: build deps lint files
 		> build/main.js
 
 files: \
-	build/app/UI.js
+	build/app/UI.js \
+	build/app/ui/DateField.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
