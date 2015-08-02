@@ -8,10 +8,10 @@ var labelText = 'My large-text-field component';
 var fieldValue = 'Hi!';
 
 var largeTextField = React.render(
-  <LargeTextField
-    label={labelText}
-    value={fieldValue}
-  />,
+  e(LargeTextField, {
+    label: labelText,
+    value: fieldValue
+  }),
   sandbox
 );
 
