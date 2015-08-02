@@ -5,9 +5,7 @@ var test = tape;
 
 var sandbox = document.createElement('div');
 React.render(
-  <NewCaseButton
-    onClick={onClick}
-  />,
+  e(NewCaseButton, {onClick: onClick}),
   sandbox
 );
 
