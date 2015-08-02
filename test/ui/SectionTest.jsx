@@ -5,12 +5,10 @@ var test = tape;
 
 var sandbox = document.createElement('div');
 var labelText = 'My section';
-var content = <p>section content</p>;
+var content = e('p', {}, 'section content');
 
 React.render(
-  <Section
-    label={labelText}
-  >{content}</Section>,
+  e(Section, {label: labelText}, content),
   sandbox
 );
 

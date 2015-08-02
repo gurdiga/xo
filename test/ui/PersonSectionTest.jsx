@@ -10,7 +10,7 @@ var value = {
 var label = 'Test person section';
 var renderIntoDocument = React.addons.TestUtils.renderIntoDocument;
 
-var personSection = renderIntoDocument(<PersonSection label={label} value={value}/>);
+var personSection = renderIntoDocument(e(PersonSection, {label: label, value: value}));
 
 test('PersonSection', function(t) {
   var section = personSection.refs.section;
@@ -41,7 +41,7 @@ test('PersonSection', function(t) {
 });
 
 test('PersonSection when it’s “' + value['gen-persoană'] + '”', function(t) {
-  var component = renderShallowly(<PersonSection label={label} value={value}/>);
+  var component = renderShallowly(e(PersonSection, {label: label, value: value}));
   var fieldComponents = component.props.children[1];
 
   var nameFieldComponent = fieldComponents[0];
