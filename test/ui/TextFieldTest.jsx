@@ -8,10 +8,10 @@ var labelText = 'My text-field component';
 var fieldValue = 'Hi!';
 
 var textField = React.render(
-  <TextField
-    label={labelText}
-    value={fieldValue}
-  />,
+  e(TextField, {
+    label: labelText,
+    value: fieldValue
+  }),
   sandbox
 );
 
@@ -93,11 +93,11 @@ test('TextField accepts custom input CSS through the “style” attribute', fun
   };
 
   React.render(
-    <TextField
-      label='Some label'
-      value=''
-      style={customCSS}
-    />,
+    e(TextField, {
+      label: 'Some label',
+      value: '',
+      style: customCSS
+    }),
     sandbox
   );
 
@@ -113,10 +113,10 @@ test('TextField accepts custom input CSS through the “style” attribute', fun
 
 test('TextField outlines <input/> on focus', function(t) {
   React.render(
-    <TextField
-      label='Some label'
-      value=''
-    />,
+    e(TextField, {
+      label: 'Some label',
+      value: ''
+    }),
     sandbox
   );
 
