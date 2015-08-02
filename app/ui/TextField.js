@@ -19,6 +19,6 @@ var TextField = React.createClass({
 });
 
 var FieldLabel = require('./FieldLabel.js');
-var TextFieldInput = require('./TextFieldInput.jsx');
+var TextFieldInput = require('./TextFieldInput.js');
 
 module.exports = TextField;

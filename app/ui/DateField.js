@@ -46,7 +46,7 @@ var DateField = React.createClass({
     require('mixins/outlined-on-focus.js')
   ],
 
-  style: require('./TextFieldInput.jsx').style
+  style: require('./TextFieldInput.js').style
 });
 
 function toggleDatePickerFor(dateField) {
