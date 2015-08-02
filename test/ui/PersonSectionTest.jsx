@@ -1,6 +1,6 @@
 'use strict';
 
-var PersonSection = require('../../app/ui/PersonSection.jsx');
+var PersonSection = require('../../app/ui/PersonSection.js');
 var test = tape;
 
 var value = {
