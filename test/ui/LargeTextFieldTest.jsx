@@ -1,6 +1,6 @@
 'use strict';
 
-var LargeTextField = require('../../app/ui/LargeTextField.jsx');
+var LargeTextField = require('../../app/ui/LargeTextField.js');
 var test = tape;
 
 var sandbox = document.createElement('div');
