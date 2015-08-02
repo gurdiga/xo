@@ -10,13 +10,13 @@ var optionValues = [
   'option 2'
 ];
 var selectField = React.render(
-  <SelectField
-    label={labelText}
-    value={optionValues[1]}
-  >
-    <option>{ optionValues[0] }</option>
-    <option>{ optionValues[1] }</option>
-  </SelectField>,
+  e(SelectField, {
+    label: labelText,
+    value: optionValues[1]
+  },
+    e('option', {}, optionValues[0]),
+    e('option', {}, optionValues[1])
+  ),
   sandbox
 );
 
@@ -86,13 +86,13 @@ test('SelectField getValue()', function(t) {
 test('SelectField value', function(t) {
   var sandbox = document.createElement('div');
   var selectField = React.render(
-    <SelectField
-      label={labelText}
-      value={optionValues[1]}
-    >
-      <option>{ optionValues[0] }</option>
-      <option>{ optionValues[1] }</option>
-    </SelectField>,
+    e(SelectField, {
+      label: labelText,
+      value: optionValues[1]
+    },
+      e('option', {}, optionValues[0]),
+      e('option', {}, optionValues[1])
+    ),
     sandbox
   );
 
@@ -113,14 +113,14 @@ test('SelectField onChange callback', function(t) {
   var event;
 
   React.render(
-    <SelectField
-      label={labelText}
-      value={optionValues[0]}
-      onChange={function(e) { changed = true; event = e; }}
-    >
-      <option>{ optionValues[0] }</option>
-      <option>{ optionValues[1] }</option>
-    </SelectField>,
+    e(SelectField, {
+      label: labelText,
+      value: optionValues[0],
+      onChange: function(e) { changed = true; event = e; }
+    },
+      e('option', {}, optionValues[0]),
+      e('option', {}, optionValues[1])
+    ),
     sandbox
   );
 
