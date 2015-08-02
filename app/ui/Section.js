@@ -1,6 +1,8 @@
 'use strict';
 
 var Section = React.createClass({
+  displayName: 'Section',
+
   render: function() {
     return (
       e('fieldset', {style: fieldsetStyle},

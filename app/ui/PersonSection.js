@@ -18,6 +18,8 @@ PERSON_TYPES.COMPANY = COMPANY;
 PERSON_TYPES.INDIVIDUAL = INDIVIDUAL;
 
 var PersonSection = React.createClass({
+  displayName: 'PersonSection',
+
   mixins: [Valuable],
 
   statics: {

@@ -1,6 +1,8 @@
 'use strict';
 
 var LargeTextField = React.createClass({
+  displayName: 'LargeTextField',
+
   render: function() {
     return (
       e(FieldLabel, {text: this.props.label},

@@ -1,6 +1,8 @@
 'use strict';
 
 var SelectField = React.createClass({
+  displayName: 'SelectField',
+
   render: function() {
     return (
       e(FieldLabel, {text: this.props.label},

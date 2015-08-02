@@ -1,6 +1,8 @@
 'use strict';
 
 var TextFieldInput = React.createClass({
+  displayName: 'TextFieldInput',
+
   render: function() {
     return (
       e('input', _.merge({

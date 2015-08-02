@@ -1,6 +1,8 @@
 'use strict';
 
 var FieldLabel = React.createClass({
+  displayName: 'FieldLabel',
+
   render: function() {
     return (
       e('label', {style: labelLayoutStyle},

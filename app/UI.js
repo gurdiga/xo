@@ -7,6 +7,7 @@ var NewCaseButton = require('./ui/NewCaseButton.js');
 var NewCaseDialog = require('./ui/NewCaseDialog.js');
 
 var UI = React.createClass({
+  displayName: 'UI',
   mixins: [Identifiable, Styled],
 
   getInitialState: function() {

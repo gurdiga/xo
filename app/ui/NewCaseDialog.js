@@ -15,6 +15,7 @@ var anObjectOfShape = React.PropTypes.shape;
 var aDate = require('utils/proptype-a-date.js');
 
 var NewCaseDialog = React.createClass({
+  displayName: 'NewCaseDialog',
   mixins: [Identifiable, Styled, Valuable],
 
   propTypes: {

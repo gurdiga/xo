@@ -26,7 +26,6 @@ ui: build deps lint
 	@browserify \
 		--debug \
 		--transform envify \
-		--transform reactify \
 		app/main.js \
 		> build/main.js
 

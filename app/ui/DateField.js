@@ -3,6 +3,8 @@
 var DATE_FORMAT = 'dd.mm.yyyy';
 
 var DateField = React.createClass({
+  displayName: 'DateField',
+
   render: function() {
     return (
       e(FieldLabel, {text: this.props.label},

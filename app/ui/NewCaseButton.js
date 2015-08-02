@@ -7,6 +7,7 @@ var a = React.PropTypes;
 var an = a;
 
 var NewCaseButton = React.createClass({
+  displayName: 'NewCaseButton',
   mixins: [Identifiable, Styled],
 
   propTypes: {

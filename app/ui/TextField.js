@@ -1,6 +1,8 @@
 'use strict';
 
 var TextField = React.createClass({
+  displayName: 'TextField',
+
   render: function() {
     return (
       e(FieldLabel, {text: this.props.label},
