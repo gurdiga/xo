@@ -1,6 +1,6 @@
 'use strict';
 
-var SelectField = require('../../app/ui/SelectField.jsx');
+var SelectField = require('../../app/ui/SelectField.js');
 var test = tape;
 
 var sandbox = document.createElement('div');
