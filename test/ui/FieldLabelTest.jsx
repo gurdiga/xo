@@ -8,9 +8,9 @@ var labelText = 'My FieldLabel component';
 var childText = 'Child 1';
 
 React.render(
-  <FieldLabel text={labelText}>
-    <div>{childText}</div>
-  </FieldLabel>,
+  e(FieldLabel, {text: labelText},
+    e('div', {}, childText)
+  ),
   sandbox
 );
 
