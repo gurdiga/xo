@@ -6,14 +6,14 @@ React.render(e(UI), document.getElementById('ui'));
 
 if (process.env.NODE_ENV === 'development') {
   require('../test/utils/DateFormattingTest.js');
-  require('../test/UITest.jsx');
-  require('../test/ui/TextFieldTest.jsx');
-  require('../test/ui/LargeTextFieldTest.jsx');
-  require('../test/ui/SelectFieldTest.jsx');
-  require('../test/ui/FieldLabelTest.jsx');
-  require('../test/ui/DateFieldTest.jsx');
-  require('../test/ui/SectionTest.jsx');
-  require('../test/ui/NewCaseButtonTest.jsx');
+  require('../test/UITest.js');
+  require('../test/ui/TextFieldTest.js');
+  require('../test/ui/LargeTextFieldTest.js');
+  require('../test/ui/SelectFieldTest.js');
+  require('../test/ui/FieldLabelTest.js');
+  require('../test/ui/DateFieldTest.js');
+  require('../test/ui/SectionTest.js');
+  require('../test/ui/NewCaseButtonTest.js');
   require('../test/utils/keepingAtTopTest.js');
-  require('../test/ui/PersonSectionTest.jsx');
+  require('../test/ui/PersonSectionTest.js');
 }
