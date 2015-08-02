@@ -3,7 +3,7 @@
 var Identifiable = require('mixins/identifiable.js');
 var Styled = require('mixins/styled.js');
 
-var NewCaseButton = require('./ui/NewCaseButton.jsx');
+var NewCaseButton = require('./ui/NewCaseButton.js');
 var NewCaseDialog = require('./ui/NewCaseDialog.jsx');
 
 var UI = React.createClass({
