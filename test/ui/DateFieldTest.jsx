@@ -1,6 +1,6 @@
 'use strict';
 
-var DateField = require('../../app/ui/DateField.jsx');
+var DateField = require('../../app/ui/DateField.js');
 var test = tape;
 
 var sandbox = document.createElement('div');

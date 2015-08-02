@@ -27,7 +27,7 @@ ui: build deps lint
 		--debug \
 		--transform envify \
 		--transform reactify \
-		app/main.jsx \
+		app/main.js \
 		> build/main.js
 
 clean:
