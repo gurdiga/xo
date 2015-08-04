@@ -1,9 +1,4 @@
 node_modules/
-bower_components/
-build/
 
 package.json
 !makefiles/deps/package.json
-
-bower.json
-!makefiles/deps/bower.json
