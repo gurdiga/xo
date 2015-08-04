@@ -1,2 +1,2 @@
-lint: lintspaces jsxhint
-lint-force: lintspaces-force jsxhint-force
+lint: lintspaces jshint
+lint-force: lintspaces-force jshint-force

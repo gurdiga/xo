@@ -19,7 +19,7 @@ lib/moment.js: node_modules/moment/min/moment.min.js | lib
 	cp $< $@
 
 node_modules/moment/min/moment.min.js:
-	npm install moment@2.10.16
+	npm install moment@2.10.6
 
 lib/tape.js: node_modules/uglify-js node_modules/browserify node_modules/tape | lib
 	browserify --require tape --standalone tape | uglifyjs > lib/tape.js

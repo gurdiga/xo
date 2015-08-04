@@ -1,19 +1,19 @@
 JSHINT_CONFIG_FILE=makefiles/lint/jshint.json
 JSHINT_TIMESTAMP_FILE=$(JSHINT_CONFIG_FILE)
 
-jsxhint: $(JSHINT_TIMESTAMP_FILE)
+jshint: $(JSHINT_TIMESTAMP_FILE)
 $(JSHINT_TIMESTAMP_FILE): $(JS_FILES)
-	$(call jsxhint-do-work, $?) && touch $(JSHINT_TIMESTAMP_FILE)
+	$(call jshint-do-work, $?) && touch $(JSHINT_TIMESTAMP_FILE)
 
-jsxhint-force:
-	$(call jsxhint-do-work, $(JS_FILES))
+jshint-force:
+	$(call jshint-do-work, $(JS_FILES))
 
-define jsxhint-do-work
+define jshint-do-work
 	$(eval files=$(1))
 
 	@echo JSHinting...
 	@echo $(files)
-	@jsxhint \
+	@jshint \
 		--config $(JSHINT_CONFIG_FILE) $(files) && \
 		touch $(JSHINT_TIMESTAMP_FILE)
 endef

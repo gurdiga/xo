@@ -5,4 +5,4 @@
 
 A productivity app for bailiffs
 
-    make
+    make open-app

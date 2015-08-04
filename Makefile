@@ -13,7 +13,7 @@ default: lib-all lint
 
 pre-commit: lib-all lint-force open-app
 
-open-app:
+open-app: lib-all lint
 	@open --new -a "Google Chrome" --args \
 		--load-and-launch-app=$$(pwd)
 
