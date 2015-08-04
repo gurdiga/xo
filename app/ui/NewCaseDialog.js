@@ -5,7 +5,7 @@
   var Styled = window.Mixins.Styled;
   var Valuable = window.Mixins.Valuable;
 
-  var DateFormatting = require('utils/DateFormatting.js');
+  var DateFormatting = window.Utils.DateFormatting;
 
   var DateField = window.App.DateField;
   var PersonSection = window.App.PersonSection;

@@ -164,7 +164,7 @@
   };
 
   var FieldLabel = window.App.FieldLabel;
-  var DateFormatting = require('utils/DateFormatting');
+  var DateFormatting = window.Utils.DateFormatting;
 
   window.App.DateField = DateField;
 }());

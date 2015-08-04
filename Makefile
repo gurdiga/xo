@@ -56,7 +56,9 @@ files: \
 	build/mixins/identifiable.js \
 	build/mixins/outlined-on-focus.js \
 	build/mixins/styled.js \
-	build/mixins/valuable.js
+	build/mixins/valuable.js \
+	build/utils/assert.js \
+	build/utils/DateFormatting.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
@@ -67,6 +69,10 @@ build/test/%.js: test/%.js
 	browserify --debug $< > $@
 
 build/mixins/%.js: mixins/%.js
+	@mkdir -p $$(dirname $@)
+	cp $< $@
+
+build/utils/%.js: utils/%.js
 	@mkdir -p $$(dirname $@)
 	cp $< $@
 

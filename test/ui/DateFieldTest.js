@@ -241,5 +241,5 @@ test('Date picker behavior', function(t) {
   }
 });
 
-var DateFormatting = require('utils/DateFormatting');
-var assert = require('utils/assert');
+var DateFormatting = window.Utils.DateFormatting;
+var assert = window.Utils.assert;

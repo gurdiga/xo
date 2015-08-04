@@ -1,6 +1,6 @@
 'use strict';
 
-var DateFormatting = require('utils/DateFormatting.js');
+var DateFormatting = window.Utils.DateFormatting;
 var test = tape;
 
 test('DateFormatting.format', function(t) {
