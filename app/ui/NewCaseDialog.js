@@ -13,7 +13,7 @@
   var a = React.PropTypes;
   var an = a;
   var anObjectOfShape = React.PropTypes.shape;
-  var aDate = require('utils/proptype-a-date.js');
+  var aDate = window.Utils.aDate;
 
   var NewCaseDialog = React.createClass({
     displayName: 'NewCaseDialog',

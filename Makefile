@@ -57,7 +57,8 @@ files: \
 	build/mixins/styled.js \
 	build/mixins/valuable.js \
 	build/utils/assert.js \
-	build/utils/DateFormatting.js
+	build/utils/DateFormatting.js \
+	build/utils/proptype-a-date.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
