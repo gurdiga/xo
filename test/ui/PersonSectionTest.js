@@ -1,6 +1,6 @@
 'use strict';
 
-var PersonSection = require('../../app/ui/PersonSection.js');
+var PersonSection = window.App.PersonSection;
 var test = tape;
 
 var value = {
@@ -46,7 +46,7 @@ test('PersonSection when it’s “' + value['gen-persoană'] + '”', function(
 
   var nameFieldComponent = fieldComponents[0];
   var expectedProps = { isValuable: true, label: 'Nume', value: 'John DOE' };
-  t.equal(nameFieldComponent.type, TextField, 'name field component is of the appropriate type');
+  t.equal(nameFieldComponent.type.name, TextField.name, 'name field component is of the appropriate type');
   t.deepEqual(nameFieldComponent.props, expectedProps, 'name field component is passed the appropriate props');
 
   t.end();

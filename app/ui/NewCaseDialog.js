@@ -8,7 +8,7 @@
   var DateFormatting = require('utils/DateFormatting.js');
 
   var DateField = window.App.DateField;
-  var PersonSection = require('./PersonSection.js');
+  var PersonSection = window.App.PersonSection;
 
   var a = React.PropTypes;
   var an = a;
