@@ -5,7 +5,7 @@
   var Styled = require('mixins/styled.js');
 
   var NewCaseButton = window.App.NewCaseButton;
-  var NewCaseDialog = require('./ui/NewCaseDialog.js');
+  var NewCaseDialog = window.App.NewCaseDialog;
 
   var UI = React.createClass({
     displayName: 'UI',
