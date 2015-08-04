@@ -31,6 +31,7 @@ ui: build deps lint files
 
 files: \
 	build/app/UI.js \
+	build/app/ui/LargeTextField.js \
 	build/app/ui/FieldLabel.js \
 	build/app/ui/DateField.js
 
