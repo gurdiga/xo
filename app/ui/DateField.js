@@ -85,8 +85,8 @@
   }
 
   function syncDatePickerToReflectValueIn(dateField) {
-    var DO_NOT_TRIIGER_SELECT;
-    datePicker.setDate(getDateFormattedForDatePicker(dateField), DO_NOT_TRIIGER_SELECT = true);
+    var DO_NOT_TRIGER_SELECT;
+    datePicker.setDate(getDateFormattedForDatePicker(dateField), DO_NOT_TRIGER_SELECT = true);
   }
 
   function getDateFormattedForDatePicker(dateField) {
@@ -146,6 +146,7 @@
 
   document.body.addEventListener('keydown', function(e) {
     if (!DateField.current) return;
+
     var isEscapeKey = e.keyCode === 27;
     if (isEscapeKey) hideDatePicker();
   });
