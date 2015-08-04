@@ -47,7 +47,7 @@
     },
 
     mixins: [
-      require('mixins/outlined-on-focus.js')
+      window.Mixins.OutlinedOnFocus
     ]
   });
 

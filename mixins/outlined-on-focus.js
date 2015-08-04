@@ -1,25 +1,27 @@
-'use strict';
+(function() {
+  'use strict';
 
-var OutlinedOnFocus = {
-  makeOutlinedOnFocus: function() {
-    this.style = this.style || {};
-    this.style.transition = 'box-shadow 250ms ease-out';
+  var OutlinedOnFocus = {
+    makeOutlinedOnFocus: function() {
+      this.style = this.style || {};
+      this.style.transition = 'box-shadow 250ms ease-out';
 
-    return {
-      onFocus: this.onFocus,
-      onBlur: this.onBlur
-    };
-  },
+      return {
+        onFocus: this.onFocus,
+        onBlur: this.onBlur
+      };
+    },
 
-  onFocus: function() {
-    this.style.boxShadow = '0 0 3px 2px #b5d5ff';
-    this.forceUpdate();
-  },
+    onFocus: function() {
+      this.style.boxShadow = '0 0 3px 2px #b5d5ff';
+      this.forceUpdate();
+    },
 
-  onBlur: function() {
-    this.style.boxShadow = '';
-    this.forceUpdate();
-  }
-};
+    onBlur: function() {
+      this.style.boxShadow = '';
+      this.forceUpdate();
+    }
+  };
 
-module.exports = OutlinedOnFocus;
+  window.Mixins.OutlinedOnFocus = OutlinedOnFocus;
+}());

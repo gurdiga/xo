@@ -32,7 +32,7 @@
     mixins: [
       window.Mixins.Editable,
       require('mixins/styled.js'),
-      require('mixins/outlined-on-focus.js')
+      window.Mixins.OutlinedOnFocus
     ],
 
     statics: {

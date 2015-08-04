@@ -53,7 +53,8 @@ files: \
 	build/test/utils/keepingAtTopTest.js \
 	build/test/ui/PersonSectionTest.js \
 	build/mixins/editable.js \
-	build/mixins/identifiable.js
+	build/mixins/identifiable.js \
+	build/mixins/outlined-on-focus.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
