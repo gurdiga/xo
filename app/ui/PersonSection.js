@@ -6,7 +6,7 @@
   var Section = window.App.Section;
   var SelectField = window.App.SelectField;
   var DateField = window.App.DateField;
-  var TextField = require('./TextField.js');
+  var TextField = window.App.TextField;
   var LargeTextField = window.App.LargeTextField;
 
   var a = React.PropTypes;

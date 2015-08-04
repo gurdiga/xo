@@ -58,4 +58,4 @@ function renderShallowly(component) {
   return renderer.getRenderOutput();
 }
 
-var TextField = require('../../app/ui/TextField.js');
+var TextField = window.App.TextField;

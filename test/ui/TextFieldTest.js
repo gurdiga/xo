@@ -1,6 +1,6 @@
 'use strict';
 
-var TextField = require('../../app/ui/TextField.js');
+var TextField = window.App.TextField;
 var test = tape;
 
 var sandbox = document.createElement('div');
