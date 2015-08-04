@@ -23,13 +23,9 @@ open-app:
 		--load-and-launch-app=$$(pwd)/build
 
 ui: build deps lint files
-	@browserify \
-		--debug \
-		--transform envify \
-		app/main.js \
-		> build/main.js
 
 files: \
+	build/app/main.js \
 	build/app/UI.js \
 	build/app/ui/TextField.js \
 	build/app/ui/TextFieldInput.js \
@@ -62,7 +58,7 @@ files: \
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
-	browserify --debug $< > $@
+	cp $< $@
 
 build/test/%.js: test/%.js
 	@mkdir -p $$(dirname $@)
