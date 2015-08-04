@@ -51,7 +51,8 @@ files: \
 	build/test/ui/SectionTest.js \
 	build/test/ui/NewCaseButtonTest.js \
 	build/test/utils/keepingAtTopTest.js \
-	build/test/ui/PersonSectionTest.js
+	build/test/ui/PersonSectionTest.js \
+	build/mixins/editable.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
@@ -60,6 +61,10 @@ build/app/%.js: app/%.js
 build/test/%.js: test/%.js
 	@mkdir -p $$(dirname $@)
 	browserify --debug $< > $@
+
+build/mixins/%.js: mixins/%.js
+	@mkdir -p $$(dirname $@)
+	cp $< $@
 
 clean:
 	rm -rf build/
