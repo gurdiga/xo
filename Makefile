@@ -62,7 +62,7 @@ build/app/%.js: app/%.js
 
 build/test/%.js: test/%.js
 	@mkdir -p $$(dirname $@)
-	browserify --debug $< > $@
+	cp $< $@
 
 build/mixins/%.js: mixins/%.js
 	@mkdir -p $$(dirname $@)
