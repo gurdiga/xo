@@ -1,21 +1,23 @@
-'use strict';
+(function() {
+  'use strict';
 
-var Styled = {
-  makeStyled: function() {
-    return {
-      style: this.getStyle()
-    };
-  },
+  var Styled = {
+    makeStyled: function() {
+      return {
+        style: this.getStyle()
+      };
+    },
 
-  getStyle: function() {
-    var style = _.merge({}, this.style, this.props.style);
+    getStyle: function() {
+      var style = _.merge({}, this.style, this.props.style);
 
-    _.each(style, function(name, value) {
-      if (_.isFunction(value)) style[name] = value();
-    });
+      _.each(style, function(name, value) {
+        if (_.isFunction(value)) style[name] = value();
+      });
 
-    return style;
-  }
-};
+      return style;
+    }
+  };
 
-module.exports = Styled;
+  window.Mixins.Styled = Styled;
+}());

@@ -2,7 +2,7 @@
   'use strict';
 
   var Identifiable = window.Mixins.Identifiable;
-  var Styled = require('mixins/styled.js');
+  var Styled = window.Mixins.Styled;
   var Valuable = require('mixins/valuable.js');
 
   var DateFormatting = require('utils/DateFormatting.js');

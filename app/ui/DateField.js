@@ -45,7 +45,7 @@
 
     mixins: [
       window.Mixins.Editable,
-      require('mixins/styled.js'),
+      window.Mixins.Styled,
       window.Mixins.OutlinedOnFocus
     ],
 

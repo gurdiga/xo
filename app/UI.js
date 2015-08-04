@@ -2,7 +2,7 @@
   'use strict';
 
   var Identifiable = window.Mixins.Identifiable;
-  var Styled = require('mixins/styled.js');
+  var Styled = window.Mixins.Styled;
 
   var NewCaseButton = window.App.NewCaseButton;
   var NewCaseDialog = window.App.NewCaseDialog;
