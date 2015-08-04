@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var Valuable = require('mixins/valuable.js');
+  var Valuable = window.Mixins.Valuable;
 
   var Section = window.App.Section;
   var SelectField = window.App.SelectField;

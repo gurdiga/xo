@@ -3,7 +3,7 @@
 
   var Identifiable = window.Mixins.Identifiable;
   var Styled = window.Mixins.Styled;
-  var Valuable = require('mixins/valuable.js');
+  var Valuable = window.Mixins.Valuable;
 
   var DateFormatting = require('utils/DateFormatting.js');
 

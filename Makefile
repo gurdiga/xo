@@ -55,7 +55,8 @@ files: \
 	build/mixins/editable.js \
 	build/mixins/identifiable.js \
 	build/mixins/outlined-on-focus.js \
-	build/mixins/styled.js
+	build/mixins/styled.js \
+	build/mixins/valuable.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)
