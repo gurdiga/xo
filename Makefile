@@ -40,9 +40,24 @@ files: \
 	build/app/ui/PersonSection.js \
 	build/app/ui/NewCaseButton.js \
 	build/app/ui/NewCaseDialog.js \
-	build/app/ui/DateField.js
+	build/app/ui/DateField.js \
+	build/test/utils/DateFormattingTest.js \
+	build/test/UITest.js \
+	build/test/ui/TextFieldTest.js \
+	build/test/ui/LargeTextFieldTest.js \
+	build/test/ui/SelectFieldTest.js \
+	build/test/ui/FieldLabelTest.js \
+	build/test/ui/DateFieldTest.js \
+	build/test/ui/SectionTest.js \
+	build/test/ui/NewCaseButtonTest.js \
+	build/test/utils/keepingAtTopTest.js \
+	build/test/ui/PersonSectionTest.js
 
 build/app/%.js: app/%.js
+	@mkdir -p $$(dirname $@)
+	browserify --debug $< > $@
+
+build/test/%.js: test/%.js
 	@mkdir -p $$(dirname $@)
 	browserify --debug $< > $@
 
