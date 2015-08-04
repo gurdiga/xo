@@ -1,15 +1,17 @@
-'use strict';
+(function() {
+  'use strict';
 
-var Identifiable = {
-  componentDidMount: function() {
-    var domNode = React.findDOMNode(this);
-    if (domNode) domNode.setAttribute('component-name', this.constructor.displayName);
-  },
+  var Identifiable = {
+    componentDidMount: function() {
+      var domNode = React.findDOMNode(this);
+      if (domNode) domNode.setAttribute('component-name', this.constructor.displayName);
+    },
 
-  componentDidUpdate: function() {
-    var domNode = React.findDOMNode(this);
-    if (domNode) domNode.setAttribute('component-name', this.constructor.displayName);
-  }
-};
+    componentDidUpdate: function() {
+      var domNode = React.findDOMNode(this);
+      if (domNode) domNode.setAttribute('component-name', this.constructor.displayName);
+    }
+  };
 
-module.exports = Identifiable;
+  window.Mixins.Identifiable = Identifiable;
+}());

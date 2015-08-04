@@ -52,7 +52,8 @@ files: \
 	build/test/ui/NewCaseButtonTest.js \
 	build/test/utils/keepingAtTopTest.js \
 	build/test/ui/PersonSectionTest.js \
-	build/mixins/editable.js
+	build/mixins/editable.js \
+	build/mixins/identifiable.js
 
 build/app/%.js: app/%.js
 	@mkdir -p $$(dirname $@)

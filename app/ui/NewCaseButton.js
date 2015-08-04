@@ -2,7 +2,7 @@
   'use strict';
 
   var Styled = require('mixins/styled.js');
-  var Identifiable = require('mixins/identifiable.js');
+  var Identifiable = window.Mixins.Identifiable;
 
   var a = React.PropTypes;
   var an = a;

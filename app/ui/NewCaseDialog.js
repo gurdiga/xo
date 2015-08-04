@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var Identifiable = require('mixins/identifiable.js');
+  var Identifiable = window.Mixins.Identifiable;
   var Styled = require('mixins/styled.js');
   var Valuable = require('mixins/valuable.js');
 
