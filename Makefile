@@ -33,6 +33,7 @@ files: \
 	build/app/UI.js \
 	build/app/ui/LargeTextField.js \
 	build/app/ui/FieldLabel.js \
+	build/app/ui/NewCaseButton.js \
 	build/app/ui/DateField.js
 
 build/app/%.js: app/%.js

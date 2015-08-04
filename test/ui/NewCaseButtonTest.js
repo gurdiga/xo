@@ -1,6 +1,6 @@
 'use strict';
 
-var NewCaseButton = require('../../app/ui/NewCaseButton.js');
+var NewCaseButton = window.App.NewCaseButton;
 var test = tape;
 
 var sandbox = document.createElement('div');
