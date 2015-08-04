@@ -20,7 +20,7 @@ var TextField = React.createClass({
   }
 });
 
-var FieldLabel = require('./FieldLabel.js');
+var FieldLabel = window.App.FieldLabel;
 var TextFieldInput = require('./TextFieldInput.js');
 
 module.exports = TextField;

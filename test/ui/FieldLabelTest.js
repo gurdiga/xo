@@ -1,6 +1,6 @@
 'use strict';
 
-var FieldLabel = require('../../app/ui/FieldLabel.js');
+var FieldLabel = window.App.FieldLabel;
 var test = tape;
 
 var sandbox = document.createElement('div');

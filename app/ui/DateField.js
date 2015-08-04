@@ -163,7 +163,7 @@
     position: 'absolute'
   };
 
-  var FieldLabel = require('./FieldLabel.js');
+  var FieldLabel = window.App.FieldLabel;
   var DateFormatting = require('utils/DateFormatting');
 
   window.App.DateField = DateField;
