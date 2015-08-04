@@ -1,6 +1,6 @@
 'use strict';
 
-var Section = require('../../app/ui/Section.js');
+var Section = window.App.Section;
 var test = tape;
 
 var sandbox = document.createElement('div');
