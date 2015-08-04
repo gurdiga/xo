@@ -50,7 +50,6 @@ files: \
 	build/test/ui/DateFieldTest.js \
 	build/test/ui/SectionTest.js \
 	build/test/ui/NewCaseButtonTest.js \
-	build/test/utils/keepingAtTopTest.js \
 	build/test/ui/PersonSectionTest.js \
 	build/mixins/editable.js \
 	build/mixins/identifiable.js \
@@ -92,9 +91,6 @@ build/%.js: app/%.js
 
 build/%.json: app/%.json
 	cp $< $@
-
-#build/index.html: app/index.jade build/js-list.diff
-#	node makefiles/common/compile-index.js < build/js-list.txt > $@
 
 build/js-list.diff:: # double colon means “allways build”
 	@mv build/js-list.txt build/js-list.txt.prev || touch build/js-list.txt.prev
