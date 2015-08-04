@@ -45,8 +45,8 @@ lib/pikaday.js: node_modules/pikaday/pikaday.js | lib
 lib/pikaday.css: node_modules/pikaday/css/pikaday.css | lib
 	cp $< $@
 
-node_modules/pikaday/pikaday.js:
-	npm install dbushell/Pikaday # TODO review: why not take it from npm?
+node_modules/pikaday/pikaday.js: node_modules/pikaday
+node_modules/pikaday/css/pikaday.css: node_modules/pikaday
 
-node_modules/pikaday/css/pikaday.css:
-	npm install dbushell/Pikaday # TODO review: why not take it from npm?
+node_modules/pikaday:
+	npm install pikaday@1.3.3
