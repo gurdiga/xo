@@ -22,7 +22,7 @@
   });
 
   var FieldLabel = window.App.FieldLabel;
-  var TextFieldInput = require('./TextFieldInput.js');
+  var TextFieldInput = window.App.TextFieldInput;
 
   window.App.TextField = TextField;
 }());

@@ -31,10 +31,11 @@ ui: build deps lint files
 
 files: \
 	build/app/UI.js \
+	build/app/ui/TextField.js \
+	build/app/ui/TextFieldInput.js \
 	build/app/ui/LargeTextField.js \
 	build/app/ui/FieldLabel.js \
 	build/app/ui/SelectField.js \
-	build/app/ui/TextField.js \
 	build/app/ui/Section.js \
 	build/app/ui/PersonSection.js \
 	build/app/ui/NewCaseButton.js \

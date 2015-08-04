@@ -49,7 +49,7 @@
       require('mixins/outlined-on-focus.js')
     ],
 
-    style: require('./TextFieldInput.js').style
+    style: window.App.TextFieldInput.style
   });
 
   function toggleDatePickerFor(dateField) {
