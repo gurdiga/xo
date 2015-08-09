@@ -26,5 +26,5 @@
     width: '11em'
   };
 
-  window.App.FieldLabel = FieldLabel;
+  window.App.Widgets.FieldLabel = FieldLabel;
 }());

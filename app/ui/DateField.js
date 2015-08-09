@@ -164,7 +164,7 @@
     position: 'absolute'
   };
 
-  var FieldLabel = window.App.FieldLabel;
+  var FieldLabel = window.App.Widgets.FieldLabel;
   var DateFormatting = window.App.Utils.DateFormatting;
 
   window.App.Widgets.DateField = DateField;

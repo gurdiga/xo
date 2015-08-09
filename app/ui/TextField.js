@@ -21,7 +21,7 @@
     }
   });
 
-  var FieldLabel = window.App.FieldLabel;
+  var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.TextFieldInput;
 
   window.App.TextField = TextField;

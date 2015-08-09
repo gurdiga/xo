@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var FieldLabel = window.App.FieldLabel;
+  var FieldLabel = window.App.Widgets.FieldLabel;
   var test = tape;
 
   var sandbox = document.createElement('div');

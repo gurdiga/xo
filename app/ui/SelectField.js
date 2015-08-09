@@ -42,7 +42,7 @@
     marginTop: '-2px'
   };
 
-  var FieldLabel = window.App.FieldLabel;
+  var FieldLabel = window.App.Widgets.FieldLabel;
 
   window.App.SelectField = SelectField;
 }());

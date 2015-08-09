@@ -51,7 +51,7 @@
     ]
   });
 
-  var FieldLabel = window.App.FieldLabel;
+  var FieldLabel = window.App.Widgets.FieldLabel;
 
   window.App.LargeTextField = LargeTextField;
 }());
