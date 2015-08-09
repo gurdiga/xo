@@ -5,7 +5,7 @@
 
   var Section = window.App.Section;
   var SelectField = window.App.SelectField;
-  var DateField = window.App.DateField;
+  var DateField = window.App.Widgets.DateField;
   var TextField = window.App.TextField;
   var LargeTextField = window.App.LargeTextField;
 

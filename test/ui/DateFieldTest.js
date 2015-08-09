@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var DateField = window.App.DateField;
+  var DateField = window.App.Widgets.DateField;
   var test = tape;
 
   var sandbox = document.createElement('div');

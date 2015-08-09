@@ -167,5 +167,5 @@
   var FieldLabel = window.App.FieldLabel;
   var DateFormatting = window.App.Utils.DateFormatting;
 
-  window.App.DateField = DateField;
+  window.App.Widgets.DateField = DateField;
 }());
