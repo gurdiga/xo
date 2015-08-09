@@ -5,7 +5,7 @@
   var Styled = window.App.Mixins.Styled;
 
   var NewCaseButton = window.App.Widgets.NewCaseButton;
-  var NewCaseDialog = window.App.NewCaseDialog;
+  var NewCaseDialog = window.App.Widgets.NewCaseDialog;
 
   var UI = React.createClass({
     displayName: 'UI',

@@ -131,5 +131,5 @@
     }
   });
 
-  window.App.NewCaseDialog = NewCaseDialog;
+  window.App.Widgets.NewCaseDialog = NewCaseDialog;
 }());
