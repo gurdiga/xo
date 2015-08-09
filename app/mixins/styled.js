@@ -19,5 +19,5 @@
     }
   };
 
-  window.Mixins.Styled = Styled;
+  window.App.Mixins.Styled = Styled;
 }());

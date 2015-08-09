@@ -16,5 +16,5 @@
     if ('onChange' in this.props) this.props.onChange.call(this, e);
   }
 
-  window.Mixins.Editable = Editable;
+  window.App.Mixins.Editable = Editable;
 }());

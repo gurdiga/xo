@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var Valuable = window.Mixins.Valuable;
+  var Valuable = window.App.Mixins.Valuable;
 
   var Section = window.App.Section;
   var SelectField = window.App.SelectField;

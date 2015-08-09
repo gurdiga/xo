@@ -30,9 +30,9 @@
     style: getInputStyle(),
 
     mixins: [
-      window.Mixins.Editable,
-      window.Mixins.Styled,
-      window.Mixins.OutlinedOnFocus
+      window.App.Mixins.Editable,
+      window.App.Mixins.Styled,
+      window.App.Mixins.OutlinedOnFocus
     ],
 
     statics: {

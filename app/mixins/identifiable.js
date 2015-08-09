@@ -13,5 +13,5 @@
     }
   };
 
-  window.Mixins.Identifiable = Identifiable;
+  window.App.Mixins.Identifiable = Identifiable;
 }());

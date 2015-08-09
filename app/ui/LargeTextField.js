@@ -47,7 +47,7 @@
     },
 
     mixins: [
-      window.Mixins.OutlinedOnFocus
+      window.App.Mixins.OutlinedOnFocus
     ]
   });
 

@@ -62,5 +62,5 @@
     return parts[1];
   }
 
-  window.Mixins.Valuable = Valuable;
+  window.App.Mixins.Valuable = Valuable;
 }());

@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  var Styled = window.Mixins.Styled;
-  var Identifiable = window.Mixins.Identifiable;
+  var Styled = window.App.Mixins.Styled;
+  var Identifiable = window.App.Mixins.Identifiable;
 
   var a = React.PropTypes;
   var an = a;

@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  var Identifiable = window.Mixins.Identifiable;
-  var Styled = window.Mixins.Styled;
+  var Identifiable = window.App.Mixins.Identifiable;
+  var Styled = window.App.Mixins.Styled;
 
   var NewCaseButton = window.App.NewCaseButton;
   var NewCaseDialog = window.App.NewCaseDialog;

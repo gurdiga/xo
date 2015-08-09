@@ -2,7 +2,7 @@ export
 	NODE_ENV=development
 	JS_FILES=$(shell \
 		find \
-			test app mixins utils makefiles \
+			test app utils makefiles \
 			-name '*.jsx' \
 			-or -name '*.js' \
 			-or -name '*.json' \

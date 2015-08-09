@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  var Identifiable = window.Mixins.Identifiable;
-  var Styled = window.Mixins.Styled;
-  var Valuable = window.Mixins.Valuable;
+  var Identifiable = window.App.Mixins.Identifiable;
+  var Styled = window.App.Mixins.Styled;
+  var Valuable = window.App.Mixins.Valuable;
 
   var DateFormatting = window.Utils.DateFormatting;
 

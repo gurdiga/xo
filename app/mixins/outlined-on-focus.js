@@ -23,5 +23,5 @@
     }
   };
 
-  window.Mixins.OutlinedOnFocus = OutlinedOnFocus;
+  window.App.Mixins.OutlinedOnFocus = OutlinedOnFocus;
 }());
