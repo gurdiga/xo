@@ -38,5 +38,5 @@
     }
   });
 
-  window.App.NewCaseButton = NewCaseButton;
+  window.App.Widgets.NewCaseButton = NewCaseButton;
 }());

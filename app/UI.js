@@ -4,7 +4,7 @@
   var Identifiable = window.App.Mixins.Identifiable;
   var Styled = window.App.Mixins.Styled;
 
-  var NewCaseButton = window.App.NewCaseButton;
+  var NewCaseButton = window.App.Widgets.NewCaseButton;
   var NewCaseDialog = window.App.NewCaseDialog;
 
   var UI = React.createClass({

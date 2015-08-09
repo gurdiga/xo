@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var LargeTextField = window.App.LargeTextField;
+  var LargeTextField = window.App.Widgets.LargeTextField;
   var test = tape;
 
   var sandbox = document.createElement('div');

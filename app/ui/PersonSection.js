@@ -7,7 +7,7 @@
   var SelectField = window.App.SelectField;
   var DateField = window.App.Widgets.DateField;
   var TextField = window.App.TextField;
-  var LargeTextField = window.App.LargeTextField;
+  var LargeTextField = window.App.Widgets.LargeTextField;
 
   var a = React.PropTypes;
   var anObjectOfShape = React.PropTypes.shape;

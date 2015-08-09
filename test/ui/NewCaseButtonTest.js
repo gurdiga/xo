@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var NewCaseButton = window.App.NewCaseButton;
+  var NewCaseButton = window.App.Widgets.NewCaseButton;
   var test = tape;
 
   var sandbox = document.createElement('div');

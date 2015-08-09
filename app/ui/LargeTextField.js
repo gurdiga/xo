@@ -53,5 +53,5 @@
 
   var FieldLabel = window.App.Widgets.FieldLabel;
 
-  window.App.LargeTextField = LargeTextField;
+  window.App.Widgets.LargeTextField = LargeTextField;
 }());
