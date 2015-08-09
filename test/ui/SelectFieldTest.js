@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var SelectField = window.App.SelectField;
+  var SelectField = window.App.Widgets.SelectField;
   var test = tape;
 
   var sandbox = document.createElement('div');

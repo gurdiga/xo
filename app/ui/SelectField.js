@@ -44,5 +44,5 @@
 
   var FieldLabel = window.App.Widgets.FieldLabel;
 
-  window.App.SelectField = SelectField;
+  window.App.Widgets.SelectField = SelectField;
 }());
