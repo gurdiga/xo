@@ -59,5 +59,5 @@
     return renderer.getRenderOutput();
   }
 
-  var TextField = window.App.TextField;
+  var TextField = window.App.Widgets.TextField;
 }());

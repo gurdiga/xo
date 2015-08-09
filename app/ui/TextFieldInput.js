@@ -54,5 +54,5 @@
     };
   }
 
-  window.App.TextFieldInput = TextFieldInput;
+  window.App.Widgets.TextFieldInput = TextFieldInput;
 }());

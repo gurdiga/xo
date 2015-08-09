@@ -6,7 +6,7 @@
   var Section = window.App.Widgets.Section;
   var SelectField = window.App.Widgets.SelectField;
   var DateField = window.App.Widgets.DateField;
-  var TextField = window.App.TextField;
+  var TextField = window.App.Widgets.TextField;
   var LargeTextField = window.App.Widgets.LargeTextField;
 
   var a = React.PropTypes;

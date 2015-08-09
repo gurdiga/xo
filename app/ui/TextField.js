@@ -22,7 +22,7 @@
   });
 
   var FieldLabel = window.App.Widgets.FieldLabel;
-  var TextFieldInput = window.App.TextFieldInput;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  window.App.TextField = TextField;
+  window.App.Widgets.TextField = TextField;
 }());

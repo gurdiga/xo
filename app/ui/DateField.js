@@ -49,7 +49,7 @@
       window.App.Mixins.OutlinedOnFocus
     ],
 
-    style: window.App.TextFieldInput.style
+    style: window.App.Widgets.TextFieldInput.style
   });
 
   function toggleDatePickerFor(dateField) {
