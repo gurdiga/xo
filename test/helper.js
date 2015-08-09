@@ -1,6 +1,6 @@
 (function() {
   'use strict';
 
-  TapeBrowserConsoleDotReporter(window.tape);
+  window.TapeBrowserConsoleDotReporter(window.tape);
 
 }());
