@@ -35,5 +35,5 @@
     padding: '8px 0 8px 6px'
   };
 
-  window.App.Section = Section;
+  window.App.Widgets.Section = Section;
 }());

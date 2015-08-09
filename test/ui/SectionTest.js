@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var Section = window.App.Section;
+  var Section = window.App.Widgets.Section;
   var test = tape;
 
   var sandbox = document.createElement('div');
