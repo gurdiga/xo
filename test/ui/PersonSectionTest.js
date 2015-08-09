@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var PersonSection = window.App.PersonSection;
+  var PersonSection = window.App.Widgets.PersonSection;
   var test = tape;
 
   var value = {

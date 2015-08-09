@@ -97,5 +97,5 @@
     }
   });
 
-  window.App.PersonSection = PersonSection;
+  window.App.Widgets.PersonSection = PersonSection;
 }());

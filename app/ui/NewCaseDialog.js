@@ -8,7 +8,7 @@
   var DateFormatting = window.App.Utils.DateFormatting;
 
   var DateField = window.App.Widgets.DateField;
-  var PersonSection = window.App.PersonSection;
+  var PersonSection = window.App.Widgets.PersonSection;
 
   var a = React.PropTypes;
   var an = a;
