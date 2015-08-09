@@ -39,7 +39,7 @@
     }, appMask);
   }
 
-  var assert = window.Utils.assert;
+  var assert = window.App.Utils.assert;
 
-  window.Utils.DateFormatting = DateFormatting;
+  window.App.Utils.DateFormatting = DateFormatting;
 }());

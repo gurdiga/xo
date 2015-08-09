@@ -5,7 +5,7 @@
   var Styled = window.App.Mixins.Styled;
   var Valuable = window.App.Mixins.Valuable;
 
-  var DateFormatting = window.Utils.DateFormatting;
+  var DateFormatting = window.App.Utils.DateFormatting;
 
   var DateField = window.App.DateField;
   var PersonSection = window.App.PersonSection;
@@ -13,7 +13,7 @@
   var a = React.PropTypes;
   var an = a;
   var anObjectOfShape = React.PropTypes.shape;
-  var aDate = window.Utils.aDate;
+  var aDate = window.App.Utils.aDate;
 
   var NewCaseDialog = React.createClass({
     displayName: 'NewCaseDialog',

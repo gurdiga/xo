@@ -14,5 +14,5 @@
     }
   }
 
-  window.Utils.aDate = aDate;
+  window.App.Utils.aDate = aDate;
 }());

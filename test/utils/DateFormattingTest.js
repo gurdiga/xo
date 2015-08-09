@@ -1,6 +1,6 @@
 'use strict';
 
-var DateFormatting = window.Utils.DateFormatting;
+var DateFormatting = window.App.Utils.DateFormatting;
 var test = tape;
 
 test('DateFormatting.format', function(t) {

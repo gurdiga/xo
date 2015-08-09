@@ -1,5 +1,6 @@
 window.e = React.createElement;
+
 window.App = {
-  Mixins: {}
+  Mixins: {},
+  Utils: {}
 };
-window.Utils = {};

@@ -242,6 +242,6 @@
     }
   });
 
-  var DateFormatting = window.Utils.DateFormatting;
-  var assert = window.Utils.assert;
+  var DateFormatting = window.App.Utils.DateFormatting;
+  var assert = window.App.Utils.assert;
 }());

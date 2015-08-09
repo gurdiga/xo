@@ -12,5 +12,5 @@
 
   AssertionError.prototype = Error.prototype;
 
-  window.Utils.assert = assert;
+  window.App.Utils.assert = assert;
 }());
