@@ -39,7 +39,7 @@
 
   function processMessage(message) {
     switch(message.type) {
-      case 'assert': count(message); log(message); printOutput(); break;
+      case 'assert': count(message); log(message); break;
       case 'test': break;
       case 'end': break;
       default: console.log('-- unknown message', message);
@@ -58,12 +58,8 @@
     if (!message.ok) failureMessages.push(message);
   }
 
-  function printOutput() {
-    console.clear();
-    console.log(output);
-  }
-
   function displayResults() {
+    console.log(output);
     console.log('total: ', totalCount);
     console.log('failed:', failedCount);
 
