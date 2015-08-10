@@ -71,6 +71,7 @@
   }
 
   function printFailureMessage(message) {
+    console.log('');
     console.log('assertion:', message.name);
     console.log('operator: ', message.operator);
     console.log('expected: ', typeof message.expected, JSON.stringify(message.expected));
