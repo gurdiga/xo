@@ -5,6 +5,7 @@
   var failedCount = 0;
   var output = '';
   var failureMessages = [];
+  var testContext = [];
 
   window.TapeBrowserConsoleDotReporter = TapeBrowserConsoleDotReporter;
 
@@ -40,8 +41,8 @@
   function processMessage(message) {
     switch(message.type) {
       case 'assert': count(message); log(message); break;
-      case 'test': break;
-      case 'end': break;
+      case 'test': pushContext(message); break;
+      case 'end': popContext(); break;
       default: console.log('-- unknown message', message);
     }
   }
@@ -55,7 +56,10 @@
   function log(message) {
     output += message.ok ? '.' : 'F';
 
-    if (!message.ok) failureMessages.push(message);
+    if (!message.ok) {
+      message.testContext = testContext.slice();
+      failureMessages.push(message);
+    }
   }
 
   function displayResults() {
@@ -72,11 +76,15 @@
 
   function printFailureMessage(message) {
     console.log('');
-    console.log('assertion:', message.name);
+    console.log('context:  ', getTextContext(message));
     console.log('operator: ', message.operator);
     console.log('expected: ', typeof message.expected, inspectableValue(message.expected));
     console.log('actual:   ', typeof message.actual  , inspectableValue(message.actual));
     console.log('location: ', getAppStack(message));
+  }
+
+  function getTextContext(message) {
+    return message.testContext.concat([message.name]).join(': ');
   }
 
   function inspectableValue(value) {
@@ -101,6 +109,14 @@
 
   function getPathInfo(line) {
     return line.match(INSIDE_PARENS)[1];
+  }
+
+  function pushContext(message) {
+    testContext.push(message.name);
+  }
+
+  function popContext() {
+    testContext.pop();
   }
 
 }());
