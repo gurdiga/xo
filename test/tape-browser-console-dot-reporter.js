@@ -74,9 +74,14 @@
     console.log('');
     console.log('assertion:', message.name);
     console.log('operator: ', message.operator);
-    console.log('expected: ', typeof message.expected, JSON.stringify(message.expected));
-    console.log('actual:   ', typeof message.actual  , JSON.stringify(message.actual));
+    console.log('expected: ', typeof message.expected, inspectableValue(message.expected));
+    console.log('actual:   ', typeof message.actual  , inspectableValue(message.actual));
     console.log('location: ', getAppStack(message));
+  }
+
+  function inspectableValue(value) {
+    if (typeof value === 'function') return value.name || 'anonymous';
+    else return JSON.stringify(value);
   }
 
   function getAppStack(message) {
