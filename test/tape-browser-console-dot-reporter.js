@@ -75,12 +75,12 @@
   }
 
   function printFailureMessage(message) {
-    console.log('');
     console.log('context:  ', getTextContext(message));
     console.log('operator: ', message.operator);
     console.log('expected: ', typeof message.expected, inspectableValue(message.expected));
     console.log('actual:   ', typeof message.actual  , inspectableValue(message.actual));
     console.log('location: ', getAppStack(message));
+    console.log('');
   }
 
   function getTextContext(message) {
@@ -94,21 +94,15 @@
 
   function getAppStack(message) {
     var stackLines = message.error.stack.split('\n').slice(1);
-    var appStackLines = stackLines.filter(isNonTapeLine).map(getPathInfo);
+    var appStackLines = stackLines.filter(isNonTapeLine);
 
-    return appStackLines.join('\n');
+    return '\n' + appStackLines.join('\n');
   }
 
   var IS_TAPE_STACK_LINE = /lib\/tape\.js:/;
 
   function isNonTapeLine(line) {
     return !IS_TAPE_STACK_LINE.test(line);
-  }
-
-  var INSIDE_PARENS = /\((.+)\)/;
-
-  function getPathInfo(line) {
-    return line.match(INSIDE_PARENS)[1];
   }
 
   function pushContext(message) {
