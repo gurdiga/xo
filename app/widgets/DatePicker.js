@@ -40,8 +40,12 @@
       document.body.appendChild(widget.el);
     };
 
-    this.isVisibleFor = function(dateField) {
-      return dateField === currentDateField;
+    this.toggleFor = function(dateField) {
+      if (dateField === currentDateField) {
+        this.hide();
+      } else {
+        this.showDate(dateField);
+      }
     };
 
     var onSelect = function(date) {

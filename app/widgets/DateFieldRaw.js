@@ -21,15 +21,6 @@
       return input.getValue();
     };
 
-    this.toggleDatePicker = function() {
-      if (DatePicker.instance.isVisibleFor(this)) {
-        DatePicker.instance.hide();
-        window.setTimeout(input.focus);
-      } else {
-        DatePicker.instance.showDate(this);
-      }
-    };
-
     this.addDatePicker = function(datePickerDomElement) {
       var inputDomElement = domElement.querySelector('input');
       inputDomElement.parentNode.insertBefore(datePickerDomElement, inputDomElement);
@@ -43,6 +34,7 @@
     this.setDate = function(date) {
       var formattedDate = DateFormatting.format(date, DateFieldRaw.DATE_FORMAT);
       input.setValue(formattedDate);
+      window.setTimeout(input.focus);
     };
   }
 
@@ -51,7 +43,7 @@
 
     button.addEventListener('click', function(e) {
       e.stopPropagation();
-      dateField.toggleDatePicker();
+      DatePicker.instance.toggleFor(dateField);
     });
     _.extend(button.style, datePickerButtonStyle);
     button.title = 'Deschide calendarul';
