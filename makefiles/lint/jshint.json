@@ -18,6 +18,8 @@
   "-W030": true,
 
   "globals": {
+    "Element": false,
+    "Event": false,
     "require": false,
     "module": false,
     "console": false,
