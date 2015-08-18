@@ -4,13 +4,13 @@
   window.App.Widgets.FieldLabelRaw = FieldLabelRaw;
 
   function FieldLabelRaw(text, additionalStyle, childWidgets) {
+    var domElement = document.createElement('label');
+    _.extend(domElement.style, style, additionalStyle);
+
     var span = document.createElement('span');
     span.textContent = text;
     _.extend(span.style, spanStyle);
-
-    var domElement = document.createElement('label');
     domElement.appendChild(span);
-    _.extend(domElement.style, style, additionalStyle);
 
     if (childWidgets) childWidgets.forEach(appendTo(domElement));
 
