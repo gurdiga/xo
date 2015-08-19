@@ -12,3 +12,9 @@ dateField.appendTo(document.body);
 
 var largeTextField = new window.App.Widgets.LargeTextFieldRaw('Raw textarea', 'yep');
 largeTextField.appendTo(document.body);
+
+var newCaseButton = new window.App.Widgets.NewCaseButtonRaw();
+newCaseButton.appendTo(document.body);
+newCaseButton.onClick(function() {
+  window.alert(1);
+});
