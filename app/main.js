@@ -18,3 +18,11 @@ newCaseButton.appendTo(document.body);
 newCaseButton.onClick(function() {
   window.alert(1);
 });
+
+var options = ['one', 'two', 'three'];
+var defaultValue = 'two';
+var selectField = new window.App.Widgets.SelectFieldRaw('A raw select field', options, defaultValue);
+selectField.appendTo(document.body);
+selectField.onChange(function() {
+  window.alert('onChange');
+});
