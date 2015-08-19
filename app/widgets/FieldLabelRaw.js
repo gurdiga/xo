@@ -12,7 +12,7 @@
     _.extend(span.style, spanStyle);
     domElement.appendChild(span);
 
-    if (childWidgets) childWidgets.forEach(appendTo(domElement));
+    if (childWidgets) childWidgets.forEach(appendWidgetTo(domElement));
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
@@ -31,7 +31,7 @@
     width: '11em'
   };
 
-  function appendTo(domElement) {
+  function appendWidgetTo(domElement) {
     return function(childWidget) {
       if (childWidget instanceof Element) domElement.appendChild(childWidget);
       else childWidget.appendTo(domElement);
