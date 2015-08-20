@@ -12,7 +12,7 @@
     _.extend(span.style, spanStyle);
     domElement.appendChild(span);
 
-    if (childWidgets) childWidgets.forEach(appendWidgetTo(domElement));
+    appendWidgets(childWidgets).to(domElement);
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
@@ -31,11 +31,6 @@
     width: '11em'
   };
 
-  function appendWidgetTo(domElement) {
-    return function(childWidget) {
-      if (childWidget instanceof Element) domElement.appendChild(childWidget);
-      else childWidget.appendTo(domElement);
-    };
-  }
+  var appendWidgets = window.App.Utils.appendWidgets;
 
 }());
