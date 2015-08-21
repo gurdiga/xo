@@ -26,7 +26,9 @@
     };
 
     this.onChange = function(f) {
-      select.addEventListener('change', f);
+      select.addEventListener('change', function(event) {
+        f(event.target.value);
+      });
     };
   }
 

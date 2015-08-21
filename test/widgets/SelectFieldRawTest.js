@@ -14,8 +14,9 @@
   selectField.onChange(onChange);
   selectField.appendTo(sandbox);
 
-  function onChange() {
+  function onChange(argument) {
     onChange.called = true;
+    onChange.argument = argument;
   }
 
   document.body.appendChild(sandbox);
@@ -87,6 +88,7 @@
     select.dispatchEvent(new Event('change'));
 
     t.equal(onChange.called, true, 'triggers the onChange callback when changing');
+    t.equal(onChange.argument, select.value, 'onChange callback was passed the new field value');
 
     document.body.removeChild(sandbox);
     t.end();
