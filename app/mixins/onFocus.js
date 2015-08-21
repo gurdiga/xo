@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  window.App.Mixins.onFocus = onFocus;
-
   function onFocus(domElement, style) {
     var initialStyleValues = {};
 
@@ -30,5 +28,7 @@
 
     domElement.style.transition = existingTransitions.join(',');
   }
+
+  window.App.Mixins.onFocus = onFocus;
 
 }());

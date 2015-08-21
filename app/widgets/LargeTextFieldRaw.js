@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function LargeTextFieldRaw(label, value, additionalStyle) {
+  function LargeTextFieldRaw(labelText, value, additionalStyle) {
     var domElement = document.createElement('large-text-field');
     domElement.style.display = 'block';
 
@@ -9,8 +9,8 @@
     textarea.value = value;
     _.extend(textarea.style, style, additionalStyle);
 
-    var labelWidget = new FieldLabelRaw(label, {}, [textarea]);
-    labelWidget.appendTo(domElement);
+    var label = new FieldLabelRaw(labelText, {}, [textarea]);
+    label.appendTo(domElement);
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
