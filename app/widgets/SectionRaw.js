@@ -15,6 +15,10 @@
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
     };
+
+    this.removeFromParent = function() {
+      domElement.parentNode.removeChild(domElement);
+    };
   }
 
   var fieldsetStyle = {

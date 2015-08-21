@@ -23,5 +23,14 @@ var section = new window.App.Widgets.SectionRaw('A raw section', [
   selectField,
   newCaseButton
 ]);
-
 section.appendTo(document.body);
+
+var personSection = new window.App.Widgets.PersonSectionRaw('Creditor', {
+  'gen-persoană': 'fizică',
+  'nume': 'John Doe',
+  'idnp': '0123456789',
+  'data-naşterii': '2011-11-11',
+  'domiciliu': 'Happiness Str. 42',
+  'note': 'A happy guy'
+});
+personSection.appendTo(document.body);
