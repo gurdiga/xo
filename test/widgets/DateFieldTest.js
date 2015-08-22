@@ -25,7 +25,7 @@
 
   test('DateField label layout CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label'));
-    t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
+    t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
     t.end();

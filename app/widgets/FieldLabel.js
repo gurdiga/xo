@@ -18,7 +18,7 @@
   }
 
   var style = {
-    display: 'block',
+    display: 'inline-block',
     margin: '0 0 3px 5px'
   };
 
