@@ -1,5 +1,4 @@
 lib-all: \
-	lib/react.js \
 	lib/moment.js \
 	lib/tape.js \
 	lib/lodash.js \
@@ -8,12 +7,6 @@ lib-all: \
 
 lib:
 	mkdir -p lib
-
-lib/react.js: node_modules/react/dist/react-with-addons.js | lib
-	cp $< $@
-
-node_modules/react/dist/react-with-addons.js:
-	npm install react@0.13.3
 
 lib/moment.js: node_modules/moment/min/moment.min.js | lib
 	cp $< $@

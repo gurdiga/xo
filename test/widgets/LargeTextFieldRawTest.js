@@ -1,24 +1,18 @@
 (function() {
   'use strict';
-
-  var LargeTextField = window.App.Widgets.LargeTextField;
+  var LargeTextFieldRaw = window.App.Widgets.LargeTextFieldRaw;
   var test = tape;
 
   var sandbox = document.createElement('div');
+  document.body.appendChild(sandbox);
+
   var labelText = 'My large-text-field component';
   var fieldValue = 'Hi!';
 
-  var largeTextField = React.render(
-    e(LargeTextField, {
-      label: labelText,
-      value: fieldValue
-    }),
-    sandbox
-  );
+  var largeTextField = new LargeTextFieldRaw(labelText, fieldValue);
+  largeTextField.appendTo(sandbox);
 
-  document.body.appendChild(sandbox);
-
-  test('LargeTextField label', function(t) {
+  test('LargeTextFieldRaw label', function(t) {
     var label = sandbox.querySelector('label');
 
     t.ok(label, 'it renders a <label> element');
@@ -31,7 +25,7 @@
     t.end();
   });
 
-  test('LargeTextFieldTest label layout CSS', function(t) {
+  test('LargeTextFieldRawTest label layout CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label'));
 
     t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
@@ -40,7 +34,7 @@
     t.end();
   });
 
-  test('LargeTextFieldTest label text CSS', function(t) {
+  test('LargeTextFieldRawTest label text CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label>span'));
 
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
@@ -51,28 +45,19 @@
     t.end();
   });
 
-  test('LargeTextField textarea value', function(t) {
+  test('LargeTextFieldRaw textarea value', function(t) {
     var textarea = sandbox.querySelector('label>textarea');
 
     t.ok(textarea, 'it renders <textarea> element inside the <label> for binding (accessibility)');
     t.equal(textarea.value, fieldValue,
-      'the <textarea> has the value given in the LargeTextField “value” attribute');
+      'the <textarea> has the value given in the LargeTextFieldRaw “value” attribute');
     t.equal(largeTextField.getValue(), textarea.value,
       'its getValue() method returns the <textarea> value');
-
-    var newFieldValue = 'I have changed';
-
-    textarea.value = newFieldValue;
-    React.addons.TestUtils.Simulate.change(textarea);
-
-    t.equal(newFieldValue, textarea.value, 'it is editable');
-    t.equal(largeTextField.getValue(), newFieldValue,
-      'its getValue() method returns the changed <textarea> value');
 
     t.end();
   });
 
-  test('LargeTextField textarea CSS', function(t) {
+  test('LargeTextFieldRaw textarea CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('textarea'));
 
     t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
@@ -97,10 +82,10 @@
 
     var textarea = sandbox.querySelector('textarea');
 
-    React.addons.TestUtils.Simulate.focus(textarea);
+    textarea.dispatchEvent(new Event('focus'));
     t.equal(textarea.style.boxShadow, 'rgb(181, 213, 255) 0px 0px 3px 2px', 'has CSS box-shadow property set when focused');
 
-    React.addons.TestUtils.Simulate.blur(textarea);
+    textarea.dispatchEvent(new Event('blur'));
     t.equal(textarea.style.boxShadow, '', 'has CSS box-shadow property removed when loses focus');
 
     document.body.removeChild(sandbox);

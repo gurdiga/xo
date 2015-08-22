@@ -27,7 +27,6 @@
     "window": false,
     "document": false,
     "chrome": false,
-    "React": false,
     "tape": false,
     "_": false,
     "e": false
