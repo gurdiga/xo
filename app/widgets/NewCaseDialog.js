@@ -6,11 +6,9 @@
     domElement.style.display = 'none';
     _.extend(domElement.style, style);
 
-    var title = document.createElement('h1');
-    title.textContent = 'Procedură de ordin general';
-
-    var date = createDateField();
-    date.internalName = 'data-intentării';
+    var title = createTitle();
+    var dateField = createDateField();
+    dateField.internalName = 'data-intentării';
 
     var creditorSection = new PersonSection('Creditor', data['creditorul']);
     creditorSection.internalName = 'creditorul';
@@ -51,11 +49,11 @@
     };
 
     function getAllComponents() {
-      return [title, date, creditorSection, debitorSection, closeButton, tempButton];
+      return [title, dateField, creditorSection, debitorSection, closeButton, tempButton];
     }
 
     function getValuableComponents() {
-      return [date, creditorSection, debitorSection];
+      return [dateField, creditorSection, debitorSection];
     }
   }
 
@@ -66,6 +64,15 @@
     };
 
     return new DateField('Data intentării', '01.01.2015', style);
+  }
+
+  function createTitle() {
+    var title = document.createElement('h1');
+    title.textContent = 'Procedură de ordin general';
+    title.style.fontSize = '42px';
+    title.style.fontFamily = 'TitleFont';
+
+    return title;
   }
 
   function createCloseButton(dialogDomElement) {

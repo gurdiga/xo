@@ -16,14 +16,13 @@
   test('NewCaseDialog', function(t) {
     var dialogHeader = sandbox.querySelector('new-case-dialog>h1');
     t.equal(dialogHeader.textContent, 'Procedură de ordin general', 'the header has the appropriate text');
-    t.equal(getFontSize(dialogHeader), '32px', 'the header has the appropriate font size');
+
+    var css = window.getComputedStyle(dialogHeader);
+    t.equal(css.fontSize, '42px', 'the header has the appropriate font size');
+    t.equal(css.fontFamily, 'TitleFont', 'the header has the appropriate font family');
 
     var creditorSection = sandbox.querySelector('new-case-dialog>person-section');
     t.ok(creditorSection, 'there is person section');
-
-    function getFontSize(domElement) {
-      return window.getComputedStyle(domElement).fontSize;
-    }
 
     document.body.removeChild(sandbox);
     t.end();

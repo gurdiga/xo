@@ -59,6 +59,7 @@
     t.equal(css.width, '612.3125px', 'take all the horizontal space');
     t.equal(css.fontWeight, 'bold', 'text is bold to stand out on the dark background');
     t.equal(css.fontSize, '22px', 'text is big enough to stand out');
+    t.equal(css.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
     t.equal(css.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
     t.equal(css.paddingBottom, '8px', 'mirror the top  padding');
     t.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');

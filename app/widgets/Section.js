@@ -36,6 +36,7 @@
     width: '100%',
     fontWeight: 'bold',
     fontSize: '22px',
+    fontFamily: 'TitleFont',
     padding: '8px 0 8px 6px'
   };
 
