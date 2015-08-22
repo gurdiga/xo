@@ -6,9 +6,7 @@
     domElement.textContent = 'Procedură nouă';
     _.extend(domElement.style, style);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
 
     this.onClick = function(f) {
       domElement.addEventListener('click', f);
@@ -23,6 +21,8 @@
     border: '1px solid #ccc',
     borderRadius: '5px'
   };
+
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.NewCaseButton = NewCaseButton;
 

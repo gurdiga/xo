@@ -13,17 +13,15 @@
       return input.getValue();
     };
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
-
-    this.destroy = function() {
-      domElement.parentNode.removeChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
+    this.destroy = getDestroyerOf(domElement);
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
+
+  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getDestroyerOf = window.App.Utils.getDestroyerOf;
 
   window.App.Widgets.TextField = TextField;
 

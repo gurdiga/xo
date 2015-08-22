@@ -21,9 +21,7 @@
       section.appendWidgets(personTypeSpecificFields);
     });
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
       var fieldValues = {};
@@ -101,6 +99,8 @@
   var TextField = window.App.Widgets.TextField;
   var LargeTextField = window.App.Widgets.LargeTextField;
   var DateField = window.App.Widgets.DateField;
+
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.PersonSection = PersonSection;
 

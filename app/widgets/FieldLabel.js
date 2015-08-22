@@ -12,9 +12,7 @@
 
     appendWidgets(childWidgets).to(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
   }
 
   var style = {
@@ -30,6 +28,7 @@
   };
 
   var appendWidgets = window.App.Utils.appendWidgets;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.FieldLabel = FieldLabel;
 

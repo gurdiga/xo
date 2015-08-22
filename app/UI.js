@@ -19,9 +19,7 @@
 
     appendWidgets([newCaseDialog, newCaseButton]).to(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
   }
 
   var style = {
@@ -34,6 +32,7 @@
   var NewCaseButton = window.App.Widgets.NewCaseButton;
 
   var appendWidgets = window.App.Utils.appendWidgets;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.UI = UI;
 

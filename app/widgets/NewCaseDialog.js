@@ -26,9 +26,7 @@
 
     appendWidgets(getAllComponents()).to(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
 
     this.show = function() {
       domElement.style.display = 'block';
@@ -111,6 +109,7 @@
   var PersonSection = window.App.Widgets.PersonSection;
 
   var appendWidgets = window.App.Utils.appendWidgets;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 

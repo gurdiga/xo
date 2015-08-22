@@ -12,9 +12,7 @@
 
     appendWidgets(childWidgets).to(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
 
     this.appendWidgets = function(childWidgets) {
       if (!Array.isArray(childWidgets)) childWidgets = [childWidgets];
@@ -41,6 +39,7 @@
   };
 
   var appendWidgets = window.App.Utils.appendWidgets;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.Section = Section;
 

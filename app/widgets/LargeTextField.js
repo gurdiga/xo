@@ -12,16 +12,11 @@
     var label = new FieldLabel(labelText, {}, [textarea]);
     label.appendTo(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
+    this.destroy = getDestroyerOf(domElement);
 
     this.getValue = function() {
       return textarea.value;
-    };
-
-    this.destroy = function() {
-      domElement.parentNode.removeChild(domElement);
     };
 
     outlineFieldOnFocus(textarea);
@@ -44,6 +39,8 @@
   var FieldLabel = window.App.Widgets.FieldLabel;
 
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getDestroyerOf = window.App.Utils.getDestroyerOf;
 
   window.App.Widgets.LargeTextField = LargeTextField;
 

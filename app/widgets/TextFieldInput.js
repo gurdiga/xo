@@ -6,9 +6,7 @@
     domElement.value = value || '';
     _.extend(domElement.style, style, additionalStyle);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
       return domElement.value;
@@ -38,6 +36,7 @@
   };
 
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.TextFieldInput = TextFieldInput;
 

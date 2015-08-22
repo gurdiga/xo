@@ -13,9 +13,8 @@
     var label = new FieldLabel(labelText, {}, [input, datePickerButton]);
     label.appendTo(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
+    this.destroy = getDestroyerOf(domElement);
 
     this.getValue = function() {
       return input.getValue();
@@ -35,10 +34,6 @@
       var formattedDate = DateFormatting.format(date, DateField.DATE_FORMAT);
       input.setValue(formattedDate);
       window.setTimeout(input.focus);
-    };
-
-    this.destroy = function() {
-      domElement.parentNode.removeChild(domElement);
     };
   }
 
@@ -73,6 +68,8 @@
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var DateFormatting = window.App.Utils.DateFormatting;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getDestroyerOf = window.App.Utils.getDestroyerOf;
 
   window.App.Widgets.DateField = DateField;
 
