@@ -40,6 +40,8 @@
     }
   }
 
+  PersonSectionRaw.PERSON_TYPES = PERSON_TYPES;
+
   function definePersonTypes() {
     var COMPANY = 'juridică';
     var INDIVIDUAL = 'fizică';
