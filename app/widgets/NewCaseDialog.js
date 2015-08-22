@@ -8,18 +8,12 @@
 
     var title = createTitle();
     var dateField = createDateField();
-    dateField.internalName = 'data-intentării';
-
-    var creditorSection = new PersonSection('Creditor', data['creditorul']);
-    creditorSection.internalName = 'creditorul';
-
-    var debitorSection = new PersonSection('Debitor', data['debitorul']);
-    debitorSection.internalName = 'debitorul';
-
+    var creditorSection = createCreditorSection(data);
+    var debitorSection = createDebitorSection(data);
     var closeButton = createCloseButton(domElement);
 
     var tempButton = document.createElement('button');
-    tempButton.textContent = 'tempButton';
+    tempButton.textContent = 'A magic button';
     tempButton.addEventListener('click', function tempButtonClickHandler() {
       console.log('value', this.getValue());
     }.bind(this));
@@ -61,7 +55,9 @@
       width: '7.8em'
     };
 
-    return new DateField('Data intentării', '01.01.2015', style);
+    var field = new DateField('Data intentării', '01.01.2015', style);
+    field.internalName = 'data-intentării';
+    return field;
   }
 
   function createTitle() {
@@ -71,6 +67,20 @@
     title.style.fontFamily = 'TitleFont';
 
     return title;
+  }
+
+  function createCreditorSection(data) {
+    var internalName = 'creditorul';
+    var section = new PersonSection('Creditor', data[internalName]);
+    section.internalName = internalName;
+    return section;
+  }
+
+  function createDebitorSection(data) {
+    var internalName = 'debitorul';
+    var section = new PersonSection('Debitor', data[internalName]);
+    section.internalName = internalName;
+    return section;
   }
 
   function createCloseButton(dialogDomElement) {
