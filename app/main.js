@@ -1,14 +1,5 @@
 'use strict';
 
-var UI = window.App.UI;
-var uiContainer = document.getElementById('ui');
+var UIRaw = new window.App.UIRaw();
 
-React.render(e(UI), uiContainer);
-
-var data = {
-  creditorul: {},
-  debitorul: {}
-};
-
-var dialog = new window.App.Widgets.NewCaseDialogRaw(data);
-dialog.appendTo(uiContainer.firstElementChild);
+UIRaw.appendTo(document.body);
