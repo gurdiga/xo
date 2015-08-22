@@ -1,5 +1,5 @@
 'use strict';
 
-var UIRaw = new window.App.UIRaw();
+var UI = new window.App.UI();
 
-UIRaw.appendTo(document.body);
+UI.appendTo(document.body);

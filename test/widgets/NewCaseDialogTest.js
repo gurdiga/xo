@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var NewCaseDialogRaw = window.App.Widgets.NewCaseDialogRaw;
+  var NewCaseDialog = window.App.Widgets.NewCaseDialog;
   var test = tape;
 
   var sandbox = document.createElement('div');
   document.body.appendChild(sandbox);
 
-  var newCaseDialog = new NewCaseDialogRaw({
+  var newCaseDialog = new NewCaseDialog({
     creditorul: {},
     debitorul: {}
   });

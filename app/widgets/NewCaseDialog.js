@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function NewCaseDialogRaw(data) {
+  function NewCaseDialog(data) {
     var domElement = document.createElement('new-case-dialog');
     domElement.style.display = 'none';
     _.extend(domElement.style, style);
@@ -12,10 +12,10 @@
     var date = createDateField();
     date.internalName = 'data-intentării';
 
-    var creditorSection = new PersonSectionRaw('Creditor', data['creditorul']);
+    var creditorSection = new PersonSection('Creditor', data['creditorul']);
     creditorSection.internalName = 'creditorul';
 
-    var debitorSection = new PersonSectionRaw('Debitor', data['debitorul']);
+    var debitorSection = new PersonSection('Debitor', data['debitorul']);
     debitorSection.internalName = 'debitorul';
 
     var closeButton = createCloseButton(domElement);
@@ -65,7 +65,7 @@
       width: '7.8em'
     };
 
-    return new DateFieldRaw('Data intentării', '01.01.2015', style);
+    return new DateField('Data intentării', '01.01.2015', style);
   }
 
   function createCloseButton(dialogDomElement) {
@@ -100,11 +100,11 @@
     border: 'none'
   };
 
-  var DateFieldRaw = window.App.Widgets.DateFieldRaw;
-  var PersonSectionRaw = window.App.Widgets.PersonSectionRaw;
+  var DateField = window.App.Widgets.DateField;
+  var PersonSection = window.App.Widgets.PersonSection;
 
   var appendWidgets = window.App.Utils.appendWidgets;
 
-  window.App.Widgets.NewCaseDialogRaw = NewCaseDialogRaw;
+  window.App.Widgets.NewCaseDialog = NewCaseDialog;
 
 }());

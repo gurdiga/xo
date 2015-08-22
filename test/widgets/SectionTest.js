@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var SectionRaw = window.App.Widgets.SectionRaw;
+  var Section = window.App.Widgets.Section;
   var test = tape;
 
   var sandbox = document.createElement('div');
@@ -9,12 +9,12 @@
   var content = document.createElement('p');
   content.textContent = 'section content';
 
-  var section = new SectionRaw(labelText, [content]);
+  var section = new Section(labelText, [content]);
   section.appendTo(sandbox);
 
   document.body.appendChild(sandbox);
 
-  test('SectionRaw label', function(t) {
+  test('Section label', function(t) {
     var fieldset = sandbox.querySelector('fieldset');
     t.ok(fieldset, 'renders a <fieldset/>');
     t.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
@@ -29,7 +29,7 @@
     t.end();
   });
 
-  test('SectionRaw fieldset CSS', function(t) {
+  test('Section fieldset CSS', function(t) {
     var fieldset = sandbox.querySelector('fieldset');
     var css = window.getComputedStyle(fieldset);
     var parentCss = window.getComputedStyle(fieldset.parentNode);
@@ -52,7 +52,7 @@
     t.end();
   });
 
-  test('SectionRaw legend CSS', function(t) {
+  test('Section legend CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('fieldset>legend'));
     t.equal(css.color, 'rgb(255, 255, 255)', 'has inverted font and background colors to stand out');
     t.equal(css.backgroundColor, 'rgb(51, 51, 51)', 'background color is not full black because it’s too strong');

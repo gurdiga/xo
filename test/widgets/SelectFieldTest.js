@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  var SelectFieldRaw = window.App.Widgets.SelectFieldRaw;
+  var SelectField = window.App.Widgets.SelectField;
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var labelText = 'My SelectFieldRaw component';
+  var labelText = 'My SelectField component';
   var optionValues = [
     'option 1',
     'option 2'
   ];
-  var selectField = new SelectFieldRaw(labelText, optionValues, optionValues[1]);
+  var selectField = new SelectField(labelText, optionValues, optionValues[1]);
   selectField.onChange(onChange);
   selectField.appendTo(sandbox);
 
@@ -21,7 +21,7 @@
 
   document.body.appendChild(sandbox);
 
-  test('SelectFieldRaw label', function(t) {
+  test('SelectField label', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label>');
 
@@ -32,7 +32,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw label layout CSS', function(t) {
+  test('SelectField label layout CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label'));
     t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
@@ -40,7 +40,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw label text CSS', function(t) {
+  test('SelectField label text CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label>span'));
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
@@ -50,7 +50,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw options', function(t) {
+  test('SelectField options', function(t) {
     var options = sandbox.querySelector('label>select').children;
     t.equal(options.length, 2, 'the option count corresponds');
     t.equal(options[0].tagName, 'OPTION', 'the first child is an <option>');
@@ -61,7 +61,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw select CSS', function(t) {
+  test('SelectField select CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('select'));
     t.equal(css.width, '224px', 'is 16em wide too (as TextField input is)');
     t.equal(css.fontSize, '11px', 'has 11px font size (unlike TextField input does, because selects are funky)');
@@ -71,7 +71,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw getValue()', function(t) {
+  test('SelectField getValue()', function(t) {
     var select = sandbox.querySelector('label>select');
     t.equal(selectField.getValue(), optionValues[1], 'its getValue() method returns the selected option');
 
@@ -81,7 +81,7 @@
     t.end();
   });
 
-  test('SelectFieldRaw onChange callback', function(t) {
+  test('SelectField onChange callback', function(t) {
     var select = sandbox.querySelector('label>select');
 
     onChange.called = false;

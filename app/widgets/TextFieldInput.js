@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function TextFieldInputRaw(value, additionalStyle) {
+  function TextFieldInput(value, additionalStyle) {
     var domElement = document.createElement('input');
     domElement.value = value || '';
     _.extend(domElement.style, style, additionalStyle);
@@ -39,6 +39,6 @@
 
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
 
-  window.App.Widgets.TextFieldInputRaw = TextFieldInputRaw;
+  window.App.Widgets.TextFieldInput = TextFieldInput;
 
 }());

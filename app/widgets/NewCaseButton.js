@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function NewCaseButtonRaw() {
+  function NewCaseButton() {
     var domElement = document.createElement('button');
     domElement.textContent = 'Procedură nouă';
     _.extend(domElement.style, style);
@@ -24,6 +24,6 @@
     borderRadius: '5px'
   };
 
-  window.App.Widgets.NewCaseButtonRaw = NewCaseButtonRaw;
+  window.App.Widgets.NewCaseButton = NewCaseButton;
 
 }());

@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  var TextFieldRaw = window.App.Widgets.TextFieldRaw;
+  var TextField = window.App.Widgets.TextField;
   var test = tape;
 
   var sandbox = document.createElement('div');
   var labelText = 'My text-field component';
   var fieldValue = 'Hi!';
 
-  var textField = new TextFieldRaw(labelText, fieldValue);
+  var textField = new TextField(labelText, fieldValue);
   textField.appendTo(sandbox);
 
   document.body.appendChild(sandbox);
@@ -83,7 +83,7 @@
     var sandbox = document.createElement('div');
     document.body.appendChild(sandbox);
 
-    var textField = new TextFieldRaw('Some label', '', customCSS);
+    var textField = new TextField('Some label', '', customCSS);
     textField.appendTo(sandbox);
 
     var input = sandbox.querySelector('input');

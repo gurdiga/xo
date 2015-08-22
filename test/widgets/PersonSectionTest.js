@@ -1,36 +1,36 @@
 (function() {
   'use strict';
 
-  var PersonSectionRaw = window.App.Widgets.PersonSectionRaw;
+  var PersonSection = window.App.Widgets.PersonSection;
   var test = tape;
 
   var sandbox = document.createElement('div');
   var fieldValues = {
-    'gen-persoană': PersonSectionRaw.PERSON_TYPES.INDIVIDUAL,
+    'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL,
     'nume': 'John DOE',
     'idnp': '0123456789',
     'data-naşterii': '01.02.1960'
   };
   var label = 'Test person section';
-  var personSection = new PersonSectionRaw(label, fieldValues);
+  var personSection = new PersonSection(label, fieldValues);
   personSection.appendTo(sandbox);
 
-  test('PersonSectionRaw', function(t) {
+  test('PersonSection', function(t) {
     t.equal(getSectionLabel(), label, 'section has the appropriate label');
 
     t.test('person type field', function(t) {
       var personTypeField = sandbox.querySelector('fieldset>select-field');
 
       t.equal(getFieldLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
-      t.equal(getFieldValue(personTypeField), PersonSectionRaw.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
+      t.equal(getFieldValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
 
       var optionTexts = getOptionTexts();
 
-      PersonSectionRaw.PERSON_TYPES.forEach(function(type) {
+      PersonSection.PERSON_TYPES.forEach(function(type) {
         t.ok(optionTexts.indexOf(type) > -1, 'has the “' + type + '” option');
       });
 
-      setPersonType(PersonSectionRaw.PERSON_TYPES.COMPANY);
+      setPersonType(PersonSection.PERSON_TYPES.COMPANY);
       var expectedFieldLabelTexts = ["Gen persoană","Denumire","IDNO","Sediu","Persoană de contact","Note"];
       t.deepEqual(getFieldLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
 
@@ -70,9 +70,9 @@
   });
 
   [{
-    personType: PersonSectionRaw.PERSON_TYPES.INDIVIDUAL,
+    personType: PersonSection.PERSON_TYPES.INDIVIDUAL,
     fieldValues: {
-      'gen-persoană': PersonSectionRaw.PERSON_TYPES.INDIVIDUAL,
+      'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL,
       'nume': 'John DOE',
       'idnp': '0123456789',
       'data-naşterii': '01.02.1960',
@@ -88,9 +88,9 @@
       ['Note',          'large-text-field', 'note'         ],
     ]
   }, {
-    personType: PersonSectionRaw.PERSON_TYPES.COMPANY,
+    personType: PersonSection.PERSON_TYPES.COMPANY,
     fieldValues: {
-      'gen-persoană': PersonSectionRaw.PERSON_TYPES.COMPANY,
+      'gen-persoană': PersonSection.PERSON_TYPES.COMPANY,
       'denumire': 'HAPPY SRL',
       'idno': '012345',
       'sediu': 'bd. Fericirii',
@@ -106,9 +106,9 @@
       ['Note',                'large-text-field', 'note'                ],
     ]
   }].forEach(function(testData) {
-    test('PersonSectionRaw has the appropriate fields when person type is “' + testData.personType + '”', function(t) {
+    test('PersonSection has the appropriate fields when person type is “' + testData.personType + '”', function(t) {
       var sandbox = document.createElement('div');
-      var section = new PersonSectionRaw(label, testData.fieldValues);
+      var section = new PersonSection(label, testData.fieldValues);
       section.appendTo(sandbox);
 
       testData.expectedFields.forEach(assertField(sandbox, testData.fieldValues, t));

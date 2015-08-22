@@ -1,18 +1,18 @@
 (function() {
   'use strict';
 
-  var DateFieldRaw = window.App.Widgets.DateFieldRaw;
+  var DateField = window.App.Widgets.DateField;
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var labelText = 'My DateFieldRaw component';
+  var labelText = 'My DateField component';
   var fieldValue = '22.03.2015';
 
-  var dateField = new DateFieldRaw(labelText, fieldValue);
+  var dateField = new DateField(labelText, fieldValue);
   dateField.appendTo(sandbox);
   document.body.appendChild(sandbox);
 
-  test('DateFieldRaw label', function(t) {
+  test('DateField label', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label> element');
 
@@ -23,7 +23,7 @@
     t.end();
   });
 
-  test('DateFieldRaw label layout CSS', function(t) {
+  test('DateField label layout CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label'));
     t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
@@ -31,7 +31,7 @@
     t.end();
   });
 
-  test('DateFieldRaw label text CSS', function(t) {
+  test('DateField label text CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label>span'));
 
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
@@ -42,14 +42,14 @@
     t.end();
   });
 
-  test('DateFieldRaw value handling', function(t) {
+  test('DateField value handling', function(t) {
     var input = sandbox.querySelector('label>input');
 
     t.ok(input, 'is renders <input/> element inside <label> for binding (accessibility)');
     t.equal(
       input.value,
       fieldValue,
-      'the <intput/> has the value given in the DateFieldRaw “value” attribute');
+      'the <intput/> has the value given in the DateField “value” attribute');
     t.equal(
       dateField.getValue(),
       fieldValue,
@@ -58,7 +58,7 @@
     t.end();
   });
 
-  test('DateFieldRaw input CSS', function(t) {
+  test('DateField input CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('input'));
     t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
@@ -78,7 +78,7 @@
     t.end();
   });
 
-  test('DateFieldRaw outlines <input/> on focus', function(t) {
+  test('DateField outlines <input/> on focus', function(t) {
     var input = sandbox.querySelector('input');
     t.equal(input.style.boxShadow, '', 'does not have the CSS box-shadow property set');
 
@@ -152,7 +152,7 @@
     datePicker = sandbox.querySelector('label>.pika-single');
     t.ok(datePicker, 'date picker is displayed with en empty field value');
 
-    var todayDate = DateFormatting.format(new Date(), DateFieldRaw.DATE_FORMAT);
+    var todayDate = DateFormatting.format(new Date(), DateField.DATE_FORMAT);
     t.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
 
     button.click();
@@ -185,18 +185,18 @@
       var month = selectedDate.getAttribute('data-pika-month');
       var day =   selectedDate.getAttribute('data-pika-day');
 
-      return DateFormatting.format(new Date(year, month, day), DateFieldRaw.DATE_FORMAT);
+      return DateFormatting.format(new Date(year, month, day), DateField.DATE_FORMAT);
     }
 
     function nextDay(initialFormattedDate) {
-      var initialDate = DateFormatting.parse(initialFormattedDate, DateFieldRaw.DATE_FORMAT);
+      var initialDate = DateFormatting.parse(initialFormattedDate, DateField.DATE_FORMAT);
       var nextDate = new Date(initialDate.getFullYear(), initialDate.getMonth(), initialDate.getDate() + 1);
 
-      return DateFormatting.format(nextDate, DateFieldRaw.DATE_FORMAT);
+      return DateFormatting.format(nextDate, DateField.DATE_FORMAT);
     }
 
     function selectDateInDatePicker(newDate) {
-      var date = DateFormatting.parse(newDate, DateFieldRaw.DATE_FORMAT);
+      var date = DateFormatting.parse(newDate, DateField.DATE_FORMAT);
       var selectorForDate = '.pika-day' +
         '[data-pika-year="' + date.getFullYear() + '"]' +
         '[data-pika-month="' + date.getMonth() + '"]' +

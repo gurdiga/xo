@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function TextFieldRaw(labelText, value, additionalStyle) {
+  function TextField(labelText, value, additionalStyle) {
     var domElement = document.createElement('text-field');
     domElement.style.display = 'block';
 
@@ -22,9 +22,9 @@
     };
   }
 
-  var FieldLabel = window.App.Widgets.FieldLabelRaw;
-  var TextFieldInput = window.App.Widgets.TextFieldInputRaw;
+  var FieldLabel = window.App.Widgets.FieldLabel;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  window.App.Widgets.TextFieldRaw = TextFieldRaw;
+  window.App.Widgets.TextField = TextField;
 
 }());

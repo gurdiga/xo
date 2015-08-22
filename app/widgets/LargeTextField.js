@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function LargeTextFieldRaw(labelText, value, additionalStyle) {
+  function LargeTextField(labelText, value, additionalStyle) {
     var domElement = document.createElement('large-text-field');
     domElement.style.display = 'block';
 
@@ -9,7 +9,7 @@
     textarea.value = value || '';
     _.extend(textarea.style, style, additionalStyle);
 
-    var label = new FieldLabelRaw(labelText, {}, [textarea]);
+    var label = new FieldLabel(labelText, {}, [textarea]);
     label.appendTo(domElement);
 
     this.appendTo = function(parentDomElement) {
@@ -41,10 +41,10 @@
     resize: 'none'
   };
 
-  var FieldLabelRaw = window.App.Widgets.FieldLabelRaw;
+  var FieldLabel = window.App.Widgets.FieldLabel;
 
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
 
-  window.App.Widgets.LargeTextFieldRaw = LargeTextFieldRaw;
+  window.App.Widgets.LargeTextField = LargeTextField;
 
 }());

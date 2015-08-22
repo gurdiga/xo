@@ -1,18 +1,18 @@
 (function() {
   'use strict';
 
-  function UIRaw() {
+  function UI() {
     var domElement = document.createElement('ui');
     domElement.style.display = 'block';
     _.extend(domElement.style, style);
 
-    var newCaseDialog = new NewCaseDialogRaw({
+    var newCaseDialog = new NewCaseDialog({
       creditorul: {},
       debitorul: {}
     });
     newCaseDialog.appendTo(domElement);
 
-    var newCaseButton = new NewCaseButtonRaw();
+    var newCaseButton = new NewCaseButton();
     newCaseButton.onClick(function() {
       newCaseDialog.show();
     });
@@ -30,11 +30,11 @@
     position: 'relative'
   };
 
-  var NewCaseDialogRaw = window.App.Widgets.NewCaseDialogRaw;
-  var NewCaseButtonRaw = window.App.Widgets.NewCaseButtonRaw;
+  var NewCaseDialog = window.App.Widgets.NewCaseDialog;
+  var NewCaseButton = window.App.Widgets.NewCaseButton;
 
   var appendWidgets = window.App.Utils.appendWidgets;
 
-  window.App.UIRaw = UIRaw;
+  window.App.UI = UI;
 
 }());

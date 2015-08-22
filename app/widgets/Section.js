@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function SectionRaw(labelText, childWidgets) {
+  function Section(labelText, childWidgets) {
     var domElement = document.createElement('fieldset');
     _.extend(domElement.style, fieldsetStyle);
 
@@ -41,6 +41,6 @@
 
   var appendWidgets = window.App.Utils.appendWidgets;
 
-  window.App.Widgets.SectionRaw = SectionRaw;
+  window.App.Widgets.Section = Section;
 
 }());

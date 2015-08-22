@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function FieldLabelRaw(text, additionalStyle, childWidgets) {
+  function FieldLabel(text, additionalStyle, childWidgets) {
     var domElement = document.createElement('label');
     _.extend(domElement.style, style, additionalStyle);
 
@@ -31,6 +31,6 @@
 
   var appendWidgets = window.App.Utils.appendWidgets;
 
-  window.App.Widgets.FieldLabelRaw = FieldLabelRaw;
+  window.App.Widgets.FieldLabel = FieldLabel;
 
 }());

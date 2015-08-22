@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function SelectFieldRaw(labelText, options, defaultValue) {
+  function SelectField(labelText, options, defaultValue) {
     var domElement = document.createElement('select-field');
     domElement.style.display = 'block';
 
@@ -10,7 +10,7 @@
     select.value = defaultValue;
     _.extend(select.style, style);
 
-    var label = new FieldLabelRaw(labelText, {}, [select]);
+    var label = new FieldLabel(labelText, {}, [select]);
     label.appendTo(domElement);
 
     this.appendTo = function(parentDomElement) {
@@ -51,8 +51,8 @@
     marginTop: '-2px'
   };
 
-  var FieldLabelRaw = window.App.Widgets.FieldLabelRaw;
+  var FieldLabel = window.App.Widgets.FieldLabel;
 
-  window.App.Widgets.SelectFieldRaw = SelectFieldRaw;
+  window.App.Widgets.SelectField = SelectField;
 
 }());

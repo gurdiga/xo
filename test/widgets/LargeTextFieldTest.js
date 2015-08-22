@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var LargeTextFieldRaw = window.App.Widgets.LargeTextFieldRaw;
+  var LargeTextField = window.App.Widgets.LargeTextField;
   var test = tape;
 
   var sandbox = document.createElement('div');
@@ -9,10 +9,10 @@
   var labelText = 'My large-text-field component';
   var fieldValue = 'Hi!';
 
-  var largeTextField = new LargeTextFieldRaw(labelText, fieldValue);
+  var largeTextField = new LargeTextField(labelText, fieldValue);
   largeTextField.appendTo(sandbox);
 
-  test('LargeTextFieldRaw label', function(t) {
+  test('LargeTextField label', function(t) {
     var label = sandbox.querySelector('label');
 
     t.ok(label, 'it renders a <label> element');
@@ -25,7 +25,7 @@
     t.end();
   });
 
-  test('LargeTextFieldRawTest label layout CSS', function(t) {
+  test('LargeTextFieldTest label layout CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label'));
 
     t.equal(css.display, 'block', 'is block-styled because it’s always one per line');
@@ -34,7 +34,7 @@
     t.end();
   });
 
-  test('LargeTextFieldRawTest label text CSS', function(t) {
+  test('LargeTextFieldTest label text CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('label>span'));
 
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
@@ -45,19 +45,19 @@
     t.end();
   });
 
-  test('LargeTextFieldRaw textarea value', function(t) {
+  test('LargeTextField textarea value', function(t) {
     var textarea = sandbox.querySelector('label>textarea');
 
     t.ok(textarea, 'it renders <textarea> element inside the <label> for binding (accessibility)');
     t.equal(textarea.value, fieldValue,
-      'the <textarea> has the value given in the LargeTextFieldRaw “value” attribute');
+      'the <textarea> has the value given in the LargeTextField “value” attribute');
     t.equal(largeTextField.getValue(), textarea.value,
       'its getValue() method returns the <textarea> value');
 
     t.end();
   });
 
-  test('LargeTextFieldRaw textarea CSS', function(t) {
+  test('LargeTextField textarea CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('textarea'));
 
     t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');

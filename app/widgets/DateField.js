@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  DateFieldRaw.DATE_FORMAT = 'dd.mm.yyyy';
+  DateField.DATE_FORMAT = 'dd.mm.yyyy';
 
-  function DateFieldRaw(labelText, value, additionalStyle) {
+  function DateField(labelText, value, additionalStyle) {
     var domElement = document.createElement('date-field');
     domElement.style.display = 'block';
 
-    var input = new TextFieldInputRaw(value, additionalStyle);
+    var input = new TextFieldInput(value, additionalStyle);
     var datePickerButton = createDatePickerButton(this);
 
-    var label = new FieldLabelRaw(labelText, {}, [input, datePickerButton]);
+    var label = new FieldLabel(labelText, {}, [input, datePickerButton]);
     label.appendTo(domElement);
 
     this.appendTo = function(parentDomElement) {
@@ -28,11 +28,11 @@
 
     this.getDate = function() {
       var text = input.getValue();
-      return text ? DateFormatting.parse(text, DateFieldRaw.DATE_FORMAT) : new Date();
+      return text ? DateFormatting.parse(text, DateField.DATE_FORMAT) : new Date();
     };
 
     this.setDate = function(date) {
-      var formattedDate = DateFormatting.format(date, DateFieldRaw.DATE_FORMAT);
+      var formattedDate = DateFormatting.format(date, DateField.DATE_FORMAT);
       input.setValue(formattedDate);
       window.setTimeout(input.focus);
     };
@@ -69,11 +69,11 @@
   };
 
   var DatePicker = window.App.Widgets.DatePicker;
-  var FieldLabelRaw = window.App.Widgets.FieldLabelRaw;
-  var TextFieldInputRaw = window.App.Widgets.TextFieldInputRaw;
+  var FieldLabel = window.App.Widgets.FieldLabel;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var DateFormatting = window.App.Utils.DateFormatting;
 
-  window.App.Widgets.DateFieldRaw = DateFieldRaw;
+  window.App.Widgets.DateField = DateField;
 
 }());

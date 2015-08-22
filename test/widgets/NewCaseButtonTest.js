@@ -1,11 +1,11 @@
 (function() {
   'use strict';
 
-  var NewCaseButtonRaw = window.App.Widgets.NewCaseButtonRaw;
+  var NewCaseButton = window.App.Widgets.NewCaseButton;
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var newCaseButton = new NewCaseButtonRaw();
+  var newCaseButton = new NewCaseButton();
   newCaseButton.onClick(onClick);
   newCaseButton.appendTo(sandbox);
 
@@ -15,7 +15,7 @@
 
   document.body.appendChild(sandbox);
 
-  test('NewCaseButtonRaw', function(t) {
+  test('NewCaseButton', function(t) {
     var button = sandbox.querySelector('button');
     t.ok(button, 'renders a <button>');
     t.equal(button.textContent, 'Procedură nouă', 'has the label “Procedură nouă”');
@@ -23,7 +23,7 @@
     t.end();
   });
 
-  test('NewCaseButtonRaw CSS', function(t) {
+  test('NewCaseButton CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('button'));
     t.equal(css.padding, '12px 24px', 'has appropriate padding');
     t.equal(css.fontWeight, 'bold', 'has bold text');
@@ -35,7 +35,7 @@
     t.end();
   });
 
-  test('NewCaseButtonRaw behavior', function(t) {
+  test('NewCaseButton behavior', function(t) {
     var button = sandbox.querySelector('button');
     button.click();
     t.ok(onClick.executed, 'triggers the onClick function');
