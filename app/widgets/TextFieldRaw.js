@@ -16,6 +16,10 @@
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
     };
+
+    this.destroy = function() {
+      domElement.parentNode.removeChild(domElement);
+    };
   }
 
   var FieldLabel = window.App.Widgets.FieldLabelRaw;

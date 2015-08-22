@@ -6,7 +6,7 @@
     domElement.style.display = 'block';
 
     var textarea = document.createElement('textarea');
-    textarea.value = value;
+    textarea.value = value || '';
     _.extend(textarea.style, style, additionalStyle);
 
     var label = new FieldLabelRaw(labelText, {}, [textarea]);
@@ -18,6 +18,10 @@
 
     this.getValue = function() {
       return textarea.value;
+    };
+
+    this.destroy = function() {
+      domElement.parentNode.removeChild(domElement);
     };
 
     outlineFieldOnFocus(textarea);

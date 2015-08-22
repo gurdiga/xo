@@ -30,6 +30,10 @@
         f(event.target.value);
       });
     };
+
+    this.destroy = function() {
+      domElement.parentNode.removeChild(domElement);
+    };
   }
 
   function appendOptionTo(domElement) {

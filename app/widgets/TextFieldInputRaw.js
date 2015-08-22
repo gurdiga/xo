@@ -3,7 +3,7 @@
 
   function TextFieldInputRaw(value, additionalStyle) {
     var domElement = document.createElement('input');
-    domElement.value = value;
+    domElement.value = value || '';
     _.extend(domElement.style, style, additionalStyle);
 
     this.appendTo = function(parentDomElement) {

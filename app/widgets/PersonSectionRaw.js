@@ -4,49 +4,39 @@
   var PERSON_TYPES = definePersonTypes();
   var PERSON_TYPE_INTERNAL_NAME = 'gen-persoană';
 
-  function PersonSectionRaw(labelText, value) {
+  function PersonSectionRaw(labelText, fieldValues) {
     var domElement = document.createElement('person-section');
     domElement.style.display = 'block';
 
-    var fields = createFields();
-    var section = new SectionRaw(labelText, fields);
+    var personTypeField = createPersonTypeField(fieldValues);
+    var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
+
+    var section = new SectionRaw(labelText, getAllFields());
     section.appendTo(domElement);
+
+    personTypeField.onChange(function(personType) {
+      personTypeSpecificFields.forEach(destroyField);
+      fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
+      personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
+      section.appendWidgets(personTypeSpecificFields);
+    });
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
     };
 
     this.getValue = function() {
-      var value = {};
+      var fieldValues = {};
 
-      fields.forEach(function(field) {
-        value[field.internalName] = field.getValue();
+      getAllFields().forEach(function(field) {
+        fieldValues[field.internalName] = field.getValue();
       });
 
-      return value;
+      return fieldValues;
     };
 
-    function createFields() {
-      var personTypeField = createPersonTypeField();
-      var personTypeSpecificFields = createPersonTypeSpecificFields();
-
+    function getAllFields() {
       return [personTypeField].concat(personTypeSpecificFields);
-    }
-
-    function createPersonTypeField() {
-      var field = new SelectFieldRaw('Gen persoană', PERSON_TYPES, getPersonType());
-      field.internalName = PERSON_TYPE_INTERNAL_NAME;
-
-      return field;
-    }
-
-    function createPersonTypeSpecificFields() {
-      if (getPersonType() === PERSON_TYPES.INDIVIDUAL) return createFieldsForIndividual(value);
-      else return createFieldsForCompany(value);
-    }
-
-    function getPersonType() {
-      return value[PERSON_TYPE_INTERNAL_NAME];
     }
   }
 
@@ -61,30 +51,47 @@
     return types;
   }
 
-  function createFieldsForIndividual(value) {
+  function createPersonTypeField(fieldValues) {
+    var personType = fieldValues[PERSON_TYPE_INTERNAL_NAME];
+    var field = new SelectFieldRaw('Gen persoană', PERSON_TYPES, personType);
+    field.internalName = PERSON_TYPE_INTERNAL_NAME;
+    return field;
+  }
+
+  function createPersonTypeSpecificFields(fieldValues) {
+    var personType = fieldValues[PERSON_TYPE_INTERNAL_NAME];
+    if (personType === PERSON_TYPES.INDIVIDUAL) return createFieldsForIndividual(fieldValues);
+    else return createFieldsForCompany(fieldValues);
+  }
+
+  function createFieldsForIndividual(fieldValues) {
     return [
-      createField(TextFieldRaw, 'Nume', 'nume', value),
-      createField(TextFieldRaw, 'IDNP', 'idnp', value),
-      createField(DateFieldRaw, 'Data naşterii', 'data-naşterii', value),
-      createField(LargeTextFieldRaw, 'Domiciliu', 'domiciliu', value),
-      createField(LargeTextFieldRaw, 'Note', 'note', value)
+      createField(TextFieldRaw, 'Nume', 'nume', fieldValues),
+      createField(TextFieldRaw, 'IDNP', 'idnp', fieldValues),
+      createField(DateFieldRaw, 'Data naşterii', 'data-naşterii', fieldValues),
+      createField(LargeTextFieldRaw, 'Domiciliu', 'domiciliu', fieldValues),
+      createField(LargeTextFieldRaw, 'Note', 'note', fieldValues)
     ];
   }
 
-  function createFieldsForCompany(value) {
+  function createFieldsForCompany(fieldValues) {
     return [
-      createField(TextFieldRaw, 'Denumire', 'denumire', value),
-      createField(TextFieldRaw, 'IDNO', 'idno', value),
-      createField(LargeTextFieldRaw, 'Sediu', 'sediu', value),
-      createField(TextFieldRaw, 'Persoană de contact', 'persoană-de-contact', value),
-      createField(LargeTextFieldRaw, 'Note', 'note', value)
+      createField(TextFieldRaw, 'Denumire', 'denumire', fieldValues),
+      createField(TextFieldRaw, 'IDNO', 'idno', fieldValues),
+      createField(LargeTextFieldRaw, 'Sediu', 'sediu', fieldValues),
+      createField(TextFieldRaw, 'Persoană de contact', 'persoană-de-contact', fieldValues),
+      createField(LargeTextFieldRaw, 'Note', 'note', fieldValues)
     ];
   }
 
-  function createField(FieldClass, labelText, internalName, value) {
-    var field = new FieldClass(labelText, value[internalName]);
+  function createField(FieldClass, labelText, internalName, fieldValues) {
+    var field = new FieldClass(labelText, fieldValues[internalName]);
     field.internalName = internalName;
     return field;
+  }
+
+  function destroyField(field) {
+    field.destroy();
   }
 
   var SectionRaw = window.App.Widgets.SectionRaw;

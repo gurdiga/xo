@@ -36,6 +36,10 @@
       input.setValue(formattedDate);
       window.setTimeout(input.focus);
     };
+
+    this.destroy = function() {
+      domElement.parentNode.removeChild(domElement);
+    };
   }
 
   function createDatePickerButton(dateField) {

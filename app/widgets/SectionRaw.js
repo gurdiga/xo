@@ -16,8 +16,9 @@
       parentDomElement.appendChild(domElement);
     };
 
-    this.removeFromParent = function() {
-      domElement.parentNode.removeChild(domElement);
+    this.appendWidgets = function(childWidgets) {
+      if (!Array.isArray(childWidgets)) childWidgets = [childWidgets];
+      appendWidgets(childWidgets).to(domElement);
     };
   }
 
