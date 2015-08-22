@@ -9,6 +9,6 @@
 
   var onFocus = window.App.Mixins.onFocus;
 
-  window.App.Mixins.outlineFieldOnFocus = outlineFieldOnFocus;
+  window.App.Utils.outlineFieldOnFocus = outlineFieldOnFocus;
 
 }());

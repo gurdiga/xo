@@ -37,7 +37,7 @@
     outline: 'none'
   };
 
-  var outlineFieldOnFocus = window.App.Mixins.outlineFieldOnFocus;
+  var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
 
   window.App.Widgets.TextFieldInputRaw = TextFieldInputRaw;
 

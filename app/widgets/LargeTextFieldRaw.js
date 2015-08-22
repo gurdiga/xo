@@ -43,7 +43,7 @@
 
   var FieldLabelRaw = window.App.Widgets.FieldLabelRaw;
 
-  var outlineFieldOnFocus = window.App.Mixins.outlineFieldOnFocus;
+  var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
 
   window.App.Widgets.LargeTextFieldRaw = LargeTextFieldRaw;
 
