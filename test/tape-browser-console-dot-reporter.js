@@ -14,6 +14,7 @@
       tape.createStream({objectMode: true})
       .on('data', processMessage)
       .on('end', displayResults)
+      .on('error', displayError)
     );
   }
 
@@ -81,6 +82,10 @@
     console.log('actual:   ', typeof message.actual  , inspectableValue(message.actual));
     console.log('location: ', getAppStack(message));
     console.log('');
+  }
+
+  function displayError(e) {
+    console.error(e);
   }
 
   function getTextContext(message) {
