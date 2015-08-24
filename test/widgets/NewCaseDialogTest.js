@@ -7,24 +7,22 @@
   var sandbox = document.createElement('div');
   document.body.appendChild(sandbox);
 
-  var newCaseDialog = new NewCaseDialog({
-    creditorul: {},
-    debitorul: {}
-  });
+  var newCaseDialog = new NewCaseDialog();
   newCaseDialog.appendTo(sandbox);
 
   test('NewCaseDialog', function(t) {
-    var dialogHeader = sandbox.querySelector('new-case-dialog>h1');
-    t.equal(dialogHeader.textContent, 'Procedură de ordin general', 'the header has the appropriate text');
+    var domElement = sandbox.querySelector('new-case-dialog');
 
-    var css = window.getComputedStyle(dialogHeader);
-    t.equal(css.fontSize, '42px', 'the header has the appropriate font size');
-    t.equal(css.fontFamily, 'TitleFont', 'the header has the appropriate font family');
+    t.ok(domElement, 'renders a <new-case-dialog/>');
+    t.equal(domElement.style.display, 'block', '<new-case-dialog/> has display:block');
 
-    var creditorSection = sandbox.querySelector('new-case-dialog>person-section');
-    t.ok(creditorSection, 'there is person section');
+    var title = domElement.querySelector(':scope>h1');
+    t.ok(title, 'has title');
 
-    document.body.removeChild(sandbox);
+    // TODO:
+    // - assert text
+    // - assert CSS
+
     t.end();
   });
 
