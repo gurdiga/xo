@@ -18,10 +18,12 @@
 
     var title = domElement.querySelector(':scope>h1');
     t.ok(title, 'has title');
+    t.equal(title.textContent, 'Procedură de ordin general', 'title has the appropriate text');
 
-    // TODO:
-    // - assert text
-    // - assert CSS
+    var css = window.getComputedStyle(title);
+    t.equal(css.fontSize, '42px', 'title has the appropriate font size');
+    t.equal(css.fontFamily, 'TitleFont', 'title has the appropriate font family');
+    t.equal(css.fontWeight, 'bold', 'title has the appropriate font weight');
 
     t.end();
   });
