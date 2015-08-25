@@ -33,7 +33,6 @@
     var fieldset = sandbox.querySelector('fieldset');
     var css = window.getComputedStyle(fieldset);
     var parentCss = window.getComputedStyle(fieldset.parentNode);
-    t.equal(css.float, 'left', 'is floated left to allow for two columns');
 
     var width = Math.round(parseInt(css.width));
     var parentWidth = Math.round(parseInt(parentCss.width));

@@ -21,7 +21,6 @@
   }
 
   var fieldsetStyle = {
-    float: 'left',
     width: '43%',
     border: 'none',
     margin: '0 7% 10px 0',
