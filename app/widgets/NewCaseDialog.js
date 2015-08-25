@@ -4,10 +4,15 @@
   function NewCaseDialog() {
     var domElement = document.createElement('new-case-dialog');
     domElement.style.display = 'block';
+    domElement.style.backgroundColor = 'white';
+    domElement.style.width = '960px';
+    domElement.style.padding = '50px';
 
-    var title = createTitle();
-
-    appendWidgets([title]).to(domElement);
+    appendWidgets([
+      createTitle(),
+      new DateField('Data intentării'),
+      new PersonSection('Creditorul', {})
+    ]).to(domElement);
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
@@ -26,6 +31,9 @@
   }
 
   var appendWidgets = window.App.Utils.appendWidgets;
+
+  var DateField = window.App.Widgets.DateField;
+  var PersonSection = window.App.Widgets.PersonSection;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 
