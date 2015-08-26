@@ -3,21 +3,40 @@
 
   function NewCaseDialog() {
     var domElement = document.createElement('new-case-dialog');
-    domElement.style.display = 'block';
-    domElement.style.backgroundColor = 'white';
-    domElement.style.width = '960px';
-    domElement.style.padding = '50px';
+    _.extend(domElement.style, style);
+
+    var data = {
+      'creditor': {},
+      'debitor': {
+        'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
+      }
+    };
 
     appendWidgets([
       createTitle(),
-      new DateField('Data intentării'),
-      new PersonSection('Creditorul', {})
+      new DateField('Data intentării', '', dateFieldStyle),
+      new PersonSection('Creditor', data['creditor'], { width: '380px' }),
+      new PersonSection('Debitor', data['debitor'], { width: '380px', marginLeft: '60px' })
     ]).to(domElement);
 
     this.appendTo = function(parentDomElement) {
       parentDomElement.appendChild(domElement);
     };
   }
+
+  var style = {
+    display: 'block',
+    backgroundColor: 'white',
+    width: '960px',
+    padding: '50px',
+    border: '1px solid #ddd',
+    boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
+  };
+
+  var dateFieldStyle = {
+    width: '100px',
+    marginBottom: '10px'
+  };
 
   function createTitle() {
     var title = document.createElement('h1');

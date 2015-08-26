@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  function Section(labelText, childWidgets) {
+  function Section(labelText, childWidgets, additionalStyle) {
     var domElement = document.createElement('fieldset');
-    _.extend(domElement.style, fieldsetStyle);
+    _.extend(domElement.style, fieldsetStyle, additionalStyle);
 
     var legend = document.createElement('legend');
     legend.textContent = labelText;
@@ -21,10 +21,9 @@
   }
 
   var fieldsetStyle = {
-    width: '43%',
     border: 'none',
-    margin: '0 7% 10px 0',
-    padding: '10px 0 0'
+    margin: '0',
+    padding: '10px 0 40px'
   };
 
   var legendStyle = {

@@ -12,10 +12,18 @@
     'data-naşterii': '01.02.1960'
   };
   var label = 'Test person section';
-  var personSection = new PersonSection(label, fieldValues);
+  var additionalStyle = { width: '450px' };
+  var personSection = new PersonSection(label, fieldValues, additionalStyle);
   personSection.appendTo(sandbox);
 
   test('PersonSection', function(t) {
+    var domElement = sandbox.querySelector('person-section');
+    t.ok(domElement, 'exists');
+
+    var css = domElement.style;
+    t.equal(css.display, 'inline-block', 'has display inline-block');
+    t.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
+
     t.equal(getSectionLabel(), label, 'section has the appropriate label');
 
     t.test('person type field', function(t) {

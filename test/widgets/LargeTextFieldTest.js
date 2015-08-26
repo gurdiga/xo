@@ -67,7 +67,7 @@
     t.equal(css.fontSize, '14px', 'has 14px font size as the TextField input does');
     t.equal(css.fontFamily, 'sans-serif', 'has sans-serif font-family as the TextField input does');
     t.equal(css.lineHeight, '24.5px', 'has a 1.75 line height to accommodate the lines on the background');
-    t.equal(css.width, '364px', 'is 26em wide to wrap to the next line and right align with the TextField input');
+    t.equal(css.width, '340px', 'is 340px wide to wrap to the next line and right align with the TextField input');
     t.equal(css.height, '81.1875px', 'is 5.8em high to neatly accommodate 3 lines of text');
     t.equal(
       css.backgroundImage,

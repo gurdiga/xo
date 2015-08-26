@@ -63,7 +63,7 @@
     t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
     t.equal(css.font, 'normal normal bold normal 14px/normal sans-serif', 'the text is rendered with “bold 14px sans-serif”');
-    t.equal(css.width, '224px', 'is 16em wide');
+    t.equal(css.width, '200px', 'is 200px wide');
     t.equal(
       css.backgroundImage,
       'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',

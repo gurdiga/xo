@@ -63,7 +63,7 @@
 
   test('SelectField select CSS', function(t) {
     var css = window.getComputedStyle(sandbox.querySelector('select'));
-    t.equal(css.width, '224px', 'is 16em wide too (as TextField input is)');
+    t.equal(css.width, '200px', 'is 200px wide too (as TextField input is)');
     t.equal(css.fontSize, '11px', 'has 11px font size (unlike TextField input does, because selects are funky)');
     t.equal(css.position, 'absolute', 'is absolutely-positioned to allow for precise vertical alignment without bothering the <label>');
     t.equal(css.marginTop, '-2px', 'is shifted up 2px to vertically align with the <label>');

@@ -4,9 +4,10 @@
   var PERSON_TYPES = definePersonTypes();
   var PERSON_TYPE_INTERNAL_NAME = 'gen-persoană';
 
-  function PersonSection(labelText, fieldValues) {
+  function PersonSection(labelText, fieldValues, additionalStyle) {
     var domElement = document.createElement('person-section');
-    domElement.style.display = 'block';
+    domElement.style.display = 'inline-block';
+    _.extend(domElement.style, additionalStyle);
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);

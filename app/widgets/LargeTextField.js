@@ -27,7 +27,7 @@
     padding: '4px',
     marginLeft: '1em',
     font: 'bold 14px/1.75 sans-serif',
-    width: '26em',
+    width: '340px',
     height: '5.8em',
     backgroundImage: 'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
     borderRadius: '2px',

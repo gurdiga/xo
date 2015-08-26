@@ -39,9 +39,11 @@
     };
   }
 
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
+
   var style = {
-    width: '16em',
-    fontSize: '14px',
+    width: TextFieldInput.DEFAULT_WIDTH,
+    font: TextFieldInput.DEFAULT_FONT,
     position: 'absolute',
     marginTop: '-2px'
   };
