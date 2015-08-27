@@ -31,8 +31,8 @@
     height: '5.8em',
     backgroundImage: 'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
     borderRadius: '2px',
-    border: 'none',
-    outline: 'none',
+    borderWidth: '0px',
+    outlineWidth: '0px',
     resize: 'none'
   };
 

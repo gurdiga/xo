@@ -24,11 +24,11 @@
   });
 
   test('NewCaseButton CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('button'));
-    t.equal(css.padding, '12px 24px', 'has appropriate padding');
+    var css = sandbox.querySelector('button').style;
+    t.equal(css.padding, '0.5em 1em', 'has appropriate padding');
     t.equal(css.fontWeight, 'bold', 'has bold text');
-    t.equal(css.fontSize, '24px', 'has 1.5em font size');
-    t.equal(css.backgroundColor, 'rgb(255, 255, 255)', 'has white background color');
+    t.equal(css.fontSize, '1.5em', 'has 1.5em font size');
+    t.equal(css.backgroundColor, 'white', 'has white background color');
     t.equal(css.border, '1px solid rgb(204, 204, 204)', 'has a thing gray border');
     t.equal(css.borderRadius, '5px', 'has a slightly rounded corners');
 

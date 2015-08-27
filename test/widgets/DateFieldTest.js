@@ -24,7 +24,7 @@
   });
 
   test('DateField label layout CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label'));
+    var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -32,12 +32,12 @@
   });
 
   test('DateField label text CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label>span'));
+    var css = sandbox.querySelector('label>span').style;
 
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
     t.equal(css.display, 'inline-block', 'is inline-block to be able to have it’s own width');
-    t.equal(css.width, '154px', 'is 11em wide');
+    t.equal(css.width, '11em', 'is 11em wide');
 
     t.end();
   });
@@ -59,10 +59,12 @@
   });
 
   test('DateField input CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('input'));
-    t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
+    var css = sandbox.querySelector('input').style;
+    t.equal(css.color, 'black', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
-    t.equal(css.font, 'normal normal bold normal 14px/normal sans-serif', 'the text is rendered with “bold 14px sans-serif”');
+    t.equal(css.fontSize, '14px', 'the text is rendered with 14px');
+    t.equal(css.fontWeight, 'bold', 'the text is rendered bold');
+    t.equal(css.fontFamily, 'sans-serif', 'the text is rendered with sans-serif');
     t.equal(css.width, '200px', 'is 200px wide');
     t.equal(
       css.backgroundImage,
@@ -72,8 +74,8 @@
     t.equal(css.backgroundPosition, '0px -4px',
       'the background image is vertically positioned -4px to match the input padding');
     t.equal(css.borderRadius, '2px', 'has nice rounded corners');
-    t.equal(css.border, '0px none rgb(0, 0, 0)', 'it has no border, its role is taken on by the background image');
-    t.equal(css.outline, 'rgb(0, 0, 0) none 0px', 'it has no outline, its role is taken on by the box-shadow');
+    t.equal(css.borderWidth, '0px', 'it has no border, its role is taken on by the background image');
+    t.equal(css.outlineWidth, '0px', 'it has no outline, its role is taken on by the box-shadow');
 
     t.end();
   });
@@ -95,13 +97,13 @@
     var button = sandbox.querySelector('label>input+button');
     t.ok(button, 'it’s positioned at the right side of input');
 
-    var css = window.getComputedStyle(button);
+    var css = button.style;
     t.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
     t.equal(css.marginLeft, '-18px', 'uses 18px of negative left margin to look as being inside of the field');
     t.equal(css.width, '20px', 'is 20px wide to accommodate clicking');
     t.equal(css.height, '20px', 'is 20px high to accommodate clicking');
     t.equal(css.padding, '0px', 'has no padding');
-    t.equal(css.backgroundColor, 'rgba(0, 0, 0, 0)', 'is transparent to be less intrusive');
+    t.equal(css.backgroundColor, 'transparent', 'is transparent to be less intrusive');
     t.ok(/^url\(.+\)/.test(css.backgroundImage), 'has a date picker image on the background');
     t.equal(css.backgroundPosition, '50% 50%', 'its background image is centered');
     t.equal(css.backgroundRepeat, 'no-repeat', 'background image is not repeated');

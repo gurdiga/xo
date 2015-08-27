@@ -25,7 +25,7 @@
   });
 
   test('TextField label layout CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label'));
+    var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -33,11 +33,11 @@
   });
 
   test('TextField label text CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label>span'));
+    var css = sandbox.querySelector('label>span').style;
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
     t.equal(css.display, 'inline-block', 'is inline-block to be able to have it’s own width');
-    t.equal(css.width, '154px', 'is 11em wide');
+    t.equal(css.width, '11em', 'is 11em wide');
 
     t.end();
   });
@@ -55,10 +55,12 @@
   });
 
   test('TextField input CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('input'));
-    t.equal(css.color, 'rgb(0, 0, 0)', 'its text renders in black color');
+    var css = sandbox.querySelector('input').style;
+    t.equal(css.color, 'black', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
-    t.equal(css.font, 'normal normal bold normal 14px/normal sans-serif', 'the text is rendered with “bold 14px sans-serif”');
+    t.equal(css.fontWeight, 'bold', 'the text is rendered with bold');
+    t.equal(css.fontSize, '14px', 'the text is rendered with 14px');
+    t.equal(css.fontFamily, 'sans-serif', 'the text is rendered with sans-serif');
     t.equal(css.width, '200px', 'is 200px wide');
     t.equal(
       css.backgroundImage,
@@ -68,8 +70,8 @@
     t.equal(css.backgroundPosition, '0px -4px',
       'the background image is vertically positioned -4px to match the input padding');
     t.equal(css.borderRadius, '2px', 'has nice rounded corners');
-    t.equal(css.border, '0px none rgb(0, 0, 0)', 'it has no border, it’s role is taken on by the background image');
-    t.equal(css.outline, 'rgb(0, 0, 0) none 0px', 'it has no outline, it’s role is taken on by the box-shadow');
+    t.equal(css.borderWidth, '0px', 'it has no border, it’s role is taken on by the background image');
+    t.equal(css.outlineWidth, '0px', 'it has no outline, it’s role is taken on by the box-shadow');
 
     t.end();
   });
@@ -87,7 +89,7 @@
     textField.appendTo(sandbox);
 
     var input = sandbox.querySelector('input');
-    var css = window.getComputedStyle(input);
+    var css = input.style;
     t.deepEqual(_.pick(css, passedCustomPorperties), customCSS, 'applies the given CSS properties to <input/>');
 
     document.body.removeChild(sandbox);

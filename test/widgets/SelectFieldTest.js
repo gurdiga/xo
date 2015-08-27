@@ -33,7 +33,7 @@
   });
 
   test('SelectField label layout CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label'));
+    var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
 
@@ -41,11 +41,11 @@
   });
 
   test('SelectField label text CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label>span'));
+    var css = sandbox.querySelector('label>span').style;
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
     t.equal(css.display, 'inline-block', 'is inline-block to be able to have it’s own width');
-    t.equal(css.width, '154px', 'is 11em wide');
+    t.equal(css.width, '11em', 'is 11em wide');
 
     t.end();
   });
@@ -62,9 +62,9 @@
   });
 
   test('SelectField select CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('select'));
+    var css = sandbox.querySelector('select').style;
     t.equal(css.width, '200px', 'is 200px wide too (as TextField input is)');
-    t.equal(css.fontSize, '11px', 'has 11px font size (unlike TextField input does, because selects are funky)');
+    t.equal(css.fontSize, '14px', 'has 14px font size');
     t.equal(css.position, 'absolute', 'is absolutely-positioned to allow for precise vertical alignment without bothering the <label>');
     t.equal(css.marginTop, '-2px', 'is shifted up 2px to vertically align with the <label>');
 

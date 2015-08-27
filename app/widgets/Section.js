@@ -21,7 +21,7 @@
   }
 
   var fieldsetStyle = {
-    border: 'none',
+    borderWidth: '0px',
     margin: '0',
     padding: '10px 0 40px'
   };

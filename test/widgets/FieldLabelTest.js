@@ -26,7 +26,7 @@
   });
 
   test('FieldLabel layout CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label'));
+    var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'it’ll be a block element because there’ll be one per line in most cases');
     t.equal(css.margin, '0px 0px 3px 5px', 'it sets up some spacing');
 
@@ -34,11 +34,11 @@
   });
 
   test('FieldLabel text CSS', function(t) {
-    var css = window.getComputedStyle(sandbox.querySelector('label>span'));
+    var css = sandbox.querySelector('label>span').style;
     t.equal(css.color, 'rgb(85, 85, 85)', 'the text color should be a bit dimmed compared to the field’s text color');
     t.equal(css.fontSize, '14px', 'the font size should be 14px');
     t.equal(css.display, 'inline-block', 'the <span> is an inline-block to be able to have a fixed width');
-    t.equal(css.width, '154px', 'the <span> has a fixed width of 11em');
+    t.equal(css.width, '11em', 'the <span> has a fixed width of 11em');
 
     t.end();
   });
