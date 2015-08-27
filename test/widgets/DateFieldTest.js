@@ -116,7 +116,11 @@
     var datePicker = sandbox.querySelector('label>.pika-single');
     t.equal(datePicker, null, 'date picker is not there before clicking the button');
 
+    var bodyClickListener = prepareBodyClickListener();
+
     button.click();
+    t.ok(!bodyClickListener.receivedClicks, 'clicks do not propagate to <body> and hide the picker');
+
     datePicker = sandbox.querySelector('label>.pika-single');
     t.ok(datePicker, 'inserts the date picker');
     t.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
@@ -210,6 +214,19 @@
       var keydownEvent = new Event('keydown');
       keydownEvent.keyCode = 27;
       document.body.dispatchEvent(keydownEvent);
+    }
+
+    function prepareBodyClickListener() {
+      var listener = {
+        receivedClicks: false
+      };
+
+      document.body.addEventListener('click', function eventHandler() {
+        listener.receivedClicks = true;
+        document.body.removeEventListener('click', eventHandler);
+      });
+
+      return listener;
     }
   });
 

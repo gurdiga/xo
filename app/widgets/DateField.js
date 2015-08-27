@@ -42,6 +42,13 @@
 
     button.addEventListener('click', function(e) {
       e.stopPropagation();
+
+      // this is needed because <button>’s parent is a <label>, which
+      // assumes clicks of its children and, in Firefox and Safari, propagates
+      // them further to the <body> which causes the picker to be hidden by
+      // the click handler below.
+      e.preventDefault();
+
       DatePicker.instance.toggleFor(dateField);
     });
     _.extend(button.style, datePickerButtonStyle);
@@ -49,6 +56,15 @@
 
     return button;
   }
+
+  document.body.addEventListener('keydown', function(e) {
+    var isEscapeKey = e.keyCode === 27;
+    if (isEscapeKey) DatePicker.instance.hide();
+  });
+
+  document.body.addEventListener('click', function() {
+    DatePicker.instance.hide();
+  });
 
   var datePickerButtonStyle = {
     width: '20px',

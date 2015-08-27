@@ -52,15 +52,6 @@
       currentDateField.setDate(date);
       this.hide();
     }.bind(this);
-
-    document.body.addEventListener('keydown', function(e) {
-      var isEscapeKey = e.keyCode === 27;
-      if (isEscapeKey) this.hide();
-    }.bind(this));
-
-    document.body.addEventListener('click', function() {
-      this.hide();
-    }.bind(this));
   }
 
   var DateFormatting = window.App.Utils.DateFormatting;
