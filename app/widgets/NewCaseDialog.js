@@ -16,12 +16,11 @@
       createTitle(),
       new DateField('Data intentării', '', dateFieldStyle),
       new PersonSection('Creditor', data['creditor'], { width: '380px' }),
-      new PersonSection('Debitor', data['debitor'], { width: '380px', marginLeft: '60px' })
+      new PersonSection('Debitor', data['debitor'], { width: '380px', marginLeft: '60px' }),
+      createAddPersonButton()
     ]).to(domElement);
 
-    this.appendTo = function(parentDomElement) {
-      parentDomElement.appendChild(domElement);
-    };
+    this.appendTo = getAppenderOf(domElement);
   }
 
   var style = {
@@ -49,10 +48,17 @@
     return title;
   }
 
-  var appendWidgets = window.App.Utils.appendWidgets;
+  function createAddPersonButton() {
+    var button = new AddPersonButton('adaugă debitor');
+    return button;
+  }
 
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
+  var AddPersonButton = window.App.Widgets.AddPersonButton;
+
+  var appendWidgets = window.App.Utils.appendWidgets;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 

@@ -80,6 +80,16 @@
       t.end();
     });
 
+    t.test('add debitor button', function(t) {
+      var button = domElement.querySelector('add-person-button');
+      t.ok(button, 'exists');
+      t.equal(button.textContent, 'adaugă debitor', 'has the appropriate label');
+
+      // TODO: asssert it adds a PersonSection on click
+
+      t.end();
+    });
+
     t.end();
   });
 
