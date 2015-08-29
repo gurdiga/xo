@@ -94,8 +94,15 @@
 
       var newSection = domElement.querySelector('person-section:last-of-type');
       t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
+      t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
 
-      // TODO: assert the new person section label
+      var newSectionLabel = newSection.querySelector('legend').textContent;
+      t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');
+
+      button.click();
+      newSection = domElement.querySelector('person-section:last-of-type');
+      t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
+      t.equal(newSection.style.marginLeft, '60px', 'the new section has the appropriate marginLeft');
 
       t.end();
     });

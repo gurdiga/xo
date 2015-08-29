@@ -51,13 +51,22 @@
   function createAddPersonButton(domElement) {
     var button = new AddPersonButton('adaugă debitor');
 
-    button.onClick(function() {
-      var newPersonSection = new PersonSection('', {});
-      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
-      newPersonSection.insertAfter(lastPersonSectionDomElement);
-    });
+    button.onClick(addPersonSectionTo(domElement));
 
     return button;
+  }
+
+  function addPersonSectionTo(domElement) {
+    return function() {
+      var willBeInTheRightColumn = domElement.querySelectorAll('person-section').length % 2 === 1;
+      var style = { width: '380px' };
+
+      if (willBeInTheRightColumn) style.marginLeft = '60px';
+
+      var personSection = new PersonSection('Debitor', {}, style);
+      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+      personSection.insertAfter(lastPersonSectionDomElement);
+    };
   }
 
   var DateField = window.App.Widgets.DateField;
