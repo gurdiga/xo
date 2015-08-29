@@ -81,11 +81,20 @@
     });
 
     t.test('add debitor button', function(t) {
-      var button = domElement.querySelector('add-person-button');
+      var button = domElement.querySelector('add-person-button>button');
       t.ok(button, 'exists');
       t.equal(button.textContent, 'adaugă debitor', 'has the appropriate label');
 
-      // TODO: asssert it adds a PersonSection on click
+      var lastSection = domElement.querySelector('person-section:last-of-type');
+      var personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+      button.click();
+      var personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+
+      t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
+
+      // TODO: assert the added PersonSection is in the right place
+      var newSection = domElement.querySelector('person-section:last-of-type');
+      t.skip(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
 
       t.end();
     });

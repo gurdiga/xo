@@ -17,7 +17,7 @@
       new DateField('Data intentării', '', dateFieldStyle),
       new PersonSection('Creditor', data['creditor'], { width: '380px' }),
       new PersonSection('Debitor', data['debitor'], { width: '380px', marginLeft: '60px' }),
-      createAddPersonButton()
+      createAddPersonButton(domElement)
     ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -48,8 +48,14 @@
     return title;
   }
 
-  function createAddPersonButton() {
+  function createAddPersonButton(domElement) {
     var button = new AddPersonButton('adaugă debitor');
+
+    button.onClick(function() {
+      var newPersonSection = new PersonSection('', {});
+      newPersonSection.appendTo(domElement);
+    });
+
     return button;
   }
 
