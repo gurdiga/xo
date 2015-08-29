@@ -53,7 +53,8 @@
 
     button.onClick(function() {
       var newPersonSection = new PersonSection('', {});
-      newPersonSection.appendTo(domElement);
+      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+      newPersonSection.insertAfter(lastPersonSectionDomElement);
     });
 
     return button;

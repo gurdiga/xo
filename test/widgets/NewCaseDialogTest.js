@@ -92,9 +92,10 @@
 
       t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
 
-      // TODO: assert the added PersonSection is in the right place
       var newSection = domElement.querySelector('person-section:last-of-type');
-      t.skip(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
+      t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
+
+      // TODO: assert the new person section label
 
       t.end();
     });
