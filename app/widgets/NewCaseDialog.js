@@ -12,13 +12,11 @@
       }
     };
 
-    appendWidgets([
-      createTitle(),
-      new DateField('Data intentării', '', dateFieldStyle),
-      new PersonSection('Creditor', data['creditor'], { width: '380px' }),
-      new PersonSection('Debitor', data['debitor'], { width: '380px', marginLeft: '60px' }),
-      createAddPersonButton(domElement)
-    ]).to(domElement);
+    addTitle(domElement);
+    addRegistrationDateField(domElement);
+    addPersonSection(domElement, 'Creditor', data['creditor']);
+    addPersonSection(domElement, 'Debitor', data['debitor']);
+    addAddPersonButton(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -37,7 +35,7 @@
     marginBottom: '10px'
   };
 
-  function createTitle() {
+  function addTitle(domElement) {
     var title = document.createElement('h1');
 
     title.textContent = 'Procedură de ordin general';
@@ -45,35 +43,47 @@
     title.style.fontFamily = 'TitleFont';
     title.style.fontWeight = 'bold';
 
-    return title;
+    domElement.appendChild(title);
   }
 
-  function createAddPersonButton(domElement) {
+  function addRegistrationDateField(domElement) {
+    new DateField('Data intentării', '', dateFieldStyle).appendTo(domElement);
+  }
+
+  function addAddPersonButton(domElement) {
     var button = new AddPersonButton('adaugă debitor');
 
-    button.onClick(addPersonSectionTo(domElement));
+    button.onClick(function() {
+      addPersonSection(domElement, 'Debitor');
+    });
 
-    return button;
+    button.appendTo(domElement);
   }
 
-  function addPersonSectionTo(domElement) {
-    return function() {
-      var willBeInTheRightColumn = domElement.querySelectorAll('person-section').length % 2 === 1;
-      var style = { width: '380px' };
+  function addPersonSection(domElement, labelText, data) {
+    var personSection = createPersonSection(domElement, labelText, data);
+    var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
 
-      if (willBeInTheRightColumn) style.marginLeft = '60px';
+    if (lastPersonSectionDomElement) personSection.insertAfter(lastPersonSectionDomElement);
+    else personSection.appendTo(domElement);
+  }
 
-      var personSection = new PersonSection('Debitor', {}, style);
-      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
-      personSection.insertAfter(lastPersonSectionDomElement);
-    };
+  function createPersonSection(domElement, labelText, data) {
+    data = data || {};
+
+    var existingPersonSectionCount = domElement.querySelectorAll('person-section').length;
+    var willBeInTheRightColumn = existingPersonSectionCount % 2 === 1;
+    var style = { width: '380px' };
+
+    if (willBeInTheRightColumn) style.marginLeft = '60px';
+
+    return new PersonSection(labelText, data, style);
   }
 
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
   var AddPersonButton = window.App.Widgets.AddPersonButton;
 
-  var appendWidgets = window.App.Utils.appendWidgets;
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
