@@ -28,6 +28,10 @@
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
     };
 
+    this.makeRemovable = function(onRemoveCallback) {
+      makeRemovable(domElement, onRemoveCallback);
+    };
+
     this.getValue = function() {
       var fieldValues = {};
 
@@ -106,6 +110,7 @@
   var DateField = window.App.Widgets.DateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var makeRemovable = window.App.Utils.makeRemovable;
 
   window.App.Widgets.PersonSection = PersonSection;
 

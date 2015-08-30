@@ -70,6 +70,44 @@
       }
     });
 
+    t.test('can be inserted after a given DOM element', function(t) {
+      var sandbox = document.createElement('div');
+      var firstChild = document.createElement('h1');
+      var secondElement = document.createElement('p');
+      sandbox.appendChild(firstChild);
+      sandbox.appendChild(secondElement);
+
+      var personSection = new PersonSection('Person', {});
+      personSection.insertAfter(firstChild);
+      var domElement = sandbox.querySelector('person-section');
+
+      t.equal(domElement.previousSibling, firstChild, 'it’s inserted after the first element');
+      t.equal(domElement.nextSibling, secondElement, 'it’s inserted before the second element');
+
+      personSection.insertAfter(secondElement);
+      t.equal(domElement.previousSibling, secondElement, 'can also insert after the last element');
+
+      t.end();
+    });
+
+    t.test('can be removable', function(t) {
+      personSection.makeRemovable(onRemoveCallback);
+
+      var domElement = sandbox.querySelector('person-section');
+      t.equal(domElement.getAttribute('removable'), '', 'is can be removable');
+
+      var button = domElement.querySelector('button');
+      button.click();
+
+      t.ok(onRemoveCallback.executed, 'onRemoveCallback is executed when clicking on the remove button');
+
+      t.end();
+
+      function onRemoveCallback() {
+        onRemoveCallback.executed = true;
+      }
+    });
+
     t.end();
 
     function getSectionLabel() {
@@ -123,26 +161,6 @@
 
       t.end();
     });
-  });
-
-  test('can be inserted after a given DOM element', function(t) {
-    var sandbox = document.createElement('div');
-    var firstChild = document.createElement('h1');
-    var secondElement = document.createElement('p');
-    sandbox.appendChild(firstChild);
-    sandbox.appendChild(secondElement);
-
-    var personSection = new PersonSection('Person', {});
-    personSection.insertAfter(firstChild);
-    var domElement = sandbox.querySelector('person-section');
-
-    t.equal(domElement.previousSibling, firstChild, 'it’s inserted after the first element');
-    t.equal(domElement.nextSibling, secondElement, 'it’s inserted before the second element');
-
-    personSection.insertAfter(secondElement);
-    t.equal(domElement.previousSibling, secondElement, 'can also insert after the last element');
-
-    t.end();
   });
 
   function assertField(sandbox, fieldValues, t) {
