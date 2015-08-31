@@ -52,6 +52,7 @@
       DatePicker.instance.toggleFor(dateField);
     });
     _.extend(button.style, datePickerButtonStyle);
+    makeShy(button);
     button.title = 'Deschide calendarul';
 
     return button;
@@ -86,6 +87,7 @@
   var DateFormatting = window.App.Utils.DateFormatting;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var makeShy = window.App.Utils.makeShy;
 
   window.App.Widgets.DateField = DateField;
 

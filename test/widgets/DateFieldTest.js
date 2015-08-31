@@ -96,6 +96,7 @@
   test('Date picker button CSS', function(t) {
     var button = sandbox.querySelector('label>input+button');
     t.ok(button, 'it’s positioned at the right side of input');
+    t.equal(button.getAttribute('shy'), '', 'is’s shy');
 
     var css = button.style;
     t.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
