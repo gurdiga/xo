@@ -27,6 +27,7 @@
       var button = domElement.querySelector('button');
       t.ok(button, 'appends a button DOM element');
       t.equal(button.textContent, '×', 'has the label of “×”');
+      t.equal(button.title, 'Elimină', 'has the appropriate tootlip');
 
       var css = button.style;
       t.equal(css.borderWidth, '0px', 'doesn’t have border');

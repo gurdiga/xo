@@ -29,6 +29,7 @@
     var button = document.createElement('button');
     _.extend(button.style, additionalStyle, buttonStyle);
     button.textContent = '×';
+    button.title = 'Elimină';
     return button;
   }
 
