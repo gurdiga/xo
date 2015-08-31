@@ -54,15 +54,20 @@
     var button = new AddPersonButton('adaugă debitor');
 
     button.onClick(function() {
-      addPersonSection(domElement, 'Debitor');
+      // TODO: collect added person sections
+      addPersonSection(domElement, 'Debitor', {}, true);
     });
 
     button.appendTo(domElement);
   }
 
-  function addPersonSection(domElement, labelText, data) {
+  function addPersonSection(domElement, labelText, data, removable) {
     var personSection = createPersonSection(domElement, labelText, data);
     var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+
+    if (removable) personSection.makeRemovable(function() {
+      // TODO: remove from the added person section collection
+    });
 
     if (lastPersonSectionDomElement) personSection.insertAfter(lastPersonSectionDomElement);
     else personSection.appendTo(domElement);

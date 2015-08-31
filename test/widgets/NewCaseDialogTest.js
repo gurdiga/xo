@@ -95,6 +95,7 @@
       var newSection = domElement.querySelector('person-section:last-of-type');
       t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
       t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
+      t.equal(newSection.getAttribute('removable'), '', 'the new section is removable');
 
       var newSectionLabel = newSection.querySelector('legend').textContent;
       t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');

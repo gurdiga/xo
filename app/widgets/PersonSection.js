@@ -29,7 +29,11 @@
     };
 
     this.makeRemovable = function(onRemoveCallback) {
-      makeRemovable(domElement, onRemoveCallback);
+      var removeButtonStyle = {
+        color: 'silver'
+      };
+
+      makeRemovable(domElement, onRemoveCallback, removeButtonStyle);
     };
 
     this.getValue = function() {
