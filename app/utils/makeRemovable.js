@@ -30,6 +30,7 @@
     _.extend(button.style, additionalStyle, buttonStyle);
     button.textContent = '×';
     button.title = 'Elimină';
+    button.setAttribute('type', 'remove');
     return button;
   }
 
