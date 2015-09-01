@@ -105,6 +105,13 @@
       t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
       t.equal(newSection.style.marginLeft, '60px', 'the new section has the appropriate marginLeft');
 
+      var removeButton = domElement.querySelector('button[type="remove"]');
+      t.ok(removeButton, 'the new section has a remove button');
+
+      // TODO:
+      //  - click the remove button and verify the section went away
+      //  - test getValue doesn’t include the removed section
+
       t.end();
     });
 
