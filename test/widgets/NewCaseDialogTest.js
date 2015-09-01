@@ -108,8 +108,13 @@
       var removeButton = domElement.querySelector('button[type="remove"]');
       t.ok(removeButton, 'the new section has a remove button');
 
+      personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+      removeButton.click();
+      personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+
+      t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
+
       // TODO:
-      //  - click the remove button and verify the section went away
       //  - test getValue doesn’t include the removed section
 
       t.end();
