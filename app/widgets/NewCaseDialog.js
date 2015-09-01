@@ -25,7 +25,7 @@
     display: 'block',
     backgroundColor: 'white',
     width: '960px',
-    padding: '50px',
+    padding: '50px 0 50px 50px',
     border: '1px solid #ddd',
     boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
   };
@@ -76,11 +76,10 @@
   function createPersonSection(domElement, labelText, data) {
     data = data || {};
 
-    var existingPersonSectionCount = domElement.querySelectorAll('person-section').length;
-    var willBeInTheRightColumn = existingPersonSectionCount % 2 === 1;
-    var style = { width: '380px' };
-
-    if (willBeInTheRightColumn) style.marginLeft = '60px';
+    var style = {
+      width: '380px',
+      marginRight: '60px'
+    };
 
     return new PersonSection(labelText, data, style);
   }

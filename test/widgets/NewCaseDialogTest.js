@@ -18,7 +18,10 @@
     t.equal(css.display, 'block', 'has display:block');
     t.equal(css.backgroundColor, 'white', 'has white background');
     t.equal(css.width, '960px', 'is 960px wide');
-    t.equal(css.padding, '50px', 'has 50px of padding');
+    t.equal(css.paddingTop, '50px', 'has 50px of padding top');
+    t.equal(css.paddingRight, '0px', 'has 50px of padding right');
+    t.equal(css.paddingBottom, '50px', 'has 50px of padding bottom');
+    t.equal(css.paddingLeft, '50px', 'has 50px of padding left');
     t.equal(css.border, '1px solid rgb(221, 221, 221)', 'has a border');
     t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 2px 2px 7px', 'has a nice box shadow');
 
@@ -69,7 +72,7 @@
 
       var css = debitorSection.style;
       t.equal(css.width, '380px', 'is 380px wide');
-      t.equal(css.marginLeft, '60px', 'leaves some breathing room before the Creditor section');
+      t.equal(css.marginRight, '60px', 'leaves some breathing room before the Creditor section');
 
       var label = debitorSection.querySelector('legend').textContent;
       t.equal(label, 'Debitor', 'has the appropriate label');
@@ -95,15 +98,11 @@
       var newSection = domElement.querySelector('person-section:last-of-type');
       t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
       t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
+      t.equal(newSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
       t.equal(newSection.getAttribute('removable'), '', 'the new section is removable');
 
       var newSectionLabel = newSection.querySelector('legend').textContent;
       t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');
-
-      button.click();
-      newSection = domElement.querySelector('person-section:last-of-type');
-      t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
-      t.equal(newSection.style.marginLeft, '60px', 'the new section has the appropriate marginLeft');
 
       var removeButton = domElement.querySelector('button[type="remove"]');
       t.ok(removeButton, 'the new section has a remove button');
