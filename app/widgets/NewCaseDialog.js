@@ -12,13 +12,62 @@
       }
     };
 
-    addTitle(domElement);
-    addRegistrationDateField(domElement);
-    addPersonSection(domElement, 'Creditor', data['creditor']);
-    addPersonSection(domElement, 'Debitor', data['debitor']);
-    addAddPersonButton(domElement);
+    addTitle();
+    addRegistrationDateField();
+    addPersonSection('Creditor', data['creditor']);
+    addPersonSection('Debitor', data['debitor']);
+    addAddPersonButton();
 
     this.appendTo = getAppenderOf(domElement);
+
+    function addTitle() {
+      var title = document.createElement('h1');
+
+      title.textContent = 'Procedură de ordin general';
+      title.style.fontSize = '42px';
+      title.style.fontFamily = 'TitleFont';
+      title.style.fontWeight = 'bold';
+
+      domElement.appendChild(title);
+    }
+
+    function addRegistrationDateField() {
+      new DateField('Data intentării', '', dateFieldStyle).appendTo(domElement);
+    }
+
+    function addAddPersonButton() {
+      var button = new AddPersonButton('adaugă debitor');
+
+      button.onClick(function() {
+        // TODO: collect added person sections
+        addPersonSection('Debitor', {}, true);
+      });
+
+      button.appendTo(domElement);
+    }
+
+    function addPersonSection(labelText, data, removable) {
+      var personSection = createPersonSection(labelText, data);
+      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+
+      if (removable) personSection.makeRemovable(function() {
+        // TODO: remove from the added person section collection
+      });
+
+      if (lastPersonSectionDomElement) personSection.insertAfter(lastPersonSectionDomElement);
+      else personSection.appendTo(domElement);
+    }
+
+    function createPersonSection(labelText, data) {
+      data = data || {};
+
+      var style = {
+        width: '380px',
+        marginRight: '60px'
+      };
+
+      return new PersonSection(labelText, data, style);
+    }
   }
 
   var style = {
@@ -34,55 +83,6 @@
     width: '100px',
     marginBottom: '10px'
   };
-
-  function addTitle(domElement) {
-    var title = document.createElement('h1');
-
-    title.textContent = 'Procedură de ordin general';
-    title.style.fontSize = '42px';
-    title.style.fontFamily = 'TitleFont';
-    title.style.fontWeight = 'bold';
-
-    domElement.appendChild(title);
-  }
-
-  function addRegistrationDateField(domElement) {
-    new DateField('Data intentării', '', dateFieldStyle).appendTo(domElement);
-  }
-
-  function addAddPersonButton(domElement) {
-    var button = new AddPersonButton('adaugă debitor');
-
-    button.onClick(function() {
-      // TODO: collect added person sections
-      addPersonSection(domElement, 'Debitor', {}, true);
-    });
-
-    button.appendTo(domElement);
-  }
-
-  function addPersonSection(domElement, labelText, data, removable) {
-    var personSection = createPersonSection(domElement, labelText, data);
-    var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
-
-    if (removable) personSection.makeRemovable(function() {
-      // TODO: remove from the added person section collection
-    });
-
-    if (lastPersonSectionDomElement) personSection.insertAfter(lastPersonSectionDomElement);
-    else personSection.appendTo(domElement);
-  }
-
-  function createPersonSection(domElement, labelText, data) {
-    data = data || {};
-
-    var style = {
-      width: '380px',
-      marginRight: '60px'
-    };
-
-    return new PersonSection(labelText, data, style);
-  }
 
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
