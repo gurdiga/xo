@@ -2,15 +2,16 @@
   'use strict';
 
   function NewCaseDialog() {
-    var domElement = document.createElement('new-case-dialog');
-    _.extend(domElement.style, style);
-
+    // Should this be passed in?
     var data = {
       'creditor': {},
       'debitor': {
         'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
       }
     };
+
+    var domElement = document.createElement('new-case-dialog');
+    _.extend(domElement.style, style);
 
     addTitle();
     addRegistrationDateField();
@@ -19,6 +20,14 @@
     addAddPersonButton();
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.getValue = function() {
+      return {
+        'data-înregistrării': null,
+        'creditor': null,
+        'debitori': []
+      };
+    };
 
     function addTitle() {
       var title = document.createElement('h1');

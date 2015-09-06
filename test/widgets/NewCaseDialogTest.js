@@ -25,6 +25,15 @@
     t.equal(css.border, '1px solid rgb(221, 221, 221)', 'has a border');
     t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 2px 2px 7px', 'has a nice box shadow');
 
+    t.test('getValue', function(t) {
+      var value = newCaseDialog.getValue();
+      t.equal(value['data-înregistrării'], null, 'registration date is returned');
+      t.equal(value['creditor'], null, 'creditor section’s value is returned');
+      t.deepEqual(value['debitori'], [], 'debitor section’s value is returned');
+
+      t.end();
+    });
+
     t.test('the title', function(t) {
       var title = domElement.querySelector(':scope>h1');
       t.ok(title, 'exists');
