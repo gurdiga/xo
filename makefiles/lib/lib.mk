@@ -1,5 +1,6 @@
 lib-all: \
 	lib/moment.js \
+	lib/sinon.js \
 	lib/tape.js \
 	lib/lodash.js \
 	lib/pikaday.js \
@@ -13,6 +14,9 @@ lib/moment.js: node_modules/moment/min/moment.min.js | lib
 
 node_modules/moment/min/moment.min.js:
 	npm install moment@2.10.6
+
+lib/sinon.js: | node_modules/uglify-js node_modules/browserify lib
+	wget http://sinonjs.org/releases/sinon-1.16.1.js -O 'lib/sinon.js'
 
 lib/tape.js: node_modules/uglify-js node_modules/browserify node_modules/tape | lib
 	browserify --require tape --standalone tape | uglifyjs > lib/tape.js
