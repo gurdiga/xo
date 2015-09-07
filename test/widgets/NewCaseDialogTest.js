@@ -27,9 +27,23 @@
 
     t.test('getValue', function(t) {
       var value = newCaseDialog.getValue();
-      t.equal(value['data-înregistrării'], null, 'registration date is returned');
-      t.equal(value['creditor'], null, 'creditor section’s value is returned');
-      t.deepEqual(value['debitori'], [], 'debitor section’s value is returned');
+      t.equal(value['data-înregistrării'], '', 'registration date is returned');
+      t.deepEqual(value['creditor'], {
+        'gen-persoană': 'juridică',
+        'denumire': '',
+        'idno': '',
+        'sediu': '',
+        'persoană-de-contact': '',
+        'note': ''
+      }, 'creditor section’s value is returned');
+      t.deepEqual(value['debitori'], [{
+        'gen-persoană': 'fizică',
+        'nume': '',
+        'idnp': '',
+        'data-naşterii': '',
+        'domiciliu': '',
+        'note': ''
+      }], 'debitor section’s value is returned');
 
       t.end();
     });
@@ -99,10 +113,14 @@
 
       var lastSection = domElement.querySelector('person-section:last-of-type');
       var personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+      var personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
       button.click();
       var personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+      var personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
 
       t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
+      t.equal(personSectionDataCountAfter, personSectionDataCountBefore + 1,
+        'adds a new person data item to “debitori” array');
 
       var newSection = domElement.querySelector('person-section:last-of-type');
       t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
@@ -117,13 +135,14 @@
       t.ok(removeButton, 'the new section has a remove button');
 
       personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+      personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
       removeButton.click();
       personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+      personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
 
       t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
-
-      // TODO:
-      //  - test getValue doesn’t include the removed section
+      t.equal(personSectionDataCountAfter, personSectionDataCountBefore - 1,
+        'clicking in the remove button removs person data item from “debitori” array');
 
       t.end();
     });

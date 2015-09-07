@@ -5,27 +5,35 @@
     // Should this be passed in?
     var data = {
       'creditor': {},
-      'debitor': {
+      'debitori': [{
         'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
-      }
+      }]
     };
 
     var domElement = document.createElement('new-case-dialog');
     _.extend(domElement.style, style);
 
+    var valuableChildren = {};
+
     addTitle();
     addRegistrationDateField();
-    addPersonSection('Creditor', data['creditor']);
-    addPersonSection('Debitor', data['debitor']);
+    addCreditorSection();
+    addFirstDebitorSection();
+
+    var additionalPersonSections = [];
     addAddPersonButton();
 
     this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
       return {
-        'data-înregistrării': null,
-        'creditor': null,
-        'debitori': []
+        'data-înregistrării': valuableChildren['data-înregistrării'].getValue(),
+        'creditor': valuableChildren['creditor'].getValue(),
+        'debitori': valuableChildren['debitori'].map(function(personSection) {
+          return personSection.getValue();
+        }).concat(additionalPersonSections.map(function(personSection) {
+          return personSection.getValue();
+        }))
       };
     };
 
@@ -41,30 +49,24 @@
     }
 
     function addRegistrationDateField() {
-      new DateField('Data intentării', '', dateFieldStyle).appendTo(domElement);
+      var dateField = new DateField('Data intentării', '', dateFieldStyle);
+      dateField.appendTo(domElement);
+
+      valuableChildren['data-înregistrării'] = dateField;
     }
 
-    function addAddPersonButton() {
-      var button = new AddPersonButton('adaugă debitor');
+    function addCreditorSection() {
+      var personSection = createPersonSection('Creditor', data['creditor']);
+      personSection.appendTo(domElement);
 
-      button.onClick(function() {
-        // TODO: collect added person sections
-        addPersonSection('Debitor', {}, true);
-      });
-
-      button.appendTo(domElement);
+      valuableChildren['creditor'] = personSection;
     }
 
-    function addPersonSection(labelText, data, removable) {
-      var personSection = createPersonSection(labelText, data);
-      var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+    function addFirstDebitorSection() {
+      var personSection = createPersonSection('Debitor', data['debitori'][0]);
+      personSection.appendTo(domElement);
 
-      if (removable) personSection.makeRemovable(function() {
-        // TODO: remove from the added person section collection
-      });
-
-      if (lastPersonSectionDomElement) personSection.insertAfter(lastPersonSectionDomElement);
-      else personSection.appendTo(domElement);
+      valuableChildren['debitori'] = [personSection];
     }
 
     function createPersonSection(labelText, data) {
@@ -76,6 +78,25 @@
       };
 
       return new PersonSection(labelText, data, style);
+    }
+
+    function addAddPersonButton() {
+      var button = new AddPersonButton('adaugă debitor');
+
+      button.onClick(function() {
+        var personSection = createPersonSection('Debitor', {});
+        additionalPersonSections.push(personSection);
+
+        personSection.makeRemovable(function() {
+          var index = additionalPersonSections.indexOf(personSection);
+          additionalPersonSections.splice(index, 1);
+        });
+
+        var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
+        personSection.insertAfter(lastPersonSectionDomElement);
+      });
+
+      button.appendTo(domElement);
     }
   }
 
