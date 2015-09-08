@@ -19,22 +19,12 @@
     addRegistrationDateField();
     addCreditorSection();
     addFirstDebitorSection();
-
-    var additionalPersonSections = [];
-    addAddPersonButton();
+    addAddDebitorButton();
 
     this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
-      return {
-        'data-înregistrării': valuableChildren['data-înregistrării'].getValue(),
-        'creditor': valuableChildren['creditor'].getValue(),
-        'debitori': valuableChildren['debitori'].map(function(personSection) {
-          return personSection.getValue();
-        }).concat(additionalPersonSections.map(function(personSection) {
-          return personSection.getValue();
-        }))
-      };
+      return rMap('getValue', valuableChildren);
     };
 
     function addTitle() {
@@ -80,24 +70,40 @@
       return new PersonSection(labelText, data, style);
     }
 
-    function addAddPersonButton() {
+    function addAddDebitorButton() {
       var button = new AddPersonButton('adaugă debitor');
+      var debitors = valuableChildren['debitori'];
 
       button.onClick(function() {
         var personSection = createPersonSection('Debitor', {});
-        additionalPersonSections.push(personSection);
 
         personSection.makeRemovable(function() {
-          var index = additionalPersonSections.indexOf(personSection);
-          additionalPersonSections.splice(index, 1);
+          removeItem(personSection).from(debitors);
         });
 
-        var lastPersonSectionDomElement = domElement.querySelector('person-section:last-of-type');
-        personSection.insertAfter(lastPersonSectionDomElement);
+        debitors.push(personSection);
+        personSection.insertAfter(lastElement('person-section').of(domElement));
       });
 
       button.appendTo(domElement);
     }
+  }
+
+  function removeItem(item) {
+    return {
+      'from': function(array) {
+          var index = array.indexOf(item);
+          array.splice(index, 1);
+      }
+    };
+  }
+
+  function lastElement(tagName) {
+    return {
+      'of': function(domElement) {
+        return domElement.querySelector(tagName + ':last-of-type');
+      }
+    };
   }
 
   var style = {
@@ -119,6 +125,7 @@
   var AddPersonButton = window.App.Widgets.AddPersonButton;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var rMap = window.App.Utils.rMap;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 
