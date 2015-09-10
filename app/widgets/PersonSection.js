@@ -13,16 +13,10 @@
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
+    personTypeField.onChange(renderTypeAppropriateFields);
 
     var section = new Section(labelText, getAllFields());
     section.appendTo(domElement);
-
-    personTypeField.onChange(function(personType) {
-      personTypeSpecificFields.forEach(destroyField);
-      fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
-      personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
-      section.appendWidgets(personTypeSpecificFields);
-    });
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -31,11 +25,11 @@
     };
 
     this.makeRemovable = function(onRemoveCallback) {
-      var removeButtonStyle = {
+      var buttonStyle = {
         color: 'silver'
       };
 
-      makeRemovable(domElement, onRemoveCallback, removeButtonStyle);
+      makeRemovable(domElement, onRemoveCallback, buttonStyle);
     };
 
     this.getValue = function() {
@@ -50,6 +44,13 @@
 
     function getAllFields() {
       return [personTypeField].concat(personTypeSpecificFields);
+    }
+
+    function renderTypeAppropriateFields(personType) {
+      personTypeSpecificFields.forEach(destroyField);
+      fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
+      personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
+      section.appendWidgets(personTypeSpecificFields);
     }
   }
 
