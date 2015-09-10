@@ -76,11 +76,11 @@
     function addAddDebitorButton() {
       var button = new AddPersonButton('adaugă debitor');
 
-      button.onClick(createRemovableDebitorSection);
+      button.onClick(addRemovableDebitorSection);
       button.appendTo(domElement);
     }
 
-    function createRemovableDebitorSection() {
+    function addRemovableDebitorSection() {
       var personSection = createPersonSection('Debitor');
       var debitors = valuableChildren['debitori'];
 
