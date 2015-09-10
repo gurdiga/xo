@@ -26,6 +26,10 @@
 
     t.equal(getSectionLabel(), label, 'section has the appropriate label');
 
+    t.doesNotThrow(function() {
+      new PersonSection(label);
+    }, 'fieldValues and additionalStyle arguments are optional');
+
     t.test('person type field', function(t) {
       var personTypeField = sandbox.querySelector('fieldset>select-field');
 

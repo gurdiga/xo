@@ -5,6 +5,8 @@
   var PERSON_TYPE_INTERNAL_NAME = 'gen-persoană';
 
   function PersonSection(labelText, fieldValues, additionalStyle) {
+    fieldValues = fieldValues || {};
+
     var domElement = document.createElement('person-section');
     domElement.style.display = 'inline-block';
     _.extend(domElement.style, additionalStyle);
