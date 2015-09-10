@@ -39,7 +39,12 @@
     }
 
     function addRegistrationDateField() {
-      var dateField = new DateField('Data intentării', '', dateFieldStyle);
+      var style = {
+        width: '100px',
+        marginBottom: '10px'
+      };
+
+      var dateField = new DateField('Data intentării', '', style);
       dateField.appendTo(domElement);
 
       valuableChildren['data-înregistrării'] = dateField;
@@ -113,11 +118,6 @@
     padding: '50px 0 50px 50px',
     border: '1px solid #ddd',
     boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
-  };
-
-  var dateFieldStyle = {
-    width: '100px',
-    marginBottom: '10px'
   };
 
   var DateField = window.App.Widgets.DateField;
