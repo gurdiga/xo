@@ -65,8 +65,6 @@
     }
 
     function createPersonSection(labelText, data) {
-      data = data || {};
-
       var style = {
         width: '380px',
         marginRight: '60px'
@@ -77,35 +75,36 @@
 
     function addAddDebitorButton() {
       var button = new AddPersonButton('adaugă debitor');
+
+      button.onClick(createRemovableDebitorSection);
+      button.appendTo(domElement);
+    }
+
+    function createRemovableDebitorSection() {
+      var personSection = createPersonSection('Debitor');
       var debitors = valuableChildren['debitori'];
 
-      button.onClick(function() {
-        var personSection = createPersonSection('Debitor', {});
-
-        personSection.makeRemovable(function() {
-          removeItem(personSection).from(debitors);
-        });
-
-        debitors.push(personSection);
-        personSection.insertAfter(lastElement('person-section').of(domElement));
+      personSection.makeRemovable(function() {
+        removeItem(personSection).fromArray(debitors);
       });
 
-      button.appendTo(domElement);
+      debitors.push(personSection);
+      personSection.insertAfter(lastDomElement('person-section').inside(domElement));
     }
   }
 
   function removeItem(item) {
     return {
-      'from': function(array) {
+      'fromArray': function(array) {
           var index = array.indexOf(item);
           array.splice(index, 1);
       }
     };
   }
 
-  function lastElement(tagName) {
+  function lastDomElement(tagName) {
     return {
-      'of': function(domElement) {
+      'inside': function(domElement) {
         return domElement.querySelector(tagName + ':last-of-type');
       }
     };
