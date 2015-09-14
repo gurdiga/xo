@@ -4,28 +4,41 @@
   function DropdownButton(labelText, options) {
     var domElement = document.createElement('dropdown-button');
 
-    addToggleButton();
-    addOptionList();
+    var toggleButton = createButton();
+    domElement.appendChild(toggleButton);
+
+    var optionList = createOptionList();
+    domElement.appendChild(optionList);
+
+    toggleButton.addEventListener('click', function() {
+      if (optionList.style.display === 'none') optionList.style.display = 'block';
+      else optionList.style.display = 'none';
+    });
 
     this.appendTo = getAppenderOf(domElement);
 
-    function addToggleButton() {
+    function createButton() {
       var button = document.createElement('button');
       button.textContent = labelText;
-
-      domElement.appendChild(button);
+      return button;
     }
 
-    function addOptionList() {
+    function createOptionList() {
       var optionList = document.createElement('ul');
+      optionList.style.display = 'none';
 
       for (var optionLabel in options) {
+        var button = document.createElement('button');
+        button.textContent = optionLabel;
+        button.addEventListener('click', options[optionLabel]);
+
         var option = document.createElement('li');
-        option.textContent = optionLabel;
+        option.appendChild(button);
+
         optionList.appendChild(option);
       }
 
-      domElement.appendChild(optionList);
+      return optionList;
     }
   }
 

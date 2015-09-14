@@ -36,12 +36,9 @@
         var actualOptions = optionList.querySelectorAll('li');
         t.equal(actualOptions.length, expectedOptionCount, 'has the appropriate number of options');
 
-        var optionLabels = _.map(actualOptions, _.property('textContent'));
-        t.deepEqual(optionLabels, expectedOptionLabels, 'options have the appropriate labels');
-
-        // TODO
-        // test that each list item has a button inside it; with the expected textContent?
-        //
+        var optionButtons = optionList.querySelectorAll('li button');
+        var buttonLabels = _.map(optionButtons, _.property('textContent'));
+        t.deepEqual(buttonLabels, expectedOptionLabels, 'options have the appropriate labels');
 
         t.end();
       });
@@ -56,6 +53,32 @@
     });
 
     t.test('behavior', function(t) {
+      var domElement = sandbox.querySelector('dropdown-button');
+
+      t.test('toggle button', function(t) {
+        var toggleButton = domElement.querySelector('button');
+        var optionList = domElement.querySelector('ul');
+
+        t.equal(optionList.style.display, 'none', 'the option list is initially hidden');
+        toggleButton.click();
+        t.equal(optionList.style.display, 'block', 'clicking the button displays the option list');
+
+        t.end();
+      });
+
+      t.test('option list', function(t) {
+        var optionList = domElement.querySelector('ul');
+        var optionButtons = optionList.querySelectorAll('li button');
+
+        optionButtons[0].click();
+        t.ok(addFieldCallback.executed, 'clicking on the first option triggers its associated function');
+
+        optionButtons[1].click();
+        t.ok(addSectionCallback.executed, 'clicking on the second option triggers its associated function');
+
+        t.end();
+      });
+
       // TODO
 
       t.end();
