@@ -25,20 +25,36 @@
 
     function createOptionList() {
       var optionList = document.createElement('ul');
-      optionList.style.display = 'none';
+      var style = {
+        position: 'absolute',
+        display: 'none',
+        paddingLeft: '0px',
+        marginTop: '0px',
+        marginBottom: '0px',
+        backgroundColor: 'white'
+      };
+      _.extend(optionList.style, style);
 
       for (var optionLabel in options) {
+        addOption(optionLabel, options[optionLabel]);
+      }
+
+      return optionList;
+
+      function addOption(labelText, f) {
         var button = document.createElement('button');
-        button.textContent = optionLabel;
-        button.addEventListener('click', options[optionLabel]);
+        button.textContent = labelText;
+        button.addEventListener('click', f);
+        button.style.borderWidth = '0px';
+        button.style.backgroundColor = 'transparent';
+        button.style.width = '100%';
+        button.style.textAlign = 'left';
 
         var option = document.createElement('li');
         option.appendChild(button);
 
         optionList.appendChild(option);
       }
-
-      return optionList;
     }
   }
 

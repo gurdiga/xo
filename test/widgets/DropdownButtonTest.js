@@ -3,12 +3,13 @@
 
   var DropdownButton = window.App.Widgets.DropdownButton;
 
+  var labelText = 'Add ▾';
   var options = {
     'field': addFieldCallback,
     'section': addSectionCallback
   };
 
-  var dropdownButton = new DropdownButton('Add', options);
+  var dropdownButton = new DropdownButton(labelText, options);
   var sandbox = document.createElement('div');
   dropdownButton.appendTo(sandbox);
 
@@ -21,7 +22,7 @@
         var toggleButton = domElement.querySelector('button');
 
         t.ok(toggleButton, 'exists');
-        t.equal(toggleButton.textContent, 'Add', 'has the appropriate label');
+        t.equal(toggleButton.textContent, labelText, 'has the appropriate label');
 
         t.end();
       });
@@ -47,6 +48,30 @@
     });
 
     t.test('styling', function(t) {
+      document.body.appendChild(sandbox); // TODO: remove
+
+      var css;
+      var domElement = sandbox.querySelector('dropdown-button');
+
+      t.test('option list', function(t) {
+        var optionList = domElement.querySelector('ul');
+        css = optionList.style;
+        t.equal(css.paddingLeft, '0px', 'has the padding left removed');
+        t.equal(css.marginTop, '0px', 'has the top margin is removed');
+        t.equal(css.marginBottom, '0px', 'has the bottom margin is removed');
+        t.equal(css.backgroundColor, 'white', 'has white background');
+        t.equal(css.position, 'absolute', 'is absolutely positioned');
+
+        var optionButton = optionList.querySelector('li button');
+        css = optionButton.style;
+        t.equal(css.borderWidth, '0px', 'removes the border off option buttons');
+        t.equal(css.backgroundColor, 'transparent', 'removes the background off option buttons');
+        t.equal(css.width, '100%', 'makes buttons 100% wide');
+        t.equal(css.textAlign, 'left', 'aligns button labels left');
+        // TODO: add hover effect
+
+        t.end();
+      });
       // TODO
 
       t.end();
@@ -62,6 +87,8 @@
         t.equal(optionList.style.display, 'none', 'the option list is initially hidden');
         toggleButton.click();
         t.equal(optionList.style.display, 'block', 'clicking the button displays the option list');
+        toggleButton.click();
+        t.equal(optionList.style.display, 'none', 'clicking the button again hides the option list');
 
         t.end();
       });
@@ -78,8 +105,6 @@
 
         t.end();
       });
-
-      // TODO
 
       t.end();
     });
