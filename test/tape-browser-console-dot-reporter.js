@@ -76,11 +76,11 @@
   }
 
   function printFailureMessage(message) {
-    console.log('context:  ', getTextContext(message));
-    console.log('operator: ', message.operator);
-    console.log('expected: ', typeof message.expected, inspectableValue(message.expected));
-    console.log('actual:   ', typeof message.actual  , inspectableValue(message.actual));
-    console.log('location: ', getAppStack(message));
+    console.error('context:  ', getTextContext(message));
+    console.log('  operator: ', message.operator);
+    console.log('  expected: ', typeof message.expected, inspectableValue(message.expected));
+    console.log('  actual:   ', typeof message.actual  , inspectableValue(message.actual));
+    console.log('  location: ', getAppStack(message));
     console.log('');
   }
 
