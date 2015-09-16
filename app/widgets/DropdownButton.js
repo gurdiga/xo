@@ -51,6 +51,11 @@
         button.style.width = '100%';
         button.style.textAlign = 'left';
 
+        var hoverStyle = {
+          backgroundColor: 'c3c3c3'
+        };
+        addHoverEffect(button, hoverStyle);
+
         var option = document.createElement('li');
         option.appendChild(button);
 
@@ -60,6 +65,7 @@
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var addHoverEffect = window.App.Utils.addHoverEffect;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 
