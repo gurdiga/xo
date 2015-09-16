@@ -61,6 +61,7 @@
         t.equal(css.marginBottom, '0px', 'has the bottom margin is removed');
         t.equal(css.backgroundColor, 'white', 'has white background');
         t.equal(css.position, 'absolute', 'is absolutely positioned');
+        t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
 
         var optionButton = optionList.querySelector('li button');
         css = optionButton.style;
@@ -68,6 +69,7 @@
         t.equal(css.backgroundColor, 'transparent', 'removes the background off option buttons');
         t.equal(css.width, '100%', 'makes buttons 100% wide');
         t.equal(css.textAlign, 'left', 'aligns button labels left');
+
         // TODO: add hover effect
 
         t.end();
