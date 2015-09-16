@@ -45,11 +45,15 @@
       function addOption(labelText, f) {
         var button = document.createElement('button');
         button.textContent = labelText;
-        button.addEventListener('click', f);
         button.style.borderWidth = '0px';
         button.style.backgroundColor = 'transparent';
         button.style.width = '100%';
         button.style.textAlign = 'left';
+
+        button.addEventListener('click', function() {
+          optionList.style.display = 'none';
+          f();
+        });
 
         var hoverStyle = {
           backgroundColor: 'c3c3c3'

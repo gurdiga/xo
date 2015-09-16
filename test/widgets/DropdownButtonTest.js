@@ -70,11 +70,8 @@
         t.equal(css.width, '100%', 'makes buttons 100% wide');
         t.equal(css.textAlign, 'left', 'aligns button labels left');
 
-        // TODO: add hover effect
-
         t.end();
       });
-      // TODO
 
       t.end();
     });
@@ -99,8 +96,11 @@
         var optionList = domElement.querySelector('ul');
         var optionButtons = optionList.querySelectorAll('li button');
 
+        optionList.style.display = 'block';
+
         optionButtons[0].click();
         t.ok(addFieldCallback.executed, 'clicking on the first option triggers its associated function');
+        t.equal(optionList.style.display, 'none', 'selecting an option hides the list');
 
         optionButtons[1].click();
         t.ok(addSectionCallback.executed, 'clicking on the second option triggers its associated function');
