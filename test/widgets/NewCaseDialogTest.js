@@ -106,6 +106,19 @@
       t.end();
     });
 
+    t.test('the “Add person” button', function(t) {
+      var dropdownButton = domElement.querySelector('dropdown-button');
+
+      var labelText = dropdownButton.querySelector('button').textContent;
+      t.equal(labelText, 'adaugă persoană ▾', 'has the appropriate label');
+
+      var optionLabels = _.toArray(dropdownButton.querySelectorAll('li button'));
+      var optionLabelTexts = optionLabels.map(_.property('textContent'));
+      t.deepEqual(optionLabelTexts, ['debitor', 'persoană terţă'], 'options have the appropriate labels');
+
+      t.end();
+    });
+
     t.test('add debitor button', function(t) {
       var button = domElement.querySelector('add-person-button>button');
       t.ok(button, 'exists');

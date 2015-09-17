@@ -19,6 +19,7 @@
     addRegistrationDateField();
     addCreditorSection();
     addFirstDebitorSection();
+    addAddPersonButton();
     addAddDebitorButton();
 
     this.appendTo = getAppenderOf(domElement);
@@ -73,6 +74,15 @@
       return new PersonSection(labelText, data, style);
     }
 
+    function addAddPersonButton() {
+      var button = new DropdownButton('adaugă persoană ▾', {
+        'debitor': function() {}, // TODO
+        'persoană terţă': function() {} // TODO
+      });
+
+      button.appendTo(domElement);
+    }
+
     function addAddDebitorButton() {
       var button = new AddPersonButton('adaugă debitor');
 
@@ -122,6 +132,7 @@
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
   var AddPersonButton = window.App.Widgets.AddPersonButton;
+  var DropdownButton = window.App.Widgets.DropdownButton;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var rMap = window.App.Utils.rMap;

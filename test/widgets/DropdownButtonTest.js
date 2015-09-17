@@ -48,8 +48,6 @@
     });
 
     t.test('styling', function(t) {
-      document.body.appendChild(sandbox); // TODO: remove
-
       var css;
       var domElement = sandbox.querySelector('dropdown-button');
 
