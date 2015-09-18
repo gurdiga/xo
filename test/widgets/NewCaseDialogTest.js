@@ -106,7 +106,7 @@
       t.end();
     });
 
-    t.test('the “Add person” button', function(t) {
+    t.test('the button to add a person section', function(t) {
       var dropdownButton = domElement.querySelector('dropdown-button');
 
       var labelText = dropdownButton.querySelector('button').textContent;
@@ -114,48 +114,89 @@
 
       var optionLabels = _.toArray(dropdownButton.querySelectorAll('li button'));
       var optionLabelTexts = optionLabels.map(_.property('textContent'));
-      t.deepEqual(optionLabelTexts, ['debitor', 'persoană terţă'], 'options have the appropriate labels');
+      t.deepEqual(optionLabelTexts, ['■ debitor', '■ persoană terţă'], 'options have the appropriate labels');
 
-      t.end();
-    });
+      var addThirdPersonOption = dropdownButton.querySelectorAll('li button')[1];
 
-    t.test('add debitor button', function(t) {
-      var button = domElement.querySelector('add-person-button>button');
-      t.ok(button, 'exists');
-      t.equal(button.textContent, 'adaugă debitor', 'has the appropriate label');
+      var personSectionCountBefore, personSectionDataCountBefore,
+          personSectionCountAfter, personSectionDataCountAfter;
 
-      var lastSection = domElement.querySelector('person-section:last-of-type');
-      var personSectionCountBefore = domElement.querySelectorAll('person-section').length;
-      var personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
-      button.click();
-      var personSectionCountAfter = domElement.querySelectorAll('person-section').length;
-      var personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
+      t.test('option to add a debitor', function(t) {
+        var addDebitorOption = dropdownButton.querySelectorAll('li button')[0];
+        var lastSection = domElement.querySelector('person-section:last-of-type');
 
-      t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
-      t.equal(personSectionDataCountAfter, personSectionDataCountBefore + 1,
-        'adds a new person data item to “debitori” array');
+        personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
+        addDebitorOption.click();
+        personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
 
-      var newSection = domElement.querySelector('person-section:last-of-type');
-      t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
-      t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
-      t.equal(newSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
-      t.equal(newSection.getAttribute('removable'), '', 'the new section is removable');
+        t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
+        t.equal(personSectionDataCountAfter, personSectionDataCountBefore + 1,
+          'adds a new person data item to “debitori” array');
 
-      var newSectionLabel = newSection.querySelector('legend').textContent;
-      t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');
+        var newSection = domElement.querySelector('person-section:last-of-type');
+        t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
+        t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
+        t.equal(newSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
+        t.equal(newSection.getAttribute('removable'), '', 'the new section is removable');
 
-      var removeButton = domElement.querySelector('button[type="remove"]');
-      t.ok(removeButton, 'the new section has a remove button');
+        var newSectionLabel = newSection.querySelector('legend').textContent;
+        t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');
 
-      personSectionCountBefore = domElement.querySelectorAll('person-section').length;
-      personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
-      removeButton.click();
-      personSectionCountAfter = domElement.querySelectorAll('person-section').length;
-      personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
+        var removeButton = domElement.querySelector('button[type="remove"]');
+        t.ok(removeButton, 'the new section has a remove button');
 
-      t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
-      t.equal(personSectionDataCountAfter, personSectionDataCountBefore - 1,
-        'clicking in the remove button removs person data item from “debitori” array');
+        personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
+        removeButton.click();
+        personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
+
+        t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
+        t.equal(personSectionDataCountAfter, personSectionDataCountBefore - 1,
+          'clicking in the remove button removs person data item from “debitori” array');
+
+        t.end();
+      });
+
+      t.test('option to add a third person', function(t) {
+        var lastSection = domElement.querySelector('person-section:last-of-type');
+
+        personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountBefore = newCaseDialog.getValue()['persoane-terţe'].length;
+        addThirdPersonOption.click();
+        personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountAfter = newCaseDialog.getValue()['persoane-terţe'].length;
+
+        t.equal(personSectionCountAfter, personSectionCountBefore + 1, 'adds a new person section');
+        t.equal(personSectionDataCountAfter, personSectionDataCountBefore + 1,
+          'adds a new person data item to “persoane-terţe” array');
+
+        var newSection = domElement.querySelector('person-section:last-of-type');
+        t.equal(newSection.previousSibling, lastSection, 'is inserted after the previously last PersonSection');
+        t.equal(newSection.style.width, '380px', 'the new section has the appropriate width');
+        t.equal(newSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
+        t.equal(newSection.getAttribute('removable'), '', 'the new section is removable');
+
+        var newSectionLabel = newSection.querySelector('legend').textContent;
+        t.equal(newSectionLabel, 'Persoană terţă', 'the new section has the appropriate label');
+
+        var removeButton = domElement.querySelector('button[type="remove"]');
+        t.ok(removeButton, 'the new section has a remove button');
+
+        personSectionCountBefore = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountBefore = newCaseDialog.getValue()['persoane-terţe'].length;
+        removeButton.click();
+        personSectionCountAfter = domElement.querySelectorAll('person-section').length;
+        personSectionDataCountAfter = newCaseDialog.getValue()['persoane-terţe'].length;
+
+        t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
+        t.equal(personSectionDataCountAfter, personSectionDataCountBefore - 1,
+          'clicking in the remove button removs person data item from “debitori” array');
+
+        t.end();
+      });
 
       t.end();
     });

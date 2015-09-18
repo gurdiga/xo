@@ -13,14 +13,15 @@
     var domElement = document.createElement('new-case-dialog');
     _.extend(domElement.style, style);
 
-    var valuableChildren = {};
+    var valuableChildren = {
+      'persoane-terţe': []
+    };
 
     addTitle();
     addRegistrationDateField();
     addCreditorSection();
     addFirstDebitorSection();
     addAddPersonButton();
-    addAddDebitorButton();
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -76,40 +77,26 @@
 
     function addAddPersonButton() {
       var button = new DropdownButton('adaugă persoană ▾', {
-        'debitor': function() {}, // TODO
-        'persoană terţă': function() {} // TODO
+        '■ debitor':        addRemovablePersonSection('Debitor', 'debitori'),
+        '■ persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
       });
 
       button.appendTo(domElement);
     }
 
-    function addAddDebitorButton() {
-      var button = new AddPersonButton('adaugă debitor');
+    function addRemovablePersonSection(labelText, listInternalName) {
+      return function() {
+        var personSection = createPersonSection(labelText);
+        var personSectionList = valuableChildren[listInternalName];
 
-      button.onClick(addRemovableDebitorSection);
-      button.appendTo(domElement);
+        personSection.makeRemovable(function() {
+          personSectionList.remove(personSection);
+        });
+
+        personSectionList.push(personSection);
+        personSection.insertAfter(lastDomElement('person-section').inside(domElement));
+      };
     }
-
-    function addRemovableDebitorSection() {
-      var personSection = createPersonSection('Debitor');
-      var debitors = valuableChildren['debitori'];
-
-      personSection.makeRemovable(function() {
-        removeItem(personSection).fromArray(debitors);
-      });
-
-      debitors.push(personSection);
-      personSection.insertAfter(lastDomElement('person-section').inside(domElement));
-    }
-  }
-
-  function removeItem(item) {
-    return {
-      'fromArray': function(array) {
-          var index = array.indexOf(item);
-          array.splice(index, 1);
-      }
-    };
   }
 
   function lastDomElement(tagName) {
@@ -131,7 +118,6 @@
 
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
-  var AddPersonButton = window.App.Widgets.AddPersonButton;
   var DropdownButton = window.App.Widgets.DropdownButton;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
