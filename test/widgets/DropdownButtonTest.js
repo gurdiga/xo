@@ -50,6 +50,9 @@
     t.test('styling', function(t) {
       var css;
       var domElement = sandbox.querySelector('dropdown-button');
+      css = domElement.style;
+      t.equal(css.display, 'inline-block',
+        'has display of inline-block to have the option list postioned appropriately');
 
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('ul');

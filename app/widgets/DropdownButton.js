@@ -3,6 +3,7 @@
 
   function DropdownButton(labelText, options) {
     var domElement = document.createElement('dropdown-button');
+    domElement.style.display = 'inline-block';
 
     var toggleButton = createButton();
     domElement.appendChild(toggleButton);
