@@ -32,7 +32,8 @@
         marginTop: '0px',
         marginBottom: '0px',
         backgroundColor: 'white',
-        boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
+        boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px',
+        listStyleType: 'none'
       };
       _.extend(optionList.style, style);
 

@@ -60,6 +60,7 @@
         t.equal(css.backgroundColor, 'white', 'has white background');
         t.equal(css.position, 'absolute', 'is absolutely positioned');
         t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
+        t.equal(css.listStyleType, 'none', 'has bullets disabled');
 
         var optionButton = optionList.querySelector('li button');
         css = optionButton.style;
