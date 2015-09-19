@@ -27,7 +27,6 @@
     this.makeRemovable = function(onRemoveCallback) {
       var buttonStyle = {
         top: '10px',
-        left: '-22px',
         fontSize: '20px',
         color: 'black'
       };

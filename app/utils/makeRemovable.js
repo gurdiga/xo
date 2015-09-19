@@ -28,6 +28,7 @@
   function createButton(additionalStyle) {
     var button = document.createElement('button');
     _.extend(button.style, buttonStyle, additionalStyle);
+    button.style.left = '-' + (parseInt(button.style.fontSize, 10) + 2);
 
     button.textContent = '×';
     button.title = 'Elimină';
@@ -40,7 +41,6 @@
 
   var buttonStyle = {
     position: 'absolute',
-    right: '0px',
     top: '0px',
     padding: '2px 5px',
     borderWidth: '0px',

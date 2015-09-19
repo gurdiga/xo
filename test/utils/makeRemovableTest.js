@@ -36,7 +36,7 @@
       t.equal(css.borderWidth, '0px', 'doesn’t have border');
       t.equal(css.backgroundColor, 'transparent', 'has transparent background');
       t.equal(css.position, 'absolute', 'is absolutely positioned not to disturb the flow');
-      t.equal(css.right, '0px', 'is placed at the very right');
+      t.equal(css.left, '-16px', 'is placed out at the left, a bit more than an em');
       t.equal(css.paddingTop, '2px', 'has 2px padding at the top');
       t.equal(css.paddingRight, '5px', 'has 5px padding at the right');
       t.equal(css.paddingBottom, '2px', 'has 2px padding at the bottom');
