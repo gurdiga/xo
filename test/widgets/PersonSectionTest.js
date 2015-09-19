@@ -95,7 +95,7 @@
     });
 
     t.test('can be removable', function(t) {
-      personSection.onRemove(onRemoveCallback);
+      personSection.makeRemovable(onRemoveCallback);
 
       var domElement = sandbox.querySelector('person-section');
       t.equal(domElement.getAttribute('removable'), '', 'is can be removable');

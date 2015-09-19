@@ -90,7 +90,7 @@
         var personSection = createPersonSection(labelText);
         var personSectionList = valuableChildren[personListInternalName];
 
-        personSection.onRemove(function() {
+        personSection.makeRemovable(function onRemoveCallback() {
           personSectionList.remove(personSection);
         });
 
