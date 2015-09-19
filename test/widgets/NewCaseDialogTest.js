@@ -57,6 +57,7 @@
       t.equal(css.fontSize, '42px', 'has the appropriate font size');
       t.equal(css.fontFamily, 'TitleFont', 'has the appropriate font family');
       t.equal(css.fontWeight, 'bold', 'has the appropriate font weight');
+      t.equal(css.marginTop, '0px', 'has no spacing ar the top');
 
       t.end();
     });

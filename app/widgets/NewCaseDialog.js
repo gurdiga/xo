@@ -36,6 +36,7 @@
       title.style.fontSize = '42px';
       title.style.fontFamily = 'TitleFont';
       title.style.fontWeight = 'bold';
+      title.style.marginTop = '0px';
 
       domElement.appendChild(title);
     }
