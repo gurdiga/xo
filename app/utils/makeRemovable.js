@@ -28,9 +28,13 @@
   function createButton(additionalStyle) {
     var button = document.createElement('button');
     _.extend(button.style, buttonStyle, additionalStyle);
+
     button.textContent = '×';
     button.title = 'Elimină';
     button.setAttribute('type', 'remove');
+
+    makeShy(button);
+
     return button;
   }
 
@@ -44,6 +48,8 @@
     fontSize: '14px',
     fontFamily: 'sans-serif'
   };
+
+  var makeShy = window.App.Utils.makeShy;
 
   window.App.Utils.makeRemovable = makeRemovable;
 

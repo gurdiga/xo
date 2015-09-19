@@ -47,6 +47,12 @@
       t.equal(css.color, additionalButtonStyle.color, 'applies the additional style');
       t.equal(css.top, additionalButtonStyle.top, 'additional styles override the defaults');
 
+      t.equal(css.opacity, '0.3', 'is shy');
+      button.dispatchEvent(new Event('mouseenter'));
+      t.equal(css.opacity, '1', 'fades out on mouseenter');
+      button.dispatchEvent(new Event('mouseleave'));
+      t.equal(css.opacity, '0.3', 'fades out on mouseleave');
+
       button.click();
       t.ok(!sandbox.querySelector('the-widget'), 'the dom element is removed from its parent DOM');
       t.ok(onRemove.executed, 'executes the onRemove callback');
