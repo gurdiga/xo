@@ -84,12 +84,12 @@
       button.appendTo(domElement);
     }
 
-    function addRemovablePersonSection(labelText, listInternalName) {
+    function addRemovablePersonSection(labelText, personListInternalName) {
       return function() {
         var personSection = createPersonSection(labelText);
-        var personSectionList = valuableChildren[listInternalName];
+        var personSectionList = valuableChildren[personListInternalName];
 
-        personSection.makeRemovable(function() {
+        personSection.onRemove(function() {
           personSectionList.remove(personSection);
         });
 

@@ -24,7 +24,7 @@
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
     };
 
-    this.makeRemovable = function(onRemoveCallback) {
+    this.onRemove = function(onRemoveCallback) {
       var buttonStyle = {
         color: 'silver'
       };
