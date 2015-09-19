@@ -26,10 +26,14 @@
 
     this.makeRemovable = function(onRemoveCallback) {
       var buttonStyle = {
-        color: 'silver'
+        top: '10px',
+        left: '-22px',
+        fontSize: '20px',
+        color: 'black'
       };
 
       makeRemovable(domElement, onRemoveCallback, buttonStyle);
+      hideRemoveButtonUnlessOver();
     };
 
     this.getValue = function() {
@@ -51,6 +55,20 @@
       fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
       personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
       section.appendWidgets(personTypeSpecificFields);
+    }
+
+    function hideRemoveButtonUnlessOver() {
+      var removeButton = domElement.querySelector('button[type="remove"]');
+      var initialOpacity = removeButton.style.opacity;
+      removeButton.style.opacity = '0';
+
+      domElement.addEventListener('mouseenter', function() {
+        removeButton.style.opacity = initialOpacity;
+      });
+
+      domElement.addEventListener('mouseleave', function() {
+        removeButton.style.opacity = '0';
+      });
     }
   }
 

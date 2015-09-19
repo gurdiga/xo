@@ -24,7 +24,8 @@
     t.equal(css.display, 'inline-block', 'has display inline-block');
     t.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
 
-    t.equal(getSectionLabel(), label, 'section has the appropriate label');
+    var labelText = sandbox.querySelector('legend').textContent;
+    t.equal(labelText, label, 'section has the appropriate label');
 
     t.doesNotThrow(function() {
       new PersonSection(label);
@@ -98,12 +99,37 @@
       personSection.makeRemovable(onRemoveCallback);
 
       var domElement = sandbox.querySelector('person-section');
-      t.equal(domElement.getAttribute('removable'), '', 'is can be removable');
+      t.equal(domElement.getAttribute('removable'), '', 'becames removable when executing its makeRemovable');
 
-      var button = domElement.querySelector('button');
-      button.click();
+      t.test('remove button', function(t) {
+        var button = domElement.querySelector('button[type="remove"]');
 
-      t.ok(onRemoveCallback.executed, 'onRemoveCallback is executed when clicking on the remove button');
+        t.test('styling', function(t) {
+          var css = button.style;
+          t.equal(css.top, '10px', 'aligns vertically with the section label');
+          t.equal(css.left, '-22px', 'is out at the left');
+          t.equal(css.fontSize, '20px', 'is large enough');
+          t.equal(css.fontFamily, 'sans-serif', 'has font family of sans-serif');
+          t.equal(css.opacity, '0', 'is initially hidden');
+
+          domElement.dispatchEvent(new Event('mouseenter'));
+          t.equal(css.opacity, '0.3', 'is shyly displayed on mouseenter');
+
+          domElement.dispatchEvent(new Event('mouseleave'));
+          t.equal(css.opacity, '0', 'fades out displayed on mouseleave');
+
+          t.end();
+        });
+
+        t.test('behavior', function(t) {
+          button.click();
+          t.ok(onRemoveCallback.executed, 'onRemoveCallback is executed when clicking on the remove button');
+
+          t.end();
+        });
+
+        t.end();
+      });
 
       t.end();
 
@@ -113,10 +139,6 @@
     });
 
     t.end();
-
-    function getSectionLabel() {
-      return sandbox.querySelector('legend').textContent;
-    }
   });
 
   [{
