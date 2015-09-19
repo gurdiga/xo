@@ -27,7 +27,7 @@
 
   function createButton(additionalStyle) {
     var button = document.createElement('button');
-    _.extend(button.style, additionalStyle, buttonStyle);
+    _.extend(button.style, buttonStyle, additionalStyle);
     button.textContent = '×';
     button.title = 'Elimină';
     button.setAttribute('type', 'remove');

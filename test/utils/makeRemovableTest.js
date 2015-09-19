@@ -6,11 +6,13 @@
 
   var sandbox = document.createElement('div');
   var domElement = document.createElement('the-widget');
+  domElement.style.color = 'green';
   sandbox.appendChild(domElement);
 
   test('makeRemovable', function(t) {
     var additionalButtonStyle = {
-      color: 'red'
+      color: 'red',
+      top: '50px'
     };
 
     function onRemove() {
@@ -35,7 +37,6 @@
       t.equal(css.backgroundColor, 'transparent', 'has transparent background');
       t.equal(css.position, 'absolute', 'is absolutely positioned not to disturb the flow');
       t.equal(css.right, '0px', 'is placed at the very right');
-      t.equal(css.top, '0px', 'is placed at the very top');
       t.equal(css.paddingTop, '2px', 'has 2px padding at the top');
       t.equal(css.paddingRight, '5px', 'has 5px padding at the right');
       t.equal(css.paddingBottom, '2px', 'has 2px padding at the bottom');
@@ -44,6 +45,7 @@
       t.equal(css.fontFamily, 'sans-serif', 'has font family of sans-serif');
 
       t.equal(css.color, additionalButtonStyle.color, 'applies the additional style');
+      t.equal(css.top, additionalButtonStyle.top, 'additional styles override the defaults');
 
       button.click();
       t.ok(!sandbox.querySelector('the-widget'), 'the dom element is removed from its parent DOM');
