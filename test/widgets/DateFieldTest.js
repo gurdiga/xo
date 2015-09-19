@@ -213,12 +213,6 @@
       correspondingDate.dispatchEvent(new Event('mousedown'));
     }
 
-    function simulateEscapeKey() {
-      var keydownEvent = new Event('keydown');
-      keydownEvent.keyCode = 27;
-      document.body.dispatchEvent(keydownEvent);
-    }
-
     function prepareBodyClickListener() {
       var listener = {
         receivedClicks: false

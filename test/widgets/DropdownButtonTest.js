@@ -12,6 +12,7 @@
   var dropdownButton = new DropdownButton(labelText, options);
   var sandbox = document.createElement('div');
   dropdownButton.appendTo(sandbox);
+  document.body.appendChild(sandbox);
 
   tape('DropdownButton', function(t) {
     t.test('DOM structure', function(t) {
@@ -91,6 +92,14 @@
         toggleButton.click();
         t.equal(optionList.style.display, 'none', 'clicking the button again hides the option list');
 
+        toggleButton.click();
+        document.body.click();
+        t.equal(optionList.style.display, 'none', 'clicking away hides the option list');
+
+        toggleButton.click();
+        simulateEscapeKey();
+        t.equal(optionList.style.display, 'none', 'pressing Escape hides the option list');
+
         t.end();
       });
 
@@ -114,6 +123,8 @@
     });
 
     t.end();
+
+    document.body.removeChild(sandbox);
   });
 
   function addFieldCallback() {

@@ -11,12 +11,29 @@
     var optionList = createOptionList();
     domElement.appendChild(optionList);
 
-    toggleButton.addEventListener('click', function() {
-      if (optionList.style.display === 'none') optionList.style.display = 'block';
-      else optionList.style.display = 'none';
+    toggleButton.addEventListener('click', function(e) {
+      e.stopPropagation();
+
+      if (isOptionListShown()) hideOptionList();
+      else showOptionList();
     });
 
+    document.body.addEventListener('keydown', hideOptionList);
+    document.body.addEventListener('click', hideOptionList);
+
     this.appendTo = getAppenderOf(domElement);
+
+    function showOptionList() {
+      optionList.style.display = 'block';
+    }
+
+    function hideOptionList() {
+      optionList.style.display = 'none';
+    }
+
+    function isOptionListShown() {
+      return optionList.style.display === 'block';
+    }
 
     function createButton() {
       var button = document.createElement('button');
