@@ -106,15 +106,25 @@
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('ul');
         var optionButtons = optionList.querySelectorAll('li button');
+        var addFieldButton = optionButtons[0];
+        var addSectionButton = optionButtons[1];
 
         optionList.style.display = 'block';
 
-        optionButtons[0].click();
+        addFieldButton.click();
         t.ok(addFieldCallback.executed, 'clicking on the first option triggers its associated function');
         t.equal(optionList.style.display, 'none', 'selecting an option hides the list');
 
-        optionButtons[1].click();
+        addSectionButton.click();
         t.ok(addSectionCallback.executed, 'clicking on the second option triggers its associated function');
+
+        addSectionButton.dispatchEvent(new Event('mouseenter'));
+        t.equal(addSectionButton.style.backgroundColor, 'rgb(195, 195, 195)',
+          'options backgroun change to gray on mouseenter');
+
+        addSectionButton.dispatchEvent(new Event('mouseleave'));
+        t.equal(addSectionButton.style.backgroundColor, 'transparent',
+          'options backgroun change back to normal on on mouseleave');
 
         t.end();
       });

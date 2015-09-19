@@ -70,14 +70,13 @@
         button.style.textAlign = 'left';
 
         button.addEventListener('click', function() {
-          optionList.style.display = 'none';
+          hideOptionList();
           f();
         });
 
-        var hoverStyle = {
+        addHoverEffect(button, {
           backgroundColor: 'c3c3c3'
-        };
-        addHoverEffect(button, hoverStyle);
+        });
 
         var option = document.createElement('li');
         option.appendChild(button);
