@@ -22,6 +22,7 @@
     addCreditorSection();
     addFirstDebitorSection();
     addAddPersonButton();
+    addCloseButton();
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -98,6 +99,32 @@
         personSection.insertAfter(lastDomElement('person-section').inside(domElement));
       };
     }
+
+    function addCloseButton() {
+      var button = document.createElement('button');
+      button.type = 'close';
+      button.textContent = '×';
+      button.title = 'Închide';
+
+      var style = {
+        borderWidth: '0px',
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
+        padding: '10px',
+        lineHeight: '0.5em',
+        fontSize: '20px'
+      };
+      _.extend(button.style, style);
+      makeShy(button);
+
+      button.addEventListener('click', function() {
+        domElement.style.display = 'none';
+      });
+
+      domElement.appendChild(button);
+    }
   }
 
   function lastDomElement(tagName) {
@@ -110,6 +137,7 @@
 
   var style = {
     display: 'block',
+    position: 'relative',
     backgroundColor: 'white',
     width: '960px',
     padding: '50px 0 50px 50px',
@@ -121,6 +149,7 @@
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
 
+  var makeShy = window.App.Utils.makeShy;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var rMap = window.App.Utils.rMap;
 

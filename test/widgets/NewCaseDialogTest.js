@@ -24,6 +24,8 @@
     t.equal(css.paddingLeft, '50px', 'has 50px of padding left');
     t.equal(css.border, '1px solid rgb(221, 221, 221)', 'has a border');
     t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 2px 2px 7px', 'has a nice box shadow');
+    t.equal(css.position, 'relative',
+      'is relatively positioned to allow for absolutely positioned children');
 
     t.test('getValue', function(t) {
       var value = newCaseDialog.getValue();
@@ -195,6 +197,50 @@
         t.equal(personSectionCountAfter, personSectionCountBefore - 1, 'clicking on the remove button removes the section');
         t.equal(personSectionDataCountAfter, personSectionDataCountBefore - 1,
           'clicking in the remove button removs person data item from “debitori” array');
+
+        t.end();
+      });
+
+      t.end();
+    });
+
+    t.test('the close button', function(t) {
+      var closeButton = domElement.querySelector('button[type="close"]');
+      var css = closeButton.style;
+
+      t.ok(closeButton, 'exists');
+      t.equal(closeButton.textContent, '×', 'has the appropriate label');
+      t.equal(closeButton.title, 'Închide', 'has the appropriate tooltip');
+
+      t.test('styling', function(t) {
+        t.equal(css.borderWidth, '0px', 'doesn’t have border');
+        t.equal(css.backgroundColor, 'transparent', 'is transparent');
+        t.equal(css.position, 'absolute', 'is absolutely positioned');
+        t.equal(css.top, '0px', 'is positioned at the top');
+        t.equal(css.left, '0px', 'is positioned at the left');
+        t.equal(css.lineHeight, '0.5em', 'has line-height of half a letter');
+        t.equal(css.fontSize, '20px', 'has a large font-size to be approachable');
+        t.equal(css.opacity, '0.3', 'is a bit faded in initially to not stand out too much');
+
+        t.end();
+      });
+
+      t.test('behavior', function(t) {
+        closeButton.dispatchEvent(new Event('mouseenter'));
+        t.equal(css.opacity, '1', 'fades out on mouseenter');
+        closeButton.dispatchEvent(new Event('mouseleave'));
+        t.equal(css.opacity, '0.3', 'fades back in on mouseleave');
+
+        var padding = '10px';
+        t.equal(css.paddingTop, padding, 'has nice padding for better clickability');
+        t.equal(css.paddingRight, padding, 'has nice padding for better clickability');
+        t.equal(css.paddingBottom, padding, 'has nice padding for better clickability');
+        t.equal(css.paddingLeft, padding, 'has nice padding for better clickability');
+
+        var initialDisplay = domElement.style.display;
+        closeButton.click();
+        t.equal(domElement.style.display, 'none', 'hides the dialog when clicked');
+        domElement.style.display = initialDisplay;
 
         t.end();
       });
