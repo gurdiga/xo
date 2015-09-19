@@ -7,12 +7,8 @@
 
     setTransition(domElement);
 
-    domElement.addEventListener('mouseenter', function() {
-      domElement.style.opacity = '1';
-    });
-
-    domElement.addEventListener('mouseleave', function() {
-      domElement.style.opacity = '0.3';
+    addHoverEffect(domElement, {
+      opacity: '1'
     });
   }
 
@@ -40,6 +36,8 @@
 
     return initialValue;
   }
+
+  var addHoverEffect = window.App.Utils.addHoverEffect;
 
   window.App.Utils.makeShy = makeShy;
 
