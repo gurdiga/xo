@@ -22,6 +22,7 @@
     addCreditorSection();
     addFirstDebitorSection();
     addAddPersonButton();
+    addSentenceSection();
     addCloseButton();
 
     this.appendTo = getAppenderOf(domElement);
@@ -100,6 +101,11 @@
       };
     }
 
+    function addSentenceSection() {
+      var sentenceSection = new SentenceSection();
+      sentenceSection.appendTo(domElement);
+    }
+
     function addCloseButton() {
       var button = document.createElement('button');
       button.type = 'close';
@@ -148,6 +154,7 @@
   var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
+  var SentenceSection = window.App.Widgets.SentenceSection;
 
   var makeShy = window.App.Utils.makeShy;
   var getAppenderOf = window.App.Utils.getAppenderOf;

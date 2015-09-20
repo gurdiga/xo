@@ -204,6 +204,16 @@
       t.end();
     });
 
+    t.test('the “Document executoriu” section', function(t) {
+      var sentenceSection = domElement.querySelector('sentence-section');
+
+      t.ok(sentenceSection, 'exists');
+
+      // TODO
+
+      t.end();
+    });
+
     t.test('the close button', function(t) {
       var closeButton = domElement.querySelector('button[type="close"]');
       var css = closeButton.style;
