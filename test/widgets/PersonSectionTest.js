@@ -24,7 +24,7 @@
     t.equal(css.display, 'inline-block', 'has display inline-block');
     t.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
 
-    var labelText = sandbox.querySelector('legend').textContent;
+    var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, label, 'section has the appropriate label');
 
     t.doesNotThrow(function() {
