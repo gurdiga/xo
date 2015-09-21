@@ -49,7 +49,7 @@
 
       t.equal(css.opacity, '0.3', 'is shy');
       button.dispatchEvent(new Event('mouseenter'));
-      t.equal(css.opacity, '1', 'fades out on mouseenter');
+      t.equal(css.opacity, '1', 'fades in on mouseenter');
       button.dispatchEvent(new Event('mouseleave'));
       t.equal(css.opacity, '0.3', 'fades out on mouseleave');
 
