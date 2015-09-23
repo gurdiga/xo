@@ -9,6 +9,10 @@
     section.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.insertAfter = function(siblingDomElement) {
+      siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
+    };
   }
 
   var Section = window.App.Widgets.Section;
