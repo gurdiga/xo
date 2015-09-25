@@ -49,9 +49,18 @@
 
       var conclusionField = fieldElements[3];
       t.equal(conclusionField.tagName, 'LARGE-TEXT-FIELD', 'the fourth field is a large-text-field');
-      t.equal(getLabel(conclusionField), 'Dispozitivul de judecată', 'the fourth field is “Dispozitivul de judecată”');
+      t.equal(getLabel(conclusionField), 'Dispozitivul',
+        'the fourth field is “Dispozitivul”');
 
-      // TODO
+      var finalSentenceDateFiels = fieldElements[4];
+      t.equal(finalSentenceDateFiels.tagName, 'DATE-FIELD', 'the fifth field is a date-field');
+      t.equal(getLabel(finalSentenceDateFiels), 'Data rămînerii definitive',
+        'the fifth field is “Data rămînerii definitive”');
+
+      var releaseDateField = fieldElements[5];
+      t.equal(releaseDateField.tagName, 'DATE-FIELD', 'the sixth field is a date-field');
+      t.equal(getLabel(releaseDateField), 'Data eliberării',
+        'the sixth field is “Data eliberării”');
 
       t.end();
 

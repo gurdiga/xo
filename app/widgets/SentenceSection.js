@@ -9,7 +9,9 @@
       new SelectField('Instanţa de judecată', []),
       new TextField('Numărul documentului'),
       new DateField('Data hotărîrii'),
-      new LargeTextField('Dispozitivul de judecată')
+      new LargeTextField('Dispozitivul'),
+      new DateField('Data rămînerii definitive'),
+      new DateField('Data eliberării')
     ]);
     section.appendTo(domElement);
 
