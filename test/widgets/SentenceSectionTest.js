@@ -33,9 +33,31 @@
     });
 
     t.test('fields', function(t) {
+      var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
+
+      var courtField = fieldElements[0];
+      t.equal(courtField.tagName, 'SELECT-FIELD', 'the first field is a select-field');
+      t.equal(getLabel(courtField), 'Instanţa de judecată', 'the first field is “Instanţa de judecată”');
+
+      var documentNumberField = fieldElements[1];
+      t.equal(documentNumberField.tagName, 'TEXT-FIELD', 'the second field is a text-field');
+      t.equal(getLabel(documentNumberField), 'Numărul documentului', 'the second field is “Numărul documentului”');
+
+      var sentenceDateField = fieldElements[2];
+      t.equal(sentenceDateField.tagName, 'DATE-FIELD', 'the third field is a date-field');
+      t.equal(getLabel(sentenceDateField), 'Data hotărîrii', 'the third field is “Data hotărîrii”');
+
+      var conclusionField = fieldElements[3];
+      t.equal(conclusionField.tagName, 'LARGE-TEXT-FIELD', 'the fourth field is a large-text-field');
+      t.equal(getLabel(conclusionField), 'Dispozitivul de judecată', 'the fourth field is “Dispozitivul de judecată”');
+
       // TODO
 
       t.end();
+
+      function getLabel(field) {
+        return field.querySelector('label>span').textContent;
+      }
     });
 
     t.end();
