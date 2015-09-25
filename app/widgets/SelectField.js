@@ -10,7 +10,7 @@
     select.value = defaultValue;
     _.extend(select.style, style);
 
-    var label = new FieldLabel(labelText, {}, [select]);
+    var label = new FieldLabel(labelText, labelStyle, [select]);
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -46,6 +46,10 @@
     font: TextFieldInput.DEFAULT_FONT,
     position: 'absolute',
     marginTop: '-2px'
+  };
+
+  var labelStyle = {
+    marginBottom: '6px'
   };
 
   var FieldLabel = window.App.Widgets.FieldLabel;

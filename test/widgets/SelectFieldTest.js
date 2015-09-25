@@ -35,7 +35,7 @@
   test('SelectField label layout CSS', function(t) {
     var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
-    t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
+    t.equal(css.margin, '0px 0px 6px 5px', 'has some air to breath at the left and below');
 
     t.end();
   });
