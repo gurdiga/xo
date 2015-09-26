@@ -1,17 +1,17 @@
 (function() {
   'use strict';
 
-  function SentenceSection() {
+  function SentenceSection(fieldValues) {
     var domElement = document.createElement('sentence-section');
     domElement.style.display = 'inline-block';
 
     var section = new Section('Documentul executoriu', [
-      new SelectField('Instanţa de judecată', []),
-      new TextField('Numărul documentului'),
-      new DateField('Data hotărîrii'),
-      new LargeTextField('Dispozitivul'),
-      new DateField('Data rămînerii definitive'),
-      new DateField('Data eliberării')
+      new SelectField('Instanţa de judecată', []), // TODO: figure out how to populate these options
+      new TextField('Numărul hotărîrii', fieldValues['numărul-hotărîrii']),
+      new DateField('Data hotărîrii', fieldValues['data-hotărîrii']),
+      new LargeTextField('Dispozitivul', fieldValues['dispozitivul']),
+      new DateField('Data rămînerii definitive', fieldValues['data-rămînerii-definitive']),
+      new DateField('Data eliberării', fieldValues['data-eliberării'])
     ]);
     section.appendTo(domElement);
 

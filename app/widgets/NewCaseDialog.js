@@ -102,7 +102,7 @@
     }
 
     function addSentenceSection() {
-      var sentenceSection = new SentenceSection();
+      var sentenceSection = new SentenceSection({});
       sentenceSection.appendTo(domElement);
     }
 
