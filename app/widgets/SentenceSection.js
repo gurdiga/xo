@@ -6,7 +6,10 @@
     domElement.style.display = 'inline-block';
 
     var section = new Section('Documentul executoriu', [
-      new SelectField('Instanţa de judecată', []), // TODO: figure out how to populate these options
+      new SelectField('Instanţa de judecată',
+        COURT_LEVELS_AS_OPTGROUPS,
+        fieldValues['instanţa-de-judecată']
+      ),
       new TextField('Numărul hotărîrii', fieldValues['numărul-hotărîrii']),
       new DateField('Data hotărîrii', fieldValues['data-hotărîrii']),
       new LargeTextField('Dispozitivul', fieldValues['dispozitivul']),
@@ -19,6 +22,16 @@
 
     this.insertAfter = function(siblingDomElement) {
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
+    };
+  }
+
+  var Courts = window.App.Data.Courts;
+  var COURT_LEVELS_AS_OPTGROUPS = Courts.map(courLevelAsOptgroup);
+
+  function courLevelAsOptgroup(courtLevel) {
+    return {
+      optgroupLabel: courtLevel.levelLabel,
+      options: courtLevel.courtList
     };
   }
 

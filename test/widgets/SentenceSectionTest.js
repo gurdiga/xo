@@ -4,7 +4,7 @@
   var SentenceSection = window.App.Widgets.SentenceSection;
 
   var fieldValues = {
-    'instanţa-de-judecată': 'TODO',
+    'instanţa-de-judecată': 'Curtea de Apel Chişinău',
     'numărul-hotărîrii': '2-4765/12',
     'data-hotărîrii': '09.01.2013',
     'dispozitivul': 'De făcut cutare şi cutare.',
@@ -47,10 +47,8 @@
       var courtField = fieldElements[0];
       t.equal(courtField.tagName, 'SELECT-FIELD', 'the first field is a select-field');
       t.equal(getLabel(courtField), 'Instanţa de judecată', 'the first field is “Instanţa de judecată”');
-
-      // TODO: think about how to get all the optins in this select
-      //t.equal(getValue(courtField), fieldValues['instanţa-de-judecată'],
-      //  'the “Instanţa de judecată” field has preselected the given option');
+      t.equal(getValue(courtField), fieldValues['instanţa-de-judecată'],
+        'the “Instanţa de judecată” field has preselected the given option');
 
       var sentenceNumberField = fieldElements[1];
       t.equal(sentenceNumberField.tagName, 'TEXT-FIELD', 'the second field is a text-field');
@@ -92,7 +90,7 @@
       }
 
       function getValue(field) {
-        return field.querySelector('input,textarea').value;
+        return field.querySelector('input, textarea, select').value;
       }
     });
 
