@@ -8,7 +8,14 @@
   var labelText = 'My SelectField component';
   var optionValues = [
     'option 1',
-    'option 2'
+    'option 2',
+    {
+      optgroupLabel: 'An optgroup',
+      options: [
+        'option 3',
+        'option 4'
+      ]
+    }
   ];
   var selectField = new SelectField(labelText, optionValues, optionValues[1]);
   selectField.onChange(onChange);
@@ -51,12 +58,28 @@
   });
 
   test('SelectField options', function(t) {
-    var options = sandbox.querySelector('label>select').children;
-    t.equal(options.length, 2, 'the option count corresponds');
-    t.equal(options[0].tagName, 'OPTION', 'the first child is an <option>');
+    var select = sandbox.querySelector('label>select');
+    var options = select.querySelectorAll('option');
+    t.equal(options.length, 4, 'the option count corresponds');
+    t.equal(options[0].tagName, 'OPTION', 'the first option is an <option>');
     t.equal(options[0].textContent, optionValues[0], 'the first <option> has the corresponding text');
-    t.equal(options[1].tagName, 'OPTION', 'the second child is an <option>');
+    t.equal(options[1].tagName, 'OPTION', 'the second option is an <option>');
     t.equal(options[1].textContent, optionValues[1], 'the second <option> has the corresponding text');
+
+    var group = optionValues[2];
+    var optgroup = select.querySelector('optgroup');
+    t.ok(optgroup, 'an <optgroup> is added for the POJSO item');
+    t.equal(optgroup.label, group.optgroupLabel, 'the <optgroup> has the appropriate label');
+
+    var optgroupOptions = optgroup.querySelectorAll('option');
+    t.equal(optgroupOptions.length, 2, '<optgroup> has the appropriate number of <option>s');
+
+    t.equal(optgroupOptions[0].tagName, 'OPTION', 'the third option is an <option>');
+    t.equal(optgroupOptions[0].textContent, group.options[0],
+      'the third <option> has the corresponding text');
+    t.equal(optgroupOptions[1].tagName, 'OPTION', 'the fourth option is an <option>');
+    t.equal(optgroupOptions[1].textContent, group.options[1],
+      'the fourth <option> has the corresponding text');
 
     t.end();
   });

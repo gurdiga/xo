@@ -33,10 +33,25 @@
 
   function appendOptionTo(domElement) {
     return function(optionText) {
-      var option = document.createElement('option');
-      option.textContent = optionText;
-      domElement.appendChild(option);
+      var item = _.isPlainObject(optionText) ?
+        createOptgroup(optionText) :
+        createOption(optionText);
+
+      domElement.appendChild(item);
     };
+  }
+
+  function createOptgroup(group) {
+    var optgroup = document.createElement('optgroup');
+    optgroup.label = group.optgroupLabel;
+    group.options.forEach(appendOptionTo(optgroup));
+    return optgroup;
+  }
+
+  function createOption(optionText) {
+    var option = document.createElement('option');
+    option.textContent = optionText;
+    return option;
   }
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;
