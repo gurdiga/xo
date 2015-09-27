@@ -46,9 +46,9 @@
       t.end();
 
       function getOptionTexts() {
-        var optionDOMElements = personTypeField.querySelectorAll('select option');
+        var optionDomElements = personTypeField.querySelectorAll('select option');
 
-        return [].map.call(optionDOMElements, function(option) {
+        return [].map.call(optionDomElements, function(option) {
           return option.textContent;
         });
       }
