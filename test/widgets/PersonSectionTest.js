@@ -31,8 +31,8 @@
     t.test('person type field', function(t) {
       var personTypeField = sandbox.querySelector('fieldset>select-field');
 
-      t.equal(getFieldLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
-      t.equal(getFieldValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
+      t.equal(getLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
+      t.equal(getValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
 
       var optionTexts = getOptionTexts();
 
@@ -42,7 +42,7 @@
 
       setPersonType(PersonSection.PERSON_TYPES.COMPANY);
       var expectedFieldLabelTexts = ["Gen persoană","Denumire","IDNO","Sediu","Persoană de contact","Note"];
-      t.deepEqual(getFieldLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
+      t.deepEqual(getLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
 
       t.end();
 
@@ -60,7 +60,7 @@
         select.dispatchEvent(new Event('change'));
       }
 
-      function getFieldLabelTexts() {
+      function getLabelTexts() {
         var fieldLabels = [].slice.call(sandbox.querySelectorAll('fieldset label>span'));
         return fieldLabels.map(get('textContent'));
       }
@@ -198,21 +198,21 @@
 
       var prefix = 'field #' + (i + 1) + ' — ' + field[2] + ' — ';
 
-      t.equal(getFieldLabel(fieldElement),     expectedLabel,    prefix + 'has the appropriate label');
-      t.equal(getFieldTypeName(fieldElement),  expectedTagName,  prefix + 'is of the appropriate kind');
-      t.equal(getFieldValue(fieldElement),     expectedValue,    prefix + 'is prefilled with the appropriate value');
+      t.equal(getLabel(fieldElement),     expectedLabel,    prefix + 'has the appropriate label');
+      t.equal(getTypeName(fieldElement),  expectedTagName,  prefix + 'is of the appropriate kind');
+      t.equal(getValue(fieldElement),     expectedValue,    prefix + 'is prefilled with the appropriate value');
     };
   }
 
-  function getFieldLabel(fieldElement) {
+  function getLabel(fieldElement) {
     return fieldElement.querySelector('label>span').textContent;
   }
 
-  function getFieldTypeName(fieldElement) {
+  function getTypeName(fieldElement) {
     return fieldElement.tagName.toLowerCase();
   }
 
-  function getFieldValue(fieldElement) {
+  function getValue(fieldElement) {
     return fieldElement.querySelector('input,textarea,select').value;
   }
 
