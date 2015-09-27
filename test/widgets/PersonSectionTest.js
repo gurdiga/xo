@@ -35,10 +35,9 @@
       t.equal(getValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
 
       var optionTexts = getOptionTexts();
-
-      PersonSection.PERSON_TYPES.forEach(function(type) {
-        t.ok(optionTexts.indexOf(type) > -1, 'has the “' + type + '” option');
-      });
+      t.equal(optionTexts.length, PersonSection.PERSON_TYPES.length, 'has the appropriate number of options');
+      t.equal(optionTexts[0], PersonSection.PERSON_TYPES[0], 'has PERSON as the first option');
+      t.equal(optionTexts[1], PersonSection.PERSON_TYPES[1], 'has INDIVIDUAL as the second option');
 
       setPersonType(PersonSection.PERSON_TYPES.COMPANY);
       var expectedFieldLabelTexts = ["Gen persoană","Denumire","IDNO","Sediu","Persoană de contact","Note"];
