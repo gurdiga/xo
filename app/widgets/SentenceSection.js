@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function SentenceSection(fieldValues) {
+  function SentenceSection(fieldValues, additionalStyles) {
     var domElement = createDomElement();
 
     var fields = [
@@ -27,7 +27,11 @@
 
     function createDomElement() {
       var domElement = document.createElement('sentence-section');
-      domElement.style.display = 'inline-block';
+      var style = {
+        display: 'inline-block'
+      };
+      _.extend(domElement.style, style, additionalStyles);
+
       return domElement;
     }
   }

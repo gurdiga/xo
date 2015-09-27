@@ -11,7 +11,12 @@
     'data-rămînerii-definitive': '10.01.2013',
     'data-eliberării': '11.01.2013'
   };
-  var sentenceSection = new SentenceSection(fieldValues);
+  var additionalStyles = {
+    width: '380px',
+    marginRight: '60px'
+  };
+
+  var sentenceSection = new SentenceSection(fieldValues, additionalStyles);
 
   var sandbox = document.createElement('div');
   sentenceSection.appendTo(sandbox);
@@ -92,6 +97,14 @@
       function getValue(field) {
         return field.querySelector('input, textarea, select').value;
       }
+    });
+
+    t.test('additional style', function(t) {
+      var css = domElement.style;
+      t.equal(css.width, additionalStyles.width, 'accepts additional style: width');
+      t.equal(css.marginRight, additionalStyles.marginRight, 'accepts additional style: marginRight');
+
+      t.end();
     });
 
     t.test('getValue', function(t) {
