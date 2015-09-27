@@ -11,8 +11,9 @@
   newCaseDialog.appendTo(sandbox);
 
   test('NewCaseDialog', function(t) {
-    var domElement = sandbox.querySelector('new-case-dialog');
+    var domElement = sandbox.firstChild;
     t.ok(domElement, 'renders a <new-case-dialog/>');
+    t.equal(domElement.tagName, 'NEW-CASE-DIALOG', 'has the appropriate tag name');
 
     var css = domElement.style;
     t.equal(css.display, 'block', 'has display:block');

@@ -16,8 +16,9 @@
 
   tape('DropdownButton', function(t) {
     t.test('DOM structure', function(t) {
-      var domElement = sandbox.querySelector('dropdown-button');
+      var domElement = sandbox.firstChild;
       t.ok(domElement, 'exists');
+      t.equal(domElement.tagName, 'DROPDOWN-BUTTON', 'has the appropriate tag name');
 
       t.test('toggle button', function(t) {
         var toggleButton = domElement.querySelector('button');
@@ -50,7 +51,7 @@
 
     t.test('styling', function(t) {
       var css;
-      var domElement = sandbox.querySelector('dropdown-button');
+      var domElement = sandbox.firstChild;
       css = domElement.style;
       t.equal(css.display, 'inline-block',
         'has display of inline-block to have the option list postioned appropriately');
@@ -80,7 +81,7 @@
     });
 
     t.test('behavior', function(t) {
-      var domElement = sandbox.querySelector('dropdown-button');
+      var domElement = sandbox.firstChild;
 
       t.test('toggle button', function(t) {
         var toggleButton = domElement.querySelector('button');

@@ -17,7 +17,7 @@
   sentenceSection.appendTo(sandbox);
 
   tape('SentenceSection', function(t) {
-    var domElement = sandbox.querySelector('sentence-section');
+    var domElement = sandbox.firstChild;
     t.ok(domElement, 'exists');
 
     var css = domElement.style;

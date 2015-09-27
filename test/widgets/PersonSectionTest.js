@@ -17,8 +17,9 @@
   personSection.appendTo(sandbox);
 
   test('PersonSection', function(t) {
-    var domElement = sandbox.querySelector('person-section');
+    var domElement = sandbox.firstChild;
     t.ok(domElement, 'exists');
+    t.equal(domElement.tagName, 'PERSON-SECTION', 'has the appropriate tag name');
 
     var css = domElement.style;
     t.equal(css.display, 'inline-block', 'has display inline-block');
@@ -94,7 +95,7 @@
     t.test('can be removable', function(t) {
       personSection.makeRemovable(onRemoveCallback);
 
-      var domElement = sandbox.querySelector('person-section');
+      var domElement = sandbox.firstChild;
       t.equal(domElement.getAttribute('removable'), '', 'becames removable when executing its makeRemovable');
 
       t.test('remove button', function(t) {
