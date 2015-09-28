@@ -209,8 +209,8 @@
       var sentenceSection = domElement.querySelector('sentence-section');
 
       t.ok(sentenceSection, 'exists');
-
-      // TODO
+      t.equal(sentenceSection.style.width, '380px', 'the new section has the appropriate width');
+      t.equal(sentenceSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
 
       t.end();
     });

@@ -102,7 +102,14 @@
     }
 
     function addSentenceSection() {
-      var sentenceSection = new SentenceSection({});
+      var fieldValues = {};
+
+      var style = {
+        width: '380px',
+        marginRight: '60px'
+      };
+
+      var sentenceSection = new SentenceSection(fieldValues, style);
       sentenceSection.appendTo(domElement);
     }
 
