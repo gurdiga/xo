@@ -3,19 +3,7 @@
 
   function SentenceSection(fieldValues, additionalStyles) {
     var domElement = createDomElement();
-
-    var fields = [
-      new SelectField('Instanţa de judecată',
-        COURT_LEVELS_AS_OPTGROUPS,
-        fieldValues['instanţa-de-judecată']
-      ),
-      new TextField('Numărul hotărîrii', fieldValues['numărul-hotărîrii']),
-      new DateField('Data hotărîrii', fieldValues['data-hotărîrii']),
-      new LargeTextField('Dispozitivul', fieldValues['dispozitivul']),
-      new DateField('Data rămînerii definitive', fieldValues['data-rămînerii-definitive']),
-      new DateField('Data eliberării', fieldValues['data-eliberării'])
-    ];
-
+    var fields = createFields(fieldValues);
     var section = new Section('Documentul executoriu', fields);
     section.appendTo(domElement);
 
@@ -23,6 +11,16 @@
 
     this.insertAfter = function(siblingDomElement) {
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
+    };
+
+    this.getValue = function() {
+      var fieldValues = {};
+
+      fields.forEach(function(field) {
+        fieldValues[field.internalName] = field.getValue();
+      });
+
+      return fieldValues;
     };
 
     function createDomElement() {
@@ -33,6 +31,29 @@
       _.extend(domElement.style, style, additionalStyles);
 
       return domElement;
+    }
+  }
+
+  function createFields(fieldValues) {
+    return [
+      createSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
+      createField(TextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
+      createField(DateField, 'Data hotărîrii', 'data-hotărîrii'),
+      createField(LargeTextField, 'Dispozitivul', 'dispozitivul'),
+      createField(DateField, 'Data rămînerii definitive', 'data-rămînerii-definitive'),
+      createField(DateField, 'Data eliberării', 'data-eliberării')
+    ];
+
+    function createSelectField(labelText, internalName, options) {
+      var field = new SelectField(labelText, options, fieldValues[internalName]);
+      field.internalName = internalName;
+      return field;
+    }
+
+    function createField(FieldClass, labelText, internalName) {
+      var field = new FieldClass(labelText, fieldValues[internalName]);
+      field.internalName = internalName;
+      return field;
     }
   }
 

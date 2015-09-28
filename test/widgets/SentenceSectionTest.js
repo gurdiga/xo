@@ -108,7 +108,38 @@
     });
 
     t.test('getValue', function(t) {
-      // TODO
+      var value = sentenceSection.getValue();
+
+      t.equal(
+        value['instanţa-de-judecată'],
+        fieldValues['instanţa-de-judecată'],
+        'returns the appropriate value for instanţa-de-judecată'
+      );
+      t.equal(
+        value['numărul-hotărîrii'],
+        fieldValues['numărul-hotărîrii'],
+        'returns the appendChild value for numărul-hotărîrii'
+      );
+      t.equal(
+        value['data-hotărîrii'],
+        fieldValues['data-hotărîrii'],
+        'returns the appropriate value for data-hotărîrii'
+      );
+      t.equal(
+        value['dispozitivul'],
+        fieldValues['dispozitivul'],
+        'returns the appendChild value for dispozitivul'
+      );
+      t.equal(
+        value['data-rămînerii-definitive'],
+        fieldValues['data-rămînerii-definitive'],
+        'returns the appropriate value for data-rămînerii-definitive'
+      );
+      t.equal(
+        value['data-eliberării'],
+        fieldValues['data-eliberării'],
+        'returns the appendChild value for data-eliberării'
+      );
 
       t.end();
     });
