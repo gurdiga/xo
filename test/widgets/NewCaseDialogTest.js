@@ -211,10 +211,12 @@
 
     t.test('the “Document executoriu” section', function(t) {
       var sentenceSection = domElement.querySelector('sentence-section');
+      var css = sentenceSection.style;
 
       t.ok(sentenceSection, 'exists');
-      t.equal(sentenceSection.style.width, '380px', 'the new section has the appropriate width');
-      t.equal(sentenceSection.style.marginRight, '60px', 'the new section has the appropriate marginLeft');
+      t.equal(css.width, '380px', 'the new section has the appropriate width');
+      t.equal(css.marginRight, '60px', 'the new section has the appropriate marginLeft');
+      t.equal(css.verticalAlign, 'top', 'top-align vertically with the other sections');
 
       t.end();
     });

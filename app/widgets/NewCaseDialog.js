@@ -111,6 +111,7 @@
       var fieldValues = {};
 
       var style = {
+        verticalAlign: 'top',
         width: '380px',
         marginRight: '60px'
       };
