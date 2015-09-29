@@ -112,6 +112,10 @@
 
     t.test('the button to add a person section', function(t) {
       var dropdownButton = domElement.querySelector('dropdown-button');
+      var css = dropdownButton.style;
+      t.equal(css.position, 'absolute', 'is positioned absolutely not to disturb section flow');
+      t.equal(css.marginLeft, '-200px', 'uses negative margin to horizontally align with the last person');
+      t.equal(css.marginTop, '360px', 'uses top-margin to position itself at the bottom of the section');
 
       var labelText = dropdownButton.querySelector('button').textContent;
       t.equal(labelText, 'adaugă persoană ▾', 'has the appropriate label');

@@ -79,10 +79,16 @@
     }
 
     function addAddPersonButton() {
+      var style = {
+        position: 'absolute',
+        marginLeft: '-200px',
+        marginTop: '360px'
+      };
+
       var button = new DropdownButton('adaugă persoană ▾', {
         '■ debitor':        addRemovablePersonSection('Debitor', 'debitori'),
         '■ persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
-      });
+      }, style);
 
       button.appendTo(domElement);
     }
