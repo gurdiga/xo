@@ -11,17 +11,18 @@
     var optionList = createOptionList();
     domElement.appendChild(optionList);
 
-    toggleButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-
-      if (isOptionListShown()) hideOptionList();
-      else showOptionList();
-    });
-
+    toggleButton.addEventListener('click', toggleOptionList);
     document.body.addEventListener('keydown', hideOptionList);
     document.body.addEventListener('click', hideOptionList);
 
     this.appendTo = getAppenderOf(domElement);
+
+    function toggleOptionList(e) {
+      e.stopPropagation();
+
+      if (isOptionListShown()) hideOptionList();
+      else showOptionList();
+    }
 
     function showOptionList() {
       optionList.style.display = 'block';
