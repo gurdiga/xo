@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  function DropdownButton(labelText, options) {
+  function DropdownButton(labelText, options, additionalStyle) {
     var domElement = document.createElement('dropdown-button');
-    domElement.style.display = 'inline-block';
+    _.extend(domElement.style, style, additionalStyle);
 
     var toggleButton = createButton();
     domElement.appendChild(toggleButton);
@@ -86,6 +86,10 @@
       }
     }
   }
+
+  var style = {
+    display: 'inline-block'
+  };
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var addHoverEffect = window.App.Utils.addHoverEffect;

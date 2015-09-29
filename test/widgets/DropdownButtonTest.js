@@ -8,8 +8,11 @@
     'field': addFieldCallback,
     'section': addSectionCallback
   };
+  var additionalStyle = {
+    color: 'red'
+  };
 
-  var dropdownButton = new DropdownButton(labelText, options);
+  var dropdownButton = new DropdownButton(labelText, options, additionalStyle);
   var sandbox = document.createElement('div');
   dropdownButton.appendTo(sandbox);
   document.body.appendChild(sandbox);
@@ -55,6 +58,8 @@
       css = domElement.style;
       t.equal(css.display, 'inline-block',
         'has display of inline-block to have the option list postioned appropriately');
+
+      t.equal(css.color, additionalStyle.color, 'accepts additional styles');
 
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('ul');
