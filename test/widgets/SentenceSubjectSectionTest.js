@@ -8,7 +8,10 @@
   sentenceSubjectSection.appendTo(sandbox);
 
   tape.test('SentenceSubjectSection', function(t) {
-    t.equal(sandbox.firstChild.tagName, 'SENTENCE-SUBJECT-SECTION', 'has sentence-subject-section tag');
+    var domElement = sandbox.firstChild;
+
+    t.ok(domElement, 'exists');
+    t.equal(domElement.tagName, 'SENTENCE-SUBJECT-SECTION', 'has sentence-subject-section tag');
 
     t.end();
   });
