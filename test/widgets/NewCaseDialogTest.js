@@ -221,6 +221,13 @@
       t.end();
     });
 
+    t.test('the “Obiectul urmăririi” section', function(t) {
+      var sentenceObjectSection = domElement.querySelector('sentence-subject-section');
+      t.ok(sentenceObjectSection, 'exists');
+
+      t.end();
+    });
+
     t.test('the close button', function(t) {
       var closeButton = domElement.querySelector('button[type="close"]');
       var css = closeButton.style;
