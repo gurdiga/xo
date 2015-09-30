@@ -11,6 +11,7 @@
 
     function createDomElement() {
       var domElement = document.createElement('sentence-subject-section');
+      domElement.style.display = 'inline-block';
       return domElement;
     }
 

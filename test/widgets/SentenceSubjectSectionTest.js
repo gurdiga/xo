@@ -13,6 +13,10 @@
     t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'SENTENCE-SUBJECT-SECTION', 'has sentence-subject-section tag');
 
+    var css = domElement.style;
+    t.equal(css.display, 'inline-block',
+      'has inline-block display to flow along with the other sections');
+
     var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, 'Obiectul urmăririi', 'section has the appropriate label');
 
