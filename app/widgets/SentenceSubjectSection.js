@@ -16,11 +16,14 @@
     }
 
     function createFields() {
-      return [];
+      return [
+        new SelectField('Caracter', ['pecuniar', 'nonpecuniar'])
+      ];
     }
   }
 
   var Section = window.App.Widgets.Section;
+  var SelectField = window.App.Widgets.SelectField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
 

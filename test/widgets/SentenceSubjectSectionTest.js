@@ -20,7 +20,24 @@
     var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, 'Obiectul urmăririi', 'section has the appropriate label');
 
+    t.test('fields', function(t) {
+      var fields = domElement.querySelectorAll('fieldset>:not(legend)');
+
+      var firstField = fields[0];
+      t.ok(firstField, 'first field exists');
+      t.equal(firstField.tagName, 'SELECT-FIELD', 'is a select-field');
+      t.equal(getLabel(firstField), 'Caracter', 'has the “Caracter” label');
+
+      var options = getOptionTexts(firstField.querySelector('select'));
+      t.deepEqual(options, ['pecuniar', 'nonpecuniar'], 'it has the appropriate options');
+
+      t.end();
+    });
+
     t.end();
   });
+
+  var getOptionTexts = window.TestHelpers.getOptionTexts;
+  var getLabel = window.TestHelpers.getLabel;
 
 }());
