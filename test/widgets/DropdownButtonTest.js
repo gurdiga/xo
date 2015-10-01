@@ -151,4 +151,6 @@
     addSectionCallback.executed = true;
   }
 
+  var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
+
 }());

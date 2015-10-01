@@ -89,14 +89,6 @@
         'the “Data eliberării” field is prefilled with the given value');
 
       t.end();
-
-      function getLabel(field) {
-        return field.querySelector('label>span').textContent;
-      }
-
-      function getValue(field) {
-        return field.querySelector('input, textarea, select').value;
-      }
     });
 
     t.test('additional style', function(t) {
@@ -146,5 +138,8 @@
 
     t.end();
   });
+
+  var getLabel = window.TestHelpers.getLabel;
+  var getValue = window.TestHelpers.getValue;
 
 }());

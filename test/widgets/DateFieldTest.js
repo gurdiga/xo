@@ -229,4 +229,7 @@
 
   var DateFormatting = window.App.Utils.DateFormatting;
   var assert = window.App.Utils.assert;
+
+  var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
+
 }());

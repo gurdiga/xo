@@ -34,7 +34,7 @@
       t.equal(getLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
       t.equal(getValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
 
-      var optionTexts = getOptionTexts();
+      var optionTexts = getOptionTexts(personTypeField.querySelector('select'));
       t.equal(optionTexts.length, PersonSection.PERSON_TYPES.length, 'has the appropriate number of options');
       t.equal(optionTexts[0], PersonSection.PERSON_TYPES[0], 'has PERSON as the first option');
       t.equal(optionTexts[1], PersonSection.PERSON_TYPES[1], 'has INDIVIDUAL as the second option');
@@ -44,14 +44,6 @@
       t.deepEqual(getLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
 
       t.end();
-
-      function getOptionTexts() {
-        var optionDomElements = personTypeField.querySelectorAll('select option');
-
-        return [].map.call(optionDomElements, function(option) {
-          return option.textContent;
-        });
-      }
 
       function setPersonType(personType) {
         var select = personTypeField.querySelector('select');
@@ -203,16 +195,12 @@
     };
   }
 
-  function getLabel(fieldElement) {
-    return fieldElement.querySelector('label>span').textContent;
-  }
-
   function getTypeName(fieldElement) {
     return fieldElement.tagName.toLowerCase();
   }
 
-  function getValue(fieldElement) {
-    return fieldElement.querySelector('input,textarea,select').value;
-  }
+  var getOptionTexts = window.TestHelpers.getOptionTexts;
+  var getLabel = window.TestHelpers.getLabel;
+  var getValue = window.TestHelpers.getValue;
 
 }());

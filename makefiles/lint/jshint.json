@@ -29,9 +29,7 @@
     "chrome": false,
     "tape": false,
     "_": false,
-    "e": false,
-
-    "simulateEscapeKey": false
+    "e": false
   },
 
   "predef": [ "-Promise" ]
