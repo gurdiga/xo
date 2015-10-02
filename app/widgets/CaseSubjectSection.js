@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function SentenceSubjectSection() {
+  function CaseSubjectSection() {
     var domElement = createDomElement();
     var fields = createFields();
     var section = new Section('Obiectul urmăririi', fields);
@@ -27,6 +27,6 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
-  window.App.Widgets.SentenceSubjectSection = SentenceSubjectSection;
+  window.App.Widgets.CaseSubjectSection = CaseSubjectSection;
 
 }());

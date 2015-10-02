@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var SentenceSubjectSection = window.App.Widgets.SentenceSubjectSection;
+  var CaseSubjectSection = window.App.Widgets.CaseSubjectSection;
 
   var sandbox = document.createElement('div');
-  var sentenceSubjectSection = new SentenceSubjectSection();
+  var sentenceSubjectSection = new CaseSubjectSection();
   sentenceSubjectSection.appendTo(sandbox);
 
-  tape.test('SentenceSubjectSection', function(t) {
+  tape.test('CaseSubjectSection', function(t) {
     var domElement = sandbox.firstChild;
 
     t.ok(domElement, 'exists');
