@@ -1,9 +1,6 @@
 (function() {
   'use strict';
 
-  var PERSON_TYPES = definePersonTypes();
-  var PERSON_TYPE_INTERNAL_NAME = 'gen-persoană';
-
   function PersonSection(labelText, fieldValues, additionalStyle) {
     fieldValues = fieldValues || {};
 
@@ -71,18 +68,16 @@
     }
   }
 
+  var createEnumArray = window.App.Utils.createEnumArray;
+
+  var PERSON_TYPES = createEnumArray({
+    COMPANY: 'juridică',
+    INDIVIDUAL: 'fizică'
+  });
+
+  var PERSON_TYPE_INTERNAL_NAME = 'gen-persoană';
+
   PersonSection.PERSON_TYPES = PERSON_TYPES;
-
-  function definePersonTypes() {
-    var COMPANY = 'juridică';
-    var INDIVIDUAL = 'fizică';
-
-    var types = [COMPANY, INDIVIDUAL];
-    types.COMPANY = COMPANY;
-    types.INDIVIDUAL = INDIVIDUAL;
-
-    return types;
-  }
 
   function createPersonTypeField(fieldValues) {
     var personType = fieldValues[PERSON_TYPE_INTERNAL_NAME];

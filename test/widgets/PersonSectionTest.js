@@ -36,8 +36,7 @@
 
       var optionTexts = getOptionTexts(personTypeField.querySelector('select'));
       t.equal(optionTexts.length, PersonSection.PERSON_TYPES.length, 'has the appropriate number of options');
-      t.equal(optionTexts[0], PersonSection.PERSON_TYPES[0], 'has PERSON as the first option');
-      t.equal(optionTexts[1], PersonSection.PERSON_TYPES[1], 'has INDIVIDUAL as the second option');
+      t.deepEqual(optionTexts, PersonSection.PERSON_TYPES, 'has PERSON as the first option');
 
       setPersonType(PersonSection.PERSON_TYPES.COMPANY);
       var expectedFieldLabelTexts = ["Gen persoană","Denumire","IDNO","Sediu","Persoană de contact","Note"];
@@ -177,29 +176,9 @@
     });
   });
 
-  function assertSectionField(sandbox, fieldValues, t) {
-    var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
-
-    return function(field, i) {
-      var fieldElement = fieldElements[i];
-
-      var expectedLabel   = field[0];
-      var expectedTagName = field[1];
-      var internalName    = field[2];
-      var expectedValue   = fieldValues[internalName];
-
-      var orderNo = i + 1;
-      var messagePrefix = 'field #' + orderNo + ' — ' + internalName + ' — ';
-
-      t.equal(getLabel(fieldElement),   expectedLabel,   messagePrefix + 'has the appropriate label');
-      t.equal(getTagName(fieldElement), expectedTagName, messagePrefix + 'is of the appropriate kind');
-      t.equal(getValue(fieldElement),   expectedValue,   messagePrefix + 'is prefilled with the appropriate value');
-    };
-  }
-
+  var assertSectionField = window.TestHelpers.assertSectionField;
   var getOptionTexts = window.TestHelpers.getOptionTexts;
   var getLabel = window.TestHelpers.getLabel;
   var getValue = window.TestHelpers.getValue;
-  var getTagName = window.TestHelpers.getTagName;
 
 }());
