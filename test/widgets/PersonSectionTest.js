@@ -171,13 +171,13 @@
       var section = new PersonSection(label, testData.fieldValues);
       section.appendTo(sandbox);
 
-      testData.expectedFields.forEach(assertField(sandbox, testData.fieldValues, t));
+      testData.expectedFields.forEach(assertSectionField(sandbox, testData.fieldValues, t));
 
       t.end();
     });
   });
 
-  function assertField(sandbox, fieldValues, t) {
+  function assertSectionField(sandbox, fieldValues, t) {
     var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
 
     return function(field, i) {
@@ -185,22 +185,21 @@
 
       var expectedLabel   = field[0];
       var expectedTagName = field[1];
-      var expectedValue   = fieldValues[field[2]];
+      var internalName    = field[2];
+      var expectedValue   = fieldValues[internalName];
 
-      var prefix = 'field #' + (i + 1) + ' — ' + field[2] + ' — ';
+      var orderNo = i + 1;
+      var messagePrefix = 'field #' + orderNo + ' — ' + internalName + ' — ';
 
-      t.equal(getLabel(fieldElement),     expectedLabel,    prefix + 'has the appropriate label');
-      t.equal(getTypeName(fieldElement),  expectedTagName,  prefix + 'is of the appropriate kind');
-      t.equal(getValue(fieldElement),     expectedValue,    prefix + 'is prefilled with the appropriate value');
+      t.equal(getLabel(fieldElement),   expectedLabel,   messagePrefix + 'has the appropriate label');
+      t.equal(getTagName(fieldElement), expectedTagName, messagePrefix + 'is of the appropriate kind');
+      t.equal(getValue(fieldElement),   expectedValue,   messagePrefix + 'is prefilled with the appropriate value');
     };
-  }
-
-  function getTypeName(fieldElement) {
-    return fieldElement.tagName.toLowerCase();
   }
 
   var getOptionTexts = window.TestHelpers.getOptionTexts;
   var getLabel = window.TestHelpers.getLabel;
   var getValue = window.TestHelpers.getValue;
+  var getTagName = window.TestHelpers.getTagName;
 
 }());

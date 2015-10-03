@@ -29,4 +29,8 @@
     return field.querySelector('input, textarea, select').value;
   };
 
+  window.TestHelpers.getTagName = function(field) {
+    return field.tagName.toLowerCase();
+  };
+
 }());
