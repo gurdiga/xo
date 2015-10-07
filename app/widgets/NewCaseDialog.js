@@ -100,7 +100,7 @@
         var personSectionList = valuableChildren[personListInternalName];
 
         personSection.makeRemovable(function onRemoveCallback() {
-          personSectionList.remove(personSection);
+          _.pull(personSectionList, personSection);
         });
 
         personSectionList.push(personSection);
