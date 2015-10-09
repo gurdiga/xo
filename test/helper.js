@@ -21,16 +21,40 @@
     });
   };
 
-  window.TestHelpers.getLabel = function(field) {
-    return field.querySelector('label>span').textContent;
+  window.TestHelpers.getLabel = function(fieldElement) {
+    return fieldElement.querySelector('label>span').textContent;
   };
 
-  window.TestHelpers.getValue = function(field) {
-    return field.querySelector('input, textarea, select').value;
+  window.TestHelpers.getValue = function(fieldElement) {
+    return fieldElement.querySelector('input, textarea, select').value;
   };
 
-  window.TestHelpers.getTagName = function(field) {
-    return field.tagName.toLowerCase();
+  window.TestHelpers.getTagName = function(fieldElement) {
+    return fieldElement.tagName.toLowerCase();
   };
+
+  window.TestHelpers.assertSectionField = function(sandbox, fieldValues, t) {
+    var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
+
+    return function(field, i) {
+      var fieldElement = fieldElements[i];
+
+      var expectedLabel   = field[0];
+      var expectedTagName = field[1];
+      var internalName    = field[2];
+      var expectedValue   = fieldValues[internalName];
+
+      var orderNo = i + 1;
+      var messagePrefix = 'field #' + orderNo + ' — ' + internalName + ' — ';
+
+      t.equal(getLabel(fieldElement),   expectedLabel,   messagePrefix + 'has the appropriate label');
+      t.equal(getTagName(fieldElement), expectedTagName, messagePrefix + 'is of the appropriate kind');
+      t.equal(getValue(fieldElement),   expectedValue,   messagePrefix + 'is prefilled with the appropriate value');
+    };
+  };
+
+  var getLabel = window.TestHelpers.getLabel;
+  var getTagName = window.TestHelpers.getTagName;
+  var getValue = window.TestHelpers.getValue;
 
 }());
