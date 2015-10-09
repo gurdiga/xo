@@ -29,7 +29,7 @@
       t.equal(getLabel(firstField), 'Caracter', 'has the “Caracter” label');
 
       var options = getOptionTexts(firstField.querySelector('select'));
-      t.deepEqual(options, ['pecuniar', 'nonpecuniar'], 'it has the appropriate options');
+      t.deepEqual(options, CaseSubjectSection.SUBJECT_TYPES, 'has subject types as options');
 
       t.end();
     });

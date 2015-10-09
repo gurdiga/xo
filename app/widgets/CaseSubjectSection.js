@@ -17,10 +17,19 @@
 
     function createFields() {
       return [
-        new SelectField('Caracter', ['pecuniar', 'nonpecuniar'])
+        new SelectField('Caracter', SUBJECT_TYPES)
       ];
     }
   }
+
+  var createEnumArray = window.App.Utils.createEnumArray;
+
+  var SUBJECT_TYPES = createEnumArray({
+    PECUNIARY: 'pecuniar',
+    NONPECUNIARY: 'nonpecuniar'
+  });
+
+  CaseSubjectSection.SUBJECT_TYPES = SUBJECT_TYPES;
 
   var Section = window.App.Widgets.Section;
   var SelectField = window.App.Widgets.SelectField;
