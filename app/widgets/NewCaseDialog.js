@@ -18,7 +18,6 @@
     };
 
     addTitle();
-    addRegistrationDateField();
     addCreditorSection();
     addFirstDebitorSection();
     addAddPersonButton();
@@ -42,18 +41,6 @@
       title.style.marginTop = '0px';
 
       domElement.appendChild(title);
-    }
-
-    function addRegistrationDateField() {
-      var style = {
-        width: '100px',
-        marginBottom: '10px'
-      };
-
-      var dateField = new DateField('Data intentării', '', style);
-      dateField.appendTo(domElement);
-
-      valuableChildren['data-înregistrării'] = dateField;
     }
 
     function addCreditorSection() {
@@ -171,7 +158,6 @@
     boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
   };
 
-  var DateField = window.App.Widgets.DateField;
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;

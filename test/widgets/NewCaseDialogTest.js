@@ -30,7 +30,6 @@
 
     t.test('getValue', function(t) {
       var value = newCaseDialog.getValue();
-      t.equal(value['data-înregistrării'], '', 'registration date is returned');
       t.deepEqual(value['creditor'], {
         'gen-persoană': 'juridică',
         'denumire': '',
@@ -61,18 +60,6 @@
       t.equal(css.fontFamily, 'TitleFont', 'has the appropriate font family');
       t.equal(css.fontWeight, 'bold', 'has the appropriate font weight');
       t.equal(css.marginTop, '0px', 'has no spacing ar the top');
-
-      t.end();
-    });
-
-    t.test('the date field', function(t) {
-      var dateField = domElement.querySelector(':scope>date-field');
-      t.ok(dateField, 'exists');
-
-      var input = dateField.querySelector('input');
-      var css = input.style;
-      t.equal(css.width, '100px', 'is not as wide as sections');
-      t.equal(css.marginBottom, '10px', 'has a little bottom spacing not to stick to Creditor section');
 
       t.end();
     });
