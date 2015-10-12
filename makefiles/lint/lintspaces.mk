@@ -8,7 +8,7 @@ lintspaces-force: | node_modules/lintspaces-cli
 	$(call lintspaces-do-work, $(JS_FILES))
 
 node_modules/lintspaces-cli:
-	npm install lintspaces-cli@0.1.0
+	npm install lintspaces-cli@0.1.1
 
 define lintspaces-do-work
 	$(eval files=$(1))
