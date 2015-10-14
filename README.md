@@ -2,6 +2,6 @@
 
 # XO
 
-A productivity app for bailiffs
+A productivity app for bailiffs. A side project.
 
-    make open-app
+    make open
