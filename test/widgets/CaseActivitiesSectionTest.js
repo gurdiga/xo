@@ -13,6 +13,12 @@
     t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'CASE-ACTIVITIES-SECTION', 'has sentence-subject-section tag');
 
+    var css = domElement.style;
+    t.equal(css.display, 'block', 'has block display to be on its own line');
+
+    var labelText = domElement.querySelector('legend').textContent;
+    t.equal(labelText, 'Acţiuni procedurale', 'section has the appropriate label');
+
     t.end();
   });
 
