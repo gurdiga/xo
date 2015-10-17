@@ -4,7 +4,9 @@
   var CaseSubjectSection = window.App.Widgets.CaseSubjectSection;
 
   var sandbox = document.createElement('div');
-  var sentenceSubjectSection = new CaseSubjectSection();
+  var additionalStyle = { width: '450px' };
+  var fieldValues = {};
+  var sentenceSubjectSection = new CaseSubjectSection(fieldValues, additionalStyle);
   sentenceSubjectSection.appendTo(sandbox);
 
   tape.test('CaseSubjectSection', function(t) {
@@ -16,6 +18,7 @@
     var css = domElement.style;
     t.equal(css.display, 'inline-block',
       'has inline-block display to flow along with the other sections');
+    t.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
 
     var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, 'Obiectul urmăririi', 'section has the appropriate label');

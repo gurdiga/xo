@@ -108,8 +108,13 @@
       sentenceSection.appendTo(domElement);
     }
 
-    function addCaseSubjectSection() {
-      var caseSubjectSection = new CaseSubjectSection();
+    function addCaseSubjectSection(fieldValues) {
+      var style = {
+        width: '380px',
+        marginRight: '60px'
+      };
+
+      var caseSubjectSection = new CaseSubjectSection(fieldValues, style);
       caseSubjectSection.appendTo(domElement);
     }
 

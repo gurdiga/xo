@@ -209,8 +209,12 @@
     });
 
     t.test('the “Obiectul urmăririi” section', function(t) {
-      var sentenceObjectSection = domElement.querySelector('sentence-subject-section');
-      t.ok(sentenceObjectSection, 'exists');
+      var sentenceSubjectSection = domElement.querySelector('sentence-subject-section');
+      t.ok(sentenceSubjectSection, 'exists');
+
+      var css = sentenceSubjectSection.style;
+      t.equal(css.width, '380px', 'has the appropriate width');
+      t.equal(css.marginRight, '60px', 'has the appropriate marginLeft');
 
       t.end();
     });

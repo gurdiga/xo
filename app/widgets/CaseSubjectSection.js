@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function CaseSubjectSection() {
+  function CaseSubjectSection(fieldValues, additionalStyle) {
     var domElement = createDomElement();
     var fields = createFields();
     var section = new Section('Obiectul urmăririi', fields);
@@ -12,6 +12,7 @@
     function createDomElement() {
       var domElement = document.createElement('sentence-subject-section');
       domElement.style.display = 'inline-block';
+      _.extend(domElement.style, additionalStyle);
       return domElement;
     }
 
