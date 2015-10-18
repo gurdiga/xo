@@ -29,10 +29,10 @@
       var firstField = fields[0];
       t.ok(firstField, 'first field exists');
       t.equal(firstField.tagName, 'SELECT-FIELD', 'is a select-field');
-      t.equal(getLabel(firstField), 'Caracter', 'has the “Caracter” label');
+      t.equal(getLabel(firstField), 'Obiectul urmăririi', 'has the appropriate label');
 
       var options = getOptionTexts(firstField.querySelector('select'));
-      t.deepEqual(options, CaseSubjectSection.SUBJECT_TYPES, 'has subject types as options');
+      t.deepEqual(options, CaseSubjectSection.SUBJECT_OPTIONS, 'has subject types as options');
 
       t.end();
     });

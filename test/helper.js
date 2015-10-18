@@ -13,11 +13,19 @@
     domElement.dispatchEvent(keydownEvent);
   };
 
-  window.TestHelpers.getOptionTexts = function(selectDomElement) {
-    var optionDomElements = selectDomElement.querySelectorAll('select option');
+  window.TestHelpers.getOptionTexts = function getOptionTexts(element) {
+    var tagName = element.tagName;
+    var elements = element.querySelectorAll(tagName + '>option, ' + tagName + '>optgroup');
 
-    return [].map.call(optionDomElements, function(option) {
-      return option.textContent;
+    return [].map.call(elements, function(element) {
+      if (element.tagName === 'OPTION') {
+        return element.text;
+      } else if (element.tagName === 'OPTGROUP') {
+        return {
+          optgroupLabel: element.label,
+          options: getOptionTexts(element)
+        };
+      }
     });
   };
 
