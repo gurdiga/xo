@@ -3,23 +3,24 @@
 
   function CaseSubjectSection(fieldValues, additionalStyle) {
     var domElement = createDomElement();
-    var fields = createFields();
-    var section = new Section('Obiectul urmăririi', fields);
+
+    var caseSubject = new SelectField('Obiectul urmăririi', SUBJECT_OPTIONS, fieldValues['obiectul-urmăririi']);
+    var section = new Section('Obiectul urmăririi', [caseSubject]);
     section.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.getValue = function() {
+      return {
+        'obiectul-urmăririi': caseSubject.getValue()
+      };
+    };
 
     function createDomElement() {
       var domElement = document.createElement('sentence-subject-section');
       domElement.style.display = 'inline-block';
       _.extend(domElement.style, additionalStyle);
       return domElement;
-    }
-
-    function createFields() {
-      return [
-        new SelectField('Obiectul urmăririi', SUBJECT_OPTIONS)
-      ];
     }
   }
 

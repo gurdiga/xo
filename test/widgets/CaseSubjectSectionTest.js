@@ -5,7 +5,7 @@
 
   var sandbox = document.createElement('div');
   var additionalStyle = { width: '450px' };
-  var fieldValues = {};
+  var fieldValues = {'obiectul-urmăririi': 'evacuarea'};
   var sentenceSubjectSection = new CaseSubjectSection(fieldValues, additionalStyle);
   sentenceSubjectSection.appendTo(sandbox);
 
@@ -33,6 +33,12 @@
 
       var options = getOptionTexts(firstField.querySelector('select'));
       t.deepEqual(options, CaseSubjectSection.SUBJECT_OPTIONS, 'has subject types as options');
+
+      t.end();
+    });
+
+    t.test('value', function(t) {
+      t.deepEqual(sentenceSubjectSection.getValue(), fieldValues, 'can return it’s value');
 
       t.end();
     });
