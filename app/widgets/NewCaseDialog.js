@@ -108,7 +108,9 @@
       sentenceSection.appendTo(domElement);
     }
 
-    function addCaseSubjectSection(fieldValues) {
+    function addCaseSubjectSection() {
+      var fieldValues = {};
+
       var style = {
         width: '380px',
         marginRight: '60px'
