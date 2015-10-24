@@ -219,6 +219,16 @@
       t.end();
     });
 
+    t.test('the “Acţiuni procedurale” section', function(t) {
+      var caseActivitiesSection = domElement.querySelector('case-activities-section');
+      t.ok(caseActivitiesSection, 'exists');
+
+      var css = caseActivitiesSection.style;
+      t.equal(css.marginRight, '60px', 'has the appropriate marginLeft');
+
+      t.end();
+    });
+
     t.test('the close button', function(t) {
       var closeButton = domElement.querySelector('button[type="close"]');
       var css = closeButton.style;

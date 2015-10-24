@@ -23,6 +23,7 @@
     addAddPersonButton();
     addSentenceSection();
     addCaseSubjectSection();
+    addCaseActivitiesSection();
     addCloseButton();
 
     this.appendTo = getAppenderOf(domElement);
@@ -120,6 +121,15 @@
       caseSubjectSection.appendTo(domElement);
     }
 
+    function addCaseActivitiesSection() {
+      var style = {
+        marginRight: '60px'
+      };
+
+      var caseActivitiesSection = new CaseActivitiesSection(style);
+      caseActivitiesSection.appendTo(domElement);
+    }
+
     function addCloseButton() {
       var button = document.createElement('button');
       button.type = 'close';
@@ -169,6 +179,7 @@
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
   var CaseSubjectSection = window.App.Widgets.CaseSubjectSection;
+  var CaseActivitiesSection = window.App.Widgets.CaseActivitiesSection;
 
   var makeShy = window.App.Utils.makeShy;
   var getAppenderOf = window.App.Utils.getAppenderOf;
