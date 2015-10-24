@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function CaseActivitiesSection() {
+  function CaseActivitiesSection(additionalStyle) {
     var domElement = createDomElement();
 
     var section = new Section('Acţiuni procedurale', []);
@@ -12,6 +12,7 @@
     function createDomElement() {
       var domElement = document.createElement('case-activities-section');
       domElement.style.display = 'block';
+      _.extend(domElement.style, additionalStyle);
       return domElement;
     }
   }
