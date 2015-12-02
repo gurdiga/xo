@@ -40,6 +40,7 @@
       createField(TextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
       createField(DateField, 'Data hotărîrii', 'data-hotărîrii'),
       createField(LargeTextField, 'Dispozitivul', 'dispozitivul'),
+      createSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
       createField(DateField, 'Data rămînerii definitive', 'data-rămînerii-definitive'),
       createField(DateField, 'Data eliberării', 'data-eliberării')
     ];
@@ -66,6 +67,27 @@
       options: courtLevel.courtList
     };
   }
+
+  var SUBJECT_OPTIONS = [
+    'pecuniar',
+    {
+      optgroupLabel: 'nepecuniar',
+      options: [
+        'evacuarea',
+        'evacuarea',
+        'instalarea',
+        'schimbul forţat',
+        'stabilirea domiciliului copilului',
+        'efectuarea de către debitor a unor acţiuni obligatorii, nelegate de remiterea unor sume sau bunuri',
+        'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri mobile',
+        'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri imobile',
+        'confiscarea bunurilor',
+        'nimicirea bunurilor',
+        'restabilirea la locul de muncă',
+        'aplicarea măsurilor de asigurare a acţiunii'
+      ]
+    }
+  ];
 
   var Section = window.App.Widgets.Section;
   var SelectField = window.App.Widgets.SelectField;

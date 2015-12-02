@@ -8,6 +8,7 @@
     'numărul-hotărîrii': '2-4765/12',
     'data-hotărîrii': '09.01.2013',
     'dispozitivul': 'De făcut cutare şi cutare.',
+    'obiectul-urmăririi': 'instalarea',
     'data-rămînerii-definitive': '10.01.2013',
     'data-eliberării': '11.01.2013'
   };
@@ -74,15 +75,22 @@
       t.equal(getValue(conclusionField), fieldValues['dispozitivul'],
         'the “Dispozitivul” field is prefilled with the given value');
 
-      var finalSentenceDateField = fieldElements[4];
-      t.equal(finalSentenceDateField.tagName, 'DATE-FIELD', 'the fifth field is a date-field');
+      var caseSubjectField = fieldElements[4];
+      t.equal(caseSubjectField.tagName, 'SELECT-FIELD', 'the fifth field is a select-field');
+      t.equal(getLabel(caseSubjectField), 'Obiectul urmăririi',
+        'the fifth field is “Obiectul urmăririi”');
+      t.equal(getValue(caseSubjectField), fieldValues['obiectul-urmăririi'],
+        'the “Obiectul urmăririi” field is prefilled with the given value');
+
+      var finalSentenceDateField = fieldElements[5];
+      t.equal(finalSentenceDateField.tagName, 'DATE-FIELD', 'the sixth field is a date-field');
       t.equal(getLabel(finalSentenceDateField), 'Data rămînerii definitive',
-        'the fifth field is “Data rămînerii definitive”');
+        'the sixth field is “Data rămînerii definitive”');
       t.equal(getValue(finalSentenceDateField), fieldValues['data-rămînerii-definitive'],
         'the “Data rămînerii definitive” field is prefilled with the given value');
 
-      var releaseDateField = fieldElements[5];
-      t.equal(releaseDateField.tagName, 'DATE-FIELD', 'the sixth field is a date-field');
+      var releaseDateField = fieldElements[6];
+      t.equal(releaseDateField.tagName, 'DATE-FIELD', 'the seventh field is a date-field');
       t.equal(getLabel(releaseDateField), 'Data eliberării',
         'the sixth field is “Data eliberării”');
       t.equal(getValue(releaseDateField), fieldValues['data-eliberării'],
