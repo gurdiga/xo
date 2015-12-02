@@ -27,7 +27,7 @@
   var SUBJECT_OPTIONS = [
     'pecuniar',
     {
-      optgroupLabel: 'nonpecuniar',
+      optgroupLabel: 'nepecuniar',
       options: [
         'evacuarea',
         'evacuarea',
