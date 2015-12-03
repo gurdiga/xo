@@ -2,8 +2,7 @@
   'use strict';
 
   function DropdownButton(labelText, options, additionalStyle) {
-    var domElement = document.createElement('dropdown-button');
-    _.extend(domElement.style, style, additionalStyle);
+    var domElement = createElement(additionalStyle);
 
     var toggleButton = createButton();
     domElement.appendChild(toggleButton);
@@ -87,12 +86,20 @@
     }
   }
 
+  function createElement(additionalStyle) {
+    var domElement = document.createElement('dropdown-button');
+    _.extend(domElement.style, style, additionalStyle);
+    makeTextUselectable(domElement);
+    return domElement;
+  }
+
   var style = {
     display: 'inline-block'
   };
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var addHoverEffect = window.App.Utils.addHoverEffect;
+  var makeTextUselectable = window.App.Utils.makeTextUselectable;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 

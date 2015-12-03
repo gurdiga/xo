@@ -55,11 +55,12 @@
     t.test('styling', function(t) {
       var css;
       var domElement = sandbox.firstChild;
+
       css = domElement.style;
       t.equal(css.display, 'inline-block',
         'has display of inline-block to have the option list postioned appropriately');
-
       t.equal(css.color, additionalStyle.color, 'accepts additional styles');
+      t.equal(css['-webkit-user-select'], 'none', 'has the text unselectable');
 
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('ul');
