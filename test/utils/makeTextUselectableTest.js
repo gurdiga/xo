@@ -1,4 +1,4 @@
-(function(window, document, undefined) {
+(function() {
   'use strict';
 
   var makeTextUselectable = window.App.Utils.makeTextUselectable;
@@ -9,6 +9,7 @@
   test('makeTextUselectable', function(t) {
     makeTextUselectable(domElement);
 
+    t.equal(domElement.style['-webkit-touch-callout'], 'none', 'Webkit touch covered');
     t.equal(domElement.style['-webkit-user-select'], 'none', 'Webkit covered');
     t.equal(domElement.style['-moz-user-select'], 'none', 'Mozilla covered');
     t.equal(domElement.style['-ms-user-select'], 'none', 'IE covered');
@@ -17,4 +18,4 @@
     t.end();
   });
 
-}(window, document));
+}());
