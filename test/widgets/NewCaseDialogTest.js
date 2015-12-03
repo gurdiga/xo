@@ -208,17 +208,6 @@
       t.end();
     });
 
-    t.test('the “Obiectul urmăririi” section', function(t) {
-      var sentenceSubjectSection = domElement.querySelector('sentence-subject-section');
-      t.ok(sentenceSubjectSection, 'exists');
-
-      var css = sentenceSubjectSection.style;
-      t.equal(css.width, '380px', 'has the appropriate width');
-      t.equal(css.marginRight, '60px', 'has the appropriate marginLeft');
-
-      t.end();
-    });
-
     t.test('the “Acţiuni procedurale” section', function(t) {
       var caseActivitiesSection = domElement.querySelector('case-activities-section');
       t.ok(caseActivitiesSection, 'exists');

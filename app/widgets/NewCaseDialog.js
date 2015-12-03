@@ -22,7 +22,6 @@
     addFirstDebitorSection();
     addAddPersonButton();
     addSentenceSection();
-    addCaseSubjectSection();
     addCaseActivitiesSection();
     addCloseButton();
 
@@ -109,18 +108,6 @@
       sentenceSection.appendTo(domElement);
     }
 
-    function addCaseSubjectSection() {
-      var fieldValues = {};
-
-      var style = {
-        width: '380px',
-        marginRight: '60px'
-      };
-
-      var caseSubjectSection = new CaseSubjectSection(fieldValues, style);
-      caseSubjectSection.appendTo(domElement);
-    }
-
     function addCaseActivitiesSection() {
       var style = {
         marginRight: '60px'
@@ -178,7 +165,6 @@
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
-  var CaseSubjectSection = window.App.Widgets.CaseSubjectSection;
   var CaseActivitiesSection = window.App.Widgets.CaseActivitiesSection;
 
   var makeShy = window.App.Utils.makeShy;
