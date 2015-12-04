@@ -64,7 +64,7 @@
     t.equal(css.width, '200px', 'is 200px wide');
     t.equal(
       css.backgroundImage,
-      'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
+      'url("data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7")',
       'has the image of a fine dotted line on the background'
     );
     t.equal(css.backgroundPosition, '0px -4px',

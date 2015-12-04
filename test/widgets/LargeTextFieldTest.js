@@ -71,7 +71,7 @@
     t.equal(css.height, '5.8em', 'is 5.8em high to neatly accommodate 3 lines of text');
     t.equal(
       css.backgroundImage,
-      'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
+      'url("data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7")',
       'has the image of a fine dotted line on the background');
     t.equal(css.borderRadius, '2px', 'has a subtle 2px border-radius as the TextField input does');
     t.equal(css.borderWidth, '0px',
