@@ -63,6 +63,7 @@
     t.equal(css.color, 'black', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4px of padding, as the TextField input does');
     t.equal(css.marginLeft, '1em', 'has 1em of margin at the left, to stand out of the label vertical alignment');
+    t.equal(css.marginBottom, '5px', 'a bit of space at the bottom not to stick to the next select');
     t.equal(css.fontWeight, 'bold', 'has bold text as the TextField input does');
     t.equal(css.fontSize, '14px', 'has 14px font size as the TextField input does');
     t.equal(css.fontFamily, 'sans-serif', 'has sans-serif font-family as the TextField input does');

@@ -26,6 +26,7 @@
     color: 'black',
     padding: '4px',
     marginLeft: '1em',
+    marginBottom: '5px',
     font: 'bold 14px/1.75 sans-serif',
     width: '340px',
     height: '5.8em',
