@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function CaseActivitiesSection(additionalStyle) {
+  function ActivitiesSection(additionalStyle) {
     var domElement = createElement(additionalStyle);
 
     var section = new Section('Acţiuni procedurale', []);
@@ -21,6 +21,6 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
-  window.App.Widgets.CaseActivitiesSection = CaseActivitiesSection;
+  window.App.Widgets.ActivitiesSection = ActivitiesSection;
 
 }());

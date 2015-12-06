@@ -22,7 +22,7 @@
     addFirstDebitorSection();
     addAddPersonButton();
     addSentenceSection();
-    addCaseActivitiesSection();
+    addActivitiesSection();
     addCloseButton();
 
     this.appendTo = getAppenderOf(domElement);
@@ -108,13 +108,13 @@
       sentenceSection.appendTo(domElement);
     }
 
-    function addCaseActivitiesSection() {
+    function addActivitiesSection() {
       var style = {
         marginRight: '60px'
       };
 
-      var caseActivitiesSection = new CaseActivitiesSection(style);
-      caseActivitiesSection.appendTo(domElement);
+      var activitiesSection = new ActivitiesSection(style);
+      activitiesSection.appendTo(domElement);
     }
 
     function addCloseButton() {
@@ -165,7 +165,7 @@
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
-  var CaseActivitiesSection = window.App.Widgets.CaseActivitiesSection;
+  var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
   var makeShy = window.App.Utils.makeShy;
   var getAppenderOf = window.App.Utils.getAppenderOf;

@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  var CaseActivitiesSection = window.App.Widgets.CaseActivitiesSection;
+  var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
   var sandbox = document.createElement('div');
   var additionalStyle = { color: 'red' };
-  var sentenceSubjectSection = new CaseActivitiesSection(additionalStyle);
+  var sentenceSubjectSection = new ActivitiesSection(additionalStyle);
   sentenceSubjectSection.appendTo(sandbox);
 
-  tape.test('CaseActivitiesSection', function(t) {
+  tape.test('ActivitiesSection', function(t) {
     var domElement = sandbox.firstChild;
 
     t.ok(domElement, 'exists');
