@@ -11,8 +11,6 @@ export
 
 default: lib-all lint
 
-pre-commit: lib-all lint-force open
-
 open: lib-all lint
 	@open --new -a "Google Chrome" --args \
 		--load-and-launch-app=$$(pwd)
