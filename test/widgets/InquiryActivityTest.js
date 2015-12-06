@@ -12,6 +12,13 @@
     var domElement = sandbox.firstChild;
 
     t.ok(domElement, 'exists');
+    t.equal(domElement.tagName, 'INQUIRY-ACTIVITY', 'exists');
+
+    t.test('date field', function(t) {
+      // TODO: define how should one look like
+
+      t.end();
+    });
 
     t.end();
   });

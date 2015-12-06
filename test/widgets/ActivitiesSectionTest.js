@@ -25,6 +25,7 @@
       var inquiryActivity = domElement.querySelector('inquiry-activity');
 
       t.ok(inquiryActivity, 'exists');
+      // TODO
 
       t.end();
     });

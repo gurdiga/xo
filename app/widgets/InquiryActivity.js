@@ -4,6 +4,9 @@
   function InquiryActivity() {
     var domElement = document.createElement('inquiry-activity');
 
+    // TODO: figure out what to do for real
+    domElement.textContent = 'Cererea de la creditor';
+
     this.appendTo = getAppenderOf(domElement);
   }
 
