@@ -4,10 +4,16 @@
   function ActivitiesSection(additionalStyle) {
     var domElement = createElement(additionalStyle);
 
-    var section = new Section('Acţiuni procedurale', []);
-    section.appendTo(domElement);
+    createSection(domElement, [
+      new InquiryActivity()
+    ]);
 
     this.appendTo = getAppenderOf(domElement);
+  }
+
+  function createSection(domElement, childWidgets) {
+    var section = new Section('Acţiuni procedurale', childWidgets);
+    section.appendTo(domElement);
   }
 
   function createElement(additionalStyle) {
@@ -18,6 +24,7 @@
   }
 
   var Section = window.App.Widgets.Section;
+  var InquiryActivity = window.App.Widgets.InquiryActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
