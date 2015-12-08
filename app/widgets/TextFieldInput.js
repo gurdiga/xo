@@ -2,9 +2,7 @@
   'use strict';
 
   function TextFieldInput(value, additionalStyle) {
-    var domElement = document.createElement('input');
-    domElement.value = value || '';
-    _.extend(domElement.style, style, additionalStyle);
+    var domElement = createDOMElement(value, additionalStyle);
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -21,6 +19,14 @@
     };
 
     outlineFieldOnFocus(domElement);
+  }
+
+  function createDOMElement(value, additionalStyle) {
+    var domElement = document.createElement('input');
+    domElement.value = value || '';
+    _.extend(domElement.style, style, additionalStyle);
+
+    return domElement;
   }
 
   TextFieldInput.DEFAULT_WIDTH = '200px';
