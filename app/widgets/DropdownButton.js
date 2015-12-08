@@ -2,7 +2,7 @@
   'use strict';
 
   function DropdownButton(labelText, options, additionalStyle) {
-    var domElement = createElement(additionalStyle);
+    var domElement = createDOMElement(additionalStyle);
 
     var toggleButton = createButton();
     domElement.appendChild(toggleButton);
@@ -86,7 +86,7 @@
     }
   }
 
-  function createElement(additionalStyle) {
+  function createDOMElement(additionalStyle) {
     var domElement = document.createElement('dropdown-button');
     _.extend(domElement.style, style, additionalStyle);
     makeTextUselectable(domElement);

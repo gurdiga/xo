@@ -2,7 +2,7 @@
   'use strict';
 
   function ActivitiesSection(additionalStyle) {
-    var domElement = createElement(additionalStyle);
+    var domElement = createDOMElement(additionalStyle);
 
     createSection(domElement, [
       new InquiryActivity()
@@ -16,7 +16,7 @@
     section.appendTo(domElement);
   }
 
-  function createElement(additionalStyle) {
+  function createDOMElement(additionalStyle) {
     var domElement = document.createElement('case-activities-section');
     domElement.style.display = 'block';
     _.extend(domElement.style, additionalStyle);
