@@ -18,6 +18,10 @@
       domElement.focus();
     };
 
+    this.precedeWith = function(elementToInsert) {
+      domElement.parentNode.insertBefore(elementToInsert, domElement);
+    };
+
     outlineFieldOnFocus(domElement);
   }
 

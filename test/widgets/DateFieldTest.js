@@ -159,7 +159,7 @@
     datePicker = sandbox.querySelector('label>.pika-single');
     t.ok(datePicker, 'date picker is displayed with en empty field value');
 
-    var todayDate = DateFormatting.format(new Date(), DateField.DATE_FORMAT);
+    var todayDate = DateFormatting.format(new Date(), DateFieldInput.DATE_FORMAT);
     t.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
 
     button.click();
@@ -192,18 +192,18 @@
       var month = selectedDate.getAttribute('data-pika-month');
       var day =   selectedDate.getAttribute('data-pika-day');
 
-      return DateFormatting.format(new Date(year, month, day), DateField.DATE_FORMAT);
+      return DateFormatting.format(new Date(year, month, day), DateFieldInput.DATE_FORMAT);
     }
 
     function nextDay(initialFormattedDate) {
-      var initialDate = DateFormatting.parse(initialFormattedDate, DateField.DATE_FORMAT);
+      var initialDate = DateFormatting.parse(initialFormattedDate, DateFieldInput.DATE_FORMAT);
       var nextDate = new Date(initialDate.getFullYear(), initialDate.getMonth(), initialDate.getDate() + 1);
 
-      return DateFormatting.format(nextDate, DateField.DATE_FORMAT);
+      return DateFormatting.format(nextDate, DateFieldInput.DATE_FORMAT);
     }
 
     function selectDateInDatePicker(newDate) {
-      var date = DateFormatting.parse(newDate, DateField.DATE_FORMAT);
+      var date = DateFormatting.parse(newDate, DateFieldInput.DATE_FORMAT);
       var selectorForDate = '.pika-day' +
         '[data-pika-year="' + date.getFullYear() + '"]' +
         '[data-pika-month="' + date.getMonth() + '"]' +
@@ -227,6 +227,7 @@
     }
   });
 
+  var DateFieldInput = window.App.Widgets.DateFieldInput;
   var DateFormatting = window.App.Utils.DateFormatting;
   var assert = window.App.Utils.assert;
 
