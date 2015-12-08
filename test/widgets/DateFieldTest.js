@@ -49,7 +49,7 @@
     t.equal(
       input.value,
       fieldValue,
-      'the <intput/> has the value given in the DateField “value” attribute');
+      'the <intpu/> has the value given in the DateField “value” attribute');
     t.equal(
       dateField.getValue(),
       fieldValue,

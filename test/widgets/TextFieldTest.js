@@ -47,7 +47,7 @@
 
     t.ok(input, 'is renders <input/> element inside <label> for accessibility');
     t.equal(input.value, fieldValue,
-      'the <intput /> has the value given in the TextField “value” attribute');
+      'the <input /> has the value given in the TextField “value” attribute');
     t.equal(textField.getValue(), input.value,
       'its getValue() method returns the <input/> value');
 
