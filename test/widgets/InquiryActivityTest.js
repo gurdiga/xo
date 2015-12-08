@@ -15,7 +15,10 @@
     t.equal(domElement.tagName, 'INQUIRY-ACTIVITY', 'exists');
 
     t.test('date field', function(t) {
-      // TODO: define how should one look like
+      var dateField = domElement.firstChild;
+
+      t.ok(dateField, 'exists');
+      t.equal(dateField.tagName, 'UNLABELED-DATE-FIELD', 'is an unlabeled data field');
 
       t.end();
     });

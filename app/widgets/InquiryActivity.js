@@ -4,11 +4,18 @@
   function InquiryActivity() {
     var domElement = document.createElement('inquiry-activity');
 
-    // TODO: figure out what to do for real
-    domElement.textContent = 'Cererea de la creditor';
+    var dateField = createDateField();
+    dateField.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
+
+  function createDateField() {
+    var dateField = new UnlabeledDateField();
+    return dateField;
+  }
+
+  var UnlabeledDateField = window.App.Widgets.UnlabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
