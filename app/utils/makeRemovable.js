@@ -26,8 +26,8 @@
   }
 
   function createButton(additionalStyle) {
-    var button = document.createElement('button');
-    _.extend(button.style, buttonStyle, additionalStyle);
+    var style = _.extend({}, buttonStyle, additionalStyle);
+    var button = createDOMElement('button', style);
     button.style.left = '-' + (parseInt(button.style.fontSize, 10) + 2);
 
     button.textContent = '×';
@@ -50,6 +50,7 @@
   };
 
   var makeShy = window.App.Utils.makeShy;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Utils.makeRemovable = makeRemovable;
 

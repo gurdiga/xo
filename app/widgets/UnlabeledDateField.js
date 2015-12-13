@@ -2,7 +2,7 @@
   'use strict';
 
   function UnlabeledDateField() {
-    var domElement = document.createElement('unlabeled-date-field');
+    var domElement = createDOMElement('unlabeled-date-field');
 
     var input = new DateFieldInput();
     input.appendTo(domElement);
@@ -13,6 +13,7 @@
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.UnlabeledDateField = UnlabeledDateField;
 

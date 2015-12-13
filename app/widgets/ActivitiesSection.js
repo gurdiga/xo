@@ -2,7 +2,7 @@
   'use strict';
 
   function ActivitiesSection(additionalStyle) {
-    var domElement = createDOMElement(additionalStyle);
+    var domElement = createElement(additionalStyle);
 
     createSection(domElement, [
       new InquiryActivity()
@@ -16,10 +16,13 @@
     section.appendTo(domElement);
   }
 
-  function createDOMElement(additionalStyle) {
-    var domElement = document.createElement('case-activities-section');
-    domElement.style.display = 'block';
-    _.extend(domElement.style, additionalStyle);
+  function createElement(additionalStyle) {
+    var style = _.extend({
+      display: 'block'
+    }, additionalStyle);
+
+    var domElement = createDOMElement('case-activities-section', style);
+
     return domElement;
   }
 
@@ -27,6 +30,7 @@
   var InquiryActivity = window.App.Widgets.InquiryActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.ActivitiesSection = ActivitiesSection;
 
