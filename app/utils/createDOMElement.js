@@ -1,8 +1,10 @@
 (function() {
   'use strict';
 
-  function createDOMElement(tagName) {
+  function createDOMElement(tagName, style) {
     var domElement = document.createElement(tagName);
+
+    _.extend(domElement.style, style);
 
     return domElement;
   }

@@ -5,12 +5,13 @@
   var test = tape;
 
   test('createDOMElement', function(t) {
-    var domElement = createDOMElement('component', {
+    var domElement = createDOMElement('some-component', {
       color: 'green'
     });
 
-    t.ok(domElement instanceof HTMLElement, 'created an HTMLElement');
-    t.equal(domElement.tagName, 'COMPONENT', 'the element has the appropriate tag name');
+    t.ok(domElement instanceof HTMLElement, 'creates an HTMLElement');
+    t.equal(domElement.tagName, 'SOME-COMPONENT', 'the element has the appropriate tag name');
+    t.deepEqual(domElement.style.color, 'green', 'the element gets the passed in style attributes');
 
     t.end();
   });
