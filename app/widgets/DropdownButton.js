@@ -2,7 +2,7 @@
   'use strict';
 
   function DropdownButton(labelText, options, additionalStyle) {
-    var domElement = createDOMElement(additionalStyle);
+    var domElement = createElement(additionalStyle);
 
     var toggleButton = createButton();
     domElement.appendChild(toggleButton);
@@ -42,7 +42,6 @@
     }
 
     function createOptionList() {
-      var optionList = document.createElement('ul');
       var style = {
         position: 'absolute',
         display: 'none',
@@ -53,53 +52,68 @@
         boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px',
         listStyleType: 'none'
       };
-      _.extend(optionList.style, style);
+
+      var optionList = createDOMElement('ul', style);
+      var option;
 
       for (var optionLabel in options) {
-        addOption(optionLabel, options[optionLabel]);
+        option = createOption(optionLabel, options[optionLabel]);
+        optionList.appendChild(option);
       }
 
       return optionList;
+    }
 
-      function addOption(labelText, f) {
-        var button = document.createElement('button');
-        button.textContent = labelText;
-        button.style.borderWidth = '0px';
-        button.style.backgroundColor = 'transparent';
-        button.style.width = '100%';
-        button.style.textAlign = 'left';
+    function createOption(labelText, f) {
+      var button = createOptionButton(labelText, f);
+      var option = document.createElement('li');
 
-        button.addEventListener('click', function() {
-          hideOptionList();
-          f();
-        });
+      option.appendChild(button);
 
-        addHoverEffect(button, {
-          backgroundColor: 'c3c3c3'
-        });
+      return option;
+    }
 
-        var option = document.createElement('li');
-        option.appendChild(button);
+    function createOptionButton(labelText, f) {
+      var style = {
+        borderWidth: '0px',
+        backgroundColor: 'transparent',
+        width: '100%',
+        textAlign: 'left'
+      };
 
-        optionList.appendChild(option);
-      }
+      var button = createDOMElement('button', style);
+
+      button.textContent = labelText;
+      button.addEventListener('click', function() {
+        hideOptionList();
+        f();
+      });
+
+      addHoverEffect(button, {
+        backgroundColor: 'c3c3c3'
+      });
+
+      return button;
     }
   }
 
-  function createDOMElement(additionalStyle) {
-    var domElement = document.createElement('dropdown-button');
-    _.extend(domElement.style, style, additionalStyle);
+  function createElement(additionalStyle) {
+    var defaultStyle = {
+      display: 'inline-block'
+    };
+
+    var style = _.extend(defaultStyle, additionalStyle);
+    var domElement = createDOMElement('dropdown-button', style);
+
     makeTextUselectable(domElement);
+
     return domElement;
   }
-
-  var style = {
-    display: 'inline-block'
-  };
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var addHoverEffect = window.App.Utils.addHoverEffect;
   var makeTextUselectable = window.App.Utils.makeTextUselectable;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 

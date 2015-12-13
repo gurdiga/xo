@@ -2,8 +2,9 @@
   'use strict';
 
   function DateField(labelText, value, additionalStyle) {
-    var domElement = document.createElement('date-field');
-    domElement.style.display = 'block';
+    var domElement = createDOMElement('date-field', {
+      display: 'block'
+    });
 
     var input = new DateFieldInput(value, additionalStyle);
     var label = new FieldLabel(labelText, {}, [input]);
@@ -22,6 +23,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.DateField = DateField;
 
