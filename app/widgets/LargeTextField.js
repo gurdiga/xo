@@ -2,13 +2,9 @@
   'use strict';
 
   function LargeTextField(labelText, value, additionalStyle) {
-    var domElement = document.createElement('large-text-field');
-    domElement.style.display = 'block';
+    var domElement = createElement();
 
-    var textarea = document.createElement('textarea');
-    textarea.value = value || '';
-    _.extend(textarea.style, style, additionalStyle);
-
+    var textarea = createTextareaElement(value, additionalStyle);
     var label = new FieldLabel(labelText, {}, [textarea]);
     label.appendTo(domElement);
 
@@ -22,26 +18,44 @@
     outlineFieldOnFocus(textarea);
   }
 
-  var style = {
-    color: 'black',
-    padding: '4px',
-    marginLeft: '1em',
-    marginBottom: '5px',
-    font: 'bold 14px/1.75 sans-serif',
-    width: '340px',
-    height: '5.8em',
-    backgroundImage: 'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
-    borderRadius: '2px',
-    borderWidth: '0px',
-    outlineWidth: '0px',
-    resize: 'none'
-  };
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('large-text-field', style);
+  }
+
+  function createTextareaElement(value, additionalStyle) {
+    var defaultStyle = {
+      color: 'black',
+      padding: '4px',
+      marginLeft: '1em',
+      marginBottom: '5px',
+      font: 'bold 14px/1.75 sans-serif',
+      width: '340px',
+      height: '5.8em',
+      backgroundImage: 'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
+      borderRadius: '2px',
+      borderWidth: '0px',
+      outlineWidth: '0px',
+      resize: 'none'
+    };
+
+    var style = _.extend(defaultStyle, additionalStyle);
+    var textarea = createDOMElement('textarea', style);
+
+    textarea.value = value || '';
+
+    return textarea;
+  }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
 
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.LargeTextField = LargeTextField;
 
