@@ -10,8 +10,7 @@
       }]
     };
 
-    var domElement = document.createElement('new-case-dialog');
-    _.extend(domElement.style, style);
+    var domElement = createElement();
 
     var valuableChildren = {
       'persoane-terţe': []
@@ -32,13 +31,16 @@
     };
 
     function addTitle() {
-      var title = document.createElement('h1');
+      var style = {
+        fontSize: '42px',
+        fontFamily: 'TitleFont',
+        fontWeight: 'bold',
+        marginTop: '0px'
+      };
+
+      var title = createDOMElement('h1', style);
 
       title.textContent = 'Procedură de ordin general';
-      title.style.fontSize = '42px';
-      title.style.fontFamily = 'TitleFont';
-      title.style.fontWeight = 'bold';
-      title.style.marginTop = '0px';
 
       domElement.appendChild(title);
     }
@@ -118,11 +120,6 @@
     }
 
     function addCloseButton() {
-      var button = document.createElement('button');
-      button.type = 'close';
-      button.textContent = '×';
-      button.title = 'Închide';
-
       var style = {
         borderWidth: '0px',
         backgroundColor: 'transparent',
@@ -133,7 +130,13 @@
         lineHeight: '0.5em',
         fontSize: '20px'
       };
-      _.extend(button.style, style);
+
+      var button = createDOMElement('button', style);
+
+      button.type = 'close';
+      button.textContent = '×';
+      button.title = 'Închide';
+
       makeShy(button);
 
       button.addEventListener('click', function() {
@@ -144,6 +147,22 @@
     }
   }
 
+  function createElement() {
+    var style = {
+      display: 'block',
+      position: 'relative',
+      backgroundColor: 'white',
+      width: '960px',
+      padding: '50px 0 50px 50px',
+      border: '1px solid #ddd',
+      boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
+    };
+
+    var domElement = createDOMElement('new-case-dialog', style);
+
+    return domElement;
+  }
+
   function lastDomElement(tagName) {
     return {
       'inside': function(domElement) {
@@ -151,16 +170,6 @@
       }
     };
   }
-
-  var style = {
-    display: 'block',
-    position: 'relative',
-    backgroundColor: 'white',
-    width: '960px',
-    padding: '50px 0 50px 50px',
-    border: '1px solid #ddd',
-    boxShadow: 'rgba(0, 0, 0, 0.3) 2px 2px 7px'
-  };
 
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
@@ -170,6 +179,7 @@
   var makeShy = window.App.Utils.makeShy;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var rMap = window.App.Utils.rMap;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 
