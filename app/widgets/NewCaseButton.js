@@ -12,7 +12,7 @@
   }
 
   function createElement() {
-    var defaultStyle = {
+    var style = {
       padding: '.5em 1em',
       fontSize: '1.5em',
       fontWeight: 'bold',
@@ -21,7 +21,7 @@
       borderRadius: '5px'
     };
 
-    var domElement = createDOMElement('button', defaultStyle);
+    var domElement = createDOMElement('button', style);
     domElement.textContent = 'Procedură nouă';
     return domElement;
   }

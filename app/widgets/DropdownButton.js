@@ -36,7 +36,7 @@
     }
 
     function createButton() {
-      var button = document.createElement('button');
+      var button = createDOMElement('button');
       button.textContent = labelText;
       return button;
     }
@@ -66,7 +66,7 @@
 
     function createOption(labelText, f) {
       var button = createOptionButton(labelText, f);
-      var option = document.createElement('li');
+      var option = createDOMElement('li');
 
       option.appendChild(button);
 
@@ -98,11 +98,12 @@
   }
 
   function createElement(additionalStyle) {
-    var defaultStyle = {
+    var style = {
       display: 'inline-block'
     };
 
-    var style = _.extend(defaultStyle, additionalStyle);
+    _.extend(style, additionalStyle);
+
     var domElement = createDOMElement('dropdown-button', style);
 
     makeTextUselectable(domElement);

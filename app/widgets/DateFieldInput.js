@@ -37,7 +37,7 @@
   }
 
   function createDatePickerButton(dateField) {
-    var button = document.createElement('button');
+    var button = createDOMElement('button');
 
     button.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -84,6 +84,7 @@
 
   var DateFormatting = window.App.Utils.DateFormatting;
   var makeShy = window.App.Utils.makeShy;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.DateFieldInput = DateFieldInput;
 

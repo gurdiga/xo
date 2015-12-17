@@ -2,7 +2,7 @@
   'use strict';
 
   function InquiryActivity() {
-    var domElement = document.createElement('inquiry-activity');
+    var domElement = createDOMElement('inquiry-activity');
 
     var dateField = createDateField();
     dateField.appendTo(domElement);
@@ -18,6 +18,7 @@
   var UnlabeledDateField = window.App.Widgets.UnlabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.InquiryActivity = InquiryActivity;
 

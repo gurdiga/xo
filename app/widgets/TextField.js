@@ -2,8 +2,7 @@
   'use strict';
 
   function TextField(labelText, value, additionalStyle) {
-    var domElement = document.createElement('text-field');
-    domElement.style.display = 'block';
+    var domElement = createElement();
 
     var input = new TextFieldInput(value, additionalStyle);
     var label = new FieldLabel(labelText, {}, [input]);
@@ -17,11 +16,20 @@
     this.destroy = getDestroyerOf(domElement);
   }
 
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('text-field', style);
+  }
+
   var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.TextField = TextField;
 

@@ -2,9 +2,7 @@
   'use strict';
 
   function UI() {
-    var domElement = document.createElement('ui');
-    domElement.style.display = 'block';
-    _.extend(domElement.style, style);
+    var domElement = createElement();
 
     var newCaseDialog = new NewCaseDialog({
       creditorul: {},
@@ -22,17 +20,23 @@
     this.appendTo = getAppenderOf(domElement);
   }
 
-  var style = {
-    width: '960px',
-    margin: '1em auto',
-    position: 'relative'
-  };
+  function createElement() {
+    var style = {
+      display: 'block',
+      width: '960px',
+      margin: '1em auto',
+      position: 'relative'
+    };
+
+    return createDOMElement('ui', style);
+  }
 
   var NewCaseDialog = window.App.Widgets.NewCaseDialog;
   var NewCaseButton = window.App.Widgets.NewCaseButton;
 
   var appendWidgets = window.App.Utils.appendWidgets;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.UI = UI;
 

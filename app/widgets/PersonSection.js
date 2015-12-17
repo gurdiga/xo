@@ -4,9 +4,7 @@
   function PersonSection(labelText, fieldValues, additionalStyle) {
     fieldValues = fieldValues || {};
 
-    var domElement = document.createElement('person-section');
-    domElement.style.display = 'inline-block';
-    _.extend(domElement.style, additionalStyle);
+    var domElement = createElement(additionalStyle);
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
@@ -66,6 +64,16 @@
         removeButton.style.opacity = '0';
       });
     }
+  }
+
+  function createElement(additionalStyle) {
+    var style = {
+      display: 'inline-block'
+    };
+
+    _.extend(style, additionalStyle);
+
+    return createDOMElement('person-section', style);
   }
 
   var createEnumArray = window.App.Utils.createEnumArray;
@@ -130,6 +138,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var makeRemovable = window.App.Utils.makeRemovable;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.PersonSection = PersonSection;
 

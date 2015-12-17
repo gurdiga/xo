@@ -2,7 +2,7 @@
   'use strict';
 
   function SentenceSection(fieldValues, additionalStyles) {
-    var domElement = createDomElement();
+    var domElement = createElement(additionalStyles);
     var fields = createFields(fieldValues);
     var section = new Section('Documentul executoriu', fields);
     section.appendTo(domElement);
@@ -22,16 +22,16 @@
 
       return fieldValues;
     };
+  }
 
-    function createDomElement() {
-      var domElement = document.createElement('sentence-section');
-      var style = {
-        display: 'inline-block'
-      };
-      _.extend(domElement.style, style, additionalStyles);
+  function createElement(additionalStyles) {
+    var style = {
+      display: 'inline-block'
+    };
 
-      return domElement;
-    }
+    _.extend(style, additionalStyles);
+
+    return createDOMElement('sentence-section', style);
   }
 
   function createFields(fieldValues) {
@@ -96,6 +96,7 @@
   var DateField = window.App.Widgets.DateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.SentenceSection = SentenceSection;
 

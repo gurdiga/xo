@@ -12,15 +12,14 @@
   }
 
   function createElement(additionalStyle) {
-    var defaultStyle = {
+    var style = {
       display: 'inline-block',
       margin: '0 0 3px 5px'
     };
 
-    var style = _.extend(defaultStyle, additionalStyle);
-    var domElement = createDOMElement('label', style);
+    _.extend(style, additionalStyle);
 
-    return domElement;
+    return createDOMElement('label', style);
   }
 
   function createSpan(text) {

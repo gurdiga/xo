@@ -27,7 +27,7 @@
   }
 
   function createTextareaElement(value, additionalStyle) {
-    var defaultStyle = {
+    var style = {
       color: 'black',
       padding: '4px',
       marginLeft: '1em',
@@ -42,7 +42,8 @@
       resize: 'none'
     };
 
-    var style = _.extend(defaultStyle, additionalStyle);
+    _.extend(style, additionalStyle);
+
     var textarea = createDOMElement('textarea', style);
 
     textarea.value = value || '';

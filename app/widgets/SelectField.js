@@ -2,13 +2,9 @@
   'use strict';
 
   function SelectField(labelText, options, defaultValue) {
-    var domElement = document.createElement('select-field');
-    domElement.style.display = 'block';
+    var domElement = createElement();
 
-    var select = document.createElement('select');
-    options.forEach(appendOptionTo(select));
-    select.value = defaultValue;
-    _.extend(select.style, style);
+    var select = createSelect(options, defaultValue);
 
     var label = new FieldLabel(labelText, labelStyle, [select]);
     label.appendTo(domElement);
@@ -31,6 +27,30 @@
     };
   }
 
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('select-field', style);
+  }
+
+  function createSelect(options, defaultValue) {
+    var style = {
+      width: TextFieldInput.DEFAULT_WIDTH,
+      font: TextFieldInput.DEFAULT_FONT,
+      position: 'absolute',
+      marginTop: '-2px'
+    };
+
+    var select = createDOMElement('select', style);
+
+    options.forEach(appendOptionTo(select));
+    select.value = defaultValue;
+
+    return select;
+  }
+
   function appendOptionTo(domElement) {
     return function(optionText) {
       var item = _.isPlainObject(optionText) ?
@@ -42,26 +62,19 @@
   }
 
   function createOptgroup(group) {
-    var optgroup = document.createElement('optgroup');
+    var optgroup = createDOMElement('optgroup');
     optgroup.label = group.optgroupLabel;
     group.options.forEach(appendOptionTo(optgroup));
     return optgroup;
   }
 
   function createOption(optionText) {
-    var option = document.createElement('option');
+    var option = createDOMElement('option');
     option.textContent = optionText;
     return option;
   }
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;
-
-  var style = {
-    width: TextFieldInput.DEFAULT_WIDTH,
-    font: TextFieldInput.DEFAULT_FONT,
-    position: 'absolute',
-    marginTop: '-2px'
-  };
 
   var labelStyle = {
     marginBottom: '6px'
@@ -71,6 +84,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.SelectField = SelectField;
 
