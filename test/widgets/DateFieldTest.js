@@ -116,7 +116,7 @@
     var button = sandbox.querySelector('label>button');
     t.equal(button.title, 'Deschide calendarul', 'has the appropriate tool-tip');
 
-    var datePicker = sandbox.querySelector('label>.pika-single');
+    var datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     t.equal(datePicker, null, 'date picker is not there before clicking the button');
 
     var bodyClickListener = prepareBodyClickListener();
@@ -124,7 +124,7 @@
     button.click();
     t.ok(!bodyClickListener.receivedClicks, 'clicks do not propagate to <body> and hide the picker');
 
-    datePicker = sandbox.querySelector('label>.pika-single');
+    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     t.ok(datePicker, 'inserts the date picker');
     t.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
 
@@ -149,21 +149,21 @@
     t.equal(getDatePickerSelectedDate(), newDate, 'when selected, it updates input value accordingly');
     t.equal(dateField.getValue(), newDate, 'when selected, getValue() returns the new value');
 
-    datePicker = sandbox.querySelector('label>.pika-single');
+    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     t.equal(datePicker, null, 'hides the date picker when a date is selected');
 
     input.value = '';
     input.dispatchEvent(new Event('change'));
     button.click();
 
-    datePicker = sandbox.querySelector('label>.pika-single');
+    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     t.ok(datePicker, 'date picker is displayed with en empty field value');
 
     var todayDate = DateFormatting.format(new Date(), DateFieldInput.DATE_FORMAT);
     t.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
 
     button.click();
-    datePicker = sandbox.querySelector('label>.pika-single');
+    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     t.equal(datePicker, null, 'hides the date picker when clicked again');
 
     /* this setTimeout call is required because focus() call is async too */
@@ -172,12 +172,12 @@
 
       button.click();
       document.body.click();
-      datePicker = sandbox.querySelector('label>.pika-single');
+      datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
       t.equal(datePicker, null, 'hides the date picker when clicked outside');
 
       button.click();
       simulateEscapeKey();
-      datePicker = sandbox.querySelector('label>.pika-single');
+      datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
       t.equal(datePicker, null, 'hides the date picker when pressing Escape key');
 
       document.body.removeChild(sandbox);
