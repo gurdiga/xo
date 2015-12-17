@@ -4,15 +4,14 @@
   function InquiryActivity() {
     var domElement = createDOMElement('inquiry-activity');
 
-    var dateField = createDateField();
-    dateField.appendTo(domElement);
+    addDateField(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createDateField() {
+  function addDateField(domElement) {
     var dateField = new UnlabeledDateField();
-    return dateField;
+    dateField.appendTo(domElement);
   }
 
   var UnlabeledDateField = window.App.Widgets.UnlabeledDateField;
