@@ -2,6 +2,7 @@
   'use strict';
 
   DateFieldInput.DATE_FORMAT = 'dd.mm.yyyy';
+  DateFieldInput.DATE_PICKER_SELECTOR = '.pika-single';
 
   function DateFieldInput(value, additionalStyle) {
     var input = new TextFieldInput(value, additionalStyle);
