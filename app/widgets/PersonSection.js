@@ -89,7 +89,7 @@
 
   function createPersonTypeField(fieldValues) {
     var personType = fieldValues[PERSON_TYPE_INTERNAL_NAME];
-    var field = new SelectField('Gen persoană', PERSON_TYPES, personType);
+    var field = new LabeledSelectField('Gen persoană', PERSON_TYPES, personType);
     field.internalName = PERSON_TYPE_INTERNAL_NAME;
     return field;
   }
@@ -131,7 +131,7 @@
   }
 
   var Section = window.App.Widgets.Section;
-  var SelectField = window.App.Widgets.SelectField;
+  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var TextField = window.App.Widgets.TextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;

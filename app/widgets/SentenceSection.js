@@ -36,17 +36,17 @@
 
   function createFields(fieldValues) {
     return [
-      createSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
+      createLabeledSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
       createField(TextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
       createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii'),
       createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul'),
-      createSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
+      createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
       createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive'),
       createField(LabeledDateField, 'Data eliberării', 'data-eliberării')
     ];
 
-    function createSelectField(labelText, internalName, options) {
-      var field = new SelectField(labelText, options, fieldValues[internalName]);
+    function createLabeledSelectField(labelText, internalName, options) {
+      var field = new LabeledSelectField(labelText, options, fieldValues[internalName]);
       field.internalName = internalName;
       return field;
     }
@@ -90,7 +90,7 @@
   ];
 
   var Section = window.App.Widgets.Section;
-  var SelectField = window.App.Widgets.SelectField;
+  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var TextField = window.App.Widgets.TextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;

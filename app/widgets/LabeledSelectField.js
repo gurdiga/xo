@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function SelectField(labelText, options, defaultValue) {
+  function LabeledSelectField(labelText, options, defaultValue) {
     var domElement = createElement();
 
     var select = createSelect(options, defaultValue);
@@ -86,6 +86,6 @@
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
-  window.App.Widgets.SelectField = SelectField;
+  window.App.Widgets.LabeledSelectField = LabeledSelectField;
 
 }());

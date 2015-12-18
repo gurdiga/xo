@@ -1,11 +1,11 @@
 (function() {
   'use strict';
 
-  var SelectField = window.App.Widgets.SelectField;
+  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var labelText = 'My SelectField component';
+  var labelText = 'My LabeledSelectField component';
   var optionValues = [
     'option 1',
     'option 2',
@@ -17,7 +17,7 @@
       ]
     }
   ];
-  var selectField = new SelectField(labelText, optionValues, optionValues[1]);
+  var selectField = new LabeledSelectField(labelText, optionValues, optionValues[1]);
   selectField.onChange(onChange);
   selectField.appendTo(sandbox);
 
@@ -28,7 +28,7 @@
 
   document.body.appendChild(sandbox);
 
-  test('SelectField label', function(t) {
+  test('LabeledSelectField label', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label>');
 
@@ -39,7 +39,7 @@
     t.end();
   });
 
-  test('SelectField label layout CSS', function(t) {
+  test('LabeledSelectField label layout CSS', function(t) {
     var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 6px 5px', 'has some air to breath at the left and below');
@@ -47,7 +47,7 @@
     t.end();
   });
 
-  test('SelectField label text CSS', function(t) {
+  test('LabeledSelectField label text CSS', function(t) {
     var css = sandbox.querySelector('label>span').style;
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
@@ -57,7 +57,7 @@
     t.end();
   });
 
-  test('SelectField options', function(t) {
+  test('LabeledSelectField options', function(t) {
     var select = sandbox.querySelector('label>select');
     var options = select.querySelectorAll('option');
     t.equal(options.length, 4, 'the option count corresponds');
@@ -84,7 +84,7 @@
     t.end();
   });
 
-  test('SelectField select CSS', function(t) {
+  test('LabeledSelectField select CSS', function(t) {
     var css = sandbox.querySelector('select').style;
     t.equal(css.width, '200px', 'is 200px wide too (as TextField input is)');
     t.equal(css.fontSize, '14px', 'has 14px font size');
@@ -94,7 +94,7 @@
     t.end();
   });
 
-  test('SelectField getValue()', function(t) {
+  test('LabeledSelectField getValue()', function(t) {
     var select = sandbox.querySelector('label>select');
     t.equal(selectField.getValue(), optionValues[1], 'its getValue() method returns the selected option');
 
@@ -104,7 +104,7 @@
     t.end();
   });
 
-  test('SelectField onChange callback', function(t) {
+  test('LabeledSelectField onChange callback', function(t) {
     var select = sandbox.querySelector('label>select');
 
     onChange.called = false;
