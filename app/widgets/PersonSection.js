@@ -105,8 +105,8 @@
       createField(TextField, 'Nume', 'nume', fieldValues),
       createField(TextField, 'IDNP', 'idnp', fieldValues),
       createField(LabeledDateField, 'Data naşterii', 'data-naşterii', fieldValues),
-      createField(LargeTextField, 'Domiciliu', 'domiciliu', fieldValues),
-      createField(LargeTextField, 'Note', 'note', fieldValues)
+      createField(LabeledLargeTextField, 'Domiciliu', 'domiciliu', fieldValues),
+      createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
     ];
   }
 
@@ -114,9 +114,9 @@
     return [
       createField(TextField, 'Denumire', 'denumire', fieldValues),
       createField(TextField, 'IDNO', 'idno', fieldValues),
-      createField(LargeTextField, 'Sediu', 'sediu', fieldValues),
+      createField(LabeledLargeTextField, 'Sediu', 'sediu', fieldValues),
       createField(TextField, 'Persoană de contact', 'persoană-de-contact', fieldValues),
-      createField(LargeTextField, 'Note', 'note', fieldValues)
+      createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
     ];
   }
 
@@ -133,7 +133,7 @@
   var Section = window.App.Widgets.Section;
   var SelectField = window.App.Widgets.SelectField;
   var TextField = window.App.Widgets.TextField;
-  var LargeTextField = window.App.Widgets.LargeTextField;
+  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;

@@ -39,7 +39,7 @@
       createSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
       createField(TextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
       createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii'),
-      createField(LargeTextField, 'Dispozitivul', 'dispozitivul'),
+      createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul'),
       createSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
       createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive'),
       createField(LabeledDateField, 'Data eliberării', 'data-eliberării')
@@ -92,7 +92,7 @@
   var Section = window.App.Widgets.Section;
   var SelectField = window.App.Widgets.SelectField;
   var TextField = window.App.Widgets.TextField;
-  var LargeTextField = window.App.Widgets.LargeTextField;
+  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;

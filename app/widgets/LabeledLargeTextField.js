@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function LargeTextField(labelText, value, additionalStyle) {
+  function LabeledLargeTextField(labelText, value, additionalStyle) {
     var domElement = createElement();
 
     var textarea = createTextareaElement(value, additionalStyle);
@@ -58,6 +58,6 @@
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
-  window.App.Widgets.LargeTextField = LargeTextField;
+  window.App.Widgets.LabeledLargeTextField = LabeledLargeTextField;
 
 }());

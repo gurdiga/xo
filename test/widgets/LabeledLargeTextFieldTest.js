@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var LargeTextField = window.App.Widgets.LargeTextField;
+  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var test = tape;
 
   var sandbox = document.createElement('div');
@@ -9,10 +9,10 @@
   var labelText = 'My large-text-field component';
   var fieldValue = 'Hi!';
 
-  var largeTextField = new LargeTextField(labelText, fieldValue);
+  var largeTextField = new LabeledLargeTextField(labelText, fieldValue);
   largeTextField.appendTo(sandbox);
 
-  test('LargeTextField label', function(t) {
+  test('LabeledLargeTextField label', function(t) {
     var label = sandbox.querySelector('label');
 
     t.ok(label, 'it renders a <label> element');
@@ -45,19 +45,19 @@
     t.end();
   });
 
-  test('LargeTextField textarea value', function(t) {
+  test('LabeledLargeTextField textarea value', function(t) {
     var textarea = sandbox.querySelector('label>textarea');
 
     t.ok(textarea, 'it renders <textarea> element inside the <label> for binding (accessibility)');
     t.equal(textarea.value, fieldValue,
-      'the <textarea> has the value given in the LargeTextField “value” attribute');
+      'the <textarea> has the value given in the LabeledLargeTextField “value” attribute');
     t.equal(largeTextField.getValue(), textarea.value,
       'its getValue() method returns the <textarea> value');
 
     t.end();
   });
 
-  test('LargeTextField textarea CSS', function(t) {
+  test('LabeledLargeTextField textarea CSS', function(t) {
     var css = sandbox.querySelector('textarea').style;
 
     t.equal(css.color, 'black', 'its text renders in black color');
