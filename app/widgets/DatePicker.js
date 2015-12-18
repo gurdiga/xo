@@ -6,20 +6,8 @@
   function DatePicker() {
     var INTERNAL_DATE_FORMAT = 'yyyy-mm-dd';
 
-    /*global Pikaday*/
-    var widget = new Pikaday({
-      onSelect: function(date) { onSelect(date); },
-      bound: false,
-      theme: 'xo',
-      firstDay: 1,
-      i18n: {
-        previousMonth: 'luna precedentă',
-        nextMonth: 'luna următoare',
-        months: ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'],
-        weekdays: ['Duminică','Luni','Marţi','Miercuri','Joi','Vineri','Sîmbătă'],
-        weekdaysShort: ['Du','Lu','Ma','Me','Jo','Vi','Sî']
-      }
-    });
+    var onDateSelectedCallback = createDateSelectedCallback(this, getCurrentDateField);
+    var widget = createWidget(onDateSelectedCallback);
 
     var currentDateField;
 
@@ -48,10 +36,33 @@
       }
     };
 
-    var onSelect = function(date) {
-      currentDateField.setDate(date);
-      this.hide();
-    }.bind(this);
+    function getCurrentDateField() {
+      return currentDateField;
+    }
+  }
+
+  function createDateSelectedCallback(datePicker, getCurrentDateField) {
+    return function(date) {
+      getCurrentDateField().setDate(date);
+      datePicker.hide();
+    };
+  }
+
+  function createWidget(onDateSelectedCallback) {
+    /*global Pikaday*/
+    return new Pikaday({
+      onSelect: onDateSelectedCallback,
+      bound: false,
+      theme: 'xo',
+      firstDay: 1,
+      i18n: {
+        previousMonth: 'luna precedentă',
+        nextMonth: 'luna următoare',
+        months: ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'],
+        weekdays: ['Duminică','Luni','Marţi','Miercuri','Joi','Vineri','Sîmbătă'],
+        weekdaysShort: ['Du','Lu','Ma','Me','Jo','Vi','Sî']
+      }
+    });
   }
 
   var DateFormatting = window.App.Utils.DateFormatting;
