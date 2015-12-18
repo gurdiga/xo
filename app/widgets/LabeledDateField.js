@@ -2,9 +2,7 @@
   'use strict';
 
   function LabeledDateField(labelText, value, additionalStyle) {
-    var domElement = createDOMElement('labeled-date-field', {
-      display: 'block'
-    });
+    var domElement = createElement();
 
     var input = new DateFieldInput(value, additionalStyle);
     var label = new FieldLabel(labelText, {}, [input]);
@@ -16,6 +14,14 @@
     this.getValue = function() {
       return input.getValue();
     };
+  }
+
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('labeled-date-field', style);
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
