@@ -86,7 +86,7 @@
 
   test('LabeledSelectField select CSS', function(t) {
     var css = sandbox.querySelector('select').style;
-    t.equal(css.width, '200px', 'is 200px wide too (as TextField input is)');
+    t.equal(css.width, '200px', 'is 200px wide too (as LabeledTextField input is)');
     t.equal(css.fontSize, '14px', 'has 14px font size');
     t.equal(css.position, 'absolute', 'is absolutely-positioned to allow for precise vertical alignment without bothering the <label>');
     t.equal(css.marginTop, '-2px', 'is shifted up 2px to vertically align with the <label>');

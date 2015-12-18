@@ -102,8 +102,8 @@
 
   function createFieldsForIndividual(fieldValues) {
     return [
-      createField(TextField, 'Nume', 'nume', fieldValues),
-      createField(TextField, 'IDNP', 'idnp', fieldValues),
+      createField(LabeledTextField, 'Nume', 'nume', fieldValues),
+      createField(LabeledTextField, 'IDNP', 'idnp', fieldValues),
       createField(LabeledDateField, 'Data naşterii', 'data-naşterii', fieldValues),
       createField(LabeledLargeTextField, 'Domiciliu', 'domiciliu', fieldValues),
       createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
@@ -112,10 +112,10 @@
 
   function createFieldsForCompany(fieldValues) {
     return [
-      createField(TextField, 'Denumire', 'denumire', fieldValues),
-      createField(TextField, 'IDNO', 'idno', fieldValues),
+      createField(LabeledTextField, 'Denumire', 'denumire', fieldValues),
+      createField(LabeledTextField, 'IDNO', 'idno', fieldValues),
       createField(LabeledLargeTextField, 'Sediu', 'sediu', fieldValues),
-      createField(TextField, 'Persoană de contact', 'persoană-de-contact', fieldValues),
+      createField(LabeledTextField, 'Persoană de contact', 'persoană-de-contact', fieldValues),
       createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
     ];
   }
@@ -132,7 +132,7 @@
 
   var Section = window.App.Widgets.Section;
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var TextField = window.App.Widgets.TextField;
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 

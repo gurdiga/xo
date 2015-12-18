@@ -37,7 +37,7 @@
   function createFields(fieldValues) {
     return [
       createLabeledSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
-      createField(TextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
+      createField(LabeledTextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
       createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii'),
       createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul'),
       createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
@@ -91,7 +91,7 @@
 
   var Section = window.App.Widgets.Section;
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var TextField = window.App.Widgets.TextField;
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 

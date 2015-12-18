@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function TextField(labelText, value, additionalStyle) {
+  function LabeledTextField(labelText, value, additionalStyle) {
     var domElement = createElement();
 
     var input = new TextFieldInput(value, additionalStyle);
@@ -31,6 +31,6 @@
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
-  window.App.Widgets.TextField = TextField;
+  window.App.Widgets.LabeledTextField = LabeledTextField;
 
 }());

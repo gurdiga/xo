@@ -1,19 +1,19 @@
 (function() {
   'use strict';
 
-  var TextField = window.App.Widgets.TextField;
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
   var test = tape;
 
   var sandbox = document.createElement('div');
   var labelText = 'My text-field component';
   var fieldValue = 'Hi!';
 
-  var textField = new TextField(labelText, fieldValue);
+  var textField = new LabeledTextField(labelText, fieldValue);
   textField.appendTo(sandbox);
 
   document.body.appendChild(sandbox);
 
-  test('TextField label', function(t) {
+  test('LabeledTextField label', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label> element');
 
@@ -24,7 +24,7 @@
     t.end();
   });
 
-  test('TextField label layout CSS', function(t) {
+  test('LabeledTextField label layout CSS', function(t) {
     var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
@@ -32,7 +32,7 @@
     t.end();
   });
 
-  test('TextField label text CSS', function(t) {
+  test('LabeledTextField label text CSS', function(t) {
     var css = sandbox.querySelector('label>span').style;
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
     t.equal(css.fontSize, '14px', 'has the same font size as the <input/>');
@@ -42,19 +42,19 @@
     t.end();
   });
 
-  test('TextField input', function(t) {
+  test('LabeledTextField input', function(t) {
     var input = sandbox.querySelector('label>input');
 
     t.ok(input, 'is renders <input/> element inside <label> for accessibility');
     t.equal(input.value, fieldValue,
-      'the <input /> has the value given in the TextField “value” attribute');
+      'the <input /> has the value given in the LabeledTextField “value” attribute');
     t.equal(textField.getValue(), input.value,
       'its getValue() method returns the <input/> value');
 
     t.end();
   });
 
-  test('TextField input CSS', function(t) {
+  test('LabeledTextField input CSS', function(t) {
     var css = sandbox.querySelector('input').style;
     t.equal(css.color, 'black', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
@@ -76,7 +76,7 @@
     t.end();
   });
 
-  test('TextField accepts custom input CSS through the “style” attribute', function(t) {
+  test('LabeledTextField accepts custom input CSS through the “style” attribute', function(t) {
     var customCSS = {
       color: 'rgb(255, 0, 0)',
       width: '280px'
@@ -85,7 +85,7 @@
     var sandbox = document.createElement('div');
     document.body.appendChild(sandbox);
 
-    var textField = new TextField('Some label', '', customCSS);
+    var textField = new LabeledTextField('Some label', '', customCSS);
     textField.appendTo(sandbox);
 
     var input = sandbox.querySelector('input');
@@ -100,7 +100,7 @@
     }
   });
 
-  test('TextField outlines <input/> on focus', function(t) {
+  test('LabeledTextField outlines <input/> on focus', function(t) {
     var input = sandbox.querySelector('input');
     t.equal(input.style.boxShadow, '', 'does not have the CSS box-shadow property set');
 
