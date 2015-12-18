@@ -18,12 +18,16 @@
     t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'UNLABELED-DATE-FIELD', 'has the appropriate tag name');
 
-    t.test('input', function(t) {
+    t.test('input and its value', function(t) {
       var input = domElement.querySelector('input');
 
       t.ok(input, 'exists');
       t.equal(input.value, defaultFieldValue, 'has the value as passed into constructor');
       t.equal(input.style.width, additionalStyle.width, 'accepts the additional style passed into constructor');
+
+      var newValue = 'some other value';
+      input.value = newValue;
+      t.equal(unlabeledDateField.getValue(), newValue, '#getValue() returns input’s value');
 
       t.end();
     });
