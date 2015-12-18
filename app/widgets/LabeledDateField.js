@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function DateField(labelText, value, additionalStyle) {
+  function LabeledDateField(labelText, value, additionalStyle) {
     var domElement = createDOMElement('date-field', {
       display: 'block'
     });
@@ -25,6 +25,6 @@
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
-  window.App.Widgets.DateField = DateField;
+  window.App.Widgets.LabeledDateField = LabeledDateField;
 
 }());

@@ -104,7 +104,7 @@
     return [
       createField(TextField, 'Nume', 'nume', fieldValues),
       createField(TextField, 'IDNP', 'idnp', fieldValues),
-      createField(DateField, 'Data naşterii', 'data-naşterii', fieldValues),
+      createField(LabeledDateField, 'Data naşterii', 'data-naşterii', fieldValues),
       createField(LargeTextField, 'Domiciliu', 'domiciliu', fieldValues),
       createField(LargeTextField, 'Note', 'note', fieldValues)
     ];
@@ -134,7 +134,7 @@
   var SelectField = window.App.Widgets.SelectField;
   var TextField = window.App.Widgets.TextField;
   var LargeTextField = window.App.Widgets.LargeTextField;
-  var DateField = window.App.Widgets.DateField;
+  var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var makeRemovable = window.App.Utils.makeRemovable;

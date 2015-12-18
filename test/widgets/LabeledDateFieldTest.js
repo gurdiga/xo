@@ -1,18 +1,18 @@
 (function() {
   'use strict';
 
-  var DateField = window.App.Widgets.DateField;
+  var LabeledDateField = window.App.Widgets.LabeledDateField;
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var labelText = 'My DateField component';
+  var labelText = 'My LabeledDateField component';
   var fieldValue = '22.03.2015';
 
-  var dateField = new DateField(labelText, fieldValue);
+  var dateField = new LabeledDateField(labelText, fieldValue);
   dateField.appendTo(sandbox);
   document.body.appendChild(sandbox);
 
-  test('DateField label', function(t) {
+  test('LabeledDateField label', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label> element');
 
@@ -23,7 +23,7 @@
     t.end();
   });
 
-  test('DateField label layout CSS', function(t) {
+  test('LabeledDateField label layout CSS', function(t) {
     var css = sandbox.querySelector('label').style;
     t.equal(css.display, 'inline-block', 'is block-styled because it’s always one per line');
     t.equal(css.margin, '0px 0px 3px 5px', 'has some air to breath at the left and below');
@@ -31,7 +31,7 @@
     t.end();
   });
 
-  test('DateField label text CSS', function(t) {
+  test('LabeledDateField label text CSS', function(t) {
     var css = sandbox.querySelector('label>span').style;
 
     t.equal(css.color, 'rgb(85, 85, 85)', 'is a bit dimmed compared to the input text because it’s less important');
@@ -42,14 +42,14 @@
     t.end();
   });
 
-  test('DateField value handling', function(t) {
+  test('LabeledDateField value handling', function(t) {
     var input = sandbox.querySelector('label>input');
 
     t.ok(input, 'is renders <input/> element inside <label> for binding (accessibility)');
     t.equal(
       input.value,
       fieldValue,
-      'the <intpu/> has the value given in the DateField “value” attribute');
+      'the <intpu/> has the value given in the LabeledDateField “value” attribute');
     t.equal(
       dateField.getValue(),
       fieldValue,
@@ -58,7 +58,7 @@
     t.end();
   });
 
-  test('DateField input CSS', function(t) {
+  test('LabeledDateField input CSS', function(t) {
     var css = sandbox.querySelector('input').style;
     t.equal(css.color, 'black', 'its text renders in black color');
     t.equal(css.padding, '4px', 'has 4 px padding');
@@ -80,7 +80,7 @@
     t.end();
   });
 
-  test('DateField outlines <input/> on focus', function(t) {
+  test('LabeledDateField outlines <input/> on focus', function(t) {
     var input = sandbox.querySelector('input');
     t.equal(input.style.boxShadow, '', 'does not have the CSS box-shadow property set');
 
