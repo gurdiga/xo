@@ -21,7 +21,7 @@
       display: 'block'
     };
 
-    return createDOMElement('text-field', style);
+    return createDOMElement('labeled-text-field', style);
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;

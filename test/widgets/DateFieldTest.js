@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var UnlabeledDateField = window.App.Widgets.UnlabeledDateField;
+  var DateField = window.App.Widgets.DateField;
   var test = tape;
 
   var sandbox = document.createElement('div');
@@ -9,14 +9,14 @@
   var additionalStyle = {
     width: '100px'
   };
-  var unlabeledDateField = new UnlabeledDateField(defaultFieldValue, additionalStyle);
+  var unlabeledDateField = new DateField(defaultFieldValue, additionalStyle);
   unlabeledDateField.appendTo(sandbox);
 
-  test('UnlabeledDateField', function(t) {
+  test('DateField', function(t) {
     var domElement = sandbox.firstChild;
 
     t.ok(domElement, 'exists');
-    t.equal(domElement.tagName, 'UNLABELED-DATE-FIELD', 'has the appropriate tag name');
+    t.equal(domElement.tagName, 'DATE-FIELD', 'has the appropriate tag name');
 
     t.test('input and its value', function(t) {
       var input = domElement.querySelector('input');

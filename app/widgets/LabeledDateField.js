@@ -2,7 +2,7 @@
   'use strict';
 
   function LabeledDateField(labelText, value, additionalStyle) {
-    var domElement = createDOMElement('date-field', {
+    var domElement = createDOMElement('labeled-date-field', {
       display: 'block'
     });
 

@@ -5,7 +5,7 @@
   var test = tape;
 
   var sandbox = document.createElement('div');
-  var labelText = 'My text-field component';
+  var labelText = 'My LabeledTextField component';
   var fieldValue = 'Hi!';
 
   var textField = new LabeledTextField(labelText, fieldValue);

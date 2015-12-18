@@ -29,7 +29,7 @@
     t.equal(labelText, label, 'section has the appropriate label');
 
     t.test('person type field', function(t) {
-      var personTypeField = sandbox.querySelector('fieldset>select-field');
+      var personTypeField = sandbox.querySelector('fieldset>labeled-select-field');
 
       t.equal(getLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
       t.equal(getValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
@@ -139,12 +139,12 @@
       'note': 'agreabil'
     },
     expectedFields: [
-      ['Gen persoană',  'select-field',     'gen-persoană' ],
-      ['Nume',          'text-field',       'nume'         ],
-      ['IDNP',          'text-field',       'idnp'         ],
-      ['Data naşterii', 'date-field',       'data-naşterii'],
-      ['Domiciliu',     'large-text-field', 'domiciliu'    ],
-      ['Note',          'large-text-field', 'note'         ],
+      ['Gen persoană',  'labeled-select-field',     'gen-persoană' ],
+      ['Nume',          'labeled-text-field',       'nume'         ],
+      ['IDNP',          'labeled-text-field',       'idnp'         ],
+      ['Data naşterii', 'labeled-date-field',       'data-naşterii'],
+      ['Domiciliu',     'labeled-large-text-field', 'domiciliu'    ],
+      ['Note',          'labeled-large-text-field', 'note'         ],
     ]
   }, {
     personType: PersonSection.PERSON_TYPES.COMPANY,
@@ -157,12 +157,12 @@
       'note': 'Yep'
     },
     expectedFields: [
-      ['Gen persoană',        'select-field',     'gen-persoană'        ],
-      ['Denumire',            'text-field',       'denumire'            ],
-      ['IDNO',                'text-field',       'idno'                ],
-      ['Sediu',               'large-text-field', 'sediu'               ],
-      ['Persoană de contact', 'text-field',       'persoană-de-contact' ],
-      ['Note',                'large-text-field', 'note'                ],
+      ['Gen persoană',        'labeled-select-field',     'gen-persoană'        ],
+      ['Denumire',            'labeled-text-field',       'denumire'            ],
+      ['IDNO',                'labeled-text-field',       'idno'                ],
+      ['Sediu',               'labeled-large-text-field', 'sediu'               ],
+      ['Persoană de contact', 'labeled-text-field',       'persoană-de-contact' ],
+      ['Note',                'labeled-large-text-field', 'note'                ],
     ]
   }].forEach(function(testData) {
     test('PersonSection has the appropriate fields when person type is “' + testData.personType + '”', function(t) {

@@ -10,11 +10,11 @@
   }
 
   function addDateField(domElement) {
-    var dateField = new UnlabeledDateField();
+    var dateField = new DateField();
     dateField.appendTo(domElement);
   }
 
-  var UnlabeledDateField = window.App.Widgets.UnlabeledDateField;
+  var DateField = window.App.Widgets.DateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;

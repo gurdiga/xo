@@ -18,7 +18,7 @@
       var dateField = domElement.firstChild;
 
       t.ok(dateField, 'exists');
-      t.equal(dateField.tagName, 'UNLABELED-DATE-FIELD', 'is an unlabeled data field');
+      t.equal(dateField.tagName, 'DATE-FIELD', 'is an unlabeled data field');
 
       t.end();
     });

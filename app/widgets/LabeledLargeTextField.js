@@ -23,7 +23,7 @@
       display: 'block'
     };
 
-    return createDOMElement('large-text-field', style);
+    return createDOMElement('labeled-large-text-field', style);
   }
 
   function createTextareaElement(value, additionalStyle) {

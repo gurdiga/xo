@@ -6,7 +6,7 @@
   var sandbox = document.createElement('div');
   document.body.appendChild(sandbox);
 
-  var labelText = 'My large-text-field component';
+  var labelText = 'My LabeledLargeTextField component';
   var fieldValue = 'Hi!';
 
   var largeLabeledTextField = new LabeledLargeTextField(labelText, fieldValue);

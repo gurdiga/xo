@@ -32,7 +32,7 @@
       display: 'block'
     };
 
-    return createDOMElement('select-field', style);
+    return createDOMElement('labeled-select-field', style);
   }
 
   function createSelect(options, defaultValue) {

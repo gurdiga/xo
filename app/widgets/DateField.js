@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function UnlabeledDateField(defaultFieldValue, additionalStyle) {
-    var domElement = createDOMElement('unlabeled-date-field');
+  function DateField(defaultFieldValue, additionalStyle) {
+    var domElement = createDOMElement('date-field');
 
     var dateFieldInput = new DateFieldInput(defaultFieldValue, additionalStyle);
     dateFieldInput.appendTo(domElement);
@@ -17,6 +17,6 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
 
-  window.App.Widgets.UnlabeledDateField = UnlabeledDateField;
+  window.App.Widgets.DateField = DateField;
 
 }());
