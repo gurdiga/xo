@@ -8,9 +8,7 @@
     var label = new FieldLabel(labelText, {}, [input]);
     label.appendTo(domElement);
 
-    this.getValue = function() {
-      return input.getValue();
-    };
+    this.getValue = delegateTo(input, 'getValue');
 
     this.appendTo = getAppenderOf(domElement);
     this.destroy = getDestroyerOf(domElement);
@@ -30,6 +28,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var delegateTo = window.App.Utils.delegateTo;
 
   window.App.Widgets.LabeledTextField = LabeledTextField;
 

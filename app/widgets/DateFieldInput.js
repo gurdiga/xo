@@ -8,13 +8,8 @@
     var input = new TextFieldInput(value, additionalStyle);
     var datePickerButton = createDatePickerButton(this);
 
-    this.getValue = function() {
-      return input.getValue();
-    };
-
-    this.setValue = function(value) {
-      input.setValue(value);
-    };
+    this.getValue = delegateTo(input, 'getValue');
+    this.setValue = delegateTo(input, 'setValue');
 
     this.appendTo = function(parentDomElement) {
       input.appendTo(parentDomElement);
@@ -86,6 +81,7 @@
   var DateFormatting = window.App.Utils.DateFormatting;
   var makeShy = window.App.Utils.makeShy;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var delegateTo = window.App.Utils.delegateTo;
 
   window.App.Widgets.DateFieldInput = DateFieldInput;
 

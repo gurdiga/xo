@@ -14,9 +14,7 @@
       domElement.value = value;
     };
 
-    this.focus = function() {
-      domElement.focus();
-    };
+    this.focus = delegateTo(domElement, 'focus');
 
     this.precedeWith = function(elementToInsert) {
       domElement.parentNode.insertBefore(elementToInsert, domElement);
@@ -53,6 +51,7 @@
   var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var delegateTo = window.App.Utils.delegateTo;
 
   window.App.Widgets.TextFieldInput = TextFieldInput;
 
