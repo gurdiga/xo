@@ -4,7 +4,7 @@
   function LabeledDateField(labelText, value, additionalStyle) {
     var domElement = createElement();
 
-    var input = new DateFieldInput(value, additionalStyle);
+    var input = new DateField(value, additionalStyle);
     var label = new FieldLabel(labelText, {}, [input]);
     label.appendTo(domElement);
 
@@ -23,7 +23,7 @@
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
-  var DateFieldInput = window.App.Widgets.DateFieldInput;
+  var DateField = window.App.Widgets.DateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;

@@ -44,4 +44,18 @@
     t.end();
   });
 
+  test('structural elements', function(t) {
+    var label = sandbox.querySelector('label');
+    var labelSpan = label.children[0];
+    var dateInput = label.children[1];
+
+    t.ok(labelSpan, 'the label span exists');
+    t.equal(labelSpan.tagName, 'SPAN', 'is a <span/>');
+
+    t.ok(dateInput, 'the label span exists');
+    t.equal(dateInput.tagName, 'DATE-FIELD', 'is a <date-field/>');
+
+    t.end();
+  });
+
 }());
