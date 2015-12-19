@@ -80,6 +80,7 @@
     t.equal(css.outlineWidth, '0px',
       'has the built-in outline disabled because it’s replaces by the nicer artificial outline');
     t.equal(css.resize, 'none', 'has the built-in resize control disabled because it will be made elastic');
+    t.equal(css.display, 'block', 'is block because needs to place under the label');
 
     var textarea = sandbox.querySelector('textarea');
 

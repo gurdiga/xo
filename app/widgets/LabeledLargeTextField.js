@@ -29,6 +29,7 @@
   function createTextareaElement(value, additionalStyle) {
     var style = {
       color: 'black',
+      display: 'block',
       padding: '4px',
       marginLeft: '1em',
       marginBottom: '5px',
