@@ -6,7 +6,12 @@
 
   var sandbox = document.createElement('div');
 
-  var activityDetailsSection = new ActivityDetailsSection();
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
+  var activityDetailsSection = new ActivityDetailsSection([
+    document.createElement('first-child-widget'),
+    new LabeledTextField()
+  ]);
+
   activityDetailsSection.appendTo(sandbox);
 
   test('ActivityDetailsSection', function(t) {
@@ -30,6 +35,13 @@
       var css = domElement.style;
 
       t.equal(css.borderWidth, '0px', 'has no visible border');
+
+      t.end();
+    });
+
+    t.test('children', function(t) {
+      t.equal(domElement.children[0].tagName, 'FIRST-CHILD-WIDGET', 'renders the given widgets inside itself');
+      t.equal(domElement.children[1].tagName, 'LABELED-TEXT-FIELD', 'renders the given widgets inside itself');
 
       t.end();
     });

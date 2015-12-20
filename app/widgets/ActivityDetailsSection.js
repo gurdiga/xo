@@ -1,8 +1,9 @@
 (function() {
   'use strict';
 
-  function ActivityDetailsSection() {
+  function ActivityDetailsSection(childWidgets) {
     var domElement = createElement();
+    appendWidgets(childWidgets).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -18,6 +19,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var appendWidgets = window.App.Utils.appendWidgets;
 
   window.App.Widgets.ActivityDetailsSection = ActivityDetailsSection;
 
