@@ -30,12 +30,19 @@
   }
 
   function addDetailsSection(domElement) {
-    var detailsSection = new ActivityDetailsSection();
+    var detailsSection = new ActivityDetailsSection(createDetailsFields());
     detailsSection.appendTo(domElement);
+  }
+
+  function createDetailsFields() {
+    return [
+      new LabeledTextField('Numărul de înregistrare')
+    ];
   }
 
   var DateField = window.App.Widgets.DateField;
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
