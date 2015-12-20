@@ -6,6 +6,7 @@
 
     addDateField(domElement);
     addDescription(domElement);
+    addDetailsSection(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -28,7 +29,13 @@
     domElement.appendChild(descriptionElement);
   }
 
+  function addDetailsSection(domElement) {
+    var detailsSection = new ActivityDetailsSection();
+    detailsSection.appendTo(domElement);
+  }
+
   var DateField = window.App.Widgets.DateField;
+  var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;

@@ -46,6 +46,15 @@
       t.end();
     });
 
+    t.test('details section', function(t) {
+      var detailsSectionElement = domElement.children[2];
+
+      t.ok(detailsSectionElement, 'exists');
+      t.equal(detailsSectionElement.tagName, 'FIELDSET', 'has the approriate tag name');
+
+      t.end();
+    });
+
     t.end();
   });
 
