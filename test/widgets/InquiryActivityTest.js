@@ -52,9 +52,16 @@
       t.ok(detailsSectionElement, 'exists');
       t.equal(detailsSectionElement.tagName, 'FIELDSET', 'has the approriate tag name');
 
-      var inquiryRegistrationNumberField = detailsSectionElement.children[0];
-      t.ok(inquiryRegistrationNumberField, 'has a field for the inquiry registration number');
-      t.equal(inquiryRegistrationNumberField.tagName, 'LABELED-TEXT-FIELD', 'has the approriate tag name');
+      t.test('inquiry registration number field', function(t) {
+        var inquiryRegistrationNumberField = detailsSectionElement.children[0];
+        t.ok(inquiryRegistrationNumberField, 'has a field for the inquiry registration number');
+        t.equal(inquiryRegistrationNumberField.tagName, 'LABELED-TEXT-FIELD', 'has the approriate tag name');
+
+        var labelElement = inquiryRegistrationNumberField.querySelector('label');
+        t.equal(labelElement.textContent, 'Numărul de înregistrare', 'has the approriate label');
+
+        t.end();
+      });
 
       t.end();
     });
