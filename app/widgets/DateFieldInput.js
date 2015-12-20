@@ -33,7 +33,22 @@
   }
 
   function createDatePickerButton(dateField) {
-    var button = createDOMElement('button');
+    var style = {
+      width: '20px',
+      height: '20px',
+      padding: '0',
+      border: 'none',
+      backgroundColor: 'transparent',
+      backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAJCAYAAAF4VF24AAAAAXNSR0IArs4c6QAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAG9JREFUGBltTu0RgCAIFc4FWiHdoJ1sptqpWVrAg3x2eHTGDx+8DyQEVEqp9CbkNSvhwTiaV/PMLFnIsK9C0Ig54lW4GISvT0RJ906Q0iksV8MDbggsvDUs3VClLn6N9ZHjPc4BiU/tPJujuYF/mx55tzEWYjQMAAAAAABJRU5ErkJggg==")',
+      backgroundPosition: '50% 50%',
+      backgroundRepeat: 'no-repeat',
+      marginLeft: '-18px',
+      position: 'absolute'
+    };
+
+    var button = createDOMElement('button', style);
+    makeShy(button);
+    button.title = 'Deschide calendarul';
 
     button.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -46,9 +61,6 @@
 
       DatePicker.instance.toggleFor(dateField);
     });
-    _.extend(button.style, datePickerButtonStyle);
-    makeShy(button);
-    button.title = 'Deschide calendarul';
 
     return button;
   }
@@ -61,19 +73,6 @@
   document.body.addEventListener('click', function() {
     DatePicker.instance.hide();
   });
-
-  var datePickerButtonStyle = {
-    width: '20px',
-    height: '20px',
-    padding: '0',
-    border: 'none',
-    backgroundColor: 'transparent',
-    backgroundImage: 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAJCAYAAAF4VF24AAAAAXNSR0IArs4c6QAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAG9JREFUGBltTu0RgCAIFc4FWiHdoJ1sptqpWVrAg3x2eHTGDx+8DyQEVEqp9CbkNSvhwTiaV/PMLFnIsK9C0Ig54lW4GISvT0RJ906Q0iksV8MDbggsvDUs3VClLn6N9ZHjPc4BiU/tPJujuYF/mx55tzEWYjQMAAAAAABJRU5ErkJggg==")',
-    backgroundPosition: '50% 50%',
-    backgroundRepeat: 'no-repeat',
-    marginLeft: '-18px',
-    position: 'absolute'
-  };
 
   var DatePicker = window.App.Widgets.DatePicker;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
