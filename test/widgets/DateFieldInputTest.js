@@ -81,6 +81,7 @@
 
       var css = datePickerButton.style;
       t.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
+      t.equal(css.marginTop, '2px', 'vertically align the icon with the input text');
       t.equal(css.marginLeft, '-18px', 'uses 18px of negative left margin to look as being inside of the field');
       t.equal(css.width, '20px', 'is 20px wide to accommodate clicking');
       t.equal(css.height, '20px', 'is 20px high to accommodate clicking');
