@@ -18,10 +18,18 @@
       t.end();
     });
 
-    t.test('layout styling', function(t) {
+    t.test('layout', function(t) {
       var css = domElement.style;
 
       t.equal(css.marginLeft, '90px');
+
+      t.end();
+    });
+
+    t.test('styling', function(t) {
+      var css = domElement.style;
+
+      t.equal(css.borderWidth, '0px', 'has no visible border');
 
       t.end();
     });

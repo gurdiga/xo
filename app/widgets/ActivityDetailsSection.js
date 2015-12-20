@@ -10,6 +10,7 @@
   function createElement() {
     var style = {
       marginLeft: '90px',
+      borderWidth: '0px'
     };
 
     return createDOMElement('fieldset', style);
