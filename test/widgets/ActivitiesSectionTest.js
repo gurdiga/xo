@@ -14,6 +14,7 @@
     t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'CASE-ACTIVITIES-SECTION', 'has sentence-subject-section tag');
 
+    t.test('structure');
     var css = domElement.style;
     t.equal(css.display, 'block', 'has block display to be on its own line');
     t.equal(css.color, additionalStyle.color, 'accepts additional CSS');
@@ -23,10 +24,13 @@
 
     t.test('inquiry activity', function(t) {
       var inquiryActivity = domElement.querySelector('inquiry-activity');
-
       t.ok(inquiryActivity, 'exists');
-      // TODO
+      t.end();
+    });
 
+    t.test('institution activity', function(t) {
+      var institutionActivity = domElement.querySelector('institution-activity');
+      t.ok(institutionActivity, 'exists');
       t.end();
     });
 
