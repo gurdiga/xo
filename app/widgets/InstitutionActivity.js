@@ -18,13 +18,11 @@
   }
 
   function addDateField(domElement) {
-    var value = '';
-    var style = { width: '6.5em' };
-    var dateField = new DateField(value, style);
+    var dateField = new ActivityDateField();
     dateField.appendTo(domElement);
   }
 
-  var DateField = window.App.Widgets.DateField;
+  var ActivityDateField = window.App.Widgets.ActivityDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;

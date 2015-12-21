@@ -24,10 +24,7 @@
       var dateField = domElement.firstChild;
 
       t.ok(dateField, 'exists');
-      t.equal(dateField.tagName, 'DATE-FIELD', 'is an unlabeled data field');
-
-      var input = dateField.querySelector('input');
-      t.equal(input.style.width, '6.5em', 'the  date field is a bit narrower than labeled fields');
+      t.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is an activity date field');
 
       t.end();
     });
