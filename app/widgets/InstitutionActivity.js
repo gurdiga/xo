@@ -2,11 +2,19 @@
   'use strict';
 
   function InstitutionActivity() {
-    var domElement = createDOMElement('institution-activity');
+    var domElement = createElement();
 
     addDateField(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+  }
+
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('institution-activity', style);
   }
 
   function addDateField(domElement) {

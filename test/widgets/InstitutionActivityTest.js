@@ -13,6 +13,13 @@
     t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'INSTITUTION-ACTIVITY', 'has the appropriate tag name');
 
+    t.test('layout', function(t) {
+      var css = domElement.style;
+      t.equal(css.display, 'block', 'it’s a container');
+
+      t.end();
+    });
+
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;
 
