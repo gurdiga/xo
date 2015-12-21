@@ -2,13 +2,21 @@
   'use strict';
 
   function InquiryActivity() {
-    var domElement = createDOMElement('inquiry-activity');
+    var domElement = createElement();
 
     addDateField(domElement);
     addDescription(domElement);
     addDetailsSection(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+  }
+
+  function createElement() {
+    var style = {
+      display: 'block'
+    };
+
+    return createDOMElement('inquiry-activity', style);
   }
 
   function addDateField(domElement) {
