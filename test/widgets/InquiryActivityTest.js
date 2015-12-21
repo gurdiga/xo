@@ -12,7 +12,7 @@
     var domElement = sandbox.firstChild;
 
     t.ok(domElement, 'exists');
-    t.equal(domElement.tagName, 'INQUIRY-ACTIVITY', 'exists');
+    t.equal(domElement.tagName, 'INQUIRY-ACTIVITY', 'has the approriate tag name');
 
     t.test('layout', function(t) {
       var css = domElement.style;
