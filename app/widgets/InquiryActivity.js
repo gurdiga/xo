@@ -25,14 +25,8 @@
   }
 
   function addDescription(domElement) {
-    var style = {
-      fontSize: '16px',
-      marginLeft: '0.5em',
-      verticalAlign: '-1px'
-    };
-    var descriptionElement = createDOMElement('span', style);
-    descriptionElement.textContent = 'Cererea creditorului';
-    domElement.appendChild(descriptionElement);
+    var description = new ActivityDescription('Cererea creditorului');
+    description.appendTo(domElement);
   }
 
   function addDetailsSection(domElement) {
@@ -47,6 +41,7 @@
   }
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
+  var ActivityDescription = window.App.Widgets.ActivityDescription;
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 

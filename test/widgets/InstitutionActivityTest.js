@@ -33,6 +33,8 @@
       var descriptionElement = domElement.children[1];
 
       t.ok(descriptionElement, 'exists');
+      t.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
+      t.equal(descriptionElement.textContent, 'Intentarea', 'has the appropriate text');
 
       t.end();
     });

@@ -34,18 +34,8 @@
       var descriptionElement = domElement.children[1];
 
       t.ok(descriptionElement, 'exists');
-      t.equal(descriptionElement.textContent, 'Cererea creditorului',
-        'has the approriate text');
-
-      t.test('styling', function(t) {
-        var css = descriptionElement.style;
-
-        t.equal(css.fontSize, '16px', 'has just a bit larger font size to stand out');
-        t.equal(css.marginLeft, '0.5em', 'keeps some space at the left');
-        t.equal(css.verticalAlign, '-1px', 'align vertically with the text in the field');
-
-        t.end();
-      });
+      t.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
+      t.equal(descriptionElement.textContent, 'Cererea creditorului', 'has the appropriate text');
 
       t.end();
     });

@@ -24,17 +24,12 @@
   }
 
   function addDescription(domElement) {
-    var style = {
-      fontSize: '16px',
-      marginLeft: '0.5em',
-      verticalAlign: '-1px'
-    };
-    var descriptionElement = createDOMElement('span', style);
-    descriptionElement.textContent = 'Intentarea';
-    domElement.appendChild(descriptionElement);
+    var description = new ActivityDescription('Intentarea');
+    description.appendTo(domElement);
   }
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
+  var ActivityDescription = window.App.Widgets.ActivityDescription;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
