@@ -29,6 +29,14 @@
       t.end();
     });
 
+    t.test('description', function(t) {
+      var descriptionElement = domElement.children[1];
+
+      t.ok(descriptionElement, 'exists');
+
+      t.end();
+    });
+
     t.end();
   });
 
