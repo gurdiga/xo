@@ -8,7 +8,13 @@
   }
 
   function createElement(text) {
-    var domElement = createDOMElement('activity-description');
+    var style = {
+      fontSize: '16px',
+      marginLeft: '0.5em',
+      verticalAlign: '-1px'
+    };
+
+    var domElement = createDOMElement('activity-description', style);
 
     domElement.textContent = text;
 
