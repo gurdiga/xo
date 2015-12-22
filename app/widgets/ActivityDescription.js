@@ -1,14 +1,18 @@
 (function() {
   'use strict';
 
-  function ActivityDescription() {
-    var domElement = createElement();
+  function ActivityDescription(text) {
+    var domElement = createElement(text);
 
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement() {
-    return createDOMElement('activity-description');
+  function createElement(text) {
+    var domElement = createDOMElement('activity-description');
+
+    domElement.textContent = text;
+
+    return domElement;
   }
 
   var createDOMElement = window.App.Utils.createDOMElement;
