@@ -16,10 +16,10 @@
       margin: '0 0 3px 5px'
     };
 
+    var domElement;
+
     _.extend(style, additionalStyle);
-
-    var domElement = createDOMElement('label', style);
-
+    domElement = createDOMElement('label', style);
     domElement.setAttribute('widget', 'FieldLabel');
 
     return domElement;
