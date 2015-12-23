@@ -6,7 +6,9 @@
 
     appendWidgets([
       new ActivityDateField(),
-      new ActivityDescription('Intentarea')
+      new ActivityDescription('Intentarea'),
+      new ActivityDetailsSection([
+      ])
     ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -22,6 +24,7 @@
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
   var ActivityDescription = window.App.Widgets.ActivityDescription;
+  var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
