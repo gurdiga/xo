@@ -18,7 +18,11 @@
 
     _.extend(style, additionalStyle);
 
-    return createDOMElement('label', style);
+    var domElement = createDOMElement('label', style);
+
+    domElement.setAttribute('widget', 'FieldLabel');
+
+    return domElement;
   }
 
   function addTextSpan(domElement, text) {

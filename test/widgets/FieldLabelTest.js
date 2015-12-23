@@ -19,9 +19,11 @@
   test('FieldLabel DOM', function(t) {
     var label = sandbox.querySelector('label');
     t.ok(label, 'it renders a <label> element');
+    t.equal(label.getAttribute('widget'), 'FieldLabel', 'is marked as being a widget');
 
     var labelSpan = label.querySelector('span');
     t.equal(labelSpan.textContent, labelText, 'the text given in the “text” attribute is rendered in a <span> inside that <label>');
+
     t.end();
   });
 
