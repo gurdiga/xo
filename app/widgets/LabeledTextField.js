@@ -5,8 +5,7 @@
     var domElement = createElement();
 
     var input = new TextFieldInput(value, additionalStyle);
-    var label = new FieldLabel(labelText, {}, [input]);
-    label.appendTo(domElement);
+    addLabel(domElement, labelText, input);
 
     this.getValue = delegateTo(input, 'getValue');
 
@@ -20,6 +19,12 @@
     };
 
     return createDOMElement('labeled-text-field', style);
+  }
+
+  function addLabel(domElement, labelText, input) {
+    var style = {};
+    var label = new FieldLabel(labelText, style, [input]);
+    label.appendTo(domElement);
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
