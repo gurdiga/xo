@@ -4,9 +4,13 @@
   function InquiryActivity() {
     var domElement = createElement();
 
-    addDateField(domElement);
-    addDescription(domElement);
-    addDetailsSection(domElement);
+    appendWidgets([
+      new ActivityDateField(),
+      new ActivityDescription('Cererea creditorului'),
+      new ActivityDetailsSection([
+        new LabeledTextField('Numărul de înregistrare')
+      ])
+    ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -19,27 +23,6 @@
     return createDOMElement('inquiry-activity', style);
   }
 
-  function addDateField(domElement) {
-    var dateField = new ActivityDateField();
-    dateField.appendTo(domElement);
-  }
-
-  function addDescription(domElement) {
-    var description = new ActivityDescription('Cererea creditorului');
-    description.appendTo(domElement);
-  }
-
-  function addDetailsSection(domElement) {
-    var detailsSection = new ActivityDetailsSection(createDetailsFields());
-    detailsSection.appendTo(domElement);
-  }
-
-  function createDetailsFields() {
-    return [
-      new LabeledTextField('Numărul de înregistrare')
-    ];
-  }
-
   var ActivityDateField = window.App.Widgets.ActivityDateField;
   var ActivityDescription = window.App.Widgets.ActivityDescription;
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
@@ -47,6 +30,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var appendWidgets = window.App.Utils.appendWidgets;
 
   window.App.Widgets.InquiryActivity = InquiryActivity;
 
