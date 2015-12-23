@@ -9,6 +9,7 @@
 
   function createElement(text) {
     var style = {
+      display: 'inline',
       fontSize: '16px',
       marginLeft: '0.5em',
       verticalAlign: '-1px'

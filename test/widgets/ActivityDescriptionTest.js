@@ -19,6 +19,7 @@
     t.test('styling', function(t) {
       var css = domElement.style;
 
+      t.equal(css.display, 'inline', 'it’s expected to be on the same line with other elements');
       t.equal(css.fontSize, '16px', 'has just a bit larger font size to stand out');
       t.equal(css.marginLeft, '0.5em', 'keeps some space at the left');
       t.equal(css.verticalAlign, '-1px', 'align vertically with the text in the field');
