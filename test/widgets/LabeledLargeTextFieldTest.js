@@ -13,6 +13,7 @@
   test('LabeledLargeTextField', function(t) {
     var domElement = sandbox.firstChild;
     var label = domElement.firstChild;
+    var textarea = label.children[1];
 
     t.equal(domElement.tagName, 'LABELED-LARGE-TEXT-FIELD', 'has the appropriate tag name');
 
@@ -24,8 +25,6 @@
     });
 
     t.test('value', function(t) {
-      var textarea = label.children[1];
-
       t.equal(textarea.value, fieldValue,
         'the <textarea> has the value given in the LabeledLargeTextField “value” attribute');
       t.equal(largeLabeledTextField.getValue(), fieldValue,
@@ -35,7 +34,6 @@
     });
 
     t.test('textarea styling', function(t) {
-      var textarea = domElement.querySelector('textarea');
       var css = textarea.style;
 
       t.equal(css.color, 'black', 'its text renders in black color');
@@ -60,11 +58,7 @@
       t.equal(css.resize, 'none', 'has the built-in resize control disabled because it will be made elastic');
       t.equal(css.display, 'block', 'is block because needs to place under the label');
 
-      textarea.dispatchEvent(new Event('focus'));
-      t.equal(textarea.style.boxShadow, 'rgb(181, 213, 255) 0px 0px 3px 2px', 'has CSS box-shadow property set when focused');
-
-      textarea.dispatchEvent(new Event('blur'));
-      t.equal(textarea.style.boxShadow, '', 'has CSS box-shadow property removed when loses focus');
+      t.ok(textarea.hasAttribute('outline-on-focus'), 'is outlined on focus');
 
       t.end();
     });
