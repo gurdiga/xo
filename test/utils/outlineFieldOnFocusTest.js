@@ -16,6 +16,8 @@
     input.dispatchEvent(new Event('blur'));
     t.equal(input.style.boxShadow, '', 'has CSS box-shadow property removed when loses focus');
 
+    t.ok(input.hasAttribute('outline-on-focus'), 'has the boolean outline-on-focus attribute added');
+
     t.end();
   });
 
