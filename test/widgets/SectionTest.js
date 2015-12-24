@@ -13,8 +13,6 @@
   var section = new Section(labelText, [content], additionalStyle);
   section.appendTo(sandbox);
 
-  document.body.appendChild(sandbox);
-
   test('Section label', function(t) {
     var fieldset = sandbox.querySelector('fieldset');
     t.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
@@ -56,7 +54,6 @@
     t.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
     t.equal(css.paddingRight, '0px', 'no need for right padding');
 
-    document.body.removeChild(sandbox);
     t.end();
   });
 }());

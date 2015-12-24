@@ -13,8 +13,6 @@
     onClick.executed = true;
   }
 
-  document.body.appendChild(sandbox);
-
   test('NewCaseButton', function(t) {
     var button = sandbox.querySelector('button');
     t.equal(button.textContent, 'Procedură nouă', 'has the label “Procedură nouă”');
@@ -38,7 +36,6 @@
     button.click();
     t.ok(onClick.executed, 'triggers the onClick function');
 
-    document.body.removeChild(sandbox);
     t.end();
   });
 
