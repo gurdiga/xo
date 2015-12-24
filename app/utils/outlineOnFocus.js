@@ -6,7 +6,7 @@
       boxShadow: '0 0 3px 2px #b5d5ff'
     });
 
-    domElement.setAttributeNode(document.createAttribute('outline-on-focus'));
+    domElement.setAttribute('outline-on-focus', '');
   }
 
   var onFocus = window.App.Mixins.onFocus;
