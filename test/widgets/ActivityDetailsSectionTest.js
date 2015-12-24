@@ -17,12 +17,6 @@
   test('ActivityDetailsSection', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.test('structure', function(t) {
-      t.ok(domElement, 'exists');
-
-      t.end();
-    });
-
     t.test('layout', function(t) {
       var css = domElement.style;
 

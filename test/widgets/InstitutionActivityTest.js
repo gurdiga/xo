@@ -9,8 +9,6 @@
 
   tape('InstitutionActivity', function(t) {
     var domElement = sandbox.firstChild;
-
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'INSTITUTION-ACTIVITY', 'has the appropriate tag name');
 
     t.test('layout', function(t) {
@@ -22,17 +20,13 @@
 
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;
-
-      t.ok(dateField, 'exists');
       t.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is an activity date field');
-
       t.end();
     });
 
     t.test('description', function(t) {
       var descriptionElement = domElement.children[1];
 
-      t.ok(descriptionElement, 'exists');
       t.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
       t.equal(descriptionElement.textContent, 'Intentarea', 'has the appropriate text');
 
@@ -41,10 +35,7 @@
 
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
-
-      t.ok(detailsSectionElement, 'exists');
       t.equal(detailsSectionElement.tagName, 'FIELDSET', 'has the approriate tag name');
-
       t.end();
     });
 

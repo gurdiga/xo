@@ -10,8 +10,6 @@
 
   test('InquiryActivity', function(t) {
     var domElement = sandbox.firstChild;
-
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'INQUIRY-ACTIVITY', 'has the approriate tag name');
 
     t.test('layout', function(t) {

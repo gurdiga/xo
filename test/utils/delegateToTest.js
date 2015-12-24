@@ -5,8 +5,6 @@
   var test = tape;
 
   test('delegateTo', function(t) {
-    t.ok(typeof delegateTo === 'function', 'exists');
-
     var date = new Date();
     var dateWrapper = {
       toString: delegateTo(date, 'toString')

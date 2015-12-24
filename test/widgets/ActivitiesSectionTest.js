@@ -11,7 +11,6 @@
   tape.test('ActivitiesSection', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'CASE-ACTIVITIES-SECTION', 'has sentence-subject-section tag');
 
     t.test('structure');

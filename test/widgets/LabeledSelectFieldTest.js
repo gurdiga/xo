@@ -51,7 +51,6 @@
 
       var group = optionValues[2];
       var optgroup = select.querySelector('optgroup');
-      t.ok(optgroup, 'an <optgroup> is added for the POJSO item');
       t.equal(optgroup.label, group.optgroupLabel, 'the <optgroup> has the appropriate label');
 
       var optgroupOptions = optgroup.querySelectorAll('option');

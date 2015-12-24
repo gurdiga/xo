@@ -20,10 +20,7 @@
     var datePickerButton = sandbox.children[1];
 
     t.test('structural elements', function(t) {
-      t.ok(input, 'exists');
       t.equal(input.tagName, 'INPUT', 'is first renders an <input>');
-
-      t.ok(datePickerButton, 'exists');
       t.equal(datePickerButton.tagName, 'BUTTON', 'renders a <button> to trigger the date picker');
 
       t.end();
@@ -76,7 +73,6 @@
     });
 
     t.test('date picker button CSS', function(t) {
-      t.ok(datePickerButton, 'it’s positioned at the right side of input');
       t.equal(datePickerButton.getAttribute('shy'), '', 'is’s shy');
 
       var css = datePickerButton.style;
@@ -106,7 +102,6 @@
       t.ok(!bodyClickListener.receivedClicks, 'clicks do not propagate to <body> and hide the picker');
 
       datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-      t.ok(datePicker, 'inserts the date picker');
       t.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
 
       var firstMonth = datePicker.querySelector('.pika-select-month option');

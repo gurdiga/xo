@@ -17,9 +17,7 @@
 
   test('NewCaseButton', function(t) {
     var button = sandbox.querySelector('button');
-    t.ok(button, 'renders a <button>');
     t.equal(button.textContent, 'Procedură nouă', 'has the label “Procedură nouă”');
-
     t.end();
   });
 

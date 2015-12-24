@@ -20,15 +20,11 @@
   tape('DropdownButton', function(t) {
     t.test('DOM structure', function(t) {
       var domElement = sandbox.firstChild;
-      t.ok(domElement, 'exists');
       t.equal(domElement.tagName, 'DROPDOWN-BUTTON', 'has the appropriate tag name');
 
       t.test('toggle button', function(t) {
         var toggleButton = domElement.querySelector('button');
-
-        t.ok(toggleButton, 'exists');
         t.equal(toggleButton.textContent, labelText, 'has the appropriate label');
-
         t.end();
       });
 

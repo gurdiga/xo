@@ -24,8 +24,6 @@
 
   tape('SentenceSection', function(t) {
     var domElement = sandbox.firstChild;
-    t.ok(domElement, 'exists');
-
     var css = domElement.style;
     t.equal(css.display, 'inline-block', 'has display inline-block');
 

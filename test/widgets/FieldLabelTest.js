@@ -17,7 +17,6 @@
 
   test('FieldLabel', function(t) {
     var label = sandbox.firstChild;
-    t.ok(label, 'exists');
     t.equal(label.tagName, 'LABEL', 'has the appropriate tag name');
     t.equal(label.getAttribute('widget'), 'FieldLabel', 'is marked as being a widget');
 

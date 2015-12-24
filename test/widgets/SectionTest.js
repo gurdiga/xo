@@ -17,11 +17,9 @@
 
   test('Section label', function(t) {
     var fieldset = sandbox.querySelector('fieldset');
-    t.ok(fieldset, 'renders a <fieldset/>');
     t.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
 
     var legend = fieldset.querySelector('legend');
-    t.ok(legend, 'renders a <legend> inside the <fieldset>');
     t.equal(legend.textContent, labelText, 'legend has the text given in the “label” attribute');
 
     var content = fieldset.querySelector('p');

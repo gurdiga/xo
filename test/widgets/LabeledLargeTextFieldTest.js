@@ -26,7 +26,6 @@
     t.test('value', function(t) {
       var textarea = label.children[1];
 
-      t.ok(textarea, 'it renders <textarea> element inside the <label> for binding (accessibility)');
       t.equal(textarea.value, fieldValue,
         'the <textarea> has the value given in the LabeledLargeTextField “value” attribute');
       t.equal(largeLabeledTextField.getValue(), fieldValue,

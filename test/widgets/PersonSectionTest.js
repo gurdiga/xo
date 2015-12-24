@@ -18,7 +18,6 @@
 
   test('PersonSection', function(t) {
     var domElement = sandbox.firstChild;
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'PERSON-SECTION', 'has the appropriate tag name');
 
     var css = domElement.style;

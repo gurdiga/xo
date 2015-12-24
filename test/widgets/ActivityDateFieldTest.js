@@ -10,7 +10,6 @@
   tape('ActivityDateField', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'ACTIVITY-DATE-FIELD', 'has the appropriate tag name');
 
     t.test('input', function(t) {

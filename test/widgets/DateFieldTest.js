@@ -14,8 +14,6 @@
 
   test('DateField', function(t) {
     var domElement = sandbox.firstChild;
-
-    t.ok(domElement, 'exists');
     t.equal(domElement.tagName, 'DATE-FIELD', 'has the appropriate tag name');
 
     t.test('input and its value', function(t) {
@@ -34,8 +32,6 @@
 
     t.test('date picker button', function(t) {
       var button = domElement.querySelector('button');
-
-      t.ok(button, 'exists');
       t.equal(button.title, 'Deschide calendarul', 'has the appropriate tooltip');
 
       var datePickerElement;

@@ -12,7 +12,6 @@
 
   test('NewCaseDialog', function(t) {
     var domElement = sandbox.firstChild;
-    t.ok(domElement, 'renders a <new-case-dialog/>');
     t.equal(domElement.tagName, 'NEW-CASE-DIALOG', 'has the appropriate tag name');
 
     var css = domElement.style;
@@ -52,7 +51,6 @@
 
     t.test('the title', function(t) {
       var title = domElement.querySelector(':scope>h1');
-      t.ok(title, 'exists');
       t.equal(title.textContent, 'Procedură de ordin general', 'has the appropriate text');
 
       var css = title.style;
@@ -66,8 +64,6 @@
 
     t.test('the creditor section', function(t) {
       var creditorSection = domElement.querySelector(':scope>person-section:first-of-type');
-      t.ok(creditorSection, 'exists');
-
       var css = creditorSection.style;
       t.equal(css.width, '380px', 'is 380px wide');
 
@@ -82,8 +78,6 @@
 
     t.test('the debitor section', function(t) {
       var debitorSection = domElement.querySelector(':scope>person-section:nth-of-type(2)');
-      t.ok(debitorSection, 'exists');
-
       var css = debitorSection.style;
       t.equal(css.width, '380px', 'is 380px wide');
       t.equal(css.marginRight, '60px', 'leaves some breathing room before the Creditor section');
@@ -140,7 +134,6 @@
         t.equal(newSectionLabel, 'Debitor', 'the new section has the appropriate label');
 
         var removeButton = domElement.querySelector('button[type="remove"]');
-        t.ok(removeButton, 'the new section has a remove button');
 
         personSectionCountBefore = domElement.querySelectorAll('person-section').length;
         personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
@@ -178,7 +171,6 @@
         t.equal(newSectionLabel, 'Persoană terţă', 'the new section has the appropriate label');
 
         var removeButton = domElement.querySelector('button[type="remove"]');
-        t.ok(removeButton, 'the new section has a remove button');
 
         personSectionCountBefore = domElement.querySelectorAll('person-section').length;
         personSectionDataCountBefore = newCaseDialog.getValue()['persoane-terţe'].length;
@@ -200,7 +192,6 @@
       var sentenceSection = domElement.querySelector('sentence-section');
       var css = sentenceSection.style;
 
-      t.ok(sentenceSection, 'exists');
       t.equal(css.width, '380px', 'the new section has the appropriate width');
       t.equal(css.marginRight, '60px', 'the new section has the appropriate marginLeft');
       t.equal(css.verticalAlign, 'top', 'top-align vertically with the other sections');
@@ -210,8 +201,6 @@
 
     t.test('the “Acţiuni procedurale” section', function(t) {
       var caseActivitiesSection = domElement.querySelector('case-activities-section');
-      t.ok(caseActivitiesSection, 'exists');
-
       var css = caseActivitiesSection.style;
       t.equal(css.marginRight, '60px', 'has the appropriate marginLeft');
 
@@ -222,7 +211,6 @@
       var closeButton = domElement.querySelector('button[type="close"]');
       var css = closeButton.style;
 
-      t.ok(closeButton, 'exists');
       t.equal(closeButton.textContent, '×', 'has the appropriate label');
       t.equal(closeButton.title, 'Închide', 'has the appropriate tooltip');
 
