@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function outlineFieldOnFocus(domElement) {
+  function outlineOnFocus(domElement) {
     onFocus(domElement, {
       boxShadow: '0 0 3px 2px #b5d5ff'
     });
@@ -11,6 +11,6 @@
 
   var onFocus = window.App.Mixins.onFocus;
 
-  window.App.Utils.outlineFieldOnFocus = outlineFieldOnFocus;
+  window.App.Utils.outlineOnFocus = outlineOnFocus;
 
 }());

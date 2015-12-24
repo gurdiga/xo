@@ -20,7 +20,7 @@
       domElement.parentNode.insertBefore(elementToInsert, domElement);
     };
 
-    outlineFieldOnFocus(domElement);
+    outlineOnFocus(domElement);
   }
 
   function createElement(value, additionalStyle) {
@@ -48,7 +48,7 @@
   TextFieldInput.DEFAULT_WIDTH = '200px';
   TextFieldInput.DEFAULT_FONT = 'bold 14px sans-serif';
 
-  var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
+  var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;

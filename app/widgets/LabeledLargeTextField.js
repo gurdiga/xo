@@ -15,7 +15,7 @@
       return textarea.value;
     };
 
-    outlineFieldOnFocus(textarea);
+    outlineOnFocus(textarea);
   }
 
   function createElement() {
@@ -54,7 +54,7 @@
 
   var FieldLabel = window.App.Widgets.FieldLabel;
 
-  var outlineFieldOnFocus = window.App.Utils.outlineFieldOnFocus;
+  var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
