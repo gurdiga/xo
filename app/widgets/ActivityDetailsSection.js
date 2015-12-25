@@ -15,7 +15,9 @@
       borderWidth: '0px'
     };
 
-    return createDOMElement('fieldset', style);
+    var domElement = createDOMElement('fieldset', style);
+    domElement.setAttribute('widget', 'ActivityDetailsSection');
+    return domElement;
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
