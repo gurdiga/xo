@@ -37,8 +37,8 @@
 
   function createSelect(options, defaultValue) {
     var style = {
-      width: TextFieldInput.DEFAULT_WIDTH,
-      font: TextFieldInput.DEFAULT_FONT,
+      width: TextFieldInput.STYLE.width,
+      font: TextFieldInput.STYLE.font,
       position: 'absolute',
       marginTop: '-2px'
     };

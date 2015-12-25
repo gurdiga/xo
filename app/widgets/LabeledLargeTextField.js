@@ -27,32 +27,28 @@
   }
 
   function createTextareaElement(value, additionalStyle) {
-    var style = {
-      color: 'black',
+    var textFieldStyle = _.pick(TextFieldInput.STYLE,
+      'color', 'padding', 'font', 'backgroundImage',
+      'borderRadius', 'borderWidth', 'outlineWidth'
+    );
+
+    var style = _.extend(textFieldStyle, {
       display: 'block',
-      padding: '4px',
       marginLeft: '1em',
       marginBottom: '5px',
-      font: 'bold 14px/1.75 sans-serif',
+      lineHeight: '1.75',
       width: '340px',
       height: '5.8em',
-      backgroundImage: 'url(data:image/gif;base64,R0lGODlhMgAYAIABAN3d3f///yH5BAEKAAEALAAAAAAyABgAAAIrjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyrAGBjd96zu9+D/wFCgA7)',
-      borderRadius: '2px',
-      borderWidth: '0px',
-      outlineWidth: '0px',
       resize: 'none'
-    };
-
-    _.extend(style, additionalStyle);
+    }, additionalStyle);
 
     var textarea = createDOMElement('textarea', style);
-
     textarea.value = value || '';
-
     return textarea;
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
