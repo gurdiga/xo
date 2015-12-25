@@ -23,7 +23,7 @@
     t.test('layout', function(t) {
       var css = label.style;
       t.equal(css.display, 'inline-block', 'it’ll be a block element because there’ll be one per line in most cases');
-      t.equal(css.margin, '0px 0px 3px 5px', 'it sets up some spacing');
+      t.equal(css.margin, '0px 0px 3px', 'it sets up some spacing');
 
       t.end();
     });

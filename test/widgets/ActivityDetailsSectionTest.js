@@ -20,7 +20,7 @@
     t.test('layout', function(t) {
       var css = domElement.style;
 
-      t.equal(css.marginLeft, '95px', 'is indented to align with the description');
+      t.equal(css.marginLeft, '100px', 'is indented to align with the description');
       t.equal(css.padding, '0px', 'has no padding');
 
       t.end();

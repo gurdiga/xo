@@ -21,7 +21,7 @@
     var style = {
       borderWidth: '0px',
       margin: '0',
-      padding: '10px 0 40px'
+      padding: '10px 0 40px 5px'
     };
 
     _.extend(style, additionalStyle);
@@ -37,6 +37,7 @@
       fontWeight: 'bold',
       fontSize: '22px',
       fontFamily: 'TitleFont',
+      marginLeft: '-5px',
       padding: '8px 0 8px 6px'
     };
 

@@ -34,7 +34,7 @@
 
     t.equal(css.margin, '0px', 'no outer spacing');
     t.equal(css.borderWidth, '0px', 'explicitly removing fieldset border');
-    t.equal(css.paddingLeft, '0px', 'remove fieldset’s default left padding');
+    t.equal(css.paddingLeft, '5px', 'reset fieldset’s default left padding');
     t.equal(css.paddingRight, '0px', 'remove fieldset’s default right padding');
     t.equal(css.paddingTop, '10px', 'has some vertical padding to allow some space between the legend and the content');
     t.equal(css.paddingBottom, '40px', 'keep some space at the bottom');
@@ -49,6 +49,7 @@
     t.equal(css.fontWeight, 'bold', 'text is bold to stand out on the dark background');
     t.equal(css.fontSize, '22px', 'text is big enough to stand out');
     t.equal(css.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
+    t.equal(css.marginLeft, '-5px', 'align with fieldset’s border');
     t.equal(css.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
     t.equal(css.paddingBottom, '8px', 'mirror the top  padding');
     t.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');

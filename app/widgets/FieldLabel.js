@@ -13,7 +13,7 @@
   function createElement(additionalStyle) {
     var style = {
       display: 'inline-block',
-      margin: '0 0 3px 5px'
+      margin: '0 0 3px'
     };
 
     var domElement;

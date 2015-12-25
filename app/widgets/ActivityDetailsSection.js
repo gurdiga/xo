@@ -10,7 +10,7 @@
 
   function createElement() {
     var style = {
-      marginLeft: '95px',
+      marginLeft: '100px',
       padding: '0px',
       borderWidth: '0px'
     };
