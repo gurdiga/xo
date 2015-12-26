@@ -21,8 +21,6 @@
 
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;
-
-      t.ok(dateField, 'exists');
       t.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is an activity date field');
 
       t.end();
@@ -31,7 +29,6 @@
     t.test('description', function(t) {
       var descriptionElement = domElement.children[1];
 
-      t.ok(descriptionElement, 'exists');
       t.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
       t.equal(descriptionElement.textContent, 'Cererea creditorului', 'has the appropriate text');
 
@@ -40,8 +37,6 @@
 
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
-
-      t.ok(detailsSectionElement, 'exists');
       t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
 
       t.test('inquiry registration number field', function(t) {
