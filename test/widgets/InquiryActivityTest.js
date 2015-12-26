@@ -42,7 +42,7 @@
       var detailsSectionElement = domElement.children[2];
 
       t.ok(detailsSectionElement, 'exists');
-      t.equal(detailsSectionElement.tagName, 'FIELDSET', 'has the approriate tag name');
+      t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
 
       t.test('inquiry registration number field', function(t) {
         var inquiryRegistrationNumberField = detailsSectionElement.children[0];

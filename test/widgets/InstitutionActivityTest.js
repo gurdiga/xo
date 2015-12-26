@@ -35,7 +35,7 @@
 
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
-      t.equal(detailsSectionElement.tagName, 'FIELDSET', 'has the approriate tag name');
+      t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
       t.end();
     });
 
