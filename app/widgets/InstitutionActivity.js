@@ -8,6 +8,7 @@
       new ActivityDateField(),
       new ActivityDescription('Intentarea'),
       new ActivityDetailsSection([
+        new CreateWritButton()
       ])
     ]).to(domElement);
 
@@ -25,6 +26,7 @@
   var ActivityDateField = window.App.Widgets.ActivityDateField;
   var ActivityDescription = window.App.Widgets.ActivityDescription;
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
+  var CreateWritButton = window.App.Widgets.CreateWritButton;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
