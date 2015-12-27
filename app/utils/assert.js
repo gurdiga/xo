@@ -6,8 +6,8 @@
   }
 
   function AssertionError(message) {
-    this.name = "AssertionError";
-    this.message = message || "(no error message given)";
+    this.name = 'AssertionError';
+    this.message = message || '(no error message given)';
   }
 
   AssertionError.prototype = Error.prototype;
