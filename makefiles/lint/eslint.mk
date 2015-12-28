@@ -4,7 +4,7 @@ ESLINT_IGNORE_FILE=makefiles/lint/eslintignore
 
 eslint: $(ESLINT_TIMESTAMP_FILE)
 $(ESLINT_TIMESTAMP_FILE): $(JS_FILES)
-	$(call eslint-do-work, $?) && touch $(ESLINT_TIMESTAMP_FILE)
+	$(call eslint-do-work, $?)
 
 eslint-force:
 	$(call eslint-do-work, $(JS_FILES))
@@ -18,5 +18,5 @@ define eslint-do-work
 		--config $(ESLINT_CONFIG_FILE) \
 		--ignore-path $(ESLINT_IGNORE_FILE) \
 		$(files) && \
-		touch $(ESLINT_TIMESTAMP_FILE)
+	touch $(ESLINT_TIMESTAMP_FILE)
 endef
