@@ -1,2 +1,2 @@
-lint: eslint
-lint-force: eslint-force
+lint: eslint jsonlint
+lint-force: eslint-force jsonlint-force

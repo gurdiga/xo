@@ -2,3 +2,5 @@ node_modules/
 
 package.json
 !makefiles/deps/package.json
+
+makefiles/lint/jsonlint.timestamp
