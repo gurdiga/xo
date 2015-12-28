@@ -20,9 +20,7 @@
   function assertArguments(domElement, onRemove) {
     if (!(domElement instanceof HTMLElement)) throw new Error('makeRemovable: the first argument is required to be a DOM element');
 
-    if (!(onRemove instanceof Function)) throw new Error(
-      'makeRemovable: the second argument is required to be a function to call back on remove'
-    );
+    if (!(onRemove instanceof Function)) throw new Error('makeRemovable: the second argument is required to be a function to call back on remove');
   }
 
   function createButton(additionalStyle) {

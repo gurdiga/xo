@@ -5,8 +5,6 @@ export
 			-type d -regex '^./(lib|node_modules)' -prune \
 			-type f \
 			-or -name '*.js' \
-			-or -name '*.json' \
-			-and -not -name 'jshint.json' \
 	)
 
 default: lib-all lint

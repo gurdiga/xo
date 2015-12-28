@@ -6,7 +6,7 @@
 
     appendWidgets([
       new ActivityDateField(),
-      new ActivityDescription(descriptionText),
+      new ActivityDescription(descriptionText)
     ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);

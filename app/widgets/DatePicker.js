@@ -17,8 +17,8 @@
       dateField.addDatePicker(widget.el);
       currentDateField = dateField;
 
-      var DO_NOT_TRIGER_SELECT;
-      widget.setDate(dateAsText, DO_NOT_TRIGER_SELECT = true);
+      var DO_NOT_TRIGER_SELECT = true;
+      widget.setDate(dateAsText, DO_NOT_TRIGER_SELECT);
       widget.show();
     };
 
@@ -58,9 +58,9 @@
       i18n: {
         previousMonth: 'luna precedentă',
         nextMonth: 'luna următoare',
-        months: ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'],
-        weekdays: ['Duminică','Luni','Marţi','Miercuri','Joi','Vineri','Sîmbătă'],
-        weekdaysShort: ['Du','Lu','Ma','Me','Jo','Vi','Sî']
+        months: ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
+        weekdays: ['Duminică', 'Luni', 'Marţi', 'Miercuri', 'Joi', 'Vineri', 'Sîmbătă'],
+        weekdaysShort: ['Du', 'Lu', 'Ma', 'Me', 'Jo', 'Vi', 'Sî']
       }
     });
   }

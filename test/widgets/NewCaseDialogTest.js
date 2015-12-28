@@ -107,8 +107,10 @@
 
       var addThirdPersonOption = dropdownButton.querySelectorAll('li button')[1];
 
-      var personSectionCountBefore, personSectionDataCountBefore,
-          personSectionCountAfter, personSectionDataCountAfter;
+      var personSectionCountBefore,
+        personSectionDataCountBefore,
+        personSectionCountAfter,
+        personSectionDataCountAfter;
 
       t.test('option to add a debitor', function(t) {
         var addDebitorOption = dropdownButton.querySelectorAll('li button')[0];

@@ -45,12 +45,12 @@
         'a-number': 42,
         'a-date': new Date(1441744405280),
         'a-boolean': true,
-        'an-array': [function(){}, 0x12, false]
+        'an-array': [function() {}, 0x12, false]
       }]), [{
         'a-number': '42',
         'a-date': 'Tue Sep 08 2015 23:33:25 GMT+0300 (EEST)',
         'a-boolean': 'true',
-        'an-array': ['function (){}', '18', 'false']
+        'an-array': ['function () {}', '18', 'false']
       }], 'recurses');
 
       t.end();

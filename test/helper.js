@@ -1,6 +1,7 @@
 (function() {
   'use strict';
 
+  /*eslint new-cap:0*/
   window.TapeBrowserConsoleDotReporter(window.tape);
 
   window.TestHelpers = {};

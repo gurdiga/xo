@@ -38,7 +38,7 @@
       t.deepEqual(optionTexts, PersonSection.PERSON_TYPES, 'has PERSON as the first option');
 
       setPersonType(PersonSection.PERSON_TYPES.COMPANY);
-      var expectedFieldLabelTexts = ["Gen persoană","Denumire","IDNO","Sediu","Persoană de contact","Note"];
+      var expectedFieldLabelTexts = ['Gen persoană', 'Denumire', 'IDNO', 'Sediu', 'Persoană de contact', 'Note'];
       t.deepEqual(getLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
 
       t.end();
@@ -143,7 +143,7 @@
       ['IDNP',          'labeled-text-field',       'idnp'         ],
       ['Data naşterii', 'labeled-date-field',       'data-naşterii'],
       ['Domiciliu',     'labeled-large-text-field', 'domiciliu'    ],
-      ['Note',          'labeled-large-text-field', 'note'         ],
+      ['Note',          'labeled-large-text-field', 'note'         ]
     ]
   }, {
     personType: PersonSection.PERSON_TYPES.COMPANY,
@@ -161,7 +161,7 @@
       ['IDNO',                'labeled-text-field',       'idno'                ],
       ['Sediu',               'labeled-large-text-field', 'sediu'               ],
       ['Persoană de contact', 'labeled-text-field',       'persoană-de-contact' ],
-      ['Note',                'labeled-large-text-field', 'note'                ],
+      ['Note',                'labeled-large-text-field', 'note'                ]
     ]
   }].forEach(function(testData) {
     test('PersonSection has the appropriate fields when person type is “' + testData.personType + '”', function(t) {
