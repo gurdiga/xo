@@ -13,7 +13,7 @@ files.forEach(function(file) {
     var result = jsonLint(json, options);
 
     if (result.error) {
-      console.errot('JSON linting error at %s:%d:%d: %s',
+      console.error('JSON linting error at %s:%d:%d: %s',
         file,
         result.line,
         result.character,
