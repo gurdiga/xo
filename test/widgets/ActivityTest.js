@@ -2,9 +2,14 @@
   'use strict';
 
   var Activity = window.App.Widgets.Activity;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var descriptionText = 'Case institution';
-  var activity = new Activity(descriptionText);
+  var detailWidgets = [
+    document.createElement('some-widget'),
+    new TextFieldInput()
+  ];
+  var activity = new Activity(descriptionText, detailWidgets);
   var sandbox = document.createElement('div');
   activity.appendTo(sandbox);
   document.body.appendChild(sandbox); // TODO: remove me
@@ -36,6 +41,17 @@
 
       t.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
       t.equal(descriptionElement.textContent, descriptionText, 'has the appropriate text');
+
+      t.end();
+    });
+
+    t.test('details section', function(t) {
+      var detailsSectionElement = domElement.children[2];
+      t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
+
+      var children = detailsSectionElement.children;
+      t.equal(children[0], detailWidgets[0], 'contains the passed detail widgets');
+      t.equal(children[1].tagName, 'INPUT', 'contains the passed detail widgets');
 
       t.end();
     });

@@ -1,12 +1,13 @@
 (function() {
   'use strict';
 
-  function Activity(descriptionText) {
+  function Activity(descriptionText, detailWidgets) {
     var domElement = createElement();
 
     appendWidgets([
       new ActivityDateField(),
-      new ActivityDescription(descriptionText)
+      new ActivityDescription(descriptionText),
+      new ActivityDetailsSection(detailWidgets)
     ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -26,6 +27,7 @@
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
   var ActivityDescription = window.App.Widgets.ActivityDescription;
+  var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
