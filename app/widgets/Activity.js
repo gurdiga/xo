@@ -1,6 +1,11 @@
 (function() {
   'use strict';
 
+  /*
+   * TODO: Reconsider this extraction. It looks a bit blury at this point, so I
+   * will leave this aside for now.
+   *
+   */
   function Activity(descriptionText, detailWidgets) {
     var domElement = createElement();
 

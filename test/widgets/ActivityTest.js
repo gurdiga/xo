@@ -12,7 +12,6 @@
   var activity = new Activity(descriptionText, detailWidgets);
   var sandbox = document.createElement('div');
   activity.appendTo(sandbox);
-  document.body.appendChild(sandbox); // TODO: remove me
 
   tape('Activity', function(t) {
     var domElement = sandbox.firstChild;
