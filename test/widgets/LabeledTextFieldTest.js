@@ -2,19 +2,18 @@
   'use strict';
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var test = tape;
 
-  var sandbox = document.createElement('div');
-  var labelText = 'My LabeledTextField component';
-  var fieldValue = 'Hi!';
-  var additionalStyle = {
-    backgroundColor: 'rgb(255, 0, 0)'
-  };
+  tape('LabeledTextField label', function(t) {
+    var sandbox = document.createElement('div');
+    var labelText = 'My LabeledTextField component';
+    var fieldValue = 'Hi!';
+    var additionalStyle = {
+      backgroundColor: 'rgb(255, 0, 0)'
+    };
 
-  var textField = new LabeledTextField(labelText, fieldValue, additionalStyle);
-  textField.appendTo(sandbox);
+    var textField = new LabeledTextField(labelText, fieldValue, additionalStyle);
+    textField.appendTo(sandbox);
 
-  test('LabeledTextField label', function(t) {
     var domElement = sandbox.firstChild;
     var label = domElement.firstChild;
     var input = label.querySelector('input');
@@ -26,10 +25,20 @@
       t.end();
     });
 
-    t.test('field', function(t) {
+    t.test('value', function(t) {
       t.equal(input.value, fieldValue, 'the <input /> has the value given in the LabeledTextField “value” attribute');
       t.equal(textField.getValue(), fieldValue, 'its getValue() method returns the <input/> value');
 
+      t.end();
+    });
+
+    t.test('focusability', function(t) {
+      document.body.appendChild(sandbox);
+
+      textField.focus();
+      t.equal(document.activeElement, input, 'focuses its <input>');
+
+      document.body.removeChild(sandbox);
       t.end();
     });
 

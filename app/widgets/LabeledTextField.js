@@ -11,6 +11,7 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.destroy = getDestroyerOf(domElement);
+    this.focus = delegateTo(input, 'focus');
   }
 
   function createElement() {
