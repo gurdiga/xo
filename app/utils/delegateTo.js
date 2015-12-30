@@ -3,7 +3,10 @@
 
   function delegateTo(object, methodName) {
     return function() {
-      return object[methodName].apply(object, arguments);
+      var delegatee = object[methodName];
+
+      if (!delegatee) throw new Error('delegateTo: the delegatee doesn’t exist');
+      return delegatee.apply(object, arguments);
     };
   }
 
