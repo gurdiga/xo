@@ -2,20 +2,19 @@
   'use strict';
 
   var DateFieldInput = window.App.Widgets.DateFieldInput;
-  var test = tape;
 
-  var sandbox = document.createElement('div');
-  document.body.appendChild(sandbox);
+  tape('DateFieldInput', function(t) {
+    var sandbox = document.createElement('div');
+    document.body.appendChild(sandbox);
 
-  var value = '25.06.2015';
-  var additionalStyle = {
-    backgroundColor: 'red'
-  };
+    var value = '25.06.2015';
+    var additionalStyle = {
+      backgroundColor: 'red'
+    };
 
-  var dateFieldInput = new DateFieldInput(value, additionalStyle);
-  dateFieldInput.appendTo(sandbox);
+    var dateFieldInput = new DateFieldInput(value, additionalStyle);
+    dateFieldInput.appendTo(sandbox);
 
-  test('DateFieldInput', function(t) {
     var input = sandbox.firstChild;
     var datePickerButton = sandbox.children[1];
 
@@ -30,6 +29,13 @@
       t.equal(input.value, value, 'the <intpu/> has the value passed into the constructor');
       t.equal(dateFieldInput.getValue(), value,
         'its getValue() method returns the <input/> value');
+
+      t.end();
+    });
+
+    t.test('focusability', function(t) {
+      dateFieldInput.focus();
+      t.equal(document.activeElement, input, 'focuses its <input>');
 
       t.end();
     });

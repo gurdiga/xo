@@ -10,6 +10,7 @@
 
     this.getValue = delegateTo(input, 'getValue');
     this.setValue = delegateTo(input, 'setValue');
+    this.focus = delegateTo(input, 'focus');
 
     this.appendTo = function(parentDomElement) {
       input.appendTo(parentDomElement);
