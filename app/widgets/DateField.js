@@ -9,6 +9,7 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.getValue = delegateTo(dateFieldInput, 'getValue');
+    this.focus = delegateTo(dateFieldInput, 'focus');
   }
 
   var DateFieldInput = window.App.Widgets.DateFieldInput;
