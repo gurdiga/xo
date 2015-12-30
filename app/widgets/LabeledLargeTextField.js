@@ -10,6 +10,7 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.destroy = getDestroyerOf(domElement);
+    this.focus = delegateTo(textarea, 'focus');
 
     this.getValue = function() {
       return textarea.value;
@@ -53,6 +54,7 @@
   var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.LabeledLargeTextField = LabeledLargeTextField;

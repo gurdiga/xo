@@ -1,16 +1,16 @@
 (function() {
   'use strict';
+
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
-  var test = tape;
 
-  var sandbox = document.createElement('div');
-  var labelText = 'My LabeledLargeTextField component';
-  var fieldValue = 'Hi!';
+  tape('LabeledLargeTextField', function(t) {
+    var sandbox = document.createElement('div');
+    var labelText = 'My LabeledLargeTextField component';
+    var fieldValue = 'Hi!';
 
-  var largeLabeledTextField = new LabeledLargeTextField(labelText, fieldValue);
-  largeLabeledTextField.appendTo(sandbox);
+    var largeLabeledTextField = new LabeledLargeTextField(labelText, fieldValue);
+    largeLabeledTextField.appendTo(sandbox);
 
-  test('LabeledLargeTextField', function(t) {
     var domElement = sandbox.firstChild;
     var label = domElement.firstChild;
     var textarea = label.children[1];
@@ -30,6 +30,16 @@
       t.equal(largeLabeledTextField.getValue(), fieldValue,
         'its getValue() method returns the <textarea> value');
 
+      t.end();
+    });
+
+    t.test('focusability', function(t) {
+      document.body.appendChild(sandbox);
+
+      largeLabeledTextField.focus();
+      t.equal(document.activeElement, textarea, 'focuses its <textarea>');
+
+      document.body.removeChild(sandbox);
       t.end();
     });
 
