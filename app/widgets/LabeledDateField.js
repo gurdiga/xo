@@ -12,6 +12,7 @@
     this.destroy = getDestroyerOf(domElement);
 
     this.getValue = delegateTo(input, 'getValue');
+    this.focus = delegateTo(input, 'focus');
   }
 
   function createElement() {
