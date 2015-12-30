@@ -94,6 +94,7 @@
 
   function inspectableValue(value) {
     if (typeof value === 'function') return value.name || 'anonymous';
+    if (value instanceof HTMLElement) return value;
     else return JSON.stringify(value);
   }
 
