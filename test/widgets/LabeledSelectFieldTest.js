@@ -2,32 +2,31 @@
   'use strict';
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var test = tape;
 
-  var sandbox = document.createElement('div');
-  var labelText = 'My LabeledSelectField component';
-  var optionValues = [
-    'option 1',
-    'option 2',
-    {
-      optgroupLabel: 'An optgroup',
-      options: [
-        'option 3',
-        'option 4'
-      ]
+  tape('LabeledSelectField label', function(t) {
+    var sandbox = document.createElement('div');
+    var labelText = 'My LabeledSelectField component';
+    var optionValues = [
+      'option 1',
+      'option 2',
+      {
+        optgroupLabel: 'An optgroup',
+        options: [
+          'option 3',
+          'option 4'
+        ]
+      }
+    ];
+
+    var selectField = new LabeledSelectField(labelText, optionValues, optionValues[1]);
+    selectField.onChange(onChange);
+    selectField.appendTo(sandbox);
+
+    function onChange(argument) {
+      onChange.called = true;
+      onChange.argument = argument;
     }
-  ];
 
-  var selectField = new LabeledSelectField(labelText, optionValues, optionValues[1]);
-  selectField.onChange(onChange);
-  selectField.appendTo(sandbox);
-
-  function onChange(argument) {
-    onChange.called = true;
-    onChange.argument = argument;
-  }
-
-  test('LabeledSelectField label', function(t) {
     var domElement = sandbox.firstChild;
     var label = domElement.firstChild;
     var select = label.querySelector('select');
@@ -84,7 +83,17 @@
       t.end();
     });
 
-    t.test('LabeledSelectField onChange callback', function(t) {
+    t.test('focusability', function(t) {
+      document.body.appendChild(sandbox);
+
+      selectField.focus();
+      t.equal(document.activeElement, select, 'focuses its <select>');
+
+      document.body.removeChild(sandbox);
+      t.end();
+    });
+
+    t.test('onChange callback', function(t) {
       onChange.called = false;
       select.dispatchEvent(new Event('change'));
 

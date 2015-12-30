@@ -11,18 +11,17 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.destroy = getDestroyerOf(domElement);
+    this.focus = delegateTo(select, 'focus');
 
-    this.getValue = function() {
-      return select.value;
-    };
+    this.getValue = delegateTo(select, 'value');
 
     this.setValue = function(value) {
       select.value = value;
     };
 
-    this.onChange = function(f) {
+    this.onChange = function(callback) {
       select.addEventListener('change', function(event) {
-        f(event.target.value);
+        callback(event.target.value);
       });
     };
   }
@@ -84,6 +83,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.LabeledSelectField = LabeledSelectField;
