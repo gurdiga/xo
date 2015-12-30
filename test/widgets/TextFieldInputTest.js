@@ -2,23 +2,33 @@
   'use strict';
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;
-  var test = tape;
 
-  var sandbox = document.createElement('div');
-  var fieldValue = 'some text';
+  tape('TextFieldInput', function(t) {
+    var sandbox = document.createElement('div');
+    var fieldValue = 'some text';
 
-  var textFieldInput = new TextFieldInput(fieldValue);
-  textFieldInput.appendTo(sandbox);
+    var textFieldInput = new TextFieldInput(fieldValue);
+    textFieldInput.appendTo(sandbox);
 
-  test('TextFieldInput', function(t) {
+    var input = sandbox.querySelector('input');
+
     t.test('behavior', function(t) {
-      var input = sandbox.querySelector('input');
       t.equal(input.value, textFieldInput.getValue(), 'getValue() returns <input/>’s value');
 
       var newValue = 'new value';
       textFieldInput.setValue(newValue);
       t.equal(input.value, newValue, 'setValue() sets <input/>’s value');
 
+      t.end();
+    });
+
+    t.test('focusability', function(t) {
+      document.body.appendChild(sandbox);
+
+      textFieldInput.focus();
+      t.equal(document.activeElement, input, 'it focuses the <input>');
+
+      document.body.removeChild(sandbox);
       t.end();
     });
 
