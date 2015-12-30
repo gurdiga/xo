@@ -28,6 +28,8 @@
     t.equal(labelText, label, 'section has the appropriate label');
 
     t.test('person type field', function(t) {
+      document.body.appendChild(sandbox);
+
       var personTypeField = sandbox.querySelector('fieldset>labeled-select-field');
 
       t.equal(getLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
@@ -41,6 +43,10 @@
       var expectedFieldLabelTexts = ['Gen persoană', 'Denumire', 'IDNO', 'Sediu', 'Persoană de contact', 'Note'];
       t.deepEqual(getLabelTexts(), expectedFieldLabelTexts, 'changes the fields appropriately');
 
+      var nextFieldInput = getInputOfFieldBelowPersonTypeField(sandbox);
+      t.equal(document.activeElement, nextFieldInput, 'focuses the first field');
+
+      document.body.removeChild(sandbox);
       t.end();
 
       function setPersonType(personType) {
@@ -58,6 +64,10 @@
         return function(o) {
           return o[propertyName];
         };
+      }
+
+      function getInputOfFieldBelowPersonTypeField(sandbox) {
+        return sandbox.querySelector('fieldset>:nth-child(3)>label>:nth-child(2)');
       }
     });
 

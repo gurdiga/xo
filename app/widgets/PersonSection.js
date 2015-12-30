@@ -49,6 +49,7 @@
       fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
       personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
       section.appendWidgets(personTypeSpecificFields);
+      personTypeSpecificFields[0].focus();
     }
 
     function hideRemoveButtonUnlessOver() {
