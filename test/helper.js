@@ -26,6 +26,8 @@
           optgroupLabel: element.label,
           options: getOptionTexts(element)
         };
+      } else {
+        throw new Error('TestHelpers.getOptionTexts: found unknown element: ' + element.tagName);
       }
     });
   };
