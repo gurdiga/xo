@@ -45,7 +45,8 @@
     var select = createDOMElement('select', style);
 
     options.forEach(appendOptionTo(select));
-    select.value = defaultValue;
+
+    if (defaultValue !== undefined) select.value = defaultValue;
 
     return select;
   }

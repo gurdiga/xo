@@ -80,6 +80,13 @@
       select.value = optionValues[0];
       t.equal(selectField.getValue(), optionValues[0], 'getValue() reflects the selected option');
 
+      t.test('default', function(t) {
+        var selectField = new LabeledSelectField(labelText, optionValues);
+        t.equal(selectField.getValue(), optionValues[0], 'selects the first option if none specified');
+
+        t.end();
+      });
+
       t.end();
     });
 
