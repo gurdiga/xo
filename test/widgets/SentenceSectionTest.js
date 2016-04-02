@@ -28,7 +28,7 @@
     t.equal(css.display, 'inline-block', 'has display inline-block');
 
     var labelText = domElement.querySelector('legend').textContent;
-    t.equal(labelText, 'Documentul executoriu', 'section has the appropriate label');
+    t.equal(labelText, 'Document executoriu', 'section has the appropriate label');
 
     t.test('can be inserted after a given DOM element', function(t) {
       var firstChild = document.createElement('first-child');

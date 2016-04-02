@@ -4,7 +4,7 @@
   function SentenceSection(fieldValues, additionalStyles) {
     var domElement = createElement(additionalStyles);
     var fields = createFields(fieldValues);
-    var section = new Section('Documentul executoriu', fields);
+    var section = new Section('Document executoriu', fields);
     section.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
