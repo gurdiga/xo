@@ -1,4 +1,4 @@
-pre-commit: lib-all lint-force open
+pre-commit: lib-all lint-force
 
 git-hook: .git/hooks/pre-commit
 

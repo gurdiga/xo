@@ -4,8 +4,6 @@
 
 A productivity app for bailiffs. A breakable toy.
 
-    make open
-
 ## Interesting technical things
 
 This is intented to be a SAP and/or a desktop web app (like Chrome app).

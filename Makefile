@@ -9,8 +9,4 @@ export
 
 default: lib-all lint
 
-open: lib-all lint
-	@open --new -a "Google Chrome" --args \
-		--load-and-launch-app=$$(pwd)
-
 include $(shell find makefiles -name '*.mk' | sort)
