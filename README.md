@@ -6,9 +6,9 @@ A productivity app for bailiffs. A breakable toy.
 
 ## Interesting technical things
 
-This is intented to be a SAP and/or a desktop web app (like Chrome app).
-I’ve started with React and Browserify. But compilation to JS was
-getting slower and slower as the code grew.
+This is intented to be a single-page app and/or a desktop web app (like
+Chrome app).  I’ve started with React and Browserify. But compilation to
+JS was getting slower and slower as the code grew.
 
 First I decided to give up on JSX and use React’s JS API. It was still
 too slow. Then I decided to give up on Browserify and just use script
