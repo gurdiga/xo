@@ -24,6 +24,7 @@
       t.equal(css.borderRadius, '5px', 'has 5px-rounded corners');
       t.equal(css.color, 'rgb(119, 119, 119)', 'has the appropriate text color');
       t.equal(css.background, 'transparent', 'has transparent background');
+      t.equal(css.marginTop, '5px', 'leaves some space at the top');
 
       t.end();
     });
