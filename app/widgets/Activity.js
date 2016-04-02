@@ -20,6 +20,8 @@
 
   function createElement() {
     var style = {
+      marginTop: '5px',
+      marginBottom: '10px',
       borderWidth: '0',
       padding: '0'
     };

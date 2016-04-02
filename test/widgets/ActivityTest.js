@@ -22,6 +22,10 @@
     t.test('styling', function(t) {
       var css = domElement.style;
 
+      t.equal(css.marginTop, '5px', 'make room after section title to stand out as a unit');
+      t.equal(css.marginBottom, '10px',
+        'make room between activities so that it’s clear at' +
+        ' a glance where one ends and other begins');
       t.equal(css.borderWidth, '0px', 'removes the iframe’s default border');
       t.equal(css.padding, '0px', 'removes the iframe’s default padding');
 
