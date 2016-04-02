@@ -11,7 +11,7 @@
   tape.test('ActivitiesSection', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.equal(domElement.tagName, 'CASE-ACTIVITIES-SECTION', 'has sentence-subject-section tag');
+    t.equal(domElement.tagName, 'CASE-ACTIVITIES-SECTION', 'has the appropriate tag name');
 
     t.test('structure');
     var css = domElement.style;
@@ -22,13 +22,13 @@
     t.equal(labelText, 'Acţiuni procedurale', 'section has the appropriate label');
 
     t.test('inquiry activity', function(t) {
-      var inquiryActivity = domElement.querySelector('inquiry-activity');
+      var inquiryActivity = domElement.querySelector('[widget="InquiryActivity"]');
       t.ok(inquiryActivity, 'exists');
       t.end();
     });
 
     t.test('institution activity', function(t) {
-      var institutionActivity = domElement.querySelector('institution-activity');
+      var institutionActivity = domElement.querySelector('[widget="InstitutionActivity"]');
       t.ok(institutionActivity, 'exists');
       t.end();
     });

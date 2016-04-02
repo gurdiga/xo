@@ -1,13 +1,8 @@
 (function() {
   'use strict';
 
-  /*
-   * TODO: Reconsider this extraction. It looks a bit blury at this point, so I
-   * will leave this aside for now.
-   *
-   */
-  function Activity(descriptionText, detailWidgets) {
-    var domElement = createElement();
+  function Activity(widget, descriptionText, detailWidgets) {
+    var domElement = createElement(widget);
 
     appendWidgets([
       new ActivityDateField(),
@@ -18,7 +13,7 @@
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement() {
+  function createElement(widget) {
     var style = {
       marginTop: '5px',
       marginBottom: '10px',
@@ -27,7 +22,7 @@
     };
 
     var domElement = createDOMElement('fieldset', style);
-    domElement.setAttribute('widget', 'Activity');
+    domElement.setAttribute('widget', widget);
 
     return domElement;
   }

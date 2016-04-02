@@ -4,12 +4,13 @@
   var Activity = window.App.Widgets.Activity;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
+  var widget = 'SomeActivity';
   var descriptionText = 'Case institution';
   var detailWidgets = [
     document.createElement('some-widget'),
     new TextFieldInput()
   ];
-  var activity = new Activity(descriptionText, detailWidgets);
+  var activity = new Activity(widget, descriptionText, detailWidgets);
   var sandbox = document.createElement('div');
   activity.appendTo(sandbox);
 
@@ -17,7 +18,7 @@
     var domElement = sandbox.firstChild;
 
     t.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
-    t.equal(domElement.getAttribute('widget'), 'Activity', 'is an “Activity” widget');
+    t.equal(domElement.getAttribute('widget'), widget, 'is an “Activity” widget');
 
     t.test('styling', function(t) {
       var css = domElement.style;

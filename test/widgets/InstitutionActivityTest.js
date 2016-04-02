@@ -9,14 +9,7 @@
 
   tape('InstitutionActivity', function(t) {
     var domElement = sandbox.firstChild;
-    t.equal(domElement.tagName, 'INSTITUTION-ACTIVITY', 'has the appropriate tag name');
-
-    t.test('layout', function(t) {
-      var css = domElement.style;
-      t.equal(css.display, 'block', 'it’s a container');
-
-      t.end();
-    });
+    t.equal(domElement.getAttribute('widget'), 'InstitutionActivity', 'has the appropriate widget type');
 
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;

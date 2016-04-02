@@ -2,35 +2,20 @@
   'use strict';
 
   function InstitutionActivity() {
-    var domElement = createElement();
-
-    appendWidgets([
-      new ActivityDateField(),
-      new ActivityDescription('Intentarea'),
-      new ActivityDetailsSection([
+    var activity = new Activity(
+      'InstitutionActivity',
+      'Intentarea', [
         new CreateWritButton()
-      ])
-    ]).to(domElement);
+      ]
+    );
 
-    this.appendTo = getAppenderOf(domElement);
+    this.appendTo = delegateTo(activity, 'appendTo');
   }
 
-  function createElement() {
-    var style = {
-      display: 'block'
-    };
-
-    return createDOMElement('institution-activity', style);
-  }
-
-  var ActivityDateField = window.App.Widgets.ActivityDateField;
-  var ActivityDescription = window.App.Widgets.ActivityDescription;
-  var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
+  var Activity = window.App.Widgets.Activity;
   var CreateWritButton = window.App.Widgets.CreateWritButton;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var appendWidgets = window.App.Utils.appendWidgets;
+  var delegateTo = window.App.Utils.delegateTo;
 
   window.App.Widgets.InstitutionActivity = InstitutionActivity;
 
