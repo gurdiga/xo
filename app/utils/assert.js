@@ -2,15 +2,8 @@
   'use strict';
 
   function assert(condition, message) {
-    if (!condition) throw new AssertionError(message);
+    if (!condition) throw new Error(message);
   }
-
-  function AssertionError(message) {
-    this.name = 'AssertionError';
-    this.message = message || '(no error message given)';
-  }
-
-  AssertionError.prototype = Error.prototype;
 
   window.App.Utils.assert = assert;
 }());
