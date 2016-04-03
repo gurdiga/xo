@@ -29,6 +29,20 @@
       t.end();
     });
 
+    t.test('widget attribute', function(t) {
+      t.equal(fieldset.getAttribute('widget'), 'Section', 'is “Section” by default');
+
+      var widget = 'SpecialSection';
+      var section = new Section(labelText, [], additionalStyle, widget);
+      var sandbox = document.createElement('div');
+      section.appendTo(sandbox);
+
+      var domElement = sandbox.firstChild;
+      t.equal(domElement.getAttribute('widget'), widget, 'accepts a widget as the 4th argument');
+
+      t.end();
+    });
+
     t.test('fieldset syle', function(t) {
       var css = fieldset.style;
 
