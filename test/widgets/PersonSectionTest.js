@@ -33,7 +33,7 @@
       var personTypeField = sandbox.querySelector('fieldset>labeled-select-field');
 
       t.equal(getLabel(personTypeField), 'Gen persoană', 'has the appropriate label');
-      t.equal(getValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
+      t.equal(getDOMValue(personTypeField), PersonSection.PERSON_TYPES.INDIVIDUAL, 'has the default value of “fizică”');
 
       var optionTexts = getOptionTexts(personTypeField.querySelector('select'));
       t.equal(optionTexts.length, PersonSection.PERSON_TYPES.length, 'has the appropriate number of options');
@@ -188,6 +188,6 @@
   var assertSectionField = window.TestHelpers.assertSectionField;
   var getOptionTexts = window.TestHelpers.getOptionTexts;
   var getLabel = window.TestHelpers.getLabel;
-  var getValue = window.TestHelpers.getValue;
+  var getDOMValue = window.TestHelpers.getDOMValue;
 
 }());

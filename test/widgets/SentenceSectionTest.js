@@ -51,47 +51,47 @@
       var courtField = fieldElements[0];
       t.equal(courtField.tagName, 'LABELED-SELECT-FIELD', 'the first field is a labeled-select-field');
       t.equal(getLabel(courtField), 'Instanţa de judecată', 'the first field is “Instanţa de judecată”');
-      t.equal(getValue(courtField), fieldValues['instanţa-de-judecată'],
+      t.equal(getDOMValue(courtField), fieldValues['instanţa-de-judecată'],
         'the “Instanţa de judecată” field has preselected the given option');
 
       var sentenceNumberField = fieldElements[1];
       t.equal(sentenceNumberField.tagName, 'LABELED-TEXT-FIELD', 'the second field is a labeled-text-field');
       t.equal(getLabel(sentenceNumberField), 'Numărul hotărîrii', 'the second field is “Numărul hotărîrii”');
-      t.equal(getValue(sentenceNumberField), fieldValues['numărul-hotărîrii'],
+      t.equal(getDOMValue(sentenceNumberField), fieldValues['numărul-hotărîrii'],
         'the “Numărul hotărîrii” field is prefilled with the given value');
 
       var sentenceDateField = fieldElements[2];
       t.equal(sentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the third field is a labeled-date-field');
       t.equal(getLabel(sentenceDateField), 'Data hotărîrii', 'the third field is “Data hotărîrii”');
-      t.equal(getValue(sentenceDateField), fieldValues['data-hotărîrii'],
+      t.equal(getDOMValue(sentenceDateField), fieldValues['data-hotărîrii'],
         'the “Data hotărîrii” field is prefilled with the given value');
 
       var conclusionField = fieldElements[3];
       t.equal(conclusionField.tagName, 'LABELED-LARGE-TEXT-FIELD', 'the fourth field is a labeled-large-text-field');
       t.equal(getLabel(conclusionField), 'Dispozitivul',
         'the fourth field is “Dispozitivul”');
-      t.equal(getValue(conclusionField), fieldValues['dispozitivul'],
+      t.equal(getDOMValue(conclusionField), fieldValues['dispozitivul'],
         'the “Dispozitivul” field is prefilled with the given value');
 
       var caseSubjectField = fieldElements[4];
       t.equal(caseSubjectField.tagName, 'LABELED-SELECT-FIELD', 'the fifth field is a labeled-select-field');
       t.equal(getLabel(caseSubjectField), 'Obiectul urmăririi',
         'the fifth field is “Obiectul urmăririi”');
-      t.equal(getValue(caseSubjectField), fieldValues['obiectul-urmăririi'],
+      t.equal(getDOMValue(caseSubjectField), fieldValues['obiectul-urmăririi'],
         'the “Obiectul urmăririi” field is prefilled with the given value');
 
       var finalSentenceDateField = fieldElements[5];
       t.equal(finalSentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the sixth field is a labeled-date-field');
       t.equal(getLabel(finalSentenceDateField), 'Data rămînerii definitive',
         'the sixth field is “Data rămînerii definitive”');
-      t.equal(getValue(finalSentenceDateField), fieldValues['data-rămînerii-definitive'],
+      t.equal(getDOMValue(finalSentenceDateField), fieldValues['data-rămînerii-definitive'],
         'the “Data rămînerii definitive” field is prefilled with the given value');
 
       var releaseDateField = fieldElements[6];
       t.equal(releaseDateField.tagName, 'LABELED-DATE-FIELD', 'the seventh field is a labeled-date-field');
       t.equal(getLabel(releaseDateField), 'Data eliberării',
         'the sixth field is “Data eliberării”');
-      t.equal(getValue(releaseDateField), fieldValues['data-eliberării'],
+      t.equal(getDOMValue(releaseDateField), fieldValues['data-eliberării'],
         'the “Data eliberării” field is prefilled with the given value');
 
       t.end();
@@ -146,6 +146,6 @@
   });
 
   var getLabel = window.TestHelpers.getLabel;
-  var getValue = window.TestHelpers.getValue;
+  var getDOMValue = window.TestHelpers.getDOMValue;
 
 }());

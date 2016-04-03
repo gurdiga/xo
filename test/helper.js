@@ -36,7 +36,7 @@
     return fieldElement.querySelector('label>span').textContent;
   };
 
-  window.TestHelpers.getValue = function(fieldElement) {
+  window.TestHelpers.getDOMValue = function getDOMValue(fieldElement) {
     return fieldElement.querySelector('input, textarea, select').value;
   };
 
@@ -60,12 +60,12 @@
 
       t.equal(getLabel(fieldElement),   expectedLabel,   messagePrefix + 'has the appropriate label');
       t.equal(getTagName(fieldElement), expectedTagName, messagePrefix + 'is of the appropriate kind');
-      t.equal(getValue(fieldElement),   expectedValue,   messagePrefix + 'is prefilled with the appropriate value');
+      t.equal(getDOMValue(fieldElement), expectedValue,  messagePrefix + 'is prefilled with the appropriate value');
     };
   };
 
   var getLabel = window.TestHelpers.getLabel;
   var getTagName = window.TestHelpers.getTagName;
-  var getValue = window.TestHelpers.getValue;
+  var getDOMValue = window.TestHelpers.getDOMValue;
 
 }());
