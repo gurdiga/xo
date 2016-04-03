@@ -21,7 +21,7 @@
     var domElement = createDOMElement('button', style);
 
     domElement.textContent = 'încheiere';
-    domElement.setAttribute('widget', 'CreateWritButton');
+    domElement.setAttribute('widget-name', 'CreateWritButton');
 
     return domElement;
   }

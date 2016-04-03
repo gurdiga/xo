@@ -10,7 +10,8 @@
 
   test('InquiryActivity', function(t) {
     var domElement = sandbox.firstChild;
-    t.equal(domElement.getAttribute('widget'), 'InquiryActivity', 'has the approriate widget type');
+    t.equal(domElement.getAttribute('widget-name'), 'InquiryActivity',
+      'has the approriate “widget-name” attribute');
 
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;
@@ -30,7 +31,8 @@
 
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
-      t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
+      t.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
+        'has the appropriate “widget-name” attribute');
 
       t.test('inquiry registration number field', function(t) {
         var inquiryRegistrationNumberField = detailsSectionElement.children[0];

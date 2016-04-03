@@ -16,7 +16,7 @@
     };
 
     var domElement = createDOMElement('fieldset', style);
-    domElement.setAttribute('widget', 'ActivityDetailsSection');
+    domElement.setAttribute('widget-name', 'ActivityDetailsSection');
     return domElement;
   }
 

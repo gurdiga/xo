@@ -17,8 +17,8 @@
   test('ActivityDetailsSection', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.equal(domElement.getAttribute('widget'), 'ActivityDetailsSection',
-      'has the appropriate “widget” attribute value');
+    t.equal(domElement.getAttribute('widget-name'), 'ActivityDetailsSection',
+      'has the appropriate “widget-name” attribute value');
 
     t.test('layout', function(t) {
       var css = domElement.style;

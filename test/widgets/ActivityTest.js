@@ -4,13 +4,13 @@
   var Activity = window.App.Widgets.Activity;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  var widget = 'SomeActivity';
+  var widgetName = 'SomeActivity';
   var descriptionText = 'Case institution';
   var detailWidgets = [
     document.createElement('some-widget'),
     new TextFieldInput()
   ];
-  var activity = new Activity(widget, descriptionText, detailWidgets);
+  var activity = new Activity(widgetName, descriptionText, detailWidgets);
   var sandbox = document.createElement('div');
   activity.appendTo(sandbox);
 
@@ -18,7 +18,7 @@
     var domElement = sandbox.firstChild;
 
     t.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
-    t.equal(domElement.getAttribute('widget'), widget, 'is an “Activity” widget');
+    t.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
 
     t.test('styling', function(t) {
       var css = domElement.style;
@@ -51,7 +51,8 @@
 
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
-      t.equal(detailsSectionElement.getAttribute('widget'), 'ActivityDetailsSection', 'is the appropriate widget');
+      t.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
+        'has the appropriate “widget-name” attribute');
 
       var children = detailsSectionElement.children;
       t.equal(children[0], detailWidgets[0], 'contains the passed detail widgets');

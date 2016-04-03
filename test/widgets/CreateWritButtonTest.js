@@ -10,7 +10,8 @@
   tape('CreateWritButton', function(t) {
     var domElement = sandbox.firstChild;
 
-    t.equal(domElement.getAttribute('widget'), 'CreateWritButton', 'has the appropriate “widget” attribute');
+    t.equal(domElement.getAttribute('widget-name'), 'CreateWritButton',
+      'has the appropriate “widget-name” attribute');
     t.equal(domElement.textContent, 'încheiere', 'has the appropriate label');
 
     t.test('styling', function(t) {

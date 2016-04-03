@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function Activity(widget, descriptionText, detailWidgets) {
-    var domElement = createElement(widget);
+  function Activity(widgetName, descriptionText, detailWidgets) {
+    var domElement = createElement(widgetName);
 
     appendWidgets([
       new ActivityDateField(),
@@ -13,7 +13,7 @@
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement(widget) {
+  function createElement(widgetName) {
     var style = {
       marginTop: '5px',
       marginBottom: '10px',
@@ -22,7 +22,7 @@
     };
 
     var domElement = createDOMElement('fieldset', style);
-    domElement.setAttribute('widget', widget);
+    domElement.setAttribute('widget-name', widgetName);
 
     return domElement;
   }

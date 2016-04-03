@@ -20,7 +20,7 @@
 
     _.extend(style, additionalStyle);
     domElement = createDOMElement('label', style);
-    domElement.setAttribute('widget', 'FieldLabel');
+    domElement.setAttribute('widget-name', 'FieldLabel');
 
     return domElement;
   }

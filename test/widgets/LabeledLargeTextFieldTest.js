@@ -18,7 +18,8 @@
     t.equal(domElement.tagName, 'LABELED-LARGE-TEXT-FIELD', 'has the appropriate tag name');
 
     t.test('label', function(t) {
-      t.equal(label.getAttribute('widget'), 'FieldLabel', 'is a FieldLabel');
+      t.equal(label.getAttribute('widget-name'), 'FieldLabel',
+        'has the appropriate “widget-name” attribute');
       t.equal(label.textContent, labelText, 'has the appropriate text');
 
       t.end();

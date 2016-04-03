@@ -18,7 +18,8 @@
   test('FieldLabel', function(t) {
     var label = sandbox.firstChild;
     t.equal(label.tagName, 'LABEL', 'has the appropriate tag name');
-    t.equal(label.getAttribute('widget'), 'FieldLabel', 'is marked as being a widget');
+    t.equal(label.getAttribute('widget-name'), 'FieldLabel',
+      'has the appropriate “widget-name” attribute');
 
     t.test('layout', function(t) {
       var css = label.style;
