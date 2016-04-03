@@ -3,7 +3,11 @@
 
   var InquirySection = window.App.Widgets.InquirySection;
 
-  var inquirySection = new InquirySection();
+  var fieldValues = {
+    'numărul-de-înregistrare': '12-3/ABC',
+    'data-depunerii': '03.03.2016'
+  };
+  var inquirySection = new InquirySection(fieldValues);
 
   tape('InquirySection', function(t) {
     var sandbox = document.createElement('div');
@@ -18,15 +22,52 @@
       t.end();
     });
 
-    t.test('title', function(t) {
-      var title = domElement.firstChild;
-      t.equal(title.tagName, 'LEGEND', 'has the appropriate tag name');
-      t.equal(title.textContent, 'Cerere de intentare', 'has the appropriate text');
+    t.test('label', function(t) {
+      var label = domElement.firstChild;
+
+      t.equal(label.tagName, 'LEGEND', 'has the appropriate tag name');
+      t.equal(label.textContent, 'Cerere de intentare', 'has the appropriate text');
+
+      t.end();
+    });
+
+    t.test('fields', function(t) {
+      t.test('inquiry registration #', function(t) {
+        var inquiryRegistrationNo = domElement.children[1];
+
+        t.equal(inquiryRegistrationNo.tagName, 'LABELED-TEXT-FIELD', 'is a labeled text field');
+        t.equal(inquiryRegistrationNo.textContent, 'Numărul de înregistrare',
+          'has the appropriate label');
+        t.equal(getDOMValue(inquiryRegistrationNo), fieldValues['numărul-de-înregistrare'],
+          'is prefilled with the appropriate value');
+
+        t.end();
+      });
+
+      t.test('inquiry date', function(t) {
+        var inquiryDate = domElement.children[2];
+
+        t.ok(inquiryDate.tagName, 'LABELED-DATE-FIELD', 'is a labeled date field');
+        t.equal(inquiryDate.textContent, 'Data depunerii cererii',
+          'has the appropriate label');
+        t.equal(getDOMValue(inquiryDate), fieldValues['data-depunerii'],
+          'is prefilled with the appropriate value');
+
+        t.end();
+      });
+
+      t.test('getValue', function(t) {
+        t.deepEqual(inquirySection.getValue(), fieldValues, 'returns the appropriate value');
+
+        t.end();
+      });
 
       t.end();
     });
 
     t.end();
   });
+
+  var getDOMValue = window.TestHelpers.getDOMValue;
 
 }());
