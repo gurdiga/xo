@@ -76,12 +76,21 @@
   }
 
   function printFailureMessage(message) {
+    massageThrowsRelatedFailures(message);
     console.error('context:  ', getTextContext(message));
     console.log('  operator: ', message.operator);
     console.log('  expected: ', typeof message.expected, inspectableValue(message.expected));
     console.log('  actual:   ', typeof message.actual,   inspectableValue(message.actual));
     console.log('  location: ', getAppStack(message));
     console.log('');
+  }
+
+  function massageThrowsRelatedFailures(message) {
+    if (message.operator !== 'throws') return;
+
+    message.expected = message.expected.replace(/^\//, '').replace(/\/$/, '');
+    message.actual = message.actual.message;
+    message.error.stack = message.error.stack || '\n(not available)';
   }
 
   function displayError(e) {
