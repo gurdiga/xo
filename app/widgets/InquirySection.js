@@ -9,17 +9,7 @@
 
     var section = createSection(fields);
 
-    //this.getValue = createFieldValueCollector(fields);
-    this.getValue = function() {
-      var fieldValues = {};
-
-      fields.forEach(function(field) {
-        fieldValues[field.internalName] = field.getValue();
-      });
-
-      return fieldValues;
-    };
-
+    this.getValue = getFieldValueCollector(fields);
     this.appendTo = delegateTo(section, 'appendTo');
   }
 
@@ -37,6 +27,7 @@
 
   var delegateTo = window.App.Utils.delegateTo;
   var createField = window.App.Utils.createField;
+  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
   window.App.Widgets.InquirySection = InquirySection;
 

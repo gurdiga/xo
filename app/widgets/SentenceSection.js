@@ -13,15 +13,7 @@
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
     };
 
-    this.getValue = function() {
-      var fieldValues = {};
-
-      fields.forEach(function(field) {
-        fieldValues[field.internalName] = field.getValue();
-      });
-
-      return fieldValues;
-    };
+    this.getValue = getFieldValueCollector(fields);
   }
 
   function createElement(additionalStyles) {
@@ -92,6 +84,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var createField = window.App.Utils.createField;
+  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
   window.App.Widgets.SentenceSection = SentenceSection;
 

@@ -30,15 +30,7 @@
       hideRemoveButtonUnlessOver();
     };
 
-    this.getValue = function() {
-      var fieldValues = {};
-
-      getAllFields().forEach(function(field) {
-        fieldValues[field.internalName] = field.getValue();
-      });
-
-      return fieldValues;
-    };
+    this.getValue = getFieldValueCollector(getAllFields);
 
     function getAllFields() {
       return [personTypeField].concat(personTypeSpecificFields);
@@ -135,6 +127,7 @@
   var makeRemovable = window.App.Utils.makeRemovable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var createField = window.App.Utils.createField;
+  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
   window.App.Widgets.PersonSection = PersonSection;
 
