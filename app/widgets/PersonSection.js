@@ -121,12 +121,6 @@
     ];
   }
 
-  function createField(FieldClass, labelText, internalName, fieldValues) {
-    var field = new FieldClass(labelText, fieldValues[internalName]);
-    field.internalName = internalName;
-    return field;
-  }
-
   function destroyField(field) {
     field.destroy();
   }
@@ -140,6 +134,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var makeRemovable = window.App.Utils.makeRemovable;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var createField = window.App.Utils.createField;
 
   window.App.Widgets.PersonSection = PersonSection;
 

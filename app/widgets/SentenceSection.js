@@ -37,22 +37,16 @@
   function createFields(fieldValues) {
     return [
       createLabeledSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
-      createField(LabeledTextField, 'Numărul hotărîrii', 'numărul-hotărîrii'),
-      createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii'),
-      createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul'),
+      createField(LabeledTextField, 'Numărul hotărîrii', 'numărul-hotărîrii', fieldValues),
+      createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii', fieldValues),
+      createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul', fieldValues),
       createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
-      createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive'),
-      createField(LabeledDateField, 'Data eliberării', 'data-eliberării')
+      createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive', fieldValues),
+      createField(LabeledDateField, 'Data eliberării', 'data-eliberării', fieldValues)
     ];
 
     function createLabeledSelectField(labelText, internalName, options) {
       var field = new LabeledSelectField(labelText, options, fieldValues[internalName]);
-      field.internalName = internalName;
-      return field;
-    }
-
-    function createField(FieldClass, labelText, internalName) {
-      var field = new FieldClass(labelText, fieldValues[internalName]);
       field.internalName = internalName;
       return field;
     }
@@ -97,6 +91,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var createField = window.App.Utils.createField;
 
   window.App.Widgets.SentenceSection = SentenceSection;
 
