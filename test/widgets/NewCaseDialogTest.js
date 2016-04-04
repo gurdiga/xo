@@ -201,6 +201,16 @@
       t.end();
     });
 
+    t.test('the “Cerere de intentare” section', function(t) {
+      var sentenceSection = domElement.querySelector('[widget-name="InquirySection"]');
+      var css = sentenceSection.style;
+
+      t.equal(css.width, '380px', 'has the appropriate width');
+      t.equal(css.display, 'inline-block', 'goes next to the other section');
+
+      t.end();
+    });
+
     t.test('the “Acţiuni procedurale” section', function(t) {
       var caseActivitiesSection = domElement.querySelector('case-activities-section');
       var css = caseActivitiesSection.style;

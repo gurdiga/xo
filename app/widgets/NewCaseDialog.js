@@ -22,6 +22,7 @@
       createFirstDebitorSection(),
       createAddPersonButton(),
       createSentenceSection(),
+      createInquirySection(),
       createActivitiesSection(),
       createCloseButton()
     ]).to(domElement);
@@ -113,6 +114,17 @@
       return new SentenceSection(fieldValues, style);
     }
 
+    function createInquirySection() {
+      var fieldValues = {};
+
+      var style = {
+        display: 'inline-block',
+        width: '380px'
+      };
+
+      return new InquirySection(fieldValues, style);
+    }
+
     function createActivitiesSection() {
       var style = {
         marginRight: '60px'
@@ -176,6 +188,7 @@
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
+  var InquirySection = window.App.Widgets.InquirySection;
   var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
   var makeShy = window.App.Utils.makeShy;
