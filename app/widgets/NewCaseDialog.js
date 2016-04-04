@@ -2,7 +2,7 @@
   'use strict';
 
   function NewCaseDialog() {
-    // Should this be passed in?
+    // TODO: Should this be passed in?
     var data = {
       'creditor': {},
       'debitori': [{
@@ -16,13 +16,15 @@
       'persoane-terţe': []
     };
 
-    addTitle();
-    addCreditorSection();
-    addFirstDebitorSection();
-    addAddPersonButton();
-    addSentenceSection();
-    addActivitiesSection();
-    addCloseButton();
+    appendWidgets([
+      createTitle(),
+      createCreditorSection(),
+      createFirstDebitorSection(),
+      createAddPersonButton(),
+      createSentenceSection(),
+      createActivitiesSection(),
+      createCloseButton()
+    ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -30,7 +32,7 @@
       return rMap('getValue', valuableChildren);
     };
 
-    function addTitle() {
+    function createTitle() {
       var style = {
         fontSize: '42px',
         fontFamily: 'TitleFont',
@@ -42,21 +44,23 @@
 
       title.textContent = 'Procedură de ordin general';
 
-      domElement.appendChild(title);
+      return title;
     }
 
-    function addCreditorSection() {
+    function createCreditorSection() {
       var personSection = createPersonSection('Creditor', data['creditor']);
-      personSection.appendTo(domElement);
 
       valuableChildren['creditor'] = personSection;
+
+      return personSection;
     }
 
-    function addFirstDebitorSection() {
+    function createFirstDebitorSection() {
       var personSection = createPersonSection('Debitor', data['debitori'][0]);
-      personSection.appendTo(domElement);
 
       valuableChildren['debitori'] = [personSection];
+
+      return personSection;
     }
 
     function createPersonSection(labelText, data) {
@@ -68,7 +72,7 @@
       return new PersonSection(labelText, data, style);
     }
 
-    function addAddPersonButton() {
+    function createAddPersonButton() {
       var style = {
         position: 'absolute',
         marginLeft: '-200px',
@@ -80,7 +84,7 @@
         '■ persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
       }, style);
 
-      button.appendTo(domElement);
+      return button;
     }
 
     function addRemovablePersonSection(labelText, personListInternalName) {
@@ -97,7 +101,7 @@
       };
     }
 
-    function addSentenceSection() {
+    function createSentenceSection() {
       var fieldValues = {};
 
       var style = {
@@ -106,20 +110,18 @@
         marginRight: '60px'
       };
 
-      var sentenceSection = new SentenceSection(fieldValues, style);
-      sentenceSection.appendTo(domElement);
+      return new SentenceSection(fieldValues, style);
     }
 
-    function addActivitiesSection() {
+    function createActivitiesSection() {
       var style = {
         marginRight: '60px'
       };
 
-      var activitiesSection = new ActivitiesSection(style);
-      activitiesSection.appendTo(domElement);
+      return new ActivitiesSection(style);
     }
 
-    function addCloseButton() {
+    function createCloseButton() {
       var style = {
         borderWidth: '0px',
         backgroundColor: 'transparent',
@@ -143,7 +145,7 @@
         domElement.style.display = 'none';
       });
 
-      domElement.appendChild(button);
+      return button;
     }
   }
 
@@ -180,6 +182,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var rMap = window.App.Utils.rMap;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var appendWidgets = window.App.Utils.appendWidgets;
 
   window.App.Widgets.NewCaseDialog = NewCaseDialog;
 
