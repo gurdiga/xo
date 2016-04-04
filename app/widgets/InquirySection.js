@@ -2,15 +2,22 @@
   'use strict';
 
   function InquirySection(fieldValues, additionalStyle) {
+    var domElement = createElement(additionalStyle);
+
     var fields = [
       createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
       createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
     ];
 
-    var section = createSection(fields, additionalStyle);
+    var section = createSection(fields);
+    section.appendTo(domElement);
 
     this.getValue = getFieldValueCollector(fields);
-    this.appendTo = delegateTo(section, 'appendTo');
+    this.appendTo = getAppenderOf(domElement);
+  }
+
+  function createElement(additionalStyle) {
+    return createDOMElement('INQUIRY-SECTION', additionalStyle);
   }
 
   function createSection(childWidgets, additionalStyle) {
@@ -24,7 +31,8 @@
   var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
-  var delegateTo = window.App.Utils.delegateTo;
+  var createDOMElement = window.App.Utils.createDOMElement;
+  var getAppenderOf = window.App.Utils.getAppenderOf;
   var createField = window.App.Utils.createField;
   var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 

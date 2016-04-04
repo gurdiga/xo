@@ -21,8 +21,7 @@
     var domElement = sandbox.firstChild;
 
     t.test('structure', function(t) {
-      t.equal(domElement.tagName, 'FIELDSET', 'has the appropriate tag name');
-      t.equal(domElement.getAttribute('widget-name'), 'InquirySection', 'has the appropriate widget name');
+      t.equal(domElement.tagName, 'INQUIRY-SECTION', 'has the appropriate tag name');
 
       t.end();
     });
@@ -36,7 +35,7 @@
     });
 
     t.test('label', function(t) {
-      var label = domElement.firstChild;
+      var label = domElement.querySelector('fieldset>legend');
 
       t.equal(label.tagName, 'LEGEND', 'has the appropriate tag name');
       t.equal(label.textContent, 'Cerere de intentare', 'has the appropriate text');
@@ -45,8 +44,11 @@
     });
 
     t.test('fields', function(t) {
+      var fieldset = domElement.firstChild;
+      var fields = fieldset.querySelectorAll('fieldset>:not(legend)');
+
       t.test('inquiry registration #', function(t) {
-        var inquiryRegistrationNo = domElement.children[1];
+        var inquiryRegistrationNo = fields[0];
 
         t.equal(inquiryRegistrationNo.tagName, 'LABELED-TEXT-FIELD', 'is a labeled text field');
         t.equal(inquiryRegistrationNo.textContent, 'Numărul de înregistrare',
@@ -58,7 +60,7 @@
       });
 
       t.test('inquiry date', function(t) {
-        var inquiryDate = domElement.children[2];
+        var inquiryDate = fields[1];
 
         t.ok(inquiryDate.tagName, 'LABELED-DATE-FIELD', 'is a labeled date field');
         t.equal(inquiryDate.textContent, 'Data depunerii cererii',

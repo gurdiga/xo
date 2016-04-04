@@ -202,7 +202,7 @@
     });
 
     t.test('the “Cerere de intentare” section', function(t) {
-      var sentenceSection = domElement.querySelector('[widget-name="InquirySection"]');
+      var sentenceSection = domElement.querySelector('inquiry-section');
       var css = sentenceSection.style;
 
       t.equal(css.width, '380px', 'has the appropriate width');
