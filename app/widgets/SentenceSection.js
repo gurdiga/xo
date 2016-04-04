@@ -9,10 +9,6 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    this.insertAfter = function(siblingDomElement) {
-      siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
-    };
-
     this.getValue = getFieldValueCollector(fields);
   }
 
