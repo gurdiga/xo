@@ -1,21 +1,20 @@
 (function() {
   'use strict';
 
-  function InquirySection(fieldValues) {
+  function InquirySection(fieldValues, additionalStyle) {
     var fields = [
       createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
       createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
     ];
 
-    var section = createSection(fields);
+    var section = createSection(fields, additionalStyle);
 
     this.getValue = getFieldValueCollector(fields);
     this.appendTo = delegateTo(section, 'appendTo');
   }
 
-  function createSection(childWidgets) {
+  function createSection(childWidgets, additionalStyle) {
     var label = 'Cerere de intentare';
-    var additionalStyle = {};
     var widgetName = 'InquirySection';
 
     return new Section(label, childWidgets, additionalStyle, widgetName);

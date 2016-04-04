@@ -7,7 +7,12 @@
     'numărul-de-înregistrare': '12-3/ABC',
     'data-depunerii': '03.03.2016'
   };
-  var inquirySection = new InquirySection(fieldValues);
+
+  var additionalStyle = {
+    marginLeft: '30px'
+  };
+
+  var inquirySection = new InquirySection(fieldValues, additionalStyle);
 
   tape('InquirySection', function(t) {
     var sandbox = document.createElement('div');
@@ -18,6 +23,14 @@
     t.test('structure', function(t) {
       t.equal(domElement.tagName, 'FIELDSET', 'has the appropriate tag name');
       t.equal(domElement.getAttribute('widget-name'), 'InquirySection', 'has the appropriate widget name');
+
+      t.end();
+    });
+
+    t.test('additional style', function(t) {
+      var css = domElement.style;
+
+      t.equal(css.marginLeft, additionalStyle.marginLeft, 'is applied');
 
       t.end();
     });
