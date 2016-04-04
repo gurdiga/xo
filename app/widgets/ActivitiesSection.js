@@ -5,7 +5,6 @@
     var domElement = createElement(additionalStyle);
 
     createSection(domElement, [
-      new InquiryActivity(),
       new InstitutionActivity()
     ]);
 
@@ -28,7 +27,6 @@
   }
 
   var Section = window.App.Widgets.Section;
-  var InquiryActivity = window.App.Widgets.InquiryActivity;
   var InstitutionActivity = window.App.Widgets.InstitutionActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
