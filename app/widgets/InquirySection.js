@@ -3,25 +3,37 @@
 
   function InquirySection(fieldValues, additionalStyle) {
     var domElement = createElement(additionalStyle);
+    var valuableChildren = {};
 
-    var fields = [
-      createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
-      createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
-    ];
+    var section = createSection([
+      createValuableField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
+      createValuableField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
+    ]);
 
-    var section = createSection(fields);
     section.appendTo(domElement);
 
-    this.getValue = getFieldValueCollector(fields);
+    this.getValue = function() {
+      return rMap('getValue', valuableChildren);
+    };
+
     this.appendTo = getAppenderOf(domElement);
+
+    function createValuableField(FieldClass, labelText, internalName, fieldValues) {
+      var field = createField(FieldClass, labelText, internalName, fieldValues);
+
+      valuableChildren[internalName] = field;
+
+      return field;
+    }
   }
 
   function createElement(additionalStyle) {
     return createDOMElement('INQUIRY-SECTION', additionalStyle);
   }
 
-  function createSection(childWidgets, additionalStyle) {
+  function createSection(childWidgets) {
     var label = 'Cerere de intentare';
+    var additionalStyle = {};
     var widgetName = 'InquirySection';
 
     return new Section(label, childWidgets, additionalStyle, widgetName);
@@ -34,7 +46,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createField = window.App.Utils.createField;
-  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
+  var rMap = window.App.Utils.rMap;
 
   window.App.Widgets.InquirySection = InquirySection;
 
