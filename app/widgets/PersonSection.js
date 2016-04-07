@@ -8,7 +8,7 @@
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
-    personTypeField.onChange(renderTypeAppropriateFields);
+    personTypeField.onChange(renderPersonTypeSpecificFields);
 
     var section = new Section(labelText, getAllFields());
     section.appendTo(domElement);
@@ -36,7 +36,7 @@
       return [personTypeField].concat(personTypeSpecificFields);
     }
 
-    function renderTypeAppropriateFields(personType) {
+    function renderPersonTypeSpecificFields(personType) {
       personTypeSpecificFields.forEach(destroyField);
       fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
       personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
