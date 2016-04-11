@@ -21,12 +21,6 @@
     var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, 'Acţiuni procedurale', 'section has the appropriate label');
 
-    t.test('institution activity', function(t) {
-      var institutionActivity = domElement.querySelector('[widget-name="InstitutionActivity"]');
-      t.ok(institutionActivity, 'exists');
-      t.end();
-    });
-
     t.end();
   });
 

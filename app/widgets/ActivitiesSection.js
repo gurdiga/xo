@@ -5,7 +5,6 @@
     var domElement = createElement(additionalStyle);
 
     createSection(domElement, [
-      new InstitutionActivity()
     ]);
 
     this.appendTo = getAppenderOf(domElement);
@@ -27,7 +26,6 @@
   }
 
   var Section = window.App.Widgets.Section;
-  var InstitutionActivity = window.App.Widgets.InstitutionActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
