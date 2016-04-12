@@ -21,6 +21,18 @@
     var labelText = domElement.querySelector('legend').textContent;
     t.equal(labelText, 'Acţiuni procedurale', 'section has the appropriate label');
 
+    t.test('add activity button', function(t) {
+      var addActivityButton = domElement.querySelector('dropdown-button');
+
+      var toggleButton = addActivityButton.querySelector('button:first-child');
+      t.equal(toggleButton.textContent, 'adaugă acţiune ▾', 'has the appropriate label');
+
+      var options = addActivityButton.querySelectorAll('li');
+      t.equal(options.length, 2, 'has the appropriate number of options');
+
+      t.end();
+    });
+
     t.end();
   });
 

@@ -4,15 +4,15 @@
   function ActivitiesSection(additionalStyle) {
     var domElement = createElement(additionalStyle);
 
-    createSection(domElement, [
+    var section = new Section('Acţiuni procedurale');
+
+    section.appendWidgets([
+      createAddActionButton()
     ]);
 
-    this.appendTo = getAppenderOf(domElement);
-  }
-
-  function createSection(domElement, childWidgets) {
-    var section = new Section('Acţiuni procedurale', childWidgets);
     section.appendTo(domElement);
+
+    this.appendTo = getAppenderOf(domElement);
   }
 
   function createElement(additionalStyle) {
@@ -25,7 +25,19 @@
     return domElement;
   }
 
+  function createAddActionButton() {
+    return new DropdownButton('adaugă acţiune ▾', {
+      'Intentare': function() {
+        console.log('Intentare');
+      },
+      'Refuz': function() {
+        console.log('Refuz');
+      }
+    });
+  }
+
   var Section = window.App.Widgets.Section;
+  var DropdownButton = window.App.Widgets.DropdownButton;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
