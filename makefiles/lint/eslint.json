@@ -42,7 +42,6 @@
     "default-case": 2,
     "dot-location": [2, "property"],
     "eqeqeq": 2,
-    "no-extra-bind": 2,
     "no-fallthrough": 2,
     "no-floating-decimal": 2,
     "no-floating-decimal": 2,
