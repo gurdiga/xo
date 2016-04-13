@@ -25,6 +25,7 @@
       t.test('toggle button', function(t) {
         var toggleButton = domElement.querySelector('button');
         t.equal(toggleButton.textContent, labelText, 'has the appropriate label');
+        t.equal(toggleButton.style.fontSize, '13px', 'has a nice and readable font size');
         t.end();
       });
 
@@ -62,6 +63,7 @@
         var optionList = domElement.querySelector('ul');
         css = optionList.style;
         t.equal(css.paddingLeft, '0px', 'has the padding left removed');
+        t.equal(css.marginLeft, '5px', 'shifts the option list a bit inside to suggest containment');
         t.equal(css.marginTop, '0px', 'has the top margin is removed');
         t.equal(css.marginBottom, '0px', 'has the bottom margin is removed');
         t.equal(css.backgroundColor, 'white', 'has white background');
@@ -75,6 +77,7 @@
         t.equal(css.backgroundColor, 'transparent', 'removes the background off option buttons');
         t.equal(css.width, '100%', 'makes buttons 100% wide');
         t.equal(css.textAlign, 'left', 'aligns button labels left');
+        t.equal(css.fontSize, '13px', 'has a nice large font size');
 
         t.end();
       });

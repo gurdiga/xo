@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  var BUTTON_FONT_SIZE = '13px';
+
   function DropdownButton(labelText, options, additionalStyle) {
     var domElement = createElement(additionalStyle);
 
@@ -36,8 +38,14 @@
     }
 
     function createButton() {
-      var button = createDOMElement('button');
+      var style = {
+        fontSize: BUTTON_FONT_SIZE
+      };
+
+      var button = createDOMElement('button', style);
+
       button.textContent = labelText;
+
       return button;
     }
 
@@ -46,6 +54,7 @@
         position: 'absolute',
         display: 'none',
         paddingLeft: '0px',
+        marginLeft: '5px',
         marginTop: '0px',
         marginBottom: '0px',
         backgroundColor: 'white',
@@ -75,6 +84,7 @@
 
     function createOptionButton(labelText, f) {
       var style = {
+        fontSize: BUTTON_FONT_SIZE,
         borderWidth: '0px',
         backgroundColor: 'transparent',
         width: '100%',
