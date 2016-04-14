@@ -26,7 +26,7 @@
   }
 
   function createAddActionButton() {
-    return new DropdownButton('adaugă acţiune ▾', {
+    return new DropdownButton('adaugă acţiune', {
       'Intentare': function() {
         console.log('Intentare');
       },

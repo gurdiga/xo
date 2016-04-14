@@ -25,7 +25,7 @@
       var addActivityButton = domElement.querySelector('dropdown-button');
 
       var toggleButton = addActivityButton.querySelector('button:first-child');
-      t.equal(toggleButton.textContent, 'adaugă acţiune ▾', 'has the appropriate label');
+      t.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');
 
       var options = addActivityButton.querySelectorAll('li');
       t.equal(options.length, 2, 'has the appropriate number of options');

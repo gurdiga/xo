@@ -6,7 +6,7 @@
   function DropdownButton(labelText, options, additionalStyle) {
     var domElement = createElement(additionalStyle);
 
-    var toggleButton = createButton();
+    var toggleButton = createToggleButton();
     domElement.appendChild(toggleButton);
 
     var optionList = new OptionList(options);
@@ -18,9 +18,21 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    function createButton() {
+    function createToggleButton() {
       var style = {
-        fontSize: BUTTON_FONT_SIZE
+        padding: '5px 25px 5px 10px',
+        border: '1px solid silver',
+        borderRadius: '10px',
+        fontSize: BUTTON_FONT_SIZE,
+        backgroundImage: 'url("data:image/svg+xml;utf8,' +
+            '<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"8\\" height=\\"8\\">' +
+              '<polygon points=\\"0,0 8,0 4,8\\" style=\\"fill:black\\" />' +
+            '</svg>' +
+          '")',
+        backgroundPositionY: '50%',
+        backgroundPositionX: 'calc(100% - 10px)',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: 'transparent'
       };
 
       var button = createDOMElement('button', style);

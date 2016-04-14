@@ -99,7 +99,7 @@
       t.equal(css.marginTop, '360px', 'uses top-margin to position itself at the bottom of the section');
 
       var labelText = dropdownButton.querySelector('button').textContent;
-      t.equal(labelText, 'adaugă persoană ▾', 'has the appropriate label');
+      t.equal(labelText, 'adaugă persoană', 'has the appropriate label');
 
       var optionLabels = _.toArray(dropdownButton.querySelectorAll('li button'));
       var optionLabelTexts = optionLabels.map(_.property('textContent'));

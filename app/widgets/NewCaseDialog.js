@@ -80,7 +80,7 @@
         marginTop: '360px'
       };
 
-      var button = new DropdownButton('adaugă persoană ▾', {
+      var button = new DropdownButton('adaugă persoană', {
         '■ debitor':        addRemovablePersonSection('Debitor', 'debitori'),
         '■ persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
       }, style);

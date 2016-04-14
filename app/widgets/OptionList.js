@@ -34,7 +34,7 @@
         position: 'absolute',
         display: 'none',
         paddingLeft: '0px',
-        marginLeft: '5px',
+        marginLeft: '10px',
         marginTop: '0px',
         marginBottom: '0px',
         backgroundColor: 'white',
