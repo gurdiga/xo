@@ -81,8 +81,8 @@
       };
 
       var button = new DropdownButton('adaugă persoană', {
-        '■ debitor':        addRemovablePersonSection('Debitor', 'debitori'),
-        '■ persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
+        'debitor':        addRemovablePersonSection('Debitor', 'debitori'),
+        'persoană terţă': addRemovablePersonSection('Persoană terţă', 'persoane-terţe')
       }, style);
 
       return button;

@@ -33,40 +33,28 @@
       var style = {
         position: 'absolute',
         display: 'none',
-        paddingLeft: '0px',
         marginLeft: '10px',
-        marginTop: '0px',
-        marginBottom: '0px',
         backgroundColor: 'white',
-        boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px',
-        listStyleType: 'none'
+        boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
       };
 
-      var domElement = createDOMElement('ul', style);
-      var option;
+      var domElement = createDOMElement('div', style);
+      var button;
 
       for (var optionLabel in options) {
-        option = createOption(optionLabel, options[optionLabel]);
-        domElement.appendChild(option);
+        button = createOptionButton(optionLabel, options[optionLabel]);
+        domElement.appendChild(button);
       }
 
       return domElement;
     }
 
-    function createOption(labelText, f) {
-      var button = createOptionButton(labelText, f);
-      var option = createDOMElement('li');
-
-      option.appendChild(button);
-
-      return option;
-    }
-
     function createOptionButton(labelText, f) {
       var style = {
-        fontSize: BUTTON_FONT_SIZE,
+        padding: '5px 10px',
         borderWidth: '0px',
         backgroundColor: 'transparent',
+        fontSize: BUTTON_FONT_SIZE,
         width: '100%',
         textAlign: 'left'
       };

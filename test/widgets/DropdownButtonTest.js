@@ -47,17 +47,14 @@
       });
 
       t.test('option list', function(t) {
-        var optionList = domElement.querySelector('ul');
-
-        t.ok(optionList, 'exists');
-
+        var optionList = domElement.querySelector('div');
         var expectedOptionLabels = Object.keys(options);
         var expectedOptionCount = expectedOptionLabels.length;
-        var actualOptions = optionList.querySelectorAll('li');
-        t.equal(actualOptions.length, expectedOptionCount, 'has the appropriate number of options');
 
-        var optionButtons = optionList.querySelectorAll('li button');
-        var buttonLabels = _.map(optionButtons, _.property('textContent'));
+        var buttons = optionList.querySelectorAll('button');
+        t.equal(buttons.length, expectedOptionCount, 'has the appropriate number of options');
+
+        var buttonLabels = _.map(buttons, _.property('textContent'));
         t.deepEqual(buttonLabels, expectedOptionLabels, 'options have the appropriate labels');
 
         t.end();
@@ -77,19 +74,16 @@
       t.equal(css['-webkit-user-select'], 'none', 'has the text unselectable');
 
       t.test('option list', function(t) {
-        var optionList = domElement.querySelector('ul');
+        var optionList = domElement.querySelector('div');
         css = optionList.style;
-        t.equal(css.paddingLeft, '0px', 'has the padding left removed');
         t.equal(css.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
-        t.equal(css.marginTop, '0px', 'has the top margin is removed');
-        t.equal(css.marginBottom, '0px', 'has the bottom margin is removed');
         t.equal(css.backgroundColor, 'white', 'has white background');
         t.equal(css.position, 'absolute', 'is absolutely positioned');
         t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
-        t.equal(css.listStyleType, 'none', 'has bullets disabled');
 
-        var optionButton = optionList.querySelector('li button');
+        var optionButton = optionList.querySelector('button');
         css = optionButton.style;
+        t.equal(css.padding, '5px 10px', 'has nice padding to increase clickable area');
         t.equal(css.borderWidth, '0px', 'removes the border off option buttons');
         t.equal(css.backgroundColor, 'transparent', 'removes the background off option buttons');
         t.equal(css.width, '100%', 'makes buttons 100% wide');
@@ -107,7 +101,7 @@
 
       t.test('toggle button', function(t) {
         var toggleButton = domElement.querySelector('button');
-        var optionList = domElement.querySelector('ul');
+        var optionList = domElement.querySelector('div');
 
         t.equal(optionList.style.display, 'none', 'the option list is initially hidden');
         toggleButton.click();
@@ -127,10 +121,10 @@
       });
 
       t.test('option list', function(t) {
-        var optionList = domElement.querySelector('ul');
-        var optionButtons = optionList.querySelectorAll('li button');
-        var addFieldButton = optionButtons[0];
-        var addSectionButton = optionButtons[1];
+        var optionList = domElement.querySelector('div');
+        var buttons = optionList.querySelectorAll('button');
+        var addFieldButton = buttons[0];
+        var addSectionButton = buttons[1];
 
         optionList.style.display = 'block';
 

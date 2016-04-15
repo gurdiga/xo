@@ -101,11 +101,9 @@
       var labelText = dropdownButton.querySelector('button').textContent;
       t.equal(labelText, 'adaugă persoană', 'has the appropriate label');
 
-      var optionLabels = _.toArray(dropdownButton.querySelectorAll('li button'));
-      var optionLabelTexts = optionLabels.map(_.property('textContent'));
-      t.deepEqual(optionLabelTexts, ['■ debitor', '■ persoană terţă'], 'options have the appropriate labels');
-
-      var addThirdPersonOption = dropdownButton.querySelectorAll('li button')[1];
+      var actionButtons = _.toArray(dropdownButton.querySelectorAll('div>button'));
+      var actionButtonLablels = actionButtons.map(_.property('textContent'));
+      t.deepEqual(actionButtonLablels, ['debitor', 'persoană terţă'], 'options have the appropriate labels');
 
       var personSectionCountBefore,
         personSectionDataCountBefore,
@@ -113,12 +111,12 @@
         personSectionDataCountAfter;
 
       t.test('option to add a debitor', function(t) {
-        var addDebitorOption = dropdownButton.querySelectorAll('li button')[0];
+        var addDebitorButton = actionButtons[0];
         var lastSection = domElement.querySelector('person-section:last-of-type');
 
         personSectionCountBefore = domElement.querySelectorAll('person-section').length;
         personSectionDataCountBefore = newCaseDialog.getValue()['debitori'].length;
-        addDebitorOption.click();
+        addDebitorButton.click();
         personSectionCountAfter = domElement.querySelectorAll('person-section').length;
         personSectionDataCountAfter = newCaseDialog.getValue()['debitori'].length;
 
@@ -151,6 +149,7 @@
       });
 
       t.test('option to add a third person', function(t) {
+        var addThirdPersonOption = actionButtons[1];
         var lastSection = domElement.querySelector('person-section:last-of-type');
 
         personSectionCountBefore = domElement.querySelectorAll('person-section').length;
