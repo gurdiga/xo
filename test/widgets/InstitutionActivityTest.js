@@ -11,6 +11,7 @@
     var domElement = sandbox.firstChild;
     t.equal(domElement.getAttribute('widget-name'), 'InstitutionActivity',
       'has the appropriate “widget-name” attribute');
+    t.equal(institutionActivity.getDescription(), 'Intentarea', 'has the appropriate description');
 
     t.test('date field', function(t) {
       var dateField = domElement.firstChild;

@@ -2,12 +2,18 @@
   'use strict';
 
   function InstitutionActivity() {
+    var descriptionText = 'Intentarea';
+
     var activity = new Activity(
       'InstitutionActivity',
-      'Intentarea', [
+      descriptionText, [
         new CreateWritButton()
       ]
     );
+
+    this.getDescription = function() {
+      return descriptionText;
+    };
 
     this.appendTo = delegateTo(activity, 'appendTo');
   }
