@@ -13,7 +13,7 @@
 
   function appendWidgetTo(domElement) {
     return function(childWidget) {
-      if (childWidget instanceof HTMLElement) domElement.appendChild(childWidget);
+      if (childWidget instanceof HTMLElement || childWidget instanceof Text) domElement.appendChild(childWidget);
       else childWidget.appendTo(domElement);
     };
   }
