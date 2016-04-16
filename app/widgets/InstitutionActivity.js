@@ -11,10 +11,7 @@
       ]
     );
 
-    this.getDescription = function() {
-      return descriptionText;
-    };
-
+    this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');
   }
 
