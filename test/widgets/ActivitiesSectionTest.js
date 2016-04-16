@@ -35,7 +35,7 @@
       t.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');
 
       var options = addActivityButton.querySelectorAll('div>button');
-      t.equal(options.length, 2, 'has the appropriate number of options');
+      t.equal(options.length, 1, 'has the appropriate number of options');
 
       t.end();
     });

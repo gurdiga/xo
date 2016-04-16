@@ -26,18 +26,14 @@
   }
 
   function createAddActionButton() {
-    return new DropdownButton('adaugă acţiune', {
-      'Intentare': function() {
-        console.log('Intentare');
-      },
-      'Refuz': function() {
-        console.log('Refuz');
-      }
-    });
+    return new AddActivityButton([
+      new InstitutionActivity()
+    ]);
   }
 
   var Section = window.App.Widgets.Section;
-  var DropdownButton = window.App.Widgets.DropdownButton;
+  var AddActivityButton = window.App.Widgets.AddActivityButton;
+  var InstitutionActivity = window.App.Widgets.InstitutionActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
