@@ -11,6 +11,10 @@
     ]).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.getDescription = function() {
+      return descriptionText;
+    };
   }
 
   function createElement(widgetName) {

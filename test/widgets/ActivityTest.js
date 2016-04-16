@@ -19,6 +19,7 @@
 
     t.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
     t.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
+    t.equal(activity.getDescription(), descriptionText, 'exposes a gettr for the description text');
 
     t.test('styling', function(t) {
       var css = domElement.style;
