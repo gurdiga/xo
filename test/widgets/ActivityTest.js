@@ -1,25 +1,28 @@
 (function() {
   'use strict';
 
-  var Activity = window.App.Widgets.Activity;
-  var TextFieldInput = window.App.Widgets.TextFieldInput;
-
-  var widgetName = 'SomeActivity';
-  var descriptionText = 'Case institution';
-  var detailWidgets = [
-    document.createElement('some-widget'),
-    new TextFieldInput()
-  ];
-  var activity = new Activity(widgetName, descriptionText, detailWidgets);
-  var sandbox = document.createElement('div');
-  activity.appendTo(sandbox);
-
   tape('Activity', function(t) {
+    var sandbox = document.createElement('div');
+
+    var widgetName = 'SomeActivity';
+    var descriptionText = 'Case institution';
+    var detailWidgets = [
+      document.createElement('some-widget'),
+      new TextFieldInput()
+    ];
+    var activity = new Activity(widgetName, descriptionText, detailWidgets);
+    activity.appendTo(sandbox);
+
+    t.equal(activity.getDescription(), descriptionText, 'exposes a gettr for the description text');
+
     var domElement = sandbox.firstChild;
 
-    t.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
-    t.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
-    t.equal(activity.getDescription(), descriptionText, 'exposes a gettr for the description text');
+    t.test('DOM structure', function(t) {
+      t.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
+      t.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
+
+      t.end();
+    });
 
     t.test('styling', function(t) {
       var css = domElement.style;
@@ -64,5 +67,8 @@
 
     t.end();
   });
+
+  var Activity = window.App.Widgets.Activity;
+  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
 }());
