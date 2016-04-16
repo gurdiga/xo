@@ -8,7 +8,10 @@
       new InstitutionActivity()
     ];
 
-    var addActivityButton = new AddActivityButton(activities);
+    function activityAdder() {
+    }
+
+    var addActivityButton = new AddActivityButton(activities, activityAdder);
 
     addActivityButton.appendTo(sandbox);
 
@@ -25,6 +28,10 @@
 
       var optionButtonLabels = optionButtons.map(_.property('textContent'));
       t.deepEqual(optionButtonLabels, ['Intentarea'], 'has the action descriptions as labels for action buttons');
+
+      //
+      // TODO: click optionButtons and verify that activityAdder is called appropriately
+      //
 
       t.end();
     });

@@ -1,30 +1,21 @@
 (function() {
   'use strict';
 
-  function AddActivityButton(activities) {
-    var dropdownOptions = getDropdownOptions(activities);
+  function AddActivityButton(activities, activityAdder) {
+    var dropdownOptions = getDropdownOptions(activities, activityAdder);
     var dropdownButton = createDropdownButton(dropdownOptions);
 
     this.appendTo = delegateTo(dropdownButton, 'appendTo');
   }
 
-  function getDropdownOptions(activities) {
+  function getDropdownOptions(activities, activityAdder) {
     var dropdownOptions = {};
 
     activities.forEach(function(activity) {
-      dropdownOptions[activity.getDescription()] = createActivityAdder(activity);
+      dropdownOptions[activity.getDescription()] = activityAdder.bind(null, activity);
     });
 
     return dropdownOptions;
-  }
-
-  function createActivityAdder(activity) {
-    return function() {
-      //
-      // TODO
-      //
-      console.log('adding activity', activity);
-    };
   }
 
   function createDropdownButton(dropdownOptions) {
