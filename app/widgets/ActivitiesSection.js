@@ -7,7 +7,7 @@
     var section = new Section('Acţiuni procedurale');
 
     section.appendWidgets([
-      createAddActivityButton()
+      createAddActivityButton(section)
     ]);
 
     section.appendTo(domElement);
@@ -25,17 +25,25 @@
     return domElement;
   }
 
-  function createAddActivityButton() {
+  function createAddActivityButton(section) {
     var options = [
-      new InstitutionActivity()
+      new InstitutionActivity(),
+      new RefusalActivity()
     ];
 
-    return new AddActivityButton(options);
+    return new AddActivityButton(options, addActivityTo(section));
+  }
+
+  function addActivityTo(section) {
+    return function(activityWidget) {
+      section.appendWidgets([activityWidget]);
+    };
   }
 
   var Section = window.App.Widgets.Section;
   var AddActivityButton = window.App.Widgets.AddActivityButton;
   var InstitutionActivity = window.App.Widgets.InstitutionActivity;
+  var RefusalActivity = window.App.Widgets.RefusalActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;

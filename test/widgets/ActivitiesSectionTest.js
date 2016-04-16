@@ -34,8 +34,15 @@
       var toggleButton = addActivityButton.querySelector('button:first-child');
       t.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');
 
-      var options = addActivityButton.querySelectorAll('div>button');
-      t.equal(options.length, 1, 'has the appropriate number of options');
+      var options = _.toArray(addActivityButton.querySelectorAll('div>button'));
+      t.equal(options.length, 2, 'has the appropriate number of options');
+
+      var optionsLabels = options.map(_.property('textContent'));
+      t.deepEqual(optionsLabels, ['Intentarea', 'Refuz'], 'options have the appropriate labels');
+
+      //
+      // TODO: assert that clicking an option inserts the appropriate activity widget before this button
+      //
 
       t.end();
     });
