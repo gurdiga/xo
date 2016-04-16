@@ -12,7 +12,6 @@
     this.appendTo = getAppenderOf(domElement);
 
     this.appendWidgets = function(childWidgets) {
-      if (!Array.isArray(childWidgets)) childWidgets = [childWidgets];
       appendWidgets(childWidgets).to(domElement);
     };
   }
