@@ -7,7 +7,7 @@
     var section = new Section('Acţiuni procedurale');
 
     section.appendWidgets([
-      createAddActionButton()
+      createAddActivityButton()
     ]);
 
     section.appendTo(domElement);
@@ -25,10 +25,12 @@
     return domElement;
   }
 
-  function createAddActionButton() {
-    return new AddActivityButton([
+  function createAddActivityButton() {
+    var options = [
       new InstitutionActivity()
-    ]);
+    ];
+
+    return new AddActivityButton(options);
   }
 
   var Section = window.App.Widgets.Section;
