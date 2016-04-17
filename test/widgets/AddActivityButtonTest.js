@@ -7,12 +7,7 @@
     var activities = [
       new InstitutionActivity()
     ];
-
-    function activityAdder() {
-    }
-
     var addActivityButton = new AddActivityButton(activities, activityAdder);
-
     addActivityButton.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;
@@ -29,14 +24,21 @@
       var optionButtonLabels = optionButtons.map(_.property('textContent'));
       t.deepEqual(optionButtonLabels, ['Intentarea'], 'has the action descriptions as labels for action buttons');
 
-      //
-      // TODO: click optionButtons and verify that activityAdder is called appropriately
-      //
+      optionButtons[0].click();
+      t.equal(activityAdder.calls.length, 1, 'clicking an option calls the activityAdder');
+      t.deepEqual(activityAdder.calls[0].args, [activities[0]], '...with the corresponding activity instance');
 
       t.end();
     });
 
     t.end();
+
+    function activityAdder() {
+      activityAdder.calls = activityAdder.calls || [];
+      activityAdder.calls.push({
+        args: _.toArray(arguments)
+      });
+    }
   });
 
   var AddActivityButton = window.App.Widgets.AddActivityButton;
