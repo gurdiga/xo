@@ -30,6 +30,7 @@
 
     t.test('add activity button', function(t) {
       var addActivityButton = domElement.querySelector('dropdown-button');
+      var activityListContainer = addActivityButton.previousSibling;
 
       var toggleButton = addActivityButton.querySelector('button:first-child');
       t.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');
@@ -40,9 +41,11 @@
       var optionsLabels = options.map(_.property('textContent'));
       t.deepEqual(optionsLabels, ['Intentarea', 'Refuz'], 'options have the appropriate labels');
 
-      //
-      // TODO: assert that clicking an option inserts the appropriate activity widget before this button
-      //
+      t.equal(activityListContainer.children.length, 0, 'activity list is initially empty');
+      options[0].click();
+      t.equal(activityListContainer.children.length, 1, 'adds one activity');
+      t.equal(activityListContainer.children[0].getAttribute('widget-name'),
+        'InstitutionActivity', 'the added activity is an InstitutionActivity');
 
       t.end();
     });

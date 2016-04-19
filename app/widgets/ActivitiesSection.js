@@ -5,9 +5,11 @@
     var domElement = createElement(additionalStyle);
 
     var section = new Section('Acţiuni procedurale');
+    var activityListContainer = createActivityListContainer();
 
     section.appendWidgets([
-      createAddActivityButton(section)
+      activityListContainer,
+      createAddActivityButton(activityListContainer)
     ]);
 
     section.appendTo(domElement);
@@ -25,18 +27,22 @@
     return domElement;
   }
 
-  function createAddActivityButton(section) {
+  function createActivityListContainer() {
+    return createDOMElement('div');
+  }
+
+  function createAddActivityButton(activityListContainer) {
     var options = [
       new InstitutionActivity(),
       new RefusalActivity()
     ];
 
-    return new AddActivityButton(options, addActivityTo(section));
+    return new AddActivityButton(options, addActivityTo(activityListContainer));
   }
 
-  function addActivityTo(section) {
+  function addActivityTo(activityListContainer) {
     return function(activityWidget) {
-      section.appendWidgets([activityWidget]);
+      activityWidget.appendTo(activityListContainer);
     };
   }
 
