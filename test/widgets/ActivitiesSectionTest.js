@@ -1,14 +1,13 @@
 (function() {
   'use strict';
 
-  var ActivitiesSection = window.App.Widgets.ActivitiesSection;
-
-  var sandbox = document.createElement('div');
-  var additionalStyle = { color: 'red' };
-  var sentenceSubjectSection = new ActivitiesSection(additionalStyle);
-  sentenceSubjectSection.appendTo(sandbox);
-
   tape.test('ActivitiesSection', function(t) {
+    var sandbox = document.createElement('div');
+
+    var additionalStyle = { color: 'red' };
+    var sentenceSubjectSection = new ActivitiesSection(additionalStyle);
+    sentenceSubjectSection.appendTo(sandbox);
+
     var domElement = sandbox.firstChild;
 
     t.test('structure', function(t) {
@@ -21,9 +20,9 @@
     });
 
     t.test('style', function(t) {
-      var css = domElement.style;
-      t.equal(css.display, 'block', 'has block display to be on its own line');
-      t.equal(css.color, additionalStyle.color, 'accepts additional CSS');
+      var style = domElement.style;
+      t.equal(style.display, 'block', 'has block display to be on its own line');
+      t.equal(style.color, additionalStyle.color, 'accepts additional CSS');
 
       t.end();
     });
@@ -52,5 +51,7 @@
 
     t.end();
   });
+
+  var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
 }());
