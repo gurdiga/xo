@@ -7,7 +7,7 @@
     var activities = [
       new InstitutionActivity()
     ];
-    var addActivityButton = new AddActivityButton(activities, activityAdder);
+    var addActivityButton = new AddActivityButton(activities, activityAdderMock);
     addActivityButton.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;
@@ -25,17 +25,17 @@
       t.deepEqual(optionButtonLabels, ['Intentarea'], 'has the action descriptions as labels for action buttons');
 
       optionButtons[0].click();
-      t.equal(activityAdder.calls.length, 1, 'clicking an option calls the activityAdder');
-      t.deepEqual(activityAdder.calls[0].args, [activities[0]], '...with the corresponding activity instance');
+      t.equal(activityAdderMock.calls.length, 1, 'clicking an option calls the activityAdderMock');
+      t.deepEqual(activityAdderMock.calls[0].args, [activities[0]], '...with the corresponding activity instance');
 
       t.end();
     });
 
     t.end();
 
-    function activityAdder() {
-      activityAdder.calls = activityAdder.calls || [];
-      activityAdder.calls.push({
+    function activityAdderMock() {
+      activityAdderMock.calls = activityAdderMock.calls || [];
+      activityAdderMock.calls.push({
         args: _.toArray(arguments)
       });
     }
