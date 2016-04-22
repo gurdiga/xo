@@ -2,6 +2,7 @@
   'use strict';
 
   function AddActivityButton(activities, activityAdder) {
+    // TODO: rethink this, it’s too low-level
     activities = copyArray(activities);
 
     var dropdownOptions = getDropdownOptions(activities, activityAdder);
@@ -23,8 +24,15 @@
 
     activities.forEach(function(activity) {
       dropdownOptions[activity.getDescription()] = function() {
+        //
+        // DOTO: clean this up
+        //
         activities.splice(0);
-        activities.push.apply(activities, activity.constructor.NEXT_STEP_OPTIONS);
+        activities.push.apply(
+          activities,
+          activity.constructor.NEXT_STEP_OPTIONS // TODO: does this mean options
+                                                 // should be classes rather than instances?
+        );
         activityAdder(activity);
       };
     });
