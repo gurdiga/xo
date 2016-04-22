@@ -15,6 +15,8 @@
     this.appendTo = delegateTo(activity, 'appendTo');
   }
 
+  InstitutionActivity.NEXT_STEP_OPTIONS = [];
+
   var Activity = window.App.Widgets.Activity;
   var CreateWritButton = window.App.Widgets.CreateWritButton;
 

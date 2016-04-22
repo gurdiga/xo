@@ -28,6 +28,17 @@
       t.end();
     });
 
+    t.test('next steps', function(t) {
+      //
+      // TODO: determine the options later.
+      //
+
+      t.deepEqual(InstitutionActivity.NEXT_STEP_OPTIONS,
+        [], 'are exposed');
+
+      t.end();
+    });
+
     t.test('details section', function(t) {
       var detailsSectionElement = domElement.children[2];
       t.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
