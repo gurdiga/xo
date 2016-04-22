@@ -26,12 +26,14 @@
       t.end();
     });
 
-    t.test('behavior', function(t) {
+    t.test('when clicking an option', function(t) {
       optionButtons[0].click();
 
       t.deepEqual(activityAdderMock.calls[0].args, [activities[0]],
-        'clicking an option calls the activityAdderMock with the corresponding activity');
+        'calls the activityAdderMock with the corresponding activity');
       t.equal(activityAdderMock.calls.length, 1, 'clicking an option calls the activityAdderMock once');
+      t.deepEqual(addActivityButton.getActivities(), InstitutionActivity.NEXT_STEP_OPTIONS,
+        'update options based on the selected option');
 
       t.end();
     });

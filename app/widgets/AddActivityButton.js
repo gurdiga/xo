@@ -2,17 +2,31 @@
   'use strict';
 
   function AddActivityButton(activities, activityAdder) {
+    activities = copyArray(activities);
+
     var dropdownOptions = getDropdownOptions(activities, activityAdder);
     var dropdownButton = createDropdownButton(dropdownOptions);
 
     this.appendTo = delegateTo(dropdownButton, 'appendTo');
+
+    this.getActivities = function() {
+      return activities;
+    };
+  }
+
+  function copyArray(array) {
+    return [].concat(array);
   }
 
   function getDropdownOptions(activities, activityAdder) {
     var dropdownOptions = {};
 
     activities.forEach(function(activity) {
-      dropdownOptions[activity.getDescription()] = activityAdder.bind(null, activity);
+      dropdownOptions[activity.getDescription()] = function() {
+        activities.splice(0);
+        activities.push.apply(activities, activity.constructor.NEXT_STEP_OPTIONS);
+        activityAdder(activity);
+      };
     });
 
     return dropdownOptions;
