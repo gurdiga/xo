@@ -4,7 +4,7 @@
   var BUTTON_FONT_SIZE = '13px';
 
   function OptionList(options) {
-    var domElement = createElement();
+    var domElement = createElement(this, options);
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -26,53 +26,53 @@
       if (this.isShown()) this.hide();
       else this.show();
     }.bind(this);
+  }
 
-    var hideOptionList = this.hide;
+  function createElement(optionList, options) {
+    var style = {
+      position: 'absolute',
+      display: 'none',
+      marginLeft: '10px',
+      backgroundColor: 'white',
+      boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
+    };
 
-    function createElement() {
-      var style = {
-        position: 'absolute',
-        display: 'none',
-        marginLeft: '10px',
-        backgroundColor: 'white',
-        boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
-      };
+    var domElement = createDOMElement('div', style);
+    var button;
 
-      var domElement = createDOMElement('div', style);
-      var button;
-
-      for (var optionLabel in options) {
-        button = createOptionButton(optionLabel, options[optionLabel]);
-        domElement.appendChild(button);
-      }
-
-      return domElement;
+    for (var optionLabel in options) {
+      button = createOptionButton(optionList, optionLabel, options[optionLabel]);
+      domElement.appendChild(button);
     }
 
-    function createOptionButton(labelText, f) {
-      var style = {
-        padding: '5px 10px',
-        borderWidth: '0px',
-        backgroundColor: 'transparent',
-        fontSize: BUTTON_FONT_SIZE,
-        width: '100%',
-        textAlign: 'left'
-      };
+    domElement.setAttribute('widget-name', 'OptionList');
 
-      var button = createDOMElement('button', style);
+    return domElement;
+  }
 
-      button.textContent = labelText;
-      button.addEventListener('click', function() {
-        hideOptionList();
-        f();
-      });
+  function createOptionButton(optionList, labelText, f) {
+    var style = {
+      padding: '5px 10px',
+      borderWidth: '0px',
+      backgroundColor: 'transparent',
+      fontSize: BUTTON_FONT_SIZE,
+      width: '100%',
+      textAlign: 'left'
+    };
 
-      addHoverEffect(button, {
-        backgroundColor: 'c3c3c3'
-      });
+    var button = createDOMElement('button', style);
 
-      return button;
-    }
+    button.textContent = labelText;
+    button.addEventListener('click', function() {
+      optionList.hide();
+      f();
+    });
+
+    addHoverEffect(button, {
+      backgroundColor: 'c3c3c3'
+    });
+
+    return button;
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
