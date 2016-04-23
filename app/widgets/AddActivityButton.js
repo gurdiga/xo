@@ -1,12 +1,9 @@
 (function() {
   'use strict';
 
-  function AddActivityButton(activities, activityAdder) {
-    // TODO: rethink this, it’s too low-level
-    activities = copyArray(activities);
-
-    var dropdownOptions = getDropdownOptions(activities, activityAdder);
-    var dropdownButton = createDropdownButton(dropdownOptions);
+  function AddActivityButton(initialActivities, activityAdder) {
+    var activities = getAnArrayCopyToMutate(initialActivities);
+    var dropdownButton = createDropdownButton(activities, activityAdder);
 
     this.appendTo = delegateTo(dropdownButton, 'appendTo');
 
@@ -15,33 +12,43 @@
     };
   }
 
-  function copyArray(array) {
+  function getAnArrayCopyToMutate(array) {
     return [].concat(array);
   }
 
-  function getDropdownOptions(activities, activityAdder) {
+  function emptyArray(array) {
+    array.splice(0, array.length);
+  }
+
+  function resetArray(array, otherArray) {
+    emptyArray(array);
+    extendArray(array, otherArray);
+  }
+
+  function extendArray(array, otherArray) {
+    otherArray.forEach(function(item) {
+      array.push(item);
+    });
+  }
+
+  function createDropdownButton(activities, originalActivityAdder) {
     var dropdownOptions = {};
 
     activities.forEach(function(activity) {
-      dropdownOptions[activity.getDescription()] = function() {
-        //
-        // DOTO: clean this up
-        //
-        activities.splice(0);
-        activities.push.apply(
-          activities,
-          activity.constructor.NEXT_STEP_OPTIONS // TODO: does this mean options
-                                                 // should be classes rather than instances?
-        );
-        activityAdder(activity);
-      };
+      var optionLabel = activity.getDescription();
+      var optionHandler = getWrappedActivityAdder(originalActivityAdder, activities, activity);
+
+      dropdownOptions[optionLabel] = optionHandler;
     });
 
-    return dropdownOptions;
+    return new DropdownButton('adaugă acţiune', dropdownOptions);
   }
 
-  function createDropdownButton(dropdownOptions) {
-    return new DropdownButton('adaugă acţiune', dropdownOptions);
+  function getWrappedActivityAdder(originalActivityAdder, activities, activity) {
+    return function() {
+      resetArray(activities, activity.constructor.NEXT_STEP_OPTIONS);
+      originalActivityAdder(activity);
+    };
   }
 
   var DropdownButton = window.App.Widgets.DropdownButton;
