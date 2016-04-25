@@ -4,24 +4,50 @@
 
 A productivity app for bailiffs. A breakable toy.
 
-## Interesting technical things
+# The Big Idea®
 
-This is intented to be a single-page app and/or a desktop web app (like
-Chrome app).  I’ve started with React and Browserify. But compilation to
-JS was getting slower and slower as the code grew.
+This is an experiment to prove that it’s possible to sanely develop
+single-page Web UIs using only raw JS. The approach is simliar to React,
+but without its baggage.
 
-First I decided to give up on JSX and use React’s JS API. It was still
-too slow. Then I decided to give up on Browserify and just use script
-tags and raw JS namespaces. Now I only have ESLint, but I only run it
-when it seems like something is broken and I can’t quickly figure out
-what it is. It is also run from Git’s pre-commit hook.
+Widgets are [JS
+classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes).
+They
+[create](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+and
+[style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
+their own DOM. This increases cohesion and prevents issues with [CSS
+issues](http://meexposed.tumblr.com/post/129425951130/the-c-in-css) as
+the code grows.
 
-It turns out that for SAP-like web front-end applications, there is
-really not much need for a module system like Browserify. As far as
-program code is concerned, they are just a mechanism to address code
-modules given their paths: a global registry of modules. Because
-module’s path is essentially a namespacing mechanism this can be
-easily achieved with raw JS namespaces.
+I’ve started with React and Browserify, and dropped them both because
+transpilation time got unacceptably long. First I decided to give up on
+JSX and use React’s JS API. It was still too slow. Then I decided to
+give up on Browserify and just use
+[IIFEs](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression),
+script tags and raw JS namespaces.
 
-This is where I am now: I use script tags, edit code, and refresh to see
-it working.
+# Module system
+
+I found that for single-page web apps I don’t need a module system. From
+the code perspective, a module system has two purposes:
+
+* allow breaking the app into smaller pieces;
+* allow pieces to refer other pieces.
+
+It is essentially a global registry.
+
+For example, this:
+```js
+		var assert = require('./app/utils/assert.js');
+```
+is equivalent to this:
+```js
+		var assert = window.App.Utils.assert;
+```
+
+# Build system
+
+Linting (ESLint) is my only build step. I only run it when it seems like
+something is broken and I can’t quickly figure out what it is. It is
+also run from Git’s pre-commit hook.
