@@ -25,10 +25,11 @@
       padding: '0'
     };
 
-    var domElement = createDOMElement('fieldset', style);
-    domElement.setAttribute('widget-name', widgetName);
+    var attributes = {
+      'widget-name': widgetName
+    };
 
-    return domElement;
+    return createDOMElement('fieldset', style, attributes);
   }
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
