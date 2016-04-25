@@ -3,9 +3,9 @@
 
   function FieldLabel(text, additionalStyle, childWidgets) {
     var domElement = createElement(additionalStyle);
+    var textSpan = createTextSpan(text);
 
-    addTextSpan(domElement, text);
-    addChildWidgets(domElement, childWidgets);
+    appendWidgets(both(textSpan, childWidgets)).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -16,16 +16,16 @@
       margin: '0 0 3px'
     };
 
-    var domElement;
-
     _.extend(style, additionalStyle);
-    domElement = createDOMElement('label', style);
-    domElement.setAttribute('widget-name', 'FieldLabel');
 
-    return domElement;
+    var attributes = {
+      'widget-name': 'FieldLabel'
+    };
+
+    return createDOMElement('label', style, attributes);
   }
 
-  function addTextSpan(domElement, text) {
+  function createTextSpan(text) {
     var style = {
       color: '#555',
       fontSize: '14px',
@@ -37,11 +37,11 @@
 
     span.textContent = text;
 
-    domElement.appendChild(span);
+    return span;
   }
 
-  function addChildWidgets(domElement, childWidgets) {
-    appendWidgets(childWidgets).to(domElement);
+  function both(one, others) {
+    return [one].concat(others);
   }
 
   var appendWidgets = window.App.Utils.appendWidgets;
