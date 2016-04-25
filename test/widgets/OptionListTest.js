@@ -39,6 +39,27 @@
       t.end();
     });
 
+    t.test('resetting options', function(t) {
+      var handlerA = createSpy();
+      var handlerB = createSpy();
+      var newOptions = {
+        'labelA': handlerA,
+        'labelB': handlerB
+      };
+
+      optionList.setOptions(newOptions);
+
+      var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
+      t.deepEqual(optionLabels, Object.keys(newOptions), 'option buttons have the expected labels');
+
+      var optionA = domElement.children[0];
+      optionA.click();
+      optionA.click();
+      t.deepEqual(handlerA.calls.length, 2, 'clicking on an option calls its corresponding handler');
+
+      t.end();
+    });
+
     t.end();
 
     function createSpy() {

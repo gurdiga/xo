@@ -4,9 +4,16 @@
   var BUTTON_FONT_SIZE = '13px';
 
   function OptionList(options) {
-    var domElement = createElement(this, options);
+    var domElement = createElement();
+
+    setOptionButtonsFor(this, options, domElement);
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.setOptions = function(options) {
+      removeOptionButtons(domElement);
+      setOptionButtonsFor(this, options, domElement);
+    };
 
     this.isShown = function() {
       return domElement.style.display === 'block';
@@ -28,7 +35,7 @@
     }.bind(this);
   }
 
-  function createElement(optionList, options) {
+  function createElement() {
     var style = {
       position: 'absolute',
       display: 'none',
@@ -37,20 +44,26 @@
       boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
     };
 
-    var domElement = createDOMElement('div', style);
-    var button;
+    var attributes = {
+      'widget-name': 'OptionList'
+    };
 
-    for (var optionLabel in options) {
-      button = createOptionButton(optionList, optionLabel, options[optionLabel]);
-      domElement.appendChild(button);
-    }
-
-    domElement.setAttribute('widget-name', 'OptionList');
-
-    return domElement;
+    return createDOMElement('div', style, attributes);
   }
 
-  function createOptionButton(optionList, labelText, f) {
+  function setOptionButtonsFor(optionList, options, domElement) {
+    var optionButtons = _.map(options, function(optionHandler, optionLabel) {
+      return createOptionButton(optionList, optionLabel, optionHandler);
+    });
+
+    appendWidgets(optionButtons).to(domElement);
+  }
+
+  function removeOptionButtons(domElement) {
+    domElement.innerHTML = '';
+  }
+
+  function createOptionButton(optionList, labelText, optionHandler) {
     var style = {
       padding: '5px 10px',
       borderWidth: '0px',
@@ -63,9 +76,10 @@
     var button = createDOMElement('button', style);
 
     button.textContent = labelText;
+
     button.addEventListener('click', function() {
       optionList.hide();
-      f();
+      optionHandler();
     });
 
     addHoverEffect(button, {
@@ -78,6 +92,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var addHoverEffect = window.App.Utils.addHoverEffect;
+  var appendWidgets = window.App.Utils.appendWidgets;
 
   window.App.Widgets.OptionList = OptionList;
 
