@@ -3,6 +3,7 @@
 
   function ActivityDetailsSection(childWidgets) {
     var domElement = createElement();
+
     appendWidgets(childWidgets).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -15,9 +16,11 @@
       borderWidth: '0px'
     };
 
-    var domElement = createDOMElement('fieldset', style);
-    domElement.setAttribute('widget-name', 'ActivityDetailsSection');
-    return domElement;
+    var attributes = {
+      'widget-name': 'ActivityDetailsSection'
+    };
+
+    return createDOMElement('fieldset', style, attributes);
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
