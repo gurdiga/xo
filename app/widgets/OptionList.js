@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var BUTTON_FONT_SIZE = '13px';
-
   function OptionList(options) {
     var domElement = createElement();
 
@@ -64,7 +62,7 @@
       padding: '5px 10px',
       borderWidth: '0px',
       backgroundColor: 'transparent',
-      fontSize: BUTTON_FONT_SIZE,
+      fontSize: '13px',
       width: '100%',
       textAlign: 'left'
     };
