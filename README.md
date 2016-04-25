@@ -7,8 +7,7 @@ A productivity app for bailiffs. A breakable toy.
 # The Big Idea®
 
 This is an experiment to prove that it’s possible to sanely develop
-single-page Web UIs using only raw JS. The approach is simliar to React,
-but without its baggage.
+single-page Web UIs using only raw JS.
 
 Widgets are [JS
 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes).
