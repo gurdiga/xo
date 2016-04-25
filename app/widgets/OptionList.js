@@ -15,24 +15,20 @@
       setOptionButtonsFor(this, options, domElement);
     };
 
-    this.isShown = function() {
-      return domElement.style.display === 'block';
+    this.show = function() {
+      show(domElement);
     };
 
-    this.show = function() {
-      domElement.style.display = 'block';
-    }.bind(this);
-
     this.hide = function() {
-      domElement.style.display = 'none';
-    }.bind(this);
+      hide(domElement);
+    };
 
     this.toggle = function(e) {
       e.stopPropagation();
 
-      if (this.isShown()) this.hide();
-      else this.show();
-    }.bind(this);
+      if (isShown(domElement)) hide(domElement);
+      else show(domElement);
+    };
   }
 
   function createElement() {
@@ -87,6 +83,18 @@
     });
 
     return button;
+  }
+
+  function isShown(domElement) {
+    return domElement.style.display === 'block';
+  }
+
+  function show(domElement) {
+    domElement.style.display = 'block';
+  }
+
+  function hide(domElement) {
+    domElement.style.display = 'none';
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
