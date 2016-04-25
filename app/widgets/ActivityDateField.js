@@ -4,7 +4,7 @@
   function ActivityDateField() {
     var domElement = createElement();
 
-    addDateFieldInput(domElement);
+    addDateFieldInputTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -13,7 +13,7 @@
     return createDOMElement('activity-date-field');
   }
 
-  function addDateFieldInput(domElement) {
+  function addDateFieldInputTo(domElement) {
     var value = '';
     var style = { width: '6.5em' };
     var dateFieldInput = new DateFieldInput(value, style);
