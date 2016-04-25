@@ -48,32 +48,42 @@
       position: 'absolute'
     };
 
-    var button = createDOMElement('button', style);
-    makeShy(button);
-    button.title = 'Deschide calendarul';
+    var attributes = {
+      'title': 'Deschide calendarul'
+    };
 
-    button.addEventListener('click', function(e) {
+    var button = createDOMElement('button', style, attributes);
+
+    makeShy(button);
+    button.addEventListener('click', toggleDatePickerFor(dateField));
+    hideDatePickerOnEscOrOutsideClick();
+
+    return button;
+  }
+
+  function toggleDatePickerFor(dateField) {
+    return function(e) {
       e.stopPropagation();
 
       // this is needed because <button>’s parent is a <label>, which
       // assumes clicks of its children and, in Firefox and Safari, propagates
       // them further to the <body> which causes the picker to be hidden by
-      // the click handler below.
+      // its click handler.
       e.preventDefault();
 
       DatePicker.instance.toggleFor(dateField);
-    });
-
-    return button;
+    };
   }
 
-  document.body.addEventListener('keydown', function(e) {
-    var isEscapeKey = e.keyCode === 27;
-    if (isEscapeKey) DatePicker.instance.hide();
-  });
+  var hideDatePickerOnEscOrOutsideClick = _.once(function() {
+    document.body.addEventListener('keydown', function(e) {
+      var isEscapeKey = e.keyCode === 27;
+      if (isEscapeKey) DatePicker.instance.hide();
+    });
 
-  document.body.addEventListener('click', function() {
-    DatePicker.instance.hide();
+    document.body.addEventListener('click', function() {
+      DatePicker.instance.hide();
+    });
   });
 
   var DatePicker = window.App.Widgets.DatePicker;
