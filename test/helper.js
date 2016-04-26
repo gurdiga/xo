@@ -64,6 +64,13 @@
     };
   };
 
+  window.TestHelpers.createSpy = function() {
+    return function spy() {
+      spy.calls = spy.calls || [];
+      spy.calls.push({ args: arguments });
+    };
+  };
+
   var getLabel = window.TestHelpers.getLabel;
   var getTagName = window.TestHelpers.getTagName;
   var getDOMValue = window.TestHelpers.getDOMValue;

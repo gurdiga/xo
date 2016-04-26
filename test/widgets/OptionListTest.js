@@ -94,15 +94,10 @@
     });
 
     t.end();
-
-    function createSpy() {
-      return function spy() {
-        spy.calls = spy.calls || [];
-        spy.calls.push({ args: arguments });
-      };
-    }
   });
 
   var OptionList = window.App.Widgets.OptionList;
+
+  var createSpy = window.TestHelpers.createSpy;
 
 }());
