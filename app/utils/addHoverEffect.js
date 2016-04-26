@@ -2,19 +2,10 @@
   'use strict';
 
   function addHoverEffect(domElement, style) {
-    var initialStyle = {};
-
-    for (var propertyName in style) initialStyle[propertyName] = domElement.style[propertyName];
-
-    domElement.addEventListener('mouseenter', applyStyle(domElement, style));
-    domElement.addEventListener('mouseleave', applyStyle(domElement, initialStyle));
+    toggleStyle(domElement, style, 'mouseenter', 'mouseleave');
   }
 
-  function applyStyle(domElement, style) {
-    return function() {
-      _.extend(domElement.style, style);
-    };
-  }
+  var toggleStyle = window.App.Utils.toggleStyle;
 
   window.App.Utils.addHoverEffect = addHoverEffect;
 
