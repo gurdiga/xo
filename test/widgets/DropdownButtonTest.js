@@ -4,16 +4,18 @@
   tape('DropdownButton', function(t) {
     var sandbox = document.createElement('div');
 
-    var labelText = 'Add';
     var options = {
-      'field': addFieldCallback,
-      'section': addSectionCallback
+      'label1': handler1,
+      'label2': handler2
     };
+
     var additionalStyle = {
       color: 'red'
     };
 
+    var labelText = 'Add';
     var dropdownButton = new DropdownButton(labelText, options, additionalStyle);
+
     dropdownButton.appendTo(sandbox);
     document.body.appendChild(sandbox);
 
@@ -108,11 +110,11 @@
         optionList.style.display = 'block';
 
         addFieldButton.click();
-        t.ok(addFieldCallback.executed, 'clicking on the first option triggers its associated function');
+        t.ok(handler1.executed, 'clicking on the first option triggers its associated function');
         t.equal(optionList.style.display, 'none', 'selecting an option hides the list');
 
         addSectionButton.click();
-        t.ok(addSectionCallback.executed, 'clicking on the second option triggers its associated function');
+        t.ok(handler2.executed, 'clicking on the second option triggers its associated function');
 
         t.test('can be reset', function(t) {
           var newOptions = {
@@ -143,12 +145,12 @@
     document.body.removeChild(sandbox);
   });
 
-  function addFieldCallback() {
-    addFieldCallback.executed = true;
+  function handler1() {
+    handler1.executed = true;
   }
 
-  function addSectionCallback() {
-    addSectionCallback.executed = true;
+  function handler2() {
+    handler2.executed = true;
   }
 
   var DropdownButton = window.App.Widgets.DropdownButton;
