@@ -20,12 +20,13 @@
 
     dropdownButton.appendTo(sandbox);
 
+    var domElement = sandbox.firstChild;
+    var toggleButton = domElement.firstChild;
+
     t.test('DOM structure', function(t) {
-      var domElement = sandbox.firstChild;
       t.equal(domElement.tagName, 'DROPDOWN-BUTTON', 'has the appropriate tag name');
 
       t.test('toggle button', function(t) {
-        var toggleButton = domElement.querySelector('button');
         t.equal(toggleButton.textContent, labelText, 'has the appropriate label');
 
         var style = toggleButton.style;
@@ -65,24 +66,33 @@
       t.end();
     });
 
-    t.test('styling', function(t) {
-      var style;
-      var domElement = sandbox.firstChild;
+    t.test('style', function(t) {
+      var style = domElement.style;
 
-      style = domElement.style;
       t.equal(style.display, 'inline-block',
         'has display of inline-block to have the option list postioned appropriately');
       t.equal(style.color, additionalStyle.color, 'accepts additional styles');
       t.equal(style['-webkit-user-select'], 'none', 'has the text unselectable');
 
+      t.test('toggle button', function(t) {
+        var style = toggleButton.style;
+
+        t.equal(style.outline, 'none', 'has the default outline removed because it doesn’t follow rounded corners');
+
+        toggleButton.dispatchEvent(new Event('focusin'));
+        t.equal(toggleButton.style.boxShadow, 'rgb(181, 213, 255) 0px 0px 3px 2px', 'adds a box shadow on focus');
+
+        toggleButton.dispatchEvent(new Event('focusout'));
+        t.equal(toggleButton.style.boxShadow, '', 'removes the box shadow when losing focus');
+
+        t.end();
+      });
+
       t.end();
     });
 
     t.test('behavior', function(t) {
-      var domElement = sandbox.firstChild;
-
       t.test('toggle button', function(t) {
-        var toggleButton = domElement.querySelector('button');
         var optionList = domElement.querySelector('div');
 
         t.equal(optionList.style.display, 'none', 'the option list is initially hidden');

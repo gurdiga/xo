@@ -30,6 +30,7 @@
   function createToggleButton(labelText) {
     var style = {
       padding: '5px 25px 5px 10px',
+      outline: 'none',
       border: '1px solid silver',
       borderRadius: '10px',
       fontSize: '13px',
@@ -55,6 +56,10 @@
     on(toggleButton, 'click', optionList.toggle);
     on(document.body, 'keydown', optionList.hide);
     on(document.body, 'click', optionList.hide);
+
+    addFocusEffect(toggleButton, {
+      boxShadow: 'rgb(181, 213, 255) 0px 0px 3px 2px'
+    });
   }
 
   function on(domElement, eventName, eventHandler) {
@@ -68,6 +73,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;
   var delegateTo = window.App.Utils.delegateTo;
+  var addFocusEffect = window.App.Utils.addFocusEffect;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 
