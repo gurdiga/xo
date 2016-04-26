@@ -3,41 +3,14 @@
 
   function DropdownButton(labelText, options, additionalStyle) {
     var domElement = createElement(additionalStyle);
-    var toggleButton = createToggleButton();
+    var toggleButton = createToggleButton(labelText);
     var optionList = new OptionList(options);
 
     appendWidgets([toggleButton, optionList]).to(domElement);
     addEventListeners(toggleButton, optionList);
 
     this.appendTo = getAppenderOf(domElement);
-
-    this.resetOptionList = function(newOptions) {
-      optionList.setOptions(newOptions);
-    };
-
-    function createToggleButton() {
-      var style = {
-        padding: '5px 25px 5px 10px',
-        border: '1px solid silver',
-        borderRadius: '10px',
-        fontSize: '13px',
-        backgroundImage: 'url("data:image/svg+xml;utf8,' +
-            '<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"8\\" height=\\"8\\">' +
-              '<polygon points=\\"0,0 8,0 4,8\\" style=\\"fill:black\\" />' +
-            '</svg>' +
-          '")',
-        backgroundPositionY: '50%',
-        backgroundPositionX: 'calc(100% - 10px)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: 'transparent'
-      };
-
-      var button = createDOMElement('button', style);
-
-      button.textContent = labelText;
-
-      return button;
-    }
+    this.resetOptionList = delegateTo(optionList, 'setOptions');
   }
 
   function createElement(additionalStyle) {
@@ -52,6 +25,30 @@
     makeTextUselectable(domElement);
 
     return domElement;
+  }
+
+  function createToggleButton(labelText) {
+    var style = {
+      padding: '5px 25px 5px 10px',
+      border: '1px solid silver',
+      borderRadius: '10px',
+      fontSize: '13px',
+      backgroundImage: 'url("data:image/svg+xml;utf8,' +
+          '<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"8\\" height=\\"8\\">' +
+            '<polygon points=\\"0,0 8,0 4,8\\" style=\\"fill:black\\" />' +
+          '</svg>' +
+        '")',
+      backgroundPositionY: '50%',
+      backgroundPositionX: 'calc(100% - 10px)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor: 'transparent'
+    };
+
+    var button = createDOMElement('button', style);
+
+    button.textContent = labelText;
+
+    return button;
   }
 
   function addEventListeners(toggleButton, optionList) {
@@ -70,6 +67,7 @@
   var makeTextUselectable = window.App.Utils.makeTextUselectable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;
+  var delegateTo = window.App.Utils.delegateTo;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 
