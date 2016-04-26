@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-
   tape('LabeledSelectField label', function(t) {
     var sandbox = document.createElement('div');
     var labelText = 'My LabeledSelectField component';
@@ -18,50 +16,50 @@
       }
     ];
 
+    var onChange = createSpy();
     var selectField = new LabeledSelectField(labelText, optionValues, optionValues[1]);
     selectField.onChange(onChange);
     selectField.appendTo(sandbox);
-
-    function onChange(argument) {
-      onChange.called = true;
-      onChange.argument = argument;
-    }
 
     var domElement = sandbox.firstChild;
     var label = domElement.firstChild;
     var select = label.querySelector('select');
 
-    t.equal(domElement.tagName, 'LABELED-SELECT-FIELD', 'has the appropriate tag name');
+    t.test('DOM structure', function(t) {
+      t.equal(domElement.tagName, 'LABELED-SELECT-FIELD', 'has the appropriate tag name');
 
-    t.test('label', function(t) {
-      t.equal(label.getAttribute('widget-name'), 'FieldLabel',
-        'has the appropriate “widget-name” attribute');
-      t.equal(label.firstChild.textContent, labelText, 'has the appropriate text');
+      t.test('label', function(t) {
+        t.equal(label.getAttribute('widget-name'), 'FieldLabel',
+          'has the appropriate “widget-name” attribute');
+        t.equal(label.firstChild.textContent, labelText, 'has the appropriate text');
 
-      t.end();
-    });
+        t.end();
+      });
 
-    t.test('options', function(t) {
-      var options = select.querySelectorAll('option');
-      t.equal(options.length, 4, 'the option count corresponds');
-      t.equal(options[0].tagName, 'OPTION', 'the first option is an <option>');
-      t.equal(options[0].textContent, optionValues[0], 'the first <option> has the corresponding text');
-      t.equal(options[1].tagName, 'OPTION', 'the second option is an <option>');
-      t.equal(options[1].textContent, optionValues[1], 'the second <option> has the corresponding text');
+      t.test('options', function(t) {
+        var options = select.querySelectorAll('option');
+        t.equal(options.length, 4, 'the option count corresponds');
+        t.equal(options[0].tagName, 'OPTION', 'the first option is an <option>');
+        t.equal(options[0].textContent, optionValues[0], 'the first <option> has the corresponding text');
+        t.equal(options[1].tagName, 'OPTION', 'the second option is an <option>');
+        t.equal(options[1].textContent, optionValues[1], 'the second <option> has the corresponding text');
 
-      var group = optionValues[2];
-      var optgroup = select.querySelector('optgroup');
-      t.equal(optgroup.label, group.optgroupLabel, 'the <optgroup> has the appropriate label');
+        var group = optionValues[2];
+        var optgroup = select.querySelector('optgroup');
+        t.equal(optgroup.label, group.optgroupLabel, 'the <optgroup> has the appropriate label');
 
-      var optgroupOptions = optgroup.querySelectorAll('option');
-      t.equal(optgroupOptions.length, 2, '<optgroup> has the appropriate number of <option>s');
+        var optgroupOptions = optgroup.querySelectorAll('option');
+        t.equal(optgroupOptions.length, 2, '<optgroup> has the appropriate number of <option>s');
 
-      t.equal(optgroupOptions[0].tagName, 'OPTION', 'the third option is an <option>');
-      t.equal(optgroupOptions[0].textContent, group.options[0],
-        'the third <option> has the corresponding text');
-      t.equal(optgroupOptions[1].tagName, 'OPTION', 'the fourth option is an <option>');
-      t.equal(optgroupOptions[1].textContent, group.options[1],
-        'the fourth <option> has the corresponding text');
+        t.equal(optgroupOptions[0].tagName, 'OPTION', 'the third option is an <option>');
+        t.equal(optgroupOptions[0].textContent, group.options[0],
+          'the third <option> has the corresponding text');
+        t.equal(optgroupOptions[1].tagName, 'OPTION', 'the fourth option is an <option>');
+        t.equal(optgroupOptions[1].textContent, group.options[1],
+          'the fourth <option> has the corresponding text');
+
+        t.end();
+      });
 
       t.end();
     });
@@ -102,15 +100,19 @@
     });
 
     t.test('onChange callback', function(t) {
-      onChange.called = false;
       select.dispatchEvent(new Event('change'));
 
-      t.equal(onChange.called, true, 'triggers the onChange callback when changing');
-      t.equal(onChange.argument, select.value, 'onChange callback was passed the new field value');
+      t.equal(onChange.calls.length, 1, 'triggers the onChange callback when changing');
+      t.deepEqual(onChange.calls[0].args, [select.value], 'onChange callback was passed the new field value');
 
       t.end();
     });
 
     t.end();
   });
+
+  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
+
+  var createSpy = window.TestHelpers.createSpy;
+
 }());
