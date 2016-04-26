@@ -67,7 +67,7 @@
   window.TestHelpers.createSpy = function() {
     return function spy() {
       spy.calls = spy.calls || [];
-      spy.calls.push({ args: arguments });
+      spy.calls.push({ args: _.toArray(arguments) });
     };
   };
 

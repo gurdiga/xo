@@ -7,7 +7,8 @@
     var activities = [
       new InstitutionActivity()
     ];
-    var addActivityButton = new AddActivityButton(activities, activityAdderMock);
+    var activityAdder = createSpy();
+    var addActivityButton = new AddActivityButton(activities, activityAdder);
     addActivityButton.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;
@@ -26,29 +27,24 @@
       t.end();
     });
 
-    t.test('when clicking an option', function(t) {
+    t.test('clicking an option', function(t) {
       optionButtons[0].click();
 
-      t.deepEqual(activityAdderMock.calls[0].args, [activities[0]],
-        'calls the activityAdderMock with the corresponding activity');
-      t.equal(activityAdderMock.calls.length, 1, 'clicking an option calls the activityAdderMock once');
+      t.deepEqual(activityAdder.calls[0].args, [activities[0]],
+        'calls the activityAdder with the corresponding activity');
+      t.equal(activityAdder.calls.length, 1, 'clicking an option calls the activityAdder once');
       t.deepEqual(addActivityButton.getActivities(), InstitutionActivity.NEXT_STEP_OPTIONS,
-        'update options based on the selected option');
+        'updates option list based on the selected option’s NEXT_STEP_OPTIONS');
 
       t.end();
     });
 
     t.end();
-
-    function activityAdderMock() {
-      activityAdderMock.calls = activityAdderMock.calls || [];
-      activityAdderMock.calls.push({
-        args: _.toArray(arguments)
-      });
-    }
   });
 
   var AddActivityButton = window.App.Widgets.AddActivityButton;
   var InstitutionActivity = window.App.Widgets.InstitutionActivity;
+
+  var createSpy = window.TestHelpers.createSpy;
 
 }());
