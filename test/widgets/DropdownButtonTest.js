@@ -64,31 +64,31 @@
     });
 
     t.test('styling', function(t) {
-      var css;
+      var style;
       var domElement = sandbox.firstChild;
 
-      css = domElement.style;
-      t.equal(css.display, 'inline-block',
+      style = domElement.style;
+      t.equal(style.display, 'inline-block',
         'has display of inline-block to have the option list postioned appropriately');
-      t.equal(css.color, additionalStyle.color, 'accepts additional styles');
-      t.equal(css['-webkit-user-select'], 'none', 'has the text unselectable');
+      t.equal(style.color, additionalStyle.color, 'accepts additional styles');
+      t.equal(style['-webkit-user-select'], 'none', 'has the text unselectable');
 
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('div');
-        css = optionList.style;
-        t.equal(css.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
-        t.equal(css.backgroundColor, 'white', 'has white background');
-        t.equal(css.position, 'absolute', 'is absolutely positioned');
-        t.equal(css.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
+        style = optionList.style;
+        t.equal(style.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
+        t.equal(style.backgroundColor, 'white', 'has white background');
+        t.equal(style.position, 'absolute', 'is absolutely positioned');
+        t.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
 
         var optionButton = optionList.querySelector('button');
-        css = optionButton.style;
-        t.equal(css.padding, '5px 10px', 'has nice padding to increase clickable area');
-        t.equal(css.borderWidth, '0px', 'removes the border off option buttons');
-        t.equal(css.backgroundColor, 'transparent', 'removes the background off option buttons');
-        t.equal(css.width, '100%', 'makes buttons 100% wide');
-        t.equal(css.textAlign, 'left', 'aligns button labels left');
-        t.equal(css.fontSize, '13px', 'has a nice large font size');
+        style = optionButton.style;
+        t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
+        t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
+        t.equal(style.backgroundColor, 'transparent', 'removes the background off option buttons');
+        t.equal(style.width, '100%', 'makes buttons 100% wide');
+        t.equal(style.textAlign, 'left', 'aligns button labels left');
+        t.equal(style.fontSize, '13px', 'has a nice large font size');
 
         t.end();
       });
