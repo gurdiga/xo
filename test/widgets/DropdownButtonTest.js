@@ -1,23 +1,22 @@
 (function() {
   'use strict';
 
-  var DropdownButton = window.App.Widgets.DropdownButton;
-
-  var labelText = 'Add';
-  var options = {
-    'field': addFieldCallback,
-    'section': addSectionCallback
-  };
-  var additionalStyle = {
-    color: 'red'
-  };
-
-  var dropdownButton = new DropdownButton(labelText, options, additionalStyle);
-  var sandbox = document.createElement('div');
-  dropdownButton.appendTo(sandbox);
-  document.body.appendChild(sandbox);
-
   tape('DropdownButton', function(t) {
+    var sandbox = document.createElement('div');
+
+    var labelText = 'Add';
+    var options = {
+      'field': addFieldCallback,
+      'section': addSectionCallback
+    };
+    var additionalStyle = {
+      color: 'red'
+    };
+
+    var dropdownButton = new DropdownButton(labelText, options, additionalStyle);
+    dropdownButton.appendTo(sandbox);
+    document.body.appendChild(sandbox);
+
     t.test('DOM structure', function(t) {
       var domElement = sandbox.firstChild;
       t.equal(domElement.tagName, 'DROPDOWN-BUTTON', 'has the appropriate tag name');
@@ -151,6 +150,8 @@
   function addSectionCallback() {
     addSectionCallback.executed = true;
   }
+
+  var DropdownButton = window.App.Widgets.DropdownButton;
 
   var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
 
