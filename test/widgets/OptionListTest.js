@@ -26,6 +26,39 @@
       t.end();
     });
 
+    t.test('style', function(t) {
+      var style = domElement.style;
+
+      t.equal(style.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
+      t.equal(style.backgroundColor, 'white', 'has white background');
+      t.equal(style.position, 'absolute', 'is absolutely positioned');
+      t.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
+
+      t.test('option buttons', function(t) {
+        var optionButton = domElement.querySelector('button');
+        var style = optionButton.style;
+
+        t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
+        t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
+        t.equal(style.backgroundColor, 'transparent', 'removes the background off option buttons');
+        t.equal(style.width, '100%', 'makes buttons 100% wide');
+        t.equal(style.textAlign, 'left', 'aligns button labels left');
+        t.equal(style.fontSize, '13px', 'has a nice large font size');
+
+        optionButton.dispatchEvent(new Event('mouseenter'));
+        t.equal(optionButton.style.backgroundColor, 'rgb(195, 195, 195)',
+          'options backgroun change to gray on mouseenter');
+
+        optionButton.dispatchEvent(new Event('mouseleave'));
+        t.equal(optionButton.style.backgroundColor, 'transparent',
+          'options backgroun change back to normal on on mouseleave');
+
+        t.end();
+      });
+
+      t.end();
+    });
+
     t.test('behavior', function(t) {
       var option1 = domElement.children[0];
       option1.click();

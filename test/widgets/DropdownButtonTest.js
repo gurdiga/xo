@@ -73,26 +73,6 @@
       t.equal(style.color, additionalStyle.color, 'accepts additional styles');
       t.equal(style['-webkit-user-select'], 'none', 'has the text unselectable');
 
-      t.test('option list', function(t) {
-        var optionList = domElement.querySelector('div');
-        style = optionList.style;
-        t.equal(style.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
-        t.equal(style.backgroundColor, 'white', 'has white background');
-        t.equal(style.position, 'absolute', 'is absolutely positioned');
-        t.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
-
-        var optionButton = optionList.querySelector('button');
-        style = optionButton.style;
-        t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
-        t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
-        t.equal(style.backgroundColor, 'transparent', 'removes the background off option buttons');
-        t.equal(style.width, '100%', 'makes buttons 100% wide');
-        t.equal(style.textAlign, 'left', 'aligns button labels left');
-        t.equal(style.fontSize, '13px', 'has a nice large font size');
-
-        t.end();
-      });
-
       t.end();
     });
 
@@ -134,14 +114,6 @@
 
         addSectionButton.click();
         t.ok(addSectionCallback.executed, 'clicking on the second option triggers its associated function');
-
-        addSectionButton.dispatchEvent(new Event('mouseenter'));
-        t.equal(addSectionButton.style.backgroundColor, 'rgb(195, 195, 195)',
-          'options backgroun change to gray on mouseenter');
-
-        addSectionButton.dispatchEvent(new Event('mouseleave'));
-        t.equal(addSectionButton.style.backgroundColor, 'transparent',
-          'options backgroun change back to normal on on mouseleave');
 
         t.test('can be reset', function(t) {
           var newOptions = {
