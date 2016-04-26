@@ -11,6 +11,10 @@
 
     this.appendTo = getAppenderOf(domElement);
 
+    this.resetOptionList = function(newOptions) {
+      optionList.setOptions(newOptions);
+    };
+
     function createToggleButton() {
       var style = {
         padding: '5px 25px 5px 10px',

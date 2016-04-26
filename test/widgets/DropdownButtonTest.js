@@ -143,6 +143,24 @@
         t.equal(addSectionButton.style.backgroundColor, 'transparent',
           'options backgroun change back to normal on on mouseleave');
 
+        t.test('can be reset', function(t) {
+          var newOptions = {
+            'label': function handler() {
+              handler.called = true;
+            }
+          };
+
+          var expectedOptionLabels = Object.keys(newOptions);
+
+          dropdownButton.resetOptionList(newOptions);
+
+          var buttons = optionList.querySelectorAll('button');
+          var buttonLabels = _.map(buttons, _.property('textContent'));
+          t.deepEqual(buttonLabels, expectedOptionLabels, 'options are updated');
+
+          t.end();
+        });
+
         t.end();
       });
 
