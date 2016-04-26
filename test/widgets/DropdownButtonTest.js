@@ -4,6 +4,8 @@
   tape('DropdownButton', function(t) {
     var sandbox = document.createElement('div');
 
+    var handler1 = createSpy();
+    var handler2 = createSpy();
     var options = {
       'label1': handler1,
       'label2': handler2
@@ -17,7 +19,6 @@
     var dropdownButton = new DropdownButton(labelText, options, additionalStyle);
 
     dropdownButton.appendTo(sandbox);
-    document.body.appendChild(sandbox);
 
     t.test('DOM structure', function(t) {
       var domElement = sandbox.firstChild;
@@ -110,17 +111,16 @@
         optionList.style.display = 'block';
 
         addFieldButton.click();
-        t.ok(handler1.executed, 'clicking on the first option triggers its associated function');
+        t.equal(handler1.calls.length, 1, 'clicking on the first option calls its associated function once');
         t.equal(optionList.style.display, 'none', 'selecting an option hides the list');
 
         addSectionButton.click();
-        t.ok(handler2.executed, 'clicking on the second option triggers its associated function');
+        t.equal(handler2.calls.length, 1, 'clicking on the second option calls its associated function once');
 
         t.test('can be reset', function(t) {
+          var handler = createSpy();
           var newOptions = {
-            'label': function handler() {
-              handler.called = true;
-            }
+            'label': handler
           };
 
           var expectedOptionLabels = Object.keys(newOptions);
@@ -141,20 +141,11 @@
     });
 
     t.end();
-
-    document.body.removeChild(sandbox);
   });
-
-  function handler1() {
-    handler1.executed = true;
-  }
-
-  function handler2() {
-    handler2.executed = true;
-  }
 
   var DropdownButton = window.App.Widgets.DropdownButton;
 
   var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
+  var createSpy = window.TestHelpers.createSpy;
 
 }());
