@@ -19,15 +19,18 @@
     this.precedeWith = function(elementToInsert) {
       domElement.parentNode.insertBefore(elementToInsert, domElement);
     };
-
-    outlineOnFocus(domElement);
   }
 
   function createElement(value, additionalStyle) {
     var style = _.extend({}, TextFieldInput.STYLE, additionalStyle);
-
     var domElement = createDOMElement('input', style);
+
     domElement.value = value || '';
+
+    addFocusEffect(domElement, {
+      boxShadow: '0 0 3px 2px #b5d5ff'
+    });
+
     return domElement;
   }
 
@@ -43,10 +46,10 @@
     outlineWidth: '0px'
   };
 
-  var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
+  var addFocusEffect = window.App.Utils.addFocusEffect;
 
   window.App.Widgets.TextFieldInput = TextFieldInput;
 

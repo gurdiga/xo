@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
-
   tape('LabeledLargeTextField', function(t) {
     var sandbox = document.createElement('div');
     var labelText = 'My LabeledLargeTextField component';
@@ -76,5 +74,7 @@
 
     t.end();
   });
+
+  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
 
 }());

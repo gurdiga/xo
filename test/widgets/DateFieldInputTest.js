@@ -67,7 +67,8 @@
     });
 
     t.test('outlines <input> on focus', function(t) {
-      t.ok(input.hasAttribute('outline-on-focus'));
+      t.ok(input.hasAttribute('has-on-focus-effect'));
+
       t.end();
     });
 

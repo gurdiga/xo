@@ -63,7 +63,7 @@
       t.equal(css.outlineWidth, '0px', 'it has no outline, it’s role is taken on by the box-shadow');
       t.equal(css.backgroundColor, additionalStyle.backgroundColor, 'accepts additional style');
 
-      t.ok(input.hasAttribute('outline-on-focus'), 'is outlined on focus');
+      t.ok(input.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
 
       t.end();
     });

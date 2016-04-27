@@ -32,6 +32,13 @@
       t.end();
     });
 
+    t.test('outline', function(t) {
+      t.equal(input.hasAttribute('has-on-focus-effect'), true,
+        'is outlined on focus');
+
+      t.end();
+    });
+
     t.end();
   });
 
