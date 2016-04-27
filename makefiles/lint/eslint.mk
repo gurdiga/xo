@@ -1,5 +1,5 @@
 ESLINT_CONFIG_FILE=makefiles/lint/eslint.json
-ESLINT_TIMESTAMP_FILE=$(ESLINT_CONFIG_FILE)
+ESLINT_TIMESTAMP_FILE=makefiles/lint/eslint.timestamp
 ESLINT_IGNORE_FILE=makefiles/lint/eslintignore
 
 eslint: $(ESLINT_TIMESTAMP_FILE)
