@@ -97,7 +97,7 @@
 
         t.equal(optionList.style.display, 'none', 'the option list is initially hidden');
         toggleButton.click();
-        t.equal(optionList.style.display, 'block', 'clicking the button displays the option list');
+        t.equal(optionList.style.display, '', 'clicking the button displays the option list');
         toggleButton.click();
         t.equal(optionList.style.display, 'none', 'clicking the button again hides the option list');
 

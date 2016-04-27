@@ -84,11 +84,11 @@
   }
 
   function isShown(domElement) {
-    return domElement.style.display === 'block';
+    return domElement.style.display === '';
   }
 
   function show(domElement) {
-    domElement.style.display = 'block';
+    domElement.style.display = '';
   }
 
   function hide(domElement) {
