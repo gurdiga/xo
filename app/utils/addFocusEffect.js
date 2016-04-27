@@ -2,7 +2,7 @@
   'use strict';
 
   function addFocusEffect(domElement, style) {
-    toggleStyle(domElement, style, 'focusin', 'focusout');
+    toggleStyle(domElement, style, 'focus', 'blur');
   }
 
   var toggleStyle = window.App.Utils.toggleStyle;

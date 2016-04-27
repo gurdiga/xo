@@ -79,10 +79,10 @@
 
         t.equal(style.outline, 'none', 'has the default outline removed because it doesn’t follow rounded corners');
 
-        toggleButton.dispatchEvent(new Event('focusin'));
+        toggleButton.dispatchEvent(new Event('focus'));
         t.equal(toggleButton.style.boxShadow, 'rgb(181, 213, 255) 0px 0px 3px 2px', 'adds a box shadow on focus');
 
-        toggleButton.dispatchEvent(new Event('focusout'));
+        toggleButton.dispatchEvent(new Event('blur'));
         t.equal(toggleButton.style.boxShadow, '', 'removes the box shadow when losing focus');
 
         t.end();
