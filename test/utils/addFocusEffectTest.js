@@ -20,6 +20,9 @@
     domElement.dispatchEvent(new Event('blur'));
     t.equal(domElement.style.color, initialStyle.color, 'returns to the initial style on blur');
 
+    t.equal(domElement.hasAttribute('has-on-focus-effect'), true,
+      'marks the element as having on focus effect');
+
     t.end();
   });
 
