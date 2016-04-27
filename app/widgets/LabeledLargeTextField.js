@@ -15,8 +15,6 @@
     this.getValue = function() {
       return textarea.value;
     };
-
-    outlineOnFocus(textarea);
   }
 
   function createElement() {
@@ -44,18 +42,24 @@
     }, additionalStyle);
 
     var textarea = createDOMElement('textarea', style);
+
     textarea.value = value || '';
+
+    addFocusEffect(textarea, {
+      boxShadow: '0 0 3px 2px #b5d5ff'
+    });
+
     return textarea;
   }
 
   var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  var outlineOnFocus = window.App.Utils.outlineOnFocus;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var addFocusEffect = window.App.Utils.addFocusEffect;
 
   window.App.Widgets.LabeledLargeTextField = LabeledLargeTextField;
 

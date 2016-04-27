@@ -69,7 +69,7 @@
       t.equal(css.resize, 'none', 'has the built-in resize control disabled because it will be made elastic');
       t.equal(css.display, 'block', 'is block because needs to place under the label');
 
-      t.ok(textarea.hasAttribute('outline-on-focus'), 'is outlined on focus');
+      t.ok(textarea.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
 
       t.end();
     });
