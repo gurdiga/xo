@@ -56,7 +56,7 @@
 
     makeShy(button);
     button.addEventListener('click', toggleDatePickerFor(dateField));
-    hideDatePickerOnEscOrOutsideClick();
+    hideOnEscapeOrOutsideClick(DatePicker.instance);
 
     return button;
   }
@@ -75,17 +75,6 @@
     };
   }
 
-  var hideDatePickerOnEscOrOutsideClick = _.once(function() {
-    document.body.addEventListener('keydown', function(e) {
-      var isEscapeKey = e.keyCode === 27;
-      if (isEscapeKey) DatePicker.instance.hide();
-    });
-
-    document.body.addEventListener('click', function() {
-      DatePicker.instance.hide();
-    });
-  });
-
   var DatePicker = window.App.Widgets.DatePicker;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
@@ -93,6 +82,7 @@
   var makeShy = window.App.Utils.makeShy;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
+  var hideOnEscapeOrOutsideClick = window.App.Utils.hideOnEscapeOrOutsideClick;
 
   window.App.Widgets.DateFieldInput = DateFieldInput;
 

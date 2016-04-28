@@ -53,17 +53,12 @@
   }
 
   function addEventListeners(toggleButton, optionList) {
-    on(toggleButton, 'click', optionList.toggle);
-    on(document.body, 'keydown', optionList.hide);
-    on(document.body, 'click', optionList.hide);
+    toggleButton.addEventListener('click', optionList.toggle);
+    hideOnEscapeOrOutsideClick(optionList);
 
     addFocusEffect(toggleButton, {
       boxShadow: 'rgb(181, 213, 255) 0px 0px 3px 2px'
     });
-  }
-
-  function on(domElement, eventName, eventHandler) {
-    domElement.addEventListener(eventName, eventHandler);
   }
 
   var OptionList = window.App.Widgets.OptionList;
@@ -74,6 +69,7 @@
   var appendWidgets = window.App.Utils.appendWidgets;
   var delegateTo = window.App.Utils.delegateTo;
   var addFocusEffect = window.App.Utils.addFocusEffect;
+  var hideOnEscapeOrOutsideClick = window.App.Utils.hideOnEscapeOrOutsideClick;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 
