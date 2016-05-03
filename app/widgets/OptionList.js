@@ -55,7 +55,7 @@
 
   function selectOpton(domElement, optionIndex) {
     var options = domElement.children[optionIndex];
-    options.style.backgroundColor = 'c3c3c3';
+    options.style.backgroundColor = OPTION_HOVER_BACKGROUND_COLOR;
   }
 
   function createElement() {
@@ -86,6 +86,8 @@
     domElement.innerHTML = '';
   }
 
+  var OPTION_HOVER_BACKGROUND_COLOR = 'c3c3c3';
+
   function createOptionButton(optionList, labelText, optionHandler) {
     var style = {
       padding: '5px 10px',
@@ -106,7 +108,7 @@
     });
 
     addHoverEffect(button, {
-      backgroundColor: 'c3c3c3'
+      backgroundColor: OPTION_HOVER_BACKGROUND_COLOR
     });
 
     return button;
