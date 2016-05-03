@@ -4,13 +4,13 @@
   function OptionList(options) {
     var domElement = createElement();
 
-    setOptionButtonsFor(this, options, domElement);
+    addOptionButtons(this, options, domElement);
 
     this.appendTo = getAppenderOf(domElement);
 
     this.setOptions = function(options) {
-      removeOptionButtons(domElement);
-      setOptionButtonsFor(this, options, domElement);
+      empty(domElement);
+      addOptionButtons(this, options, domElement);
     };
 
     this.show = function() {
@@ -26,6 +26,9 @@
 
       if (isShown(domElement)) hide(domElement);
       else show(domElement);
+    };
+
+    this.selectNext = function() {
     };
   }
 
@@ -45,7 +48,7 @@
     return createDOMElement('div', style, attributes);
   }
 
-  function setOptionButtonsFor(optionList, options, domElement) {
+  function addOptionButtons(optionList, options, domElement) {
     var optionButtons = _.map(options, function(optionHandler, optionLabel) {
       return createOptionButton(optionList, optionLabel, optionHandler);
     });
@@ -53,7 +56,7 @@
     appendWidgets(optionButtons).to(domElement);
   }
 
-  function removeOptionButtons(domElement) {
+  function empty(domElement) {
     domElement.innerHTML = '';
   }
 

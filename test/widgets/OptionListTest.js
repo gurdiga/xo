@@ -16,6 +16,8 @@
     optionList.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;
+    var option1 = domElement.children[0];
+    var option2 = domElement.children[1];
 
     t.test('DOM structure', function(t) {
       t.equal(domElement.getAttribute('widget-name'), 'OptionList', 'has the appropriate widget name');
@@ -35,8 +37,7 @@
       t.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
 
       t.test('option buttons', function(t) {
-        var optionButton = domElement.querySelector('button');
-        var style = optionButton.style;
+        var style = option1.style;
 
         t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
         t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
@@ -45,12 +46,12 @@
         t.equal(style.textAlign, 'left', 'aligns button labels left');
         t.equal(style.fontSize, '13px', 'has a nice large font size');
 
-        optionButton.dispatchEvent(new Event('mouseenter'));
-        t.equal(optionButton.style.backgroundColor, 'rgb(195, 195, 195)',
+        option1.dispatchEvent(new Event('mouseenter'));
+        t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
           'options backgroun change to gray on mouseenter');
 
-        optionButton.dispatchEvent(new Event('mouseleave'));
-        t.equal(optionButton.style.backgroundColor, 'transparent',
+        option1.dispatchEvent(new Event('mouseleave'));
+        t.equal(option1.style.backgroundColor, 'transparent',
           'options backgroun change back to normal on on mouseleave');
 
         t.end();
@@ -60,12 +61,10 @@
     });
 
     t.test('behavior', function(t) {
-      var option1 = domElement.children[0];
       option1.click();
       option1.click();
       t.deepEqual(handler1.calls.length, 2, 'clicking on an option calls its corresponding handler');
 
-      var option2 = domElement.children[1];
       option2.click();
       t.deepEqual(handler2.calls.length, 1, 'clicking on an option calls its corresponding handler');
 
