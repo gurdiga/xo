@@ -71,6 +71,14 @@
       t.end();
     });
 
+    t.test('selecting previous and next', function(t) {
+      optionList.selectNext();
+      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+        'selectNext selects the first option initially');
+
+      t.end();
+    });
+
     t.test('resetting options', function(t) {
       var handlerA = createSpy();
       var handlerB = createSpy();

@@ -28,8 +28,34 @@
       else show(domElement);
     };
 
+    var selectedOptionIndex;
+
     this.selectNext = function() {
+      var nextOptionIndex = getNextOptionIndex(selectedOptionIndex, domElement);
+
+      selectOpton(domElement, nextOptionIndex);
     };
+  }
+
+  function getNextOptionIndex(currentlySelectedOptionIndex, domElement) {
+    var nextOptionIndex;
+
+    if (currentlySelectedOptionIndex === undefined) {
+      nextOptionIndex = 0;
+    } else {
+      nextOptionIndex = currentlySelectedOptionIndex + 1;
+
+      if (nextOptionIndex === domElement.children.length) {
+        nextOptionIndex = 0;
+      }
+    }
+
+    return nextOptionIndex;
+  }
+
+  function selectOpton(domElement, optionIndex) {
+    var options = domElement.children[optionIndex];
+    options.style.backgroundColor = 'c3c3c3';
   }
 
   function createElement() {
