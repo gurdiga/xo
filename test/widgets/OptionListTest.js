@@ -84,9 +84,21 @@
 
       optionList.selectNext();
       t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
-        'when last option is selected selectNext goes around to the first');
+        'when the last option is selected selectNext goes around to the first');
       t.equal(option2.style.backgroundColor, 'transparent',
-        'when last option is selected selectNext unselects it');
+        'when the last option is selected selectNext unselects it');
+
+      optionList.selectPrevious();
+      t.equal(option1.style.backgroundColor, 'transparent',
+        'when the first option is selected selectPrevious unselects it');
+      t.equal(option2.style.backgroundColor, 'rgb(195, 195, 195)',
+        'when the first option is selected selectPrevious goess around to the last');
+
+      optionList.selectPrevious();
+      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+        'selectPrevious selects the option that is above the currently selected one');
+      t.equal(option2.style.backgroundColor, 'transparent',
+        'selectPrevious unselects the option that was selected');
 
       t.end();
     });

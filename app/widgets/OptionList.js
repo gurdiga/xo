@@ -33,9 +33,13 @@
     this.selectNext = function() {
       if (isAnyOptionSelected()) unselectCurrentlySelectedOption();
 
-      var nextOptionIndex = getNextOptionIndex();
+      selectOpton(getNextOptionIndex());
+    };
 
-      selectOpton(nextOptionIndex);
+    this.selectPrevious = function() {
+      if (isAnyOptionSelected()) unselectCurrentlySelectedOption();
+
+      selectOpton(getPreviousOptionIndex());
     };
 
     function isAnyOptionSelected() {
@@ -55,20 +59,34 @@
       selectedOptionIndex = optionIndex;
     }
 
+    var FIRST_OPTION_INDEX = 0;
+
     function getNextOptionIndex() {
-      var nextOptionIndex;
-
       if (isAnyOptionSelected()) {
-        nextOptionIndex = selectedOptionIndex + 1;
-
-        if (nextOptionIndex === domElement.children.length) {
-          nextOptionIndex = 0;
+        if (selectedOptionIndex === getLastOptionIndex()) {
+          return FIRST_OPTION_INDEX;
+        } else {
+          return selectedOptionIndex + 1;
         }
       } else {
-        nextOptionIndex = 0;
+        return FIRST_OPTION_INDEX;
       }
+    }
 
-      return nextOptionIndex;
+    function getPreviousOptionIndex() {
+      if (isAnyOptionSelected()) {
+        if (selectedOptionIndex === FIRST_OPTION_INDEX) {
+          return getLastOptionIndex();
+        } else {
+          return selectedOptionIndex - 1;
+        }
+      } else {
+        return getLastOptionIndex();
+      }
+    }
+
+    function getLastOptionIndex() {
+      return domElement.children.length - 1;
     }
   }
 
