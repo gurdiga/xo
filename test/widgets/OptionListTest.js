@@ -76,6 +76,18 @@
       t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
         'selectNext selects the first option initially');
 
+      optionList.selectNext();
+      t.equal(option1.style.backgroundColor, 'transparent',
+        'selectNext selects the option next to the currently selected one');
+      t.equal(option2.style.backgroundColor, 'rgb(195, 195, 195)',
+        'selectNext selects the option next to the currently selected one');
+
+      optionList.selectNext();
+      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+        'when last option is selected selectNext goes around to the first');
+      t.equal(option2.style.backgroundColor, 'transparent',
+        'when last option is selected selectNext unselects it');
+
       t.end();
     });
 

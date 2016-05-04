@@ -31,31 +31,45 @@
     var selectedOptionIndex;
 
     this.selectNext = function() {
-      var nextOptionIndex = getNextOptionIndex(selectedOptionIndex, domElement);
+      if (isAnyOptionSelected()) unselectCurrentlySelectedOption();
 
-      selectOpton(domElement, nextOptionIndex);
+      var nextOptionIndex = getNextOptionIndex();
+
+      selectOpton(nextOptionIndex);
     };
-  }
 
-  function getNextOptionIndex(currentlySelectedOptionIndex, domElement) {
-    var nextOptionIndex;
-
-    if (currentlySelectedOptionIndex === undefined) {
-      nextOptionIndex = 0;
-    } else {
-      nextOptionIndex = currentlySelectedOptionIndex + 1;
-
-      if (nextOptionIndex === domElement.children.length) {
-        nextOptionIndex = 0;
-      }
+    function isAnyOptionSelected() {
+      return selectedOptionIndex !== undefined;
     }
 
-    return nextOptionIndex;
-  }
+    function unselectCurrentlySelectedOption() {
+      var option = domElement.children[selectedOptionIndex];
 
-  function selectOpton(domElement, optionIndex) {
-    var options = domElement.children[optionIndex];
-    options.style.backgroundColor = OPTION_HOVER_BACKGROUND_COLOR;
+      addStyle(option, INITIAL_OPTION_BUTTON_STYLE);
+    }
+
+    function selectOpton(optionIndex) {
+      var option = domElement.children[optionIndex];
+
+      addStyle(option, HOVER_OPTION_BUTTON_STYLE);
+      selectedOptionIndex = optionIndex;
+    }
+
+    function getNextOptionIndex() {
+      var nextOptionIndex;
+
+      if (isAnyOptionSelected()) {
+        nextOptionIndex = selectedOptionIndex + 1;
+
+        if (nextOptionIndex === domElement.children.length) {
+          nextOptionIndex = 0;
+        }
+      } else {
+        nextOptionIndex = 0;
+      }
+
+      return nextOptionIndex;
+    }
   }
 
   function createElement() {
@@ -86,7 +100,13 @@
     domElement.innerHTML = '';
   }
 
-  var OPTION_HOVER_BACKGROUND_COLOR = 'c3c3c3';
+  var HOVER_OPTION_BUTTON_STYLE = {
+    backgroundColor: 'c3c3c3'
+  };
+
+  var INITIAL_OPTION_BUTTON_STYLE = {
+    backgroundColor: 'transparent'
+  };
 
   function createOptionButton(optionList, labelText, optionHandler) {
     var style = {
@@ -107,9 +127,7 @@
       optionHandler();
     });
 
-    addHoverEffect(button, {
-      backgroundColor: OPTION_HOVER_BACKGROUND_COLOR
-    });
+    addHoverEffect(button, HOVER_OPTION_BUTTON_STYLE);
 
     return button;
   }
@@ -130,6 +148,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var addHoverEffect = window.App.Utils.addHoverEffect;
   var appendWidgets = window.App.Utils.appendWidgets;
+  var addStyle = window.App.Utils.addStyle;
 
   window.App.Widgets.OptionList = OptionList;
 
