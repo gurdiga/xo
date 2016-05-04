@@ -1,6 +1,15 @@
 (function() {
   'use strict';
 
+  OptionList.INITIAL_OPTION_BUTTON_STYLE = {
+    backgroundColor: 'transparent'
+  };
+
+  OptionList.HOVER_OPTION_BUTTON_STYLE = {
+    backgroundColor: 'rgb(195, 195, 195)'
+  };
+
+
   function OptionList(options) {
     var domElement = createElement();
 
@@ -49,13 +58,13 @@
     function unselectCurrentlySelectedOption() {
       var option = domElement.children[selectedOptionIndex];
 
-      addStyle(option, INITIAL_OPTION_BUTTON_STYLE);
+      addStyle(option, OptionList.INITIAL_OPTION_BUTTON_STYLE);
     }
 
     function selectOpton(optionIndex) {
       var option = domElement.children[optionIndex];
 
-      addStyle(option, HOVER_OPTION_BUTTON_STYLE);
+      addStyle(option, OptionList.HOVER_OPTION_BUTTON_STYLE);
       selectedOptionIndex = optionIndex;
     }
 
@@ -118,23 +127,14 @@
     domElement.innerHTML = '';
   }
 
-  var HOVER_OPTION_BUTTON_STYLE = {
-    backgroundColor: 'c3c3c3'
-  };
-
-  var INITIAL_OPTION_BUTTON_STYLE = {
-    backgroundColor: 'transparent'
-  };
-
   function createOptionButton(optionList, labelText, optionHandler) {
-    var style = {
+    var style = _.extend({
       padding: '5px 10px',
       borderWidth: '0px',
-      backgroundColor: 'transparent',
       fontSize: '13px',
       width: '100%',
       textAlign: 'left'
-    };
+    }, OptionList.INITIAL_OPTION_BUTTON_STYLE);
 
     var button = createDOMElement('button', style);
 
@@ -145,7 +145,7 @@
       optionHandler();
     });
 
-    addHoverEffect(button, HOVER_OPTION_BUTTON_STYLE);
+    addHoverEffect(button, OptionList.HOVER_OPTION_BUTTON_STYLE);
 
     return button;
   }

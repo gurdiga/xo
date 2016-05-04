@@ -19,6 +19,9 @@
     var option1 = domElement.children[0];
     var option2 = domElement.children[1];
 
+    var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor;
+    var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor;
+
     t.test('DOM structure', function(t) {
       t.equal(domElement.getAttribute('widget-name'), 'OptionList', 'has the appropriate widget name');
 
@@ -41,17 +44,17 @@
 
         t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
         t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
-        t.equal(style.backgroundColor, 'transparent', 'removes the background off option buttons');
+        t.equal(style.backgroundColor, 'transparent', 'inherits the background from the container');
         t.equal(style.width, '100%', 'makes buttons 100% wide');
         t.equal(style.textAlign, 'left', 'aligns button labels left');
         t.equal(style.fontSize, '13px', 'has a nice large font size');
 
         option1.dispatchEvent(new Event('mouseenter'));
-        t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+        t.equal(option1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
           'options backgroun change to gray on mouseenter');
 
         option1.dispatchEvent(new Event('mouseleave'));
-        t.equal(option1.style.backgroundColor, 'transparent',
+        t.equal(option1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
           'options backgroun change back to normal on on mouseleave');
 
         t.end();
@@ -73,31 +76,31 @@
 
     t.test('selecting previous and next', function(t) {
       optionList.selectNext();
-      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
         'selectNext selects the first option initially');
 
       optionList.selectNext();
-      t.equal(option1.style.backgroundColor, 'transparent',
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'selectNext selects the option next to the currently selected one');
-      t.equal(option2.style.backgroundColor, 'rgb(195, 195, 195)',
+      t.equal(option2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
         'selectNext selects the option next to the currently selected one');
 
       optionList.selectNext();
-      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
         'when the last option is selected selectNext goes around to the first');
-      t.equal(option2.style.backgroundColor, 'transparent',
+      t.equal(option2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'when the last option is selected selectNext unselects it');
 
       optionList.selectPrevious();
-      t.equal(option1.style.backgroundColor, 'transparent',
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'when the first option is selected selectPrevious unselects it');
-      t.equal(option2.style.backgroundColor, 'rgb(195, 195, 195)',
+      t.equal(option2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
         'when the first option is selected selectPrevious goess around to the last');
 
       optionList.selectPrevious();
-      t.equal(option1.style.backgroundColor, 'rgb(195, 195, 195)',
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
         'selectPrevious selects the option that is above the currently selected one');
-      t.equal(option2.style.backgroundColor, 'transparent',
+      t.equal(option2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'selectPrevious unselects the option that was selected');
 
       t.end();
