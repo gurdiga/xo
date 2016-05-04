@@ -2,7 +2,7 @@
   'use strict';
 
   function makeTextUselectable(domElement) {
-    setStyle(domElement, {
+    addStyle(domElement, {
       '-webkit-touch-callout': 'none',
       '-webkit-user-select': 'none',
       '-moz-user-select': 'none',
@@ -11,7 +11,7 @@
     });
   }
 
-  var setStyle = window.App.Utils.setStyle;
+  var addStyle = window.App.Utils.addStyle;
 
   window.App.Utils.makeTextUselectable = makeTextUselectable;
 

@@ -1,28 +1,28 @@
 (function() {
   'use strict';
 
-  tape('setStyle', function(t) {
+  tape('addStyle', function(t) {
     var domElement = createDOMElement('div');
     var style = {
       'color': 'red'
     };
 
-    setStyle(domElement, style);
+    addStyle(domElement, style);
 
     t.equal(domElement.style.color, style.color, 'sets the given style on the DOM element');
 
     t.test('input validation', function(t) {
       t.throws(function() {
-        setStyle(42);
+        addStyle(42);
       },
-        /setStyle expects the first argument to be a DOM element/,
+        /addStyle expects the first argument to be a DOM element/,
         'throws a meaningful error when the first argument is not a DOM element'
       );
 
       t.throws(function() {
-        setStyle(createDOMElement('div'), 42);
+        addStyle(createDOMElement('div'), 42);
       },
-        /setStyle expects the second argument to be a hash/,
+        /addStyle expects the second argument to be a hash/,
         'throws a meaningful error when the first argument is not a hash'
       );
 
@@ -32,7 +32,7 @@
     t.end();
   });
 
-  var setStyle = window.App.Utils.setStyle;
+  var addStyle = window.App.Utils.addStyle;
   var createDOMElement = window.App.Utils.createDOMElement;
 
 }());

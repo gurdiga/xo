@@ -12,11 +12,11 @@
 
   function applyStyle(domElement, style) {
     return function() {
-      setStyle(domElement, style);
+      addStyle(domElement, style);
     };
   }
 
-  var setStyle = window.App.Utils.setStyle;
+  var addStyle = window.App.Utils.addStyle;
 
   window.App.Utils.toggleStyle = toggleStyle;
 
