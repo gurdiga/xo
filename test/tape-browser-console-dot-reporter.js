@@ -89,7 +89,7 @@
     if (message.operator !== 'throws') return;
 
     message.expected = message.expected.replace(/^\//, '').replace(/\/$/, '');
-    message.actual = message.actual.message;
+    message.actual = message.actual && message.actual.message;
     message.error.stack = message.error.stack || '\n(not available)';
   }
 
