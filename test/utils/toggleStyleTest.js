@@ -7,7 +7,7 @@
       'borderColor': 'black'
     };
 
-    _.extend(domElement.style, initialStyle);
+    setStyle(domElement, initialStyle);
 
     var style = {
       borderColor: 'blue'
@@ -28,5 +28,6 @@
   });
 
   var toggleStyle = window.App.Utils.toggleStyle;
+  var setStyle = window.App.Utils.setStyle;
 
 }());

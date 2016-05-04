@@ -4,7 +4,8 @@
   function createDOMElement(tagName, style, attributes) {
     var domElement = document.createElement(tagName);
 
-    _.extend(domElement.style, style);
+    if (style) setStyle(domElement, style);
+
     _.each(attributes, setAttribute(domElement));
 
     return domElement;
@@ -15,6 +16,8 @@
       domElement.setAttribute(name, value);
     };
   }
+
+  var setStyle = window.App.Utils.setStyle;
 
   window.App.Utils.createDOMElement = createDOMElement;
 
