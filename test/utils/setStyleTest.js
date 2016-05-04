@@ -19,6 +19,13 @@
         'throws a meaningful error when the first argument is not a DOM element'
       );
 
+      t.throws(function() {
+        setStyle(createDOMElement('div'), 42);
+      },
+        /setStyle expects the second argument to be a hash/,
+        'throws a meaningful error when the first argument is not a hash'
+      );
+
       t.end();
     });
 
