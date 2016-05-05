@@ -4,11 +4,11 @@
   tape('DropdownButton', function(t) {
     var sandbox = document.createElement('div');
 
-    var handler1 = createSpy();
-    var handler2 = createSpy();
+    var optionHandler1 = createSpy();
+    var optionHandler2 = createSpy();
     var options = {
-      'label1': handler1,
-      'label2': handler2
+      'label1': optionHandler1,
+      'label2': optionHandler2
     };
 
     var additionalStyle = {
@@ -54,11 +54,11 @@
         var expectedOptionLabels = Object.keys(options);
         var expectedOptionCount = expectedOptionLabels.length;
 
-        var buttons = optionList.querySelectorAll('button');
-        t.equal(buttons.length, expectedOptionCount, 'has the appropriate number of options');
+        var optionButtons = optionList.querySelectorAll('button');
+        t.equal(optionButtons.length, expectedOptionCount, 'has the appropriate number of options');
 
-        var buttonLabels = _.map(buttons, _.property('textContent'));
-        t.deepEqual(buttonLabels, expectedOptionLabels, 'options have the appropriate labels');
+        var optionButtonLabels = _.map(optionButtons, _.property('textContent'));
+        t.deepEqual(optionButtonLabels, expectedOptionLabels, 'options have the appropriate labels');
 
         t.end();
       });
@@ -114,32 +114,33 @@
 
       t.test('option list', function(t) {
         var optionList = domElement.querySelector('div');
-        var buttons = optionList.querySelectorAll('button');
-        var addFieldButton = buttons[0];
-        var addSectionButton = buttons[1];
+        var optionButtons = optionList.querySelectorAll('button');
 
         optionList.style.display = 'block';
 
-        addFieldButton.click();
-        t.equal(handler1.calls.length, 1, 'clicking on the first option calls its associated function once');
+        optionButtons[0].click();
+        t.equal(optionHandler1.calls.length, 1, 'clicking on the first option calls its associated function once');
         t.equal(optionList.style.display, 'none', 'selecting an option hides the list');
 
-        addSectionButton.click();
-        t.equal(handler2.calls.length, 1, 'clicking on the second option calls its associated function once');
+        optionButtons[1].click();
+        t.equal(optionHandler2.calls.length, 1, 'clicking on the second option calls its associated function once');
 
         t.test('can be reset', function(t) {
-          var handler = createSpy();
+          var optionHandler = createSpy();
           var newOptions = {
-            'label': handler
+            'label': optionHandler
           };
 
           var expectedOptionLabels = Object.keys(newOptions);
 
           dropdownButton.resetOptionList(newOptions);
 
-          var buttons = optionList.querySelectorAll('button');
-          var buttonLabels = _.map(buttons, _.property('textContent'));
-          t.deepEqual(buttonLabels, expectedOptionLabels, 'options are updated');
+          var optionButtons = optionList.querySelectorAll('button');
+          var optionButtonLabels = _.map(optionButtons, _.property('textContent'));
+          t.deepEqual(optionButtonLabels, expectedOptionLabels, 'options are updated');
+
+          t.end();
+        });
 
           t.end();
         });
