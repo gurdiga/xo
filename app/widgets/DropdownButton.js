@@ -54,11 +54,21 @@
 
   function addEventListeners(toggleButton, optionList) {
     toggleButton.addEventListener('click', optionList.toggle);
+    toggleButton.addEventListener('keydown', selectFirstOption);
     hideOnEscapeOrOutsideClick(optionList);
 
     addFocusEffect(toggleButton, {
       boxShadow: 'rgb(181, 213, 255) 0px 0px 3px 2px'
     });
+
+    function selectFirstOption(e) {
+      if (e.code === 'ArrowDown') {
+        e.preventDefault();
+
+        optionList.show();
+        optionList.selectNext();
+      }
+    }
   }
 
   var OptionList = window.App.Widgets.OptionList;
