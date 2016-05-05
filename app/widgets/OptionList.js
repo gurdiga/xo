@@ -28,6 +28,7 @@
 
     this.hide = function() {
       hide(domElement);
+      if (selectedOptionIndex !== undefined) unselectCurrentlySelectedOption();
     };
 
     this.toggle = function(e) {

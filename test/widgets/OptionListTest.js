@@ -103,6 +103,12 @@
       t.equal(option2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'selectPrevious unselects the option that was selected');
 
+      optionList.hide();
+      t.equal(option1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+        'hiding the list unselects all the options');
+      t.equal(option2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+        'hiding the list unselects all the options');
+
       t.end();
     });
 
