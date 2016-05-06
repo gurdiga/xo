@@ -167,16 +167,11 @@
     t.end();
   });
 
-  function simulateKeyDown(domElement, keyName) {
-    var keydownEvent = new Event('keydown');
-    keydownEvent.code = keyName;
-    domElement.dispatchEvent(keydownEvent);
-  }
-
   var DropdownButton = window.App.Widgets.DropdownButton;
   var OptionList = window.App.Widgets.OptionList;
 
   var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
   var createSpy = window.TestHelpers.createSpy;
+  var simulateKeyDown = window.TestHelpers.simulateKeyDown;
 
 }());

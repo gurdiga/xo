@@ -14,6 +14,12 @@
     domElement.dispatchEvent(keydownEvent);
   };
 
+  window.TestHelpers.simulateKeyDown = function(domElement, keyName) {
+    var keydownEvent = new Event('keydown');
+    keydownEvent.code = keyName;
+    domElement.dispatchEvent(keydownEvent);
+  };
+
   window.TestHelpers.getOptionTexts = function getOptionTexts(element) {
     var tagName = element.tagName;
     var elements = element.querySelectorAll(tagName + '>option, ' + tagName + '>optgroup');
