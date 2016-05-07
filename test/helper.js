@@ -9,16 +9,16 @@
   window.TestHelpers.simulateEscapeKey = function(domElement) {
     domElement = domElement || document.body;
 
-    var keydownEvent = new Event('keydown');
-    keydownEvent.keyCode = 27;
-    domElement.dispatchEvent(keydownEvent);
+    simulateKeyDown(domElement, 'Escape');
   };
 
-  window.TestHelpers.simulateKeyDown = function(domElement, keyName) {
+  function simulateKeyDown(domElement, keyName) {
     var keydownEvent = new Event('keydown');
     keydownEvent.code = keyName;
     domElement.dispatchEvent(keydownEvent);
-  };
+  }
+
+  window.TestHelpers.simulateKeyDown = simulateKeyDown;
 
   window.TestHelpers.getOptionTexts = function getOptionTexts(element) {
     var tagName = element.tagName;

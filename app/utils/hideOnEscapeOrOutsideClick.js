@@ -8,8 +8,7 @@
     if (isDOMElement(thing)) thing = new HideableDOMElement(thing);
 
     document.body.addEventListener('keydown', function(e) {
-      var isEscapeKey = e.keyCode === 27;
-      if (isEscapeKey) thing.hide();
+      if (e.code === 'Escape') thing.hide();
     });
 
     document.body.addEventListener('click', thing.hide);
