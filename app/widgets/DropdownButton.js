@@ -56,6 +56,7 @@
     toggleButton.addEventListener('click', optionList.toggle);
     toggleButton.addEventListener('keydown', ifKey('ArrowDown', selectFirstOption));
     toggleButton.addEventListener('keydown', ifKey('ArrowUp', selectLastOption));
+    toggleButton.addEventListener('keydown', ifKey('Enter', optionList.executeSelectedOption));
     hideOnEscapeOrOutsideClick(optionList);
 
     addFocusEffect(toggleButton, {

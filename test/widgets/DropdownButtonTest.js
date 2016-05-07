@@ -166,6 +166,17 @@
             t.end();
           });
 
+          t.test('pressing Enter when option list is shown and an option is selected', function(t) {
+            optionHandler1.reset();
+            hideOptionList();
+
+            simulateKeyDown(toggleButton, 'ArrowDown');
+            simulateKeyDown(toggleButton, 'Enter');
+            t.equal(optionHandler1.calls.length, 1, 'executes the selected option’s handler');
+
+            t.end();
+          });
+
           t.end();
         });
 
