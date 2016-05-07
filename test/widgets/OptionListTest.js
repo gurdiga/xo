@@ -109,6 +109,12 @@
       t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
         'hiding the list unselects all the options');
 
+      optionList.selectNext();
+      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+        'hiding resets the selectedOptionIndex');
+      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+        'hiding resets the selectedOptionIndex');
+
       t.end();
     });
 
