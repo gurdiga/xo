@@ -125,6 +125,50 @@
         optionButtons[1].click();
         t.equal(optionHandler2.calls.length, 1, 'clicking on the second option calls its associated function once');
 
+        t.test('keyboard navigation', function(t) {
+          var hideOptionList = simulateEscapeKey;
+
+          var optionButtons = optionList.querySelectorAll('button');
+          var firstOptionButton = optionButtons[0];
+          var lastOptionButton = optionButtons[optionButtons.length - 1];
+
+          t.test('pressing the down arrow', function(t) {
+            hideOptionList();
+
+            simulateKeyDown(toggleButton, 'ArrowDown');
+            t.equal(optionList.style.display, '', 'shows the list');
+            t.equal(firstOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor,
+              'renders the first option as selected');
+
+            t.end();
+          });
+
+          t.test('pressing the up arrow', function(t) {
+            hideOptionList();
+
+            simulateKeyDown(toggleButton, 'ArrowUp');
+            t.equal(optionList.style.display, '', 'shows the list');
+            t.equal(lastOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor,
+              'renders the last option as selected');
+
+            t.end();
+          });
+
+          t.test('pressing Escape', function(t) {
+            hideOptionList();
+
+            simulateKeyDown(toggleButton, 'ArrowDown');
+            simulateEscapeKey();
+            t.equal(optionList.style.display, 'none', 'hides the list');
+            t.equal(firstOptionButton.style.backgroundColor, OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor,
+              'unselects the selected option');
+
+            t.end();
+          });
+
+          t.end();
+        });
+
         t.test('can be reset', function(t) {
           var optionHandler = createSpy();
           var newOptions = {
@@ -138,22 +182,6 @@
           var optionButtons = optionList.querySelectorAll('button');
           var optionButtonLabels = _.map(optionButtons, _.property('textContent'));
           t.deepEqual(optionButtonLabels, expectedOptionLabels, 'options are updated');
-
-          t.end();
-        });
-
-        t.test('keyboard navigation', function(t) {
-          t.test('pressing the down arrow', function(t) {
-            var optionButtons = optionList.querySelectorAll('button');
-
-            simulateKeyDown(toggleButton, 'ArrowDown');
-
-            t.equal(optionList.style.display, '', 'shows the list');
-            t.equal(optionButtons[0].style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor,
-              'renders the first option as selected');
-
-            t.end();
-          });
 
           t.end();
         });

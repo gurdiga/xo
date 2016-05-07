@@ -55,6 +55,7 @@
   function addEventListeners(toggleButton, optionList) {
     toggleButton.addEventListener('click', optionList.toggle);
     toggleButton.addEventListener('keydown', ifKey('ArrowDown', selectFirstOption));
+    toggleButton.addEventListener('keydown', ifKey('ArrowUp', selectLastOption));
     hideOnEscapeOrOutsideClick(optionList);
 
     addFocusEffect(toggleButton, {
@@ -64,6 +65,11 @@
     function selectFirstOption() {
       optionList.show();
       optionList.selectNext();
+    }
+
+    function selectLastOption() {
+      optionList.show();
+      optionList.selectPrevious();
     }
   }
 
