@@ -58,7 +58,7 @@
 
     this.executeSelectedOption = function() {
       if (selectedOptionIndex === undefined) {
-        throw new Error('OptionList#executeSelectedOption called before selecting an option');
+        return;
       }
 
       var option = domElement.children[selectedOptionIndex];

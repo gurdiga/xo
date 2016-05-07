@@ -127,12 +127,11 @@
 
       optionList.hide();
 
-      t.throws(function() {
+      try {
         optionList.executeSelectedOption();
-      },
-        /OptionList#executeSelectedOption called before selecting an option/,
-        'throws a meaningful error when no option is selected'
-      );
+      } catch (error) {
+        t.fail('doesn’t throw when no option is selected');
+      }
 
       t.end();
 
