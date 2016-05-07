@@ -74,6 +74,10 @@
     return function spy() {
       spy.calls = spy.calls || [];
       spy.calls.push({ args: _.toArray(arguments) });
+
+      spy.reset = function() {
+        spy.calls = [];
+      };
     };
   };
 
