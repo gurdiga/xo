@@ -54,20 +54,16 @@
 
   function addEventListeners(toggleButton, optionList) {
     toggleButton.addEventListener('click', optionList.toggle);
-    toggleButton.addEventListener('keydown', selectFirstOption);
+    toggleButton.addEventListener('keydown', ifKey('ArrowDown', selectFirstOption));
     hideOnEscapeOrOutsideClick(optionList);
 
     addFocusEffect(toggleButton, {
       boxShadow: 'rgb(181, 213, 255) 0px 0px 3px 2px'
     });
 
-    function selectFirstOption(e) {
-      if (e.code === 'ArrowDown') {
-        e.preventDefault();
-
-        optionList.show();
-        optionList.selectNext();
-      }
+    function selectFirstOption() {
+      optionList.show();
+      optionList.selectNext();
     }
   }
 
@@ -80,6 +76,7 @@
   var delegateTo = window.App.Utils.delegateTo;
   var addFocusEffect = window.App.Utils.addFocusEffect;
   var hideOnEscapeOrOutsideClick = window.App.Utils.hideOnEscapeOrOutsideClick;
+  var ifKey = window.App.Utils.ifKey;
 
   window.App.Widgets.DropdownButton = DropdownButton;
 

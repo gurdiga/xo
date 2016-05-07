@@ -7,10 +7,7 @@
 
     if (isDOMElement(thing)) thing = new HideableDOMElement(thing);
 
-    document.body.addEventListener('keydown', function(e) {
-      if (e.code === 'Escape') thing.hide();
-    });
-
+    document.body.addEventListener('keydown', ifKey('Escape', thing.hide));
     document.body.addEventListener('click', thing.hide);
   }
 
@@ -29,6 +26,7 @@
   }
 
   var assert = window.App.Utils.assert;
+  var ifKey = window.App.Utils.ifKey;
 
   window.App.Utils.hideOnEscapeOrOutsideClick = hideOnEscapeOrOutsideClick;
 
