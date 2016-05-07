@@ -118,6 +118,30 @@
       t.end();
     });
 
+    t.test('execute selected option', function(t) {
+      optionHandler1.reset();
+
+      selectFirstOption(optionList);
+      optionList.executeSelectedOption();
+      t.equal(optionHandler1.calls.length, 1, 'executes the handler for the selected option');
+
+      optionList.hide();
+
+      t.throws(function() {
+        optionList.executeSelectedOption();
+      },
+        /OptionList#executeSelectedOption called before selecting an option/,
+        'throws a meaningful error when no option is selected'
+      );
+
+      t.end();
+
+      function selectFirstOption(optionList) {
+        optionList.hide();
+        optionList.selectNext();
+      }
+    });
+
     t.test('resetting options', function(t) {
       var handlerA = createSpy();
       var handlerB = createSpy();

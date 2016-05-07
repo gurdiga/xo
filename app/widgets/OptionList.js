@@ -56,6 +56,15 @@
       selectOpton(getPreviousOptionIndex());
     };
 
+    this.executeSelectedOption = function() {
+      if (selectedOptionIndex === undefined) {
+        throw new Error('OptionList#executeSelectedOption called before selecting an option');
+      }
+
+      var option = domElement.children[selectedOptionIndex];
+      option.click();
+    };
+
     function isAnyOptionSelected() {
       return selectedOptionIndex !== undefined;
     }
