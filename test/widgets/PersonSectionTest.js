@@ -91,7 +91,7 @@
       t.end();
     });
 
-    t.test('can be removable', function(t) {
+    t.test('is removable', function(t) {
       personSection.makeRemovable(onRemoveCallback);
 
       var domElement = sandbox.firstChild;
@@ -109,10 +109,10 @@
           t.equal(css.opacity, '0', 'is initially hidden');
 
           domElement.dispatchEvent(new Event('mouseenter'));
-          t.equal(css.opacity, '0.3', 'is shyly displayed on mouseenter');
+          t.equal(css.opacity, '0.3', 'is shyly displayed on section mouseenter');
 
           domElement.dispatchEvent(new Event('mouseleave'));
-          t.equal(css.opacity, '0', 'fades out displayed on mouseleave');
+          t.equal(css.opacity, '0', 'fades out section on mouseleave');
 
           t.end();
         });
