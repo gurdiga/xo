@@ -39,6 +39,14 @@
       t.end();
     });
 
+    t.test('style', function(t) {
+      var style = domElement.style;
+
+      t.equal(style.marginTop, '10px', 'has enough space before to not look like part of the activity');
+
+      t.end();
+    });
+
     t.end();
   });
 
