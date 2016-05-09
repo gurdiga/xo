@@ -29,7 +29,10 @@
 
     t.test('add activity button', function(t) {
       var addActivityButton = domElement.querySelector('dropdown-button');
+
       var activityListContainer = addActivityButton.previousSibling;
+      t.equal(activityListContainer.getAttribute('name'), 'activity-list-container',
+        'activity list container is marked as such for inspectability');
 
       var toggleButton = addActivityButton.querySelector('button:first-child');
       t.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');

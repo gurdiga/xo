@@ -28,7 +28,12 @@
   }
 
   function createActivityListContainer() {
-    return createDOMElement('div');
+    var style = {};
+    var attributes = {
+      'name': 'activity-list-container'
+    };
+
+    return createDOMElement('div', style, attributes);
   }
 
   function createAddActivityButton(activityListContainer) {
