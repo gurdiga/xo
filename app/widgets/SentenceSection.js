@@ -29,6 +29,8 @@
       createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii', fieldValues),
       createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul', fieldValues),
       createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
+      // Poate de arătat mesaj de atenţionare dacă intentarea e prea tîrzie
+      // relativ la provederile articolelor 16 şi 17.
       createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive', fieldValues),
       createField(LabeledDateField, 'Data eliberării', 'data-eliberării', fieldValues)
     ];
