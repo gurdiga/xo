@@ -33,8 +33,8 @@
       t.deepEqual(activityAdder.calls[0].args, [activities[0]],
         'calls the activityAdder with the corresponding activity');
       t.equal(activityAdder.calls.length, 1, 'clicking an option calls the activityAdder once');
-      t.deepEqual(addActivityButton.getActivities(), InstitutionActivity.NEXT_STEP_OPTIONS,
-        'updates option list based on the selected option’s NEXT_STEP_OPTIONS');
+      t.deepEqual(addActivityButton.getActivities(), InstitutionActivity.NEXT_ACTIVITY_OPTIONS,
+        'updates option list based on the selected option’s NEXT_ACTIVITY_OPTIONS');
 
       t.end();
     });

@@ -28,12 +28,12 @@
       t.end();
     });
 
-    t.test('next steps', function(t) {
+    t.test('next activity options', function(t) {
       //
       // TODO: determine the options later.
       //
 
-      t.deepEqual(InstitutionActivity.NEXT_STEP_OPTIONS,
+      t.deepEqual(InstitutionActivity.NEXT_ACTIVITY_OPTIONS,
         [], 'are exposed');
 
       t.end();

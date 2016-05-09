@@ -49,7 +49,7 @@
 
   function getWrappedActivityAdder(originalActivityAdder, activities, activity) {
     return function() {
-      resetArray(activities, activity.constructor.NEXT_STEP_OPTIONS);
+      resetArray(activities, activity.constructor.NEXT_ACTIVITY_OPTIONS);
       originalActivityAdder(activity);
     };
   }
