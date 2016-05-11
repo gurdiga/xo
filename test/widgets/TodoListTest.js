@@ -8,7 +8,11 @@
 
     var domElement = sandbox.firstChild;
 
-    t.equal(domElement.tagName, 'UL', 'it’s an unordered list');
+    t.test('DOM structure', function(t) {
+      t.equal(domElement.tagName, 'UL', 'it’s an unordered list');
+
+      t.end();
+    });
 
     t.end();
   });
