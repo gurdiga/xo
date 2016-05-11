@@ -16,10 +16,11 @@
       t.equal(domElement.tagName, 'UL', 'it’s a <ul>');
 
       var itemElements = _.toArray(domElement.querySelectorAll('ul>li'));
-
       t.equal(itemElements.length, itemData.length, 'renders items as <li>s');
-      t.deepEqual(itemElements.map(_.property('textContent')), [itemData[0].text],
-        'items have the appropriate text');
+
+      var itemLabels = itemElements.map(_.property('textContent'));
+      var expectedItemLabels = itemData.map(_.property('text'));
+      t.deepEqual(itemLabels, expectedItemLabels, 'items have the appropriate text');
 
       t.end();
     });
