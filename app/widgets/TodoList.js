@@ -21,8 +21,31 @@
 
   function createItemElement(item) {
     var itemElement = createDOMElement('li');
-    itemElement.textContent = item.text;
+    var checkbox = createCheckbox();
+    var label = createLabel(item.text, checkbox);
+
+    itemElement.appendChild(label);
+
     return itemElement;
+  }
+
+  function createLabel(text, checkbox) {
+    var domElement = createDOMElement('label');
+    var textElement = document.createTextNode(text);
+
+    domElement.appendChild(checkbox);
+    domElement.appendChild(textElement);
+
+    return domElement;
+  }
+
+  function createCheckbox() {
+    var style = {};
+    var attributes = {
+      'type': 'checkbox'
+    };
+
+    return createDOMElement('input', style, attributes);
   }
 
   var createDOMElement = window.App.Utils.createDOMElement;

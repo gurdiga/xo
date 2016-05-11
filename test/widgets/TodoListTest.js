@@ -10,17 +10,17 @@
     todoList.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;
-    document.body.appendChild(sandbox);
 
     t.test('DOM structure', function(t) {
       t.equal(domElement.tagName, 'UL', 'it’s a <ul>');
 
-      var itemElements = _.toArray(domElement.querySelectorAll('ul>li'));
+      var itemElements = _.toArray(domElement.querySelectorAll('ul>li>label>input[type="checkbox"]'));
       t.equal(itemElements.length, itemData.length, 'renders items as <li>s');
 
-      var itemLabels = itemElements.map(_.property('textContent'));
+      var itemLabels = _.toArray(domElement.querySelectorAll('ul>li>label'));
+      var itemLabelTexts = itemLabels.map(_.property('textContent'));
       var expectedItemLabels = itemData.map(_.property('text'));
-      t.deepEqual(itemLabels, expectedItemLabels, 'items have the appropriate text');
+      t.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate text');
 
       t.end();
     });
