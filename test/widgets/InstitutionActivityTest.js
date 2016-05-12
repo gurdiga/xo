@@ -44,6 +44,9 @@
       t.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
         'has the appropriate “widget-name” attribute');
 
+      var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
+      t.ok(!!todoList, 'has the TODO list');
+
       var createWritButton = detailsSectionElement.querySelector('[widget-name="CreateWritButton"]');
       t.ok(!!createWritButton, 'has the button to creare the writ');
 

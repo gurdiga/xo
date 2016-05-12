@@ -7,6 +7,7 @@
     var activity = new Activity(
       'InstitutionActivity',
       descriptionText, [
+        new TodoList([]),
         new CreateWritButton()
       ]
     );
@@ -19,6 +20,7 @@
 
   var Activity = window.App.Widgets.Activity;
   var CreateWritButton = window.App.Widgets.CreateWritButton;
+  var TodoList = window.App.Widgets.TodoList;
 
   var delegateTo = window.App.Utils.delegateTo;
 
