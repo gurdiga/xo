@@ -10,7 +10,12 @@
   }
 
   function createElement() {
-    return createDOMElement('ul');
+    var style = {};
+    var attributes = {
+      'widget-name': 'TodoList'
+    };
+
+    return createDOMElement('ul', style, attributes);
   }
 
   function addItems(itemData, domElement) {

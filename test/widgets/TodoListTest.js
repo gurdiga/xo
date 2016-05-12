@@ -13,6 +13,7 @@
 
     t.test('DOM structure', function(t) {
       t.equal(domElement.tagName, 'UL', 'it’s a <ul>');
+      t.equal(domElement.getAttribute('widget-name'), 'TodoList', 'has the appropriate widget name');
 
       var itemElements = _.toArray(domElement.querySelectorAll('ul>li>label>input[type="checkbox"]'));
       t.equal(itemElements.length, itemData.length, 'renders items as <li>s');
