@@ -44,12 +44,8 @@
       t.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
         'has the appropriate “widget-name” attribute');
 
-      t.test('create writ button', function(t) {
-        var createWritButton = detailsSectionElement.firstChild;
-        t.equal(createWritButton.getAttribute('widget-name'), 'CreateWritButton',
-          'has the appropriate “widget-name” attribute');
-        t.end();
-      });
+      var createWritButton = detailsSectionElement.querySelector('[widget-name="CreateWritButton"]');
+      t.ok(!!createWritButton, 'has the button to creare the writ');
 
       t.end();
     });
