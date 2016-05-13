@@ -19,6 +19,8 @@
   }
 
   function addItems(itemData, domElement) {
+    assert(Array.isArray(itemData), 'TodoList expects first argument to be an array of objects');
+
     itemData.forEach(function(item) {
       domElement.appendChild(createItemElement(item));
     });
@@ -55,6 +57,7 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var assert = window.App.Utils.assert;
 
   window.App.Widgets.TodoList = TodoList;
 

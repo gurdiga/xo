@@ -8,6 +8,7 @@
     var todoList = new TodoList(itemData);
     var sandbox = createDOMElement('sandbox');
     todoList.appendTo(sandbox);
+    document.body.appendChild(sandbox); // TODO: remove when finished.
 
     var domElement = sandbox.firstChild;
 
@@ -22,6 +23,17 @@
       var itemLabelTexts = itemLabels.map(_.property('textContent'));
       var expectedItemLabels = itemData.map(_.property('text'));
       t.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate text');
+
+      t.end();
+    });
+
+    t.test('input validation', function(t) {
+      t.throws(function() {
+        new TodoList(42); // eslint-disable-line no-new
+      },
+        /TodoList expects first argument to be an array of objects/,
+        'throws a meaningful exception when itemData is not an array'
+      );
 
       t.end();
     });
