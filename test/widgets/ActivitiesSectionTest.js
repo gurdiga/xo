@@ -4,8 +4,9 @@
   tape.test('ActivitiesSection', function(t) {
     var sandbox = document.createElement('div');
 
+    var data = {};
     var additionalStyle = { color: 'red' };
-    var sentenceSubjectSection = new ActivitiesSection(additionalStyle);
+    var sentenceSubjectSection = new ActivitiesSection(data, additionalStyle);
     sentenceSubjectSection.appendTo(sandbox);
 
     var domElement = sandbox.firstChild;

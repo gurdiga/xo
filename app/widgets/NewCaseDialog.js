@@ -7,6 +7,9 @@
       'creditor': {},
       'debitori': [{
         'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
+      }],
+      'activities': [{
+        'institution': {}
       }]
     };
 
@@ -23,7 +26,7 @@
       createAddPersonButton(),
       createSentenceSection(),
       createInquirySection(),
-      createActivitiesSection(),
+      createActivitiesSection(data.activities),
       createCloseButton()
     ]).to(domElement);
 
@@ -125,12 +128,12 @@
       return new InquirySection(fieldValues, style);
     }
 
-    function createActivitiesSection() {
+    function createActivitiesSection(data) {
       var style = {
         marginRight: '60px'
       };
 
-      return new ActivitiesSection(style);
+      return new ActivitiesSection(data, style);
     }
 
     function createCloseButton() {

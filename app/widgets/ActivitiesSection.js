@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function ActivitiesSection(additionalStyle) {
+  function ActivitiesSection(data, additionalStyle) {
     var domElement = createElement(additionalStyle);
 
     var section = new Section('Acţiuni procedurale');
