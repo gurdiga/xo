@@ -10,7 +10,11 @@
   }
 
   function createElement() {
-    var style = {};
+    var style = {
+      'margin': '0px',
+      'padding': '0px'
+    };
+
     var attributes = {
       'widget-name': 'TodoList'
     };

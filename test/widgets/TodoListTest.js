@@ -8,7 +8,6 @@
     var todoList = new TodoList(itemData);
     var sandbox = createDOMElement('sandbox');
     todoList.appendTo(sandbox);
-    document.body.appendChild(sandbox); // TODO: remove when finished.
 
     var domElement = sandbox.firstChild;
 
@@ -34,6 +33,15 @@
         /TodoList expects first argument to be an array of objects/,
         'throws a meaningful exception when itemData is not an array'
       );
+
+      t.end();
+    });
+
+    t.test('style', function(t) {
+      var style = domElement.style;
+
+      t.equal(style.margin, '0px', 'has margin stripped off');
+      t.equal(style.padding, '0px', 'has padding stripped off');
 
       t.end();
     });
