@@ -1,35 +1,38 @@
-(function() {
+describe('delegateTo', function() {
   'use strict';
 
-  var delegateTo = window.App.Utils.delegateTo;
+  var date, dateWrapper;
 
-  tape('delegateTo', function(t) {
-    var date = new Date();
+  beforeEach(function() {
+    date = new Date();
     date.format = 'YY-MM-DD';
     date.falsyProperty = '';
 
-    var dateWrapper = {
+    dateWrapper = {
       toString: delegateTo(date, 'toString'),
       getFormat: delegateTo(date, 'format'),
       getFalsyProperty: delegateTo(date, 'falsyProperty')
     };
+  });
 
-    t.equal(dateWrapper.toString(), date.toString(), 'forwards calls to the other function');
-    t.equal(dateWrapper.getFormat(), date.format, 'forwards to properties');
-    t.equal(dateWrapper.getFalsyProperty(), date.falsyProperty, 'forwards to empty properties');
+  it('works', function() {
+    assert.equal(dateWrapper.toString(), date.toString(), 'forwards calls to the other function');
+    assert.equal(dateWrapper.getFormat(), date.format, 'forwards to properties');
+    assert.equal(dateWrapper.getFalsyProperty(), date.falsyProperty, 'forwards to empty properties');
+  });
 
+  it('throws a meaningful exception when the delegatee is missing', function() {
     var o = {
       toString: delegateTo(date, 'toSrtingWithATypo')
     };
 
-    try {
+    assert.throws(function() {
       o.toString();
-      t.fail('throws a meaningful exception when the delegatee is missing');
-    } catch (error) {
-      t.equal(error.message, 'delegateTo: the delegatee doesn’t exist');
-    }
-
-    t.end();
+    },
+      'delegateTo: the delegatee doesn’t exist'
+    );
   });
 
-}());
+  var delegateTo = window.App.Utils.delegateTo;
+
+});

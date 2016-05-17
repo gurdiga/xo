@@ -6,7 +6,13 @@
   "globals": {
     "console": false,
     "tape": false,
-    "_": false
+    "_": false,
+    "expect": false,
+    "assert": false,
+    "describe": false,
+    "it": false,
+    "beforeEach": false,
+    "afterEach": false
   },
   "rules": {
     "comma-dangle": 2,
