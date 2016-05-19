@@ -1,10 +1,10 @@
 describe('DateFormatting', function() {
   'use strict';
 
-  describe('DateFormatting.format', function() {
+  describe('.format', function() {
     var date, formattedDate;
 
-    beforeEach(function() {
+    before(function() {
       date = new Date(2015, 10, 7);
       formattedDate = DateFormatting.format(date, 'dd/mm/yyyy');
     });
@@ -29,10 +29,10 @@ describe('DateFormatting', function() {
     });
   });
 
-  describe('DateFormatting.parse', function() {
+  describe('.parse', function() {
     var date;
 
-    beforeEach(function() {
+    before(function() {
       date = DateFormatting.parse('2015-06-07', 'yyyy-mm-dd');
     });
 
