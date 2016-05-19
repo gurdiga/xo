@@ -33,7 +33,7 @@ describe('createDOMElement', function() {
     assert.throws(function callWithABadStyleArgument() {
       domElement = createDOMElement('thing', 42);
     },
-      /AssertionError: createDOMElement expects the second argument, style, to be a hash/,
+      /createDOMElement expects the second argument, style, to be a hash/,
       'validates the style argument');
 
     assert.throws(function callWithABadAttributesArgument() {
@@ -41,9 +41,12 @@ describe('createDOMElement', function() {
 
       domElement = createDOMElement('thing', goodStyle, 42);
     },
-      /AssertionError: createDOMElement expects the third argument, attributes, to be a hash/,
+      /createDOMElement expects the third argument, attributes, to be a hash/,
       'validates the style argument');
   });
 
   var createDOMElement = window.App.Utils.createDOMElement;
+
+  var assert = window.TestHelpers.assert;
+
 });

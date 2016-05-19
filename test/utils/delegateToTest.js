@@ -35,4 +35,6 @@ describe('delegateTo', function() {
 
   var delegateTo = window.App.Utils.delegateTo;
 
+  var assert = window.TestHelpers.assert;
+
 });

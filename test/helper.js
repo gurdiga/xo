@@ -81,6 +81,8 @@
     };
   };
 
+  window.TestHelpers.assert = window.chai.assert;
+
   var getLabel = window.TestHelpers.getLabel;
   var getTagName = window.TestHelpers.getTagName;
   var getDOMValue = window.TestHelpers.getDOMValue;

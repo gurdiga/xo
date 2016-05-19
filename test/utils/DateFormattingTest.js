@@ -71,4 +71,6 @@ describe('DateFormatting', function() {
 
   var DateFormatting = window.App.Utils.DateFormatting;
 
+  var assert = window.TestHelpers.assert;
+
 });

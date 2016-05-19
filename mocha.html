@@ -12,11 +12,8 @@
   <script src="lib/chai.js"></script>
 
   <script>
-		window.expect = chai.expect;
-		window.assert = chai.assert;
-
-		mocha.setup('bdd');
-		mocha.reporter(HTMLDotReporter);
+		window.mocha.setup('bdd');
+		window.mocha.reporter(HTMLDotReporter);
 	</script>
 
 	<script src="lib/moment.js"></script>
@@ -89,9 +86,9 @@
 	<script src="test/utils/addStyleTest.js"></script>
 
   <script>
-    mocha.checkLeaks();
-    mocha.globals([]);
-    mocha.run();
+    window.mocha.checkLeaks();
+    window.mocha.globals([]);
+    window.mocha.run();
   </script>
 </body>
 </html>

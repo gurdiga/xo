@@ -35,4 +35,6 @@ describe('addStyle', function() {
   var addStyle = window.App.Utils.addStyle;
   var createDOMElement = window.App.Utils.createDOMElement;
 
+  var assert = window.TestHelpers.assert;
+
 });
