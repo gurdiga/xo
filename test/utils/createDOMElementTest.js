@@ -1,27 +1,27 @@
-(function() {
+describe('createDOMElement', function() {
   'use strict';
 
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var test = tape;
+  var style, attributes, domElement;
 
-  test('createDOMElement', function(t) {
-    var style = {
+  beforeEach(function() {
+    style = {
       color: 'green'
     };
 
-    var attributes = {
+    attributes = {
       'widget-name': 'SpecialWidget'
     };
 
-    var domElement = createDOMElement('some-component', style, attributes);
-
-    t.ok(domElement instanceof HTMLElement, 'creates an HTMLElement');
-    t.equal(domElement.tagName, 'SOME-COMPONENT', 'the element has the appropriate tag name');
-    t.deepEqual(domElement.style.color, 'green', 'the element gets the passed in style attributes');
-    t.deepEqual(domElement.getAttribute('widget-name'), 'SpecialWidget',
-      'the element gets the passed in attributes');
-
-    t.end();
+    domElement = createDOMElement('some-component', style, attributes);
   });
 
-}());
+  it('works for the happy path', function() {
+    assert.ok(domElement instanceof HTMLElement, 'creates an HTMLElement');
+    assert.equal(domElement.tagName, 'SOME-COMPONENT', 'the element has the appropriate tag name');
+    assert.deepEqual(domElement.style.color, 'green', 'the element gets the passed in style attributes');
+    assert.deepEqual(domElement.getAttribute('widget-name'), 'SpecialWidget',
+      'the element gets the passed in attributes');
+  });
+
+  var createDOMElement = window.App.Utils.createDOMElement;
+});
