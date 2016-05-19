@@ -23,5 +23,27 @@ describe('createDOMElement', function() {
       'the element gets the passed in attributes');
   });
 
+  it('throws meaningful error messages', function() {
+    assert.throws(function callWithABadTagNameArgument() {
+      domElement = createDOMElement(42);
+    },
+      /createDOMElement expects the first argument, tagName, to be a DOM element/,
+      'validates the tag name');
+
+    assert.throws(function callWithABadStyleArgument() {
+      domElement = createDOMElement('thing', 42);
+    },
+      /AssertionError: createDOMElement expects the second argument, style, to be a hash/,
+      'validates the style argument');
+
+    assert.throws(function callWithABadAttributesArgument() {
+      var goodStyle = {};
+
+      domElement = createDOMElement('thing', goodStyle, 42);
+    },
+      /AssertionError: createDOMElement expects the third argument, attributes, to be a hash/,
+      'validates the style argument');
+  });
+
   var createDOMElement = window.App.Utils.createDOMElement;
 });
