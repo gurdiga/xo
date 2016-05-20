@@ -3,7 +3,7 @@ describe('makeRemovable', function() {
 
   var makeRemovable = window.App.Utils.makeRemovable;
 
-  var sandbox, domElement, additionalButtonStyle;
+  var sandbox, domElement, additionalButtonStyle, onRemove;
 
   before(function() {
     sandbox = document.createElement('div');
@@ -11,6 +11,8 @@ describe('makeRemovable', function() {
 
     domElement.style.color = 'green';
     sandbox.appendChild(domElement);
+
+    onRemove = window.TestHelpers.createSpy();
 
     additionalButtonStyle = {
       color: 'red',
@@ -60,38 +62,37 @@ describe('makeRemovable', function() {
 
     it('is shy', function() {
       assert.equal(css.opacity, '0.3', 'is shy');
+
       button.dispatchEvent(new Event('mouseenter'));
       assert.equal(css.opacity, '1', 'fades in on mouseenter');
+
       button.dispatchEvent(new Event('mouseleave'));
       assert.equal(css.opacity, '0.3', 'fades out on mouseleave');
     });
 
     it('works', function() {
       button.click();
-      assert.ok(!sandbox.querySelector('the-widget'), 'the dom element is removed from its parent DOM');
-      assert.ok(onRemove.executed, 'executes the onRemove callback');
+
+      assert(!sandbox.querySelector('the-widget'), 'the dom element is removed from its parent DOM');
+      assert.equal(onRemove.calls.length, 1, 'executes the onRemove callback');
     });
   });
 
   it('validates input', function() {
-    try {
+    assert.throws(function() {
       makeRemovable(42);
-      assert.fail('it shoud require first argument');
-    } catch (error) {
-      assert.equal(error.message, 'makeRemovable: the first argument is required to be a DOM element');
-    }
+    },
+      /makeRemovable: the first argument is required to be a DOM element/,
+      'throws a meaningful error message when the first argument is not a DOM element'
+    );
 
-    try {
+    assert.throws(function() {
       makeRemovable(domElement);
-      assert.fail('it shoud require second argument to be a function');
-    } catch (error) {
-      assert.equal(error.message, 'makeRemovable: the second argument is required to be a function to call back on remove');
-    }
+    },
+      /makeRemovable: the second argument is required to be a function to call back on remove/,
+      'it shoud require second argument to be a function'
+    );
   });
-
-  function onRemove() {
-    onRemove.executed = true;
-  }
 
   var assert = window.TestHelpers.assert;
 
