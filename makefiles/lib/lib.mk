@@ -51,11 +51,11 @@ node_modules/pikaday:
 lib/mocha.js: | node_modules/uglify-js lib
 	curl --progress-bar https://raw.githubusercontent.com/mochajs/mocha/v2.4.5/mocha.js | uglifyjs > $@
 
-lib/mocha.css: lib
+lib/mocha.css: | lib
 	curl --progress-bar https://raw.githubusercontent.com/mochajs/mocha/v2.4.5/mocha.css > $@
 
 lib/mocha-html-dot-reporter.js: | node_modules/uglify-js lib
 	curl --progress-bar https://raw.githubusercontent.com/gurdiga/mocha-html-dot-reporter/v0.1.2/index.js > $@
 
-lib/chai.js: lib
+lib/chai.js: | lib
 	curl --progress-bar https://raw.githubusercontent.com/chaijs/chai/3.5.0/chai.js | uglifyjs > $@
