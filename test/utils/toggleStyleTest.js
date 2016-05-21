@@ -1,14 +1,19 @@
-(function() {
+describe('toggleStyle', function() {
   'use strict';
 
-  tape('toggleStyle', function(t) {
-    var domElement = document.createElement('div');
-    var initialStyle = {
+  var toggleStyle = window.App.Utils.toggleStyle;
+  var domElement, initialStyle;
+
+  beforeEach(function() {
+    domElement = document.createElement('div');
+    initialStyle = {
       'borderColor': 'black'
     };
 
     addStyle(domElement, initialStyle);
+  });
 
+  it('works', function() {
     var style = {
       borderColor: 'blue'
     };
@@ -19,15 +24,14 @@
     toggleStyle(domElement, style, onEventName, offEventName);
 
     domElement.dispatchEvent(new Event(onEventName));
-    t.equal(domElement.style.borderColor, style.borderColor, 'applies the given style on the “on” event');
+    assert.equal(domElement.style.borderColor, style.borderColor, 'applies the given style on the “on” event');
 
     domElement.dispatchEvent(new Event(offEventName));
-    t.equal(domElement.style.borderColor, initialStyle.borderColor, 'returns the initial style on the “off” event');
-
-    t.end();
+    assert.equal(domElement.style.borderColor, initialStyle.borderColor, 'returns the initial style on the “off” event');
   });
 
-  var toggleStyle = window.App.Utils.toggleStyle;
   var addStyle = window.App.Utils.addStyle;
 
-}());
+  var assert = window.TestHelpers.assert;
+
+});
