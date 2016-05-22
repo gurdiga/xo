@@ -20,7 +20,12 @@ describe('makeTextUselectable', function() {
   });
 
   it('validates input', function() {
-    // TODO
+    assert.throws(function() {
+      makeTextUselectable(42);
+    },
+      /makeTextUselectable expects the argument to be a DOM element/,
+      'Throws a meaningful error when the argument is not a DOM element'
+    );
   });
 
   var assert = window.TestHelpers.assert;
