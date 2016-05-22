@@ -5,7 +5,7 @@ describe('addHoverEffect', function() {
 
   var domElement, initialStyle, hoverStyle;
 
-  beforeEach(function() {
+  before(function() {
     initialStyle = {
       'color': 'blue'
     };
@@ -31,7 +31,19 @@ describe('addHoverEffect', function() {
   });
 
   it('validates input', function() {
-    // TODO
+    assert.throws(function() {
+      addHoverEffect(42);
+    },
+      /addHoverEffect expects the first argument to be a DOM element/,
+      'Throws a meaningful error when the first argument is not a DOM element'
+    );
+
+    assert.throws(function() {
+      addHoverEffect(domElement, 42);
+    },
+      /addHoverEffect expects the second argument, style, to be a hash/,
+      'Throws a meaningful error when the second argument, style, is not a hash'
+    );
   });
 
   var createDOMElement = window.App.Utils.createDOMElement;
