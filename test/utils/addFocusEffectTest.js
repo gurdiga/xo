@@ -1,32 +1,36 @@
-(function() {
+describe('addFocusEffect', function() {
   'use strict';
 
-  tape('addFocusEffect', function(t) {
-    var initialStyle = {
+  var addFocusEffect = window.App.Utils.addFocusEffect;
+
+  var domElement, initialStyle, focusStyle;
+
+  beforeEach(function() {
+    initialStyle = {
       'color': 'blue'
     };
 
-    var focusStyle = {
+    focusStyle = {
       'color': 'red'
     };
 
-    var domElement = createDOMElement('button', initialStyle);
+    domElement = createDOMElement('button', initialStyle);
 
     addFocusEffect(domElement, focusStyle);
-
-    domElement.dispatchEvent(new Event('focus'));
-    t.equal(domElement.style.color, focusStyle.color, 'applies the given style on focus');
-
-    domElement.dispatchEvent(new Event('blur'));
-    t.equal(domElement.style.color, initialStyle.color, 'returns to the initial style on blur');
-
-    t.equal(domElement.hasAttribute('has-on-focus-effect'), true,
-      'marks the element as having on focus effect');
-
-    t.end();
   });
 
-  var addFocusEffect = window.App.Utils.addFocusEffect;
+  it('works', function() {
+    domElement.dispatchEvent(new Event('focus'));
+    assert.equal(domElement.style.color, focusStyle.color, 'applies the given style on focus');
+
+    domElement.dispatchEvent(new Event('blur'));
+    assert.equal(domElement.style.color, initialStyle.color, 'returns to the initial style on blur');
+
+    assert.equal(domElement.hasAttribute('has-on-focus-effect'), true,
+      'marks the element as having on focus effect');
+  });
+
   var createDOMElement = window.App.Utils.createDOMElement;
 
-}());
+  var assert = window.TestHelpers.assert;
+});
