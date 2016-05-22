@@ -17,7 +17,7 @@ describe('createDOMElement', function() {
     });
 
     it('works', function() {
-      assert.ok(domElement instanceof HTMLElement, 'creates an HTMLElement');
+      assert(domElement instanceof HTMLElement, 'creates an HTMLElement');
       assert.equal(domElement.tagName, 'SOME-COMPONENT', 'the element has the appropriate tag name');
       assert.deepEqual(domElement.style.color, 'green', 'the element gets the passed in style attributes');
       assert.deepEqual(domElement.getAttribute('widget-name'), 'SpecialWidget',
