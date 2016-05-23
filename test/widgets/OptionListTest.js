@@ -1,172 +1,156 @@
-(function() {
+describe('OptionList', function() {
   'use strict';
 
-  tape('OptionList', function(t) {
-    var sandbox = document.createElement('div');
+  var OptionList = window.App.Widgets.OptionList;
 
-    var optionHandler1 = createSpy();
-    var optionHandler2 = createSpy();
-    var options = {
+  var sandbox, optionHandler1, optionHandler2, options, optionList, domElement, optionButton1, optionButton2;
+  var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor;
+  var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor;
+
+  before(function() {
+    sandbox = document.createElement('div');
+
+    optionHandler1 = createSpy();
+    optionHandler2 = createSpy();
+    options = {
       'label1': optionHandler1,
       'label2': optionHandler2
     };
 
-    var optionList = new OptionList(options);
-
+    optionList = new OptionList(options);
     optionList.appendTo(sandbox);
 
-    var domElement = sandbox.firstChild;
-    var optionButton1 = domElement.children[0];
-    var optionButton2 = domElement.children[1];
-
-    var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor;
-    var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor;
-
-    t.test('DOM structure', function(t) {
-      t.equal(domElement.getAttribute('widget-name'), 'OptionList', 'has the appropriate widget name');
-
-      var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
-      t.deepEqual(optionLabels, Object.keys(options), 'option buttons have the expected labels');
-
-      t.end();
-    });
-
-    t.test('style', function(t) {
-      var style = domElement.style;
-
-      t.equal(style.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
-      t.equal(style.backgroundColor, 'white', 'has white background');
-      t.equal(style.position, 'absolute', 'is absolutely positioned');
-      t.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
-
-      t.test('option buttons', function(t) {
-        var style = optionButton1.style;
-
-        t.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
-        t.equal(style.borderWidth, '0px', 'removes the border off option buttons');
-        t.equal(style.backgroundColor, 'transparent', 'inherits the background from the container');
-        t.equal(style.width, '100%', 'makes buttons 100% wide');
-        t.equal(style.textAlign, 'left', 'aligns button labels left');
-        t.equal(style.fontSize, '13px', 'has a nice large font size');
-
-        optionButton1.dispatchEvent(new Event('mouseenter'));
-        t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-          'options backgroun change to gray on mouseenter');
-
-        optionButton1.dispatchEvent(new Event('mouseleave'));
-        t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-          'options backgroun change back to normal on on mouseleave');
-
-        t.end();
-      });
-
-      t.end();
-    });
-
-    t.test('behavior', function(t) {
-      optionButton1.click();
-      optionButton1.click();
-      t.deepEqual(optionHandler1.calls.length, 2, 'clicking on an option calls its corresponding handler');
-
-      optionButton2.click();
-      t.deepEqual(optionHandler2.calls.length, 1, 'clicking on an option calls its corresponding handler');
-
-      t.end();
-    });
-
-    t.test('selecting previous and next', function(t) {
-      optionList.selectNext();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'selectNext selects the first option initially');
-
-      optionList.selectNext();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'selectNext selects the option next to the currently selected one');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'selectNext selects the option next to the currently selected one');
-
-      optionList.selectNext();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'when the last option is selected selectNext goes around to the first');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'when the last option is selected selectNext unselects it');
-
-      optionList.selectPrevious();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'when the first option is selected selectPrevious unselects it');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'when the first option is selected selectPrevious goess around to the last');
-
-      optionList.selectPrevious();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'selectPrevious selects the option that is above the currently selected one');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'selectPrevious unselects the option that was selected');
-
-      optionList.hide();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'hiding the list unselects all the options');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'hiding the list unselects all the options');
-
-      optionList.selectNext();
-      t.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
-        'hiding resets the selectedOptionIndex');
-      t.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
-        'hiding resets the selectedOptionIndex');
-
-      t.end();
-    });
-
-    t.test('execute selected option', function(t) {
-      optionHandler1.reset();
-
-      selectFirstOption(optionList);
-      optionList.executeSelectedOption();
-      t.equal(optionHandler1.calls.length, 1, 'executes the handler for the selected option');
-
-      optionList.hide();
-
-      try {
-        optionList.executeSelectedOption();
-      } catch (error) {
-        t.fail('doesn’t throw when no option is selected');
-      }
-
-      t.end();
-
-      function selectFirstOption(optionList) {
-        optionList.hide();
-        optionList.selectNext();
-      }
-    });
-
-    t.test('resetting options', function(t) {
-      var handlerA = createSpy();
-      var handlerB = createSpy();
-      var newOptions = {
-        'labelA': handlerA,
-        'labelB': handlerB
-      };
-
-      optionList.setOptions(newOptions);
-
-      var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
-      t.deepEqual(optionLabels, Object.keys(newOptions), 'option buttons have the expected labels');
-
-      var optionA = domElement.children[0];
-      optionA.click();
-      optionA.click();
-      t.deepEqual(handlerA.calls.length, 2, 'clicking on an option calls its corresponding handler');
-
-      t.end();
-    });
-
-    t.end();
+    domElement = sandbox.firstChild;
+    optionButton1 = domElement.children[0];
+    optionButton2 = domElement.children[1];
   });
 
-  var OptionList = window.App.Widgets.OptionList;
+  it('has the appropriate DOM structure', function() {
+    assert.equal(domElement.getAttribute('widget-name'), 'OptionList', 'has the appropriate widget name');
+
+    var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
+    assert.deepEqual(optionLabels, Object.keys(options), 'option buttons have the expected labels');
+  });
+
+  it('is styled appropriately', function() {
+    var style = domElement.style;
+
+    assert.equal(style.marginLeft, '10px', 'shifts the option list a bit inside to suggest containment');
+    assert.equal(style.backgroundColor, 'white', 'has white background');
+    assert.equal(style.position, 'absolute', 'is absolutely positioned');
+    assert.equal(style.boxShadow, 'rgba(0, 0, 0, 0.298039) 1px 1px 3px', 'has a nice shadow');
+  });
+
+  it('has the option buttons styled appropriately', function() {
+    var style = optionButton1.style;
+
+    assert.equal(style.padding, '5px 10px', 'has nice padding to increase clickable area');
+    assert.equal(style.borderWidth, '0px', 'removes the border off option buttons');
+    assert.equal(style.backgroundColor, 'transparent', 'inherits the background from the container');
+    assert.equal(style.width, '100%', 'makes buttons 100% wide');
+    assert.equal(style.textAlign, 'left', 'aligns button labels left');
+    assert.equal(style.fontSize, '13px', 'has a nice large font size');
+
+    optionButton1.dispatchEvent(new Event('mouseenter'));
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'options backgroun change to gray on mouseenter');
+
+    optionButton1.dispatchEvent(new Event('mouseleave'));
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'options backgroun change back to normal on on mouseleave');
+  });
+
+  it('works', function() {
+    optionButton1.click();
+    optionButton1.click();
+    assert.deepEqual(optionHandler1.calls.length, 2, 'clicking on an option calls its corresponding handler');
+
+    optionButton2.click();
+    assert.deepEqual(optionHandler2.calls.length, 1, 'clicking on an option calls its corresponding handler');
+  });
+
+  it('accepts commands to select the previous and next option', function() {
+    optionList.selectNext();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'selectNext selects the first option initially');
+
+    optionList.selectNext();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'selectNext selects the option next to the currently selected one');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'selectNext selects the option next to the currently selected one');
+
+    optionList.selectNext();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'when the last option is selected selectNext goes around to the first');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'when the last option is selected selectNext unselects it');
+
+    optionList.selectPrevious();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'when the first option is selected selectPrevious unselects it');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'when the first option is selected selectPrevious goess around to the last');
+
+    optionList.selectPrevious();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'selectPrevious selects the option that is above the currently selected one');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'selectPrevious unselects the option that was selected');
+
+    optionList.hide();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'hiding the list unselects all the options');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'hiding the list unselects all the options');
+
+    optionList.selectNext();
+    assert.equal(optionButton1.style.backgroundColor, OPTION_BUTTON_HOVER_BACKGROUND,
+      'hiding resets the selectedOptionIndex');
+    assert.equal(optionButton2.style.backgroundColor, OPTION_BUTTON_INITIAL_BACKGROUND,
+      'hiding resets the selectedOptionIndex');
+  });
+
+  it('executes the selected option', function() {
+    optionHandler1.reset();
+
+    selectFirstOption(optionList);
+    optionList.executeSelectedOption();
+    assert.equal(optionHandler1.calls.length, 1, 'executes the handler for the selected option');
+
+    optionList.hide();
+
+    assert.doesNotThrow(function() {
+      optionList.executeSelectedOption();
+    },
+      'doesn’t throw when no option is selected'
+    );
+  });
+
+  it('accepts to reset its options', function() {
+    var handlerA = createSpy();
+    var handlerB = createSpy();
+    var newOptions = {
+      'labelA': handlerA,
+      'labelB': handlerB
+    };
+
+    optionList.setOptions(newOptions);
+
+    var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
+    assert.deepEqual(optionLabels, Object.keys(newOptions), 'option buttons have the expected labels');
+
+    var optionA = domElement.children[0];
+    optionA.click();
+    optionA.click();
+    assert.deepEqual(handlerA.calls.length, 2, 'clicking on an option calls its corresponding handler');
+  });
+
+  function selectFirstOption(optionList) {
+    optionList.hide();
+    optionList.selectNext();
+  }
 
   var createSpy = window.TestHelpers.createSpy;
-
-}());
+  var assert = window.TestHelpers.assert;
+});

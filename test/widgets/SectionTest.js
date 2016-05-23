@@ -1,80 +1,73 @@
-(function() {
+describe('Section', function() {
   'use strict';
 
   var Section = window.App.Widgets.Section;
 
-  var sandbox = document.createElement('div');
-  var labelText = 'My section';
-  var additionalStyle = { width: '400px' };
-  var content = document.createElement('p');
-  content.textContent = 'section content';
+  var sandbox, labelText, additionalStyle, content, section, fieldset, legend;
 
-  var section = new Section(labelText, [content], additionalStyle);
-  section.appendTo(sandbox);
+  beforeEach(function() {
+    sandbox = document.createElement('div');
+    labelText = 'My section';
+    additionalStyle = { width: '400px' };
+    content = document.createElement('p');
+    content.textContent = 'section content';
 
-  var fieldset = sandbox.firstChild;
-  var legend = fieldset.firstChild;
+    section = new Section(labelText, [content], additionalStyle);
+    section.appendTo(sandbox);
 
-  tape('Section', function(t) {
-    t.test('structure', function(t) {
-      t.equal(fieldset.tagName, 'FIELDSET', 'has the approrpiate tag name');
-      t.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
-
-      t.equal(legend.tagName, 'LEGEND', 'legend is rendered');
-      t.equal(legend.textContent, labelText, 'legend has the text given in the “label” attribute');
-
-      var content = fieldset.querySelector('p');
-      t.equal(content.textContent, 'section content', 'renders its children as children of the <fieldset>');
-
-      t.end();
-    });
-
-    t.test('widget-name attribute', function(t) {
-      t.equal(fieldset.getAttribute('widget-name'), 'Section', 'is “Section” by default');
-
-      var widgetName = 'SpecialSection';
-      var section = new Section(labelText, [], additionalStyle, widgetName);
-      var sandbox = document.createElement('div');
-      section.appendTo(sandbox);
-
-      var domElement = sandbox.firstChild;
-      t.equal(domElement.getAttribute('widget-name'), widgetName, 'accepts a widget name as the 4th argument');
-
-      t.end();
-    });
-
-    t.test('fieldset syle', function(t) {
-      var css = fieldset.style;
-
-      t.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
-      t.equal(css.margin, '0px', 'no outer spacing');
-      t.equal(css.borderWidth, '0px', 'explicitly removing fieldset border');
-      t.equal(css.paddingLeft, '5px', 'reset fieldset’s default left padding');
-      t.equal(css.paddingRight, '0px', 'remove fieldset’s default right padding');
-      t.equal(css.paddingTop, '10px', 'has some vertical padding to allow some space between the legend and the content');
-      t.equal(css.paddingBottom, '40px', 'keep some space at the bottom');
-
-      t.end();
-    });
-
-    t.test('legend style', function(t) {
-      var css = legend.style;
-
-      t.equal(css.color, 'white', 'has inverted font and background colors to stand out');
-      t.equal(css.backgroundColor, 'rgb(51, 51, 51)', 'background color is not full black because it’s too strong');
-      t.equal(css.fontWeight, 'bold', 'text is bold to stand out on the dark background');
-      t.equal(css.fontSize, '22px', 'text is big enough to stand out');
-      t.equal(css.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
-      t.equal(css.marginLeft, '-5px', 'align with fieldset’s border');
-      t.equal(css.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
-      t.equal(css.paddingBottom, '8px', 'mirror the top  padding');
-      t.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
-      t.equal(css.paddingRight, '0px', 'no need for right padding');
-
-      t.end();
-    });
-
-    t.end();
+    fieldset = sandbox.firstChild;
+    legend = fieldset.firstChild;
   });
 
-}());
+  it('has the approrpiate DOM structure', function() {
+    assert.equal(fieldset.tagName, 'FIELDSET', 'has the approrpiate tag name');
+    assert.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
+
+    assert.equal(legend.tagName, 'LEGEND', 'legend is rendered');
+    assert.equal(legend.textContent, labelText, 'legend has the text given in the “label” attribute');
+
+    var content = fieldset.querySelector('p');
+    assert.equal(content.textContent, 'section content', 'renders its children as children of the <fieldset>');
+  });
+
+  it('accepts a custom widget name', function() {
+    assert.equal(fieldset.getAttribute('widget-name'), 'Section', 'is “Section” by default');
+
+    var widgetName = 'SpecialSection';
+    var section = new Section(labelText, [], additionalStyle, widgetName);
+    var sandbox = document.createElement('div');
+    section.appendTo(sandbox);
+
+    var domElement = sandbox.firstChild;
+    assert.equal(domElement.getAttribute('widget-name'), widgetName, 'accepts a widget name as the 4th argument');
+  });
+
+  it('has its fieldset styled', function() {
+    var css = fieldset.style;
+
+    assert.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
+    assert.equal(css.margin, '0px', 'no outer spacing');
+    assert.equal(css.borderWidth, '0px', 'explicitly removing fieldset border');
+    assert.equal(css.paddingLeft, '5px', 'reset fieldset’s default left padding');
+    assert.equal(css.paddingRight, '0px', 'remove fieldset’s default right padding');
+    assert.equal(css.paddingTop, '10px', 'has some vertical padding to allow some space between the legend and the content');
+    assert.equal(css.paddingBottom, '40px', 'keep some space at the bottom');
+  });
+
+  it('has its legend styled', function() {
+    var css = legend.style;
+
+    assert.equal(css.color, 'white', 'has inverted font and background colors to stand out');
+    assert.equal(css.backgroundColor, 'rgb(51, 51, 51)', 'background color is not full black because it’s too strong');
+    assert.equal(css.fontWeight, 'bold', 'text is bold to stand out on the dark background');
+    assert.equal(css.fontSize, '22px', 'text is big enough to stand out');
+    assert.equal(css.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
+    assert.equal(css.marginLeft, '-5px', 'align with fieldset’s border');
+    assert.equal(css.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
+    assert.equal(css.paddingBottom, '8px', 'mirror the top  padding');
+    assert.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
+    assert.equal(css.paddingRight, '0px', 'no need for right padding');
+  });
+
+  var assert = window.TestHelpers.assert;
+});
