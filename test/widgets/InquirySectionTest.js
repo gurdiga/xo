@@ -1,88 +1,75 @@
-(function() {
+describe('InquirySection', function() {
   'use strict';
 
   var InquirySection = window.App.Widgets.InquirySection;
 
-  var fieldValues = {
-    'numărul-de-înregistrare': '12-3/ABC',
-    'data-depunerii': '03.03.2016'
-  };
+  var fieldValues, additionalStyle, inquirySection, sandbox, domElement;
 
-  var additionalStyle = {
-    marginLeft: '30px'
-  };
+  before(function() {
+    fieldValues = {
+      'numărul-de-înregistrare': '12-3/ABC',
+      'data-depunerii': '03.03.2016'
+    };
 
-  var inquirySection = new InquirySection(fieldValues, additionalStyle);
+    additionalStyle = {
+      marginLeft: '30px'
+    };
 
-  tape('InquirySection', function(t) {
-    var sandbox = document.createElement('div');
+    inquirySection = new InquirySection(fieldValues, additionalStyle);
+    sandbox = document.createElement('div');
     inquirySection.appendTo(sandbox);
+    domElement = sandbox.firstChild;
+  });
 
-    var domElement = sandbox.firstChild;
+  it('has the appropriate DOM structure', function() {
+    assert.equal(domElement.tagName, 'INQUIRY-SECTION', 'has the appropriate tag name');
+  });
 
-    t.test('structure', function(t) {
-      t.equal(domElement.tagName, 'INQUIRY-SECTION', 'has the appropriate tag name');
+  it('accepts additional style', function() {
+    var css = domElement.style;
+    assert.equal(css.marginLeft, additionalStyle.marginLeft, 'is applied');
+  });
 
-      t.end();
+  it('has the appropriate label', function() {
+    var label = domElement.querySelector('fieldset>legend');
+
+    assert.equal(label.tagName, 'LEGEND', 'has the appropriate tag name');
+    assert.equal(label.textContent, 'Cerere de intentare', 'has the appropriate text');
+  });
+
+  describe('field', function() {
+    var fieldset, fields;
+
+    before(function() {
+      fieldset = domElement.firstChild;
+      fields = fieldset.querySelectorAll('fieldset>:not(legend)');
     });
 
-    t.test('additional style', function(t) {
-      var css = domElement.style;
+    it('has a field for the inquiry registration #', function() {
+      var inquiryRegistrationNo = fields[0];
 
-      t.equal(css.marginLeft, additionalStyle.marginLeft, 'is applied');
-
-      t.end();
+      assert.equal(inquiryRegistrationNo.tagName, 'LABELED-TEXT-FIELD', 'is a labeled text field');
+      assert.equal(inquiryRegistrationNo.textContent, 'Numărul de înregistrare',
+        'has the appropriate label');
+      assert.equal(getDOMValue(inquiryRegistrationNo), fieldValues['numărul-de-înregistrare'],
+        'is prefilled with the appropriate value');
     });
 
-    t.test('label', function(t) {
-      var label = domElement.querySelector('fieldset>legend');
+    it('has a field for the inquiry date', function() {
+      var inquiryDate = fields[1];
 
-      t.equal(label.tagName, 'LEGEND', 'has the appropriate tag name');
-      t.equal(label.textContent, 'Cerere de intentare', 'has the appropriate text');
-
-      t.end();
+      assert.ok(inquiryDate.tagName, 'LABELED-DATE-FIELD', 'is a labeled date field');
+      assert.equal(inquiryDate.textContent, 'Data depunerii cererii',
+        'has the appropriate label');
+      assert.equal(getDOMValue(inquiryDate), fieldValues['data-depunerii'],
+        'is prefilled with the appropriate value');
     });
+  });
 
-    t.test('fields', function(t) {
-      var fieldset = domElement.firstChild;
-      var fields = fieldset.querySelectorAll('fieldset>:not(legend)');
-
-      t.test('inquiry registration #', function(t) {
-        var inquiryRegistrationNo = fields[0];
-
-        t.equal(inquiryRegistrationNo.tagName, 'LABELED-TEXT-FIELD', 'is a labeled text field');
-        t.equal(inquiryRegistrationNo.textContent, 'Numărul de înregistrare',
-          'has the appropriate label');
-        t.equal(getDOMValue(inquiryRegistrationNo), fieldValues['numărul-de-înregistrare'],
-          'is prefilled with the appropriate value');
-
-        t.end();
-      });
-
-      t.test('inquiry date', function(t) {
-        var inquiryDate = fields[1];
-
-        t.ok(inquiryDate.tagName, 'LABELED-DATE-FIELD', 'is a labeled date field');
-        t.equal(inquiryDate.textContent, 'Data depunerii cererii',
-          'has the appropriate label');
-        t.equal(getDOMValue(inquiryDate), fieldValues['data-depunerii'],
-          'is prefilled with the appropriate value');
-
-        t.end();
-      });
-
-      t.test('getValue', function(t) {
-        t.deepEqual(inquirySection.getValue(), fieldValues, 'returns the appropriate value');
-
-        t.end();
-      });
-
-      t.end();
-    });
-
-    t.end();
+  it('can tell its value', function() {
+    assert.deepEqual(inquirySection.getValue(), fieldValues, 'returns the appropriate value');
   });
 
   var getDOMValue = window.TestHelpers.getDOMValue;
-
-}());
+  var assert = window.TestHelpers.assert;
+});
