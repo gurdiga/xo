@@ -1,136 +1,132 @@
-(function() {
+describe('SentenceSection', function() {
   'use strict';
 
   var SentenceSection = window.App.Widgets.SentenceSection;
 
-  var fieldValues = {
-    'instanţa-de-judecată': 'Curtea de Apel Chişinău',
-    'numărul-hotărîrii': '2-4765/12',
-    'data-hotărîrii': '09.01.2013',
-    'dispozitivul': 'De făcut cutare şi cutare.',
-    'obiectul-urmăririi': 'instalarea',
-    'data-rămînerii-definitive': '10.01.2013',
-    'data-eliberării': '11.01.2013'
-  };
-  var additionalStyles = {
-    width: '380px',
-    marginRight: '60px'
-  };
+  var fieldValues, additionalStyles, sentenceSection, sandbox, domElement;
 
-  var sentenceSection = new SentenceSection(fieldValues, additionalStyles);
+  before(function() {
+    fieldValues = {
+      'instanţa-de-judecată': 'Curtea de Apel Chişinău',
+      'numărul-hotărîrii': '2-4765/12',
+      'data-hotărîrii': '09.01.2013',
+      'dispozitivul': 'De făcut cutare şi cutare.',
+      'obiectul-urmăririi': 'instalarea',
+      'data-rămînerii-definitive': '10.01.2013',
+      'data-eliberării': '11.01.2013'
+    };
+    additionalStyles = {
+      width: '380px',
+      marginRight: '60px'
+    };
 
-  var sandbox = document.createElement('div');
-  sentenceSection.appendTo(sandbox);
+    sentenceSection = new SentenceSection(fieldValues, additionalStyles);
 
-  tape('SentenceSection', function(t) {
-    var domElement = sandbox.firstChild;
+    sandbox = document.createElement('div');
+    sentenceSection.appendTo(sandbox);
+    domElement = sandbox.firstChild;
+  });
+
+  it('has the appropriate DOM structure', function() {
     var css = domElement.style;
-    t.equal(css.display, 'inline-block', 'has display inline-block');
+    assert.equal(css.display, 'inline-block', 'has display inline-block');
 
     var labelText = domElement.querySelector('legend').textContent;
-    t.equal(labelText, 'Document executoriu', 'section has the appropriate label');
+    assert.equal(labelText, 'Document executoriu', 'section has the appropriate label');
+  });
 
-    t.test('fields', function(t) {
-      var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
+  it('has the appropriate fields', function() {
+    var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
 
-      var courtField = fieldElements[0];
-      t.equal(courtField.tagName, 'LABELED-SELECT-FIELD', 'the first field is a labeled-select-field');
-      t.equal(getLabel(courtField), 'Instanţa de judecată', 'the first field is “Instanţa de judecată”');
-      t.equal(getDOMValue(courtField), fieldValues['instanţa-de-judecată'],
-        'the “Instanţa de judecată” field has preselected the given option');
+    var courtField = fieldElements[0];
+    assert.equal(courtField.tagName, 'LABELED-SELECT-FIELD', 'the first field is a labeled-select-field');
+    assert.equal(getLabel(courtField), 'Instanţa de judecată', 'the first field is “Instanţa de judecată”');
+    assert.equal(getDOMValue(courtField), fieldValues['instanţa-de-judecată'],
+      'the “Instanţa de judecată” field has preselected the given option');
 
-      var sentenceNumberField = fieldElements[1];
-      t.equal(sentenceNumberField.tagName, 'LABELED-TEXT-FIELD', 'the second field is a labeled-text-field');
-      t.equal(getLabel(sentenceNumberField), 'Numărul hotărîrii', 'the second field is “Numărul hotărîrii”');
-      t.equal(getDOMValue(sentenceNumberField), fieldValues['numărul-hotărîrii'],
-        'the “Numărul hotărîrii” field is prefilled with the given value');
+    var sentenceNumberField = fieldElements[1];
+    assert.equal(sentenceNumberField.tagName, 'LABELED-TEXT-FIELD', 'the second field is a labeled-text-field');
+    assert.equal(getLabel(sentenceNumberField), 'Numărul hotărîrii', 'the second field is “Numărul hotărîrii”');
+    assert.equal(getDOMValue(sentenceNumberField), fieldValues['numărul-hotărîrii'],
+      'the “Numărul hotărîrii” field is prefilled with the given value');
 
-      var sentenceDateField = fieldElements[2];
-      t.equal(sentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the third field is a labeled-date-field');
-      t.equal(getLabel(sentenceDateField), 'Data hotărîrii', 'the third field is “Data hotărîrii”');
-      t.equal(getDOMValue(sentenceDateField), fieldValues['data-hotărîrii'],
-        'the “Data hotărîrii” field is prefilled with the given value');
+    var sentenceDateField = fieldElements[2];
+    assert.equal(sentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the third field is a labeled-date-field');
+    assert.equal(getLabel(sentenceDateField), 'Data hotărîrii', 'the third field is “Data hotărîrii”');
+    assert.equal(getDOMValue(sentenceDateField), fieldValues['data-hotărîrii'],
+      'the “Data hotărîrii” field is prefilled with the given value');
 
-      var conclusionField = fieldElements[3];
-      t.equal(conclusionField.tagName, 'LABELED-LARGE-TEXT-FIELD', 'the fourth field is a labeled-large-text-field');
-      t.equal(getLabel(conclusionField), 'Dispozitivul',
-        'the fourth field is “Dispozitivul”');
-      t.equal(getDOMValue(conclusionField), fieldValues['dispozitivul'],
-        'the “Dispozitivul” field is prefilled with the given value');
+    var conclusionField = fieldElements[3];
+    assert.equal(conclusionField.tagName, 'LABELED-LARGE-TEXT-FIELD', 'the fourth field is a labeled-large-text-field');
+    assert.equal(getLabel(conclusionField), 'Dispozitivul',
+      'the fourth field is “Dispozitivul”');
+    assert.equal(getDOMValue(conclusionField), fieldValues['dispozitivul'],
+      'the “Dispozitivul” field is prefilled with the given value');
 
-      var caseSubjectField = fieldElements[4];
-      t.equal(caseSubjectField.tagName, 'LABELED-SELECT-FIELD', 'the fifth field is a labeled-select-field');
-      t.equal(getLabel(caseSubjectField), 'Obiectul urmăririi',
-        'the fifth field is “Obiectul urmăririi”');
-      t.equal(getDOMValue(caseSubjectField), fieldValues['obiectul-urmăririi'],
-        'the “Obiectul urmăririi” field is prefilled with the given value');
+    var caseSubjectField = fieldElements[4];
+    assert.equal(caseSubjectField.tagName, 'LABELED-SELECT-FIELD', 'the fifth field is a labeled-select-field');
+    assert.equal(getLabel(caseSubjectField), 'Obiectul urmăririi',
+      'the fifth field is “Obiectul urmăririi”');
+    assert.equal(getDOMValue(caseSubjectField), fieldValues['obiectul-urmăririi'],
+      'the “Obiectul urmăririi” field is prefilled with the given value');
 
-      var finalSentenceDateField = fieldElements[5];
-      t.equal(finalSentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the sixth field is a labeled-date-field');
-      t.equal(getLabel(finalSentenceDateField), 'Data rămînerii definitive',
-        'the sixth field is “Data rămînerii definitive”');
-      t.equal(getDOMValue(finalSentenceDateField), fieldValues['data-rămînerii-definitive'],
-        'the “Data rămînerii definitive” field is prefilled with the given value');
+    var finalSentenceDateField = fieldElements[5];
+    assert.equal(finalSentenceDateField.tagName, 'LABELED-DATE-FIELD', 'the sixth field is a labeled-date-field');
+    assert.equal(getLabel(finalSentenceDateField), 'Data rămînerii definitive',
+      'the sixth field is “Data rămînerii definitive”');
+    assert.equal(getDOMValue(finalSentenceDateField), fieldValues['data-rămînerii-definitive'],
+      'the “Data rămînerii definitive” field is prefilled with the given value');
 
-      var releaseDateField = fieldElements[6];
-      t.equal(releaseDateField.tagName, 'LABELED-DATE-FIELD', 'the seventh field is a labeled-date-field');
-      t.equal(getLabel(releaseDateField), 'Data eliberării',
-        'the sixth field is “Data eliberării”');
-      t.equal(getDOMValue(releaseDateField), fieldValues['data-eliberării'],
-        'the “Data eliberării” field is prefilled with the given value');
+    var releaseDateField = fieldElements[6];
+    assert.equal(releaseDateField.tagName, 'LABELED-DATE-FIELD', 'the seventh field is a labeled-date-field');
+    assert.equal(getLabel(releaseDateField), 'Data eliberării',
+      'the sixth field is “Data eliberării”');
+    assert.equal(getDOMValue(releaseDateField), fieldValues['data-eliberării'],
+      'the “Data eliberării” field is prefilled with the given value');
+  });
 
-      t.end();
-    });
+  it('accepts additional style', function() {
+    var css = domElement.style;
+    assert.equal(css.width, additionalStyles.width, 'accepts additional style: width');
+    assert.equal(css.marginRight, additionalStyles.marginRight, 'accepts additional style: marginRight');
+  });
 
-    t.test('additional style', function(t) {
-      var css = domElement.style;
-      t.equal(css.width, additionalStyles.width, 'accepts additional style: width');
-      t.equal(css.marginRight, additionalStyles.marginRight, 'accepts additional style: marginRight');
+  it('can tell its value', function() {
+    var value = sentenceSection.getValue();
 
-      t.end();
-    });
-
-    t.test('getValue', function(t) {
-      var value = sentenceSection.getValue();
-
-      t.equal(
-        value['instanţa-de-judecată'],
-        fieldValues['instanţa-de-judecată'],
-        'returns the appropriate value for instanţa-de-judecată'
-      );
-      t.equal(
-        value['numărul-hotărîrii'],
-        fieldValues['numărul-hotărîrii'],
-        'returns the appendChild value for numărul-hotărîrii'
-      );
-      t.equal(
-        value['data-hotărîrii'],
-        fieldValues['data-hotărîrii'],
-        'returns the appropriate value for data-hotărîrii'
-      );
-      t.equal(
-        value['dispozitivul'],
-        fieldValues['dispozitivul'],
-        'returns the appendChild value for dispozitivul'
-      );
-      t.equal(
-        value['data-rămînerii-definitive'],
-        fieldValues['data-rămînerii-definitive'],
-        'returns the appropriate value for data-rămînerii-definitive'
-      );
-      t.equal(
-        value['data-eliberării'],
-        fieldValues['data-eliberării'],
-        'returns the appendChild value for data-eliberării'
-      );
-
-      t.end();
-    });
-
-    t.end();
+    assert.equal(
+      value['instanţa-de-judecată'],
+      fieldValues['instanţa-de-judecată'],
+      'returns the appropriate value for instanţa-de-judecată'
+    );
+    assert.equal(
+      value['numărul-hotărîrii'],
+      fieldValues['numărul-hotărîrii'],
+      'returns the appendChild value for numărul-hotărîrii'
+    );
+    assert.equal(
+      value['data-hotărîrii'],
+      fieldValues['data-hotărîrii'],
+      'returns the appropriate value for data-hotărîrii'
+    );
+    assert.equal(
+      value['dispozitivul'],
+      fieldValues['dispozitivul'],
+      'returns the appendChild value for dispozitivul'
+    );
+    assert.equal(
+      value['data-rămînerii-definitive'],
+      fieldValues['data-rămînerii-definitive'],
+      'returns the appropriate value for data-rămînerii-definitive'
+    );
+    assert.equal(
+      value['data-eliberării'],
+      fieldValues['data-eliberării'],
+      'returns the appendChild value for data-eliberării'
+    );
   });
 
   var getLabel = window.TestHelpers.getLabel;
   var getDOMValue = window.TestHelpers.getDOMValue;
-
-}());
+  var assert = window.TestHelpers.assert;
+});
