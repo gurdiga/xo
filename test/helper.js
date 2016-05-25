@@ -46,45 +46,19 @@
     return fieldElement.querySelector('input, textarea, select').value;
   };
 
-  window.TestHelpers.getTagName = function(fieldElement) {
-    return fieldElement.tagName.toLowerCase();
-  };
-
-  window.TestHelpers.assertSectionField = function(sandbox, fieldValues, t) {
-    var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
-
-    return function(field, i) {
-      var fieldElement = fieldElements[i];
-
-      var expectedLabel   = field[0];
-      var expectedTagName = field[1];
-      var internalName    = field[2];
-      var expectedValue   = fieldValues[internalName];
-
-      var orderNo = i + 1;
-      var messagePrefix = 'field #' + orderNo + ' — ' + internalName + ' — ';
-
-      t.equal(getLabel(fieldElement),   expectedLabel,   messagePrefix + 'has the appropriate label');
-      t.equal(getTagName(fieldElement), expectedTagName, messagePrefix + 'is of the appropriate kind');
-      t.equal(getDOMValue(fieldElement), expectedValue,  messagePrefix + 'is prefilled with the appropriate value');
-    };
-  };
-
   window.TestHelpers.createSpy = function() {
     return function spy() {
       spy.calls = spy.calls || [];
       spy.calls.push({ args: _.toArray(arguments) });
+      spy.executed = true;
 
       spy.reset = function() {
         spy.calls = [];
+        spy.executed = false;
       };
     };
   };
 
   window.TestHelpers.assert = window.chai.assert;
-
-  var getLabel = window.TestHelpers.getLabel;
-  var getTagName = window.TestHelpers.getTagName;
-  var getDOMValue = window.TestHelpers.getDOMValue;
 
 }());
