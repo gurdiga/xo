@@ -1,16 +1,17 @@
-(function() {
+describe('RefusalActivity', function() {
   'use strict';
-
-  tape('RefusalActivity', function(t) {
-    var sandbox = document.createElement('div');
-    var refusalActivity = new RefusalActivity();
-    refusalActivity.appendTo(sandbox);
-
-    t.equal(refusalActivity.getDescription(), 'Refuz');
-
-    t.end();
-  });
 
   var RefusalActivity = window.App.Widgets.RefusalActivity;
 
-}());
+  var refusalActivity;
+
+  beforeEach(function() {
+    refusalActivity = new RefusalActivity();
+  });
+
+  it('has the appropriate description', function() {
+    assert.equal(refusalActivity.getDescription(), 'Refuz');
+  });
+
+  var assert = window.TestHelpers.assert;
+});
