@@ -5,7 +5,6 @@
   },
   "globals": {
     "console": false,
-    "tape": false,
     "_": false,
     "describe": false,
     "it": false,
