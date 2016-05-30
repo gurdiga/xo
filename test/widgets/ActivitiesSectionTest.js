@@ -5,7 +5,7 @@ describe('ActivitiesSection', function() {
 
   var sandbox, data, additionalStyle, sentenceSubjectSection, domElement;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
 
     data = {};

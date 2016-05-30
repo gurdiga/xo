@@ -5,7 +5,7 @@ describe('makeShy', function() {
 
   var domElement;
 
-  beforeEach(function() {
+  before(function() {
     domElement = document.createElement('div');
     domElement.style.transition = 'padding 0.8s linear';
 

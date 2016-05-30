@@ -5,7 +5,7 @@ describe('Activity', function() {
 
   var widgetName, descriptionText, detailWidgets, activity, domElement;
 
-  beforeEach(function() {
+  before(function() {
     var sandbox = document.createElement('div');
 
     widgetName = 'SomeActivity';

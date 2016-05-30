@@ -5,7 +5,7 @@ describe('TodoList', function() {
 
   var itemData, todoList, sandbox, domElement;
 
-  beforeEach(function() {
+  before(function() {
     itemData = [{
       text: 'item one'
     }];

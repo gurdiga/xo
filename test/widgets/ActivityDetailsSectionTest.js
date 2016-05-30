@@ -5,7 +5,7 @@ describe('ActivityDetailsSection', function() {
 
   var domElement;
 
-  beforeEach(function() {
+  before(function() {
     var sandbox = document.createElement('div');
 
     var activityDetailsSection = new ActivityDetailsSection([

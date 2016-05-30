@@ -5,7 +5,7 @@ describe('DateField', function() {
 
   var sandbox, defaultFieldValue, additionalStyle, dateField, domElement, input;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
     defaultFieldValue = 'some date';
     additionalStyle = {

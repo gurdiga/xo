@@ -5,7 +5,7 @@ describe('addFocusEffect', function() {
 
   var domElement, initialStyle, focusStyle;
 
-  beforeEach(function() {
+  before(function() {
     initialStyle = {
       'color': 'blue'
     };

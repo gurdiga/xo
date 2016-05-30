@@ -5,7 +5,7 @@ describe('AddActivityButton', function() {
 
   var sandbox, activities, activityAdder, addActivityButton, domElement, optionButtons;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
 
     activities = [

@@ -5,7 +5,7 @@ describe('InstitutionActivity', function() {
 
   var institutionActivity, domElement;
 
-  beforeEach(function() {
+  before(function() {
     var sandbox = document.createElement('div');
     institutionActivity = new InstitutionActivity();
     institutionActivity.appendTo(sandbox);

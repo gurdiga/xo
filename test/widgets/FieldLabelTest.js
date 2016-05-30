@@ -5,7 +5,7 @@ describe('FieldLabel', function() {
 
   var sandbox, labelText, childText, child, fieldLabel, label;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
 
     labelText = 'My FieldLabel component';

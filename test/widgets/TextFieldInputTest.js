@@ -24,7 +24,7 @@ describe('TextFieldInput', function() {
   });
 
   describe('focusability', function() {
-    beforeEach(function() {
+    before(function() {
       document.body.appendChild(sandbox);
     });
 

@@ -5,7 +5,7 @@ describe('RefusalActivity', function() {
 
   var refusalActivity;
 
-  beforeEach(function() {
+  before(function() {
     refusalActivity = new RefusalActivity();
   });
 

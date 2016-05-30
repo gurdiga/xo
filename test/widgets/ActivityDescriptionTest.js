@@ -5,7 +5,7 @@ describe('ActivityDescription', function() {
 
   var sandbox, text, activityDescription, domElement;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
 
     text = 'Inquiry';

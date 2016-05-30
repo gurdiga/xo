@@ -5,7 +5,7 @@ describe('LabeledLargeTextField', function() {
 
   var sandbox, labelText, fieldValue, largeLabeledTextField, domElement, label, textarea;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
     labelText = 'My LabeledLargeTextField component';
     fieldValue = 'Hi!';

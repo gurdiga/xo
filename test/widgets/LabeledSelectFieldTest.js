@@ -5,7 +5,7 @@ describe('LabeledSelectField', function() {
 
   var sandbox, labelText, optionValues, onChange, selectField, domElement, label, select;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
     labelText = 'My LabeledSelectField component';
     optionValues = [

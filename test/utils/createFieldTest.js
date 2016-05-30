@@ -5,7 +5,7 @@ describe('createField', function() {
 
   var labelText, internalName, fieldValues, field, fieldElement;
 
-  beforeEach(function() {
+  before(function() {
     labelText = 'First name';
     internalName = 'first-name';
     fieldValues = { 'first-name': 'John' };

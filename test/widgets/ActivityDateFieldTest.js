@@ -5,7 +5,7 @@ describe('ActivityDateField', function() {
 
   var sandbox, activityDateField, domElement;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
     activityDateField = new ActivityDateField();
     activityDateField.appendTo(sandbox);

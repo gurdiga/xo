@@ -5,7 +5,7 @@ describe('Section', function() {
 
   var sandbox, labelText, additionalStyle, content, section, fieldset, legend;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
     labelText = 'My section';
     additionalStyle = { width: '400px' };

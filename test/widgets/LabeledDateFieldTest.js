@@ -5,7 +5,7 @@ describe('LabeledDateField', function() {
 
   var sandbox, labelText, fieldValue, labeledDateField, domElement, label, input;
 
-  beforeEach(function() {
+  before(function() {
     sandbox = document.createElement('div');
 
     labelText = 'My LabeledDateField component';

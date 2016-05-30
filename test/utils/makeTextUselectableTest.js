@@ -5,7 +5,7 @@ describe('makeTextUselectable', function() {
 
   var domElement;
 
-  beforeEach(function() {
+  before(function() {
     domElement = document.createElement('button');
   });
 

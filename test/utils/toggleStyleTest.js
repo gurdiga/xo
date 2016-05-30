@@ -4,7 +4,7 @@ describe('toggleStyle', function() {
   var toggleStyle = window.App.Utils.toggleStyle;
   var domElement, initialStyle;
 
-  beforeEach(function() {
+  before(function() {
     domElement = document.createElement('div');
     initialStyle = {
       'borderColor': 'black'

@@ -4,7 +4,7 @@ describe('addStyle', function() {
   var domElement, style;
 
   describe('happy path', function() {
-    beforeEach(function() {
+    before(function() {
       domElement = createDOMElement('div');
       style = {
         'color': 'red'

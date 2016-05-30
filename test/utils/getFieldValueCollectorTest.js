@@ -5,7 +5,7 @@ describe('getFieldValueCollector', function() {
 
   var field1, field2, getValue;
 
-  beforeEach(function() {
+  before(function() {
     field1 = new LabeledTextField('Name', 'John Doe');
     field1.internalName = 'name';
 
