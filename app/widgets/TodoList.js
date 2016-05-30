@@ -4,7 +4,7 @@
   function TodoList(itemData) {
     var domElement = createElement();
 
-    addItems(itemData, domElement);
+    if (itemData) addItems(itemData, domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }

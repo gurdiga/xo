@@ -30,6 +30,12 @@ describe('TodoList', function() {
     assert.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate text');
   });
 
+  it('can have no items', function() {
+    assert.doesNotThrow(function() {
+      new TodoList(); // eslint-disable-line no-new
+    });
+  });
+
   it('validates input', function() {
     assert.throws(function() {
       new TodoList(42); // eslint-disable-line no-new
