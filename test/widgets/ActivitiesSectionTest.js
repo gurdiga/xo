@@ -3,15 +3,15 @@ describe('ActivitiesSection', function() {
 
   var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
-  var sandbox, data, additionalStyle, sentenceSubjectSection, domElement;
+  var sandbox, data, additionalStyle, activitiesSection, domElement;
 
   before(function() {
     sandbox = document.createElement('div');
 
     data = {};
     additionalStyle = { color: 'red' };
-    sentenceSubjectSection = new ActivitiesSection(data, additionalStyle);
-    sentenceSubjectSection.appendTo(sandbox);
+    activitiesSection = new ActivitiesSection(data, additionalStyle);
+    activitiesSection.appendTo(sandbox);
 
     domElement = sandbox.firstChild;
   });
