@@ -129,11 +129,17 @@
     }
 
     function createActivitiesSection(data) {
+      /* eslint no-unused-vars:0 */
+
+      //
+      // TODO: make use of data
+      //
+
       var style = {
         marginRight: '60px'
       };
 
-      return new ActivitiesSection(data, style);
+      return new ActivitiesSection(style);
     }
 
     function createCloseButton() {

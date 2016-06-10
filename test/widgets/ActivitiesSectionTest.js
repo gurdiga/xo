@@ -3,14 +3,13 @@ describe('ActivitiesSection', function() {
 
   var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
-  var sandbox, data, additionalStyle, activitiesSection, domElement;
+  var sandbox, additionalStyle, activitiesSection, domElement;
 
   before(function() {
     sandbox = document.createElement('div');
 
-    data = {};
     additionalStyle = { color: 'red' };
-    activitiesSection = new ActivitiesSection(data, additionalStyle);
+    activitiesSection = new ActivitiesSection(additionalStyle);
     activitiesSection.appendTo(sandbox);
 
     domElement = sandbox.firstChild;
@@ -50,6 +49,11 @@ describe('ActivitiesSection', function() {
     assert.equal(activityListContainer.children.length, 1, 'adds one activity');
     assert.equal(activityListContainer.children[0].getAttribute('widget-name'),
       'InstitutionActivity', 'the added activity is an InstitutionActivity');
+  });
+
+  it('has a public setData()', function() {
+    assert.isFunction(activitiesSection.setData, 'exists');
+    // TODO
   });
 
   var assert = window.TestHelpers.assert;

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function ActivitiesSection(data, additionalStyle) {
+  function ActivitiesSection(additionalStyle) {
     var domElement = createElement(additionalStyle);
 
     var section = new Section('Acţiuni procedurale');
@@ -13,6 +13,10 @@
     ]);
 
     section.appendTo(domElement);
+
+    this.setData = function() {
+      // TODO
+    };
 
     this.appendTo = getAppenderOf(domElement);
   }
