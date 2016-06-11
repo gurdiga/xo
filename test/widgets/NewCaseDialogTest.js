@@ -9,7 +9,18 @@ describe('NewCaseDialog', function() {
     sandbox = document.createElement('div');
     document.body.appendChild(sandbox);
 
-    newCaseDialog = new NewCaseDialog();
+    var data = {
+      'creditor': {},
+      'debitori': [{
+        'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
+      }],
+      'activities': [{
+        'type': 'InstitutionActivity',
+        'date': Date.now()
+      }]
+    };
+
+    newCaseDialog = new NewCaseDialog(data);
     newCaseDialog.appendTo(sandbox);
 
     domElement = sandbox.firstChild;

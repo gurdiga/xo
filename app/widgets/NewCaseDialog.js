@@ -1,18 +1,7 @@
 (function() {
   'use strict';
 
-  function NewCaseDialog() {
-    // TODO: Should this be passed in?
-    var data = {
-      'creditor': {},
-      'debitori': [{
-        'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
-      }],
-      'activities': [{
-        'institution': {}
-      }]
-    };
-
+  function NewCaseDialog(data) {
     var domElement = createElement();
 
     var valuableChildren = {
@@ -129,17 +118,15 @@
     }
 
     function createActivitiesSection(data) {
-      /* eslint no-unused-vars:0 */
-
-      //
-      // TODO: make use of data
-      //
-
       var style = {
         marginRight: '60px'
       };
 
-      return new ActivitiesSection(style);
+      var activitiesSection = new ActivitiesSection(style);
+
+      activitiesSection.setData(data);
+
+      return activitiesSection;
     }
 
     function createCloseButton() {
