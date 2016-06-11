@@ -5,10 +5,7 @@
     var domElement = createElement(value, additionalStyle);
 
     this.appendTo = getAppenderOf(domElement);
-
-    this.getValue = function() {
-      return domElement.value;
-    };
+    this.getValue = delegateTo(domElement, 'value');
 
     this.setValue = function(value) {
       domElement.value = value;

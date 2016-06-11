@@ -11,10 +11,7 @@
     this.appendTo = getAppenderOf(domElement);
     this.destroy = getDestroyerOf(domElement);
     this.focus = delegateTo(textarea, 'focus');
-
-    this.getValue = function() {
-      return textarea.value;
-    };
+    this.getValue = delegateTo(textarea, 'value');
   }
 
   function createElement() {

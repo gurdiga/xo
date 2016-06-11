@@ -4,15 +4,15 @@
   function InquirySection(fieldValues, additionalStyle) {
     var domElement = createElement(additionalStyle);
 
-    var fields = [
+    var childWidgets = [
       createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
       createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
     ];
 
-    var section = createSection(fields);
+    var section = createSection(childWidgets);
     section.appendTo(domElement);
 
-    this.getValue = getFieldValueCollector(fields);
+    this.getValue = getFieldValueCollector(childWidgets);
     this.appendTo = getAppenderOf(domElement);
   }
 
