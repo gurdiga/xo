@@ -6,19 +6,27 @@
 
     var section = new Section('Acţiuni procedurale');
     var activityListContainer = createActivityListContainer();
+    var addActivity = addActivityTo(activityListContainer);
 
     section.appendWidgets([
       activityListContainer,
-      createAddActivityButton(activityListContainer)
+      createAddActivityButton(addActivity)
     ]);
 
     section.appendTo(domElement);
 
-    this.setData = function() {
-      // TODO
+    this.setData = function(activitiesArray) {
+      activitiesArray.forEach(addActivityFromData);
     };
 
     this.appendTo = getAppenderOf(domElement);
+
+    function addActivityFromData(activityData) {
+      var WidgetClass = ActivityWidgetClasses[activityData.type];
+      var activityWidget = new WidgetClass(activityData);
+
+      addActivity(activityWidget);
+    }
   }
 
   function createElement(additionalStyle) {
@@ -40,13 +48,13 @@
     return createDOMElement('div', style, attributes);
   }
 
-  function createAddActivityButton(activityListContainer) {
+  function createAddActivityButton(action) {
     var options = [
       new InstitutionActivity(),
       new RefusalActivity()
     ];
 
-    return new AddActivityButton(options, addActivityTo(activityListContainer));
+    return new AddActivityButton(options, action);
   }
 
   function addActivityTo(activityListContainer) {
@@ -57,8 +65,14 @@
 
   var Section = window.App.Widgets.Section;
   var AddActivityButton = window.App.Widgets.AddActivityButton;
-  var InstitutionActivity = window.App.Widgets.InstitutionActivity;
-  var RefusalActivity = window.App.Widgets.RefusalActivity;
+
+  var ActivityWidgetClasses = _.pick(window.App.Widgets, [
+    'InstitutionActivity',
+    'RefusalActivity'
+  ]);
+
+  var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
+  var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;

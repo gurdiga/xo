@@ -5,7 +5,7 @@ describe('ActivitiesSection', function() {
 
   var sandbox, additionalStyle, activitiesSection, domElement;
 
-  before(function() {
+  beforeEach(function() {
     sandbox = document.createElement('div');
 
     additionalStyle = { color: 'red' };
@@ -51,9 +51,18 @@ describe('ActivitiesSection', function() {
       'InstitutionActivity', 'the added activity is an InstitutionActivity');
   });
 
-  it('has a public setData()', function() {
-    assert.isFunction(activitiesSection.setData, 'exists');
-    // TODO
+  it('setData() adds the given activity widgets', function() {
+    var activityData = {
+      'type': 'InstitutionActivity',
+      'date': Date.now()
+    };
+
+    var activitiesArray = [activityData];
+
+    activitiesSection.setData(activitiesArray);
+
+    var institutionActivity = domElement.querySelector('[name="activity-list-container"]>[widget-name="InstitutionActivity"]');
+    assert(institutionActivity, 'institution activity is added');
   });
 
   var assert = window.TestHelpers.assert;
