@@ -1,12 +1,15 @@
 (function() {
   'use strict';
 
-  function TodoList(itemData) {
+  function TodoList() {
     var domElement = createElement();
 
-    if (itemData) addItems(itemData, domElement);
-
     this.appendTo = getAppenderOf(domElement);
+
+    this.setItems = function(itemData) {
+      domElement.innerHTML = '';
+      addItems(itemData, domElement);
+    };
   }
 
   function createElement() {
@@ -23,7 +26,7 @@
   }
 
   function addItems(itemData, domElement) {
-    assert(Array.isArray(itemData), 'TodoList expects first argument to be an array of objects');
+    assert(Array.isArray(itemData), 'TodoList#setItems expects first argument to be an array of objects');
 
     itemData.forEach(function(item) {
       domElement.appendChild(createItemElement(item));
