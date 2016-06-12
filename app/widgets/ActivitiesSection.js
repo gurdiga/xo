@@ -15,7 +15,7 @@
 
     section.appendTo(domElement);
 
-    this.setData = function(activitiesArray) {
+    this.setActivities = function(activitiesArray) {
       activitiesArray.forEach(addActivityFromData);
     };
 

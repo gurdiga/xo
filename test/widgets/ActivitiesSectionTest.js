@@ -51,7 +51,7 @@ describe('ActivitiesSection', function() {
       'InstitutionActivity', 'the added activity is an InstitutionActivity');
   });
 
-  it('setData() adds the given activity widgets', function() {
+  it('setActivities() adds the given activity widgets', function() {
     var activityData = {
       'type': 'InstitutionActivity',
       'date': Date.now()
@@ -59,7 +59,7 @@ describe('ActivitiesSection', function() {
 
     var activitiesArray = [activityData];
 
-    activitiesSection.setData(activitiesArray);
+    activitiesSection.setActivities(activitiesArray);
 
     var institutionActivity = domElement.querySelector('[name="activity-list-container"]>[widget-name="InstitutionActivity"]');
     assert(institutionActivity, 'institution activity is added');

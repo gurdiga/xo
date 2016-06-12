@@ -117,14 +117,14 @@
       return new InquirySection(fieldValues, style);
     }
 
-    function createActivitiesSection(data) {
+    function createActivitiesSection(activitiesArray) {
       var style = {
         marginRight: '60px'
       };
 
       var activitiesSection = new ActivitiesSection(style);
 
-      activitiesSection.setData(data);
+      activitiesSection.setActivities(activitiesArray);
 
       return activitiesSection;
     }
