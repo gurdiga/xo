@@ -66,11 +66,7 @@
   var Section = window.App.Widgets.Section;
   var AddActivityButton = window.App.Widgets.AddActivityButton;
 
-  var ActivityWidgetClasses = _.pick(window.App.Widgets, [
-    'InstitutionActivity',
-    'RefusalActivity'
-  ]);
-
+  var ActivityWidgetClasses = window.App.Widgets.Activities;
   var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
   var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
 

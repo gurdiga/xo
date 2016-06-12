@@ -24,6 +24,6 @@
 
   var delegateTo = window.App.Utils.delegateTo;
 
-  window.App.Widgets.InstitutionActivity = InstitutionActivity;
+  window.App.Widgets.Activities.InstitutionActivity = InstitutionActivity;
 
 }());

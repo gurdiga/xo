@@ -1,7 +1,7 @@
 describe('InstitutionActivity', function() {
   'use strict';
 
-  var InstitutionActivity = window.App.Widgets.InstitutionActivity;
+  var InstitutionActivity = window.App.Widgets.Activities.InstitutionActivity;
 
   var institutionActivity, domElement;
 

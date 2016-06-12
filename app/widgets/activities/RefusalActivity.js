@@ -19,6 +19,6 @@
 
   var delegateTo = window.App.Utils.delegateTo;
 
-  window.App.Widgets.RefusalActivity = RefusalActivity;
+  window.App.Widgets.Activities.RefusalActivity = RefusalActivity;
 
 }());

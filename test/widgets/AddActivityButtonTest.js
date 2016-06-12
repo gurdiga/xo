@@ -45,7 +45,7 @@ describe('AddActivityButton', function() {
     assert.equal(style.marginTop, '10px', 'has enough space before to not look like part of the activity');
   });
 
-  var InstitutionActivity = window.App.Widgets.InstitutionActivity;
+  var InstitutionActivity = window.App.Widgets.Activities.InstitutionActivity;
 
   var createSpy = window.TestHelpers.createSpy;
   var assert = window.TestHelpers.assert;

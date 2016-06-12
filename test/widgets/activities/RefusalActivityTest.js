@@ -1,7 +1,7 @@
 describe('RefusalActivity', function() {
   'use strict';
 
-  var RefusalActivity = window.App.Widgets.RefusalActivity;
+  var RefusalActivity = window.App.Widgets.Activities.RefusalActivity;
 
   var refusalActivity;
 

@@ -1,5 +1,7 @@
 window.App = {
   Data: {},
-  Widgets: {},
+  Widgets: {
+    Activities: {}
+  },
   Utils: {}
 };
