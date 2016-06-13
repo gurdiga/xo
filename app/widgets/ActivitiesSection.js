@@ -30,10 +30,11 @@
   }
 
   function createElement(additionalStyle) {
-    var style = _.extend({
-      display: 'block'
-    }, additionalStyle);
+    var defaultStyle = {
+      'display': 'block'
+    };
 
+    var style = _.extend(defaultStyle, additionalStyle);
     var domElement = createDOMElement('case-activities-section', style);
 
     return domElement;
