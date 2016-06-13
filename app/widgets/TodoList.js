@@ -7,7 +7,7 @@
     this.appendTo = getAppenderOf(domElement);
 
     this.setItems = function(itemData) {
-      domElement.innerHTML = '';
+      emptyDOMElement(domElement);
       addItems(itemData, domElement);
     };
   }
@@ -65,6 +65,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var assert = window.App.Utils.assert;
+  var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
   window.App.Widgets.TodoList = TodoList;
 

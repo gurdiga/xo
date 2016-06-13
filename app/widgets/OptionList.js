@@ -18,7 +18,7 @@
     this.appendTo = getAppenderOf(domElement);
 
     this.setOptions = function(options) {
-      empty(domElement);
+      emptyDOMElement(domElement);
       addOptionButtons(this, options, domElement);
     };
 
@@ -137,10 +137,6 @@
     appendWidgets(optionButtons).to(domElement);
   }
 
-  function empty(domElement) {
-    domElement.innerHTML = '';
-  }
-
   function createOptionButton(optionList, labelText, optionHandler) {
     var style = _.extend({
       padding: '5px 10px',
@@ -181,6 +177,7 @@
   var addHoverEffect = window.App.Utils.addHoverEffect;
   var appendWidgets = window.App.Utils.appendWidgets;
   var addStyle = window.App.Utils.addStyle;
+  var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
   window.App.Widgets.OptionList = OptionList;
 
