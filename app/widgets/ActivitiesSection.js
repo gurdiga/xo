@@ -1,9 +1,8 @@
 (function() {
   'use strict';
 
-  function ActivitiesSection(additionalStyle) {
-    var domElement = createElement(additionalStyle);
-
+  function ActivitiesSection() {
+    var domElement = createElement();
     var section = new Section('Acţiuni procedurale');
     var activityListContainer = createActivityListContainer();
     var addActivity = addActivityTo(activityListContainer);
@@ -33,15 +32,12 @@
     }
   }
 
-  function createElement(additionalStyle) {
-    var defaultStyle = {
+  function createElement() {
+    var style = {
       'display': 'block'
     };
 
-    var style = _.extend(defaultStyle, additionalStyle);
-    var domElement = createDOMElement('case-activities-section', style);
-
-    return domElement;
+    return createDOMElement('case-activities-section', style);
   }
 
   function createActivityListContainer() {

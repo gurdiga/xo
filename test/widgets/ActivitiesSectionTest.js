@@ -25,7 +25,6 @@ describe('ActivitiesSection', function() {
   it('has the appropriate style', function() {
     var style = domElement.style;
     assert.equal(style.display, 'block', 'has block display to be on its own line');
-    assert.equal(style.color, additionalStyle.color, 'accepts additional CSS');
   });
 
   it('has the button to add activities', function() {
