@@ -16,7 +16,16 @@ describe('NewCaseDialog', function() {
       }],
       'activities': [{
         'type': 'InstitutionActivity',
-        'date': Date.now()
+        'date': Date.now(),
+        'todo-items': [{
+          'id': 'writ-emitted',
+          'label': 'Am emis încheiere',
+          'isDone': true
+        }, {
+          'id': 'writ-sent',
+          'label': 'Am expediat încheiere',
+          'isDone': false
+        }]
       }]
     };
 
