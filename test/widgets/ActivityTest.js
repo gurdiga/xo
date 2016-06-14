@@ -3,7 +3,7 @@ describe('Activity', function() {
 
   var Activity = window.App.Widgets.Activity;
 
-  var widgetName, descriptionText, detailWidgets, activity, domElement;
+  var widgetName, descriptionText, detailWidgets, activity, domElement, detailsSectionElement;
 
   before(function() {
     var sandbox = document.createElement('div');
@@ -17,6 +17,7 @@ describe('Activity', function() {
     activity = new Activity(widgetName, descriptionText, detailWidgets);
     activity.appendTo(sandbox);
     domElement = sandbox.firstChild;
+    detailsSectionElement = domElement.children[2];
   });
 
   it('has the appropriate DOM structure', function() {
@@ -49,13 +50,22 @@ describe('Activity', function() {
   });
 
   it('has the appropriate details section', function() {
-    var detailsSectionElement = domElement.children[2];
     assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
       'has the appropriate “widget-name” attribute');
 
     var children = detailsSectionElement.children;
     assert.equal(children[0], detailWidgets[0], 'contains the passed detail widgets');
     assert.equal(children[1].tagName, 'INPUT', 'contains the passed detail widgets');
+  });
+
+  it('can be setDetailWidgets()', function() {
+    activity.setDetailWidgets([
+      document.createElement('some-other-widget')
+    ]);
+
+    var children = detailsSectionElement.children;
+    assert.equal(children.length, 1, 'has the appropriate number fo child widgets');
+    assert.equal(children[0].tagName, 'SOME-OTHER-WIDGET', 'contains the new widget');
   });
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;

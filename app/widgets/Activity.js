@@ -16,6 +16,10 @@
     this.getDescription = function() {
       return descriptionText;
     };
+
+    this.setDetailWidgets = function(detailWidgets) {
+      detailsSection.setContents(detailWidgets);
+    };
   }
 
   function createElement(widgetName) {
