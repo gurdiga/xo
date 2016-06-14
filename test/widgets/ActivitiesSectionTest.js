@@ -65,5 +65,15 @@ describe('ActivitiesSection', function() {
     assert(institutionActivity, 'institution activity is added');
   });
 
+  it('setStyle() applies the given additional style', function() {
+    var additionalStyle = {
+      'border-color': 'silver'
+    };
+
+    activitiesSection.setStyle(additionalStyle);
+
+    assert.equal(domElement.style.borderColor, additionalStyle['border-color'], 'border color is set');
+  });
+
   var assert = window.TestHelpers.assert;
 });

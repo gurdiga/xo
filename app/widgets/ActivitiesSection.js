@@ -19,6 +19,10 @@
       activitiesArray.forEach(addActivityFromData);
     };
 
+    this.setStyle = function(additionalStyle) {
+      addStyle(domElement, additionalStyle);
+    };
+
     this.appendTo = getAppenderOf(domElement);
 
     function addActivityFromData(activityData) {
@@ -73,6 +77,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var addStyle = window.App.Utils.addStyle;
 
   window.App.Widgets.ActivitiesSection = ActivitiesSection;
 
