@@ -3,16 +3,18 @@ describe('ActivityDetailsSection', function() {
 
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
 
-  var domElement;
+  var activityDetailsSection, domElement;
 
   before(function() {
-    var sandbox = document.createElement('div');
+    activityDetailsSection = new ActivityDetailsSection();
 
-    var activityDetailsSection = new ActivityDetailsSection([
+    var childWidgets = [
       document.createElement('first-child-widget'),
       new LabeledTextField()
-    ]);
+    ];
+    activityDetailsSection.setContents(childWidgets);
 
+    var sandbox = document.createElement('div');
     activityDetailsSection.appendTo(sandbox);
     domElement = sandbox.firstChild;
   });
@@ -37,6 +39,14 @@ describe('ActivityDetailsSection', function() {
   it('renders the given widgets', function() {
     assert.equal(domElement.children[0].tagName, 'FIRST-CHILD-WIDGET', 'the first child is rendered');
     assert.equal(domElement.children[1].tagName, 'LABELED-TEXT-FIELD', 'the other child is rendered');
+  });
+
+  it('can be setContents()', function() {
+    activityDetailsSection.setContents([
+      document.createElement('another-widget')
+    ]);
+    assert.equal(domElement.children.length, 1, 'has the appropriate number of child elements');
+    assert.equal(domElement.children[0].tagName, 'ANOTHER-WIDGET', 'the first child is rendered');
   });
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;

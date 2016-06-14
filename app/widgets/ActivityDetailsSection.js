@@ -1,12 +1,15 @@
 (function() {
   'use strict';
 
-  function ActivityDetailsSection(childWidgets) {
+  function ActivityDetailsSection() {
     var domElement = createElement();
 
-    appendWidgets(childWidgets).to(domElement);
-
     this.appendTo = getAppenderOf(domElement);
+
+    this.setContents = function(childWidgets) {
+      emptyDOMElement(domElement);
+      appendWidgets(childWidgets).to(domElement);
+    };
   }
 
   function createElement() {
@@ -26,6 +29,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;
+  var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
   window.App.Widgets.ActivityDetailsSection = ActivityDetailsSection;
 
