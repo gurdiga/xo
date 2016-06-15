@@ -15,7 +15,7 @@ describe('NewCaseDialog', function() {
         'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL
       }],
       'activities': [{
-        'type': 'InstitutionActivity',
+        'widgetClassName': 'InstitutionActivity',
         'date': Date.now(),
         'todo-items': [{
           'id': 'writ-emitted',

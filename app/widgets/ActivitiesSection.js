@@ -25,7 +25,7 @@
     this.appendTo = getAppenderOf(domElement);
 
     function addActivityFromData(activityData) {
-      var ActivityWidgetClass = ActivityWidgetClasses[activityData.type];
+      var ActivityWidgetClass = ActivityWidgetClasses[activityData.widgetClassName];
       var activityWidget = ActivityWidgetClass.createWithData(activityData);
 
       addActivity(activityWidget);

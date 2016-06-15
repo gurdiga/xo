@@ -52,7 +52,7 @@ describe('ActivitiesSection', function() {
 
   it('setActivities() adds the given activity widgets', function() {
     var activityData = {
-      'type': 'InstitutionActivity',
+      'widgetClassName': 'InstitutionActivity',
       'date': Date.now(),
       'todo-items': []
     };
