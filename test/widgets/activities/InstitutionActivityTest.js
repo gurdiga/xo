@@ -61,5 +61,34 @@ describe('InstitutionActivity', function() {
     assert.equal(detailsSectionElement.children[0], detailWidgets[0], 'adds the given widget');
   });
 
+  it('can createWithData()', function() {
+    var data = {
+      'todo-items': [{
+        'id': 'writ-emitted',
+        'label': 'Am emis încheiere',
+        'isDone': true
+      }, {
+        'id': 'writ-sent',
+        'label': 'Am expediat încheiere',
+        'isDone': false
+      }]
+    };
+
+    var institutionActivity = InstitutionActivity.createWithData(data);
+    var domElement = getDOMElement(institutionActivity);
+    var detailsSectionElement = domElement.children[2];
+    var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
+
+    assert.equal(todoList.children.length, 2, 'has the appropriate number of TODO items');
+  });
+
+  function getDOMElement(widget) {
+    var sandbox = document.createElement('div');
+
+    widget.appendTo(sandbox);
+
+    return sandbox.firstChild;
+  }
+
   var assert = window.TestHelpers.assert;
 });
