@@ -24,15 +24,10 @@
 
   InstitutionActivity.NEXT_ACTIVITY_OPTIONS = [];
 
-  InstitutionActivity.createWithData = function(data) {
-    var institutionActivity = new InstitutionActivity();
-
-    institutionActivity.setData(data);
-
-    return institutionActivity;
-  };
-
   var Activity = window.App.Widgets.Activity;
+
+  InstitutionActivity.createWithData = Activity.createWithData;
+
   var CreateWritButton = window.App.Widgets.CreateWritButton;
   var TodoList = window.App.Widgets.TodoList;
 

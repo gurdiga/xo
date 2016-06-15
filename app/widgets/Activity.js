@@ -22,6 +22,14 @@
     };
   }
 
+  Activity.createWithData = function(data) {
+    var activity = new this();
+
+    activity.setData(data);
+
+    return activity;
+  };
+
   function createElement(widgetName) {
     var style = {
       marginTop: '5px',
