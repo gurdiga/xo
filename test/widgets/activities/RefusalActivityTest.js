@@ -13,5 +13,13 @@ describe('RefusalActivity', function() {
     assert.equal(refusalActivity.getDescription(), 'Refuz');
   });
 
+  it('can createWithData()', function() {
+    var data = {};
+
+    RefusalActivity.createWithData(data);
+
+    // TODO
+  });
+
   var assert = window.TestHelpers.assert;
 });

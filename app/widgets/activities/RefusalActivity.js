@@ -13,9 +13,15 @@
 
     this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');
+
+    this.setData = function() {
+       // TODO
+    };
   }
 
   var Activity = window.App.Widgets.Activity;
+
+  RefusalActivity.createWithData = Activity.createWithData;
 
   var delegateTo = window.App.Utils.delegateTo;
 
