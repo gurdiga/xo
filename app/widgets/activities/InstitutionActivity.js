@@ -14,6 +14,7 @@
 
     this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');
+    this.setDetailWidgets = delegateTo(activity, 'setDetailWidgets');
   }
 
   InstitutionActivity.NEXT_ACTIVITY_OPTIONS = [];

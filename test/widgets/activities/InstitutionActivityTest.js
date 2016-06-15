@@ -3,13 +3,14 @@ describe('InstitutionActivity', function() {
 
   var InstitutionActivity = window.App.Widgets.Activities.InstitutionActivity;
 
-  var institutionActivity, domElement;
+  var institutionActivity, domElement, detailsSectionElement;
 
   before(function() {
     var sandbox = document.createElement('div');
     institutionActivity = new InstitutionActivity();
     institutionActivity.appendTo(sandbox);
     domElement = sandbox.firstChild;
+    detailsSectionElement = domElement.children[2];
   });
 
   it('has the appropriate DOM structure', function() {
@@ -40,15 +41,24 @@ describe('InstitutionActivity', function() {
   });
 
   it('has the appropriate details section', function() {
-    var detailsSectionElement = domElement.children[2];
     assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
       'has the appropriate “widget-name” attribute');
 
-    var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
-    assert(!!todoList, 'has the TODO list');
-
     var createWritButton = detailsSectionElement.querySelector('[widget-name="CreateWritButton"]');
     assert(!!createWritButton, 'has the button to creare the writ');
+  });
+
+  it('has the appropriate TodoList', function() {
+    var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
+    assert(!!todoList, 'has the TODO list');
+  });
+
+  it('can be setDetailWidgets()', function() {
+    var detailWidgets = [document.createElement('button')];
+    institutionActivity.setDetailWidgets(detailWidgets);
+
+    assert.equal(detailsSectionElement.children.length, 1, 'adds the appropriate number of children');
+    assert.equal(detailsSectionElement.children[0], detailWidgets[0], 'adds the given widget');
   });
 
   var assert = window.TestHelpers.assert;
