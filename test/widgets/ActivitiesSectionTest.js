@@ -53,7 +53,8 @@ describe('ActivitiesSection', function() {
   it('setActivities() adds the given activity widgets', function() {
     var activityData = {
       'type': 'InstitutionActivity',
-      'date': Date.now()
+      'date': Date.now(),
+      'todo-items': []
     };
 
     var activitiesArray = [activityData];
