@@ -23,6 +23,8 @@
   }
 
   Activity.createWithData = function(data) {
+    assert(_.isPlainObject(data), 'Activity.createWithData expects the argument to be a plain JS object');
+
     var activity = new this();
 
     activity.setData(data);
@@ -59,6 +61,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;
+  var assert = window.App.Utils.assert;
 
   window.App.Widgets.Activity = Activity;
 

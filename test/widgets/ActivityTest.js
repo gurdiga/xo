@@ -68,6 +68,16 @@ describe('Activity', function() {
     assert.equal(children[0].tagName, 'SOME-OTHER-WIDGET', 'contains the new widget');
   });
 
+  describe('.createWithData()', function() {
+    it('validates input', function() {
+      assert.throws(function callingWithNonPlainObject() {
+        Activity.createWithData(42);
+      },
+        /Activity.createWithData expects the argument to be a plain JS object/
+      );
+    });
+  });
+
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var assert = window.TestHelpers.assert;
