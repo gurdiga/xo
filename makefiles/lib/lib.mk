@@ -48,7 +48,7 @@ lib/mocha.css: | lib
 	curl --fail --progress-bar https://raw.githubusercontent.com/mochajs/mocha/v2.4.5/mocha.css > $@
 
 lib/mocha-html-dot-reporter.js: | lib
-	curl --fail --progress-bar https://raw.githubusercontent.com/gurdiga/mocha-html-dot-reporter/v0.1.6/index.js > $@
+	curl --fail --progress-bar https://raw.githubusercontent.com/gurdiga/mocha-html-dot-reporter/v0.1.9/index.js > $@
 
 lib/chai.js: | lib
 	curl --fail --progress-bar https://raw.githubusercontent.com/chaijs/chai/3.5.0/chai.js | uglifyjs > $@
