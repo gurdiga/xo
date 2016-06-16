@@ -9,7 +9,6 @@ describe('TodoItem', function() {
     labelText = 'This is the first step';
     todoItem = new TodoItem(labelText);
     domElement = getWidgetDOMElement(todoItem);
-    document.body.appendChild(domElement); // TODO remove
   });
 
   it('has the appropriate DOM structure', function() {
