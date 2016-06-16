@@ -32,6 +32,14 @@ describe('TodoItem', function() {
     assert.equal(style.listStyleType, 'none', 'has <li>’s bullet removed');
   });
 
+  it('requires the label text to be a string', function() {
+    assert.throws(function callingWithInvalidTextLabel() {
+      new TodoItem(42); // eslint-disable-line no-new
+    },
+      'TodoItem constructor expects the first argument, label text, to be a string'
+    );
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

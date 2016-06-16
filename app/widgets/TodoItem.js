@@ -2,6 +2,8 @@
   'use strict';
 
   function TodoItem(labelText) {
+    assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
+
     var domElement = createElement();
     var labeledCheckbox = createLabeledCheckbox(labelText);
 
@@ -32,6 +34,7 @@
     return label;
   }
 
+  var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
