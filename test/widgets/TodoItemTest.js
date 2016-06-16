@@ -26,6 +26,12 @@ describe('TodoItem', function() {
     assert.equal(labelTextContainer.textContent, labelText, 'renders the given text as the text label');
   });
 
+  it('has the appropriate style', function() {
+    var style = domElement.style;
+
+    assert.equal(style.listStyleType, 'none', 'has <li>’s bullet removed');
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -2,14 +2,23 @@
   'use strict';
 
   function TodoItem(labelText) {
-    var domElement = createDOMElement('li');
+    var domElement = createElement();
+    var labeledCheckbox = createLabeledCheckbox(labelText);
 
-    addLabeledCheckbox(labelText, domElement);
+    domElement.appendChild(labeledCheckbox);
 
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function addLabeledCheckbox(labelText, domElement) {
+  function createElement() {
+    var style = {
+      'list-style-type': 'none'
+    };
+
+    return createDOMElement('li', style);
+  }
+
+  function createLabeledCheckbox(labelText) {
     var checkbox = createDOMElement('input');
     checkbox.type = 'checkbox';
 
@@ -20,7 +29,7 @@
     label.appendChild(checkbox);
     label.appendChild(labelTextContainer);
 
-    domElement.appendChild(label);
+    return label;
   }
 
   var createDOMElement = window.App.Utils.createDOMElement;
