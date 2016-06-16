@@ -56,6 +56,16 @@
     };
   };
 
+  window.TestHelpers.getWidgetDOMElement = function(widget) {
+    var sandbox = createDOMElement('div');
+
+    widget.appendTo(sandbox);
+
+    return sandbox.firstChild;
+  };
+
   window.TestHelpers.assert = window.chai.assert;
+
+  var createDOMElement = window.App.Utils.createDOMElement;
 
 }());
