@@ -40,6 +40,14 @@ describe('TodoItem', function() {
     );
   });
 
+  it('can be setDoneState()', function() {
+    var checkbox = domElement.querySelector('input[type="checkbox"]');
+    assert(!checkbox.checked, 'the checkbox is checked');
+
+    todoItem.markAsDone();
+    assert(checkbox.checked, 'the checkbox is checked');
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -5,9 +5,14 @@
     assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
 
     var domElement = createElement();
-    var labeledCheckbox = createLabeledCheckbox(labelText);
+    var checkbox = createCheckbox();
+    var labeledCheckbox = createLabeledCheckbox(checkbox, labelText);
 
     domElement.appendChild(labeledCheckbox);
+
+    this.markAsDone = function() {
+      checkbox.checked = true;
+    };
 
     this.appendTo = getAppenderOf(domElement);
   }
@@ -20,10 +25,15 @@
     return createDOMElement('li', style);
   }
 
-  function createLabeledCheckbox(labelText) {
+  function createCheckbox() {
     var checkbox = createDOMElement('input');
+
     checkbox.type = 'checkbox';
 
+    return checkbox;
+  }
+
+  function createLabeledCheckbox(checkbox, labelText) {
     var labelTextContainer = createDOMElement('span');
     labelTextContainer.textContent = labelText;
 
