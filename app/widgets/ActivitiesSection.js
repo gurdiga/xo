@@ -3,13 +3,14 @@
 
   function ActivitiesSection() {
     var domElement = createElement();
-    var section = new Section('Acţiuni procedurale');
     var activityListContainer = createActivityListContainer();
-    var addActivity = addActivityTo(activityListContainer);
+    var addActivityButton = createAddActivityButton(addActivity);
+
+    var section = new Section('Acţiuni procedurale');
 
     section.appendWidgets([
       activityListContainer,
-      createAddActivityButton(addActivity)
+      addActivityButton
     ]);
 
     section.appendTo(domElement);
@@ -29,6 +30,10 @@
       var activityWidget = ActivityWidgetClass.createWithData(activityData);
 
       addActivity(activityWidget);
+    }
+
+    function addActivity(activityWidget) {
+      activityWidget.appendTo(activityListContainer);
     }
   }
 
@@ -56,12 +61,6 @@
     ];
 
     return new AddActivityButton(options, action);
-  }
-
-  function addActivityTo(activityListContainer) {
-    return function(activityWidget) {
-      activityWidget.appendTo(activityListContainer);
-    };
   }
 
   var Section = window.App.Widgets.Section;
