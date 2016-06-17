@@ -6,7 +6,7 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    this.setContents = function(childWidgets) {
+    this.setChildWidgets = function(childWidgets) {
       emptyDOMElement(domElement);
       appendWidgets(childWidgets).to(domElement);
     };

@@ -18,7 +18,7 @@
     };
 
     this.setDetailWidgets = function(detailWidgets) {
-      detailsSection.setContents(detailWidgets);
+      detailsSection.setChildWidgets(detailWidgets);
     };
   }
 
@@ -49,7 +49,8 @@
 
   function createDetailsSection(childWidgets) {
     var detailsSection = new ActivityDetailsSection();
-    detailsSection.setContents(childWidgets);
+
+    detailsSection.setChildWidgets(childWidgets);
 
     return detailsSection;
   }

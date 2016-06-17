@@ -30,8 +30,8 @@ describe('ActivityDetailsSection', function() {
     assert.equal(css.borderWidth, '0px', 'has no visible border');
   });
 
-  it('can be setContents()', function() {
-    activityDetailsSection.setContents([
+  it('can be setChildWidgets()', function() {
+    activityDetailsSection.setChildWidgets([
       document.createElement('another-widget')
     ]);
     assert.equal(domElement.children.length, 1, 'has the appropriate number of child elements');

@@ -3,7 +3,7 @@
 
   function InstitutionActivity() {
     var descriptionText = 'Intentarea';
-    var todoList = new TodoList([]);
+    var todoList = new TodoList();
 
     var activity = new Activity(
       'InstitutionActivity',
