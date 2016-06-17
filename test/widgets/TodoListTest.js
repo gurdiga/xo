@@ -37,9 +37,9 @@ describe('TodoList', function() {
 
     it('works', function() {
       var itemData = [{
-        text: 'the first new item'
+        label: 'the first new item'
       }, {
-        text: 'the second new item'
+        label: 'the second new item'
       }];
 
       todoList.setItems(itemData);
@@ -49,8 +49,8 @@ describe('TodoList', function() {
 
       var itemLabels = _.toArray(domElement.querySelectorAll('ul>li>label'));
       var itemLabelTexts = itemLabels.map(_.property('textContent'));
-      var expectedItemLabels = itemData.map(_.property('text'));
-      assert.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate text');
+      var expectedItemLabels = itemData.map(_.property('label'));
+      assert.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate label texts');
     });
   });
 
