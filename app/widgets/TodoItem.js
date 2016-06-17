@@ -19,14 +19,20 @@
 
   function createElement() {
     var style = {
-      'list-style-type': 'none'
+      'list-style-type': 'none',
+      'font-size': '14px'
     };
 
     return createDOMElement('li', style);
   }
 
   function createCheckbox() {
-    var checkbox = createDOMElement('input');
+    var style = {
+      'vertical-align': '1px',
+      'margin-left': '0'
+    };
+
+    var checkbox = createDOMElement('input', style);
 
     checkbox.type = 'checkbox';
 

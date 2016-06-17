@@ -29,6 +29,11 @@ describe('TodoItem', function() {
     var style = domElement.style;
 
     assert.equal(style.listStyleType, 'none', 'has <li>’s bullet removed');
+    assert.equal(style.fontSize, '14px', 'has the appropriate font size');
+
+    var checkbox = domElement.querySelector('li>label>input[type="checkbox"]');
+    assert.equal(checkbox.style.verticalAlign, '1px', 'has pixel-perfect vertical alignment');
+    assert.equal(checkbox.style.marginLeft, '0px', 'is flush-left-aligned horizontally');
   });
 
   it('requires the label text to be a string', function() {
