@@ -15,6 +15,10 @@
       checkbox.checked = true;
     };
 
+    this.markAsUndone = function() {
+      checkbox.checked = false;
+    };
+
     this.appendTo = getAppenderOf(domElement);
   }
 

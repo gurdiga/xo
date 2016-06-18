@@ -46,12 +46,23 @@ describe('TodoItem', function() {
     );
   });
 
-  it('can be setDoneState()', function() {
-    var checkbox = domElement.querySelector('input[type="checkbox"]');
-    assert(!checkbox.checked, 'the checkbox is checked');
+  describe('doing', function() {
+    var checkbox;
 
-    todoItem.markAsDone();
-    assert(checkbox.checked, 'the checkbox is checked');
+    before(function() {
+      checkbox = domElement.querySelector('input[type="checkbox"]');
+      assert(!checkbox.checked, 'the checkbox is unchecked');
+    });
+
+    it('can markAsDone()', function() {
+      todoItem.markAsDone();
+      assert(checkbox.checked, 'the checkbox is checked');
+    });
+
+    it('can markAsUndone()', function() {
+      todoItem.markAsUndone();
+      assert(!checkbox.checked, 'the checkbox is unchecked');
+    });
   });
 
   var assert = window.TestHelpers.assert;
