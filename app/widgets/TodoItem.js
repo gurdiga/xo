@@ -11,10 +11,11 @@
     var completionLabel = createCompletionLabel();
 
     domElement.appendChild(labeledCheckbox);
+    handleClicks(checkbox, addCompletionLabel, removeCompletionLabel);
 
     this.markAsDone = function() {
       checkbox.checked = true;
-      addCompletionLabel(Date.now());
+      addCompletionLabel();
     };
 
     this.markAsUndone = function() {
@@ -35,6 +36,13 @@
     function createCompletionLabel() {
       return createDOMElement('span');
     }
+  }
+
+  function handleClicks(checkbox, onCheck, onUncheck) {
+    checkbox.addEventListener('click', function() {
+      if (checkbox.checked) onCheck();
+      else onUncheck();
+    });
   }
 
   function createElement() {

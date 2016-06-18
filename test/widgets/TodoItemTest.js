@@ -3,22 +3,21 @@ describe('TodoItem', function() {
 
   var TodoItem = window.App.Widgets.TodoItem;
 
-  var todoItem, domElement, id, labelText;
+  var todoItem, id, labelText, domElement, implicitLabelElement, checkbox, completionLabel;
 
   before(function() {
     id = 'first-item';
     labelText = 'This is the first step';
     todoItem = new TodoItem(id, labelText);
+
     domElement = getWidgetDOMElement(todoItem);
+    implicitLabelElement = domElement.firstChild;
+    checkbox = implicitLabelElement.firstChild;
   });
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'LI', 'it’s a <li>');
-
-    var implicitLabelElement = domElement.firstChild;
     assert.equal(implicitLabelElement.tagName, 'LABEL', 'renders an implicit <label>');
-
-    var checkbox = implicitLabelElement.firstChild;
     assert.equal(checkbox.tagName, 'INPUT', 'renders a checkbox');
     assert.equal(checkbox.getAttribute('data-id'), id, 'sets the given ID in the data-id attribute of the checkbox');
 
@@ -47,11 +46,9 @@ describe('TodoItem', function() {
   });
 
   describe('doing', function() {
-    var checkbox, completionLabel;
-
     before(function() {
       checkbox = domElement.querySelector('input[type="checkbox"]');
-      assert(!checkbox.checked, 'the checkbox is unchecked');
+      checkbox.checked = false;
     });
 
     it('can markAsDone()', function() {
@@ -69,11 +66,23 @@ describe('TodoItem', function() {
       completionLabel = getTimestampElement(domElement);
       assert(!completionLabel, 'completion label is not rendered');
     });
-
-    function getTimestampElement(domElement) {
-      return domElement.children[1];
-    }
   });
+
+  it('handles clicks', function() {
+    checkbox.checked = false;
+
+    checkbox.click();
+    completionLabel = getTimestampElement(domElement);
+    assert(completionLabel, 'completion label is rendered when checking');
+
+    checkbox.click();
+    completionLabel = getTimestampElement(domElement);
+    assert(!completionLabel, 'completion label is removed when unchecking');
+  });
+
+  function getTimestampElement(domElement) {
+    return domElement.children[1];
+  }
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
