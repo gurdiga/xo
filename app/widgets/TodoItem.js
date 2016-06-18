@@ -8,18 +8,33 @@
     var domElement = createElement();
     var checkbox = createCheckbox(id);
     var labeledCheckbox = createLabeledCheckbox(checkbox, labelText);
+    var completionLabel = createCompletionLabel();
 
     domElement.appendChild(labeledCheckbox);
 
     this.markAsDone = function() {
       checkbox.checked = true;
+      addCompletionLabel(Date.now());
     };
 
     this.markAsUndone = function() {
       checkbox.checked = false;
+      removeCompletionLabel();
     };
 
     this.appendTo = getAppenderOf(domElement);
+
+    function addCompletionLabel() {
+      domElement.appendChild(completionLabel);
+    }
+
+    function removeCompletionLabel() {
+      domElement.removeChild(completionLabel);
+    }
+
+    function createCompletionLabel() {
+      return createDOMElement('span');
+    }
   }
 
   function createElement() {

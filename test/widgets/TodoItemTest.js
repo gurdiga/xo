@@ -47,7 +47,7 @@ describe('TodoItem', function() {
   });
 
   describe('doing', function() {
-    var checkbox;
+    var checkbox, completionLabel;
 
     before(function() {
       checkbox = domElement.querySelector('input[type="checkbox"]');
@@ -57,12 +57,22 @@ describe('TodoItem', function() {
     it('can markAsDone()', function() {
       todoItem.markAsDone();
       assert(checkbox.checked, 'the checkbox is checked');
+
+      completionLabel = getTimestampElement(domElement);
+      assert(completionLabel, 'completion label is rendered');
     });
 
     it('can markAsUndone()', function() {
       todoItem.markAsUndone();
       assert(!checkbox.checked, 'the checkbox is unchecked');
+
+      completionLabel = getTimestampElement(domElement);
+      assert(!completionLabel, 'completion label is not rendered');
     });
+
+    function getTimestampElement(domElement) {
+      return domElement.children[1];
+    }
   });
 
   var assert = window.TestHelpers.assert;
