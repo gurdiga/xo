@@ -37,8 +37,10 @@ describe('TodoList', function() {
 
     it('works', function() {
       var itemData = [{
+        id: 'first-item',
         label: 'the first new item'
       }, {
+        id: 'second-item',
         label: 'the second new item'
       }];
 

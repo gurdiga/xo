@@ -1,11 +1,12 @@
 (function() {
   'use strict';
 
-  function TodoItem(labelText) {
+  function TodoItem(id, labelText) {
+    assert(_.isString(id), 'TodoItem constructor expects the first argument, ID, to be a string');
     assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
 
     var domElement = createElement();
-    var checkbox = createCheckbox();
+    var checkbox = createCheckbox(id);
     var labeledCheckbox = createLabeledCheckbox(checkbox, labelText);
 
     domElement.appendChild(labeledCheckbox);
@@ -26,13 +27,17 @@
     return createDOMElement('li', style);
   }
 
-  function createCheckbox() {
+  function createCheckbox(id) {
     var style = {
       'vertical-align': '1px',
       'margin-left': '0'
     };
 
-    var checkbox = createDOMElement('input', style);
+    var attributes = {
+      'data-id': id
+    };
+
+    var checkbox = createDOMElement('input', style, attributes);
 
     checkbox.type = 'checkbox';
 

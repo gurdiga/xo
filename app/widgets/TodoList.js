@@ -35,7 +35,7 @@
   }
 
   function createTodoItem(todoItemData) {
-    return new TodoItem(todoItemData.label);
+    return new TodoItem(todoItemData.id, todoItemData.label);
   }
 
   var TodoItem = window.App.Widgets.TodoItem;

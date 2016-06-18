@@ -3,11 +3,12 @@ describe('TodoItem', function() {
 
   var TodoItem = window.App.Widgets.TodoItem;
 
-  var todoItem, domElement, labelText;
+  var todoItem, domElement, id, labelText;
 
   before(function() {
+    id = 'first-item';
     labelText = 'This is the first step';
-    todoItem = new TodoItem(labelText);
+    todoItem = new TodoItem(id, labelText);
     domElement = getWidgetDOMElement(todoItem);
   });
 
@@ -19,6 +20,7 @@ describe('TodoItem', function() {
 
     var checkbox = implicitLabelElement.firstChild;
     assert.equal(checkbox.tagName, 'INPUT', 'renders a checkbox');
+    assert.equal(checkbox.getAttribute('data-id'), id, 'sets the given ID in the data-id attribute of the checkbox');
 
     var labelTextContainer = implicitLabelElement.lastChild;
     assert.equal(labelTextContainer.tagName, 'SPAN', 'renders a span to hold the actual text label');
@@ -38,7 +40,7 @@ describe('TodoItem', function() {
 
   it('requires the label text to be a string', function() {
     assert.throws(function callingWithInvalidTextLabel() {
-      new TodoItem(42); // eslint-disable-line no-new
+      new TodoItem(id, 42); // eslint-disable-line no-new
     },
       'TodoItem constructor expects the first argument, label text, to be a string'
     );
