@@ -8,33 +8,38 @@
     var domElement = createElement();
     var checkbox = createCheckbox(id);
     var labeledCheckbox = createLabeledCheckbox(checkbox, labelText);
-    var completionLabel = createCompletionLabel();
 
     domElement.appendChild(labeledCheckbox);
     handleClicks(checkbox, addCompletionLabel, removeCompletionLabel);
 
-    this.markAsDone = function() {
-      checkbox.checked = true;
-      addCompletionLabel();
-    };
-
-    this.markAsUndone = function() {
-      checkbox.checked = false;
-      removeCompletionLabel();
-    };
-
     this.appendTo = getAppenderOf(domElement);
 
     function addCompletionLabel() {
-      domElement.appendChild(completionLabel);
+      domElement.appendChild(createCompletionLabel());
     }
 
     function removeCompletionLabel() {
+      var completionLabel = domElement.children[1];
       domElement.removeChild(completionLabel);
     }
 
     function createCompletionLabel() {
-      return createDOMElement('span');
+      var timeElement = createDOMElement('time');
+      var currentDate = new Date();
+      timeElement.setAttribute('timestamp', currentDate.toISOString());
+      timeElement.textContent = moment(currentDate).format('DD.MM.YYYY HH:mm');
+
+      var style = {
+        'color': 'gray',
+        'font-size': '12px',
+        'margin-left': '1em'
+      };
+
+      var label = createDOMElement('span', style);
+      label.textContent = 'completat la ';
+      label.appendChild(timeElement);
+
+      return label;
     }
   }
 
@@ -85,6 +90,7 @@
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var moment = window.moment;
 
   window.App.Widgets.TodoItem = TodoItem;
 
