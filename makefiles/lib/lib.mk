@@ -6,7 +6,8 @@ lib-all: \
 	lib/mocha.js \
 	lib/mocha.css \
 	lib/chai.js \
-	lib/mocha-html-dot-reporter.js
+	lib/mocha-html-dot-reporter.js \
+	lib/sinon.js
 
 lib:
 	mkdir -p lib
@@ -52,3 +53,6 @@ lib/mocha-html-dot-reporter.js: | lib
 
 lib/chai.js: | lib
 	curl --fail --progress-bar https://raw.githubusercontent.com/chaijs/chai/3.5.0/chai.js | uglifyjs > $@
+
+lib/sinon.js: | lib
+	curl --fail --progress-bar http://sinonjs.org/releases/sinon-1.17.3.js | uglifyjs > $@
