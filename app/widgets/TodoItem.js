@@ -27,7 +27,7 @@
       var timeElement = createDOMElement('time');
       var currentDate = new Date();
       timeElement.setAttribute('timestamp', currentDate.toISOString());
-      timeElement.textContent = moment(currentDate).format('DD.MM.YYYY HH:mm');
+      timeElement.textContent = DateFormatting.format(currentDate, 'DD.MM.YYYY HH:mm');
 
       var style = {
         'color': 'gray',
@@ -90,7 +90,7 @@
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var moment = window.moment;
+  var DateFormatting = window.App.Utils.DateFormatting;
 
   window.App.Widgets.TodoItem = TodoItem;
 

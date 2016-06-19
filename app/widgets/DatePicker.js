@@ -4,7 +4,7 @@
   DatePicker.instance = new DatePicker();
 
   function DatePicker() {
-    var INTERNAL_DATE_FORMAT = 'yyyy-mm-dd';
+    var INTERNAL_DATE_FORMAT = 'YYYY-MM-DD';
 
     var onDateSelectedCallback = createDateSelectedCallback(this, getCurrentDateField);
     var widget = createWidget(onDateSelectedCallback);

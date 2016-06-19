@@ -6,7 +6,7 @@ describe('DateFormatting', function() {
 
     before(function() {
       date = new Date(2015, 10, 7);
-      formattedDate = DateFormatting.format(date, 'dd/mm/yyyy');
+      formattedDate = DateFormatting.format(date, 'DD/MM/YYYY');
     });
 
     it('works for the happy path', function() {
@@ -33,7 +33,7 @@ describe('DateFormatting', function() {
     var date;
 
     before(function() {
-      date = DateFormatting.parse('2015-06-07', 'yyyy-mm-dd');
+      date = DateFormatting.parse('2015-06-07', 'YYYY-MM-DD');
     });
 
     it('works for the happy path', function() {

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  DateFieldInput.DATE_FORMAT = 'dd.mm.yyyy';
+  DateFieldInput.DATE_FORMAT = 'DD.MM.YYYY';
   DateFieldInput.DATE_PICKER_SELECTOR = '.pika-single';
 
   function DateFieldInput(value, additionalStyle) {
