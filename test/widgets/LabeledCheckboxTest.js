@@ -25,7 +25,7 @@ describe('LabeledCheckbox', function() {
   });
 
   it('can tell its value', function() {
-    assert.equal(labeledCheckbox.getValue(), checkbox.checked);
+    assert.equal(labeledCheckbox.getValue(), checkbox.checked, 'returns the checked state of its checkbox');
   });
 
   it('can be setValue()', function() {

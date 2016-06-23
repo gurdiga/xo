@@ -2,9 +2,7 @@
   'use strict';
 
   function LabeledCheckbox(labelText) {
-    var checkbox = createDOMElement('input');
-    checkbox.type = 'checkbox';
-
+    var checkbox = createCheckbox();
     var domElement = createElement(labelText, checkbox);
 
     this.getValue = function() {
@@ -18,9 +16,16 @@
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement(labelText, checkbox) {
-    var domElement = createDOMElement('labeled-checkbox');
+  function createCheckbox() {
+    var style = {};
+    var attributes = {
+      'type': 'checkbox'
+    };
 
+    return createDOMElement('input', style, attributes);
+  }
+
+  function createElement(labelText, checkbox) {
     var label = createDOMElement('label');
     label.appendChild(checkbox);
 
@@ -28,6 +33,7 @@
     span.textContent = labelText;
     label.appendChild(span);
 
+    var domElement = createDOMElement('labeled-checkbox');
     domElement.appendChild(label);
 
     return domElement;
