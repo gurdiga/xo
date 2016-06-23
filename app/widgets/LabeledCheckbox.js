@@ -1,14 +1,27 @@
 (function() {
   'use strict';
 
-  function LabeledCheckbox() {
-    var domElement = createElement();
+  function LabeledCheckbox(labelText) {
+    var domElement = createElement(labelText);
 
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement() {
-    return createDOMElement('labeled-checkbox');
+  function createElement(labelText) {
+    var domElement = createDOMElement('labeled-checkbox');
+    var label = createDOMElement('label');
+
+    var checkbox = createDOMElement('input');
+    checkbox.type = 'checkbox';
+    label.appendChild(checkbox);
+
+    var span = createDOMElement('span');
+    span.textContent = labelText;
+    label.appendChild(span);
+
+    domElement.appendChild(label);
+
+    return domElement;
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
