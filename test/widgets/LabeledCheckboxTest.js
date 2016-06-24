@@ -36,6 +36,18 @@ describe('LabeledCheckbox', function() {
     assert.equal(checkbox.checked, false, 'can be unchecked');
   });
 
+  it('announces its changes', function() {
+    var callback = sinon.spy();
+
+    labeledCheckbox.setValue(false);
+    labeledCheckbox.onChange(callback);
+    checkbox.click();
+
+    assert(callback.called, 'calls the given callback');
+    assert(callback.calledWith(true), 'the callback is passed the current state of the checkbox');
+  });
+
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
+  var sinon = window.sinon;
 });

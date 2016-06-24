@@ -13,6 +13,12 @@
       checkbox.checked = isChecked;
     };
 
+    this.onChange = function(callback) {
+      checkbox.addEventListener('click', function() {
+        callback(checkbox.checked);
+      });
+    };
+
     this.appendTo = getAppenderOf(domElement);
   }
 
