@@ -46,10 +46,10 @@ describe('TodoList', function() {
 
       todoList.setItems(itemData);
 
-      var itemElements = _.toArray(domElement.querySelectorAll('ul>li>label>input[type="checkbox"]'));
+      var itemElements = _.toArray(domElement.querySelectorAll('ul>li>labeled-checkbox input[type="checkbox"]'));
       assert.equal(itemElements.length, itemData.length, 'renders items as <li>s');
 
-      var itemLabels = _.toArray(domElement.querySelectorAll('ul>li>label'));
+      var itemLabels = _.toArray(domElement.querySelectorAll('ul>li>labeled-checkbox'));
       var itemLabelTexts = itemLabels.map(_.property('textContent'));
       var expectedItemLabels = itemData.map(_.property('label'));
       assert.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate label texts');

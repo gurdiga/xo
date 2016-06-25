@@ -3,7 +3,7 @@ describe('TodoItem', function() {
 
   var TodoItem = window.App.Widgets.TodoItem;
 
-  var todoItem, id, labelText, domElement, implicitLabelElement, checkbox;
+  var todoItem, id, labelText, domElement, labeledCheckbox;
   var frozenTime = new Date('2000-01-31 22:33');
 
   before(function() {
@@ -12,22 +12,18 @@ describe('TodoItem', function() {
     todoItem = new TodoItem(id, labelText);
 
     domElement = getWidgetDOMElement(todoItem);
-    implicitLabelElement = domElement.firstChild;
-    checkbox = implicitLabelElement.firstChild;
+    labeledCheckbox = domElement.firstChild;
   });
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'LI', 'it’s a <li>');
-    assert.equal(implicitLabelElement.tagName, 'LABEL', 'renders an implicit <label>');
-    assert.equal(checkbox.tagName, 'INPUT', 'renders a checkbox');
-    assert.equal(checkbox.getAttribute('data-id'), id, 'sets the given ID in the data-id attribute of the checkbox');
+    assert.equal(labeledCheckbox.tagName, 'LABELED-CHECKBOX', 'renders a LabeledCheckbox');
 
-    var labelTextContainer = implicitLabelElement.lastChild;
-    assert.equal(labelTextContainer.tagName, 'SPAN', 'renders a span to hold the actual text label');
-    assert.equal(labelTextContainer.textContent, labelText, 'renders the given text as the text label');
+    var checkbox = labeledCheckbox.querySelector('input[type="checkbox"]');
 
-    assert(!checkbox.checked, 'the checkbox is initially rendered as unchecked');
+    assert.equal(todoItem.getData().isCompleted, false, 'is initially rendered as not completed');
     checkbox.click();
+    assert.equal(todoItem.getData().isCompleted, true, 'todoItem data reflects checkbox state');
 
     var completionLabel = domElement.children[1];
     assert.equal(completionLabel.tagName, 'SPAN', 'is a span');
@@ -57,10 +53,6 @@ describe('TodoItem', function() {
 
     assert.equal(style.listStyleType, 'none', 'has <li>’s bullet removed');
     assert.equal(style.fontSize, '14px', 'has the appropriate font size');
-
-    var checkbox = domElement.querySelector('li>label>input[type="checkbox"]');
-    assert.equal(checkbox.style.verticalAlign, '1px', 'has pixel-perfect vertical alignment');
-    assert.equal(checkbox.style.marginLeft, '0px', 'is flush-left-aligned horizontally');
   });
 
   it('requires the label text to be a string', function() {

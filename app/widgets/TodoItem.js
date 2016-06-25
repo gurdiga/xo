@@ -6,48 +6,18 @@
     assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
 
     var domElement = createElement();
-    var checkbox = createCheckbox(id);
-    var labeledCheckbox = createLabeledCheckbox(checkbox, labelText);
 
-    domElement.appendChild(labeledCheckbox);
-    handleClicks(checkbox, addCompletionLabel, removeCompletionLabel);
+    var labeledCheckbox = new LabeledCheckbox(labelText);
+    labeledCheckbox.appendTo(domElement);
+    labeledCheckbox.onChange(toggleCompletionLabelFor(domElement));
 
     this.appendTo = getAppenderOf(domElement);
 
-    function addCompletionLabel() {
-      domElement.appendChild(createCompletionLabel());
-    }
-
-    function removeCompletionLabel() {
-      var completionLabel = domElement.children[1];
-      domElement.removeChild(completionLabel);
-    }
-
-    function createCompletionLabel() {
-      var timeElement = createDOMElement('time');
-      var currentDate = new Date();
-      timeElement.setAttribute('timestamp', currentDate.toISOString());
-      timeElement.textContent = DateFormatting.format(currentDate, 'DD.MM.YYYY HH:mm');
-
-      var style = {
-        'color': 'gray',
-        'font-size': '12px',
-        'margin-left': '1em'
+    this.getData = function() {
+      return {
+        isCompleted: labeledCheckbox.getValue()
       };
-
-      var label = createDOMElement('span', style);
-      label.textContent = 'completat la ';
-      label.appendChild(timeElement);
-
-      return label;
-    }
-  }
-
-  function handleClicks(checkbox, onCheck, onUncheck) {
-    checkbox.addEventListener('click', function() {
-      if (checkbox.checked) onCheck();
-      else onUncheck();
-    });
+    };
   }
 
   function createElement() {
@@ -59,33 +29,42 @@
     return createDOMElement('li', style);
   }
 
-  function createCheckbox(id) {
+  function toggleCompletionLabelFor(domElement) {
+    return function(isChecked) {
+      if (isChecked) addCompletionLabelTo(domElement);
+      else removeCompletionLabelFrom(domElement);
+    };
+  }
+
+  function addCompletionLabelTo(domElement) {
+    domElement.appendChild(createCompletionLabel());
+  }
+
+  function removeCompletionLabelFrom(domElement) {
+    var completionLabel = domElement.children[1];
+    domElement.removeChild(completionLabel);
+  }
+
+  function createCompletionLabel() {
+    var timeElement = createDOMElement('time');
+    var currentDate = new Date();
+    timeElement.setAttribute('timestamp', currentDate.toISOString());
+    timeElement.textContent = DateFormatting.format(currentDate, 'DD.MM.YYYY HH:mm');
+
     var style = {
-      'vertical-align': '1px',
-      'margin-left': '0'
+      'color': 'gray',
+      'font-size': '12px',
+      'margin-left': '1em'
     };
 
-    var attributes = {
-      'data-id': id
-    };
+    var span = createDOMElement('span', style);
+    span.textContent = 'completat la ';
+    span.appendChild(timeElement);
 
-    var checkbox = createDOMElement('input', style, attributes);
-
-    checkbox.type = 'checkbox';
-
-    return checkbox;
+    return span;
   }
 
-  function createLabeledCheckbox(checkbox, labelText) {
-    var labelTextContainer = createDOMElement('span');
-    labelTextContainer.textContent = labelText;
-
-    var label = createDOMElement('label');
-    label.appendChild(checkbox);
-    label.appendChild(labelTextContainer);
-
-    return label;
-  }
+  var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
 
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
