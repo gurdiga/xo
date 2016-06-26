@@ -5,7 +5,7 @@
     assert(_.isString(id), 'TodoItem constructor expects the first argument, ID, to be a string');
     assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
 
-    var domElement = createElement();
+    var domElement = createElement(id);
 
     var labeledCheckbox = new LabeledCheckbox(labelText);
     labeledCheckbox.appendTo(domElement);
@@ -24,13 +24,25 @@
     };
   }
 
-  function createElement() {
+  TodoItem.createWithData = function(data) {
+    var todoItem = new TodoItem(data.id, data.label);
+
+    todoItem.setData(data);
+
+    return todoItem;
+  };
+
+  function createElement(id) {
     var style = {
       'list-style-type': 'none',
       'font-size': '14px'
     };
 
-    return createDOMElement('li', style);
+    var attributes = {
+      'data-id': id
+    };
+
+    return createDOMElement('li', style, attributes);
   }
 
   function toggleCompletionLabelFor(domElement) {

@@ -34,6 +34,7 @@ describe('TodoItem', function() {
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'LI', 'it’s a <li>');
+    assert.equal(domElement.getAttribute('data-id'), id, 'has the appropriate data-id attribute');
     assert.equal(labeledCheckbox.tagName, 'LABELED-CHECKBOX', 'renders a LabeledCheckbox');
 
     var checkbox = labeledCheckbox.querySelector('input[type="checkbox"]');
@@ -78,6 +79,23 @@ describe('TodoItem', function() {
     },
       'TodoItem constructor expects the first argument, label text, to be a string'
     );
+  });
+
+  it('can createWithData()', function() {
+    var data = {
+      'id': 'some-step',
+      'label': 'This is the other step',
+      'isCompleted': true
+    };
+
+    var todoItem = TodoItem.createWithData(data);
+    assert(todoItem instanceof TodoItem, 'creates a new instance');
+
+    var domElement = getWidgetDOMElement(todoItem);
+    assert.equal(domElement.getAttribute('data-id'), data.id, 'renders the appropriate data-id attribute');
+
+    var labeledCheckbox = domElement.querySelector('labeled-checkbox');
+    assert.equal(labeledCheckbox.textContent, data.label, 'renders the appropriate label');
   });
 
   before(function() {
