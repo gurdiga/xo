@@ -16,20 +16,28 @@ describe('TodoItem', function() {
   });
 
   it('can getData', function() {
-    var expectedData = {
-      isCompleted: false
-    };
+    var data = todoItem.getData();
 
-    assert.deepEqual(todoItem.getData(), expectedData, 'contains the relevant pieces of data');
+    assert.equal(data.id, id, 'returns the id for persistance');
+    assert.equal(data.label, labelText, 'returns the label text for persistance');
+    assert.equal(data.isCompleted, false, 'returns the state of the checkbox');
   });
 
   it('can setData', function() {
-    var newData = {
-      isCompleted: true
+    var oldData = todoItem.getData();
+    var data = {
+      'id': 'some-other-id',
+      'label': 'Some other label',
+      'isCompleted': true
     };
 
-    todoItem.setData(newData);
-    assert.deepEqual(todoItem.getData(), newData, 'appropriately updates the data');
+    todoItem.setData(data);
+
+    var newData = todoItem.getData();
+
+    assert.equal(newData.id, oldData.id, 'doesn’t change the id');
+    assert.equal(newData.label, oldData.label, 'doesn’t change the label');
+    assert.equal(newData.isCompleted, data.isCompleted, 'updates the isCompleted value');
   });
 
   it('has the appropriate DOM structure', function() {

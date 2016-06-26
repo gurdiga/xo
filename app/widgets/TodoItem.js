@@ -15,11 +15,14 @@
 
     this.getData = function() {
       return {
-        isCompleted: labeledCheckbox.getValue()
+        'id': id,
+        'label': labelText,
+        'isCompleted': labeledCheckbox.getValue()
       };
     };
 
     this.setData = function(newData) {
+      // id and label are ignored
       labeledCheckbox.setValue(newData.isCompleted);
     };
   }
