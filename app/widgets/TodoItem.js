@@ -18,6 +18,10 @@
         isCompleted: labeledCheckbox.getValue()
       };
     };
+
+    this.setData = function(newData) {
+      labeledCheckbox.setValue(newData.isCompleted);
+    };
   }
 
   function createElement() {

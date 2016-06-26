@@ -6,13 +6,30 @@ describe('TodoItem', function() {
   var todoItem, id, labelText, domElement, labeledCheckbox;
   var frozenTime = new Date('2000-01-31 22:33');
 
-  before(function() {
+  beforeEach(function() {
     id = 'first-item';
     labelText = 'This is the first step';
     todoItem = new TodoItem(id, labelText);
 
     domElement = getWidgetDOMElement(todoItem);
     labeledCheckbox = domElement.firstChild;
+  });
+
+  it('can getData', function() {
+    var expectedData = {
+      isCompleted: false
+    };
+
+    assert.deepEqual(todoItem.getData(), expectedData, 'contains the relevant pieces of data');
+  });
+
+  it('can setData', function() {
+    var newData = {
+      isCompleted: true
+    };
+
+    todoItem.setData(newData);
+    assert.deepEqual(todoItem.getData(), newData, 'appropriately updates the data');
   });
 
   it('has the appropriate DOM structure', function() {
