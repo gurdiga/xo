@@ -8,7 +8,24 @@
   }
 
   function createElement() {
-    return createDOMElement('completion-label');
+    var domElement = createDOMElement('completion-label');
+
+    var timeElement = createTimeElement();
+    domElement.appendChild(timeElement);
+
+    return domElement;
+  }
+
+  function createTimeElement() {
+    var timeElement = document.createElement('time');
+
+    timeElement.setAttribute('timestamp', getIntenalTimestamp());
+
+    return timeElement;
+  }
+
+  function getIntenalTimestamp() {
+    return '';
   }
 
   var createDOMElement = window.App.Utils.createDOMElement;
