@@ -19,17 +19,19 @@
   function createTimeElement() {
     var timeElement = document.createElement('time');
 
-    timeElement.setAttribute('timestamp', getIntenalTimestamp());
+    var now = new Date();
+    var humanReadableTimestamp = moment(now).format('DD.MM.YYYY HH:mm');
+    var internalTimestamp = now.toISOString();
+
+    timeElement.textContent = humanReadableTimestamp;
+    timeElement.setAttribute('timestamp', internalTimestamp);
 
     return timeElement;
   }
 
-  function getIntenalTimestamp() {
-    return '';
-  }
-
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var moment = window.moment;
 
   window.App.Widgets.CompletionLabel = CompletionLabel;
 
