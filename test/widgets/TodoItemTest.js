@@ -20,7 +20,7 @@ describe('TodoItem', function() {
 
     assert.equal(data.id, id, 'returns the id for persistance');
     assert.equal(data.label, labelText, 'returns the label text for persistance');
-    assert.equal(data.isCompleted, false, 'returns the state of the checkbox');
+    assert.equal(data['is-completed'], false, 'returns the state of the checkbox');
   });
 
   it('can setData', function() {
@@ -28,7 +28,7 @@ describe('TodoItem', function() {
     var data = {
       'id': 'some-other-id',
       'label': 'Some other label',
-      'isCompleted': true
+      'is-completed': true
     };
 
     todoItem.setData(data);
@@ -37,7 +37,7 @@ describe('TodoItem', function() {
 
     assert.equal(newData.id, oldData.id, 'doesn’t change the id');
     assert.equal(newData.label, oldData.label, 'doesn’t change the label');
-    assert.equal(newData.isCompleted, data.isCompleted, 'updates the isCompleted value');
+    assert.equal(newData['is-completed'], data['is-completed'], 'updates the is-completed value');
   });
 
   it('has the container for the completion label', function() {
@@ -83,7 +83,7 @@ describe('TodoItem', function() {
     var data = {
       'id': 'some-step',
       'label': 'This is the other step',
-      'isCompleted': true
+      'is-completed': true
     };
 
     var todoItem = TodoItem.createWithData(data);

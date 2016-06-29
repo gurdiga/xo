@@ -19,13 +19,13 @@
       return {
         'id': id,
         'label': labelText,
-        'isCompleted': labeledCheckbox.getValue()
+        'is-completed': labeledCheckbox.getValue()
       };
     };
 
     this.setData = function(newData) {
       // id and label are ignored
-      labeledCheckbox.setValue(newData.isCompleted);
+      labeledCheckbox.setValue(newData['is-completed']);
     };
   }
 
