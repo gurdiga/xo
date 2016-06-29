@@ -23,8 +23,8 @@ describe('CompletionLabel', function() {
     var timeElement = domElement.querySelector('time');
     assert(timeElement, 'has a <time> element');
     assert.equal(timeElement.textContent, '23.11.2000 19:15', 'has the appropriate text content');
-    assert.equal(timeElement.getAttribute('timestamp'), now.toISOString(),
-      '<time>’s “timestamp” attribute contains ISO 8601-formatted current date');
+    assert.equal(timeElement.getAttribute('datetime'), now.toISOString(),
+      '<time>’s “datetime” attribute contains ISO 8601-formatted current date');
   });
 
   it('can tell its data', function() {

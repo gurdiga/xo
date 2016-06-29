@@ -25,7 +25,7 @@
     var internalTimestamp = now.toISOString();
 
     timeElement.textContent = humanReadableTimestamp;
-    timeElement.setAttribute('timestamp', internalTimestamp);
+    timeElement.setAttribute('datetime', internalTimestamp);
 
     return timeElement;
   }
