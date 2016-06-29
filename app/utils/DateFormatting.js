@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  /*global moment*/
-
   var DateFormatting = {
     format: function(date, mask) {
       assert(_.isDate(date),
@@ -24,6 +22,7 @@
   };
 
   var assert = window.App.Utils.assert;
+  var moment = window.moment;
 
   window.App.Utils.DateFormatting = DateFormatting;
 }());
