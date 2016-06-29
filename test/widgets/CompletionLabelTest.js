@@ -27,6 +27,11 @@ describe('CompletionLabel', function() {
       '<time>’s “timestamp” attribute contains ISO 8601-formatted current date');
   });
 
+  it('can tell its data', function() {
+    var data = completionLabel.getData();
+    assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');
+  });
+
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
 
