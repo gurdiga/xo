@@ -40,6 +40,12 @@ describe('TodoItem', function() {
     assert.equal(newData.isCompleted, data.isCompleted, 'updates the isCompleted value');
   });
 
+  it('has the container for the completion label', function() {
+    var completionLabelContainer = domElement.querySelector('completion-label-container');
+    assert(completionLabelContainer, 'exists');
+    assert.equal(completionLabelContainer.innerHTML, '', 'is empty');
+  });
+
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'LI', 'it’s a <li>');
     assert.equal(domElement.getAttribute('data-id'), id, 'has the appropriate data-id attribute');
@@ -47,31 +53,15 @@ describe('TodoItem', function() {
 
     var checkbox = labeledCheckbox.querySelector('input[type="checkbox"]');
 
-    assert.equal(todoItem.getData().isCompleted, false, 'is initially rendered as not completed');
-    checkbox.click();
-    assert.equal(todoItem.getData().isCompleted, true, 'todoItem data reflects checkbox state');
+    assert.equal(checkbox.checked, false, 'is initially rendered as not completed');
 
-    var completionLabel = domElement.children[1];
-    assert.equal(completionLabel.tagName, 'SPAN', 'is a span');
-    assert.equal(completionLabel.textContent, 'completat la 31.01.2000 22:33',
-      'completion label has the appropriate text');
-    assert.equal(completionLabel.style.color, 'gray', 'completion label is grayish');
-    assert.equal(completionLabel.style.fontSize, '12px', 'completion label has a smaller font size');
-    assert.equal(completionLabel.style.marginLeft, '1em',
-      'completion label leaves a little room after the TODO item’ label');
-
-    var completionTime = completionLabel.querySelector('time');
-    assert(completionTime, 'completion time element exists');
-    assert(completionTime.hasAttribute('timestamp'),
-      'completion time element has the timestamp attribute for accessibilty');
-
-    var completionTimeStamp = completionTime.getAttribute('timestamp');
-    assert.equal(completionTimeStamp, frozenTime.toISOString(),
-      'completion timestamp shows date, hour and minutes only');
+    var completionLabelContainer = domElement.querySelector('completion-label-container');
+    assert(completionLabelContainer, 'exists');
+    assert.equal(completionLabelContainer.innerHTML, '', 'is initially empty');
 
     checkbox.click();
-    completionLabel = getTimestampElement(domElement);
-    assert(!completionLabel, 'completion label is removed when unchecking');
+    assert.notEqual(completionLabelContainer.innerHTML, '',
+      'when checking the checkbox the completion label is rendered');
   });
 
   it('has the appropriate style', function() {
@@ -114,10 +104,6 @@ describe('TodoItem', function() {
     this.clock.restore(); // eslint-disable-line no-invalid-this
     delete this.clock; // eslint-disable-line no-invalid-this
   });
-
-  function getTimestampElement(domElement) {
-    return domElement.children[1];
-  }
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;

@@ -7,9 +7,11 @@
 
     var domElement = createElement(id);
 
+    var completionLabelContainer = createCompletionLabelContainer();
     var labeledCheckbox = new LabeledCheckbox(labelText);
     labeledCheckbox.appendTo(domElement);
-    labeledCheckbox.onChange(toggleCompletionLabelFor(domElement));
+    labeledCheckbox.onChange(toggleCompletionLabelFor(completionLabelContainer));
+    domElement.appendChild(completionLabelContainer);
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -48,47 +50,32 @@
     return createDOMElement('li', style, attributes);
   }
 
-  function toggleCompletionLabelFor(domElement) {
+  function createCompletionLabelContainer() {
+    return createDOMElement('completion-label-container');
+  }
+
+  function toggleCompletionLabelFor(completionLabelContainer) {
     return function(isChecked) {
-      if (isChecked) addCompletionLabelTo(domElement);
-      else removeCompletionLabelFrom(domElement);
+      if (isChecked) addCompletionLabelTo(completionLabelContainer);
+      else removeCompletionLabelFrom(completionLabelContainer);
     };
   }
 
-  function addCompletionLabelTo(domElement) {
-    domElement.appendChild(createCompletionLabel());
+  function addCompletionLabelTo(completionLabelContainer) {
+    var completionLabel = new CompletionLabel();
+    completionLabel.appendTo(completionLabelContainer);
   }
 
-  function removeCompletionLabelFrom(domElement) {
-    var completionLabel = domElement.children[1];
-    domElement.removeChild(completionLabel);
-  }
-
-  function createCompletionLabel() {
-    var timeElement = createDOMElement('time');
-    var currentDate = new Date();
-    timeElement.setAttribute('timestamp', currentDate.toISOString());
-    timeElement.textContent = DateFormatting.format(currentDate, 'DD.MM.YYYY HH:mm');
-
-    var style = {
-      'color': 'gray',
-      'font-size': '12px',
-      'margin-left': '1em'
-    };
-
-    var span = createDOMElement('span', style);
-    span.textContent = 'completat la ';
-    span.appendChild(timeElement);
-
-    return span;
+  function removeCompletionLabelFrom(completionLabelContainer) {
+    completionLabelContainer.innerHTML = '';
   }
 
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
+  var CompletionLabel = window.App.Widgets.CompletionLabel;
 
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var DateFormatting = window.App.Utils.DateFormatting;
 
   window.App.Widgets.TodoItem = TodoItem;
 
