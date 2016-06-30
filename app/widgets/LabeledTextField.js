@@ -10,7 +10,7 @@
     this.getValue = delegateTo(input, 'getValue');
 
     this.appendTo = getAppenderOf(domElement);
-    this.destroy = getDestroyerOf(domElement);
+    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(input, 'focus');
   }
 
@@ -32,7 +32,7 @@
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var getRemoverOf = window.App.Utils.getRemoverOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
 

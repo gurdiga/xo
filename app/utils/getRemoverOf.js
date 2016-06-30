@@ -2,12 +2,12 @@
   'use strict';
 
 
-  function getDestroyerOf(domElement) {
+  function getRemoverOf(domElement) {
     return function() {
       domElement.parentNode.removeChild(domElement);
     };
   }
 
-  window.App.Utils.getDestroyerOf = getDestroyerOf;
+  window.App.Utils.getRemoverOf = getRemoverOf;
 
 }());

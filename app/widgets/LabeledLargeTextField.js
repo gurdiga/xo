@@ -9,7 +9,7 @@
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
-    this.destroy = getDestroyerOf(domElement);
+    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(textarea, 'focus');
     this.getValue = delegateTo(textarea, 'value');
   }
@@ -53,7 +53,7 @@
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var getRemoverOf = window.App.Utils.getRemoverOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
   var addFocusEffect = window.App.Utils.addFocusEffect;

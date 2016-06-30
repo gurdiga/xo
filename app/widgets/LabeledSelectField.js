@@ -10,7 +10,7 @@
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
-    this.destroy = getDestroyerOf(domElement);
+    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(select, 'focus');
 
     this.getValue = delegateTo(select, 'value');
@@ -83,7 +83,7 @@
   var FieldLabel = window.App.Widgets.FieldLabel;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getDestroyerOf = window.App.Utils.getDestroyerOf;
+  var getRemoverOf = window.App.Utils.getRemoverOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
 

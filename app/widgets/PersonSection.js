@@ -37,7 +37,7 @@
     }
 
     function renderPersonTypeSpecificFields(personType) {
-      personTypeSpecificFields.forEach(destroyField);
+      personTypeSpecificFields.forEach(removeField);
       fieldValues[PERSON_TYPE_INTERNAL_NAME] = personType;
       personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
       section.appendWidgets(personTypeSpecificFields);
@@ -113,8 +113,8 @@
     ];
   }
 
-  function destroyField(field) {
-    field.destroy();
+  function removeField(field) {
+    field.remove();
   }
 
   var Section = window.App.Widgets.Section;
