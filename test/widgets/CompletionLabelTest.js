@@ -32,6 +32,15 @@ describe('CompletionLabel', function() {
     assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');
   });
 
+  it('can remove its DOM element from its container', function() {
+    var container = createDOMElement('div');
+    completionLabel.appendTo(container);
+    completionLabel.remove();
+    assert(container.children.length === 0, 'container is empty');
+  });
+
+  var createDOMElement = window.App.Utils.createDOMElement;
+
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
 

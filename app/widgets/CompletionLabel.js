@@ -7,6 +7,7 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.getData = delegateTo(now, 'toISOString');
+    this.remove = getDestroyerOf(domElement);
   }
 
   function createElement(now) {
@@ -32,6 +33,7 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getDestroyerOf = window.App.Utils.getDestroyerOf;
   var delegateTo = window.App.Utils.delegateTo;
   var moment = window.moment;
 
