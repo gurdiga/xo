@@ -32,9 +32,11 @@
   }
 
   function render(domElement, completionTime) {
-    var timeElement = createTimeElement(completionTime);
     var content = document.createDocumentFragment();
+    var preposition = document.createTextNode('completat la ');
+    var timeElement = createTimeElement(completionTime);
 
+    content.appendChild(preposition);
     content.appendChild(timeElement);
     domElement.appendChild(content);
 

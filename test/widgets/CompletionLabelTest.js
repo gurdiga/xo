@@ -43,8 +43,12 @@ describe('CompletionLabel', function() {
   });
 
   function assertRendered(domElement, dateObject) {
-    var timeElement = domElement.querySelector('time');
-    assert(timeElement, 'has a <time> element');
+    var preposition = domElement.childNodes[0];
+    assert.equal(preposition.nodeType, Element.TEXT_NODE, 'the preposition is a text node');
+    assert.equal(preposition.textContent, 'completat la ', 'the preposition has the appropriate text');
+
+    var timeElement = domElement.childNodes[1];
+    assert.equal(timeElement.tagName, 'TIME', 'the second child is a <time> element');
 
     var humanlyReadableDate = moment(dateObject).format('DD.MM.YYYY HH:mm');
     assert.equal(timeElement.textContent, humanlyReadableDate, '<time> has the appropriate text content');
