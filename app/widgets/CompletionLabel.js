@@ -2,28 +2,54 @@
   'use strict';
 
   function CompletionLabel() {
-    var now = new Date();
-    var domElement = createElement(now);
+    var domElement = createElement();
+    var completionTime = new Date();
+
+    render(domElement, completionTime);
+
+    var isDisplayed = true;
 
     this.appendTo = getAppenderOf(domElement);
-    this.getData = delegateTo(now, 'toISOString');
-    this.remove = getRemoverOf(domElement);
+
+    this.getData = function() {
+      return completionTime.toISOString();
+    };
+
+    this.toggle = function() {
+      if (isDisplayed) {
+        empty(domElement);
+        isDisplayed = false;
+      } else {
+        completionTime = new Date();
+        render(domElement, completionTime);
+        isDisplayed = true;
+      }
+    };
   }
 
-  function createElement(now) {
-    var domElement = createDOMElement('completion-label');
-
-    var timeElement = createTimeElement(now);
-    domElement.appendChild(timeElement);
-
-    return domElement;
+  function createElement() {
+    return createDOMElement('completion-label');
   }
 
-  function createTimeElement(now) {
+  function render(domElement, completionTime) {
+    var timeElement = createTimeElement(completionTime);
+    var content = document.createDocumentFragment();
+
+    content.appendChild(timeElement);
+    domElement.appendChild(content);
+
+    return content;
+  }
+
+  function empty(domElement) {
+    domElement.innerHTML = '';
+  }
+
+  function createTimeElement(completionTime) {
     var timeElement = document.createElement('time');
 
-    var humanReadableTimestamp = moment(now).format('DD.MM.YYYY HH:mm');
-    var internalTimestamp = now.toISOString();
+    var humanReadableTimestamp = moment(completionTime).format('DD.MM.YYYY HH:mm');
+    var internalTimestamp = completionTime.toISOString();
 
     timeElement.textContent = humanReadableTimestamp;
     timeElement.setAttribute('datetime', internalTimestamp);
@@ -33,8 +59,6 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
-  var delegateTo = window.App.Utils.delegateTo;
   var moment = window.moment;
 
   window.App.Widgets.CompletionLabel = CompletionLabel;

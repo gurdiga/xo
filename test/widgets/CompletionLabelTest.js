@@ -20,11 +20,7 @@ describe('CompletionLabel', function() {
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'COMPLETION-LABEL', 'has the appropriate tag name');
 
-    var timeElement = domElement.querySelector('time');
-    assert(timeElement, 'has a <time> element');
-    assert.equal(timeElement.textContent, '23.11.2000 19:15', 'has the appropriate text content');
-    assert.equal(timeElement.getAttribute('datetime'), now.toISOString(),
-      '<time>’s “datetime” attribute contains ISO 8601-formatted current date');
+    assertRendered(domElement, now);
   });
 
   it('can tell its data', function() {
@@ -32,17 +28,33 @@ describe('CompletionLabel', function() {
     assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');
   });
 
-  it('can remove its DOM element from its container', function() {
-    var container = createDOMElement('div');
-    completionLabel.appendTo(container);
-    completionLabel.remove();
-    assert(container.children.length === 0, 'container is empty');
+  it('can toggle itself', function() {
+    completionLabel.toggle();
+    assert(domElement.children.length === 0, 'empties itself on the first call');
+
+    var FIVE_MINUTES = 1000 * 60 * 5;
+    clock.tick(FIVE_MINUTES);
+
+    var later = new Date(now.getTime() + FIVE_MINUTES);
+
+    completionLabel.toggle();
+    assertRendered(domElement, later);
+    assert.equal(completionLabel.getData(), later.toISOString(), 'data reflects the later time');
   });
 
-  var createDOMElement = window.App.Utils.createDOMElement;
+  function assertRendered(domElement, dateObject) {
+    var timeElement = domElement.querySelector('time');
+    assert(timeElement, 'has a <time> element');
+
+    var humanlyReadableDate = moment(dateObject).format('DD.MM.YYYY HH:mm');
+    assert.equal(timeElement.textContent, humanlyReadableDate, '<time> has the appropriate text content');
+    assert.equal(timeElement.getAttribute('datetime'), dateObject.toISOString(),
+      '<time>’s “datetime” attribute contains ISO 8601-formatted current date');
+  }
 
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
 
   var sinon = window.sinon;
+  var moment = window.moment;
 });
