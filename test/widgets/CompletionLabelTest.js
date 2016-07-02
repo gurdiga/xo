@@ -30,6 +30,28 @@ describe('CompletionLabel', function() {
     assert.equal(style.color, 'gray', 'is a little dimmed compared to the main content');
   });
 
+  it('can be set additional style', function() {
+    var additionalStyle = {
+      'color': 'green'
+    };
+
+    completionLabel.setStyle(additionalStyle);
+    assert.equal(domElement.style.color, additionalStyle.color, 'custom color is applied');
+  });
+
+  it('can be created with additional style', function() {
+    var additionalStyle = {
+      'color': 'red',
+      'margin-left': '0.5em'
+    };
+
+    var completionLabel = CompletionLabel.createWithStyle(additionalStyle);
+    var domElement = getWidgetDOMElement(completionLabel);
+
+    assert.equal(domElement.style.color, additionalStyle.color, 'custom color is applied');
+    assert.equal(domElement.style.marginLeft, additionalStyle['margin-left'], 'custom margin is applied');
+  });
+
   it('can tell its data', function() {
     var data = completionLabel.getData();
     assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');

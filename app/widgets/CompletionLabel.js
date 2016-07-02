@@ -25,7 +25,19 @@
         isDisplayed = true;
       }
     };
+
+    this.setStyle = function(additionalStyle) {
+      addStyle(domElement, additionalStyle);
+    };
   }
+
+  CompletionLabel.createWithStyle = function(additionalStyle) {
+    var completionLabel = new CompletionLabel();
+
+    completionLabel.setStyle(additionalStyle);
+
+    return completionLabel;
+  };
 
   function createElement() {
     var style = {
@@ -66,6 +78,7 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var addStyle = window.App.Utils.addStyle;
   var moment = window.moment;
 
   window.App.Widgets.CompletionLabel = CompletionLabel;
