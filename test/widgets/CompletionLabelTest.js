@@ -23,6 +23,13 @@ describe('CompletionLabel', function() {
     assertRendered(domElement, now);
   });
 
+  it('has the appropriate style', function() {
+    var style = domElement.style;
+
+    assert.equal(style.fontSize, '12px', 'has a smaller font-size than the main content');
+    assert.equal(style.color, 'gray', 'is a little dimmed compared to the main content');
+  });
+
   it('can tell its data', function() {
     var data = completionLabel.getData();
     assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');

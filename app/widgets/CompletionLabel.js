@@ -28,7 +28,12 @@
   }
 
   function createElement() {
-    return createDOMElement('completion-label');
+    var style = {
+      'font-size': '12px',
+      'color': 'gray'
+    };
+
+    return createDOMElement('completion-label', style);
   }
 
   function render(domElement, completionTime) {
