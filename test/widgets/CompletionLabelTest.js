@@ -19,7 +19,6 @@ describe('CompletionLabel', function() {
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'COMPLETION-LABEL', 'has the appropriate tag name');
-
     assertRendered(domElement, now);
   });
 
@@ -28,6 +27,16 @@ describe('CompletionLabel', function() {
 
     assert.equal(style.fontSize, '12px', 'has a smaller font-size than the main content');
     assert.equal(style.color, 'gray', 'is a little dimmed compared to the main content');
+  });
+
+  it('can be told to hide', function() {
+    completionLabel.hide();
+    assert.equal(domElement.innerHTML, '', 'empties itself');
+  });
+
+  it('can be told to display', function() {
+    completionLabel.display();
+    assertRendered(domElement, now);
   });
 
   it('can be set additional style', function() {

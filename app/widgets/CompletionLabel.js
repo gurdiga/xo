@@ -11,19 +11,24 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    this.getData = function() {
-      return completionTime.toISOString();
+    this.hide = function() {
+      empty(domElement);
+      isDisplayed = false;
+    };
+
+    this.display = function() {
+      completionTime = new Date();
+      render(domElement, completionTime);
+      isDisplayed = true;
     };
 
     this.toggle = function() {
-      if (isDisplayed) {
-        empty(domElement);
-        isDisplayed = false;
-      } else {
-        completionTime = new Date();
-        render(domElement, completionTime);
-        isDisplayed = true;
-      }
+      if (isDisplayed) this.hide();
+      else this.display();
+    };
+
+    this.getData = function() {
+      return completionTime.toISOString();
     };
 
     this.setStyle = function(additionalStyle) {
