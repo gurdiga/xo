@@ -21,6 +21,7 @@ describe('TodoItem', function() {
     assert.equal(data.id, id, 'returns the id for persistance');
     assert.equal(data.label, labelText, 'returns the label text for persistance');
     assert.equal(data['is-completed'], false, 'returns the state of the checkbox');
+    assert.equal(data['completion-time'], undefined, 'completion time is not defined');
   });
 
   it('can setData', function() {
@@ -28,7 +29,8 @@ describe('TodoItem', function() {
     var data = {
       'id': 'some-other-id',
       'label': 'Some other label',
-      'is-completed': true
+      'is-completed': true,
+      'completion-time': '2000-11-23T17:15:28.484Z'
     };
 
     todoItem.setData(data);
@@ -37,7 +39,8 @@ describe('TodoItem', function() {
 
     assert.equal(newData.id, oldData.id, 'doesn’t change the id');
     assert.equal(newData.label, oldData.label, 'doesn’t change the label');
-    assert.equal(newData['is-completed'], data['is-completed'], 'updates the is-completed value');
+    assert.equal(newData['is-completed'], data['is-completed'], 'sets the is-completed value');
+    assert.equal(newData['completion-time'], data['completion-time'], 'sets the completion time');
   });
 
   it('has the container for the completion label', function() {
@@ -83,7 +86,8 @@ describe('TodoItem', function() {
     var data = {
       'id': 'some-step',
       'label': 'This is the other step',
-      'is-completed': true
+      'is-completed': true,
+      'completion-time': '2000-11-23T17:15:28.484Z'
     };
 
     var todoItem = TodoItem.createWithData(data);

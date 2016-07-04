@@ -7,26 +7,53 @@
 
     var domElement = createElement(id);
 
-    var completionLabelContainer = createCompletionLabelContainer();
     var labeledCheckbox = new LabeledCheckbox(labelText);
     labeledCheckbox.appendTo(domElement);
-    labeledCheckbox.onChange(toggleCompletionLabelFor(completionLabelContainer));
+
+    var completionLabelContainer = createCompletionLabelContainer();
     domElement.appendChild(completionLabelContainer);
+
+    var completionLabel;
+    labeledCheckbox.onChange(toggleCompletionLabel);
 
     this.appendTo = getAppenderOf(domElement);
 
     this.getData = function() {
-      return {
+      var data = {
         'id': id,
-        'label': labelText,
-        'is-completed': labeledCheckbox.getValue()
+        'label': labelText
       };
+
+      var isCompleted = labeledCheckbox.getValue();
+
+      data['is-completed'] = isCompleted;
+
+      if (isCompleted) data['completion-time'] = completionLabel.getData();
+
+      return data;
     };
 
-    this.setData = function(newData) {
+    this.setData = function(data) {
       // id and label are ignored
-      labeledCheckbox.setValue(newData['is-completed']);
+      labeledCheckbox.setValue(data['is-completed']);
+
+      if (data['is-completed']) addCompletionLabel(new Date(data['completion-time']));
     };
+
+    function toggleCompletionLabel(isChecked) {
+      if (isChecked) addCompletionLabel(new Date());
+      else removeCompletionLabel();
+    }
+
+    function addCompletionLabel(completionTime) {
+      completionLabel = new CompletionLabel(completionTime);
+      completionLabel.appendTo(completionLabelContainer);
+    }
+
+    function removeCompletionLabel() {
+      completionLabel = null;
+      completionLabelContainer.innerHTML = '';
+    }
   }
 
   TodoItem.createWithData = function(data) {
@@ -52,22 +79,6 @@
 
   function createCompletionLabelContainer() {
     return createDOMElement('completion-label-container');
-  }
-
-  function toggleCompletionLabelFor(completionLabelContainer) {
-    return function(isChecked) {
-      if (isChecked) addCompletionLabelTo(completionLabelContainer);
-      else removeCompletionLabelFrom(completionLabelContainer);
-    };
-  }
-
-  function addCompletionLabelTo(completionLabelContainer) {
-    var completionLabel = new CompletionLabel(new Date());
-    completionLabel.appendTo(completionLabelContainer);
-  }
-
-  function removeCompletionLabelFrom(completionLabelContainer) {
-    completionLabelContainer.innerHTML = '';
   }
 
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
