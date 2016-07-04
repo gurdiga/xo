@@ -7,25 +7,7 @@
 
     render(domElement, completionTime);
 
-    var isDisplayed = true;
-
     this.appendTo = getAppenderOf(domElement);
-
-    this.hide = function() {
-      empty(domElement);
-      isDisplayed = false;
-    };
-
-    this.display = function() {
-      completionTime = new Date();
-      render(domElement, completionTime);
-      isDisplayed = true;
-    };
-
-    this.toggle = function() {
-      if (isDisplayed) this.hide();
-      else this.display();
-    };
 
     this.getData = function() {
       return completionTime.toISOString();
@@ -63,10 +45,6 @@
     domElement.appendChild(content);
 
     return content;
-  }
-
-  function empty(domElement) {
-    domElement.innerHTML = '';
   }
 
   function createTimeElement(completionTime) {

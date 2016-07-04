@@ -29,16 +29,6 @@ describe('CompletionLabel', function() {
     assert.equal(style.color, 'gray', 'is a little dimmed compared to the main content');
   });
 
-  it('can be told to hide', function() {
-    completionLabel.hide();
-    assert.equal(domElement.innerHTML, '', 'empties itself');
-  });
-
-  it('can be told to display', function() {
-    completionLabel.display();
-    assertRendered(domElement, now);
-  });
-
   it('can be set additional style', function() {
     var additionalStyle = {
       'color': 'green'
@@ -64,20 +54,6 @@ describe('CompletionLabel', function() {
   it('can tell its data', function() {
     var data = completionLabel.getData();
     assert.deepEqual(data, '2000-11-23T17:15:28.484Z', 'returns the ISO 8601-formatted timestamp');
-  });
-
-  it('can toggle itself', function() {
-    completionLabel.toggle();
-    assert(domElement.children.length === 0, 'empties itself on the first call');
-
-    var FIVE_MINUTES = 1000 * 60 * 5;
-    clock.tick(FIVE_MINUTES);
-
-    var later = new Date(now.getTime() + FIVE_MINUTES);
-
-    completionLabel.toggle();
-    assertRendered(domElement, later);
-    assert.equal(completionLabel.getData(), later.toISOString(), 'data reflects the later time');
   });
 
   function assertRendered(domElement, dateObject) {
