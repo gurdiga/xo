@@ -62,7 +62,7 @@
   }
 
   function addCompletionLabelTo(completionLabelContainer) {
-    var completionLabel = new CompletionLabel();
+    var completionLabel = new CompletionLabel(new Date());
     completionLabel.appendTo(completionLabelContainer);
   }
 

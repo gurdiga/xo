@@ -1,11 +1,10 @@
 (function() {
   'use strict';
 
-  function CompletionLabel() {
+  function CompletionLabel(completionTime) {
     var domElement = createElement();
-    var completionTime = new Date();
 
-    render(domElement, completionTime);
+    addContent(domElement, completionTime);
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -18,14 +17,6 @@
     };
   }
 
-  CompletionLabel.createWithStyle = function(additionalStyle) {
-    var completionLabel = new CompletionLabel();
-
-    completionLabel.setStyle(additionalStyle);
-
-    return completionLabel;
-  };
-
   function createElement() {
     var style = {
       'font-size': '12px',
@@ -35,7 +26,7 @@
     return createDOMElement('completion-label', style);
   }
 
-  function render(domElement, completionTime) {
+  function addContent(domElement, completionTime) {
     var content = document.createDocumentFragment();
     var preposition = document.createTextNode('completat la ');
     var timeElement = createTimeElement(completionTime);
@@ -43,8 +34,6 @@
     content.appendChild(preposition);
     content.appendChild(timeElement);
     domElement.appendChild(content);
-
-    return content;
   }
 
   function createTimeElement(completionTime) {
