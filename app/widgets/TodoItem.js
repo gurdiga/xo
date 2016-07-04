@@ -51,8 +51,8 @@
     }
 
     function removeCompletionLabel() {
+      completionLabel.remove();
       completionLabel = null;
-      completionLabelContainer.innerHTML = '';
     }
   }
 

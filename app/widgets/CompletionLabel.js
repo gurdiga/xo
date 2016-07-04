@@ -15,6 +15,8 @@
     this.setStyle = function(additionalStyle) {
       addStyle(domElement, additionalStyle);
     };
+
+    this.remove = getRemoverOf(domElement);
   }
 
   function createElement() {
@@ -50,6 +52,7 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getRemoverOf = window.App.Utils.getRemoverOf;
   var addStyle = window.App.Utils.addStyle;
   var moment = window.moment;
 
