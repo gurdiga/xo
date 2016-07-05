@@ -2,11 +2,11 @@
   'use strict';
 
   OptionList.INITIAL_OPTION_BUTTON_STYLE = {
-    backgroundColor: 'transparent'
+    'background-color': 'transparent'
   };
 
   OptionList.HOVER_OPTION_BUTTON_STYLE = {
-    backgroundColor: 'rgb(195, 195, 195)'
+    'background-color': 'rgb(195, 195, 195)'
   };
 
 
@@ -115,11 +115,11 @@
 
   function createElement() {
     var style = {
-      position: 'absolute',
-      display: 'none',
-      marginLeft: '10px',
-      backgroundColor: 'white',
-      boxShadow: 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
+      'position': 'absolute',
+      'display': 'none',
+      'margin-left': '10px',
+      'background-color': 'white',
+      'box-shadow': 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
     };
 
     var attributes = {
@@ -130,20 +130,19 @@
   }
 
   function addOptionButtons(optionList, options, domElement) {
-    var optionButtons = _.map(options, function(optionHandler, optionLabel) {
-      return createOptionButton(optionList, optionLabel, optionHandler);
+    _.each(options, function(optionHandler, optionLabel) {
+      var optionButton = createOptionButton(optionList, optionLabel, optionHandler);
+      domElement.appendChild(optionButton);
     });
-
-    appendWidgets(optionButtons).to(domElement);
   }
 
   function createOptionButton(optionList, labelText, optionHandler) {
     var style = _.extend({
-      padding: '5px 10px',
-      borderWidth: '0px',
-      fontSize: '13px',
-      width: '100%',
-      textAlign: 'left'
+      'padding': '5px 10px',
+      'border-width': '0px',
+      'font-size': '13px',
+      'width': '100%',
+      'text-align': 'left'
     }, OptionList.INITIAL_OPTION_BUTTON_STYLE);
 
     var button = createDOMElement('button', style);
@@ -175,7 +174,6 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var addHoverEffect = window.App.Utils.addHoverEffect;
-  var appendWidgets = window.App.Utils.appendWidgets;
   var addStyle = window.App.Utils.addStyle;
   var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
