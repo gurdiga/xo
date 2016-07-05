@@ -34,15 +34,13 @@ describe('addHoverEffect', function() {
     assert.throws(function() {
       addHoverEffect(42);
     },
-      /addHoverEffect expects the first argument to be a DOM element/,
-      'Throws a meaningful error when the first argument is not a DOM element'
+      'addHoverEffect expects the first argument to be a DOM element'
     );
 
     assert.throws(function() {
       addHoverEffect(domElement, 42);
     },
-      /addHoverEffect expects the second argument, style, to be a hash/,
-      'Throws a meaningful error when the second argument, style, is not a hash'
+      'addHoverEffect expects the second argument, style, to be a hash'
     );
   });
 

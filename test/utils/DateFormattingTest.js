@@ -17,15 +17,14 @@ describe('DateFormatting', function() {
       assert.throws(function runWithoutTheFirstArgument() {
         DateFormatting.format();
       },
-        /DateFormatting.format: the first argument is required and has to be a JS Date instance/,
-        'throws a meaningful exception when the first argument is not given'
+        'DateFormatting.format: the first argument is required and has to be a JS Date instance'
       );
 
       assert.throws(function runWithoutTheSecondArgument() {
         DateFormatting.format(date);
       },
-        /DateFormatting.format: the second argument is required and has to be a string representing the date format mask to represent date as/,
-        'throws a meaningful exception when the second argument is not given');
+        'DateFormatting.format: the second argument is required and has to be a string representing the date format mask to represent date as'
+      );
     });
   });
 
@@ -50,22 +49,20 @@ describe('DateFormatting', function() {
       assert.throws(function runWithoutTheFirstArgument() {
         DateFormatting.parse();
       },
-        /DateFormatting.parse: the first argument is required and has to be a string representing the date/,
-        'throws a meaningful exception when the first argument is not given'
+        'DateFormatting.parse: the first argument is required and has to be a string representing the date'
       );
 
       assert.throws(function runWithEmptyStringAsFirstArgument() {
         DateFormatting.parse('');
       },
-        /DateFormatting.parse: the first argument is required and has to be a string representing the date/,
-        'empty string is considered missing'
+        'DateFormatting.parse: the first argument is required and has to be a string representing the date'
       );
 
       assert.throws(function runWithoutTheSecondArgument() {
         DateFormatting.parse('2015-06-07');
       },
-        /DateFormatting.parse: the second argument is required and has to be a string representing the date format mask/,
-        'throws a meaningful exception when the second argument is not given');
+        'DateFormatting.parse: the second argument is required and has to be a string representing the date format mask'
+      );
     });
   });
 

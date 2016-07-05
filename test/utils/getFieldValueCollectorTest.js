@@ -40,16 +40,14 @@ describe('getFieldValueCollector', function() {
       var getValue = getFieldValueCollector([field1, field2, {}]);
       getValue();
     },
-      /Every field is expected to have an internalName/,
-      'throws a meaningful error when a field doesn’t have the internalName property'
+      'Every field is expected to have an internalName'
     );
 
     assert.throws(function() {
       var getValue = getFieldValueCollector([field1, field2, { internalName: 'yes' }]);
       getValue();
     },
-      /Every field is expected to have a getValue method/,
-      'throws a meaningful error when a field doesn’t have the internalName property'
+      'Every field is expected to have a getValue method'
     );
   });
 

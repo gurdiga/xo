@@ -31,16 +31,16 @@ describe('createDOMElement', function() {
         var badTagName = 42;
         domElement = createDOMElement(badTagName);
       },
-        /createDOMElement expects the first argument, tagName, to be a DOM element/,
-        'validates the tag name');
+        'createDOMElement expects the first argument, tagName, to be a DOM element'
+      );
 
       assert.throws(function callWithABadStyleArgument() {
         var badStyle = 42;
 
         domElement = createDOMElement('thing', badStyle);
       },
-        /createDOMElement expects the second argument, style, to be a hash/,
-        'validates the style argument');
+        'createDOMElement expects the second argument, style, to be a hash'
+      );
 
       assert.throws(function callWithABadAttributesArgument() {
         var goodStyle = {};
@@ -48,8 +48,8 @@ describe('createDOMElement', function() {
 
         domElement = createDOMElement('thing', goodStyle, badAttributes);
       },
-        /createDOMElement expects the third argument, attributes, to be a hash/,
-        'validates the style argument');
+        'createDOMElement expects the third argument, attributes, to be a hash'
+      );
     });
   });
 

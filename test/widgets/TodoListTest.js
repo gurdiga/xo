@@ -30,8 +30,7 @@ describe('TodoList', function() {
       assert.throws(function() {
         todoList.setItems(42);
       },
-        /TodoList#setItems expects first argument to be an array of objects/,
-        'throws a meaningful exception when itemData is not an array'
+        'TodoList#setItems expects first argument to be an array of objects'
       );
     });
 

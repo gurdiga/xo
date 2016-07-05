@@ -16,7 +16,7 @@ describe('emptyDOMElement', function() {
     assert.throws(function callingWithNonElement() {
       emptyDOMElement(42);
     },
-      /emptyDOMElement expects the argument to be a DOM element/
+      'emptyDOMElement expects the argument to be a DOM element'
     );
 
   });

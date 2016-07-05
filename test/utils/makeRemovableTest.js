@@ -82,15 +82,13 @@ describe('makeRemovable', function() {
     assert.throws(function() {
       makeRemovable(42);
     },
-      /makeRemovable: the first argument is required to be a DOM element/,
-      'throws a meaningful error message when the first argument is not a DOM element'
+      'makeRemovable: the first argument is required to be a DOM element'
     );
 
     assert.throws(function() {
       makeRemovable(domElement);
     },
-      /makeRemovable: the second argument is required to be a function to call back on remove/,
-      'it shoud require second argument to be a function'
+      'makeRemovable: the second argument is required to be a function to call back on remove'
     );
   });
 

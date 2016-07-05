@@ -33,8 +33,7 @@ describe('hideOnEscapeOrOutsideClick', function() {
     assert.throws(function() {
       hideOnEscapeOrOutsideClick(42);
     },
-      /argument is expected to be a DOM element or a thing that has a hide method/,
-      'throws a meaningful error when input is invalid'
+      'argument is expected to be a DOM element or a thing that has a hide method'
     );
   });
 

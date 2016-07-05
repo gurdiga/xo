@@ -23,15 +23,13 @@ describe('addStyle', function() {
       assert.throws(function() {
         addStyle(42);
       },
-        /addStyle expects the first argument to be a DOM element/,
-        'throws a meaningful error when the first argument is not a DOM element'
+        'addStyle expects the first argument to be a DOM element'
       );
 
       assert.throws(function() {
         addStyle(createDOMElement('div'), 42);
       },
-        /addStyle expects the second argument to be a hash/,
-        'throws a meaningful error when the first argument is not a hash'
+        'addStyle expects the second argument to be a hash'
       );
     });
   });

@@ -73,7 +73,7 @@ describe('Activity', function() {
       assert.throws(function callingWithNonPlainObject() {
         Activity.createWithData(42);
       },
-        /Activity.createWithData expects the argument to be a plain JS object/
+        'Activity.createWithData expects the argument to be a plain JS object'
       );
     });
   });

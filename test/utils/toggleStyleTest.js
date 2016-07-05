@@ -37,29 +37,25 @@ describe('toggleStyle', function() {
     assert.throws(function() {
       toggleStyle(42);
     },
-      /toggleStyle expects the first argument to be a DOM element/,
-      'Throws a meaningful error when the first argument is not a DOM element'
+      'toggleStyle expects the first argument to be a DOM element'
     );
 
     assert.throws(function() {
       toggleStyle(domElement, 42);
     },
-      /toggleStyle expects the second argument, style, to be a hash/,
-      'Throws a meaningful error when the second argument, style, is not a hash'
+      'toggleStyle expects the second argument, style, to be a hash'
     );
 
     assert.throws(function() {
       toggleStyle(domElement, style, 42);
     },
-      /toggleStyle expects the third argument, onEventName, to be a string/,
-      'Throws a meaningful error when the third argument, onEventName, is not a string'
+      'toggleStyle expects the third argument, onEventName, to be a string'
     );
 
     assert.throws(function() {
       toggleStyle(domElement, style, 'mouseenter', 42);
     },
-      /toggleStyle expects the third argument, offEventName, to be a string/,
-      'Throws a meaningful error when the third argument, offEventName, is not a string'
+      'toggleStyle expects the third argument, offEventName, to be a string'
     );
   });
 
