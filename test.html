@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <title>Mocha Tests</title>
   <link href="lib/mocha.css" rel="stylesheet" />
-	<link rel="stylesheet" href="app/css/style.css" />
+  <link rel="stylesheet" href="app/css/style.css" />
 </head>
 <body>
   <div id="mocha" style="font-size: 16px"></div>
@@ -14,122 +14,122 @@
   <script src="lib/sinon.js"></script>
 
   <script>
-		window.mocha.setup('bdd');
-		window.mocha.reporter(HTMLDotReporter);
-	</script>
+    window.mocha.setup('bdd');
+    window.mocha.reporter(HTMLDotReporter);
+  </script>
 
-	<script src="lib/moment.js"></script>
-	<script src="lib/lodash.js"></script>
+  <script src="lib/moment.js"></script>
+  <script src="lib/lodash.js"></script>
 
-	<script src="lib/pikaday.js"></script>
-	<link rel="stylesheet" href="lib/pikaday.css" />
+  <script src="lib/pikaday.js"></script>
+  <link rel="stylesheet" href="lib/pikaday.css" />
 
-	<script src="app/pre-init.js"></script>
+  <script src="app/pre-init.js"></script>
 
-	<script src="app/utils/assert.js"></script>
-	<script src="app/utils/ifKey.js"></script>
-	<script src="app/utils/delegateTo.js"></script>
-	<script src="app/utils/DateFormatting.js"></script>
-	<script src="app/utils/addStyle.js"></script>
-	<script src="app/utils/createDOMElement.js"></script>
-	<script src="app/utils/appendWidgets.js"></script>
-	<script src="app/utils/getAppenderOf.js"></script>
-	<script src="app/utils/getRemoverOf.js"></script>
-	<script src="app/utils/toggleStyle.js"></script>
-	<script src="app/utils/addHoverEffect.js"></script>
-	<script src="app/utils/addFocusEffect.js"></script>
-	<script src="app/utils/makeShy.js"></script>
-	<script src="app/utils/makeRemovable.js"></script>
-	<script src="app/utils/rMap.js"></script>
-	<script src="app/utils/createEnumArray.js"></script>
-	<script src="app/utils/makeTextUselectable.js"></script>
-	<script src="app/utils/createField.js"></script>
-	<script src="app/utils/getFieldValueCollector.js"></script>
-	<script src="app/utils/hideOnEscapeOrOutsideClick.js"></script>
-	<script src="app/utils/emptyDOMElement.js"></script>
+  <script src="app/utils/assert.js"></script>
+  <script src="app/utils/ifKey.js"></script>
+  <script src="app/utils/delegateTo.js"></script>
+  <script src="app/utils/DateFormatting.js"></script>
+  <script src="app/utils/addStyle.js"></script>
+  <script src="app/utils/createDOMElement.js"></script>
+  <script src="app/utils/appendWidgets.js"></script>
+  <script src="app/utils/getAppenderOf.js"></script>
+  <script src="app/utils/getRemoverOf.js"></script>
+  <script src="app/utils/toggleStyle.js"></script>
+  <script src="app/utils/addHoverEffect.js"></script>
+  <script src="app/utils/addFocusEffect.js"></script>
+  <script src="app/utils/makeShy.js"></script>
+  <script src="app/utils/makeRemovable.js"></script>
+  <script src="app/utils/rMap.js"></script>
+  <script src="app/utils/createEnumArray.js"></script>
+  <script src="app/utils/makeTextUselectable.js"></script>
+  <script src="app/utils/createField.js"></script>
+  <script src="app/utils/getFieldValueCollector.js"></script>
+  <script src="app/utils/hideOnEscapeOrOutsideClick.js"></script>
+  <script src="app/utils/emptyDOMElement.js"></script>
 
-	<script src="app/widgets/FieldLabel.js"></script>
-	<script src="app/widgets/TextFieldInput.js"></script>
-	<script src="app/widgets/LabeledTextField.js"></script>
-	<script src="app/widgets/DatePicker.js"></script>
-	<script src="app/widgets/DateFieldInput.js"></script>
-	<script src="app/widgets/DateField.js"></script>
-	<script src="app/widgets/ActivityDateField.js"></script>
-	<script src="app/widgets/LabeledDateField.js"></script>
-	<script src="app/widgets/LabeledLargeTextField.js"></script>
-	<script src="app/widgets/LabeledSelectField.js"></script>
-	<script src="app/widgets/LabeledCheckbox.js"></script>
-	<script src="app/widgets/Section.js"></script>
-	<script src="app/widgets/PersonSection.js"></script>
-	<script src="app/data/Courts.js"></script>
-	<script src="app/widgets/CreateWritButton.js"></script>
-	<script src="app/widgets/SentenceSection.js"></script>
-	<script src="app/widgets/InquirySection.js"></script>
-	<script src="app/widgets/CompletionLabel.js"></script>
-	<script src="app/widgets/TodoItem.js"></script>
-	<script src="app/widgets/TodoList.js"></script>
-	<script src="app/widgets/ActivityDescription.js"></script>
-	<script src="app/widgets/ActivityDetailsSection.js"></script>
-	<script src="app/widgets/Activity.js"></script>
-	<script src="app/widgets/activities/InstitutionActivity.js"></script>
-	<script src="app/widgets/activities/RefusalActivity.js"></script>
-	<script src="app/widgets/OptionList.js"></script>
-	<script src="app/widgets/DropdownButton.js"></script>
-	<script src="app/widgets/AddActivityButton.js"></script>
-	<script src="app/widgets/ActivitiesSection.js"></script>
-	<script src="app/widgets/NewCaseButton.js"></script>
-	<script src="app/widgets/NewCaseDialog.js"></script>
-	<script src="app/UI.js"></script>
-	<!--script src="app/main.js"></script-->
+  <script src="app/widgets/FieldLabel.js"></script>
+  <script src="app/widgets/TextFieldInput.js"></script>
+  <script src="app/widgets/LabeledTextField.js"></script>
+  <script src="app/widgets/DatePicker.js"></script>
+  <script src="app/widgets/DateFieldInput.js"></script>
+  <script src="app/widgets/DateField.js"></script>
+  <script src="app/widgets/ActivityDateField.js"></script>
+  <script src="app/widgets/LabeledDateField.js"></script>
+  <script src="app/widgets/LabeledLargeTextField.js"></script>
+  <script src="app/widgets/LabeledSelectField.js"></script>
+  <script src="app/widgets/LabeledCheckbox.js"></script>
+  <script src="app/widgets/Section.js"></script>
+  <script src="app/widgets/PersonSection.js"></script>
+  <script src="app/data/Courts.js"></script>
+  <script src="app/widgets/CreateWritButton.js"></script>
+  <script src="app/widgets/SentenceSection.js"></script>
+  <script src="app/widgets/InquirySection.js"></script>
+  <script src="app/widgets/CompletionLabel.js"></script>
+  <script src="app/widgets/TodoItem.js"></script>
+  <script src="app/widgets/TodoList.js"></script>
+  <script src="app/widgets/ActivityDescription.js"></script>
+  <script src="app/widgets/ActivityDetailsSection.js"></script>
+  <script src="app/widgets/Activity.js"></script>
+  <script src="app/widgets/activities/InstitutionActivity.js"></script>
+  <script src="app/widgets/activities/RefusalActivity.js"></script>
+  <script src="app/widgets/OptionList.js"></script>
+  <script src="app/widgets/DropdownButton.js"></script>
+  <script src="app/widgets/AddActivityButton.js"></script>
+  <script src="app/widgets/ActivitiesSection.js"></script>
+  <script src="app/widgets/NewCaseButton.js"></script>
+  <script src="app/widgets/NewCaseDialog.js"></script>
+  <script src="app/UI.js"></script>
+  <!--script src="app/main.js"></script-->
 
-	<script src="test/helper.js"></script>
+  <script src="test/helper.js"></script>
 
-	<script src="test/utils/delegateToTest.js"></script>
-	<script src="test/utils/DateFormattingTest.js"></script>
-	<script src="test/utils/createDOMElementTest.js"></script>
-	<script src="test/utils/addStyleTest.js"></script>
-	<script src="test/utils/makeRemovableTest.js"></script>
-	<script src="test/utils/makeShyTest.js"></script>
-	<script src="test/utils/rMapTest.js"></script>
-	<script src="test/utils/toggleStyleTest.js"></script>
-	<script src="test/utils/addHoverEffectTest.js"></script>
-	<script src="test/utils/addFocusEffectTest.js"></script>
-	<script src="test/utils/createEnumArrayTest.js"></script>
-	<script src="test/utils/makeTextUselectableTest.js"></script>
-	<script src="test/utils/createFieldTest.js"></script>
-	<script src="test/utils/getFieldValueCollectorTest.js"></script>
-	<script src="test/utils/hideOnEscapeOrOutsideClickTest.js"></script>
-	<script src="test/utils/emptyDOMElementTest.js"></script>
+  <script src="test/utils/delegateToTest.js"></script>
+  <script src="test/utils/DateFormattingTest.js"></script>
+  <script src="test/utils/createDOMElementTest.js"></script>
+  <script src="test/utils/addStyleTest.js"></script>
+  <script src="test/utils/makeRemovableTest.js"></script>
+  <script src="test/utils/makeShyTest.js"></script>
+  <script src="test/utils/rMapTest.js"></script>
+  <script src="test/utils/toggleStyleTest.js"></script>
+  <script src="test/utils/addHoverEffectTest.js"></script>
+  <script src="test/utils/addFocusEffectTest.js"></script>
+  <script src="test/utils/createEnumArrayTest.js"></script>
+  <script src="test/utils/makeTextUselectableTest.js"></script>
+  <script src="test/utils/createFieldTest.js"></script>
+  <script src="test/utils/getFieldValueCollectorTest.js"></script>
+  <script src="test/utils/hideOnEscapeOrOutsideClickTest.js"></script>
+  <script src="test/utils/emptyDOMElementTest.js"></script>
 
-	<script src="test/widgets/TextFieldInputTest.js"></script>
-	<script src="test/widgets/DateFieldInputTest.js"></script>
-	<script src="test/widgets/LabeledTextFieldTest.js"></script>
-	<script src="test/widgets/LabeledLargeTextFieldTest.js"></script>
-	<script src="test/widgets/LabeledSelectFieldTest.js"></script>
-	<script src="test/widgets/LabeledCheckboxTest.js"></script>
-	<script src="test/widgets/FieldLabelTest.js"></script>
-	<script src="test/widgets/LabeledDateFieldTest.js"></script>
-	<script src="test/widgets/DateFieldTest.js"></script>
-	<script src="test/widgets/ActivityDateFieldTest.js"></script>
-	<script src="test/widgets/SectionTest.js"></script>
-	<script src="test/widgets/OptionListTest.js"></script>
-	<script src="test/widgets/DropdownButtonTest.js"></script>
-	<script src="test/widgets/NewCaseButtonTest.js"></script>
-	<script src="test/widgets/PersonSectionTest.js"></script>
-	<script src="test/widgets/CreateWritButtonTest.js"></script>
-	<script src="test/widgets/SentenceSectionTest.js"></script>
-	<script src="test/widgets/InquirySectionTest.js"></script>
-	<script src="test/widgets/CompletionLabelTest.js"></script>
-	<script src="test/widgets/TodoItemTest.js"></script>
-	<script src="test/widgets/TodoListTest.js"></script>
-	<script src="test/widgets/ActivityDescriptionTest.js"></script>
-	<script src="test/widgets/ActivityDetailsSectionTest.js"></script>
-	<script src="test/widgets/ActivityTest.js"></script>
-	<script src="test/widgets/activities/InstitutionActivityTest.js"></script>
-	<script src="test/widgets/activities/RefusalActivityTest.js"></script>
-	<script src="test/widgets/AddActivityButtonTest.js"></script>
-	<script src="test/widgets/ActivitiesSectionTest.js"></script>
-	<script src="test/widgets/NewCaseDialogTest.js"></script>
+  <script src="test/widgets/TextFieldInputTest.js"></script>
+  <script src="test/widgets/DateFieldInputTest.js"></script>
+  <script src="test/widgets/LabeledTextFieldTest.js"></script>
+  <script src="test/widgets/LabeledLargeTextFieldTest.js"></script>
+  <script src="test/widgets/LabeledSelectFieldTest.js"></script>
+  <script src="test/widgets/LabeledCheckboxTest.js"></script>
+  <script src="test/widgets/FieldLabelTest.js"></script>
+  <script src="test/widgets/LabeledDateFieldTest.js"></script>
+  <script src="test/widgets/DateFieldTest.js"></script>
+  <script src="test/widgets/ActivityDateFieldTest.js"></script>
+  <script src="test/widgets/SectionTest.js"></script>
+  <script src="test/widgets/OptionListTest.js"></script>
+  <script src="test/widgets/DropdownButtonTest.js"></script>
+  <script src="test/widgets/NewCaseButtonTest.js"></script>
+  <script src="test/widgets/PersonSectionTest.js"></script>
+  <script src="test/widgets/CreateWritButtonTest.js"></script>
+  <script src="test/widgets/SentenceSectionTest.js"></script>
+  <script src="test/widgets/InquirySectionTest.js"></script>
+  <script src="test/widgets/CompletionLabelTest.js"></script>
+  <script src="test/widgets/TodoItemTest.js"></script>
+  <script src="test/widgets/TodoListTest.js"></script>
+  <script src="test/widgets/ActivityDescriptionTest.js"></script>
+  <script src="test/widgets/ActivityDetailsSectionTest.js"></script>
+  <script src="test/widgets/ActivityTest.js"></script>
+  <script src="test/widgets/activities/InstitutionActivityTest.js"></script>
+  <script src="test/widgets/activities/RefusalActivityTest.js"></script>
+  <script src="test/widgets/AddActivityButtonTest.js"></script>
+  <script src="test/widgets/ActivitiesSectionTest.js"></script>
+  <script src="test/widgets/NewCaseDialogTest.js"></script>
 
   <script>
     window.mocha.checkLeaks();
