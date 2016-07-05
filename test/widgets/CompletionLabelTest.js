@@ -57,6 +57,14 @@ describe('CompletionLabel', function() {
     assert(container.children.length === 0, 'label removed itself to the container');
   });
 
+  it('validates input', function() {
+    assert.throws(function() {
+      new CompletionLabel(); // eslint-disable-line no-new
+    },
+      'CompletionLabel expects the completionTime argument to be a Date object'
+    );
+  });
+
   var createDOMElement = window.App.Utils.createDOMElement;
 
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;

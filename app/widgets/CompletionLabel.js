@@ -2,6 +2,8 @@
   'use strict';
 
   function CompletionLabel(completionTime) {
+    assert(_.isDate(completionTime), 'CompletionLabel expects the completionTime argument to be a Date object');
+
     var domElement = createElement();
 
     addContent(domElement, completionTime);
@@ -52,6 +54,8 @@
   var getRemoverOf = window.App.Utils.getRemoverOf;
   var addStyle = window.App.Utils.addStyle;
   var delegateTo = window.App.Utils.delegateTo;
+  var assert = window.App.Utils.assert;
+
   var moment = window.moment;
 
   window.App.Widgets.CompletionLabel = CompletionLabel;
