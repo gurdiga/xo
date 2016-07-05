@@ -7,10 +7,7 @@
     addContent(domElement, completionTime);
 
     this.appendTo = getAppenderOf(domElement);
-
-    this.getData = function() {
-      return completionTime.toISOString();
-    };
+    this.getData = delegateTo(completionTime, 'toISOString');
 
     this.setStyle = function(additionalStyle) {
       addStyle(domElement, additionalStyle);
@@ -54,6 +51,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getRemoverOf = window.App.Utils.getRemoverOf;
   var addStyle = window.App.Utils.addStyle;
+  var delegateTo = window.App.Utils.delegateTo;
   var moment = window.moment;
 
   window.App.Widgets.CompletionLabel = CompletionLabel;
