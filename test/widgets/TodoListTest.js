@@ -30,7 +30,7 @@ describe('TodoList', function() {
       assert.throws(function() {
         todoList.setItems(42);
       },
-        'TodoList#setItems expects first argument to be an array of objects'
+        'TodoList#setItems expects the argument to be an array of objects'
       );
     });
 
