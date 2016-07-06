@@ -134,7 +134,7 @@ describe('DropdownButton', function() {
 
         simulateKeyDown(toggleButton, 'ArrowDown');
         assert.equal(optionList.style.display, '', 'shows the list');
-        assert.equal(firstOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor,
+        assert.equal(firstOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE['background-color'],
           'renders the first option as selected');
       });
 
@@ -143,7 +143,7 @@ describe('DropdownButton', function() {
 
         simulateKeyDown(toggleButton, 'ArrowUp');
         assert.equal(optionList.style.display, '', 'shows the list');
-        assert.equal(lastOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor,
+        assert.equal(lastOptionButton.style.backgroundColor, OptionList.HOVER_OPTION_BUTTON_STYLE['background-color'],
           'renders the last option as selected');
       });
 
@@ -153,7 +153,7 @@ describe('DropdownButton', function() {
         simulateKeyDown(toggleButton, 'ArrowDown');
         simulateEscapeKey();
         assert.equal(optionList.style.display, 'none', 'hides the list');
-        assert.equal(firstOptionButton.style.backgroundColor, OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor,
+        assert.equal(firstOptionButton.style.backgroundColor, OptionList.INITIAL_OPTION_BUTTON_STYLE['background-color'],
           'unselects the selected option');
       });
 

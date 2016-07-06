@@ -4,8 +4,8 @@ describe('OptionList', function() {
   var OptionList = window.App.Widgets.OptionList;
 
   var sandbox, optionHandler1, optionHandler2, options, optionList, domElement, optionButton1, optionButton2;
-  var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE.backgroundColor;
-  var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE.backgroundColor;
+  var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE['background-color'];
+  var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE['background-color'];
 
   before(function() {
     sandbox = document.createElement('div');
