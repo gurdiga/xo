@@ -47,6 +47,11 @@
 
     function addCompletionLabel(completionTime) {
       completionLabel = new CompletionLabel(completionTime);
+
+      completionLabel.setStyle({
+        'margin-left': '0.5em'
+      });
+
       completionLabel.appendTo(completionLabelContainer);
     }
 

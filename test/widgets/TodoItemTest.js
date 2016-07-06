@@ -45,8 +45,19 @@ describe('TodoItem', function() {
 
   it('has the container for the completion label', function() {
     var completionLabelContainer = domElement.querySelector('completion-label-container');
-    assert(completionLabelContainer, 'exists');
-    assert.equal(completionLabelContainer.innerHTML, '', 'is empty');
+    assert(completionLabelContainer, 'the container exists');
+    assert.equal(completionLabelContainer.innerHTML, '', 'the container is empty');
+
+    todoItem.setData({
+      'is-completed': true,
+      'completion-time': '2000-11-23T17:15:28.484Z'
+    });
+
+    var completionLabel = completionLabelContainer.firstChild;
+    assert(completionLabel !== null, 'completion label is rendered');
+
+    var style = completionLabel.style;
+    assert.equal(style.marginLeft, '0.5em', 'completion label has a little left spacing');
   });
 
   it('has the appropriate DOM structure', function() {
