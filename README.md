@@ -7,7 +7,8 @@ A productivity app for bailiffs. A breakable toy.
 # The Big Idea®
 
 This is an experiment to prove that it’s possible to sanely develop
-Web UIs with vanilla JS.
+Web UIs with vanilla JS. Since it’s intented to be an
+[Electron](http://electron.atom.io/) app, it’s Chrome only for now.
 
 Widgets are [JS
 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes).
