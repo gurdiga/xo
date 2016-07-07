@@ -8,13 +8,10 @@
 
     addContent(domElement, completionTime);
 
-    this.appendTo = getAppenderOf(domElement);
     this.getData = delegateTo(completionTime, 'toISOString');
 
-    this.setStyle = function(additionalStyle) {
-      addStyle(domElement, additionalStyle);
-    };
-
+    this.appendTo = getAppenderOf(domElement);
+    this.setStyle = getStylerOf(domElement);
     this.remove = getRemoverOf(domElement);
   }
 
@@ -51,8 +48,8 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var getRemoverOf = window.App.Utils.getRemoverOf;
-  var addStyle = window.App.Utils.addStyle;
   var delegateTo = window.App.Utils.delegateTo;
   var assert = window.App.Utils.assert;
 
