@@ -3,18 +3,15 @@ describe('LabeledDateField', function() {
 
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
-  var sandbox, labelText, fieldValue, labeledDateField, domElement, label, input;
+  var labelText, fieldValue, labeledDateField, domElement, label, input;
 
   before(function() {
-    sandbox = document.createElement('div');
-
     labelText = 'My LabeledDateField component';
     fieldValue = '22.03.2015';
 
     labeledDateField = new LabeledDateField(labelText, fieldValue);
-    labeledDateField.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(labeledDateField);
     label = domElement.firstChild;
     input = domElement.querySelector('input');
   });
@@ -40,6 +37,7 @@ describe('LabeledDateField', function() {
   });
 
   it('is cousable', function() {
+    var sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
     labeledDateField.focus();
@@ -49,4 +47,5 @@ describe('LabeledDateField', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

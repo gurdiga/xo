@@ -3,10 +3,9 @@ describe('LabeledTextField', function() {
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 
-  var sandbox, labelText, fieldValue, additionalStyle, textField, domElement, label, input;
+  var labelText, fieldValue, additionalStyle, textField, domElement, label, input;
 
   before(function() {
-    sandbox = document.createElement('div');
     labelText = 'My LabeledTextField component';
     fieldValue = 'Hi!';
     additionalStyle = {
@@ -14,9 +13,8 @@ describe('LabeledTextField', function() {
     };
 
     textField = new LabeledTextField(labelText, fieldValue, additionalStyle);
-    textField.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(textField);
     label = domElement.firstChild;
     input = label.querySelector('input');
   });
@@ -33,6 +31,7 @@ describe('LabeledTextField', function() {
   });
 
   it('is focusable', function() {
+    var sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
     textField.focus();
@@ -65,4 +64,5 @@ describe('LabeledTextField', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -3,15 +3,12 @@ describe('ActivityDescription', function() {
 
   var ActivityDescription = window.App.Widgets.ActivityDescription;
 
-  var sandbox, text, activityDescription, domElement;
+  var text, activityDescription, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
-
     text = 'Inquiry';
     activityDescription = new ActivityDescription(text);
-    activityDescription.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(activityDescription);
   });
 
   it('has the appropiate DOM structure', function() {
@@ -30,4 +27,5 @@ describe('ActivityDescription', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

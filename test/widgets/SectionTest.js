@@ -3,19 +3,17 @@ describe('Section', function() {
 
   var Section = window.App.Widgets.Section;
 
-  var sandbox, labelText, additionalStyle, content, section, fieldset, legend;
+  var labelText, additionalStyle, content, section, fieldset, legend;
 
   before(function() {
-    sandbox = document.createElement('div');
     labelText = 'My section';
     additionalStyle = { width: '400px' };
     content = document.createElement('p');
     content.textContent = 'section content';
 
     section = new Section(labelText, [content], additionalStyle);
-    section.appendTo(sandbox);
 
-    fieldset = sandbox.firstChild;
+    fieldset = getWidgetDOMElement(section);
     legend = fieldset.firstChild;
   });
 
@@ -35,10 +33,8 @@ describe('Section', function() {
 
     var widgetName = 'SpecialSection';
     var section = new Section(labelText, [], additionalStyle, widgetName);
-    var sandbox = document.createElement('div');
-    section.appendTo(sandbox);
+    var domElement = getWidgetDOMElement(section);
 
-    var domElement = sandbox.firstChild;
     assert.equal(domElement.getAttribute('widget-name'), widgetName, 'accepts a widget name as the 4th argument');
   });
 
@@ -70,4 +66,5 @@ describe('Section', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

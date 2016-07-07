@@ -3,10 +3,9 @@ describe('LabeledSelectField', function() {
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
 
-  var sandbox, labelText, optionValues, onChange, selectField, domElement, label, select;
+  var labelText, optionValues, onChange, selectField, domElement, label, select;
 
   before(function() {
-    sandbox = document.createElement('div');
     labelText = 'My LabeledSelectField component';
     optionValues = [
       'option 1',
@@ -23,9 +22,8 @@ describe('LabeledSelectField', function() {
     onChange = createSpy();
     selectField = new LabeledSelectField(labelText, optionValues, optionValues[1]);
     selectField.onChange(onChange);
-    selectField.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(selectField);
     label = domElement.firstChild;
     select = label.querySelector('select');
   });
@@ -83,6 +81,7 @@ describe('LabeledSelectField', function() {
   });
 
   it('is focusable', function() {
+    var sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
     selectField.focus();
@@ -100,4 +99,5 @@ describe('LabeledSelectField', function() {
 
   var createSpy = window.TestHelpers.createSpy;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

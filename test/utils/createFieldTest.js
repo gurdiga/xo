@@ -11,7 +11,7 @@ describe('createField', function() {
     fieldValues = { 'first-name': 'John' };
 
     field = createField(LabeledTextField, labelText, internalName, fieldValues);
-    fieldElement = getDOMElement(field);
+    fieldElement = getWidgetDOMElement(field);
   });
 
   it('works', function() {
@@ -21,14 +21,9 @@ describe('createField', function() {
     assert.equal(getLabel(fieldElement), labelText, 'sets the field label as given');
   });
 
-  function getDOMElement(field) {
-    var sandbox = document.createElement('div');
-    field.appendTo(sandbox);
-    return sandbox.firstChild;
-  }
-
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 
   var getLabel = window.TestHelpers.getLabel;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

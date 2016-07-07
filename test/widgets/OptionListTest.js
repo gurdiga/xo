@@ -3,13 +3,11 @@ describe('OptionList', function() {
 
   var OptionList = window.App.Widgets.OptionList;
 
-  var sandbox, optionHandler1, optionHandler2, options, optionList, domElement, optionButton1, optionButton2;
+  var optionHandler1, optionHandler2, options, optionList, domElement, optionButton1, optionButton2;
   var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE['background-color'];
   var OPTION_BUTTON_INITIAL_BACKGROUND = OptionList.INITIAL_OPTION_BUTTON_STYLE['background-color'];
 
   before(function() {
-    sandbox = document.createElement('div');
-
     optionHandler1 = createSpy();
     optionHandler2 = createSpy();
     options = {
@@ -18,9 +16,8 @@ describe('OptionList', function() {
     };
 
     optionList = new OptionList(options);
-    optionList.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(optionList);
     optionButton1 = domElement.children[0];
     optionButton2 = domElement.children[1];
   });
@@ -153,4 +150,5 @@ describe('OptionList', function() {
 
   var createSpy = window.TestHelpers.createSpy;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

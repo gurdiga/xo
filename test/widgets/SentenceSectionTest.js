@@ -3,7 +3,7 @@ describe('SentenceSection', function() {
 
   var SentenceSection = window.App.Widgets.SentenceSection;
 
-  var fieldValues, additionalStyles, sentenceSection, sandbox, domElement;
+  var fieldValues, additionalStyles, sentenceSection, domElement;
 
   before(function() {
     fieldValues = {
@@ -21,10 +21,7 @@ describe('SentenceSection', function() {
     };
 
     sentenceSection = new SentenceSection(fieldValues, additionalStyles);
-
-    sandbox = document.createElement('div');
-    sentenceSection.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(sentenceSection);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -36,7 +33,7 @@ describe('SentenceSection', function() {
   });
 
   it('has the appropriate fields', function() {
-    var fieldElements = sandbox.querySelectorAll('fieldset>:not(legend)');
+    var fieldElements = domElement.querySelectorAll('fieldset>:not(legend)');
 
     var courtField = fieldElements[0];
     assert.equal(courtField.tagName, 'LABELED-SELECT-FIELD', 'the first field is a labeled-select-field');
@@ -129,4 +126,5 @@ describe('SentenceSection', function() {
   var getLabel = window.TestHelpers.getLabel;
   var getDOMValue = window.TestHelpers.getDOMValue;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

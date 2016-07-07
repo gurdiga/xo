@@ -3,13 +3,11 @@ describe('CreateWritButton', function() {
 
   var CreateWritButton = window.App.Widgets.CreateWritButton;
 
-  var createWritButton, sandbox, domElement;
+  var createWritButton, domElement;
 
   before(function() {
     createWritButton = new CreateWritButton();
-    sandbox = document.createElement('div');
-    createWritButton.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(createWritButton);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -33,4 +31,5 @@ describe('CreateWritButton', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

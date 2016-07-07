@@ -3,17 +3,15 @@ describe('LabeledLargeTextField', function() {
 
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
 
-  var sandbox, labelText, fieldValue, largeLabeledTextField, domElement, label, textarea;
+  var labelText, fieldValue, largeLabeledTextField, domElement, label, textarea;
 
   before(function() {
-    sandbox = document.createElement('div');
     labelText = 'My LabeledLargeTextField component';
     fieldValue = 'Hi!';
 
     largeLabeledTextField = new LabeledLargeTextField(labelText, fieldValue);
-    largeLabeledTextField.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(largeLabeledTextField);
     label = domElement.firstChild;
     textarea = label.children[1];
   });
@@ -36,6 +34,7 @@ describe('LabeledLargeTextField', function() {
   });
 
   it('is focusable', function() {
+    var sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
     largeLabeledTextField.focus();
@@ -73,4 +72,5 @@ describe('LabeledLargeTextField', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -3,12 +3,10 @@ describe('DropdownButton', function() {
 
   var DropdownButton = window.App.Widgets.DropdownButton;
 
-  var sandbox, optionHandler1, optionHandler2, options, additionalStyle,
+  var optionHandler1, optionHandler2, options, additionalStyle,
     labelText, dropdownButton, domElement, toggleButton, optionList;
 
   before(function() {
-    sandbox = document.createElement('div');
-
     optionHandler1 = createSpy();
     optionHandler2 = createSpy();
     options = {
@@ -22,9 +20,8 @@ describe('DropdownButton', function() {
 
     labelText = 'Add';
     dropdownButton = new DropdownButton(labelText, options, additionalStyle);
-    dropdownButton.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(dropdownButton);
     toggleButton = domElement.firstChild;
     optionList = domElement.querySelector('div');
   });
@@ -188,4 +185,5 @@ describe('DropdownButton', function() {
   var createSpy = window.TestHelpers.createSpy;
   var simulateKeyDown = window.TestHelpers.simulateKeyDown;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

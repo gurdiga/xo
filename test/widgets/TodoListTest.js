@@ -3,14 +3,11 @@ describe('TodoList', function() {
 
   var TodoList = window.App.Widgets.TodoList;
 
-  var todoList, sandbox, domElement;
+  var todoList, domElement;
 
   before(function() {
     todoList = new TodoList();
-    sandbox = createDOMElement('sandbox');
-    todoList.appendTo(sandbox);
-
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(todoList);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -55,6 +52,6 @@ describe('TodoList', function() {
     });
   });
 
-  var createDOMElement = window.App.Utils.createDOMElement;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -3,7 +3,7 @@ describe('InquirySection', function() {
 
   var InquirySection = window.App.Widgets.InquirySection;
 
-  var fieldValues, additionalStyle, inquirySection, sandbox, domElement;
+  var fieldValues, additionalStyle, inquirySection, domElement;
 
   before(function() {
     fieldValues = {
@@ -16,9 +16,7 @@ describe('InquirySection', function() {
     };
 
     inquirySection = new InquirySection(fieldValues, additionalStyle);
-    sandbox = document.createElement('div');
-    inquirySection.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(inquirySection);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -72,4 +70,5 @@ describe('InquirySection', function() {
 
   var getDOMValue = window.TestHelpers.getDOMValue;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

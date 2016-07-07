@@ -3,12 +3,9 @@ describe('NewCaseDialog', function() {
 
   var NewCaseDialog = window.App.Widgets.NewCaseDialog;
 
-  var sandbox, newCaseDialog, domElement;
+  var newCaseDialog, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
-    document.body.appendChild(sandbox);
-
     var data = {
       'creditor': {},
       'debitori': [{
@@ -30,9 +27,9 @@ describe('NewCaseDialog', function() {
     };
 
     newCaseDialog = new NewCaseDialog(data);
-    newCaseDialog.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(newCaseDialog);
+    document.body.appendChild(domElement);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -279,4 +276,5 @@ describe('NewCaseDialog', function() {
   var PersonSection = window.App.Widgets.PersonSection;
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

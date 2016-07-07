@@ -3,16 +3,13 @@ describe('ActivitiesSection', function() {
 
   var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
-  var sandbox, additionalStyle, activitiesSection, domElement;
+  var additionalStyle, activitiesSection, domElement;
 
   beforeEach(function() {
-    sandbox = document.createElement('div');
-
     additionalStyle = { color: 'red' };
     activitiesSection = new ActivitiesSection(additionalStyle);
-    activitiesSection.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(activitiesSection);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -76,4 +73,5 @@ describe('ActivitiesSection', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

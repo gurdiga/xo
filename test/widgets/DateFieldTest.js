@@ -6,16 +6,15 @@ describe('DateField', function() {
   var sandbox, defaultFieldValue, additionalStyle, dateField, domElement, input;
 
   before(function() {
-    sandbox = document.createElement('div');
     defaultFieldValue = 'some date';
     additionalStyle = {
       width: '100px'
     };
 
     dateField = new DateField(defaultFieldValue, additionalStyle);
-    dateField.appendTo(sandbox);
+    domElement = getWidgetDOMElement(dateField);
+    sandbox = domElement.parentNode;
 
-    domElement = sandbox.firstChild;
     assert.equal(domElement.tagName, 'DATE-FIELD', 'has the appropriate tag name');
 
     input = domElement.querySelector('input');
@@ -57,4 +56,5 @@ describe('DateField', function() {
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

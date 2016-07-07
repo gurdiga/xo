@@ -3,14 +3,11 @@ describe('ActivityDateField', function() {
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
 
-  var sandbox, activityDateField, domElement;
+  var activityDateField, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
     activityDateField = new ActivityDateField();
-    activityDateField.appendTo(sandbox);
-
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(activityDateField);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -23,4 +20,5 @@ describe('ActivityDateField', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

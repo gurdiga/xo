@@ -7,10 +7,7 @@ describe('ActivityDetailsSection', function() {
 
   before(function() {
     activityDetailsSection = new ActivityDetailsSection();
-
-    var sandbox = document.createElement('div');
-    activityDetailsSection.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(activityDetailsSection);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -39,4 +36,5 @@ describe('ActivityDetailsSection', function() {
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

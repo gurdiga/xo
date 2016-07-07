@@ -6,10 +6,8 @@ describe('InstitutionActivity', function() {
   var institutionActivity, domElement, detailsSectionElement;
 
   before(function() {
-    var sandbox = document.createElement('div');
     institutionActivity = new InstitutionActivity();
-    institutionActivity.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(institutionActivity);
     detailsSectionElement = domElement.children[2];
   });
 
@@ -75,20 +73,13 @@ describe('InstitutionActivity', function() {
     };
 
     var institutionActivity = InstitutionActivity.createWithData(data);
-    var domElement = getDOMElement(institutionActivity);
+    var domElement = getWidgetDOMElement(institutionActivity);
     var detailsSectionElement = domElement.children[2];
     var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
 
     assert.equal(todoList.children.length, 2, 'has the appropriate number of TODO items');
   });
 
-  function getDOMElement(widget) {
-    var sandbox = document.createElement('div');
-
-    widget.appendTo(sandbox);
-
-    return sandbox.firstChild;
-  }
-
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

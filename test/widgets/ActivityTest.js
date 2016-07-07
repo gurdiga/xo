@@ -6,8 +6,6 @@ describe('Activity', function() {
   var widgetName, descriptionText, detailWidgets, activity, domElement, detailsSectionElement;
 
   before(function() {
-    var sandbox = document.createElement('div');
-
     widgetName = 'SomeActivity';
     descriptionText = 'Case institution';
     detailWidgets = [
@@ -15,8 +13,7 @@ describe('Activity', function() {
       new TextFieldInput()
     ];
     activity = new Activity(widgetName, descriptionText, detailWidgets);
-    activity.appendTo(sandbox);
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(activity);
     detailsSectionElement = domElement.children[2];
   });
 
@@ -81,4 +78,5 @@ describe('Activity', function() {
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

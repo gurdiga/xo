@@ -3,42 +3,41 @@ describe('DateFieldInput', function() {
 
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
-  var sandbox, value, dateFieldInput, additionalStyle, input, datePickerButton;
+  var sandbox, value, dateFieldInput, additionalStyle, domElement, datePickerButton;
 
   before(function() {
-    sandbox = document.createElement('div');
-    document.body.appendChild(sandbox);
-
     value = '25.06.2015';
     additionalStyle = {
       backgroundColor: 'red'
     };
 
     dateFieldInput = new DateFieldInput(value, additionalStyle);
-    dateFieldInput.appendTo(sandbox);
 
-    input = sandbox.firstChild;
-    datePickerButton = sandbox.children[1];
+    domElement = getWidgetDOMElement(dateFieldInput);
+    datePickerButton = domElement.nextSibling;
+
+    sandbox = domElement.parentNode;
+    document.body.appendChild(sandbox);
   });
 
   it('has the structural elements in place', function() {
-    assert.equal(input.tagName, 'INPUT', 'is first renders an <input>');
+    assert.equal(domElement.tagName, 'INPUT', 'is first renders an <input>');
     assert.equal(datePickerButton.tagName, 'BUTTON', 'renders a <button> to trigger the date picker');
   });
 
   it('accepts an initial value', function() {
-    assert.equal(input.value, value, 'the <intpu/> has the value passed into the constructor');
+    assert.equal(domElement.value, value, 'the <intpu/> has the value passed into the constructor');
     assert.equal(dateFieldInput.getValue(), value,
       'its getValue() method returns the <input/> value');
   });
 
   it('is focusable', function() {
     dateFieldInput.focus();
-    assert.equal(document.activeElement, input, 'focuses its <input>');
+    assert.equal(document.activeElement, domElement, 'focuses its <input>');
   });
 
   it('is styled', function() {
-    var css = input.style;
+    var css = domElement.style;
 
     assert.equal(css.color, 'black', 'its text renders in black color');
     assert.equal(css.padding, '4px', 'has 4 px padding');
@@ -62,7 +61,7 @@ describe('DateFieldInput', function() {
   });
 
   it('is outlined on focus', function() {
-    assert.ok(input.hasAttribute('has-on-focus-effect'));
+    assert.ok(domElement.hasAttribute('has-on-focus-effect'));
   });
 
   it('has the date picker putton styled', function() {
@@ -108,9 +107,9 @@ describe('DateFieldInput', function() {
     var nextMonthButton = datePicker.querySelector('button.pika-next');
     assert.equal(nextMonthButton.textContent, 'luna următoare', 'the button to go to next month is translated');
 
-    assert.equal(getDatePickerSelectedDate(), input.value, 'when opened, date picker reflects input’s value');
+    assert.equal(getDatePickerSelectedDate(), domElement.value, 'when opened, date picker reflects input’s value');
 
-    var newDate = nextDay(input.value);
+    var newDate = nextDay(domElement.value);
     selectDateInDatePicker(newDate);
     assert.equal(getDatePickerSelectedDate(), newDate, 'when selected, it updates input value accordingly');
     assert.equal(dateFieldInput.getValue(), newDate, 'when selected, getValue() returns the new value');
@@ -118,8 +117,8 @@ describe('DateFieldInput', function() {
     datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     assert.equal(datePicker, null, 'hides the date picker when a date is selected');
 
-    input.value = '';
-    input.dispatchEvent(new Event('change'));
+    domElement.value = '';
+    domElement.dispatchEvent(new Event('change'));
     datePickerButton.click();
 
     datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
@@ -134,7 +133,7 @@ describe('DateFieldInput', function() {
 
     /* this setTimeout call is required because focus() is called async too */
     window.setTimeout(function() {
-      assert.equal(document.activeElement, input, 'when tha date picker id closed, the input get focus again');
+      assert.equal(document.activeElement, domElement, 'when tha date picker id closed, the input get focus again');
 
       datePickerButton.click();
       document.body.click();
@@ -200,4 +199,5 @@ describe('DateFieldInput', function() {
 
   var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

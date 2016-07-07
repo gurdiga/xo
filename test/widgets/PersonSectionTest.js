@@ -6,7 +6,6 @@ describe('PersonSection', function() {
   var sandbox, fieldValues, label, additionalStyle, personSection, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
     fieldValues = {
       'gen-persoană': PersonSection.PERSON_TYPES.INDIVIDUAL,
       'nume': 'John DOE',
@@ -17,9 +16,9 @@ describe('PersonSection', function() {
     label = 'Test person section';
     additionalStyle = { width: '450px' };
     personSection = new PersonSection(label, fieldValues, additionalStyle);
-    personSection.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(personSection);
+    sandbox = domElement.parentNode;
   });
 
   it('has the appropriate DOM structure', function() {
@@ -208,4 +207,5 @@ describe('PersonSection', function() {
   var getDOMValue = window.TestHelpers.getDOMValue;
   var createSpy = window.TestHelpers.createSpy;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

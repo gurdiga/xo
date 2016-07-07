@@ -3,19 +3,16 @@ describe('AddActivityButton', function() {
 
   var AddActivityButton = window.App.Widgets.AddActivityButton;
 
-  var sandbox, activities, activityAdder, addActivityButton, domElement, optionButtons;
+  var activities, activityAdder, addActivityButton, domElement, optionButtons;
 
   before(function() {
-    sandbox = document.createElement('div');
-
     activities = [
       new InstitutionActivity()
     ];
     activityAdder = createSpy();
     addActivityButton = new AddActivityButton(activities, activityAdder);
-    addActivityButton.appendTo(sandbox);
 
-    domElement = sandbox.firstChild;
+    domElement = getWidgetDOMElement(addActivityButton);
     optionButtons = _.toArray(domElement.querySelectorAll('dropdown-button>div>button'));
   });
 
@@ -49,4 +46,5 @@ describe('AddActivityButton', function() {
 
   var createSpy = window.TestHelpers.createSpy;
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

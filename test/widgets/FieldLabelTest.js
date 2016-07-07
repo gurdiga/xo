@@ -3,11 +3,9 @@ describe('FieldLabel', function() {
 
   var FieldLabel = window.App.Widgets.FieldLabel;
 
-  var sandbox, labelText, childText, child, fieldLabel, label;
+  var labelText, childText, child, fieldLabel, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
-
     labelText = 'My FieldLabel component';
     childText = 'Child 1';
 
@@ -15,27 +13,25 @@ describe('FieldLabel', function() {
     child.textContent = childText;
 
     fieldLabel = new FieldLabel(labelText, {}, [child]);
-    fieldLabel.appendTo(sandbox);
-
-    label = sandbox.firstChild;
+    domElement = getWidgetDOMElement(fieldLabel);
   });
 
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(label.tagName, 'LABEL', 'has the appropriate tag name');
-    assert.equal(label.getAttribute('widget-name'), 'FieldLabel',
+    assert.equal(domElement.tagName, 'LABEL', 'has the appropriate tag name');
+    assert.equal(domElement.getAttribute('widget-name'), 'FieldLabel',
       'has the appropriate “widget-name” attribute');
   });
 
   it('has the appropriate layout', function() {
-    var css = label.style;
+    var css = domElement.style;
     assert.equal(css.display, 'inline-block', 'it’ll be a block element because there’ll be one per line in most cases');
     assert.equal(css.margin, '0px 0px 3px', 'it sets up some spacing');
   });
 
   it('has the appropriate caption', function() {
-    var labelSpan = label.firstChild;
-    assert.equal(labelSpan.textContent, labelText, 'the text given in the “text” attribute is rendered in a <span> inside that <label>');
+    var labelSpan = domElement.firstChild;
+    assert.equal(labelSpan.textContent, labelText, 'the text given in the “text” attribute is rendered in a <span> inside that <domElement>');
 
     var css = labelSpan.style;
     assert.equal(css.color, 'rgb(85, 85, 85)', 'the text color should be a bit dimmed compared to the field’s text color');
@@ -45,10 +41,11 @@ describe('FieldLabel', function() {
   });
 
   it('handles children appropriately', function() {
-    assert.equal(label.children.length, 2, 'the children count corresponds: 1 for the <span> + 1 for the child');
-    assert.equal(label.lastElementChild.tagName, 'DIV', 'the child tag name corresponds');
-    assert.equal(label.lastElementChild.textContent, childText, 'the childText tag text content corresponds');
+    assert.equal(domElement.children.length, 2, 'the children count corresponds: 1 for the <span> + 1 for the child');
+    assert.equal(domElement.lastElementChild.tagName, 'DIV', 'the child tag name corresponds');
+    assert.equal(domElement.lastElementChild.textContent, childText, 'the childText tag text content corresponds');
   });
 
   var assert = window.TestHelpers.assert;
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });
