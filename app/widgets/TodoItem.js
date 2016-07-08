@@ -37,15 +37,21 @@
       // id and label are ignored
       labeledCheckbox.setValue(data['is-completed']);
 
-      if (data['is-completed']) addCompletionLabel(new Date(data['completion-time']));
+      if (data['is-completed']) addCompletionLabel(data['completion-time']);
     };
 
     function toggleCompletionLabel(isChecked) {
-      if (isChecked) addCompletionLabel(new Date());
+      if (isChecked) addCompletionLabel();
       else removeCompletionLabel();
     }
 
-    function addCompletionLabel(completionTime) {
+    function addCompletionLabel(serializedCompletionTime) {
+      var currentTime = new Date();
+      var completionTime;
+
+      if (serializedCompletionTime) completionTime = new Date(serializedCompletionTime);
+      else completionTime = currentTime;
+
       completionLabel = new CompletionLabel(completionTime);
 
       completionLabel.setStyle({
