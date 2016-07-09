@@ -20,7 +20,7 @@ describe('TodoItem', function() {
 
     assert.equal(data.id, id, 'returns the id for persistance');
     assert.equal(data.label, labelText, 'returns the label text for persistance');
-    assert.equal(data['is-completed'], false, 'returns the state of the checkbox');
+    assert.equal(data['is-completed'], undefined, 'state of the checkbox is not defined');
     assert.equal(data['completion-time'], undefined, 'completion time is not defined');
   });
 

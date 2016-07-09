@@ -26,9 +26,10 @@
 
       var isCompleted = labeledCheckbox.getValue();
 
-      data['is-completed'] = isCompleted;
-
-      if (isCompleted) data['completion-time'] = completionLabel.getData();
+      if (isCompleted) {
+        data['is-completed'] = isCompleted;
+        data['completion-time'] = completionLabel.getData();
+      }
 
       return data;
     };
