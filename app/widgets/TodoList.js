@@ -3,6 +3,7 @@
 
   function TodoList() {
     var domElement = createElement();
+    var items = [];
 
     this.appendTo = getAppenderOf(domElement);
 
@@ -10,7 +11,12 @@
       assert(Array.isArray(todoItemData), 'TodoList#setItemData expects the argument to be an array of objects');
 
       emptyDOMElement(domElement);
-      addItems(todoItemData, domElement);
+      items = createItems(todoItemData);
+      appendWidgets(items).to(domElement);
+    };
+
+    this.getItemData = function() {
+      return rMap('getData', items);
     };
   }
 
@@ -27,11 +33,8 @@
     return createDOMElement('ul', style, attributes);
   }
 
-  function addItems(todoItemData, domElement) {
-    todoItemData.forEach(function(data) {
-      var todoItem = new TodoItem(data.id, data.label);
-      todoItem.appendTo(domElement);
-    });
+  function createItems(todoItemData) {
+    return todoItemData.map(TodoItem.createWithData);
   }
 
   var TodoItem = window.App.Widgets.TodoItem;
@@ -40,6 +43,8 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var assert = window.App.Utils.assert;
   var emptyDOMElement = window.App.Utils.emptyDOMElement;
+  var appendWidgets = window.App.Utils.appendWidgets;
+  var rMap = window.App.Utils.rMap;
 
   window.App.Widgets.TodoList = TodoList;
 

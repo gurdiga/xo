@@ -52,6 +52,27 @@ describe('TodoList', function() {
     });
   });
 
+  describe('getItemData', function() {
+    it('returns an empty array when there are no TodoItem widgets', function() {
+      var todoList = new TodoList();
+      assert.deepEqual(todoList.getItemData(), []);
+    });
+
+    it('returns an array with the data from the TodoItem widgets', function() {
+      var todoItemData = [{
+        id: 'first-item',
+        label: 'the first new item'
+      }, {
+        id: 'second-item',
+        label: 'the second new item'
+      }];
+
+      todoList.setItemData(todoItemData);
+
+      assert.deepEqual(todoList.getItemData(), todoItemData, 'works');
+    });
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });
