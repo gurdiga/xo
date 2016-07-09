@@ -6,11 +6,11 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    this.setItems = function(todoItemsData) {
-      assert(Array.isArray(todoItemsData), 'TodoList#setItems expects the argument to be an array of objects');
+    this.setItemData = function(todoItemData) {
+      assert(Array.isArray(todoItemData), 'TodoList#setItemData expects the argument to be an array of objects');
 
       emptyDOMElement(domElement);
-      addItems(todoItemsData, domElement);
+      addItems(todoItemData, domElement);
     };
   }
 
@@ -27,9 +27,9 @@
     return createDOMElement('ul', style, attributes);
   }
 
-  function addItems(todoItemsData, domElement) {
-    todoItemsData.forEach(function(todoItemData) {
-      var todoItem = new TodoItem(todoItemData.id, todoItemData.label);
+  function addItems(todoItemData, domElement) {
+    todoItemData.forEach(function(data) {
+      var todoItem = new TodoItem(data.id, data.label);
       todoItem.appendTo(domElement);
     });
   }

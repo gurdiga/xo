@@ -22,17 +22,9 @@ describe('TodoList', function() {
     assert.equal(style.padding, '0px', 'has padding stripped off');
   });
 
-  describe('setItems()', function() {
-    it('validates input', function() {
-      assert.throws(function() {
-        todoList.setItems(42);
-      },
-        'TodoList#setItems expects the argument to be an array of objects'
-      );
-    });
-
-    it('works', function() {
-      var itemData = [{
+  describe('setItemData()', function() {
+    it('creates TodoItem widgets for each item in the given array', function() {
+      var todoItemData = [{
         id: 'first-item',
         label: 'the first new item'
       }, {
@@ -40,15 +32,23 @@ describe('TodoList', function() {
         label: 'the second new item'
       }];
 
-      todoList.setItems(itemData);
+      todoList.setItemData(todoItemData);
 
       var itemElements = _.toArray(domElement.querySelectorAll('ul>li>labeled-checkbox input[type="checkbox"]'));
-      assert.equal(itemElements.length, itemData.length, 'renders items as <li>s');
+      assert.equal(itemElements.length, todoItemData.length, 'renders items as <li>s');
 
       var itemLabels = _.toArray(domElement.querySelectorAll('ul>li>labeled-checkbox'));
       var itemLabelTexts = itemLabels.map(_.property('textContent'));
-      var expectedItemLabels = itemData.map(_.property('label'));
+      var expectedItemLabels = todoItemData.map(_.property('label'));
       assert.deepEqual(itemLabelTexts, expectedItemLabels, 'items have the appropriate label texts');
+    });
+
+    it('validates input', function() {
+      assert.throws(function() {
+        todoList.setItemData(42);
+      },
+        'TodoList#setItemData expects the argument to be an array of objects'
+      );
     });
   });
 
