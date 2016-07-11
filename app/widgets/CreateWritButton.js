@@ -20,7 +20,7 @@
 
     var domElement = createDOMElement('button', style);
 
-    domElement.textContent = 'încheiere';
+    domElement.textContent = 'afişează încheiere';
     domElement.setAttribute('widget-name', 'CreateWritButton');
 
     return domElement;

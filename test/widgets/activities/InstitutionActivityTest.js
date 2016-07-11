@@ -63,11 +63,11 @@ describe('InstitutionActivity', function() {
     var data = {
       'todo-items': [{
         'id': 'writ-emitted',
-        'label': 'Am emis încheiere',
+        'label': 'Emitere încheiere',
         'isDone': true
       }, {
         'id': 'writ-sent',
-        'label': 'Am expediat încheiere',
+        'label': 'Expediere încheiere',
         'isDone': false
       }]
     };

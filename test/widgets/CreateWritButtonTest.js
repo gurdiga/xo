@@ -13,7 +13,7 @@ describe('CreateWritButton', function() {
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.getAttribute('widget-name'), 'CreateWritButton',
       'has the appropriate “widget-name” attribute');
-    assert.equal(domElement.textContent, 'încheiere', 'has the appropriate label');
+    assert.equal(domElement.textContent, 'afişează încheiere', 'has the appropriate label');
   });
 
   it('has the appropriate style', function() {
