@@ -23,7 +23,10 @@
   }
 
   function createCheckbox() {
-    var style = {};
+    var style = {
+      'vertical-align': '1px'
+    };
+
     var attributes = {
       'type': 'checkbox'
     };
@@ -32,11 +35,11 @@
   }
 
   function createElement(labelText, checkbox) {
-    var label = createDOMElement('label');
-    label.appendChild(checkbox);
-
     var span = createDOMElement('span');
     span.textContent = labelText;
+
+    var label = createDOMElement('label');
+    label.appendChild(checkbox);
     label.appendChild(span);
 
     var domElement = createDOMElement('labeled-checkbox');

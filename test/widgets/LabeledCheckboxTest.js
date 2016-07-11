@@ -24,6 +24,10 @@ describe('LabeledCheckbox', function() {
     assert.equal(checkbox.type, 'checkbox', 'the input inside the label has the type of checkbox');
   });
 
+  it('has the checkbox appropriately styled', function() {
+    assert.equal(checkbox.style.verticalAlign, '1px', 'vertically aligns perfectly with the label');
+  });
+
   it('can tell its value', function() {
     assert.equal(labeledCheckbox.getValue(), checkbox.checked, 'returns the checked state of its checkbox');
   });
