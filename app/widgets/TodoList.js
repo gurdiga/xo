@@ -23,7 +23,7 @@
   function createElement() {
     var style = {
       'margin': '0px',
-      'padding': '0px'
+      'padding': '0px 0px 5px'
     };
 
     var attributes = {

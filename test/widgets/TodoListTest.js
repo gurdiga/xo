@@ -19,7 +19,7 @@ describe('TodoList', function() {
     var style = domElement.style;
 
     assert.equal(style.margin, '0px', 'has margin stripped off');
-    assert.equal(style.padding, '0px', 'has padding stripped off');
+    assert.equal(style.padding, '0px 0px 5px', 'has padding stripped off except at the bottom');
   });
 
   describe('setItemData()', function() {
