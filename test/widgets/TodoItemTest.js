@@ -83,6 +83,7 @@ describe('TodoItem', function() {
 
     assert.equal(style.listStyleType, 'none', 'has <li>’s bullet removed');
     assert.equal(style.fontSize, '14px', 'has the appropriate font size');
+    assert.equal(style.marginTop, '3px', 'has a bit of vertical spacing');
   });
 
   it('requires the label text to be a string', function() {

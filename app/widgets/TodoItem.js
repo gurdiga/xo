@@ -78,6 +78,7 @@
 
   function createElement(id) {
     var style = {
+      'margin-top': '3px',
       'list-style-type': 'none',
       'font-size': '14px'
     };
