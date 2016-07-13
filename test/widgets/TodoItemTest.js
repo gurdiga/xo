@@ -4,7 +4,6 @@ describe('TodoItem', function() {
   var TodoItem = window.App.Widgets.TodoItem;
 
   var todoItem, id, labelText, domElement, labeledCheckbox;
-  var frozenTime = new Date('2000-01-31 22:33');
 
   beforeEach(function() {
     id = 'first-item';
@@ -112,16 +111,6 @@ describe('TodoItem', function() {
     assert.equal(labeledCheckbox.textContent, data.label, 'renders the appropriate label');
   });
 
-  before(function() {
-    this.clock = sinon.useFakeTimers(frozenTime.getTime()); // eslint-disable-line no-invalid-this
-  });
-
-  after(function() {
-    this.clock.restore(); // eslint-disable-line no-invalid-this
-    delete this.clock; // eslint-disable-line no-invalid-this
-  });
-
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
-  var sinon = window.sinon;
 });
