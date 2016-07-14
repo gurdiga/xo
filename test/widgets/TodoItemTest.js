@@ -111,6 +111,37 @@ describe('TodoItem', function() {
     assert.equal(labeledCheckbox.textContent, data.label, 'renders the appropriate label');
   });
 
+  it('can be setChildWidgets', function() {
+    var aDOMElement = createDOMElement('div');
+    var aWidget = new LabeledTextField('some text');
+
+    var childContainer = domElement.querySelector('child-container');
+
+    assert.equal(childContainer.children.length, 0, 'has no child widgets initially');
+
+    todoItem.setChildWidgets([
+      aDOMElement,
+      aWidget
+    ]);
+
+    childContainer = domElement.querySelector('child-container');
+    assert.equal(childContainer.children.length, 2, 'has the appropriate number of children');
+    assert.equal(childContainer.children[0].tagName, 'DIV', 'the first child is the first widget');
+    assert.equal(childContainer.children[1].tagName, 'LABELED-TEXT-FIELD', 'the second child is the second widget');
+
+    var aNewChild = createDOMElement('new-child');
+
+    todoItem.setChildWidgets([
+      aNewChild
+    ]);
+
+    assert.equal(childContainer.children.length, 1, 'resets the children');
+    assert.equal(childContainer.children[0].tagName, 'NEW-CHILD', 'the first child is the first widget');
+  });
+
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
+  var createDOMElement = window.App.Utils.createDOMElement;
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

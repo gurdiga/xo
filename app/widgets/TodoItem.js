@@ -16,6 +16,9 @@
     var completionLabel;
     labeledCheckbox.onChange(toggleCompletionLabel);
 
+    var childContainer = createChildContainer();
+    domElement.appendChild(childContainer);
+
     this.appendTo = getAppenderOf(domElement);
 
     this.getData = function() {
@@ -39,6 +42,11 @@
       labeledCheckbox.setValue(data['is-completed']);
 
       if (data['is-completed']) addCompletionLabel(data['completion-time']);
+    };
+
+    this.setChildWidgets = function(childWidgets) {
+      emptyDOMElement(childContainer);
+      appendWidgets(childWidgets).to(childContainer);
     };
 
     function toggleCompletionLabel(isChecked) {
@@ -94,12 +102,18 @@
     return createDOMElement('completion-label-container');
   }
 
+  function createChildContainer() {
+    return createDOMElement('child-container');
+  }
+
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
   var CompletionLabel = window.App.Widgets.CompletionLabel;
 
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var appendWidgets = window.App.Utils.appendWidgets;
+  var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
   window.App.Widgets.TodoItem = TodoItem;
 
