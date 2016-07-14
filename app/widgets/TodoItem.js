@@ -45,8 +45,7 @@
     };
 
     this.setChildWidgets = function(childWidgets) {
-      emptyDOMElement(childContainer);
-      appendWidgets(childWidgets).to(childContainer);
+      resetChildren(childContainer, childWidgets);
     };
 
     function toggleCompletionLabel(isChecked) {
@@ -112,8 +111,7 @@
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
-  var appendWidgets = window.App.Utils.appendWidgets;
-  var emptyDOMElement = window.App.Utils.emptyDOMElement;
+  var resetChildren = window.App.Utils.resetChildren;
 
   window.App.Widgets.TodoItem = TodoItem;
 

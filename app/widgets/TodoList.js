@@ -10,9 +10,8 @@
     this.setItemData = function(todoItemData) {
       assert(Array.isArray(todoItemData), 'TodoList#setItemData expects the argument to be an array of objects');
 
-      emptyDOMElement(domElement);
       items = createItems(todoItemData);
-      appendWidgets(items).to(domElement);
+      resetChildren(domElement, items);
     };
 
     this.getItemData = function() {
@@ -42,8 +41,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var assert = window.App.Utils.assert;
-  var emptyDOMElement = window.App.Utils.emptyDOMElement;
-  var appendWidgets = window.App.Utils.appendWidgets;
+  var resetChildren = window.App.Utils.resetChildren;
   var rMap = window.App.Utils.rMap;
 
   window.App.Widgets.TodoList = TodoList;

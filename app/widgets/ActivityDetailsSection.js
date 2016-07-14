@@ -7,8 +7,7 @@
     this.appendTo = getAppenderOf(domElement);
 
     this.setChildWidgets = function(childWidgets) {
-      emptyDOMElement(domElement);
-      appendWidgets(childWidgets).to(domElement);
+      resetChildren(domElement, childWidgets);
     };
   }
 
@@ -28,8 +27,7 @@
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
-  var appendWidgets = window.App.Utils.appendWidgets;
-  var emptyDOMElement = window.App.Utils.emptyDOMElement;
+  var resetChildren = window.App.Utils.resetChildren;
 
   window.App.Widgets.ActivityDetailsSection = ActivityDetailsSection;
 
