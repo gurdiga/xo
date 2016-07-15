@@ -23,8 +23,7 @@
   }
 
   function addLabel(domElement, labelText, input) {
-    var style = {};
-    var label = new FieldLabel(labelText, style, [input]);
+    var label = new FieldLabel(labelText, [input]);
     label.appendTo(domElement);
   }
 

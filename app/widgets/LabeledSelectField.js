@@ -6,7 +6,8 @@
 
     var select = createSelect(options, defaultValue);
 
-    var label = new FieldLabel(labelText, labelStyle, [select]);
+    var label = new FieldLabel(labelText, [select]);
+    label.setStyle(labelStyle);
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);

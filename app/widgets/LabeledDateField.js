@@ -5,7 +5,7 @@
     var domElement = createElement();
 
     var input = new DateField(value, additionalStyle);
-    var label = new FieldLabel(labelText, {}, [input]);
+    var label = new FieldLabel(labelText, [input]);
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);

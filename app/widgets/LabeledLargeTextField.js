@@ -5,7 +5,7 @@
     var domElement = createElement();
 
     var textarea = createTextareaElement(value, additionalStyle);
-    var label = new FieldLabel(labelText, {}, [textarea]);
+    var label = new FieldLabel(labelText, [textarea]);
     label.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);

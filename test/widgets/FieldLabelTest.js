@@ -12,7 +12,7 @@ describe('FieldLabel', function() {
     child = document.createElement('div');
     child.textContent = childText;
 
-    fieldLabel = new FieldLabel(labelText, {}, [child]);
+    fieldLabel = new FieldLabel(labelText, [child]);
     domElement = getWidgetDOMElement(fieldLabel);
   });
 
@@ -44,6 +44,14 @@ describe('FieldLabel', function() {
     assert.equal(domElement.children.length, 2, 'the children count corresponds: 1 for the <span> + 1 for the child');
     assert.equal(domElement.lastElementChild.tagName, 'DIV', 'the child tag name corresponds');
     assert.equal(domElement.lastElementChild.textContent, childText, 'the childText tag text content corresponds');
+  });
+
+  it('can be setStyle', function() {
+    fieldLabel.setStyle({
+      'color': 'red'
+    });
+
+    assert.equal(domElement.style.color, 'red', 'the color is set appropriately');
   });
 
   var assert = window.TestHelpers.assert;

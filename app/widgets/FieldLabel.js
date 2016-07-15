@@ -1,22 +1,21 @@
 (function() {
   'use strict';
 
-  function FieldLabel(text, additionalStyle, childWidgets) {
-    var domElement = createElement(additionalStyle);
+  function FieldLabel(text, childWidgets) {
+    var domElement = createElement();
     var textSpan = createTextSpan(text);
 
     appendWidgets(both(textSpan, childWidgets)).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+    this.setStyle = getStylerOf(domElement);
   }
 
-  function createElement(additionalStyle) {
+  function createElement() {
     var style = {
       display: 'inline-block',
       margin: '0 0 3px'
     };
-
-    _.extend(style, additionalStyle);
 
     var attributes = {
       'widget-name': 'FieldLabel'
@@ -47,6 +46,7 @@
   var appendWidgets = window.App.Utils.appendWidgets;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var getStylerOf = window.App.Utils.getStylerOf;
 
   window.App.Widgets.FieldLabel = FieldLabel;
 
