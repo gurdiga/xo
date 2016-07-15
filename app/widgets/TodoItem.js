@@ -19,6 +19,10 @@
     var childContainer = createChildContainer();
     domElement.appendChild(childContainer);
 
+    this.setChildWidgets = function(childWidgets) {
+      resetChildren(childContainer, childWidgets);
+    };
+
     this.appendTo = getAppenderOf(domElement);
 
     this.getData = function() {
@@ -44,21 +48,13 @@
       if (data['is-completed']) addCompletionLabel(data['completion-time']);
     };
 
-    this.setChildWidgets = function(childWidgets) {
-      resetChildren(childContainer, childWidgets);
-    };
-
     function toggleCompletionLabel(isChecked) {
-      if (isChecked) addCompletionLabel();
+      if (isChecked) addCompletionLabel(Date.now());
       else removeCompletionLabel();
     }
 
     function addCompletionLabel(serializedCompletionTime) {
-      var currentTime = new Date();
-      var completionTime;
-
-      if (serializedCompletionTime) completionTime = new Date(serializedCompletionTime);
-      else completionTime = currentTime;
+      var completionTime = new Date(serializedCompletionTime);
 
       completionLabel = new CompletionLabel(completionTime);
 
