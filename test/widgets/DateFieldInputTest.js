@@ -61,11 +61,11 @@ describe('DateFieldInput', function() {
   });
 
   it('is outlined on focus', function() {
-    assert.ok(domElement.hasAttribute('has-on-focus-effect'));
+    assert.isTrue(domElement.hasAttribute('has-on-focus-effect'));
   });
 
-  it('has the date picker button styled', function() {
-    assert.ok(datePickerButton.hasAttribute('shy'), 'is’s shy');
+  it('has the date picker button styled appropriately', function() {
+    assert.isTrue(datePickerButton.hasAttribute('shy'), 'is’s shy');
 
     var css = datePickerButton.style;
     assert.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
@@ -75,7 +75,7 @@ describe('DateFieldInput', function() {
     assert.equal(css.height, '20px', 'is 20px high to accommodate clicking');
     assert.equal(css.padding, '0px', 'has no padding');
     assert.equal(css.backgroundColor, 'transparent', 'is transparent to be less intrusive');
-    assert.ok(/^url\(.+\)/.test(css.backgroundImage), 'has a date picker image on the background');
+    assert.match(css.backgroundImage, /^url\(.+\)/, 'has a date picker image on the background');
     assert.equal(css.backgroundPosition, '50% 50%', 'its background image is centered');
     assert.equal(css.backgroundRepeat, 'no-repeat', 'background image is not repeated');
   });
@@ -83,17 +83,17 @@ describe('DateFieldInput', function() {
   it('works', function(done) {
     assert.equal(datePickerButton.title, 'Deschide calendarul', 'has the appropriate tool-tip');
 
-    var datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-    assert.equal(datePicker, null, 'date picker is not there before clicking the button');
+    var datePicker = getDatePicker();
+    assert.isNull(datePicker, 'date picker is not there before clicking the button');
 
     var bodyClickListener = sinon.spy();
     document.body.addEventListener('click', bodyClickListener);
 
     datePickerButton.click();
-    assert.ok(!bodyClickListener.called, 'clicks do not propagate to <body>, and don’t hide the picker');
+    assert.isNotTrue(bodyClickListener.called, 'clicks do not propagate to <body>, and don’t hide the picker');
 
-    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-    assert.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
+    datePicker = getDatePicker();
+    assert.isTrue(datePicker.classList.contains('xo'), 'has the “xo” theme');
 
     var firstMonth = datePicker.querySelector('.pika-select-month option');
     assert.equal(firstMonth.textContent, 'Ianuarie', 'month names are translated');
@@ -115,39 +115,42 @@ describe('DateFieldInput', function() {
     assert.equal(getDatePickerSelectedDate(), newDate, 'when selected, it updates input value accordingly');
     assert.equal(dateFieldInput.getValue(), newDate, 'when selected, getValue() returns the new value');
 
-    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-    assert.equal(datePicker, null, 'hides the date picker when a date is selected');
+    datePicker = getDatePicker();
+    assert.isNull(datePicker, 'hides the date picker when a date is selected');
 
     domElement.value = '';
-    domElement.dispatchEvent(new Event('change'));
     datePickerButton.click();
-
-    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-    assert.ok(datePicker, 'date picker is displayed with en empty field value');
+    datePicker = getDatePicker();
+    assert.isNotNull(datePicker, 'date picker is displayed with en empty field value');
 
     var todayDate = DateFormatting.format(new Date(), DateFieldInput.DATE_FORMAT);
-    assert.equal(getDatePickerSelectedDate(), todayDate, 'hides the date picker when a date is selected');
+    assert.equal(getDatePickerSelectedDate(), todayDate,
+      'when opening the date picker with an empty field, it has today marked');
 
     datePickerButton.click();
-    datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-    assert.equal(datePicker, null, 'hides the date picker when clicked again');
+    datePicker = getDatePicker();
+    assert.isNull(datePicker, 'hides the date picker when clicked again');
 
     /* this setTimeout call is required because focus() is called async too */
     window.setTimeout(function() {
-      assert.equal(document.activeElement, domElement, 'when tha date picker id closed, the input get focus again');
+      assert.equal(document.activeElement, domElement, 'when the date picker is closed, the input get focus again');
 
       datePickerButton.click();
       document.body.click();
-      datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-      assert.equal(datePicker, null, 'hides the date picker when clicked outside');
+      datePicker = getDatePicker();
+      assert.isNull(datePicker, 'hides the date picker when clicking outside');
 
       datePickerButton.click();
       simulateEscapeKey();
-      datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
-      assert.equal(datePicker, null, 'hides the date picker when pressing Escape key');
+      datePicker = getDatePicker();
+      assert.isNull(datePicker, 'hides the date picker when pressing Escape key');
 
       done();
     });
+
+    function getDatePicker() {
+      return sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
+    }
 
     function getDatePickerSelectedDate() {
       var selectedDate = datePicker.querySelector('.is-selected .pika-day');
