@@ -11,14 +11,11 @@
     this.getValue = delegateTo(input, 'getValue');
     this.setValue = delegateTo(input, 'setValue');
     this.focus = delegateTo(input, 'focus');
+    this.addDatePicker = delegateTo(input, 'precedeWith');
 
     this.appendTo = function(parentDomElement) {
       input.appendTo(parentDomElement);
       parentDomElement.appendChild(datePickerButton);
-    };
-
-    this.addDatePicker = function(datePickerDomElement) {
-      input.precedeWith(datePickerDomElement);
     };
 
     this.getDate = function() {
