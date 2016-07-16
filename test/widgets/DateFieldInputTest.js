@@ -86,10 +86,11 @@ describe('DateFieldInput', function() {
     var datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     assert.equal(datePicker, null, 'date picker is not there before clicking the button');
 
-    var bodyClickListener = prepareBodyClickListener();
+    var bodyClickListener = sinon.spy();
+    document.body.addEventListener('click', bodyClickListener);
 
     datePickerButton.click();
-    assert.ok(!bodyClickListener.receivedClicks, 'clicks do not propagate to <body> and hide the picker');
+    assert.ok(!bodyClickListener.called, 'clicks do not propagate to <body>, and don’t hide the picker');
 
     datePicker = sandbox.querySelector(DateFieldInput.DATE_PICKER_SELECTOR);
     assert.ok(datePicker.classList.contains('xo'), 'has the “xo” theme');
@@ -176,19 +177,6 @@ describe('DateFieldInput', function() {
       var correspondingDate = datePicker.querySelector(selectorForDate);
       correspondingDate.dispatchEvent(new Event('mousedown'));
     }
-
-    function prepareBodyClickListener() {
-      var listener = {
-        receivedClicks: false
-      };
-
-      document.body.addEventListener('click', function eventHandler() {
-        listener.receivedClicks = true;
-        document.body.removeEventListener('click', eventHandler);
-      });
-
-      return listener;
-    }
   });
 
   afterEach(function() {
@@ -196,6 +184,8 @@ describe('DateFieldInput', function() {
   });
 
   var DateFormatting = window.App.Utils.DateFormatting;
+
+  var sinon = window.sinon;
 
   var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
   var assert = window.TestHelpers.assert;
