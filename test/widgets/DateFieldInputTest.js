@@ -5,7 +5,7 @@ describe('DateFieldInput', function() {
 
   var sandbox, value, dateFieldInput, additionalStyle, domElement, datePickerButton;
 
-  before(function() {
+  beforeEach(function() {
     value = '25.06.2015';
     additionalStyle = {
       backgroundColor: 'red'
@@ -20,7 +20,7 @@ describe('DateFieldInput', function() {
     document.body.appendChild(sandbox);
   });
 
-  it('has the structural elements in place', function() {
+  it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'INPUT', 'is first renders an <input>');
     assert.equal(datePickerButton.tagName, 'BUTTON', 'renders a <button> to trigger the date picker');
   });
@@ -64,8 +64,8 @@ describe('DateFieldInput', function() {
     assert.ok(domElement.hasAttribute('has-on-focus-effect'));
   });
 
-  it('has the date picker putton styled', function() {
-    assert.equal(datePickerButton.getAttribute('shy'), '', 'is’s shy');
+  it('has the date picker button styled', function() {
+    assert.ok(datePickerButton.hasAttribute('shy'), 'is’s shy');
 
     var css = datePickerButton.style;
     assert.equal(css.position, 'absolute', 'it’s absolutely positioned not to affect the layout');
@@ -191,7 +191,7 @@ describe('DateFieldInput', function() {
     }
   });
 
-  after(function() {
+  afterEach(function() {
     document.body.removeChild(sandbox);
   });
 
