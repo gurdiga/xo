@@ -16,6 +16,8 @@
     this.precedeWith = function(elementToInsert) {
       domElement.parentNode.insertBefore(elementToInsert, domElement);
     };
+
+    this.setStyle = getStylerOf(domElement);
   }
 
   function createElement(value, additionalStyle) {
@@ -44,6 +46,7 @@
   };
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
   var addFocusEffect = window.App.Utils.addFocusEffect;

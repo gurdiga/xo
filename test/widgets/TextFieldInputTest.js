@@ -33,6 +33,15 @@ describe('TextFieldInput', function() {
     assert.isTrue(domElement.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'color': 'red'
+    };
+
+    textFieldInput.setStyle(style);
+    assert.equal(domElement.style.color, style.color, 'has the color appropriately set');
+  });
+
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
 });
