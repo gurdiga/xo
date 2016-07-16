@@ -3,45 +3,36 @@ describe('TextFieldInput', function() {
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  var sandbox, fieldValue, textFieldInput, input;
+  var fieldValue, textFieldInput, domElement;
 
   before(function() {
-    sandbox = document.createElement('div');
     fieldValue = 'some text';
-
     textFieldInput = new TextFieldInput(fieldValue);
-    textFieldInput.appendTo(sandbox);
-
-    input = sandbox.querySelector('input');
+    domElement = getWidgetDOMElement(textFieldInput);
   });
 
-  it('works', function() {
-    assert.equal(input.value, textFieldInput.getValue(), 'getValue() returns <input/>’s value');
+  it('reflects the initial value', function() {
+    assert.equal(domElement.value, fieldValue, 'getValue() returns <input/>’s value');
+    assert.equal(domElement.value, textFieldInput.getValue(), 'getValue() returns <input/>’s value');
 
-    var newValue = 'new value';
-    textFieldInput.setValue(newValue);
-    assert.equal(input.value, newValue, 'setValue() sets <input/>’s value');
+    textFieldInput.setValue('new value');
+    assert.equal(domElement.value, 'new value', 'setValue() sets <input/>’s value');
+    assert.equal(textFieldInput.getValue(), 'new value', 'getValue() returns the new value');
   });
 
-  describe('focusability', function() {
-    before(function() {
-      document.body.appendChild(sandbox);
-    });
+  it('can be focused', function() {
+    document.body.appendChild(domElement);
 
-    it('can be focused', function() {
-      textFieldInput.focus();
-      assert.equal(document.activeElement, input, 'it focuses the <input>');
-    });
+    textFieldInput.focus();
+    assert.equal(document.activeElement, domElement, 'it focuses the <input>');
 
-    afterEach(function() {
-      document.body.removeChild(sandbox);
-    });
+    document.body.removeChild(domElement);
   });
 
   it('gets an outline on focus', function() {
-    assert.equal(input.hasAttribute('has-on-focus-effect'), true,
-      'is outlined on focus');
+    assert.isTrue(domElement.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
   });
 
+  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
   var assert = window.TestHelpers.assert;
 });
