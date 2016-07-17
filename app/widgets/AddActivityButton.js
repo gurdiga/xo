@@ -33,7 +33,7 @@
 
   function createDropdownButton(activities, originalActivityAdder) {
     var dropdownOptions = {};
-    var additionalStyle = {
+    var style = {
       'margin-top': '10px'
     };
 
@@ -44,7 +44,11 @@
       dropdownOptions[optionLabel] = optionHandler;
     });
 
-    return new DropdownButton('adaugă acţiune', dropdownOptions, additionalStyle);
+    var dropdownButton = new DropdownButton('adaugă acţiune', dropdownOptions);
+
+    dropdownButton.setStyle(style);
+
+    return dropdownButton;
   }
 
   function getWrappedActivityAdder(originalActivityAdder, activities, activity) {

@@ -3,7 +3,7 @@ describe('DropdownButton', function() {
 
   var DropdownButton = window.App.Widgets.DropdownButton;
 
-  var optionHandler1, optionHandler2, options, additionalStyle,
+  var optionHandler1, optionHandler2, options,
     labelText, dropdownButton, domElement, toggleButton, optionList;
 
   before(function() {
@@ -14,12 +14,8 @@ describe('DropdownButton', function() {
       'label2': optionHandler2
     };
 
-    additionalStyle = {
-      color: 'red'
-    };
-
     labelText = 'Add';
-    dropdownButton = new DropdownButton(labelText, options, additionalStyle);
+    dropdownButton = new DropdownButton(labelText, options);
 
     domElement = getWidgetDOMElement(dropdownButton);
     toggleButton = domElement.firstChild;
@@ -35,7 +31,6 @@ describe('DropdownButton', function() {
 
     assert.equal(style.display, 'inline-block',
       'has display of inline-block to have the option list postioned appropriately');
-    assert.equal(style.color, additionalStyle.color, 'accepts additional styles');
     assert.equal(style['-webkit-user-select'], 'none', 'has the text unselectable');
   });
 

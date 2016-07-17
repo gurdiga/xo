@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function DropdownButton(labelText, options, additionalStyle) {
-    var domElement = createElement(additionalStyle);
+  function DropdownButton(labelText, options) {
+    var domElement = createElement();
     var toggleButton = createToggleButton(labelText);
     var optionList = new OptionList(options);
 
@@ -14,12 +14,10 @@
     this.setStyle = getStylerOf(domElement);
   }
 
-  function createElement(additionalStyle) {
+  function createElement() {
     var style = {
       display: 'inline-block'
     };
-
-    _.extend(style, additionalStyle);
 
     var domElement = createDOMElement('dropdown-button', style);
 
