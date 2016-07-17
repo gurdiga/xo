@@ -14,9 +14,12 @@
   }
 
   function addDateFieldInputTo(domElement) {
-    var value = '';
-    var style = { width: '6.5em' };
-    var dateFieldInput = new DateFieldInput(value, style);
+    var style = {
+      'width': '6.5em'
+    };
+
+    var dateFieldInput = new DateFieldInput();
+    dateFieldInput.setStyle(style);
     dateFieldInput.appendTo(domElement);
   }
 

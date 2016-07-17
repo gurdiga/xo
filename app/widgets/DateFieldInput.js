@@ -4,8 +4,8 @@
   DateFieldInput.DATE_FORMAT = 'DD.MM.YYYY';
   DateFieldInput.DATE_PICKER_SELECTOR = '.pika-single';
 
-  function DateFieldInput(value, additionalStyle) {
-    var input = createInput(value, additionalStyle);
+  function DateFieldInput(value) {
+    var input = new TextFieldInput(value);
     var datePickerButton = createDatePickerButton(this);
 
     this.getValue = delegateTo(input, 'getValue');
@@ -28,14 +28,6 @@
       var formattedDate = DateFormatting.format(date, DateFieldInput.DATE_FORMAT);
       input.setValue(formattedDate);
     };
-  }
-
-  function createInput(value, style) {
-    var input = new TextFieldInput(value);
-
-    if (style) input.setStyle(style);
-
-    return input;
   }
 
   function createDatePickerButton(dateField) {

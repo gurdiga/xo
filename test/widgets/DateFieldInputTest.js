@@ -3,15 +3,11 @@ describe('DateFieldInput', function() {
 
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
-  var sandbox, value, dateFieldInput, additionalStyle, domElement, datePickerButton, bodyClickListener;
+  var sandbox, value, dateFieldInput, domElement, datePickerButton, bodyClickListener;
 
   beforeEach(function() {
     value = '25.06.2015';
-    additionalStyle = {
-      backgroundColor: 'red'
-    };
-
-    dateFieldInput = new DateFieldInput(value, additionalStyle);
+    dateFieldInput = new DateFieldInput(value);
 
     domElement = getWidgetDOMElement(dateFieldInput);
     datePickerButton = domElement.nextSibling;
@@ -58,9 +54,6 @@ describe('DateFieldInput', function() {
     assert.equal(css.borderRadius, '2px', 'has nice rounded corners');
     assert.equal(css.borderWidth, '0px', 'it has no border, its role is taken on by the background image');
     assert.equal(css.outlineWidth, '0px', 'it has no outline, its role is taken on by the box-shadow');
-
-    assert.equal(css.backgroundColor, additionalStyle.backgroundColor,
-      'accepts additional style');
   });
 
   it('can be asked to setStyle', function() {
