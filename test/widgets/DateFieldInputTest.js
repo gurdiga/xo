@@ -60,6 +60,15 @@ describe('DateFieldInput', function() {
       'accepts additional style');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'color': 'red'
+    };
+
+    dateFieldInput.setStyle(style);
+    assert.equal(domElement.style.color, style.color, 'sets the color appropriately');
+  });
+
   it('is outlined on focus', function() {
     assert.isTrue(domElement.hasAttribute('has-on-focus-effect'));
   });

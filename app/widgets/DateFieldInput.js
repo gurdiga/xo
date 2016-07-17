@@ -12,6 +12,7 @@
     this.setValue = delegateTo(input, 'setValue');
     this.focus = delegateTo(input, 'focus');
     this.addDatePicker = delegateTo(input, 'precedeWith');
+    this.setStyle = delegateTo(input, 'setStyle');
 
     this.appendTo = function(parentDomElement) {
       input.appendTo(parentDomElement);
