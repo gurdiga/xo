@@ -39,6 +39,17 @@ describe('DropdownButton', function() {
     assert.equal(style['-webkit-user-select'], 'none', 'has the text unselectable');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'red'
+    };
+
+    dropdownButton.setStyle(style);
+
+    assert.equal(domElement.style.backgroundColor, style['background-color'],
+      'sets the background color appropriately');
+  });
+
   describe('toggle button', function() {
     it('ahs the appropriate label text', function() {
       assert.equal(toggleButton.textContent, labelText, 'has the appropriate label');

@@ -11,6 +11,7 @@
 
     this.appendTo = getAppenderOf(domElement);
     this.resetOptionList = delegateTo(optionList, 'setOptions');
+    this.setStyle = getStylerOf(domElement);
   }
 
   function createElement(additionalStyle) {
@@ -77,6 +78,7 @@
   var OptionList = window.App.Widgets.OptionList;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var makeTextUselectable = window.App.Utils.makeTextUselectable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;
