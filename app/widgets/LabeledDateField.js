@@ -4,7 +4,9 @@
   function LabeledDateField(labelText, value, additionalStyle) {
     var domElement = createElement();
 
-    var input = new DateField(value, additionalStyle);
+    var input = new DateField(value);
+    if (additionalStyle) input.setStyle(additionalStyle);
+
     var label = new FieldLabel(labelText, [input]);
     label.appendTo(domElement);
 

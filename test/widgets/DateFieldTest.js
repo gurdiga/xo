@@ -3,17 +3,12 @@ describe('DateField', function() {
 
   var DateField = window.App.Widgets.DateField;
 
-  var sandbox, defaultValue, additionalStyle, dateField, domElement, input;
+  var defaultValue, dateField, domElement, input;
 
   before(function() {
     defaultValue = 'some date';
-    additionalStyle = {
-      width: '100px'
-    };
-
-    dateField = new DateField(defaultValue, additionalStyle);
+    dateField = new DateField(defaultValue);
     domElement = getWidgetDOMElement(dateField);
-    sandbox = domElement.parentNode;
 
     assert.equal(domElement.tagName, 'DATE-FIELD', 'has the appropriate tag name');
 
@@ -22,7 +17,6 @@ describe('DateField', function() {
 
   it('accepts and tells its value', function() {
     assert.equal(input.value, defaultValue, 'has the value as passed into constructor');
-    assert.equal(input.style.width, additionalStyle.width, 'accepts the additional style passed into constructor');
 
     var newValue = 'some other value';
     input.value = newValue;
@@ -45,12 +39,12 @@ describe('DateField', function() {
   });
 
   it('is focusable', function() {
-    document.body.appendChild(sandbox);
+    document.body.appendChild(domElement);
 
     dateField.focus();
     assert.equal(document.activeElement, input, 'focuses its <input>');
 
-    document.body.removeChild(sandbox);
+    document.body.removeChild(domElement);
   });
 
   it('can be asked to setStyle', function() {
