@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  function LabeledLargeTextField(labelText, value, additionalStyle) {
+  function LabeledLargeTextField(labelText, value) {
     var domElement = createElement();
 
-    var textarea = createTextareaElement(value, additionalStyle);
+    var textarea = createTextareaElement(value);
     var label = new FieldLabel(labelText, [textarea]);
     label.appendTo(domElement);
 
@@ -22,7 +22,7 @@
     return createDOMElement('labeled-large-text-field', style);
   }
 
-  function createTextareaElement(value, additionalStyle) {
+  function createTextareaElement(value) {
     var textFieldStyle = _.pick(TextFieldInput.STYLE,
       'color', 'padding', 'font', 'backgroundImage',
       'borderRadius', 'borderWidth', 'outlineWidth'
@@ -36,11 +36,11 @@
       width: '340px',
       height: '5.8em',
       resize: 'none'
-    }, additionalStyle);
+    });
 
     var textarea = createDOMElement('textarea', style);
 
-    textarea.value = value || '';
+    if (value) textarea.value = value;
 
     addFocusEffect(textarea, {
       boxShadow: '0 0 3px 2px #b5d5ff'
