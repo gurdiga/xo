@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  function DateField(defaultFieldValue, additionalStyle) {
+  function DateField(defaultValue, additionalStyle) {
     var domElement = createDOMElement('date-field');
 
-    var dateFieldInput = new DateFieldInput(defaultFieldValue, additionalStyle);
+    var dateFieldInput = new DateFieldInput(defaultValue, additionalStyle);
     dateFieldInput.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);

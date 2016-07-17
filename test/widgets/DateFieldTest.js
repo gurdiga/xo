@@ -3,15 +3,15 @@ describe('DateField', function() {
 
   var DateField = window.App.Widgets.DateField;
 
-  var sandbox, defaultFieldValue, additionalStyle, dateField, domElement, input;
+  var sandbox, defaultValue, additionalStyle, dateField, domElement, input;
 
   before(function() {
-    defaultFieldValue = 'some date';
+    defaultValue = 'some date';
     additionalStyle = {
       width: '100px'
     };
 
-    dateField = new DateField(defaultFieldValue, additionalStyle);
+    dateField = new DateField(defaultValue, additionalStyle);
     domElement = getWidgetDOMElement(dateField);
     sandbox = domElement.parentNode;
 
@@ -21,7 +21,7 @@ describe('DateField', function() {
   });
 
   it('accepts and tells its value', function() {
-    assert.equal(input.value, defaultFieldValue, 'has the value as passed into constructor');
+    assert.equal(input.value, defaultValue, 'has the value as passed into constructor');
     assert.equal(input.style.width, additionalStyle.width, 'accepts the additional style passed into constructor');
 
     var newValue = 'some other value';
