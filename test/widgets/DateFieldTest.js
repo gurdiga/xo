@@ -53,6 +53,19 @@ describe('DateField', function() {
     document.body.removeChild(sandbox);
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'red'
+    };
+
+    dateField.setStyle(style);
+
+    var innerFieldDomElement = domElement.firstChild;
+
+    assert.equal(innerFieldDomElement.style.backgroundColor, style['background-color'],
+      'sets the background color appropriately');
+  });
+
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
   var assert = window.TestHelpers.assert;
