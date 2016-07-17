@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function Section(labelText, childWidgets, additionalStyle, widgetName) {
-    var domElement = createElement(additionalStyle, widgetName);
+  function Section(labelText, childWidgets, widgetName) {
+    var domElement = createElement(widgetName);
 
     var legend = createLegend(labelText);
     domElement.appendChild(legend);
@@ -17,7 +17,7 @@
     };
   }
 
-  function createElement(additionalStyle, widgetName) {
+  function createElement(widgetName) {
     var style = {
       borderWidth: '0px',
       margin: '0',
@@ -27,8 +27,6 @@
     var attributes = {
       'widget-name': widgetName || 'Section'
     };
-
-    _.extend(style, additionalStyle);
 
     return createDOMElement('fieldset', style, attributes);
   }

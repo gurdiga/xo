@@ -23,8 +23,11 @@
   function createSection(childWidgets, additionalStyle) {
     var label = 'Cerere de intentare';
     var widgetName = 'InquirySection';
+    var section = new Section(label, childWidgets, widgetName);
 
-    return new Section(label, childWidgets, additionalStyle, widgetName);
+    if (additionalStyle) section.setStyle(additionalStyle);
+
+    return section;
   }
 
   var Section = window.App.Widgets.Section;

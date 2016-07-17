@@ -3,15 +3,14 @@ describe('Section', function() {
 
   var Section = window.App.Widgets.Section;
 
-  var labelText, additionalStyle, content, section, domElement, fieldset, legend;
+  var labelText, content, section, domElement, fieldset, legend;
 
   before(function() {
     labelText = 'My section';
-    additionalStyle = { width: '400px' };
     content = document.createElement('p');
     content.textContent = 'section content';
 
-    section = new Section(labelText, [content], additionalStyle);
+    section = new Section(labelText, [content]);
     domElement = getWidgetDOMElement(section);
 
     fieldset = getWidgetDOMElement(section);
@@ -33,7 +32,7 @@ describe('Section', function() {
     assert.equal(fieldset.getAttribute('widget-name'), 'Section', 'is “Section” by default');
 
     var widgetName = 'SpecialSection';
-    var section = new Section(labelText, [], additionalStyle, widgetName);
+    var section = new Section(labelText, [], widgetName);
     var domElement = getWidgetDOMElement(section);
 
     assert.equal(domElement.getAttribute('widget-name'), widgetName, 'accepts a widget name as the 4th argument');
@@ -42,7 +41,6 @@ describe('Section', function() {
   it('has its fieldset styled', function() {
     var css = fieldset.style;
 
-    assert.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
     assert.equal(css.margin, '0px', 'no outer spacing');
     assert.equal(css.borderWidth, '0px', 'explicitly removing fieldset border');
     assert.equal(css.paddingLeft, '5px', 'reset fieldset’s default left padding');
