@@ -3,7 +3,7 @@ describe('InquirySection', function() {
 
   var InquirySection = window.App.Widgets.InquirySection;
 
-  var fieldValues, additionalStyle, inquirySection, domElement;
+  var fieldValues, inquirySection, domElement;
 
   before(function() {
     fieldValues = {
@@ -11,11 +11,7 @@ describe('InquirySection', function() {
       'data-depunerii': '03.03.2016'
     };
 
-    additionalStyle = {
-      marginLeft: '30px'
-    };
-
-    inquirySection = new InquirySection(fieldValues, additionalStyle);
+    inquirySection = new InquirySection(fieldValues);
     domElement = getWidgetDOMElement(inquirySection);
   });
 
@@ -23,9 +19,15 @@ describe('InquirySection', function() {
     assert.equal(domElement.tagName, 'INQUIRY-SECTION', 'has the appropriate tag name');
   });
 
-  it('accepts additional style', function() {
-    var css = domElement.style;
-    assert.equal(css.marginLeft, additionalStyle.marginLeft, 'is applied');
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'green'
+    };
+
+    inquirySection.setStyle(style);
+
+    assert.equal(domElement.style.backgroundColor, style['background-color'],
+      'sets the background color appropriately');
   });
 
   it('has the appropriate label', function() {

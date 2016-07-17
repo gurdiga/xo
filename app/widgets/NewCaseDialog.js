@@ -116,7 +116,11 @@
         width: '380px'
       };
 
-      return new InquirySection(fieldValues, style);
+      var inquirySection = new InquirySection(fieldValues);
+
+      inquirySection.setStyle(style);
+
+      return inquirySection;
     }
 
     function createActivitiesSection(activitiesArray) {

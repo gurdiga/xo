@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function InquirySection(fieldValues, additionalStyle) {
-    var domElement = createElement(additionalStyle);
+  function InquirySection(fieldValues) {
+    var domElement = createDOMElement('INQUIRY-SECTION');
 
     var childWidgets = [
       createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
@@ -14,20 +14,14 @@
 
     this.getValue = getFieldValueCollector(childWidgets);
     this.appendTo = getAppenderOf(domElement);
+    this.setStyle = getStylerOf(domElement);
   }
 
-  function createElement(additionalStyle) {
-    return createDOMElement('INQUIRY-SECTION', additionalStyle);
-  }
-
-  function createSection(childWidgets, additionalStyle) {
+  function createSection(childWidgets) {
     var label = 'Cerere de intentare';
     var widgetName = 'InquirySection';
-    var section = new Section(label, childWidgets, widgetName);
 
-    if (additionalStyle) section.setStyle(additionalStyle);
-
-    return section;
+    return new Section(label, childWidgets, widgetName);
   }
 
   var Section = window.App.Widgets.Section;
@@ -36,6 +30,7 @@
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var createField = window.App.Utils.createField;
   var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
