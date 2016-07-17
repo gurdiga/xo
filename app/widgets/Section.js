@@ -10,6 +10,7 @@
     appendWidgets(childWidgets).to(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+    this.setStyle = getStylerOf(domElement);
 
     this.appendWidgets = function(childWidgets) {
       appendWidgets(childWidgets).to(domElement);
@@ -53,6 +54,7 @@
 
   var appendWidgets = window.App.Utils.appendWidgets;
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.Section = Section;

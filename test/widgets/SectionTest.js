@@ -3,7 +3,7 @@ describe('Section', function() {
 
   var Section = window.App.Widgets.Section;
 
-  var labelText, additionalStyle, content, section, fieldset, legend;
+  var labelText, additionalStyle, content, section, domElement, fieldset, legend;
 
   before(function() {
     labelText = 'My section';
@@ -12,6 +12,7 @@ describe('Section', function() {
     content.textContent = 'section content';
 
     section = new Section(labelText, [content], additionalStyle);
+    domElement = getWidgetDOMElement(section);
 
     fieldset = getWidgetDOMElement(section);
     legend = fieldset.firstChild;
@@ -48,6 +49,17 @@ describe('Section', function() {
     assert.equal(css.paddingRight, '0px', 'remove fieldset’s default right padding');
     assert.equal(css.paddingTop, '10px', 'has some vertical padding to allow some space between the legend and the content');
     assert.equal(css.paddingBottom, '40px', 'keep some space at the bottom');
+  });
+
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'red'
+    };
+
+    section.setStyle(style);
+
+    assert.equal(domElement.style.backgroundColor, style['background-color'],
+      'the background color is set approrpiately');
   });
 
   it('has its legend styled', function() {
