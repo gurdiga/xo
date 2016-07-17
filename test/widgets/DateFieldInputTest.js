@@ -3,7 +3,7 @@ describe('DateFieldInput', function() {
 
   var DateFieldInput = window.App.Widgets.DateFieldInput;
 
-  var sandbox, value, dateFieldInput, additionalStyle, domElement, datePickerButton;
+  var sandbox, value, dateFieldInput, additionalStyle, domElement, datePickerButton, bodyClickListener;
 
   beforeEach(function() {
     value = '25.06.2015';
@@ -18,6 +18,9 @@ describe('DateFieldInput', function() {
 
     sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
+
+    bodyClickListener = sinon.spy();
+    document.body.addEventListener('click', bodyClickListener);
   });
 
   it('has the appropriate DOM structure', function() {
@@ -94,9 +97,6 @@ describe('DateFieldInput', function() {
 
     var datePicker = getDatePicker();
     assert.isNull(datePicker, 'date picker is not there before clicking the button');
-
-    var bodyClickListener = sinon.spy();
-    document.body.addEventListener('click', bodyClickListener);
 
     datePickerButton.click();
     assert.isNotTrue(bodyClickListener.called, 'clicks do not propagate to <body>, and don’t hide the picker');
@@ -193,6 +193,7 @@ describe('DateFieldInput', function() {
 
   afterEach(function() {
     document.body.removeChild(sandbox);
+    document.body.removeEventListener('click', bodyClickListener);
   });
 
   var DateFormatting = window.App.Utils.DateFormatting;
