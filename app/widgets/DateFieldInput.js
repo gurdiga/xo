@@ -27,7 +27,6 @@
     this.setDate = function(date) {
       var formattedDate = DateFormatting.format(date, DateFieldInput.DATE_FORMAT);
       input.setValue(formattedDate);
-      window.setTimeout(input.focus);
     };
   }
 

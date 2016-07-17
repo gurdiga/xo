@@ -43,7 +43,11 @@
 
   function createDateSelectedCallback(datePicker, getCurrentDateField) {
     return function(date) {
-      getCurrentDateField().setDate(date);
+      var dateField = getCurrentDateField();
+
+      dateField.setDate(date);
+      setTimeout(dateField.focus);
+
       datePicker.hide();
     };
   }
