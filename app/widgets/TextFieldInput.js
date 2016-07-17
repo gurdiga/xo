@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function TextFieldInput(value, additionalStyle) {
-    var domElement = createElement(value, additionalStyle);
+  function TextFieldInput(value) {
+    var domElement = createElement(value);
 
     this.appendTo = getAppenderOf(domElement);
     this.getValue = delegateTo(domElement, 'value');
@@ -20,11 +20,10 @@
     this.setStyle = getStylerOf(domElement);
   }
 
-  function createElement(value, additionalStyle) {
-    var style = _.extend({}, TextFieldInput.STYLE, additionalStyle);
-    var domElement = createDOMElement('input', style);
+  function createElement(value) {
+    var domElement = createDOMElement('input', TextFieldInput.STYLE);
 
-    domElement.value = value || '';
+    if (value) domElement.value = value;
 
     addFocusEffect(domElement, {
       boxShadow: '0 0 3px 2px #b5d5ff'

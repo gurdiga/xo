@@ -4,7 +4,7 @@
   function LabeledTextField(labelText, value, additionalStyle) {
     var domElement = createElement();
 
-    var input = new TextFieldInput(value, additionalStyle);
+    var input = createInput(value, additionalStyle);
     addLabel(domElement, labelText, input);
 
     this.getValue = delegateTo(input, 'getValue');
@@ -20,6 +20,14 @@
     };
 
     return createDOMElement('labeled-text-field', style);
+  }
+
+  function createInput(value, style) {
+    var input = new TextFieldInput(value);
+
+    if (style) input.setStyle(style);
+
+    return input;
   }
 
   function addLabel(domElement, labelText, input) {
