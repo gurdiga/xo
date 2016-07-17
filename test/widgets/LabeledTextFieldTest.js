@@ -3,16 +3,12 @@ describe('LabeledTextField', function() {
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 
-  var labelText, fieldValue, additionalStyle, textField, domElement, label, input;
+  var labelText, fieldValue, textField, domElement, label, input;
 
   before(function() {
     labelText = 'My LabeledTextField component';
     fieldValue = 'Hi!';
-    additionalStyle = {
-      backgroundColor: 'rgb(255, 0, 0)'
-    };
-
-    textField = new LabeledTextField(labelText, fieldValue, additionalStyle);
+    textField = new LabeledTextField(labelText, fieldValue);
 
     domElement = getWidgetDOMElement(textField);
     label = domElement.firstChild;
@@ -31,13 +27,12 @@ describe('LabeledTextField', function() {
   });
 
   it('is focusable', function() {
-    var sandbox = domElement.parentNode;
-    document.body.appendChild(sandbox);
+    document.body.appendChild(domElement);
 
     textField.focus();
     assert.equal(document.activeElement, input, 'focuses its <input>');
 
-    document.body.removeChild(sandbox);
+    document.body.removeChild(domElement);
   });
 
   it('is styled appropriately', function() {
@@ -58,9 +53,7 @@ describe('LabeledTextField', function() {
     assert.equal(css.borderRadius, '2px', 'has nice rounded corners');
     assert.equal(css.borderWidth, '0px', 'it has no border, it’s role is taken on by the background image');
     assert.equal(css.outlineWidth, '0px', 'it has no outline, it’s role is taken on by the box-shadow');
-    assert.equal(css.backgroundColor, additionalStyle.backgroundColor, 'accepts additional style');
-
-    assert(input.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
+    assert.isTrue(input.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
   });
 
   var assert = window.TestHelpers.assert;
