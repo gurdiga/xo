@@ -32,6 +32,17 @@ describe('SentenceSection', function() {
     assert.equal(labelText, 'Document executoriu', 'section has the appropriate label');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'red'
+    };
+
+    sentenceSection.setStyle(style);
+
+    assert.equal(domElement.style.backgroundColor, style['background-color'],
+      'has the background color set appropriately');
+  });
+
   it('has the appropriate fields', function() {
     var fieldElements = domElement.querySelectorAll('fieldset>:not(legend)');
 
