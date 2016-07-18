@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  function PersonSection(labelText, fieldValues, additionalStyle) {
+  function PersonSection(labelText, fieldValues) {
     fieldValues = fieldValues || {};
 
-    var domElement = createElement(additionalStyle);
+    var domElement = createElement();
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
@@ -60,12 +60,10 @@
     }
   }
 
-  function createElement(additionalStyle) {
+  function createElement() {
     var style = {
       display: 'inline-block'
     };
-
-    _.extend(style, additionalStyle);
 
     return createDOMElement('person-section', style);
   }

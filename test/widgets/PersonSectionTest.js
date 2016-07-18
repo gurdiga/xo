@@ -3,7 +3,7 @@ describe('PersonSection', function() {
 
   var PersonSection = window.App.Widgets.PersonSection;
 
-  var sandbox, fieldValues, label, additionalStyle, personSection, domElement;
+  var sandbox, fieldValues, label, personSection, domElement;
 
   before(function() {
     fieldValues = {
@@ -14,8 +14,7 @@ describe('PersonSection', function() {
     };
 
     label = 'Test person section';
-    additionalStyle = { width: '450px' };
-    personSection = new PersonSection(label, fieldValues, additionalStyle);
+    personSection = new PersonSection(label, fieldValues);
 
     domElement = getWidgetDOMElement(personSection);
     sandbox = domElement.parentNode;
@@ -28,7 +27,6 @@ describe('PersonSection', function() {
   it('has the appropriate style', function() {
     var css = domElement.style;
     assert.equal(css.display, 'inline-block', 'has display inline-block');
-    assert.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
   });
 
   it('can be asked to setStyle', function() {

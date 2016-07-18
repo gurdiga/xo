@@ -62,7 +62,11 @@
         marginRight: '60px'
       };
 
-      return new PersonSection(labelText, data, style);
+      var personSection = new PersonSection(labelText, data);
+
+      personSection.setStyle(style);
+
+      return personSection;
     }
 
     function createAddPersonButton() {
