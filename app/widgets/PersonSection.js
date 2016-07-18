@@ -14,6 +14,7 @@
     section.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+    this.setStyle = getStylerOf(domElement);
 
     this.insertAfter = function(siblingDomElement) {
       siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
@@ -124,6 +125,7 @@
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var makeRemovable = window.App.Utils.makeRemovable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var createField = window.App.Utils.createField;

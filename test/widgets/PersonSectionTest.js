@@ -31,6 +31,17 @@ describe('PersonSection', function() {
     assert.equal(css.width, additionalStyle.width, 'accepts additional CSS as the 3rd argument');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'background-color': 'red'
+    };
+
+    personSection.setStyle(style);
+
+    assert.equal(domElement.style.backgroundColor, style['background-color'],
+      'sets the background color appropriately');
+  });
+
   it('has the appropriate label', function() {
     var labelText = domElement.querySelector('legend').textContent;
     assert.equal(labelText, label, 'section has the appropriate label');
