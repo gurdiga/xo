@@ -2,7 +2,8 @@
   'use strict';
 
   function makeRemovable(domElement, onRemove, additionalButtonStyle) {
-    assertArguments(domElement, onRemove);
+    assert(_.isElement(domElement), 'makeRemovable: the first argument is required to be a DOM element');
+    assert(_.isFunction(onRemove), 'makeRemovable: the second argument is required to be a function to call back on remove');
 
     domElement.setAttribute('removable', '');
     domElement.style.position = 'relative';
@@ -15,12 +16,6 @@
     });
 
     domElement.appendChild(button);
-  }
-
-  function assertArguments(domElement, onRemove) {
-    if (!(domElement instanceof HTMLElement)) throw new Error('makeRemovable: the first argument is required to be a DOM element');
-
-    if (!(onRemove instanceof Function)) throw new Error('makeRemovable: the second argument is required to be a function to call back on remove');
   }
 
   function createButton(additionalStyle) {
@@ -49,6 +44,7 @@
 
   var makeShy = window.App.Utils.makeShy;
   var createDOMElement = window.App.Utils.createDOMElement;
+  var assert = window.App.Utils.assert;
 
   window.App.Utils.makeRemovable = makeRemovable;
 

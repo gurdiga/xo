@@ -134,12 +134,12 @@
     function createActivitiesSection(activitiesArray) {
       var activitiesSection = new ActivitiesSection();
 
-      var additionalStyle = {
+      var style = {
         marginRight: '60px'
       };
 
       activitiesSection.setActivities(activitiesArray);
-      activitiesSection.setStyle(additionalStyle);
+      activitiesSection.setStyle(style);
 
       return activitiesSection;
     }
