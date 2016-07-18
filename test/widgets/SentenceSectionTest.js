@@ -3,7 +3,7 @@ describe('SentenceSection', function() {
 
   var SentenceSection = window.App.Widgets.SentenceSection;
 
-  var fieldValues, additionalStyles, sentenceSection, domElement;
+  var fieldValues, sentenceSection, domElement;
 
   before(function() {
     fieldValues = {
@@ -15,12 +15,8 @@ describe('SentenceSection', function() {
       'data-rămînerii-definitive': '10.01.2013',
       'data-eliberării': '11.01.2013'
     };
-    additionalStyles = {
-      width: '380px',
-      marginRight: '60px'
-    };
 
-    sentenceSection = new SentenceSection(fieldValues, additionalStyles);
+    sentenceSection = new SentenceSection(fieldValues);
     domElement = getWidgetDOMElement(sentenceSection);
   });
 
@@ -91,12 +87,6 @@ describe('SentenceSection', function() {
       'the sixth field is “Data eliberării”');
     assert.equal(getDOMValue(releaseDateField), fieldValues['data-eliberării'],
       'the “Data eliberării” field is prefilled with the given value');
-  });
-
-  it('accepts additional style', function() {
-    var css = domElement.style;
-    assert.equal(css.width, additionalStyles.width, 'accepts additional style: width');
-    assert.equal(css.marginRight, additionalStyles.marginRight, 'accepts additional style: marginRight');
   });
 
   it('can tell its value', function() {

@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function SentenceSection(fieldValues, additionalStyles) {
-    var domElement = createElement(additionalStyles);
+  function SentenceSection(fieldValues) {
+    var domElement = createElement();
     var fields = createFields(fieldValues);
     var section = new Section('Document executoriu', fields);
     section.appendTo(domElement);
@@ -13,12 +13,10 @@
     this.getValue = getFieldValueCollector(fields);
   }
 
-  function createElement(additionalStyles) {
+  function createElement() {
     var style = {
       display: 'inline-block'
     };
-
-    _.extend(style, additionalStyles);
 
     return createDOMElement('sentence-section', style);
   }

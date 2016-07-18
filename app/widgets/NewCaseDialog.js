@@ -109,7 +109,11 @@
         marginRight: '60px'
       };
 
-      return new SentenceSection(fieldValues, style);
+      var sentenceSection = new SentenceSection(fieldValues);
+
+      sentenceSection.setStyle(style);
+
+      return sentenceSection;
     }
 
     function createInquirySection() {
