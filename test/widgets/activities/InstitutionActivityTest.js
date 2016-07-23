@@ -14,11 +14,14 @@ describe('InstitutionActivity', function() {
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.getAttribute('widget-name'), 'InstitutionActivity',
       'has the appropriate “widget-name” attribute');
-  });
+    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
+      'has the detailsSection element');
 
-  it('has a date field', function() {
     var dateField = domElement.firstChild;
-    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is an activity date field');
+    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'has the activity date field');
+
+    var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
+    assert.isNotNull(todoList, 'has the TODO list');
   });
 
   it('has the appropriate description', function() {
@@ -36,19 +39,6 @@ describe('InstitutionActivity', function() {
 
     assert.deepEqual(InstitutionActivity.NEXT_ACTIVITY_OPTIONS,
       [], 'are exposed');
-  });
-
-  it('has the appropriate details section', function() {
-    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
-      'has the appropriate “widget-name” attribute');
-
-    var createWritButton = detailsSectionElement.querySelector('[widget-name="CreateWritButton"]');
-    assert(!!createWritButton, 'has the button to creare the writ');
-  });
-
-  it('has the appropriate TodoList', function() {
-    var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
-    assert(!!todoList, 'has the TODO list');
   });
 
   it('can be setDetailWidgets()', function() {

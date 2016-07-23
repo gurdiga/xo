@@ -3,13 +3,10 @@
 
   function InstitutionActivity() {
     var descriptionText = 'Intentarea';
-    var todoList = new TodoList();
     var activity = new Activity('InstitutionActivity', descriptionText);
+    var todoList = new TodoList();
 
-    activity.setDetailWidgets([
-      todoList,
-      new CreateWritButton()
-    ]);
+    activity.setDetailWidgets([todoList]);
 
     this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');
@@ -26,7 +23,6 @@
 
   InstitutionActivity.createWithData = Activity.createWithData;
 
-  var CreateWritButton = window.App.Widgets.CreateWritButton;
   var TodoList = window.App.Widgets.TodoList;
 
   var delegateTo = window.App.Utils.delegateTo;
