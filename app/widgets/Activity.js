@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  function Activity(widgetName, descriptionText, detailWidgets) {
+  function Activity(widgetName, descriptionText) {
     var domElement = createElement(widgetName);
-    var detailsSection = createDetailsSection(detailWidgets);
+    var detailsSection = new ActivityDetailsSection();
 
     appendWidgets([
       new ActivityDateField(),
@@ -45,14 +45,6 @@
     };
 
     return createDOMElement('fieldset', style, attributes);
-  }
-
-  function createDetailsSection(childWidgets) {
-    var detailsSection = new ActivityDetailsSection();
-
-    detailsSection.setChildWidgets(childWidgets);
-
-    return detailsSection;
   }
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;

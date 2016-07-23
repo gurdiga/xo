@@ -3,16 +3,12 @@ describe('Activity', function() {
 
   var Activity = window.App.Widgets.Activity;
 
-  var widgetName, descriptionText, detailWidgets, activity, domElement, detailsSectionElement;
+  var widgetName, descriptionText, activity, domElement, detailsSectionElement;
 
   before(function() {
     widgetName = 'SomeActivity';
     descriptionText = 'Case institution';
-    detailWidgets = [
-      document.createElement('some-widget'),
-      new TextFieldInput()
-    ];
-    activity = new Activity(widgetName, descriptionText, detailWidgets);
+    activity = new Activity(widgetName, descriptionText);
     domElement = getWidgetDOMElement(activity);
     detailsSectionElement = domElement.children[2];
   });
@@ -20,6 +16,12 @@ describe('Activity', function() {
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
     assert.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
+
+    var dateField = domElement.firstChild;
+    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is the appropriate widget');
+
+    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
+      'has the appropriate “widget-name” attribute');
   });
 
   it('has the appropriate style', function() {
@@ -33,11 +35,6 @@ describe('Activity', function() {
     assert.equal(css.padding, '0px', 'removes the iframe’s default padding');
   });
 
-  it('has a date field', function() {
-    var dateField = domElement.firstChild;
-    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is the appropriate widget');
-  });
-
   it('has the appropriate description', function() {
     var descriptionElement = domElement.children[1];
 
@@ -46,16 +43,7 @@ describe('Activity', function() {
     assert.equal(activity.getDescription(), descriptionText, 'exposes a gettr for the description text');
   });
 
-  it('has the appropriate details section', function() {
-    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
-      'has the appropriate “widget-name” attribute');
-
-    var children = detailsSectionElement.children;
-    assert.equal(children[0], detailWidgets[0], 'contains the passed detail widgets');
-    assert.equal(children[1].tagName, 'INPUT', 'contains the passed detail widgets');
-  });
-
-  it('can be setDetailWidgets()', function() {
+  it('can be asked to setDetailWidgets', function() {
     activity.setDetailWidgets([
       document.createElement('some-other-widget')
     ]);
@@ -74,8 +62,6 @@ describe('Activity', function() {
       );
     });
   });
-
-  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;

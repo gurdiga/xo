@@ -7,11 +7,13 @@
 
     var activity = new Activity(
       'InstitutionActivity',
-      descriptionText, [
-        todoList,
-        new CreateWritButton()
-      ]
+      descriptionText
     );
+
+    activity.setDetailWidgets([
+      todoList,
+      new CreateWritButton()
+    ]);
 
     this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');

@@ -6,10 +6,12 @@
 
     var activity = new Activity(
       'RefusalActivity',
-      descriptionText, [
-        document.createTextNode('RefusalActivity TODO')
-      ]
+      descriptionText
     );
+
+    activity.setDetailWidgets([
+      document.createTextNode('RefusalActivity TODO')
+    ]);
 
     this.getDescription = delegateTo(activity, 'getDescription');
     this.appendTo = delegateTo(activity, 'appendTo');
