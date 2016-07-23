@@ -111,32 +111,30 @@ describe('TodoItem', function() {
     assert.equal(labeledCheckbox.textContent, data.label, 'renders the appropriate label');
   });
 
-  it('can be setChildWidgets', function() {
+  it('can be setDetailWidgets', function() {
     var aDOMElement = createDOMElement('div');
     var aWidget = new LabeledTextField('some text');
+    var detailWidgetContainer = domElement.querySelector('detail-widget-container');
 
-    var childContainer = domElement.querySelector('child-container');
+    assert.equal(detailWidgetContainer.children.length, 0, 'has no child widgets initially');
 
-    assert.equal(childContainer.children.length, 0, 'has no child widgets initially');
-
-    todoItem.setChildWidgets([
+    todoItem.setDetailWidgets([
       aDOMElement,
       aWidget
     ]);
 
-    childContainer = domElement.querySelector('child-container');
-    assert.equal(childContainer.children.length, 2, 'has the appropriate number of children');
-    assert.equal(childContainer.children[0].tagName, 'DIV', 'the first child is the first widget');
-    assert.equal(childContainer.children[1].tagName, 'LABELED-TEXT-FIELD', 'the second child is the second widget');
+    assert.equal(detailWidgetContainer.children.length, 2, 'has the appropriate number of children');
+    assert.equal(detailWidgetContainer.children[0].tagName, 'DIV', 'the first child is the first widget');
+    assert.equal(detailWidgetContainer.children[1].tagName, 'LABELED-TEXT-FIELD', 'the second child is the second widget');
 
     var aNewChild = createDOMElement('new-child');
 
-    todoItem.setChildWidgets([
+    todoItem.setDetailWidgets([
       aNewChild
     ]);
 
-    assert.equal(childContainer.children.length, 1, 'resets the children');
-    assert.equal(childContainer.children[0].tagName, 'NEW-CHILD', 'the first child is the first widget');
+    assert.equal(detailWidgetContainer.children.length, 1, 'resets the children');
+    assert.equal(detailWidgetContainer.children[0].tagName, 'NEW-CHILD', 'the first child is the first widget');
   });
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;

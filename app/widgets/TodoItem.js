@@ -10,17 +10,17 @@
     var labeledCheckbox = new LabeledCheckbox(labelText);
     labeledCheckbox.appendTo(domElement);
 
-    var completionLabelContainer = createCompletionLabelContainer();
+    var completionLabelContainer = createDOMElement('completion-label-container');
     domElement.appendChild(completionLabelContainer);
 
     var completionLabel;
     labeledCheckbox.onChange(toggleCompletionLabel);
 
-    var childContainer = createChildContainer();
-    domElement.appendChild(childContainer);
+    var detailWidgetContainer = createDOMElement('detail-widget-container');
+    domElement.appendChild(detailWidgetContainer);
 
-    this.setChildWidgets = function(childWidgets) {
-      resetChildren(childContainer, childWidgets);
+    this.setDetailWidgets = function(detailWidgets) {
+      resetChildren(detailWidgetContainer, detailWidgets);
     };
 
     this.appendTo = getAppenderOf(domElement);
@@ -91,14 +91,6 @@
     };
 
     return createDOMElement('li', style, attributes);
-  }
-
-  function createCompletionLabelContainer() {
-    return createDOMElement('completion-label-container');
-  }
-
-  function createChildContainer() {
-    return createDOMElement('child-container');
   }
 
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
