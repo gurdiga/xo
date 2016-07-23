@@ -4,11 +4,7 @@
   function InstitutionActivity() {
     var descriptionText = 'Intentarea';
     var todoList = new TodoList();
-
-    var activity = new Activity(
-      'InstitutionActivity',
-      descriptionText
-    );
+    var activity = new Activity('InstitutionActivity', descriptionText);
 
     activity.setDetailWidgets([
       todoList,

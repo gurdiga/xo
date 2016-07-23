@@ -3,11 +3,7 @@
 
   function RefusalActivity() {
     var descriptionText = 'Refuz';
-
-    var activity = new Activity(
-      'RefusalActivity',
-      descriptionText
-    );
+    var activity = new Activity('RefusalActivity', descriptionText);
 
     activity.setDetailWidgets([
       document.createTextNode('RefusalActivity TODO')
