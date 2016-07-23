@@ -22,7 +22,7 @@ describe('TodoList', function() {
     assert.equal(style.padding, '0px 0px 5px', 'has padding stripped off except at the bottom');
   });
 
-  describe('setItemData()', function() {
+  describe('setData()', function() {
     it('creates TodoItem widgets for each item in the given array', function() {
       var todoItemData = [{
         id: 'first-item',
@@ -32,7 +32,7 @@ describe('TodoList', function() {
         label: 'the second new item'
       }];
 
-      todoList.setItemData(todoItemData);
+      todoList.setData(todoItemData);
 
       var itemElements = _.toArray(domElement.querySelectorAll('ul>li>labeled-checkbox input[type="checkbox"]'));
       assert.equal(itemElements.length, todoItemData.length, 'renders items as <li>s');
@@ -45,32 +45,25 @@ describe('TodoList', function() {
 
     it('validates input', function() {
       assert.throws(function() {
-        todoList.setItemData(42);
+        todoList.setData(42);
       },
-        'TodoList#setItemData expects the argument to be an array of objects'
+        'TodoList#setData expects the argument to be an array of objects'
       );
     });
   });
 
-  describe('getItemData', function() {
-    it('returns an empty array when there are no TodoItem widgets', function() {
-      var todoList = new TodoList();
-      assert.deepEqual(todoList.getItemData(), []);
-    });
+  it('can be asked to getData', function() {
+    var todoItemData = [{
+      id: 'first-item',
+      label: 'the first new item'
+    }, {
+      id: 'second-item',
+      label: 'the second new item'
+    }];
 
-    it('returns an array with the data from the TodoItem widgets', function() {
-      var todoItemData = [{
-        id: 'first-item',
-        label: 'the first new item'
-      }, {
-        id: 'second-item',
-        label: 'the second new item'
-      }];
+    todoList.setData(todoItemData);
 
-      todoList.setItemData(todoItemData);
-
-      assert.deepEqual(todoList.getItemData(), todoItemData, 'works');
-    });
+    assert.deepEqual(todoList.getData(), todoItemData, 'works');
   });
 
   var assert = window.TestHelpers.assert;

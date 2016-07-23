@@ -7,14 +7,14 @@
 
     this.appendTo = getAppenderOf(domElement);
 
-    this.setItemData = function(todoItemData) {
-      assert(Array.isArray(todoItemData), 'TodoList#setItemData expects the argument to be an array of objects');
+    this.setData = function(todoItemData) {
+      assert(Array.isArray(todoItemData), 'TodoList#setData expects the argument to be an array of objects');
 
       items = createItems(todoItemData);
       resetChildren(domElement, items);
     };
 
-    this.getItemData = function() {
+    this.getData = function() {
       return rMap('getData', items);
     };
   }

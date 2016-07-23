@@ -16,7 +16,7 @@
     this.setDetailWidgets = delegateTo(activity, 'setDetailWidgets');
 
     this.setData = function(data) {
-      todoList.setItemData(data['todo-items']);
+      todoList.setData(data['todo-items']);
     };
   }
 
