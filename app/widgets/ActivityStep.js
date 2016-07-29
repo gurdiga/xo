@@ -1,8 +1,9 @@
 (function() {
   'use strict';
 
-  function ActivityStep(description) {
+  function ActivityStep(stepId, description) {
     var domElement = createDOMElement('activity-step');
+    domElement.setAttribute('step-id', stepId);
 
     var checkbox = new LabeledCheckbox(description);
     checkbox.appendTo(domElement);
@@ -11,6 +12,7 @@
 
     this.getValue = function() {
       return {
+        'step-id': stepId,
         'is-completed': checkbox.getValue()
       };
     };

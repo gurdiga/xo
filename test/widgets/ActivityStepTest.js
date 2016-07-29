@@ -3,16 +3,18 @@ describe('ActivityStep', function() {
 
   var ActivityStep = window.App.Widgets.ActivityStep;
 
-  var activityStep, description, domElement;
+  var activityStep, stepId, description, domElement;
 
   beforeEach(function() {
+    stepId = 'emit-writ';
     description = 'Emitere încheiere';
-    activityStep = new ActivityStep(description);
+    activityStep = new ActivityStep(stepId, description);
     domElement = getWidgetDOMElement(activityStep);
   });
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'ACTIVITY-STEP', 'has the appropriate tag name');
+    assert.equal(domElement.getAttribute('step-id'), stepId, 'has the appropriate “step-id” attribute');
 
     var checkbox = domElement.querySelector('labeled-checkbox input[type="checkbox"]');
     assert.isNotTrue(checkbox.checked, 'is unchecked initially');
@@ -23,6 +25,7 @@ describe('ActivityStep', function() {
 
   it('can be asked to getValue', function() {
     var expectedValue = {
+      'step-id': stepId,
       'is-completed': false
     };
 
@@ -35,7 +38,7 @@ describe('ActivityStep', function() {
     };
 
     activityStep.setValue(newValue);
-    assert.deepEqual(activityStep.getValue(), newValue);
+    assert.deepEqual(activityStep.getValue()['is-completed'], newValue['is-completed']);
   });
 
   var assert = window.TestHelpers.assert;
