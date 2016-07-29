@@ -2,8 +2,7 @@
   'use strict';
 
   function ActivityStep(stepId, description) {
-    var domElement = createDOMElement('activity-step');
-    domElement.setAttribute('step-id', stepId);
+    var domElement = createElement(stepId);
 
     var checkbox = new LabeledCheckbox(description);
     checkbox.appendTo(domElement);
@@ -20,6 +19,15 @@
     this.setValue = function(value) {
       checkbox.setValue(value['is-completed']);
     };
+  }
+
+  function createElement(stepId) {
+    var style = {};
+    var attributes = {
+      'step-id': stepId
+    };
+
+    return createDOMElement('activity-step', style, attributes);
   }
 
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
