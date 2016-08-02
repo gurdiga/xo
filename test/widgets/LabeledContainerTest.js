@@ -43,6 +43,34 @@ describe('LabeledContainer', function() {
     assert.equal(label.style.fontWeight, labelStyle['font-weight'], 'font weight is set');
   });
 
+  it('can be asked to setChildWidgets', function() {
+    var childWidgets = [
+      new LabeledCheckbox('I am a checkbox'),
+      new LabeledTextField('This is a textbox')
+    ];
+    var childWidgetDOMElements = childWidgets.map(getWidgetDOMElement);
+
+    labeledContainer.setChildWidgets(childWidgets);
+    assert.equal(domElement.children[1], childWidgetDOMElements[0],
+      'first child widget is container’s second child in the DOM (first is the label)');
+    assert.equal(domElement.children[2], childWidgetDOMElements[1],
+      'second child widget is container’s third child in the DOM');
+
+    var newChildWidgets = [
+      new LabeledTextField('This is another text field')
+    ];
+    var newChildWidgetsDOMElements = newChildWidgets.map(getWidgetDOMElement);
+
+    labeledContainer.setChildWidgets(newChildWidgets);
+    assert.equal(domElement.children[1], newChildWidgetsDOMElements[0],
+      'when asking to setChildWidgets again, new widgets replace the old ones');
+    assert.equal(domElement.children.length, newChildWidgetsDOMElements.length + 1,
+      'container has the appropriate number of children');
+  });
+
+  var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

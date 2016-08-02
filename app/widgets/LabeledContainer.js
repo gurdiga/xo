@@ -8,6 +8,10 @@
     this.appendTo = getAppenderOf(domElement);
     this.setStyle = getStylerOf(domElement);
     this.setLabelStyle = getStylerOf(label);
+
+    this.setChildWidgets = function(childWidgets) {
+      resetChildren(domElement, [label].concat(childWidgets));
+    };
   }
 
   function createElement(label) {
@@ -38,6 +42,7 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getStylerOf = window.App.Utils.getStylerOf;
+  var resetChildren = window.App.Utils.resetChildren;
 
   window.App.Widgets.LabeledContainer = LabeledContainer;
 
