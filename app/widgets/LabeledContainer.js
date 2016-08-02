@@ -2,8 +2,10 @@
   'use strict';
 
   function LabeledContainer(labelText) {
+    var domElement = createElement();
     var label = createLabel(labelText);
-    var domElement = createElement(label);
+
+    domElement.appendChild(label);
 
     this.appendTo = getAppenderOf(domElement);
     this.setStyle = getStylerOf(domElement);
@@ -14,17 +16,14 @@
     };
   }
 
-  function createElement(label) {
+  function createElement() {
     var style = {
       'border': 'none',
       'font': 'inherit',
       'padding': '0px'
     };
-    var domElement = createDOMElement('fieldset', style);
 
-    domElement.appendChild(label);
-
-    return domElement;
+    return createDOMElement('fieldset', style);
   }
 
   function createLabel(labelText) {
