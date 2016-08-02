@@ -25,6 +25,24 @@ describe('LabeledContainer', function() {
     assert.equal(label.style.font, 'inherit', 'label inherits its font');
   });
 
+  it('can be asked to setStyle', function() {
+    var style = {
+      'margin-left': '20px'
+    };
+
+    labeledContainer.setStyle(style);
+    assert.equal(domElement.style.marginLeft, style['margin-left'], 'margin left is set');
+  });
+
+  it('can be asked to setLabelStyle', function() {
+    var labelStyle = {
+      'font-weight': 'bold'
+    };
+
+    labeledContainer.setLabelStyle(labelStyle);
+    assert.equal(label.style.fontWeight, labelStyle['font-weight'], 'font weight is set');
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });
