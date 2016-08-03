@@ -14,6 +14,10 @@
     this.setChildWidgets = function(childWidgets) {
       resetChildren(domElement, [label].concat(childWidgets));
     };
+
+    this.appendWidgets = function(childWidgets) {
+      appendWidgets(childWidgets).to(domElement);
+    };
   }
 
   function createElement() {
@@ -46,6 +50,7 @@
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var getStylerOf = window.App.Utils.getStylerOf;
   var resetChildren = window.App.Utils.resetChildren;
+  var appendWidgets = window.App.Utils.appendWidgets;
 
   window.App.Widgets.LabeledContainer = LabeledContainer;
 

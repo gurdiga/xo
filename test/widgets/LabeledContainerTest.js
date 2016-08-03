@@ -69,6 +69,25 @@ describe('LabeledContainer', function() {
       'container has the appropriate number of children');
   });
 
+  it('can be asked to appendWidgets', function() {
+    var childWidgets = [
+      new LabeledCheckbox('I am a checkbox'),
+      new LabeledTextField('This is a textbox')
+    ];
+    var childWidgetDOMElements = childWidgets.map(getWidgetDOMElement);
+
+    labeledContainer.appendWidgets([
+      childWidgets[0]
+    ]);
+
+    labeledContainer.appendWidgets([
+      childWidgets[1]
+    ]);
+
+    assert.equal(domElement.children[1], childWidgetDOMElements[0]);
+    assert.equal(domElement.children[2], childWidgetDOMElements[1]);
+  });
+
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 
