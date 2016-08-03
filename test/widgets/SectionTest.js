@@ -3,7 +3,7 @@ describe('Section', function() {
 
   var Section = window.App.Widgets.Section;
 
-  var labelText, content, section, domElement, fieldset, legend;
+  var labelText, content, section, domElement, label;
 
   before(function() {
     labelText = 'My section';
@@ -12,31 +12,21 @@ describe('Section', function() {
 
     section = new Section(labelText, [content]);
     domElement = getWidgetDOMElement(section);
-
-    fieldset = getWidgetDOMElement(section);
-    legend = fieldset.firstChild;
+    label = domElement.firstChild;
   });
 
   it('has the approrpiate DOM structure', function() {
-    assert.equal(fieldset.tagName, 'FIELDSET', 'has the approrpiate tag name');
-    assert.equal(fieldset.childElementCount, 2, '<fieldset> renders 2 children: the <legend> and the <p>');
-
-    assert.equal(legend.tagName, 'LEGEND', 'legend is rendered');
-    assert.equal(legend.textContent, labelText, 'legend has the text given in the “label” attribute');
-
-    var content = fieldset.querySelector('p');
-    assert.equal(content.textContent, 'section content', 'renders its children as children of the <fieldset>');
+    assert.equal(domElement.getAttribute('widget-name'), 'LabeledContainer', 'has a container');
+    assert.equal(domElement.querySelector('p'), content, 'renders the given children');
   });
 
-  it('has its fieldset styled', function() {
-    var css = fieldset.style;
+  it('has the approrpiate style', function() {
+    var style = domElement.style;
 
-    assert.equal(css.margin, '0px', 'no outer spacing');
-    assert.equal(css.borderWidth, '0px', 'explicitly removing fieldset border');
-    assert.equal(css.paddingLeft, '5px', 'reset fieldset’s default left padding');
-    assert.equal(css.paddingRight, '0px', 'remove fieldset’s default right padding');
-    assert.equal(css.paddingTop, '10px', 'has some vertical padding to allow some space between the legend and the content');
-    assert.equal(css.paddingBottom, '40px', 'keep some space at the bottom');
+    assert.equal(style.paddingLeft, '5px', 'left padding');
+    assert.equal(style.paddingRight, '0px', 'right padding');
+    assert.equal(style.paddingTop, '10px', 'top padding');
+    assert.equal(style.paddingBottom, '40px', 'bottom padding');
   });
 
   it('can be asked to setStyle', function() {
@@ -50,19 +40,19 @@ describe('Section', function() {
       'the background color is set approrpiately');
   });
 
-  it('has its legend styled', function() {
-    var css = legend.style;
+  it('has its label styled', function() {
+    var style = label.style;
 
-    assert.equal(css.color, 'white', 'has inverted font and background colors to stand out');
-    assert.equal(css.backgroundColor, 'rgb(51, 51, 51)', 'background color is not full black because it’s too strong');
-    assert.equal(css.fontWeight, 'bold', 'text is bold to stand out on the dark background');
-    assert.equal(css.fontSize, '22px', 'text is big enough to stand out');
-    assert.equal(css.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
-    assert.equal(css.marginLeft, '-5px', 'align with fieldset’s border');
-    assert.equal(css.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
-    assert.equal(css.paddingBottom, '8px', 'mirror the top  padding');
-    assert.equal(css.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
-    assert.equal(css.paddingRight, '0px', 'no need for right padding');
+    assert.equal(style.color, 'white', 'has inverted font and background colors to stand out');
+    assert.equal(style.backgroundColor, 'rgb(51, 51, 51)', 'background color is not full black because it’s too strong');
+    assert.equal(style.fontWeight, 'bold', 'text is bold to stand out on the dark background');
+    assert.equal(style.fontSize, '22px', 'text is big enough to stand out');
+    assert.equal(style.fontFamily, 'TitleFont', 'text has the font family of TitleFont');
+    assert.equal(style.marginLeft, '-5px', 'align with fieldset’s border');
+    assert.equal(style.paddingTop, '8px', 'allow some padding at the top for a stronger effect');
+    assert.equal(style.paddingBottom, '8px', 'mirror the top  padding');
+    assert.equal(style.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
+    assert.equal(style.paddingRight, '0px', 'no need for right padding');
   });
 
   var assert = window.TestHelpers.assert;

@@ -15,8 +15,6 @@
     var container = new LabeledContainer(labelText);
 
     container.setStyle({
-      'border-width': '0px',
-      'margin': '0',
       'padding': '10px 0 40px 5px'
     });
 
