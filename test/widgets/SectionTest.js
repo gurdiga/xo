@@ -28,16 +28,6 @@ describe('Section', function() {
     assert.equal(content.textContent, 'section content', 'renders its children as children of the <fieldset>');
   });
 
-  it('accepts a custom widget name', function() {
-    assert.equal(fieldset.getAttribute('widget-name'), 'Section', 'is “Section” by default');
-
-    var widgetName = 'SpecialSection';
-    var section = new Section(labelText, [], widgetName);
-    var domElement = getWidgetDOMElement(section);
-
-    assert.equal(domElement.getAttribute('widget-name'), widgetName, 'accepts a widget name as the 4th argument');
-  });
-
   it('has its fieldset styled', function() {
     var css = fieldset.style;
 
