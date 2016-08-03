@@ -16,11 +16,14 @@ describe('ActivityStep', function() {
     assert.equal(domElement.tagName, 'ACTIVITY-STEP', 'has the appropriate tag name');
     assert.equal(domElement.getAttribute('step-id'), stepId, 'has the appropriate “step-id” attribute');
 
-    var checkbox = domElement.querySelector('labeled-checkbox input[type="checkbox"]');
-    assert.isNotTrue(checkbox.checked, 'is unchecked initially');
+    var container = domElement.firstChild;
+    assert.equal(container.getAttribute('widget-name'), 'LabeledContainer', 'has a container');
 
     var checkboxLabel = domElement.querySelector('labeled-checkbox label');
-    assert.equal(checkboxLabel.textContent, description, 'has the appropriate description');
+    assert.equal(checkboxLabel.textContent, 'completat', 'has an appropriately labeled “complete” checkbox');
+
+    var checkbox = domElement.querySelector('labeled-checkbox input[type="checkbox"]');
+    assert.isNotTrue(checkbox.checked, 'the “complete” checkbox is unchecked initially');
   });
 
   it('can be asked to getValue', function() {
