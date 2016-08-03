@@ -23,7 +23,11 @@
       'padding': '0px'
     };
 
-    return createDOMElement('fieldset', style);
+    var attributes = {
+      'widget-name': 'LabeledContainer'
+    };
+
+    return createDOMElement('fieldset', style, attributes);
   }
 
   function createLabel(labelText) {

@@ -14,6 +14,7 @@ describe('LabeledContainer', function() {
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'FIELDSET', 'has the appropriate tag name');
+    assert.equal(domElement.getAttribute('widget-name'), 'LabeledContainer', 'has the appropriate widget name');
     assert.equal(label.textContent, labelText, 'has the appropriate label text');
   });
 
