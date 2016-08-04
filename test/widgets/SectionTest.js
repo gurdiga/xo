@@ -3,21 +3,18 @@ describe('Section', function() {
 
   var Section = window.App.Widgets.Section;
 
-  var labelText, content, section, domElement, label;
+  var labelText, section, domElement, label;
 
   before(function() {
     labelText = 'My section';
-    content = document.createElement('p');
-    content.textContent = 'section content';
-
-    section = new Section(labelText, [content]);
+    section = new Section(labelText);
     domElement = getWidgetDOMElement(section);
     label = domElement.firstChild;
   });
 
   it('has the approrpiate DOM structure', function() {
     assert.equal(domElement.getAttribute('widget-name'), 'LabeledContainer', 'has a container');
-    assert.equal(domElement.querySelector('p'), content, 'renders the given children');
+    assert.equal(label.textContent, labelText, 'has the approrpiate label text');
   });
 
   it('has the approrpiate style', function() {
@@ -54,6 +51,18 @@ describe('Section', function() {
     assert.equal(style.paddingLeft, '6px', 'the left padding aligns with label to form a stronger vertical line');
     assert.equal(style.paddingRight, '0px', 'no need for right padding');
   });
+
+  it('can be asked to appendWidgets', function() {
+    var childWidgets = [
+      new LabeledTextField('I am a text field')
+    ];
+    var childWidgetsDOMElements = childWidgets.map(getWidgetDOMElement);
+
+    section.appendWidgets(childWidgets);
+    assert.equal(domElement.children[1], childWidgetsDOMElements[0], 'has appended the given widget');
+  });
+
+  var LabeledTextField = window.App.Widgets.LabeledTextField;
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;

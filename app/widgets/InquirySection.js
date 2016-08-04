@@ -18,10 +18,12 @@
   }
 
   function createSection(childWidgets) {
-    var label = 'Cerere de intentare';
-    var widgetName = 'InquirySection';
+    var labelText = 'Cerere de intentare';
+    var section = new Section(labelText);
 
-    return new Section(label, childWidgets, widgetName);
+    section.appendWidgets(childWidgets);
+
+    return section;
   }
 
   var Section = window.App.Widgets.Section;

@@ -10,7 +10,8 @@
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
     personTypeField.onChange(renderPersonTypeSpecificFields);
 
-    var section = new Section(labelText, getAllFields());
+    var section = new Section(labelText);
+    section.appendWidgets(getAllFields());
     section.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);

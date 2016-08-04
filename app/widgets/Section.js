@@ -1,10 +1,8 @@
 (function() {
   'use strict';
 
-  function Section(labelText, childWidgets) {
+  function Section(labelText) {
     var container = createContainer(labelText);
-
-    container.appendWidgets(childWidgets);
 
     this.appendTo = delegateTo(container, 'appendTo');
     this.setStyle = delegateTo(container, 'setStyle');
