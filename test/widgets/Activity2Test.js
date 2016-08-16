@@ -37,6 +37,19 @@ describe('Activity2', function() {
     assert.equal(domElement.children[2], childWidgetsDOMElements[0], 'contains the appended widget');
   });
 
+  it('can be asked to createWithData', function() {
+    var data = {
+      'label-text': labelText
+    };
+    var activity = Activity2.createWithData(data);
+
+    assert.instanceOf(activity, Activity2, 'creates an instance');
+
+    domElement = getWidgetDOMElement(activity);
+    label = domElement.children[0];
+    assert.equal(label.textContent, labelText, 'has the appropriate label text');
+  });
+
   var LabeledTextField = window.App.Widgets.LabeledTextField;
 
   var assert = window.TestHelpers.assert;

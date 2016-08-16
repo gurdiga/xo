@@ -11,6 +11,10 @@
     this.appendWidgets = delegateTo(container, 'appendWidgets');
   }
 
+  Activity2.createWithData = function(data) {
+    return new this(data['label-text']);
+  };
+
   function createContainer(labelText) {
     var labelStyle = {
       'font-size': '16px',
