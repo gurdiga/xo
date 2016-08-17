@@ -3,18 +3,24 @@ describe('Activity2', function() {
 
   var Activity2 = window.App.Widgets.Activity2;
 
-  var activity, labelText, domElement, label, dateField;
+  var activity, widgetName, labelText, domElement, container, label, dateField;
 
   beforeEach(function() {
+    widgetName = 'MyMoreSpecificWidget';
     labelText = 'Some activity';
-    activity = new Activity2(labelText);
+    activity = new Activity2(widgetName, labelText);
     domElement = getWidgetDOMElement(activity);
-    label = domElement.children[0];
-    dateField = domElement.children[1];
+    container = domElement.firstChild;
+    label = container.children[0];
+    dateField = container.children[1];
+
+    document.body.appendChild(domElement);
   });
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.getAttribute('widget-name'), 'LabeledContainer', 'has a container');
+    assert.equal(domElement.tagName, 'SECTION', 'uses a semantic HTML5 tag name');
+    assert.equal(domElement.getAttribute('widget-name'), widgetName, 'has the appropriate widget name');
+    assert.equal(container.getAttribute('widget-name'), 'LabeledContainer', 'has a container');
     assert.equal(label.textContent, labelText, 'has the appropriate label text');
     assert.equal(dateField.tagName, 'DATE-FIELD', 'has a date field');
   });
@@ -34,11 +40,12 @@ describe('Activity2', function() {
     var childWidgetsDOMElements = childWidgets.map(getWidgetDOMElement);
 
     activity.appendWidgets(childWidgets);
-    assert.equal(domElement.children[2], childWidgetsDOMElements[0], 'contains the appended widget');
+    assert.equal(container.children[2], childWidgetsDOMElements[0], 'contains the appended widget');
   });
 
   it('can be asked to createWithData', function() {
     var data = {
+      'widget-name': widgetName,
       'label-text': labelText
     };
     var activity = Activity2.createWithData(data);

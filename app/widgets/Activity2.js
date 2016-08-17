@@ -1,19 +1,30 @@
 (function() {
   'use strict';
 
-  function Activity2(labelText) {
+  function Activity2(widgetName, labelText) {
+    var domElement = createElement(widgetName);
     var container = createContainer(labelText);
     var dateField = createDateField();
 
+    container.appendTo(domElement);
     container.appendWidgets([dateField]);
 
-    this.appendTo = delegateTo(container, 'appendTo');
+    this.appendTo = getAppenderOf(domElement);
     this.appendWidgets = delegateTo(container, 'appendWidgets');
   }
 
   Activity2.createWithData = function(data) {
-    return new this(data['label-text']);
+    return new this(data['widget-name'], data['label-text']);
   };
+
+  function createElement(widgetName) {
+    var style = {};
+    var attributes = {
+      'widget-name': widgetName
+    };
+
+    return createDOMElement('section', style, attributes);
+  }
 
   function createContainer(labelText) {
     var labelStyle = {
@@ -41,7 +52,9 @@
   var LabeledContainer = window.App.Widgets.LabeledContainer;
   var DateField = window.App.Widgets.DateField;
 
+  var getAppenderOf = window.App.Utils.getAppenderOf;
   var delegateTo = window.App.Utils.delegateTo;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.Activity2 = Activity2;
 
