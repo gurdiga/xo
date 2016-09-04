@@ -13,8 +13,6 @@ describe('Activity2', function() {
     container = domElement.firstChild;
     label = container.children[0];
     dateField = container.children[1];
-
-    document.body.appendChild(domElement);
   });
 
   it('has the appropriate DOM structure', function() {
