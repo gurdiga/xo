@@ -9,25 +9,21 @@ describe('rMap', function() {
   });
 
   it('works for arrays', function() {
-    assert.deepEqual(rMap('toString', [
-      42,
-      new Date(1441744405280),
-      true
-    ]), [
-      '42',
-      'Tue Sep 08 2015 23:33:25 GMT+0300 (EEST)',
-      'true'
-    ], 'returns an array containing the results of the given method call applied to each member');
+    assert.deepEqual(
+      rMap('toString', [42, 'A', true]),
+      ['42', 'A', 'true'],
+      'returns an array containing the results of the given method call applied to each member'
+    );
   });
 
   it('works for plain JS object', function() {
     assert.deepEqual(rMap('toString', {
       'a-number': 42,
-      'a-date': new Date(1441744405280),
+      'a-string': 'A',
       'a-boolean': true
     }), {
       'a-number': '42',
-      'a-date': 'Tue Sep 08 2015 23:33:25 GMT+0300 (EEST)',
+      'a-string': 'A',
       'a-boolean': 'true'
     }, 'returns a plain JS object with the same keys, ' +
       'but with values replaced by calling the given method on the original values');
@@ -36,12 +32,12 @@ describe('rMap', function() {
   it('works for nested structures', function() {
     assert.deepEqual(rMap('toString', [{
       'a-number': 42,
-      'a-date': new Date(1441744405280),
+      'a-string': 'A',
       'a-boolean': true,
       'an-array': [function() {}, 0x12, false]
     }]), [{
       'a-number': '42',
-      'a-date': 'Tue Sep 08 2015 23:33:25 GMT+0300 (EEST)',
+      'a-string': 'A',
       'a-boolean': 'true',
       'an-array': ['function () {}', '18', 'false']
     }], 'recurses');
