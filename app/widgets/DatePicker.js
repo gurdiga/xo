@@ -4,21 +4,17 @@
   DatePicker.instance = new DatePicker();
 
   function DatePicker() {
-    var INTERNAL_DATE_FORMAT = 'YYYY-MM-DD';
-
     var onDateSelectedCallback = createDateSelectedCallback(this, getCurrentDateField);
     var widget = createWidget(onDateSelectedCallback);
 
     var currentDateField;
 
     this.showDate = function(dateField) {
-      var dateAsText = DateFormatting.format(dateField.getDate(), INTERNAL_DATE_FORMAT);
-
       dateField.addDatePicker(widget.el);
       currentDateField = dateField;
 
       var DO_NOT_TRIGER_SELECT = true;
-      widget.setDate(dateAsText, DO_NOT_TRIGER_SELECT);
+      widget.setDate(dateField.getDate(), DO_NOT_TRIGER_SELECT);
       widget.show();
     };
 
@@ -68,8 +64,6 @@
       }
     });
   }
-
-  var DateFormatting = window.App.Utils.DateFormatting;
 
   window.App.Widgets.DatePicker = DatePicker;
 
