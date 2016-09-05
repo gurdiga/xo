@@ -11,19 +11,8 @@ describe('ActivityDetailsSection', function() {
   });
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.getAttribute('widget-name'), 'ActivityDetailsSection',
-      'has the appropriate “widget-name” attribute value');
-  });
-
-  it('has the appropriate layout', function() {
-    var css = domElement.style;
-
-    assert.equal(css.padding, '0px', 'has no padding');
-  });
-
-  it('has the appropriate style', function() {
-    var css = domElement.style;
-    assert.equal(css.borderWidth, '0px', 'has no visible border');
+    assert.equal(domElement.tagName, 'ACTIVITY-DETAILS-SECTION', 'has a corresponding tag name');
+    assert.equal(domElement.getAttribute('role'), 'region', 'has an appropriate role attribute');
   });
 
   it('can be setChildWidgets()', function() {

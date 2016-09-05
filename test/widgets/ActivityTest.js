@@ -18,10 +18,10 @@ describe('Activity', function() {
     assert.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
 
     var dateField = domElement.children[1];
-    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is the appropriate widget');
+    assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'has a date field');
 
-    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
-      'has the appropriate “widget-name” attribute');
+    assert.equal(detailsSectionElement.tagName, 'ACTIVITY-DETAILS-SECTION',
+      'has a container for the activity-specific widgets and content');
   });
 
   it('has the appropriate style', function() {

@@ -14,8 +14,8 @@ describe('InstitutionActivity', function() {
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.getAttribute('widget-name'), 'InstitutionActivity',
       'has the appropriate “widget-name” attribute');
-    assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
-      'has the detailsSection element');
+    assert.equal(detailsSectionElement.tagName, 'ACTIVITY-DETAILS-SECTION',
+      'has the details section');
 
     var dateField = domElement.children[1];
     assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'has the activity date field');

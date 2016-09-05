@@ -12,16 +12,12 @@
   }
 
   function createElement() {
-    var style = {
-      padding: '0px',
-      borderWidth: '0px'
-    };
-
+    var style = {};
     var attributes = {
-      'widget-name': 'ActivityDetailsSection'
+      role: 'region'
     };
 
-    return createDOMElement('fieldset', style, attributes);
+    return createDOMElement('ACTIVITY-DETAILS-SECTION', style, attributes);
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
