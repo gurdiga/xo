@@ -17,7 +17,7 @@ describe('InstitutionActivity', function() {
     assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
       'has the detailsSection element');
 
-    var dateField = domElement.firstChild;
+    var dateField = domElement.children[1];
     assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'has the activity date field');
 
     var todoList = detailsSectionElement.querySelector('[widget-name="TodoList"]');
@@ -25,7 +25,7 @@ describe('InstitutionActivity', function() {
   });
 
   it('has the appropriate description', function() {
-    var descriptionElement = domElement.children[1];
+    var descriptionElement = domElement.children[0];
 
     assert.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
     assert.equal(descriptionElement.textContent, 'Intentarea', 'has the appropriate text');

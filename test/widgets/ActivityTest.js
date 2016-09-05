@@ -17,7 +17,7 @@ describe('Activity', function() {
     assert.equal(domElement.tagName, 'FIELDSET', 'is a fieldset');
     assert.equal(domElement.getAttribute('widget-name'), widgetName, 'is an “Activity” widget');
 
-    var dateField = domElement.firstChild;
+    var dateField = domElement.children[1];
     assert.equal(dateField.tagName, 'ACTIVITY-DATE-FIELD', 'is the appropriate widget');
 
     assert.equal(detailsSectionElement.getAttribute('widget-name'), 'ActivityDetailsSection',
@@ -36,7 +36,7 @@ describe('Activity', function() {
   });
 
   it('has the appropriate description', function() {
-    var descriptionElement = domElement.children[1];
+    var descriptionElement = domElement.children[0];
 
     assert.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
     assert.equal(descriptionElement.textContent, descriptionText, 'has the appropriate text');

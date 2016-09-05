@@ -6,8 +6,8 @@
     var detailsSection = new ActivityDetailsSection();
 
     appendWidgets([
-      new ActivityDateField(),
       new ActivityDescription(descriptionText),
+      new ActivityDateField(),
       detailsSection
     ]).to(domElement);
 
