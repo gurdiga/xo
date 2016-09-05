@@ -1,18 +1,18 @@
-describe('ActivityDescription', function() {
+describe('ActivityTitle', function() {
   'use strict';
 
-  var ActivityDescription = window.App.Widgets.ActivityDescription;
+  var ActivityTitle = window.App.Widgets.ActivityTitle;
 
   var text, activityDescription, domElement;
 
   before(function() {
     text = 'Inquiry';
-    activityDescription = new ActivityDescription(text);
+    activityDescription = new ActivityTitle(text);
     domElement = getWidgetDOMElement(activityDescription);
   });
 
   it('has the appropiate DOM structure', function() {
-    assert.equal(domElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropiate tag name');
+    assert.equal(domElement.tagName, 'ACTIVITY-TITLE', 'has the appropiate tag name');
     assert.equal(domElement.textContent, text, 'has the text content passed into the constructor');
   });
 

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function ActivityDescription(text) {
+  function ActivityTitle(text) {
     var domElement = createElement(text);
 
     this.appendTo = getAppenderOf(domElement);
@@ -15,7 +15,7 @@
       verticalAlign: '-1px'
     };
 
-    var domElement = createDOMElement('activity-description', style);
+    var domElement = createDOMElement('activity-title', style);
 
     domElement.textContent = text;
 
@@ -25,6 +25,6 @@
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
 
-  window.App.Widgets.ActivityDescription = ActivityDescription;
+  window.App.Widgets.ActivityTitle = ActivityTitle;
 
 }());

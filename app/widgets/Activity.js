@@ -6,7 +6,7 @@
     var detailsSection = new ActivityDetailsSection();
 
     appendWidgets([
-      new ActivityDescription(descriptionText),
+      new ActivityTitle(descriptionText),
       new ActivityDateField(),
       detailsSection
     ]).to(domElement);
@@ -48,7 +48,7 @@
   }
 
   var ActivityDateField = window.App.Widgets.ActivityDateField;
-  var ActivityDescription = window.App.Widgets.ActivityDescription;
+  var ActivityTitle = window.App.Widgets.ActivityTitle;
   var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;

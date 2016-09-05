@@ -27,7 +27,7 @@ describe('InstitutionActivity', function() {
   it('has the appropriate description', function() {
     var descriptionElement = domElement.children[0];
 
-    assert.equal(descriptionElement.tagName, 'ACTIVITY-DESCRIPTION', 'has the appropriate tag name');
+    assert.equal(descriptionElement.tagName, 'ACTIVITY-TITLE', 'has the appropriate tag name');
     assert.equal(descriptionElement.textContent, 'Intentarea', 'has the appropriate text');
     assert.equal(institutionActivity.getDescription(), 'Intentarea', 'has the appropriate description');
   });
