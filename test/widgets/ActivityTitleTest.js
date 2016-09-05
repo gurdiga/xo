@@ -14,6 +14,7 @@ describe('ActivityTitle', function() {
   it('has the appropiate DOM structure', function() {
     assert.equal(domElement.tagName, 'ACTIVITY-TITLE', 'has the appropiate tag name');
     assert.equal(domElement.textContent, text, 'has the text content passed into the constructor');
+    assert.equal(domElement.getAttribute('role'), 'heading', 'has the role of heading for accessibility');
   });
 
   it('has the appropiate style', function() {

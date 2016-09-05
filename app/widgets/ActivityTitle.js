@@ -15,7 +15,11 @@
       verticalAlign: '-1px'
     };
 
-    var domElement = createDOMElement('activity-title', style);
+    var attributes = {
+      role: 'heading'
+    };
+
+    var domElement = createDOMElement('activity-title', style, attributes);
 
     domElement.textContent = text;
 
