@@ -9,10 +9,9 @@
 
   function createElement(text) {
     var style = {
-      display: 'inline',
+      display: 'block',
       fontWeight: 'bold',
       fontSize: '16px',
-      marginLeft: '0.5em',
       verticalAlign: '-1px'
     };
 
