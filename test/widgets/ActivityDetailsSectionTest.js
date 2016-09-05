@@ -18,7 +18,6 @@ describe('ActivityDetailsSection', function() {
   it('has the appropriate layout', function() {
     var css = domElement.style;
 
-    assert.equal(css.marginLeft, '100px', 'is indented to align with the description');
     assert.equal(css.padding, '0px', 'has no padding');
   });
 

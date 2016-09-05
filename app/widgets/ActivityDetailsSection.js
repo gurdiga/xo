@@ -13,7 +13,6 @@
 
   function createElement() {
     var style = {
-      marginLeft: '100px',
       padding: '0px',
       borderWidth: '0px'
     };
