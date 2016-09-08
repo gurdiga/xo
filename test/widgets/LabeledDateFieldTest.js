@@ -12,7 +12,7 @@ describe('LabeledDateField', function() {
     labeledDateField = new LabeledDateField(labelText, fieldValue);
 
     domElement = getWidgetDOMElement(labeledDateField);
-    label = domElement.firstChild;
+    label = domElement.querySelector('label');
     input = domElement.querySelector('input');
   });
 
