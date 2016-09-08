@@ -36,7 +36,7 @@ describe('LabeledDateField', function() {
     assert.equal(labeledDateField.getValue(), fieldValue, 'getValue() returns the appropriate value');
   });
 
-  it('is cousable', function() {
+  it('is focousable', function() {
     var sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
@@ -44,6 +44,15 @@ describe('LabeledDateField', function() {
     assert.equal(document.activeElement, input);
 
     document.body.removeChild(sandbox);
+  });
+
+  it('is styleable', function() {
+    var style = {
+      color: 'red'
+    };
+
+    labeledDateField.setStyle(style);
+    assert.equal(input.style.color, style.color, 'applies the given style to its input');
   });
 
   var assert = window.TestHelpers.assert;

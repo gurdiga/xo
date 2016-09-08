@@ -13,6 +13,7 @@
 
     this.getValue = delegateTo(input, 'getValue');
     this.focus = delegateTo(input, 'focus');
+    this.setStyle = delegateTo(input, 'setStyle');
   }
 
   function createElement() {
