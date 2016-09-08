@@ -14,16 +14,17 @@
   }
 
   function addDateFieldInputTo(domElement) {
+    var labelText = 'Data intentării';
     var style = {
       'width': '6.5em'
     };
 
-    var dateFieldInput = new DateFieldInput();
+    var dateFieldInput = new LabeledDateField(labelText);
     dateFieldInput.setStyle(style);
     dateFieldInput.appendTo(domElement);
   }
 
-  var DateFieldInput = window.App.Widgets.DateFieldInput;
+  var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
