@@ -12,8 +12,8 @@
       domElement.addEventListener(eventName, handler);
     });
 
-    _.each(domStructure.children, function(child) {
-      var isDomStructure = child.tagName;
+    _.each(domStructure.childNodes, function(child) {
+      var isDomStructure = !!child.tagName;
 
       if (isDomStructure) {
         domElement.appendChild(render(child));

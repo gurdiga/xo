@@ -5,15 +5,29 @@ describe('activityDetails', function() {
 
   var domStructure, domElement;
 
-  before(function() {
+  it('has the appropriate DOM structure', function() {
     domStructure = activityDetails();
     domElement = render(domStructure);
-    document.body.appendChild(domElement);
+    assert.equal(domElement.tagName, 'ACTIVITY-DETAILS', 'tag name');
+    assert.equal(domElement.textContent, domStructure.childNodes[0], 'text content');
   });
 
-  it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.tagName, 'ACTIVITY-DETAILS', 'tag name');
-    assert.equal(domElement.textContent, domStructure.children[0], 'text content');
+  it('accepts additional child nodes as input', function() {
+    var additionalChildNodes = [
+      {
+        tagName: 'label',
+        childNodes: ['I am a label']
+      }
+    ];
+
+    domStructure = activityDetails({
+      additionalChildNodes: additionalChildNodes
+    });
+    domElement = render(domStructure);
+
+    assert.equal(domElement.childNodes.length, 2, 'renders the appropriate number of children nodes');
+    assert.equal(domElement.childNodes[1].tagName.toLowerCase(), additionalChildNodes[0].tagName,
+      'renders the given children nodes');
   });
 
   var render = window.App.Utils.render;

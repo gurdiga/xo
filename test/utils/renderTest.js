@@ -16,10 +16,10 @@ describe('render', function() {
         click: sinon.spy(),
         bark: sinon.spy()
       },
-      children: [
+      childNodes: [
         {
           tagName: 'h2',
-          children: ['I am the title']
+          childNodes: ['I am the title']
         }
       ]
     };
@@ -49,8 +49,9 @@ describe('render', function() {
       'calls the bark handler appropriately');
   });
 
-  it('renders the children', function() {
+  it('renders the child nodes', function() {
     var h2 = domElement.firstChild;
+    assert.isNotNull(h2, 'child exists');
     assert.equal(h2.tagName, 'H2', 'child has the appropriate tag name');
   });
 
