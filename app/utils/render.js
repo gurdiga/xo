@@ -8,7 +8,7 @@
       domElement.setAttribute(name, value);
     });
 
-    _.each(domStructure.eventHanlders, function(handler, eventName) {
+    _.each(domStructure.eventHandlers, function(handler, eventName) {
       domElement.addEventListener(eventName, handler);
     });
 

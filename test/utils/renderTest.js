@@ -12,7 +12,7 @@ describe('render', function() {
         name: 'Magic',
         anyName: 'any value'
       },
-      eventHanlders: {
+      eventHandlers: {
         click: sinon.spy(),
         bark: sinon.spy()
       },
@@ -41,11 +41,11 @@ describe('render', function() {
 
   it('returns a DOM element with the given event handlers', function() {
     domElement.click();
-    assert.isTrue(domStructure.eventHanlders.click.called,
+    assert.isTrue(domStructure.eventHandlers.click.called,
       'calls the click handler appropriately');
 
     domElement.dispatchEvent(new Event('bark'));
-    assert.isTrue(domStructure.eventHanlders.bark.called,
+    assert.isTrue(domStructure.eventHandlers.bark.called,
       'calls the bark handler appropriately');
   });
 
