@@ -2,20 +2,32 @@
   'use strict';
 
   function PersonSection2(input) {
-    var domElement = createElement(input.titleText);
+    var domElement = createTitledContainer(input.titleText);
+
+    var personTypeField = createPersonTypeField();
+    personTypeField.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
   }
 
-  function createElement(titleText) {
-    var domElement = createDOMElement('person-section');
+  function createTitledContainer(titleText) {
+    var container = createDOMElement('person-section');
     var title = createDOMElement('section-title');
 
     title.textContent = titleText;
-    domElement.appendChild(title);
+    container.appendChild(title);
 
-    return domElement;
+    return container;
   }
+
+  function createPersonTypeField() {
+    var labelText = 'Gen persoană';
+    var personTypeNames = [];
+
+    return new LabeledSelectField(labelText, personTypeNames);
+  }
+
+  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;

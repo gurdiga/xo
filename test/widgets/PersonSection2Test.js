@@ -19,6 +19,9 @@ describe('PersonSection2', function() {
     assert.isTrue(sectionTitle !== undefined, 'title exists');
     assert.equal(sectionTitle.tagName, 'SECTION-TITLE', 'title tag name');
     assert.equal(sectionTitle.textContent, titleText, 'title text');
+
+    var personTypeField = domElement.childNodes[1];
+    assert.isTrue(personTypeField !== undefined, 'person type field exists');
   });
 
   // TODO:
