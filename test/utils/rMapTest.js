@@ -16,6 +16,29 @@ describe('rMap', function() {
     );
   });
 
+  it('works for NodeList', function() {
+    var div = document.createElement('div');
+
+    div.innerHTML =
+      '<span>one</span>' +
+      '<div>two</div>' +
+      '<span>three</span>';
+
+    assert.deepEqual(
+      rMap('textContent', div.childNodes),
+      ['one', 'two', 'three'],
+      'returns an array containing the results of the given method call applied to each child'
+    );
+
+    var queryResult = div.querySelectorAll('span, div');
+
+    assert.deepEqual(
+      rMap('textContent', queryResult),
+      ['one', 'two', 'three'],
+      'returns an array containing the results of the given method call applied to each node'
+    );
+  });
+
   it('works for plain JS object', function() {
     assert.deepEqual(rMap('toString', {
       'a-number': 42,
