@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  function CompanyFieldCollection(defaultFieldValues) {
-    var domElement = createDOMElement('company-field-collection');
+  function PersonFieldList(fieldValues) {
+    var domElement = createDOMElement('person-field-collection');
     var fields = [
-      createField(LabeledTextField, 'Denumire', 'denumire', defaultFieldValues),
-      createField(LabeledTextField, 'IDNO', 'idno', defaultFieldValues),
-      createField(LabeledLargeTextField, 'Sediu', 'sediu', defaultFieldValues),
-      createField(LabeledTextField, 'Persoană de contact', 'persoană-de-contact', defaultFieldValues),
-      createField(LabeledLargeTextField, 'Note', 'note', defaultFieldValues)
+      createField(LabeledTextField, 'Nume', 'nume', fieldValues),
+      createField(LabeledTextField, 'IDNP', 'idnp', fieldValues),
+      createField(LabeledDateField, 'Data nașterii', 'data-nașterii', fieldValues),
+      createField(LabeledLargeTextField, 'Domiciliu', 'domiciliu', fieldValues),
+      createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
     ];
 
     appendWidgets(fields).to(domElement);
@@ -19,6 +19,7 @@
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
+  var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
@@ -26,6 +27,6 @@
   var appendWidgets = window.App.Utils.appendWidgets;
   var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
-  window.App.Widgets.CompanyFieldCollection = CompanyFieldCollection;
+  window.App.Widgets.PersonFieldList = PersonFieldList;
 
 }());

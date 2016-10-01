@@ -1,8 +1,8 @@
-describe('PersonFieldCollection', function() {
+describe('PersonFieldList', function() {
   'use strict';
 
-  var PersonFieldCollection = window.App.Widgets.PersonFieldCollection;
-  var personFieldCollection, defaultFieldValues, domElement, fields;
+  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var personFieldList, defaultFieldValues, domElement, fields;
 
   before(function() {
     defaultFieldValues = {
@@ -12,8 +12,8 @@ describe('PersonFieldCollection', function() {
       domiciliu: 'Happiness str. 51',
       note: 'Yes.'
     };
-    personFieldCollection = new PersonFieldCollection(defaultFieldValues);
-    domElement = getWidgetDOMElement(personFieldCollection);
+    personFieldList = new PersonFieldList(defaultFieldValues);
+    domElement = getWidgetDOMElement(personFieldList);
     fields = domElement.childNodes;
   });
 
@@ -47,7 +47,7 @@ describe('PersonFieldCollection', function() {
   });
 
   it('can tell the field values', function() {
-    var fieldValues = personFieldCollection.getFieldValues();
+    var fieldValues = personFieldList.getFieldValues();
     var fieldNames = Object.keys(defaultFieldValues);
 
     fieldNames.forEach(function(fieldName) {

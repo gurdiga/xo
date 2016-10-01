@@ -1,8 +1,8 @@
-describe('CompanyFieldCollection', function() {
+describe('CompanyFieldList', function() {
   'use strict';
 
-  var CompanyFieldCollection = window.App.Widgets.CompanyFieldCollection;
-  var companyFieldCollection, defaultFieldValues, domElement, fields;
+  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
+  var companyFieldList, defaultFieldValues, domElement, fields;
 
   beforeEach(function() {
     defaultFieldValues = {
@@ -12,8 +12,8 @@ describe('CompanyFieldCollection', function() {
       'persoană-de-contact': 'Joane Doe',
       note: 'Yes.'
     };
-    companyFieldCollection = new CompanyFieldCollection(defaultFieldValues);
-    domElement = getWidgetDOMElement(companyFieldCollection);
+    companyFieldList = new CompanyFieldList(defaultFieldValues);
+    domElement = getWidgetDOMElement(companyFieldList);
     fields = domElement.childNodes;
   });
 
@@ -47,7 +47,7 @@ describe('CompanyFieldCollection', function() {
   });
 
   it('can tell the field values', function() {
-    var fieldValues = companyFieldCollection.getFieldValues();
+    var fieldValues = companyFieldList.getFieldValues();
     var fieldNames = Object.keys(defaultFieldValues);
 
     fieldNames.forEach(function(fieldName) {
