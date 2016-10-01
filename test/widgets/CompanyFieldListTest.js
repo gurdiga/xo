@@ -55,6 +55,10 @@ describe('CompanyFieldList', function() {
     });
   });
 
+  it('has its person type name', function() {
+    assert.equal(CompanyFieldList.PERSON_TYPE_NAME, 'juridică');
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 

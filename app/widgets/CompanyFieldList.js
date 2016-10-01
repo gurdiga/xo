@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  CompanyFieldList.PERSON_TYPE_NAME = 'juridică';
+
   function CompanyFieldList(defaultFieldValues) {
     var domElement = createDOMElement('company-field-collection');
     var fields = [
