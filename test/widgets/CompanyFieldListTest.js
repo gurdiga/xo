@@ -18,7 +18,7 @@ describe('CompanyFieldList', function() {
   });
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.tagName, 'COMPANY-FIELD-COLLECTION', 'tag name');
+    assert.equal(domElement.tagName, 'COMPANY-FIELD-LIST', 'tag name');
     assert.equal(fields.length, 5, 'has the appropriate number of fields');
   });
 

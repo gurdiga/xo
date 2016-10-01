@@ -4,7 +4,7 @@
   CompanyFieldList.PERSON_TYPE_NAME = 'juridică';
 
   function CompanyFieldList(defaultFieldValues) {
-    var domElement = createDOMElement('company-field-collection');
+    var domElement = createDOMElement('company-field-list');
     var fields = [
       createField(LabeledTextField, 'Denumire', 'denumire', defaultFieldValues),
       createField(LabeledTextField, 'IDNO', 'idno', defaultFieldValues),
