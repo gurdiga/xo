@@ -4,11 +4,12 @@
   function PersonSection2(titleText) {
     var domElement = createTitledContainer(titleText);
 
-    var FieldListClass = PersonFieldList;
-    var personTypeField = createPersonTypeField(FieldListClass);
+    var DefaultFieldList = PersonFieldList;
+    var defaultPersonTypeName = DefaultFieldList.PERSON_TYPE_NAME;
+    var personTypeField = createPersonTypeField(defaultPersonTypeName);
     personTypeField.appendTo(domElement);
 
-    var personTypeSpecificFieldList = new FieldListClass({});
+    var personTypeSpecificFieldList = new DefaultFieldList({});
     personTypeSpecificFieldList.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -24,12 +25,11 @@
     return container;
   }
 
-  function createPersonTypeField(FieldListClass) {
+  function createPersonTypeField(defaultPersonTypeName) {
     var labelText = 'Gen persoană';
     var personTypeNames = ['fizică', 'juridică'];
-    var defaultValue = FieldListClass.PERSON_TYPE_NAME;
 
-    return new LabeledSelectField(labelText, personTypeNames, defaultValue);
+    return new LabeledSelectField(labelText, personTypeNames, defaultPersonTypeName);
   }
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
