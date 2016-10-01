@@ -4,7 +4,7 @@
   PersonFieldList.PERSON_TYPE_NAME = 'fizică';
 
   function PersonFieldList(fieldValues) {
-    var domElement = createDOMElement('person-field-collection');
+    var domElement = createDOMElement('person-field-list');
     var fields = [
       createField(LabeledTextField, 'Nume', 'nume', fieldValues),
       createField(LabeledTextField, 'IDNP', 'idnp', fieldValues),

@@ -18,7 +18,7 @@ describe('PersonFieldList', function() {
   });
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.tagName, 'PERSON-FIELD-COLLECTION', 'tag name');
+    assert.equal(domElement.tagName, 'PERSON-FIELD-LIST', 'tag name');
   });
 
   it('has the appropriate kinds of fields', function() {
