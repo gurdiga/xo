@@ -31,9 +31,12 @@ describe('PersonSection2', function() {
     var personTypeNames = getOptionTexts(personTypeField);
     assert.deepEqual(personTypeNames, expectedPersonTypeNames, 'person type field options');
 
+    var expectedDefaultValue = 'fizică';
+    var personTypeFieldSelect = personTypeField.querySelector('select');
+    assert.equal(personTypeFieldSelect.value, expectedDefaultValue, 'person type field default value');
+
     // TODO:
-    // * person type names
-    // * default value
+    // * person-type-specific fields
 
     function getOptionTexts(labeledSelectField) {
       var optionElements = labeledSelectField.querySelectorAll('option');
