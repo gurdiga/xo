@@ -6,9 +6,7 @@ describe('PersonSection2', function() {
 
   beforeEach(function() {
     titleText = 'Creditor';
-    personSection = new PersonSection2({
-      titleText: titleText
-    });
+    personSection = new PersonSection2(titleText);
     domElement = getWidgetDOMElement(personSection);
   });
 
@@ -31,12 +29,17 @@ describe('PersonSection2', function() {
     var personTypeNames = getOptionTexts(personTypeField);
     assert.deepEqual(personTypeNames, expectedPersonTypeNames, 'person type field options');
 
-    var expectedDefaultValue = 'fizică';
+    var expectedDefaultValue = PersonFieldList.PERSON_TYPE_NAME;
     var personTypeFieldSelect = personTypeField.querySelector('select');
     assert.equal(personTypeFieldSelect.value, expectedDefaultValue, 'person type field default value');
 
+    var expectedFieldList = 'PERSON-FIELD-LIST';
+    var personTypeSpecificFieldList = personTypeField.nextSibling;
+    assert.isTrue(personTypeSpecificFieldList !== null, 'person-type-specific field list exists');
+    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldList, 'person-typ-specific field lis');
+
     // TODO:
-    // * person-type-specific fields
+    // * person-type changes
 
     function getOptionTexts(labeledSelectField) {
       var optionElements = labeledSelectField.querySelectorAll('option');
@@ -50,6 +53,7 @@ describe('PersonSection2', function() {
   // * test style
   // * test ARIA
 
+  var PersonFieldList = window.App.Widgets.PersonFieldList;
   var rMap = window.App.Utils.rMap;
 
   var assert = window.TestHelpers.assert;
