@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  PersonFieldList.PERSON_TYPE_NAME = 'fizică';
+
   function PersonFieldList(fieldValues) {
     var domElement = createDOMElement('person-field-collection');
     var fields = [

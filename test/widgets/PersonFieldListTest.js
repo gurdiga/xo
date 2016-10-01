@@ -55,6 +55,10 @@ describe('PersonFieldList', function() {
     });
   });
 
+  it('has its person type name', function() {
+    assert.equal(PersonFieldList.PERSON_TYPE_NAME, 'fizică');
+  });
+
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 
