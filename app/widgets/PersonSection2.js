@@ -22,7 +22,7 @@
 
   function createPersonTypeField() {
     var labelText = 'Gen persoană';
-    var personTypeNames = [];
+    var personTypeNames = ['fizică', 'juridică'];
 
     return new LabeledSelectField(labelText, personTypeNames);
   }

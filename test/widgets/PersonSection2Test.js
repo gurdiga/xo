@@ -22,12 +22,32 @@ describe('PersonSection2', function() {
 
     var personTypeField = domElement.childNodes[1];
     assert.isTrue(personTypeField !== undefined, 'person type field exists');
+    assert.equal(personTypeField.tagName, 'LABELED-SELECT-FIELD', 'person type field type');
+
+    var personTypeFieldLabel = personTypeField.querySelector('label>span');
+    assert.equal(personTypeFieldLabel.textContent, 'Gen persoană', 'person type field label text');
+
+    var expectedPersonTypeNames = ['fizică', 'juridică'];
+    var personTypeNames = getOptionTexts(personTypeField);
+    assert.deepEqual(personTypeNames, expectedPersonTypeNames, 'person type field options');
+
+    // TODO:
+    // * person type names
+    // * default value
+
+    function getOptionTexts(labeledSelectField) {
+      var optionElements = labeledSelectField.querySelectorAll('option');
+
+      return rMap('textContent', optionElements);
+    }
   });
 
   // TODO:
   // * validate input
   // * test style
   // * test ARIA
+
+  var rMap = window.App.Utils.rMap;
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
