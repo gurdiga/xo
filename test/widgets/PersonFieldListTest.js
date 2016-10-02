@@ -2,9 +2,10 @@ describe('PersonFieldList', function() {
   'use strict';
 
   var PersonFieldList = window.App.Widgets.PersonFieldList;
-  var personFieldList, defaultFieldValues, domElement, fields;
+  var personFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   before(function() {
+
     defaultFieldValues = {
       nume: 'John Doe',
       idnp: '0123456789',
@@ -13,7 +14,10 @@ describe('PersonFieldList', function() {
       note: 'Yes.'
     };
     personFieldList = new PersonFieldList(defaultFieldValues);
-    domElement = getWidgetDOMElement(personFieldList);
+
+    sandbox = document.createElement('sandbox');
+    personFieldList.appendTo(sandbox);
+    domElement = sandbox.childNodes[0];
     fields = domElement.childNodes;
   });
 
@@ -59,7 +63,11 @@ describe('PersonFieldList', function() {
     assert.equal(PersonFieldList.PERSON_TYPE_NAME, 'fizică');
   });
 
+  it('can remove itself', function() {
+    personFieldList.remove();
+    assert.equal(sandbox.childNodes.length, 0, 'it removed its DOM element from the container');
+  });
+
   var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 
 });
