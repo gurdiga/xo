@@ -27,13 +27,17 @@
 
   function createPersonTypeField(defaultPersonTypeName) {
     var labelText = 'Gen persoană';
-    var personTypeNames = ['fizică', 'juridică'];
+    var optionTexts = [
+      PersonFieldList.PERSON_TYPE_NAME,
+      CompanyFieldList.PERSON_TYPE_NAME
+    ];
 
-    return new LabeledSelectField(labelText, personTypeNames, defaultPersonTypeName);
+    return new LabeledSelectField(labelText, optionTexts, defaultPersonTypeName);
   }
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
