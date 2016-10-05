@@ -2,7 +2,7 @@ describe('CompanyFieldList', function() {
   'use strict';
 
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
-  var companyFieldList, defaultFieldValues, domElement, fields;
+  var companyFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   beforeEach(function() {
     defaultFieldValues = {
@@ -13,7 +13,10 @@ describe('CompanyFieldList', function() {
       note: 'Yes.'
     };
     companyFieldList = new CompanyFieldList(defaultFieldValues);
-    domElement = getWidgetDOMElement(companyFieldList);
+
+    sandbox = document.createElement('sandbox');
+    companyFieldList.appendTo(sandbox);
+    domElement = sandbox.childNodes[0];
     fields = domElement.childNodes;
   });
 
@@ -59,7 +62,11 @@ describe('CompanyFieldList', function() {
     assert.equal(CompanyFieldList.PERSON_TYPE_NAME, 'juridică');
   });
 
+  it('can remove itself', function() {
+    companyFieldList.remove();
+    assert.equal(sandbox.childNodes.length, 0, 'it removed its DOM element from the container');
+  });
+
   var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 
 });

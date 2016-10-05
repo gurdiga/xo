@@ -5,7 +5,6 @@ describe('PersonFieldList', function() {
   var personFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   before(function() {
-
     defaultFieldValues = {
       nume: 'John Doe',
       idnp: '0123456789',
