@@ -33,10 +33,10 @@ describe('PersonSection2', function() {
     var personTypeFieldSelect = personTypeField.querySelector('select');
     assert.equal(personTypeFieldSelect.value, expectedDefaultValue, 'person type field default value');
 
-    var expectedFieldList = 'PERSON-FIELD-LIST';
+    var expectedFieldListTagName = 'PERSON-FIELD-LIST';
     var personTypeSpecificFieldList = personTypeField.nextSibling;
     assert.isTrue(personTypeSpecificFieldList !== null, 'person-type-specific field list exists');
-    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldList, 'person-typ-specific field lis');
+    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldListTagName, 'person-typ-specific field lis');
 
     // TODO:
     // * person-type changes
