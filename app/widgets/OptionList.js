@@ -40,7 +40,7 @@
     };
 
     this.executeSelectedOption = function() {
-      if (selectedOptionIndex === undefined) {
+      if (noOptionSelected()) {
         return;
       }
 
@@ -89,6 +89,10 @@
 
     function isAnyOptionSelected() {
       return selectedOptionIndex !== undefined;
+    }
+
+    function noOptionSelected() {
+      return selectedOptionIndex === undefined;
     }
 
     function unselectCurrentlySelectedOption() {
