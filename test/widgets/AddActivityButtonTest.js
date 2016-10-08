@@ -13,7 +13,7 @@ describe('AddActivityButton', function() {
     addActivityButton = new AddActivityButton(activities, activityAdder);
 
     domElement = getWidgetDOMElement(addActivityButton);
-    optionButtons = _.toArray(domElement.querySelectorAll('dropdown-button>div>button'));
+    optionButtons = _.toArray(domElement.querySelectorAll('dropdown-button>option-list>button'));
   });
 
   it('has the appropriate DOM structure', function() {

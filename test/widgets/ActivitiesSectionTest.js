@@ -34,7 +34,7 @@ describe('ActivitiesSection', function() {
     var toggleButton = addActivityButton.querySelector('button:first-child');
     assert.equal(toggleButton.textContent, 'adaugă acţiune', 'has the appropriate label');
 
-    var options = _.toArray(addActivityButton.querySelectorAll('div>button'));
+    var options = _.toArray(addActivityButton.querySelectorAll('option-list>button'));
     assert.equal(options.length, 2, 'has the appropriate number of options');
 
     var optionsLabels = options.map(_.property('textContent'));

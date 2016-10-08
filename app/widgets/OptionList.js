@@ -81,7 +81,7 @@
     function hideList() {
       hide(domElement);
 
-      if (selectedOptionIndex !== undefined) {
+      if (isAnyOptionSelected()) {
         unselectCurrentlySelectedOption();
         selectedOptionIndex = undefined;
       }
@@ -152,11 +152,7 @@
       'box-shadow': 'rgba(0, 0, 0, 0.298039) 1px 1px 3px'
     };
 
-    var attributes = {
-      'widget-name': 'OptionList'
-    };
-
-    return createDOMElement('div', style, attributes);
+    return createDOMElement('option-list', style);
   }
 
   function isShown(domElement) {

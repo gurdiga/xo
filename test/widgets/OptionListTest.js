@@ -23,7 +23,7 @@ describe('OptionList', function() {
   });
 
   it('has the appropriate DOM structure', function() {
-    assert.equal(domElement.getAttribute('widget-name'), 'OptionList', 'has the appropriate widget name');
+    assert.equal(domElement.tagName, 'OPTION-LIST', 'has the appropriate widget name');
 
     var optionLabels = _.toArray(domElement.children).map(_.property('textContent'));
     assert.deepEqual(optionLabels, Object.keys(options), 'option buttons have the expected labels');

@@ -129,7 +129,7 @@ describe('NewCaseDialog', function() {
       var labelText = dropdownButton.querySelector('button').textContent;
       assert.equal(labelText, 'adaugă persoană', 'has the appropriate label');
 
-      actionButtons = _.toArray(dropdownButton.querySelectorAll('div>button'));
+      actionButtons = _.toArray(dropdownButton.querySelectorAll('option-list>button'));
       var actionButtonLablels = actionButtons.map(_.property('textContent'));
       assert.deepEqual(actionButtonLablels, ['debitor', 'persoană terţă'], 'options have the appropriate labels');
     });

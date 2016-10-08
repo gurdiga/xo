@@ -19,7 +19,7 @@ describe('DropdownButton', function() {
 
     domElement = getWidgetDOMElement(dropdownButton);
     toggleButton = domElement.firstChild;
-    optionList = domElement.querySelector('div');
+    optionList = domElement.querySelector('option-list');
   });
 
   it('has the appropriate Dom structure', function() {
@@ -77,7 +77,7 @@ describe('DropdownButton', function() {
     });
 
     it('works', function() {
-      var optionList = domElement.querySelector('div');
+      var optionList = domElement.querySelector('option-list');
 
       assert.equal(optionList.style.display, 'none', 'the option list is initially hidden');
       toggleButton.click();
@@ -97,7 +97,7 @@ describe('DropdownButton', function() {
 
   describe('option list', function() {
     it('has the appropriate options', function() {
-      var optionList = domElement.querySelector('div');
+      var optionList = domElement.querySelector('option-list');
       var expectedOptionLabels = Object.keys(options);
       var expectedOptionCount = expectedOptionLabels.length;
 
