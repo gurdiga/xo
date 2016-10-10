@@ -36,7 +36,15 @@ describe('PersonSection2', function() {
     var expectedFieldListTagName = 'PERSON-FIELD-LIST';
     var personTypeSpecificFieldList = personTypeField.nextSibling;
     assert.isTrue(personTypeSpecificFieldList !== null, 'person-type-specific field list exists');
-    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldListTagName, 'person-typ-specific field lis');
+    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldListTagName, 'person-type-specific field list');
+
+    personTypeFieldSelect.value = CompanyFieldList.PERSON_TYPE_NAME;
+    personTypeFieldSelect.dispatchEvent(new Event('change'));
+
+    expectedFieldListTagName = 'COMPANY-FIELD-LIST';
+    personTypeSpecificFieldList = personTypeField.nextSibling;
+    assert.isTrue(personTypeSpecificFieldList !== null, 'person-type-specific field list exists');
+    assert.equal(personTypeSpecificFieldList.tagName, expectedFieldListTagName, 'person-type-specific field list');
 
     // TODO:
     // * person-type changes
@@ -54,6 +62,7 @@ describe('PersonSection2', function() {
   // * test ARIA
 
   var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
   var rMap = window.App.Utils.rMap;
 
   var assert = window.TestHelpers.assert;

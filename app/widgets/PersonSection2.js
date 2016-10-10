@@ -4,12 +4,21 @@
   function PersonSection2(titleText) {
     var domElement = createTitledContainer(titleText);
 
-    var DefaultFieldList = PersonFieldList;
-    var defaultPersonTypeName = DefaultFieldList.PERSON_TYPE_NAME;
+    var FieldList = PersonFieldList;
+    var defaultPersonTypeName = FieldList.PERSON_TYPE_NAME;
+
     var personTypeField = createPersonTypeField(defaultPersonTypeName);
     personTypeField.appendTo(domElement);
 
-    var personTypeSpecificFieldList = new DefaultFieldList({});
+    personTypeField.onChange(function(newPersonTypeName) {
+      personTypeSpecificFieldList.remove();
+
+      FieldList = PersonTypeSpecificFieldLists.findByName(newPersonTypeName);
+      personTypeSpecificFieldList = new FieldList({});
+      personTypeSpecificFieldList.appendTo(domElement);
+    });
+
+    var personTypeSpecificFieldList = new FieldList({});
     personTypeSpecificFieldList.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
@@ -34,6 +43,17 @@
 
     return new LabeledSelectField(labelText, optionTexts, defaultPersonTypeName);
   }
+
+  var PersonTypeSpecificFieldLists = {
+    findByName: function(personTypeName) {
+      var personTypeByName = {};
+
+      personTypeByName[PersonFieldList.PERSON_TYPE_NAME] = PersonFieldList;
+      personTypeByName[CompanyFieldList.PERSON_TYPE_NAME] = CompanyFieldList;
+
+      return personTypeByName[personTypeName];
+    }
+  };
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var PersonFieldList = window.App.Widgets.PersonFieldList;
