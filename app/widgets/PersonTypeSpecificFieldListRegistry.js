@@ -5,14 +5,14 @@
     findByName: function(personTypeName) {
       var personTypeByName = {};
 
-      personTypeByName[PersonFieldList.PERSON_TYPE_NAME] = PersonFieldList;
+      personTypeByName[IndividualFieldList.PERSON_TYPE_NAME] = IndividualFieldList;
       personTypeByName[CompanyFieldList.PERSON_TYPE_NAME] = CompanyFieldList;
 
       return personTypeByName[personTypeName];
     }
   };
 
-  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 
   window.App.Widgets.PersonTypeSpecificFieldListRegistry = PersonTypeSpecificFieldListRegistry;

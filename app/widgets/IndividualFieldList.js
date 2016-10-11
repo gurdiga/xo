@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  PersonFieldList.PERSON_TYPE_NAME = 'fizică';
+  IndividualFieldList.PERSON_TYPE_NAME = 'fizică';
 
-  function PersonFieldList(fieldValues) {
+  function IndividualFieldList(fieldValues) {
     var domElement = createDOMElement('person-field-list');
     var fields = [
       createField(LabeledTextField, 'Nume', 'nume', fieldValues),
@@ -31,6 +31,6 @@
   var appendWidgets = window.App.Utils.appendWidgets;
   var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
-  window.App.Widgets.PersonFieldList = PersonFieldList;
+  window.App.Widgets.IndividualFieldList = IndividualFieldList;
 
 }());

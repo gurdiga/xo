@@ -4,11 +4,11 @@ describe('PersonTypeSpecificFieldListRegistry', function() {
   var PersonTypeSpecificFieldListRegistry = window.App.Widgets.PersonTypeSpecificFieldListRegistry;
 
   it('can return a field list constructor by name', function() {
-    assert.equal(PersonTypeSpecificFieldListRegistry.findByName('fizică'), PersonFieldList, 'for individual');
+    assert.equal(PersonTypeSpecificFieldListRegistry.findByName('fizică'), IndividualFieldList, 'for individual');
     assert.equal(PersonTypeSpecificFieldListRegistry.findByName('juridică'), CompanyFieldList, 'for company');
   });
 
-  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 
   var assert = window.TestHelpers.assert;

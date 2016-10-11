@@ -4,7 +4,7 @@
   function PersonSection2(titleText) {
     var domElement = createTitledContainer(titleText);
 
-    var FieldList = PersonFieldList;
+    var FieldList = IndividualFieldList;
     var defaultPersonTypeName = FieldList.PERSON_TYPE_NAME;
 
     var personTypeField = createPersonTypeField(defaultPersonTypeName);
@@ -37,7 +37,7 @@
   function createPersonTypeField(defaultPersonTypeName) {
     var labelText = 'Gen persoană';
     var optionTexts = [
-      PersonFieldList.PERSON_TYPE_NAME,
+      IndividualFieldList.PERSON_TYPE_NAME,
       CompanyFieldList.PERSON_TYPE_NAME
     ];
 
@@ -45,7 +45,7 @@
   }
 
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
   var PersonTypeSpecificFieldListRegistry = window.App.Widgets.PersonTypeSpecificFieldListRegistry;
 

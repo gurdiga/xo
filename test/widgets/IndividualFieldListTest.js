@@ -1,7 +1,7 @@
-describe('PersonFieldList', function() {
+describe('IndividualFieldList', function() {
   'use strict';
 
-  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var personFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   before(function() {
@@ -12,7 +12,7 @@ describe('PersonFieldList', function() {
       domiciliu: 'Happiness str. 51',
       note: 'Yes.'
     };
-    personFieldList = new PersonFieldList(defaultFieldValues);
+    personFieldList = new IndividualFieldList(defaultFieldValues);
 
     sandbox = document.createElement('sandbox');
     personFieldList.appendTo(sandbox);
@@ -59,7 +59,7 @@ describe('PersonFieldList', function() {
   });
 
   it('has its person type name', function() {
-    assert.equal(PersonFieldList.PERSON_TYPE_NAME, 'fizică');
+    assert.equal(IndividualFieldList.PERSON_TYPE_NAME, 'fizică');
   });
 
   it('can remove itself', function() {

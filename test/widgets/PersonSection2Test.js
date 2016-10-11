@@ -29,7 +29,7 @@ describe('PersonSection2', function() {
     var personTypeNames = getOptionTexts(personTypeField);
     assert.deepEqual(personTypeNames, expectedPersonTypeNames, 'person type field options');
 
-    var expectedDefaultValue = PersonFieldList.PERSON_TYPE_NAME;
+    var expectedDefaultValue = IndividualFieldList.PERSON_TYPE_NAME;
     var personTypeFieldSelect = personTypeField.querySelector('select');
     assert.equal(personTypeFieldSelect.value, expectedDefaultValue, 'person type field default value');
 
@@ -61,7 +61,7 @@ describe('PersonSection2', function() {
   // * test style
   // * test ARIA
 
-  var PersonFieldList = window.App.Widgets.PersonFieldList;
+  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
   var rMap = window.App.Utils.rMap;
 
