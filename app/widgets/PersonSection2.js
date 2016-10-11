@@ -13,7 +13,7 @@
     personTypeField.onChange(function(newPersonTypeName) {
       personTypeSpecificFieldList.remove();
 
-      FieldList = PersonTypeSpecificFieldLists.findByName(newPersonTypeName);
+      FieldList = PersonTypeSpecificFieldListRegistry.findByName(newPersonTypeName);
       personTypeSpecificFieldList = new FieldList({});
       personTypeSpecificFieldList.appendTo(domElement);
     });
@@ -44,20 +44,10 @@
     return new LabeledSelectField(labelText, optionTexts, defaultPersonTypeName);
   }
 
-  var PersonTypeSpecificFieldLists = {
-    findByName: function(personTypeName) {
-      var personTypeByName = {};
-
-      personTypeByName[PersonFieldList.PERSON_TYPE_NAME] = PersonFieldList;
-      personTypeByName[CompanyFieldList.PERSON_TYPE_NAME] = CompanyFieldList;
-
-      return personTypeByName[personTypeName];
-    }
-  };
-
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var PersonFieldList = window.App.Widgets.PersonFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
+  var PersonTypeSpecificFieldListRegistry = window.App.Widgets.PersonTypeSpecificFieldListRegistry;
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
