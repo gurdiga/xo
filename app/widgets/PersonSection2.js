@@ -13,7 +13,9 @@
     personTypeField.onChange(function(newPersonTypeName) {
       personTypeSpecificFieldList.remove();
 
-      FieldList = PersonTypeSpecificFieldListRegistry.findByName(newPersonTypeName);
+      FieldList = newPersonTypeName === IndividualFieldList.PERSON_TYPE_NAME ?
+        IndividualFieldList : CompanyFieldList;
+
       personTypeSpecificFieldList = new FieldList({});
       personTypeSpecificFieldList.appendTo(domElement);
     });
@@ -47,7 +49,6 @@
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
-  var PersonTypeSpecificFieldListRegistry = window.App.Widgets.PersonTypeSpecificFieldListRegistry;
 
   var createDOMElement = window.App.Utils.createDOMElement;
   var getAppenderOf = window.App.Utils.getAppenderOf;
