@@ -2,18 +2,18 @@ describe('PersonSection2', function() {
   'use strict';
 
   var PersonSection2 = window.App.Widgets.PersonSection2;
-  var personSection, domElement, titleText;
+  var personSection, domElement, titleText, sectionTitle;
 
   beforeEach(function() {
     titleText = 'Creditor';
     personSection = new PersonSection2(titleText);
     domElement = getWidgetDOMElement(personSection);
+    sectionTitle = domElement.childNodes[0];
   });
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'PERSON-SECTION', 'tag name');
 
-    var sectionTitle = domElement.childNodes[0];
     assert.isTrue(sectionTitle !== undefined, 'title exists');
     assert.equal(sectionTitle.tagName, 'SECTION-TITLE', 'title tag name');
     assert.equal(sectionTitle.textContent, titleText, 'title text');
@@ -46,9 +46,6 @@ describe('PersonSection2', function() {
     assert.isTrue(personTypeSpecificFieldList !== null, 'person-type-specific field list exists');
     assert.equal(personTypeSpecificFieldList.tagName, expectedFieldListTagName, 'person-type-specific field list');
 
-    // TODO:
-    // * person-type changes
-
     function getOptionTexts(labeledSelectField) {
       var optionElements = labeledSelectField.querySelectorAll('option');
 
@@ -56,9 +53,19 @@ describe('PersonSection2', function() {
     }
   });
 
+  it('has the appropriate style', function() {
+    var style = sectionTitle.style;
+
+    assert.equal(style.fontFamily, 'TitleFont', 'title font family');
+    assert.equal(style.fontSize, '22px', 'title font size');
+    assert.equal(style.color, 'white', 'title color');
+    assert.equal(style.backgroundColor, 'rgb(51, 51, 51)', 'title background color');
+    assert.equal(style.display, 'block', 'title display');
+    assert.equal(style.padding, '8px 6px', 'title padding');
+  });
+
   // TODO:
   // * validate input
-  // * test style
   // * test ARIA
 
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;

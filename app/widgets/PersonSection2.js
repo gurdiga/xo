@@ -28,12 +28,28 @@
 
   function createTitledContainer(titleText) {
     var container = createDOMElement('person-section');
-    var title = createDOMElement('section-title');
+    var title = createTitle(titleText);
 
-    title.textContent = titleText;
     container.appendChild(title);
 
     return container;
+  }
+
+  function createTitle(titleText) {
+    var style = {
+      'font-family': 'TitleFont',
+      'font-size': '22px',
+      'color': 'white',
+      'background-color': 'rgb(51, 51, 51)',
+      'display': 'block',
+      'padding': '8px 6px'
+    };
+
+    var title = createDOMElement('section-title', style);
+
+    title.textContent = titleText;
+
+    return title;
   }
 
   function createPersonTypeField(defaultPersonTypeName) {
