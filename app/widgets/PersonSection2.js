@@ -42,7 +42,8 @@
       'color': 'white',
       'background-color': 'rgb(51, 51, 51)',
       'display': 'block',
-      'padding': '8px 6px'
+      'padding': '8px 6px',
+      'margin-bottom': '12px'
     };
 
     var title = createDOMElement('section-title', style);

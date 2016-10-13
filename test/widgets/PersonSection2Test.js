@@ -2,18 +2,18 @@ describe('PersonSection2', function() {
   'use strict';
 
   var PersonSection2 = window.App.Widgets.PersonSection2;
-  var personSection, domElement, titleText, sectionTitle;
+  var personSection, domElement, titleText;
 
   beforeEach(function() {
     titleText = 'Creditor';
     personSection = new PersonSection2(titleText);
     domElement = getWidgetDOMElement(personSection);
-    sectionTitle = domElement.childNodes[0];
   });
 
   it('has the appropriate DOM structure', function() {
     assert.equal(domElement.tagName, 'PERSON-SECTION', 'tag name');
 
+    var sectionTitle = domElement.childNodes[0];
     assert.isTrue(sectionTitle !== undefined, 'title exists');
     assert.equal(sectionTitle.tagName, 'SECTION-TITLE', 'title tag name');
     assert.equal(sectionTitle.textContent, titleText, 'title text');
@@ -54,6 +54,8 @@ describe('PersonSection2', function() {
   });
 
   it('has the appropriate style', function() {
+    document.body.appendChild(domElement);
+    var sectionTitle = domElement.childNodes[0];
     var style = sectionTitle.style;
 
     assert.equal(style.fontFamily, 'TitleFont', 'title font family');
@@ -62,6 +64,7 @@ describe('PersonSection2', function() {
     assert.equal(style.backgroundColor, 'rgb(51, 51, 51)', 'title background color');
     assert.equal(style.display, 'block', 'title display');
     assert.equal(style.padding, '8px 6px', 'title padding');
+    assert.equal(style.marginBottom, '12px', 'title bottom spacing');
   });
 
   // TODO:
