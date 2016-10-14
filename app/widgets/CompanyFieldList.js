@@ -3,14 +3,14 @@
 
   CompanyFieldList.PERSON_TYPE_NAME = 'juridică';
 
-  function CompanyFieldList(defaultFieldValues) {
+  function CompanyFieldList(fieldValues) {
     var domElement = createDOMElement('company-field-list');
     var fields = [
-      createField(LabeledTextField, 'Denumire', 'denumire', defaultFieldValues),
-      createField(LabeledTextField, 'IDNO', 'idno', defaultFieldValues),
-      createField(LabeledLargeTextField, 'Sediu', 'sediu', defaultFieldValues),
-      createField(LabeledTextField, 'Persoană de contact', 'persoană-de-contact', defaultFieldValues),
-      createField(LabeledLargeTextField, 'Note', 'note', defaultFieldValues)
+      createField(LabeledTextField, 'Denumire', 'denumire', fieldValues),
+      createField(LabeledTextField, 'IDNO', 'idno', fieldValues),
+      createField(LabeledLargeTextField, 'Sediu', 'sediu', fieldValues),
+      createField(LabeledTextField, 'Persoană de contact', 'persoană-de-contact', fieldValues),
+      createField(LabeledLargeTextField, 'Note', 'note', fieldValues)
     ];
 
     appendWidgets(fields).to(domElement);

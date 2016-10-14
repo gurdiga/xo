@@ -30,12 +30,12 @@
     };
   }
 
-  var PADDING = '6px';
+  var SIZE_PADDING = '6px';
 
   function createTitledContainer(titleText) {
     var style = {
       'display': 'block',
-      'padding-left': PADDING
+      'padding-left': SIZE_PADDING
     };
 
     var container = createDOMElement('person-section', style);
@@ -53,8 +53,8 @@
       'color': 'white',
       'background-color': 'rgb(51, 51, 51)',
       'display': 'block',
-      'padding': '8px ' + PADDING,
-      'margin-left': '-' + PADDING,
+      'padding': '8px ' + SIZE_PADDING,
+      'margin-left': '-' + SIZE_PADDING,
       'margin-bottom': '12px'
     };
 
