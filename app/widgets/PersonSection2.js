@@ -24,6 +24,10 @@
     personTypeSpecificFieldList.appendTo(domElement);
 
     this.appendTo = getAppenderOf(domElement);
+
+    this.insertAfter = function(siblingDOMElement) {
+      siblingDOMElement.parentNode.insertBefore(domElement, siblingDOMElement.nextSibling);
+    };
   }
 
   function createTitledContainer(titleText) {

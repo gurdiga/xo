@@ -25,7 +25,10 @@ describe('PersonSection2', function() {
     var personTypeFieldLabel = personTypeField.querySelector('label>span');
     assert.equal(personTypeFieldLabel.textContent, 'Gen persoană', 'person type field label text');
 
-    var expectedPersonTypeNames = ['fizică', 'juridică'];
+    var expectedPersonTypeNames = [
+      IndividualFieldList.PERSON_TYPE_NAME,
+      CompanyFieldList.PERSON_TYPE_NAME
+    ];
     var personTypeNames = getOptionTexts(personTypeField);
     assert.deepEqual(personTypeNames, expectedPersonTypeNames, 'person type field options');
 
@@ -53,6 +56,19 @@ describe('PersonSection2', function() {
     }
   });
 
+  it('can be inserted after a given DOM element', function() {
+    var container = createDOMElement('container');
+    var firstChild = createDOMElement('first-child');
+    var secondChild = createDOMElement('second-child');
+    container.appendChild(firstChild);
+    container.appendChild(secondChild);
+
+    personSection.insertAfter(firstChild);
+    assert.isTrue(firstChild.nextSibling === domElement, 'is inserted after the given DOM element');
+    assert.isTrue(secondChild.previousSibling === domElement,
+      'is inserted before the given DOM element’s next sibling');
+  });
+
   it('has the appropriate style', function() {
     document.body.appendChild(domElement);
     var sectionTitle = domElement.childNodes[0];
@@ -73,7 +89,9 @@ describe('PersonSection2', function() {
 
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
+
   var rMap = window.App.Utils.rMap;
+  var createDOMElement = window.App.Utils.createDOMElement;
 
   var assert = window.TestHelpers.assert;
   var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
