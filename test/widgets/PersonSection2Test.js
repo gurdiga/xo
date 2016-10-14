@@ -72,15 +72,21 @@ describe('PersonSection2', function() {
   it('has the appropriate style', function() {
     document.body.appendChild(domElement);
     var sectionTitle = domElement.childNodes[0];
-    var style = sectionTitle.style;
+    var style = domElement.style;
+    var titleStyle = sectionTitle.style;
 
-    assert.equal(style.fontFamily, 'TitleFont', 'title font family');
-    assert.equal(style.fontSize, '22px', 'title font size');
-    assert.equal(style.color, 'white', 'title color');
-    assert.equal(style.backgroundColor, 'rgb(51, 51, 51)', 'title background color');
-    assert.equal(style.display, 'block', 'title display');
-    assert.equal(style.padding, '8px 6px', 'title padding');
-    assert.equal(style.marginBottom, '12px', 'title bottom spacing');
+    assert.equal(style.display, 'block', 'has display block');
+    assert.equal(style.paddingLeft, titleStyle.paddingLeft,
+      'vertically aligns section title text with label text');
+
+    assert.equal(titleStyle.fontFamily, 'TitleFont', 'title font family');
+    assert.equal(titleStyle.fontSize, '22px', 'title font size');
+    assert.equal(titleStyle.color, 'white', 'title color');
+    assert.equal(titleStyle.backgroundColor, 'rgb(51, 51, 51)', 'title background color');
+    assert.equal(titleStyle.display, 'block', 'title display');
+    assert.equal(titleStyle.padding, '8px 6px', 'title padding');
+    assert.equal(titleStyle.marginBottom, '12px', 'title bottom spacing');
+    assert.equal(titleStyle.marginLeft, '-6px', 'title negative left margin to compensate for padding');
   });
 
   // TODO:

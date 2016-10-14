@@ -30,8 +30,15 @@
     };
   }
 
+  var PADDING = '6px';
+
   function createTitledContainer(titleText) {
-    var container = createDOMElement('person-section');
+    var style = {
+      'display': 'block',
+      'padding-left': PADDING
+    };
+
+    var container = createDOMElement('person-section', style);
     var title = createTitle(titleText);
 
     container.appendChild(title);
@@ -46,7 +53,8 @@
       'color': 'white',
       'background-color': 'rgb(51, 51, 51)',
       'display': 'block',
-      'padding': '8px 6px',
+      'padding': '8px ' + PADDING,
+      'margin-left': '-' + PADDING,
       'margin-bottom': '12px'
     };
 
