@@ -3,10 +3,9 @@
 
   function OptionList(options) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     setOptions(domElement, options);
-
-    this.appendTo = getAppenderOf(domElement);
 
     this.setOptions = function(options) {
       setOptions(domElement, options);
@@ -171,7 +170,8 @@
     domElement.style.display = 'none';
   }
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
   var addHoverEffect = window.App.Utils.addHoverEffect;
   var addStyle = window.App.Utils.addStyle;

@@ -3,12 +3,11 @@
 
   function LabeledContainer(labelText) {
     var domElement = createElement();
-    var label = createLabel(labelText);
+    WidgetRole.apply(this, [domElement]);
 
+    var label = createLabel(labelText);
     domElement.appendChild(label);
 
-    this.appendTo = getAppenderOf(domElement);
-    this.setStyle = getStylerOf(domElement);
     this.setLabelStyle = getStylerOf(label);
 
     this.setChildWidgets = function(childWidgets) {
@@ -46,8 +45,9 @@
     return label;
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var getStylerOf = window.App.Utils.getStylerOf;
   var resetChildren = window.App.Utils.resetChildren;
   var appendWidgets = window.App.Utils.appendWidgets;

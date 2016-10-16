@@ -3,12 +3,11 @@
 
   function FieldLabel(text, childWidgets) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
+
     var textSpan = createTextSpan(text);
 
     appendWidgets(both(textSpan, childWidgets)).to(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
-    this.setStyle = getStylerOf(domElement);
   }
 
   function createElement() {
@@ -43,10 +42,10 @@
     return [one].concat(others);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var appendWidgets = window.App.Utils.appendWidgets;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getStylerOf = window.App.Utils.getStylerOf;
 
   window.App.Widgets.FieldLabel = FieldLabel;
 

@@ -3,6 +3,8 @@
 
   function ActivitiesSection() {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
+
     var activityListContainer = createActivityListContainer();
     var addActivityButton = createAddActivityButton(addActivity);
 
@@ -18,9 +20,6 @@
     this.setActivities = function(activitiesArray) {
       activitiesArray.forEach(addActivityFromData);
     };
-
-    this.setStyle = getStylerOf(domElement);
-    this.appendTo = getAppenderOf(domElement);
 
     function addActivityFromData(activityData) {
       var ActivityWidgetClass = ActivityWidgetClasses[activityData.widgetClassName];
@@ -60,6 +59,7 @@
     return new AddActivityButton(options, action);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var Section = window.App.Widgets.Section;
   var AddActivityButton = window.App.Widgets.AddActivityButton;
 
@@ -67,8 +67,6 @@
   var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
   var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.ActivitiesSection = ActivitiesSection;

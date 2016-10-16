@@ -3,6 +3,7 @@
 
   function NewCaseDialog(data) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var valuableChildren = {
       'persoane-terţe': []
@@ -18,8 +19,6 @@
       createActivitiesSection(data.activities),
       createCloseButton()
     ]).to(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
       return rMap('getValue', valuableChildren);
@@ -196,6 +195,7 @@
     };
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var PersonSection = window.App.Widgets.PersonSection;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
@@ -203,7 +203,6 @@
   var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
   var makeShy = window.App.Utils.makeShy;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var rMap = window.App.Utils.rMap;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;

@@ -3,6 +3,7 @@
 
   function LabeledSelectField(labelText, options, defaultValue) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var select = createSelect(options, defaultValue);
 
@@ -10,8 +11,6 @@
     label.setStyle(labelStyle);
     label.appendTo(domElement);
 
-    this.appendTo = getAppenderOf(domElement);
-    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(select, 'focus');
 
     this.getValue = delegateTo(select, 'value');
@@ -81,10 +80,9 @@
     marginBottom: '6px'
   };
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var FieldLabel = window.App.Widgets.FieldLabel;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
 

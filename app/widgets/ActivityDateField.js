@@ -3,10 +3,9 @@
 
   function ActivityDateField() {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     addDateFieldInputTo(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
   }
 
   function createElement() {
@@ -24,9 +23,9 @@
     dateFieldInput.appendTo(domElement);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.ActivityDateField = ActivityDateField;

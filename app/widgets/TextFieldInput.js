@@ -3,8 +3,8 @@
 
   function TextFieldInput(value) {
     var domElement = createElement(value);
+    WidgetRole.apply(this, [domElement]);
 
-    this.appendTo = getAppenderOf(domElement);
     this.getValue = delegateTo(domElement, 'value');
 
     this.setValue = function(value) {
@@ -16,8 +16,6 @@
     this.precedeWith = function(elementToInsert) {
       domElement.parentNode.insertBefore(elementToInsert, domElement);
     };
-
-    this.setStyle = getStylerOf(domElement);
   }
 
   function createElement(value) {
@@ -44,8 +42,8 @@
     outlineWidth: '0px'
   };
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
   var addFocusEffect = window.App.Utils.addFocusEffect;

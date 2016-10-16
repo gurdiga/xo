@@ -5,6 +5,7 @@
     fieldValues = fieldValues || {};
 
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var personTypeField = createPersonTypeField(fieldValues);
     var personTypeSpecificFields = createPersonTypeSpecificFields(fieldValues);
@@ -13,13 +14,6 @@
     var section = new Section(labelText);
     section.appendWidgets(getAllFields());
     section.appendTo(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
-    this.setStyle = getStylerOf(domElement);
-
-    this.insertAfter = function(siblingDomElement) {
-      siblingDomElement.parentNode.insertBefore(domElement, siblingDomElement.nextSibling);
-    };
 
     this.makeRemovable = function(onRemoveCallback) {
       var buttonStyle = {
@@ -117,14 +111,13 @@
     field.remove();
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var Section = window.App.Widgets.Section;
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
   var LabeledDateField = window.App.Widgets.LabeledDateField;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
   var makeRemovable = window.App.Utils.makeRemovable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var createField = window.App.Utils.createField;

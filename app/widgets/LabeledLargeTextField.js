@@ -3,13 +3,12 @@
 
   function LabeledLargeTextField(labelText, value) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var textarea = createTextareaElement(value);
     var label = new FieldLabel(labelText, [textarea]);
     label.appendTo(domElement);
 
-    this.appendTo = getAppenderOf(domElement);
-    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(textarea, 'focus');
     this.getValue = delegateTo(textarea, 'value');
   }
@@ -49,11 +48,10 @@
     return textarea;
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
   var addFocusEffect = window.App.Utils.addFocusEffect;

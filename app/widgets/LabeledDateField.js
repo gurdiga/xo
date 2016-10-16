@@ -3,13 +3,11 @@
 
   function LabeledDateField(labelText, value) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var input = new DateField(value);
     var label = new FieldLabel(labelText, [input]);
     label.appendTo(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
-    this.remove = getRemoverOf(domElement);
 
     this.getValue = delegateTo(input, 'getValue');
     this.focus = delegateTo(input, 'focus');
@@ -24,11 +22,10 @@
     return createDOMElement('labeled-date-field', style);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var FieldLabel = window.App.Widgets.FieldLabel;
   var DateField = window.App.Widgets.DateField;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
 

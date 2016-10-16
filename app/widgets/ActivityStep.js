@@ -3,13 +3,13 @@
 
   function ActivityStep(stepId, description) {
     var domElement = createElement(stepId);
+    WidgetRole.apply(this, [domElement]);
+
     var container = createContainer(description);
     var checkbox = new LabeledCheckbox('completat');
 
     container.setChildWidgets([checkbox]);
     container.appendTo(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
 
     this.getValue = function() {
       return {
@@ -36,11 +36,11 @@
     return new LabeledContainer(label);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledContainer = window.App.Widgets.LabeledContainer;
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
 
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.ActivityStep = ActivityStep;
 

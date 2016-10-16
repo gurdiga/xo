@@ -3,14 +3,13 @@
 
   function LabeledTextField(labelText, value) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     var input = new TextFieldInput(value);
     addLabel(domElement, labelText, input);
 
     this.getValue = delegateTo(input, 'getValue');
 
-    this.appendTo = getAppenderOf(domElement);
-    this.remove = getRemoverOf(domElement);
     this.focus = delegateTo(input, 'focus');
   }
 
@@ -27,11 +26,10 @@
     label.appendTo(domElement);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var FieldLabel = window.App.Widgets.FieldLabel;
   var TextFieldInput = window.App.Widgets.TextFieldInput;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var delegateTo = window.App.Utils.delegateTo;
 

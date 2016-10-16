@@ -4,6 +4,7 @@
   function LabeledCheckbox(labelText) {
     var checkbox = createCheckbox();
     var domElement = createElement(labelText, checkbox);
+    WidgetRole.apply(this, [domElement]);
 
     this.getValue = function() {
       return checkbox.checked;
@@ -18,8 +19,6 @@
         callback(checkbox.checked);
       });
     };
-
-    this.appendTo = getAppenderOf(domElement);
   }
 
   function createCheckbox() {
@@ -48,7 +47,8 @@
     return domElement;
   }
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.LabeledCheckbox = LabeledCheckbox;

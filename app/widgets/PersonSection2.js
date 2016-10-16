@@ -3,7 +3,6 @@
 
   function PersonSection2(titleText) {
     var domElement = createTitledContainer(titleText);
-
     WidgetRole.apply(this, [domElement]);
 
     var FieldList = IndividualFieldList;

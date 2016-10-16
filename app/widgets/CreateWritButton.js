@@ -3,8 +3,7 @@
 
   function CreateWritButton() {
     var domElement = createElement();
-
-    this.appendTo = getAppenderOf(domElement);
+    WidgetRole.apply(this, [domElement]);
   }
 
   function createElement() {
@@ -26,7 +25,8 @@
     return domElement;
   }
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
 
   window.App.Widgets.CreateWritButton = CreateWritButton;

@@ -5,14 +5,11 @@
     assert(_.isDate(completionTime), 'CompletionLabel expects the completionTime argument to be a Date object');
 
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
 
     addContent(domElement, completionTime);
 
     this.getData = delegateTo(completionTime, 'toISOString');
-
-    this.appendTo = getAppenderOf(domElement);
-    this.setStyle = getStylerOf(domElement);
-    this.remove = getRemoverOf(domElement);
   }
 
   function createElement() {
@@ -46,10 +43,9 @@
     return timeElement;
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var delegateTo = window.App.Utils.delegateTo;
   var assert = window.App.Utils.assert;
 

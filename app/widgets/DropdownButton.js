@@ -3,15 +3,15 @@
 
   function DropdownButton(labelText, options) {
     var domElement = createElement();
+    WidgetRole.apply(this, [domElement]);
+
     var toggleButton = createToggleButton(labelText);
     var optionList = new OptionList(options);
 
     appendWidgets([toggleButton, optionList]).to(domElement);
     addEventListeners(toggleButton, optionList);
 
-    this.appendTo = getAppenderOf(domElement);
     this.resetOptionList = delegateTo(optionList, 'setOptions');
-    this.setStyle = getStylerOf(domElement);
   }
 
   function createElement() {
@@ -73,10 +73,9 @@
     }
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var OptionList = window.App.Widgets.OptionList;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
   var makeTextUselectable = window.App.Utils.makeTextUselectable;
   var createDOMElement = window.App.Utils.createDOMElement;
   var appendWidgets = window.App.Utils.appendWidgets;

@@ -5,6 +5,8 @@
 
   function CompanyFieldList(fieldValues) {
     var domElement = createDOMElement('company-field-list');
+    WidgetRole.apply(this, [domElement]);
+
     var fields = [
       createField(LabeledTextField, 'Denumire', 'denumire', fieldValues),
       createField(LabeledTextField, 'IDNO', 'idno', fieldValues),
@@ -15,16 +17,13 @@
 
     appendWidgets(fields).to(domElement);
 
-    this.appendTo = getAppenderOf(domElement);
-    this.remove = getRemoverOf(domElement);
     this.getFieldValues = getFieldValueCollector(fields);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledTextField = window.App.Widgets.LabeledTextField;
   var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getRemoverOf = window.App.Utils.getRemoverOf;
   var createDOMElement = window.App.Utils.createDOMElement;
   var createField = window.App.Utils.createField;
   var appendWidgets = window.App.Utils.appendWidgets;

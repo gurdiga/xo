@@ -3,13 +3,14 @@
 
   function Activity2(widgetName, labelText) {
     var domElement = createElement(widgetName);
+    WidgetRole.apply(this, [domElement]);
+
     var container = createContainer(labelText);
     var dateField = createDateField();
 
     container.appendTo(domElement);
     container.appendWidgets([dateField]);
 
-    this.appendTo = getAppenderOf(domElement);
     this.appendWidgets = delegateTo(container, 'appendWidgets');
   }
 
@@ -49,10 +50,10 @@
     return dateField;
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledContainer = window.App.Widgets.LabeledContainer;
   var DateField = window.App.Widgets.DateField;
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var delegateTo = window.App.Utils.delegateTo;
   var createDOMElement = window.App.Utils.createDOMElement;
 

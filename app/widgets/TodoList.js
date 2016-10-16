@@ -3,9 +3,9 @@
 
   function TodoList() {
     var domElement = createElement();
-    var items = [];
+    WidgetRole.apply(this, [domElement]);
 
-    this.appendTo = getAppenderOf(domElement);
+    var items = [];
 
     this.setData = function(todoItemData) {
       assert(Array.isArray(todoItemData), 'TodoList#setData expects the argument to be an array of objects');
@@ -36,10 +36,10 @@
     return todoItemData.map(TodoItem.createWithData);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var TodoItem = window.App.Widgets.TodoItem;
 
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var assert = window.App.Utils.assert;
   var resetChildren = window.App.Utils.resetChildren;
   var rMap = window.App.Utils.rMap;

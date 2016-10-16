@@ -3,8 +3,7 @@
 
   function ActivityDetailsSection() {
     var domElement = createElement();
-
-    this.appendTo = getAppenderOf(domElement);
+    WidgetRole.apply(this, [domElement]);
 
     this.setChildWidgets = function(childWidgets) {
       resetChildren(domElement, childWidgets);
@@ -20,7 +19,8 @@
     return createDOMElement('ACTIVITY-DETAILS-SECTION', style, attributes);
   }
 
-  var getAppenderOf = window.App.Utils.getAppenderOf;
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
   var resetChildren = window.App.Utils.resetChildren;
 

@@ -6,6 +6,7 @@
     assert(_.isString(labelText), 'TodoItem constructor expects the first argument, label text, to be a string');
 
     var domElement = createElement(id);
+    WidgetRole.apply(this, [domElement]);
 
     var labeledCheckbox = new LabeledCheckbox(labelText);
     labeledCheckbox.appendTo(domElement);
@@ -22,8 +23,6 @@
     this.setDetailWidgets = function(detailWidgets) {
       resetChildren(detailWidgetContainer, detailWidgets);
     };
-
-    this.appendTo = getAppenderOf(domElement);
 
     this.getData = function() {
       var data = {
@@ -93,12 +92,12 @@
     return createDOMElement('li', style, attributes);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
   var CompletionLabel = window.App.Widgets.CompletionLabel;
 
   var assert = window.App.Utils.assert;
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
   var resetChildren = window.App.Utils.resetChildren;
 
   window.App.Widgets.TodoItem = TodoItem;

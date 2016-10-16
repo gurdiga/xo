@@ -3,8 +3,7 @@
 
   function ActivityTitle(text) {
     var domElement = createElement(text);
-
-    this.appendTo = getAppenderOf(domElement);
+    WidgetRole.apply(this, [domElement]);
   }
 
   function createElement(text) {
@@ -26,8 +25,9 @@
     return domElement;
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
+
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.ActivityTitle = ActivityTitle;
 
