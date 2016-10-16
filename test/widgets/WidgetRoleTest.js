@@ -27,6 +27,16 @@ describe('WidgetRole', function() {
     assert.equal(fieldDOMElement, field.domElement,
       '`appendTo` adds the widget’s DOM element to the given one');
 
+    assert.isFunction(field.setStyle, 'adds the `setStyle` method');
+
+    var style = {
+      'margin-left': '2em'
+    };
+
+    field.setStyle(style);
+    assert.equal(fieldDOMElement.style.marginLeft, style['margin-left'],
+      '`setStyle` applies the given style to widget’s DOM element');
+
     assert.isFunction(field.insertAfter, 'adds the `insertAfter` method');
     field.insertAfter(firstChild);
     assert.equal(firstChild.nextSibling, fieldDOMElement,

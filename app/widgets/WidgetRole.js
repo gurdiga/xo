@@ -12,10 +12,12 @@
       domElement.setAttribute('internal-name', internalName);
     };
 
+    this.setStyle = getStylerOf(domElement);
     this.remove = getRemoverOf(domElement);
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
+  var getStylerOf = window.App.Utils.getStylerOf;
   var getRemoverOf = window.App.Utils.getRemoverOf;
 
   window.App.Widgets.WidgetRole = WidgetRole;
