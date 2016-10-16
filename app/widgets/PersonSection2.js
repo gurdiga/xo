@@ -4,6 +4,8 @@
   function PersonSection2(titleText) {
     var domElement = createTitledContainer(titleText);
 
+    WidgetRole.apply(this, [domElement]);
+
     var FieldList = IndividualFieldList;
     var defaultPersonTypeName = FieldList.PERSON_TYPE_NAME;
 
@@ -22,12 +24,6 @@
 
     var personTypeSpecificFieldList = new FieldList({});
     personTypeSpecificFieldList.appendTo(domElement);
-
-    this.appendTo = getAppenderOf(domElement);
-
-    this.insertAfter = function(siblingDOMElement) {
-      siblingDOMElement.parentNode.insertBefore(domElement, siblingDOMElement.nextSibling);
-    };
   }
 
   var SIZE_PADDING = '6px';
@@ -75,12 +71,12 @@
     return new LabeledSelectField(labelText, optionTexts, defaultPersonTypeName);
   }
 
+  var WidgetRole = window.App.Widgets.WidgetRole;
   var LabeledSelectField = window.App.Widgets.LabeledSelectField;
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 
   var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
 
   window.App.Widgets.PersonSection2 = PersonSection2;
 
