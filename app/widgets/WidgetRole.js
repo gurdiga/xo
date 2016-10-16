@@ -3,6 +3,15 @@
 
   function WidgetRole(domElement) {
     this.appendTo = getAppenderOf(domElement);
+
+    this.insertAfter = function(siblingDOMElement) {
+      siblingDOMElement.parentNode.insertBefore(domElement, siblingDOMElement.nextSibling);
+    };
+
+    this.setInternalName = function(internalName) {
+      domElement.setAttribute('internal-name', internalName);
+    };
+
     this.remove = getRemoverOf(domElement);
   }
 
