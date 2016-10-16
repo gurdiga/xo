@@ -1,8 +1,8 @@
-describe('Widget', function() {
+describe('WidgetRole', function() {
   'use strict';
 
   // TODO: should this be WidgetDecorator?
-  var Widget = window.App.Widgets.Widget;
+  var WidgetRole = window.App.Widgets.WidgetRole;
 
   it('can decorate a given widget class', function() {
     function Field() {
@@ -10,7 +10,7 @@ describe('Widget', function() {
 
       this.domElement = domElement;
 
-      Widget.call(this, domElement);
+      WidgetRole.apply(this, [domElement]);
     }
 
     var field = new Field();
