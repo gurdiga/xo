@@ -16,11 +16,17 @@ describe('Widget', function() {
     var field = new Field();
     var container = createDOMElement('container');
 
-    assert.isFunction(field.appendTo, 'adds the appendTo method');
+    assert.isFunction(field.appendTo, 'adds the `appendTo` method');
 
     field.appendTo(container);
     assert.equal(container.firstChild, field.domElement,
-      'appendTo adds the widget’s DOM element to the given one');
+      '`appendTo` adds the widget’s DOM element to the given one');
+
+    assert.isFunction(field.remove, 'adds the `remove` method');
+
+    field.remove();
+    assert(container.childNodes.length === 0,
+      '`remove` removes the widget’s DOM element from its parent');
   });
 
   it('puts the given internal name in the “internal-name” attribute', function() {
