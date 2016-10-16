@@ -13,6 +13,15 @@
     };
 
     this.setStyle = getStylerOf(domElement);
+
+    this.hide = function() {
+      domElement.style.display = 'none';
+    };
+
+    this.show = function() {
+      domElement.style.display = '';
+    };
+
     this.remove = getRemoverOf(domElement);
   }
 
