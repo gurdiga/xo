@@ -61,6 +61,16 @@ describe('WidgetRole', function() {
     assert.equal(field.domElement.style.display, '', 'sets widget’s DOM element display to empty string');
   });
 
+  it('can tell wether widget’s DOM element is shown or hidden', function() {
+    assert.isFunction(field.isShown, 'isShown');
+
+    field.hide();
+    assert.isFalse(field.isShown(), 'tells when it’s hidden');
+
+    field.show();
+    assert.isTrue(field.isShown(), 'tells when it’s shown');
+  });
+
   it('adds the `setInternalName` method', function() {
     assert.isFunction(field.setInternalName);
     field.setInternalName('my-custom-field');

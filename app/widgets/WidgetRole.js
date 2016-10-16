@@ -22,6 +22,10 @@
       domElement.style.display = '';
     };
 
+    this.isShown = function() {
+      return domElement.style.display !== 'none';
+    };
+
     this.remove = getRemoverOf(domElement);
   }
 
