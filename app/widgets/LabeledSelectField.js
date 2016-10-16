@@ -7,12 +7,10 @@
 
     var select = createSelect(options, defaultValue);
 
-    var label = new FieldLabel(labelText, [select]);
-    label.setStyle(labelStyle);
+    var label = createLabel(labelText, select);
     label.appendTo(domElement);
 
     this.focus = delegateTo(select, 'focus');
-
     this.getValue = delegateTo(select, 'value');
 
     this.setValue = function(value) {
@@ -51,6 +49,18 @@
     return select;
   }
 
+  function createLabel(labelText, select) {
+    var style = {
+      marginBottom: '6px'
+    };
+
+    var label = new FieldLabel(labelText, [select]);
+
+    label.setStyle(style);
+
+    return label;
+  }
+
   function appendOptionTo(domElement) {
     return function(optionText) {
       var item = _.isPlainObject(optionText) ?
@@ -75,10 +85,6 @@
   }
 
   var TextFieldInput = window.App.Widgets.TextFieldInput;
-
-  var labelStyle = {
-    marginBottom: '6px'
-  };
 
   var WidgetRole = window.App.Widgets.WidgetRole;
   var FieldLabel = window.App.Widgets.FieldLabel;
