@@ -26,6 +26,11 @@
       return domElement.style.display !== 'none';
     };
 
+    this.toggle = function() {
+      var style = domElement.style;
+      style.display = style.display === 'none' ? '' : 'none';
+    };
+
     this.remove = getRemoverOf(domElement);
   }
 

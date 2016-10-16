@@ -71,6 +71,16 @@ describe('WidgetRole', function() {
     assert.isTrue(field.isShown(), 'tells when it’s shown');
   });
 
+  it('adds the `toggle` method', function() {
+    assert.isFunction(field.toggle);
+
+    field.toggle();
+    assert.isFalse(field.isShown(), 'hides widget’s DOM element when it’s visible');
+
+    field.toggle();
+    assert.isTrue(field.isShown(), 'shows widget’s DOM element when it’s hidden');
+  });
+
   it('adds the `setInternalName` method', function() {
     assert.isFunction(field.setInternalName);
     field.setInternalName('my-custom-field');
