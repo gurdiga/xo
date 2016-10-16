@@ -11,10 +11,6 @@
       setOptions(domElement, options);
     };
 
-    this.show = function() {
-      show(domElement);
-    };
-
     this.hide = hideList;
 
     this.toggle = function(e) {
