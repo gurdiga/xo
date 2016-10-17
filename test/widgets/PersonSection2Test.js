@@ -21,6 +21,8 @@ describe('PersonSection2', function() {
     var personTypeField = domElement.childNodes[1];
     assert.isTrue(personTypeField !== undefined, 'person type field exists');
     assert.equal(personTypeField.tagName, 'LABELED-SELECT-FIELD', 'person type field type');
+    assert.equal(personTypeField.getAttribute('internal-name'), 'person-type',
+      'person type field has the appropriate internal-name attribute value');
 
     var personTypeFieldLabel = personTypeField.querySelector('label>span');
     assert.equal(personTypeFieldLabel.textContent, 'Gen persoană', 'person type field label text');

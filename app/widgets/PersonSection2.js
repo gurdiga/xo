@@ -67,7 +67,12 @@
       CompanyFieldList.PERSON_TYPE_NAME
     ];
 
-    return new LabeledSelectField(labelText, optionTexts, defaultPersonTypeName);
+    var personTypeField = new LabeledSelectField(labelText, optionTexts);
+
+    personTypeField.setValue(defaultPersonTypeName);
+    personTypeField.setInternalName('person-type');
+
+    return personTypeField;
   }
 
   var WidgetRole = window.App.Widgets.WidgetRole;
