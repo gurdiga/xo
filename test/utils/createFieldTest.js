@@ -19,6 +19,8 @@ describe('createField', function() {
     assert.equal(field.internalName, internalName, 'sets the internalName as given');
     assert.equal(field.getValue(), fieldValues['first-name'], 'sets the field value as given');
     assert.equal(getLabel(fieldElement), labelText, 'sets the field label as given');
+    assert.equal(fieldElement.getAttribute('internal-name'), internalName,
+      'puts the given internal name in the “internal-name” attribute');
   });
 
   var LabeledTextField = window.App.Widgets.LabeledTextField;
