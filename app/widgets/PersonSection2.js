@@ -25,12 +25,12 @@
     personTypeSpecificFieldList.appendTo(domElement);
   }
 
-  var SIZE_PADDING = '6px';
+  var SIDE_PADDING = '6px';
 
   function createTitledContainer(titleText) {
     var style = {
       'display': 'block',
-      'padding-left': SIZE_PADDING
+      'padding-left': SIDE_PADDING
     };
 
     var container = createDOMElement('person-section', style);
@@ -48,8 +48,8 @@
       'color': 'white',
       'background-color': 'rgb(51, 51, 51)',
       'display': 'block',
-      'padding': '8px ' + SIZE_PADDING,
-      'margin-left': '-' + SIZE_PADDING,
+      'padding': '8px ' + SIDE_PADDING,
+      'margin-left': '-' + SIDE_PADDING,
       'margin-bottom': '12px'
     };
 

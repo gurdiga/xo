@@ -92,6 +92,7 @@ describe('PersonSection2', function() {
   });
 
   // TODO:
+  // * populate fields
   // * validate input
   // * test ARIA
 
