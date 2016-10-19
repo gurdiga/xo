@@ -2,11 +2,19 @@ describe('PersonSection2', function() {
   'use strict';
 
   var PersonSection2 = window.App.Widgets.PersonSection2;
-  var personSection, domElement, titleText;
+  var personSection, domElement, titleText, fieldValues;
 
   beforeEach(function() {
     titleText = 'Creditor';
-    personSection = new PersonSection2(titleText);
+    fieldValues = {
+      'gen-persoană': IndividualFieldList.PERSON_TYPE_NAME,
+      'nume': 'John DOE',
+      'idnp': '0123456789',
+      'data-nașterii': '2016-10-19',
+      'domiciliu': 'str. Fericirii, 1',
+      'note': 'Yes.'
+    };
+    personSection = new PersonSection2(titleText, fieldValues);
     domElement = getWidgetDOMElement(personSection);
   });
 
@@ -89,6 +97,10 @@ describe('PersonSection2', function() {
     assert.equal(titleStyle.padding, '8px 6px', 'title padding');
     assert.equal(titleStyle.marginBottom, '12px', 'title bottom spacing');
     assert.equal(titleStyle.marginLeft, '-6px', 'title negative left margin to compensate for padding');
+  });
+
+  it('fills the fields with the given values', function() {
+    assert.deepEqual(personSection.getFieldValues(), fieldValues);
   });
 
   // TODO:

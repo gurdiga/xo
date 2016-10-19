@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  function PersonSection2(titleText) {
+  function PersonSection2(titleText, fieldValues) {
     var domElement = createTitledContainer(titleText);
     WidgetRole.apply(this, [domElement]);
 
     var FieldList = IndividualFieldList;
-    var defaultPersonTypeName = FieldList.PERSON_TYPE_NAME;
+    var defaultPersonTypeName = fieldValues['gen-persoană'] || FieldList.PERSON_TYPE_NAME;
 
     var personTypeField = createPersonTypeField(defaultPersonTypeName);
     personTypeField.appendTo(domElement);
@@ -17,12 +17,21 @@
       FieldList = newPersonTypeName === IndividualFieldList.PERSON_TYPE_NAME ?
         IndividualFieldList : CompanyFieldList;
 
-      personTypeSpecificFieldList = new FieldList({});
+      personTypeSpecificFieldList = new FieldList(fieldValues);
       personTypeSpecificFieldList.appendTo(domElement);
     });
 
-    var personTypeSpecificFieldList = new FieldList({});
+    var personTypeSpecificFieldList = new FieldList(fieldValues);
     personTypeSpecificFieldList.appendTo(domElement);
+
+    this.getFieldValues = function() {
+      var personTypeSpecificFieldValues = personTypeSpecificFieldList.getFieldValues();
+      var ownFieldValues = {
+        'gen-persoană': personTypeField.getValue()
+      };
+
+      return _.extend(ownFieldValues, personTypeSpecificFieldValues);
+    };
   }
 
   var SIDE_PADDING = '6px';
