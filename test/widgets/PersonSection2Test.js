@@ -80,7 +80,6 @@ describe('PersonSection2', function() {
   });
 
   it('has the appropriate style', function() {
-    document.body.appendChild(domElement);
     var sectionTitle = domElement.childNodes[0];
     var style = domElement.style;
     var titleStyle = sectionTitle.style;
@@ -111,10 +110,6 @@ describe('PersonSection2', function() {
     personSection.setStyle(customStyle);
     assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
   });
-
-  // TODO:
-  // * validate input
-  // * test ARIA
 
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;

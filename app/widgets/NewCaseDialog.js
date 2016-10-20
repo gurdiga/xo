@@ -13,6 +13,7 @@
       createTitle(),
       createCreditorSection(),
       createFirstDebitorSection(),
+      createPersonSection2(data.creditor),
       createAddPersonButton(),
       createSentenceSection(),
       createInquirySection(),
@@ -51,6 +52,19 @@
       var personSection = createPersonSection('Debitor', data['debitori'][0]);
 
       valuableChildren['debitori'] = [personSection];
+
+      return personSection;
+    }
+
+    function createPersonSection2(fieldValues) {
+      var style = {
+        'width': '380px',
+        'margin': '0 60px 40px 0'
+      };
+
+      var personSection = new PersonSection2('PersonSection2', fieldValues);
+
+      personSection.setStyle(style);
 
       return personSection;
     }
@@ -197,6 +211,7 @@
 
   var WidgetRole = window.App.Widgets.WidgetRole;
   var PersonSection = window.App.Widgets.PersonSection;
+  var PersonSection2 = window.App.Widgets.PersonSection2;
   var DropdownButton = window.App.Widgets.DropdownButton;
   var SentenceSection = window.App.Widgets.SentenceSection;
   var InquirySection = window.App.Widgets.InquirySection;
