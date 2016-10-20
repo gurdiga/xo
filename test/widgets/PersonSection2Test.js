@@ -111,6 +111,10 @@ describe('PersonSection2', function() {
     assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
   });
 
+  it('is accessible', function() {
+    assert.equal(domElement.getAttribute('role'), 'region', 'has the appropriate ARIA role');
+  });
+
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 

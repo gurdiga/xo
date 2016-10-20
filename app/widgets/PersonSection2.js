@@ -46,6 +46,7 @@
     var title = createTitle(titleText);
 
     container.appendChild(title);
+    container.setAttribute('role', 'region');
 
     return container;
   }
