@@ -103,8 +103,16 @@ describe('PersonSection2', function() {
     assert.deepEqual(personSection.getFieldValues(), fieldValues);
   });
 
+  it('accepts custom style', function() {
+    var customStyle = {
+      'margin-bottom': '2em'
+    };
+
+    personSection.setStyle(customStyle);
+    assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
+  });
+
   // TODO:
-  // * populate fields
   // * validate input
   // * test ARIA
 
