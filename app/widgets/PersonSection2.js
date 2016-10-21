@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  PersonSection2.uid = 0;
+
   function PersonSection2(titleText, fieldValues) {
     var domElement = createTitledContainer(titleText);
     WidgetRole.apply(this, [domElement]);
@@ -32,6 +34,8 @@
 
       return _.extend(ownFieldValues, personTypeSpecificFieldValues);
     };
+
+    this.uid = 'person-section-' + ++PersonSection2.uid;
   }
 
   var SIDE_PADDING = '6px';

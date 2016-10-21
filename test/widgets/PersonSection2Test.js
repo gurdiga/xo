@@ -111,6 +111,10 @@ describe('PersonSection2', function() {
     assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
   });
 
+  it('assigns a unique ID to every instance', function() {
+    assert.match(personSection.uid, new RegExp('person-section-\\d+'));
+  });
+
   it('is accessible', function() {
     assert.equal(domElement.getAttribute('role'), 'region', 'has the appropriate ARIA role');
   });
