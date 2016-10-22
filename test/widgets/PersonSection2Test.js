@@ -111,8 +111,8 @@ describe('PersonSection2', function() {
     assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
   });
 
-  it('assigns a unique ID to every instance', function() {
-    assert.match(personSection.uid, new RegExp('person-section-\\d+'));
+  it('assigns a unique numeric ID to every instance', function() {
+    assert.isNumber(personSection.uid);
   });
 
   it('is accessible', function() {

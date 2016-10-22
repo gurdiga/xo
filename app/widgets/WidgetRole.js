@@ -2,6 +2,8 @@
   'use strict';
 
   function WidgetRole(domElement) {
+    setUID(this);
+
     this.appendTo = getAppenderOf(domElement);
 
     this.insertAfter = function(siblingDOMElement) {
@@ -32,6 +34,14 @@
     };
 
     this.remove = getRemoverOf(domElement);
+  }
+
+  function setUID(instance) {
+    var constructor = instance.constructor;
+
+    if (!constructor.uid) constructor.uid = 1;
+
+    instance.uid = constructor.uid++;
   }
 
   var getAppenderOf = window.App.Utils.getAppenderOf;
