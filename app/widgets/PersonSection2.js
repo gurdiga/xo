@@ -42,16 +42,18 @@
       'padding-left': SIDE_PADDING
     };
 
+    var uid = getUID();
     var container = createDOMElement('person-section', style);
-    var title = createTitle(titleText);
+    var title = createTitle(titleText, uid);
 
     container.appendChild(title);
     container.setAttribute('role', 'region');
+    container.setAttribute('aria-labelledby', uid);
 
     return container;
   }
 
-  function createTitle(titleText) {
+  function createTitle(titleText, uid) {
     var style = {
       'font-family': 'TitleFont',
       'font-size': '22px',
@@ -66,6 +68,7 @@
     var title = createDOMElement('section-title', style);
 
     title.textContent = titleText;
+    title.id = uid;
 
     return title;
   }
@@ -91,6 +94,7 @@
   var CompanyFieldList = window.App.Widgets.CompanyFieldList;
 
   var createDOMElement = window.App.Utils.createDOMElement;
+  var getUID = window.App.Utils.getUID;
 
   window.App.Widgets.PersonSection2 = PersonSection2;
 

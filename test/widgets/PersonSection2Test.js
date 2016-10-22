@@ -111,12 +111,12 @@ describe('PersonSection2', function() {
     assert.equal(domElement.style.marginBottom, customStyle['margin-bottom']);
   });
 
-  it('assigns a unique numeric ID to every instance', function() {
-    assert.isNumber(personSection.uid);
-  });
-
   it('is accessible', function() {
     assert.equal(domElement.getAttribute('role'), 'region', 'has the appropriate ARIA role');
+
+    var sectionTitle = domElement.childNodes[0];
+    assert.equal(domElement.getAttribute('aria-labelledby'), sectionTitle.id,
+      'has the appropriate aria-labelledby');
   });
 
   var IndividualFieldList = window.App.Widgets.IndividualFieldList;
