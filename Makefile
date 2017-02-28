@@ -1,3 +1,8 @@
+TSCONFIG_OPTIONS=$(shell jq --raw-output '.compilerOptions | to_entries | map("--\(.key) \(.value) ") | add' tsconfig.json)
+
+%.js: %.ts
+	tsc $(TSCONFIG_OPTIONS) --outFile "$@" "$<"
+
 export
 	NODE_ENV=development
 	JS_FILES=$(shell \
