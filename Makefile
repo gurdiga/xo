@@ -3,6 +3,9 @@ TSCONFIG_OPTIONS=$(shell jq --raw-output '.compilerOptions | to_entries | map("-
 %.js: %.ts
 	tsc $(TSCONFIG_OPTIONS) --outFile "$@" "$<"
 
+js:
+	tsc $(TSCONFIG_OPTIONS)
+
 export
 	NODE_ENV=development
 	JS_FILES=$(shell \
