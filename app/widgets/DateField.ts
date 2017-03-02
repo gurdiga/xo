@@ -1,24 +1,16 @@
-(function() {
-  'use strict';
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {DateFieldInput} from "app/widgets/DateFieldInput";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {delegateTo} from "app/utils/delegateTo";
 
-  function DateField(defaultValue) {
-    var domElement = createDOMElement('date-field');
-    WidgetRole.apply(this, [domElement]);
+export function DateField(defaultValue) {
+  var domElement = createDOMElement('date-field');
+  WidgetRole.apply(this, [domElement]);
 
-    var dateFieldInput = new DateFieldInput(defaultValue);
-    dateFieldInput.appendTo(domElement);
+  var dateFieldInput = new DateFieldInput(defaultValue);
+  dateFieldInput.appendTo(domElement);
 
-    this.getValue = delegateTo(dateFieldInput, 'getValue');
-    this.focus = delegateTo(dateFieldInput, 'focus');
-    this.setStyle = delegateTo(dateFieldInput, 'setStyle');
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var DateFieldInput = window.App.Widgets.DateFieldInput;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var delegateTo = window.App.Utils.delegateTo;
-
-  window.App.Widgets.DateField = DateField;
-
-}());
+  this.getValue = delegateTo(dateFieldInput, 'getValue');
+  this.focus = delegateTo(dateFieldInput, 'focus');
+  this.setStyle = delegateTo(dateFieldInput, 'setStyle');
+}

@@ -1,19 +1,14 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
 
-  function createEnumArray(hash) {
-    var array = _.values(hash);
+export function createEnumArray(hash) {
+  var array = _.values(hash);
 
-    _.each(hash, function(v, k) {
-      Object.defineProperty(array, k, {
-        value: v,
-        enumerable: false
-      });
+  _.each(hash, function(v, k) {
+    Object.defineProperty(array, k, {
+      value: v,
+      enumerable: false
     });
+  });
 
-    return array;
-  }
-
-  window.App.Utils.createEnumArray = createEnumArray;
-
-}());
+  return array;
+}

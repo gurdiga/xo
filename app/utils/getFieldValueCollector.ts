@@ -1,29 +1,23 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
+import {assert} from "app/utils/assert";
 
-  function getFieldValueCollector(fields) {
-    return function() {
-      var fieldValues = {};
+export function getFieldValueCollector(fields) {
+  return function() {
+    var fieldValues = {};
 
-      if (typeof fields === 'function') fields = fields();
+    if (typeof fields === 'function') fields = fields();
 
-      fields.forEach(function(field) {
-        assertValuableFieldWithInternalName(field);
+    fields.forEach(function(field) {
+      assertValuableFieldWithInternalName(field);
 
-        fieldValues[field.internalName] = field.getValue();
-      });
+      fieldValues[field.internalName] = field.getValue();
+    });
 
-      return fieldValues;
-    };
-  }
+    return fieldValues;
+  };
+}
 
-  function assertValuableFieldWithInternalName(field) {
-    assert(field.internalName, 'Every field is expected to have an internalName');
-    assert(_.isFunction(field.getValue), 'Every field is expected to have a getValue method');
-  }
-
-  var assert = window.App.Utils.assert;
-
-  window.App.Utils.getFieldValueCollector = getFieldValueCollector;
-
-}());
+function assertValuableFieldWithInternalName(field) {
+  assert(field.internalName, 'Every field is expected to have an internalName');
+  assert(_.isFunction(field.getValue), 'Every field is expected to have a getValue method');
+}

@@ -1,41 +1,33 @@
-(function() {
-  'use strict';
+import {Section} from "app/widgets/Section";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {LabeledDateField} from "app/widgets/LabeledDateField";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {getAppenderOf} from "app/utils/getAppenderOf";
+import {getStylerOf} from "app/utils/getStylerOf";
+import {createField} from "app/utils/createField";
+import {getFieldValueCollector} from "app/utils/getFieldValueCollector";
 
-  function InquirySection(fieldValues) {
-    var domElement = createDOMElement('INQUIRY-SECTION');
+export function InquirySection(fieldValues) {
+  var domElement = createDOMElement('INQUIRY-SECTION');
 
-    var childWidgets = [
-      createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
-      createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
-    ];
+  var childWidgets = [
+    createField(LabeledTextField, 'Numărul de înregistrare', 'numărul-de-înregistrare', fieldValues),
+    createField(LabeledDateField, 'Data depunerii cererii', 'data-depunerii', fieldValues)
+  ];
 
-    var section = createSection(childWidgets);
-    section.appendTo(domElement);
+  var section = createSection(childWidgets);
+  section.appendTo(domElement);
 
-    this.getValue = getFieldValueCollector(childWidgets);
-    this.appendTo = getAppenderOf(domElement);
-    this.setStyle = getStylerOf(domElement);
-  }
+  this.getValue = getFieldValueCollector(childWidgets);
+  this.appendTo = getAppenderOf(domElement);
+  this.setStyle = getStylerOf(domElement);
+}
 
-  function createSection(childWidgets) {
-    var labelText = 'Cerere de intentare';
-    var section = new Section(labelText);
+function createSection(childWidgets) {
+  var labelText = 'Cerere de intentare';
+  var section = new Section(labelText);
 
-    section.appendWidgets(childWidgets);
+  section.appendWidgets(childWidgets);
 
-    return section;
-  }
-
-  var Section = window.App.Widgets.Section;
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var LabeledDateField = window.App.Widgets.LabeledDateField;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var getAppenderOf = window.App.Utils.getAppenderOf;
-  var getStylerOf = window.App.Utils.getStylerOf;
-  var createField = window.App.Utils.createField;
-  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
-
-  window.App.Widgets.InquirySection = InquirySection;
-
-}());
+  return section;
+}

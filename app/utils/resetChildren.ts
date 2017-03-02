@@ -1,14 +1,7 @@
-(function() {
-  'use strict';
+import {appendWidgets} from "app/utils/appendWidgets";
+import {emptyDOMElement} from "app/utils/emptyDOMElement";
 
-  function resetChildren(domElement, children) {
-    emptyDOMElement(domElement);
-    appendWidgets(children).to(domElement);
-  }
-
-  var emptyDOMElement = window.App.Utils.emptyDOMElement;
-  var appendWidgets = window.App.Utils.appendWidgets;
-
-  window.App.Utils.resetChildren = resetChildren;
-
-}());
+export function resetChildren(domElement, children) {
+  emptyDOMElement(domElement);
+  appendWidgets(children).to(domElement);
+}

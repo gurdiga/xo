@@ -1,29 +1,21 @@
-(function() {
-  'use strict';
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {resetChildren} from "app/utils/resetChildren";
 
-  function ActivityDetailsSection() {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
+export function ActivityDetailsSection() {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    this.setChildWidgets = function(childWidgets) {
-      resetChildren(domElement, childWidgets);
-    };
-  }
+  this.setChildWidgets = function(childWidgets) {
+    resetChildren(domElement, childWidgets);
+  };
+}
 
-  function createElement() {
-    var style = {};
-    var attributes = {
-      role: 'region'
-    };
+function createElement() {
+  var style = {};
+  var attributes = {
+    role: 'region'
+  };
 
-    return createDOMElement('ACTIVITY-DETAILS-SECTION', style, attributes);
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var resetChildren = window.App.Utils.resetChildren;
-
-  window.App.Widgets.ActivityDetailsSection = ActivityDetailsSection;
-
-}());
+  return createDOMElement('ACTIVITY-DETAILS-SECTION', style, attributes);
+}

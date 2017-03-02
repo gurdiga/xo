@@ -1,34 +1,26 @@
-(function() {
-  'use strict';
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {createDOMElement} from "app/utils/createDOMElement";
 
-  function ActivityTitle(text) {
-    var domElement = createElement(text);
-    WidgetRole.apply(this, [domElement]);
-  }
+export function ActivityTitle(text) {
+  var domElement = createElement(text);
+  WidgetRole.apply(this, [domElement]);
+}
 
-  function createElement(text) {
-    var style = {
-      display: 'block',
-      fontWeight: 'bold',
-      fontSize: '16px',
-      verticalAlign: '-1px'
-    };
+function createElement(text) {
+  var style = {
+    display: 'block',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    verticalAlign: '-1px'
+  };
 
-    var attributes = {
-      role: 'heading'
-    };
+  var attributes = {
+    role: 'heading'
+  };
 
-    var domElement = createDOMElement('activity-title', style, attributes);
+  var domElement = createDOMElement('activity-title', style, attributes);
 
-    domElement.textContent = text;
+  domElement.textContent = text;
 
-    return domElement;
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  window.App.Widgets.ActivityTitle = ActivityTitle;
-
-}());
+  return domElement;
+}

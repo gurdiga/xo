@@ -1,89 +1,80 @@
-(function() {
-  'use strict';
+import {Courts} from "app/data/Courts";
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {Section} from "app/widgets/Section";
+import {LabeledSelectField} from "app/widgets/LabeledSelectField";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {LabeledLargeTextField} from "app/widgets/LabeledLargeTextField";
+import {LabeledDateField} from "app/widgets/LabeledDateField";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {createField} from "app/utils/createField";
+import {getFieldValueCollector} from "app/utils/getFieldValueCollector";
 
-  function SentenceSection(fieldValues) {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
-
-    var fields = createFields(fieldValues);
-    var section = new Section('Document executoriu');
-
-    section.appendWidgets(fields);
-    section.appendTo(domElement);
-
-    this.getValue = getFieldValueCollector(fields);
+var COURT_LEVELS_AS_OPTGROUPS = Courts.map(courLevelAsOptgroup);
+var SUBJECT_OPTIONS = [
+  'pecuniar',
+  {
+    optgroupLabel: 'nepecuniar',
+    options: [
+      'evacuarea',
+      'evacuarea',
+      'instalarea',
+      'schimbul forţat',
+      'stabilirea domiciliului copilului',
+      'efectuarea de către debitor a unor acţiuni obligatorii, nelegate de remiterea unor sume sau bunuri',
+      'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri mobile',
+      'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri imobile',
+      'confiscarea bunurilor',
+      'nimicirea bunurilor',
+      'restabilirea la locul de muncă',
+      'aplicarea măsurilor de asigurare a acţiunii'
+    ]
   }
+];
 
-  function createElement() {
-    var style = {
-      display: 'inline-block'
-    };
+export function SentenceSection(fieldValues) {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    return createDOMElement('sentence-section', style);
-  }
+  var fields = createFields(fieldValues);
+  var section = new Section('Document executoriu');
 
-  function createFields(fieldValues) {
-    return [
-      createLabeledSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
-      createField(LabeledTextField, 'Numărul hotărîrii', 'numărul-hotărîrii', fieldValues),
-      createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii', fieldValues),
-      createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul', fieldValues),
-      createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
-      // Poate de arătat mesaj de atenţionare dacă intentarea e prea tîrzie
-      // relativ la provederile articolelor 16 şi 17.
-      createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive', fieldValues),
-      createField(LabeledDateField, 'Data eliberării', 'data-eliberării', fieldValues)
-    ];
+  section.appendWidgets(fields);
+  section.appendTo(domElement);
 
-    function createLabeledSelectField(labelText, internalName, options) {
-      var field = new LabeledSelectField(labelText, options, fieldValues[internalName]);
-      field.internalName = internalName;
-      return field;
-    }
-  }
+  this.getValue = getFieldValueCollector(fields);
+}
 
-  var Courts = window.App.Data.Courts;
-  var COURT_LEVELS_AS_OPTGROUPS = Courts.map(courLevelAsOptgroup);
+function createElement() {
+  var style = {
+    display: 'inline-block'
+  };
 
-  function courLevelAsOptgroup(courtLevel) {
-    return {
-      optgroupLabel: courtLevel.levelLabel,
-      options: courtLevel.courtList
-    };
-  }
+  return createDOMElement('sentence-section', style);
+}
 
-  var SUBJECT_OPTIONS = [
-    'pecuniar',
-    {
-      optgroupLabel: 'nepecuniar',
-      options: [
-        'evacuarea',
-        'evacuarea',
-        'instalarea',
-        'schimbul forţat',
-        'stabilirea domiciliului copilului',
-        'efectuarea de către debitor a unor acţiuni obligatorii, nelegate de remiterea unor sume sau bunuri',
-        'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri mobile',
-        'efectuarea de către debitor a unor acţiuni obligatorii, legate de remiterea unor bunuri imobile',
-        'confiscarea bunurilor',
-        'nimicirea bunurilor',
-        'restabilirea la locul de muncă',
-        'aplicarea măsurilor de asigurare a acţiunii'
-      ]
-    }
+function createFields(fieldValues) {
+  return [
+    createLabeledSelectField('Instanţa de judecată', 'instanţa-de-judecată', COURT_LEVELS_AS_OPTGROUPS),
+    createField(LabeledTextField, 'Numărul hotărîrii', 'numărul-hotărîrii', fieldValues),
+    createField(LabeledDateField, 'Data hotărîrii', 'data-hotărîrii', fieldValues),
+    createField(LabeledLargeTextField, 'Dispozitivul', 'dispozitivul', fieldValues),
+    createLabeledSelectField('Obiectul urmăririi', 'obiectul-urmăririi', SUBJECT_OPTIONS),
+    // Poate de arătat mesaj de atenţionare dacă intentarea e prea tîrzie
+    // relativ la provederile articolelor 16 şi 17.
+    createField(LabeledDateField, 'Data rămînerii definitive', 'data-rămînerii-definitive', fieldValues),
+    createField(LabeledDateField, 'Data eliberării', 'data-eliberării', fieldValues)
   ];
 
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var Section = window.App.Widgets.Section;
-  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
-  var LabeledDateField = window.App.Widgets.LabeledDateField;
+  function createLabeledSelectField(labelText, internalName, options) {
+    var field = new LabeledSelectField(labelText, options, fieldValues[internalName]);
+    field.internalName = internalName;
+    return field;
+  }
+}
 
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var createField = window.App.Utils.createField;
-  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
-
-  window.App.Widgets.SentenceSection = SentenceSection;
-
-}());
+function courLevelAsOptgroup(courtLevel) {
+  return {
+    optgroupLabel: courtLevel.levelLabel,
+    options: courtLevel.courtList
+  };
+}

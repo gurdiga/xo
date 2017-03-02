@@ -1,61 +1,54 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
+import {appendWidgets} from "app/utils/appendWidgets";
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {ActivityDateField} from "app/widgets/ActivityDateField";
+import {ActivityTitle} from "app/widgets/ActivityTitle";
+import {ActivityDetailsSection} from "app/widgets/ActivityDetailsSection";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {assert} from "app/utils/assert";
 
-  function Activity(widgetName, descriptionText) {
-    var domElement = createElement(widgetName);
-    WidgetRole.apply(this, [domElement]);
+export function Activity(widgetName, descriptionText) {
+  var domElement = createElement(widgetName);
+  WidgetRole.apply(this, [domElement]);
 
-    var detailsSection = new ActivityDetailsSection();
+  var detailsSection = new ActivityDetailsSection();
 
-    appendWidgets([
-      new ActivityTitle(descriptionText),
-      new ActivityDateField(),
-      detailsSection
-    ]).to(domElement);
+  appendWidgets([
+    new ActivityTitle(descriptionText),
+    new ActivityDateField(),
+    detailsSection
+  ]).to(domElement);
 
-    this.getDescription = function() {
-      return descriptionText;
-    };
-
-    this.setDetailWidgets = function(detailWidgets) {
-      detailsSection.setChildWidgets(detailWidgets);
-    };
-  }
-
-  Activity.createWithData = function(data) {
-    assert(_.isPlainObject(data), 'Activity.createWithData expects the argument to be a plain JS object');
-
-    var activity = new this();
-
-    activity.setData(data);
-
-    return activity;
+  this.getDescription = function() {
+    return descriptionText;
   };
 
-  function createElement(widgetName) {
-    var style = {
-      marginTop: '5px',
-      marginBottom: '10px',
-      borderWidth: '0',
-      padding: '0'
-    };
+  this.setDetailWidgets = function(detailWidgets) {
+    detailsSection.setChildWidgets(detailWidgets);
+  };
+}
 
-    var attributes = {
-      'widget-name': widgetName
-    };
+Activity.createWithData = function(data) {
+  assert(_.isPlainObject(data), 'Activity.createWithData expects the argument to be a plain JS object');
 
-    return createDOMElement('fieldset', style, attributes);
-  }
+  var activity = new this();
 
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var ActivityDateField = window.App.Widgets.ActivityDateField;
-  var ActivityTitle = window.App.Widgets.ActivityTitle;
-  var ActivityDetailsSection = window.App.Widgets.ActivityDetailsSection;
+  activity.setData(data);
 
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var appendWidgets = window.App.Utils.appendWidgets;
-  var assert = window.App.Utils.assert;
+  return activity;
+};
 
-  window.App.Widgets.Activity = Activity;
+function createElement(widgetName) {
+  var style = {
+    marginTop: '5px',
+    marginBottom: '10px',
+    borderWidth: '0',
+    padding: '0'
+  };
 
-}());
+  var attributes = {
+    'widget-name': widgetName
+  };
+
+  return createDOMElement('fieldset', style, attributes);
+}

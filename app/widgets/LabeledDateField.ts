@@ -1,34 +1,26 @@
-(function() {
-  'use strict';
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {FieldLabel} from "app/widgets/FieldLabel";
+import {DateField} from "app/widgets/DateField";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {delegateTo} from "app/utils/delegateTo";
 
-  function LabeledDateField(labelText, value) {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
+export function LabeledDateField(labelText, value) {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    var input = new DateField(value);
-    var label = new FieldLabel(labelText, [input]);
-    label.appendTo(domElement);
+  var input = new DateField(value);
+  var label = new FieldLabel(labelText, [input]);
+  label.appendTo(domElement);
 
-    this.getValue = delegateTo(input, 'getValue');
-    this.focus = delegateTo(input, 'focus');
-    this.setStyle = delegateTo(input, 'setStyle');
-  }
+  this.getValue = delegateTo(input, 'getValue');
+  this.focus = delegateTo(input, 'focus');
+  this.setStyle = delegateTo(input, 'setStyle');
+}
 
-  function createElement() {
-    var style = {
-      display: 'block'
-    };
+function createElement() {
+  var style = {
+    display: 'block'
+  };
 
-    return createDOMElement('labeled-date-field', style);
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var FieldLabel = window.App.Widgets.FieldLabel;
-  var DateField = window.App.Widgets.DateField;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var delegateTo = window.App.Utils.delegateTo;
-
-  window.App.Widgets.LabeledDateField = LabeledDateField;
-
-}());
+  return createDOMElement('labeled-date-field', style);
+}

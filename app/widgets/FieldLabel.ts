@@ -1,52 +1,44 @@
-(function() {
-  'use strict';
+import {appendWidgets} from "app/utils/appendWidgets";
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {createDOMElement} from "app/utils/createDOMElement";
 
-  function FieldLabel(text, childWidgets) {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
+export function FieldLabel(text, childWidgets) {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    var textSpan = createTextSpan(text);
+  var textSpan = createTextSpan(text);
 
-    appendWidgets(both(textSpan, childWidgets)).to(domElement);
-  }
+  appendWidgets(both(textSpan, childWidgets)).to(domElement);
+}
 
-  function createElement() {
-    var style = {
-      display: 'inline-block',
-      margin: '0 0 3px'
-    };
+function createElement() {
+  var style = {
+    display: 'inline-block',
+    margin: '0 0 3px'
+  };
 
-    var attributes = {
-      'widget-name': 'FieldLabel'
-    };
+  var attributes = {
+    'widget-name': 'FieldLabel'
+  };
 
-    return createDOMElement('label', style, attributes);
-  }
+  return createDOMElement('label', style, attributes);
+}
 
-  function createTextSpan(text) {
-    var style = {
-      color: '#555',
-      fontSize: '14px',
-      display: 'inline-block',
-      width: '11em'
-    };
+function createTextSpan(text) {
+  var style = {
+    color: '#555',
+    fontSize: '14px',
+    display: 'inline-block',
+    width: '11em'
+  };
 
-    var span = createDOMElement('span', style);
+  var span = createDOMElement('span', style);
 
-    span.textContent = text;
+  span.textContent = text;
 
-    return span;
-  }
+  return span;
+}
 
-  function both(one, others) {
-    return [one].concat(others);
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-
-  var appendWidgets = window.App.Utils.appendWidgets;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  window.App.Widgets.FieldLabel = FieldLabel;
-
-}());
+function both(one, others) {
+  return [one].concat(others);
+}

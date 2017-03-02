@@ -1,30 +1,25 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
 
-  function render(domStructure) {
-    var domElement = document.createElement(domStructure.tagName);
+export function render(domStructure) {
+  var domElement = document.createElement(domStructure.tagName);
 
-    _.each(domStructure.attributes, function(value, name) {
-      domElement.setAttribute(name, value);
-    });
+  _.each(domStructure.attributes, function(value, name) {
+    domElement.setAttribute(name, value);
+  });
 
-    _.each(domStructure.eventHandlers, function(handler, eventName) {
-      domElement.addEventListener(eventName, handler);
-    });
+  _.each(domStructure.eventHandlers, function(handler, eventName) {
+    domElement.addEventListener(eventName, handler);
+  });
 
-    _.each(domStructure.childNodes, function(child) {
-      var isDomStructure = !!child.tagName;
+  _.each(domStructure.childNodes, function(child) {
+    var isDomStructure = !!child.tagName;
 
-      if (isDomStructure) {
-        domElement.appendChild(render(child));
-      } else {
-        domElement.appendChild(document.createTextNode(child));
-      }
-    });
+    if (isDomStructure) {
+      domElement.appendChild(render(child));
+    } else {
+      domElement.appendChild(document.createTextNode(child));
+    }
+  });
 
-    return domElement;
-  }
-
-  window.App.Utils.render = render;
-
-}());
+  return domElement;
+}

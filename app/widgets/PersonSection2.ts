@@ -1,101 +1,94 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {LabeledSelectField} from "app/widgets/LabeledSelectField";
+import {IndividualFieldList} from "app/widgets/IndividualFieldList";
+import {CompanyFieldList} from "app/widgets/CompanyFieldList";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {getUID} from "app/utils/getUID";
 
-  function PersonSection2(titleText, fieldValues) {
-    var domElement = createTitledContainer(titleText);
-    WidgetRole.apply(this, [domElement]);
+export function PersonSection2(titleText, fieldValues) {
+  var domElement = createTitledContainer(titleText);
+  WidgetRole.apply(this, [domElement]);
 
-    var FieldList = IndividualFieldList;
-    var defaultPersonTypeName = fieldValues['gen-persoană'] || FieldList.PERSON_TYPE_NAME;
+  var FieldList = IndividualFieldList;
+  var defaultPersonTypeName = fieldValues['gen-persoană'] || FieldList.PERSON_TYPE_NAME;
 
-    var personTypeField = createPersonTypeField(defaultPersonTypeName);
-    personTypeField.appendTo(domElement);
+  var personTypeField = createPersonTypeField(defaultPersonTypeName);
+  personTypeField.appendTo(domElement);
 
-    personTypeField.onChange(function(newPersonTypeName) {
-      personTypeSpecificFieldList.remove();
+  personTypeField.onChange(function(newPersonTypeName) {
+    personTypeSpecificFieldList.remove();
 
-      FieldList = newPersonTypeName === IndividualFieldList.PERSON_TYPE_NAME ?
-        IndividualFieldList : CompanyFieldList;
+    FieldList = newPersonTypeName === IndividualFieldList.PERSON_TYPE_NAME ?
+      IndividualFieldList : CompanyFieldList;
 
-      personTypeSpecificFieldList = new FieldList(fieldValues);
-      personTypeSpecificFieldList.appendTo(domElement);
-    });
-
-    var personTypeSpecificFieldList = new FieldList(fieldValues);
+    personTypeSpecificFieldList = new FieldList(fieldValues);
     personTypeSpecificFieldList.appendTo(domElement);
+  });
 
-    this.getFieldValues = function() {
-      var personTypeSpecificFieldValues = personTypeSpecificFieldList.getFieldValues();
-      var ownFieldValues = {
-        'gen-persoană': personTypeField.getValue()
-      };
+  var personTypeSpecificFieldList = new FieldList(fieldValues);
+  personTypeSpecificFieldList.appendTo(domElement);
 
-      return _.extend(ownFieldValues, personTypeSpecificFieldValues);
-    };
-  }
-
-  var SIDE_PADDING = '6px';
-
-  function createTitledContainer(titleText) {
-    var style = {
-      'display': 'block',
-      'padding-left': SIDE_PADDING
+  this.getFieldValues = function() {
+    var personTypeSpecificFieldValues = personTypeSpecificFieldList.getFieldValues();
+    var ownFieldValues = {
+      'gen-persoană': personTypeField.getValue()
     };
 
-    var uid = getUID();
-    var container = createDOMElement('person-section', style);
-    var title = createTitle(titleText, uid);
+    return _.extend(ownFieldValues, personTypeSpecificFieldValues);
+  };
+}
 
-    container.appendChild(title);
-    container.setAttribute('role', 'region');
-    container.setAttribute('aria-labelledby', uid);
+var SIDE_PADDING = '6px';
 
-    return container;
-  }
+function createTitledContainer(titleText) {
+  var style = {
+    'display': 'block',
+    'padding-left': SIDE_PADDING
+  };
 
-  function createTitle(titleText, uid) {
-    var style = {
-      'font-family': 'TitleFont',
-      'font-size': '22px',
-      'color': 'white',
-      'background-color': 'rgb(51, 51, 51)',
-      'display': 'block',
-      'padding': '8px ' + SIDE_PADDING,
-      'margin-left': '-' + SIDE_PADDING,
-      'margin-bottom': '12px'
-    };
+  var uid = getUID();
+  var container = createDOMElement('person-section', style);
+  var title = createTitle(titleText, uid);
 
-    var title = createDOMElement('section-title', style);
+  container.appendChild(title);
+  container.setAttribute('role', 'region');
+  container.setAttribute('aria-labelledby', uid);
 
-    title.textContent = titleText;
-    title.id = uid;
+  return container;
+}
 
-    return title;
-  }
+function createTitle(titleText, uid) {
+  var style = {
+    'font-family': 'TitleFont',
+    'font-size': '22px',
+    'color': 'white',
+    'background-color': 'rgb(51, 51, 51)',
+    'display': 'block',
+    'padding': '8px ' + SIDE_PADDING,
+    'margin-left': '-' + SIDE_PADDING,
+    'margin-bottom': '12px'
+  };
 
-  function createPersonTypeField(defaultPersonTypeName) {
-    var labelText = 'Gen persoană';
-    var optionTexts = [
-      IndividualFieldList.PERSON_TYPE_NAME,
-      CompanyFieldList.PERSON_TYPE_NAME
-    ];
+  var title = createDOMElement('section-title', style);
 
-    var personTypeField = new LabeledSelectField(labelText, optionTexts);
+  title.textContent = titleText;
+  title.id = uid;
 
-    personTypeField.setValue(defaultPersonTypeName);
-    personTypeField.setInternalName('person-type');
+  return title;
+}
 
-    return personTypeField;
-  }
+function createPersonTypeField(defaultPersonTypeName) {
+  var labelText = 'Gen persoană';
+  var optionTexts = [
+    IndividualFieldList.PERSON_TYPE_NAME,
+    CompanyFieldList.PERSON_TYPE_NAME
+  ];
 
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
-  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
-  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
+  var personTypeField = new LabeledSelectField(labelText, optionTexts);
 
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var getUID = window.App.Utils.getUID;
+  personTypeField.setValue(defaultPersonTypeName);
+  personTypeField.setInternalName('person-type');
 
-  window.App.Widgets.PersonSection2 = PersonSection2;
-
-}());
+  return personTypeField;
+}

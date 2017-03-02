@@ -1,8 +1,3 @@
-(function() {
-  'use strict';
+import {UI} from "app/UI";
 
-  var UI = new window.App.UI();
-
-  UI.appendTo(document.body);
-
-}());
+new UI().appendTo(document.body);

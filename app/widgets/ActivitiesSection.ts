@@ -1,74 +1,66 @@
-(function() {
-  'use strict';
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {Section} from "app/widgets/Section";
+import {AddActivityButton} from "app/widgets/AddActivityButton";
+import {ActivityWidgetClasses} from "app/widgets/Activities";
+import {createDOMElement} from "app/utils/createDOMElement";
 
-  function ActivitiesSection() {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
+var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
+var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
 
-    var activityListContainer = createActivityListContainer();
-    var addActivityButton = createAddActivityButton(addActivity);
+export function ActivitiesSection() {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    var section = new Section('Acţiuni procedurale');
+  var activityListContainer = createActivityListContainer();
+  var addActivityButton = createAddActivityButton(addActivity);
 
-    section.appendWidgets([
-      activityListContainer,
-      addActivityButton
-    ]);
+  var section = new Section('Acţiuni procedurale');
 
-    section.appendTo(domElement);
+  section.appendWidgets([
+    activityListContainer,
+    addActivityButton
+  ]);
 
-    this.setActivities = function(activitiesArray) {
-      activitiesArray.forEach(addActivityFromData);
-    };
+  section.appendTo(domElement);
 
-    function addActivityFromData(activityData) {
-      var ActivityWidgetClass = ActivityWidgetClasses[activityData.widgetClassName];
-      var activityWidget = ActivityWidgetClass.createWithData(activityData);
+  this.setActivities = function(activitiesArray) {
+    activitiesArray.forEach(addActivityFromData);
+  };
 
-      addActivity(activityWidget);
-    }
+  function addActivityFromData(activityData) {
+    var ActivityWidgetClass = ActivityWidgetClasses[activityData.widgetClassName];
+    var activityWidget = ActivityWidgetClass.createWithData(activityData);
 
-    function addActivity(activityWidget) {
-      activityWidget.appendTo(activityListContainer);
-    }
+    addActivity(activityWidget);
   }
 
-  function createElement() {
-    var style = {
-      'display': 'block'
-    };
-
-    return createDOMElement('case-activities-section', style);
+  function addActivity(activityWidget) {
+    activityWidget.appendTo(activityListContainer);
   }
+}
 
-  function createActivityListContainer() {
-    var style = {};
-    var attributes = {
-      'name': 'activity-list-container'
-    };
+function createElement() {
+  var style = {
+    'display': 'block'
+  };
 
-    return createDOMElement('div', style, attributes);
-  }
+  return createDOMElement('case-activities-section', style);
+}
 
-  function createAddActivityButton(action) {
-    var options = [
-      new InstitutionActivity(),
-      new RefusalActivity()
-    ];
+function createActivityListContainer() {
+  var style = {};
+  var attributes = {
+    'name': 'activity-list-container'
+  };
 
-    return new AddActivityButton(options, action);
-  }
+  return createDOMElement('div', style, attributes);
+}
 
-  var WidgetRole = window.App.Widgets.WidgetRole;
-  var Section = window.App.Widgets.Section;
-  var AddActivityButton = window.App.Widgets.AddActivityButton;
+function createAddActivityButton(action) {
+  var options = [
+    new InstitutionActivity(),
+    new RefusalActivity()
+  ];
 
-  var ActivityWidgetClasses = window.App.Widgets.Activities;
-  var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
-  var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  window.App.Widgets.ActivitiesSection = ActivitiesSection;
-
-}());
+  return new AddActivityButton(options, action);
+}

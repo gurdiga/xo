@@ -1,57 +1,49 @@
-(function() {
-  'use strict';
+import {appendWidgets} from "app/utils/appendWidgets";
+import {WidgetRole} from "app/widgets/WidgetRole";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {getStylerOf} from "app/utils/getStylerOf";
+import {resetChildren} from "app/utils/resetChildren";
 
-  function LabeledContainer(labelText) {
-    var domElement = createElement();
-    WidgetRole.apply(this, [domElement]);
+export function LabeledContainer(labelText) {
+  var domElement = createElement();
+  WidgetRole.apply(this, [domElement]);
 
-    var label = createLabel(labelText);
-    domElement.appendChild(label);
+  var label = createLabel(labelText);
+  domElement.appendChild(label);
 
-    this.setLabelStyle = getStylerOf(label);
+  this.setLabelStyle = getStylerOf(label);
 
-    this.setChildWidgets = function(childWidgets) {
-      resetChildren(domElement, [label].concat(childWidgets));
-    };
+  this.setChildWidgets = function(childWidgets) {
+    resetChildren(domElement, [label].concat(childWidgets));
+  };
 
-    this.appendWidgets = function(childWidgets) {
-      appendWidgets(childWidgets).to(domElement);
-    };
-  }
+  this.appendWidgets = function(childWidgets) {
+    appendWidgets(childWidgets).to(domElement);
+  };
+}
 
-  function createElement() {
-    var style = {
-      'border': 'none',
-      'font': 'inherit',
-      'padding': '0px'
-    };
+function createElement() {
+  var style = {
+    'border': 'none',
+    'font': 'inherit',
+    'padding': '0px'
+  };
 
-    var attributes = {
-      'widget-name': 'LabeledContainer'
-    };
+  var attributes = {
+    'widget-name': 'LabeledContainer'
+  };
 
-    return createDOMElement('fieldset', style, attributes);
-  }
+  return createDOMElement('fieldset', style, attributes);
+}
 
-  function createLabel(labelText) {
-    var style = {
-      'font': 'inherit'
-    };
+function createLabel(labelText) {
+  var style = {
+    'font': 'inherit'
+  };
 
-    var label = createDOMElement('legend', style);
+  var label = createDOMElement('legend', style);
 
-    label.textContent = labelText;
+  label.textContent = labelText;
 
-    return label;
-  }
-
-  var WidgetRole = window.App.Widgets.WidgetRole;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-  var getStylerOf = window.App.Utils.getStylerOf;
-  var resetChildren = window.App.Utils.resetChildren;
-  var appendWidgets = window.App.Utils.appendWidgets;
-
-  window.App.Widgets.LabeledContainer = LabeledContainer;
-
-}());
+  return label;
+}

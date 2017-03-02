@@ -1,15 +1,8 @@
-(function() {
-  'use strict';
+export function createField(FieldClass, labelText, internalName, fieldValues) {
+  var field = new FieldClass(labelText, fieldValues[internalName]);
 
-  function createField(FieldClass, labelText, internalName, fieldValues) {
-    var field = new FieldClass(labelText, fieldValues[internalName]);
+  field.setInternalName(internalName);
+  field.internalName = internalName;
 
-    field.setInternalName(internalName);
-    field.internalName = internalName;
-
-    return field;
-  }
-
-  window.App.Utils.createField = createField;
-
-}());
+  return field;
+}
