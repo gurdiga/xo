@@ -1,32 +1,22 @@
-(function() {
-  'use strict';
+import {Activity} from "app/widgets/Activity";
+import {TodoList} from "app/widgets/TodoList";
+import {delegateTo} from "app/utils/delegateTo";
 
-  function InstitutionActivity() {
-    var descriptionText = 'Intentarea';
-    var activity = new Activity('InstitutionActivity', descriptionText);
-    var todoList = new TodoList();
+export function InstitutionActivity() {
+  var descriptionText = 'Intentarea';
+  var activity = new Activity('InstitutionActivity', descriptionText);
+  var todoList = new TodoList();
 
-    activity.setDetailWidgets([todoList]);
+  activity.setDetailWidgets([todoList]);
 
-    this.getDescription = delegateTo(activity, 'getDescription');
-    this.appendTo = delegateTo(activity, 'appendTo');
-    this.setDetailWidgets = delegateTo(activity, 'setDetailWidgets');
+  this.getDescription = delegateTo(activity, 'getDescription');
+  this.appendTo = delegateTo(activity, 'appendTo');
+  this.setDetailWidgets = delegateTo(activity, 'setDetailWidgets');
 
-    this.setData = function(data) {
-      todoList.setData(data['todo-items']);
-    };
-  }
+  this.setData = function(data) {
+    todoList.setData(data['todo-items']);
+  };
+}
 
-  InstitutionActivity.NEXT_ACTIVITY_OPTIONS = [];
-
-  var Activity = window.App.Widgets.Activity;
-
-  InstitutionActivity.createWithData = Activity.createWithData;
-
-  var TodoList = window.App.Widgets.TodoList;
-
-  var delegateTo = window.App.Utils.delegateTo;
-
-  window.App.Widgets.Activities.InstitutionActivity = InstitutionActivity;
-
-}());
+InstitutionActivity.NEXT_ACTIVITY_OPTIONS = [];
+InstitutionActivity.createWithData = Activity.createWithData;

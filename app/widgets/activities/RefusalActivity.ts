@@ -1,28 +1,20 @@
-(function() {
-  'use strict';
+import {Activity} from "app/widgets/Activity";
+import {delegateTo} from "app/utils/delegateTo";
 
-  function RefusalActivity() {
-    var descriptionText = 'Refuz';
-    var activity = new Activity('RefusalActivity', descriptionText);
+export function RefusalActivity() {
+  var descriptionText = 'Refuz';
+  var activity = new Activity('RefusalActivity', descriptionText);
 
-    activity.setDetailWidgets([
-      document.createTextNode('RefusalActivity TODO')
-    ]);
+  activity.setDetailWidgets([
+    document.createTextNode('RefusalActivity TODO')
+  ]);
 
-    this.getDescription = delegateTo(activity, 'getDescription');
-    this.appendTo = delegateTo(activity, 'appendTo');
+  this.getDescription = delegateTo(activity, 'getDescription');
+  this.appendTo = delegateTo(activity, 'appendTo');
 
-    this.setData = function() {
-       // TODO
-    };
-  }
+  this.setData = function() {
+     // TODO
+  };
+}
 
-  var Activity = window.App.Widgets.Activity;
-
-  RefusalActivity.createWithData = Activity.createWithData;
-
-  var delegateTo = window.App.Utils.delegateTo;
-
-  window.App.Widgets.Activities.RefusalActivity = RefusalActivity;
-
-}());
+RefusalActivity.createWithData = Activity.createWithData;
