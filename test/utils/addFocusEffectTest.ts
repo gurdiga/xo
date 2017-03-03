@@ -1,7 +1,10 @@
+import {addFocusEffect} from "app/utils/addFocusEffect";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {assert} from "test/helper";
+
 describe('addFocusEffect', function() {
   'use strict';
 
-  var addFocusEffect = window.App.Utils.addFocusEffect;
 
   var domElement, initialStyle, focusStyle;
 
@@ -30,7 +33,6 @@ describe('addFocusEffect', function() {
       'marks the element as having on focus effect');
   });
 
-  var createDOMElement = window.App.Utils.createDOMElement;
 
   var assert = window.TestHelpers.assert;
 });

@@ -1,71 +1,64 @@
-(function() {
-  'use strict';
+import * as _ from "lodash";
+import {createDOMElement} from "app/utils/createDOMElement";
 
-  window.TestHelpers = {};
+export {assert} from "chai";
+export {createDOMElement} from "app/utils/createDOMElement";
 
-  window.TestHelpers.simulateEscapeKey = function(domElement) {
-    domElement = domElement || document.body;
+export function simulateEscapeKey(domElement) {
+  domElement = domElement || document.body;
 
-    simulateKeyDown(domElement, 'Escape');
-  };
+  simulateKeyDown(domElement, 'Escape');
+};
 
-  function simulateKeyDown(domElement, keyName) {
-    var keydownEvent = new Event('keydown');
-    keydownEvent.code = keyName;
-    domElement.dispatchEvent(keydownEvent);
-  }
+export function simulateKeyDown(domElement, keyName) {
+  var keydownEvent = new Event('keydown');
+  keydownEvent.code = keyName;
+  domElement.dispatchEvent(keydownEvent);
+}
 
-  window.TestHelpers.simulateKeyDown = simulateKeyDown;
+export function getOptionTexts(element) {
+  var tagName = element.tagName;
+  var elements = element.querySelectorAll(tagName + '>option, ' + tagName + '>optgroup');
 
-  window.TestHelpers.getOptionTexts = function getOptionTexts(element) {
-    var tagName = element.tagName;
-    var elements = element.querySelectorAll(tagName + '>option, ' + tagName + '>optgroup');
-
-    return [].map.call(elements, function(element) {
-      if (element.tagName === 'OPTION') {
-        return element.text;
-      } else if (element.tagName === 'OPTGROUP') {
-        return {
-          optgroupLabel: element.label,
-          options: getOptionTexts(element)
-        };
-      } else {
-        throw new Error('TestHelpers.getOptionTexts: found unknown element: ' + element.tagName);
-      }
-    });
-  };
-
-  window.TestHelpers.getLabel = function(fieldElement) {
-    return fieldElement.querySelector('label>span').textContent;
-  };
-
-  window.TestHelpers.getDOMValue = function getDOMValue(fieldElement) {
-    return fieldElement.querySelector('input, textarea, select').value;
-  };
-
-  window.TestHelpers.createSpy = function() {
-    return function spy() {
-      spy.calls = spy.calls || [];
-      spy.calls.push({ args: _.toArray(arguments) });
-      spy.executed = true;
-
-      spy.reset = function() {
-        spy.calls = [];
-        spy.executed = false;
+  return [].map.call(elements, function(element) {
+    if (element.tagName === 'OPTION') {
+      return element.text;
+    } else if (element.tagName === 'OPTGROUP') {
+      return {
+        optgroupLabel: element.label,
+        options: getOptionTexts(element)
       };
+    } else {
+      throw new Error('TestHelpers.getOptionTexts: found unknown element: ' + element.tagName);
+    }
+  });
+}
+
+export function getLabel(fieldElement) {
+  return fieldElement.querySelector('label>span').textContent;
+}
+
+export function getDOMValue(fieldElement) {
+  return fieldElement.querySelector('input, textarea, select').value;
+}
+
+export function createSpy() {
+  return function spy() {
+    spy.calls = spy.calls || [];
+    spy.calls.push({ args: _.toArray(arguments) });
+    spy.executed = true;
+
+    spy.reset = function() {
+      spy.calls = [];
+      spy.executed = false;
     };
   };
+};
 
-  window.TestHelpers.getWidgetDOMElement = function(widget) {
-    var sandbox = createDOMElement('div');
+export function getWidgetDOMElement(widget) {
+  var sandbox = createDOMElement('div');
 
-    widget.appendTo(sandbox);
+  widget.appendTo(sandbox);
 
-    return sandbox.firstChild;
-  };
-
-  window.TestHelpers.assert = window.chai.assert;
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-}());
+  return sandbox.firstChild;
+};

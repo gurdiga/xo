@@ -1,3 +1,7 @@
+import * as _ from "lodash";
+import {DateFormatting} from "app/utils/DateFormatting";
+import {assert} from "test/helper";
+
 describe('DateFormatting', function() {
   'use strict';
 
@@ -65,9 +69,5 @@ describe('DateFormatting', function() {
       );
     });
   });
-
-  var DateFormatting = window.App.Utils.DateFormatting;
-
-  var assert = window.TestHelpers.assert;
 
 });

@@ -1,7 +1,9 @@
+import {assert} from "test/helper";
+import {addHoverEffect} from "app/utils/addHoverEffect";
+import {createDOMElement} from "app/utils/createDOMElement";
+
 describe('addHoverEffect', function() {
   'use strict';
-
-  var addHoverEffect = window.App.Utils.addHoverEffect;
 
   var domElement, initialStyle, hoverStyle;
 
@@ -43,8 +45,4 @@ describe('addHoverEffect', function() {
       'addHoverEffect expects the second argument, style, to be a hash'
     );
   });
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
 });

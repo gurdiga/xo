@@ -1,3 +1,6 @@
+import {assert} from "test/helper";
+import {createDOMElement} from "app/utils/createDOMElement";
+
 describe('createDOMElement', function() {
   'use strict';
 
@@ -52,9 +55,4 @@ describe('createDOMElement', function() {
       );
     });
   });
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-
 });
