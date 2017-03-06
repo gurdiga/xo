@@ -1,9 +1,8 @@
+import {ActivityDateField} from "app/widgets/ActivityDateField";
 import {assert, getWidgetDOMElement} from "test/helper";
 
 describe('ActivityDateField', function() {
   'use strict';
-
-  var ActivityDateField = window.App.Widgets.ActivityDateField;
 
   var activityDateField, domElement;
 

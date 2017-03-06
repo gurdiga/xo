@@ -1,9 +1,8 @@
+import {SentenceSection} from "app/widgets/SentenceSection";
 import {assert, getWidgetDOMElement, getLabel, getDOMValue} from "test/helper";
 
 describe('SentenceSection', function() {
   'use strict';
-
-  var SentenceSection = window.App.Widgets.SentenceSection;
 
   var fieldValues, sentenceSection, domElement;
 

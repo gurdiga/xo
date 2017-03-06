@@ -1,11 +1,10 @@
+import {resetChildren} from "app/utils/resetChildren";
 import {createDOMElement} from "app/utils/createDOMElement";
 import {LabeledTextField} from "app/widgets/LabeledTextField";
 import {assert} from "test/helper";
 
 describe('resetChildren', function() {
   'use strict';
-
-  var resetChildren = window.App.Utils.resetChildren;
 
   it('can reset the children of a given DOM element', function() {
     var container = createDOMElement('container');
