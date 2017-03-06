@@ -1,3 +1,5 @@
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('ActivityDateField', function() {
   'use strict';
 
@@ -22,7 +24,4 @@ describe('ActivityDateField', function() {
     var input = domElement.querySelector('input');
     assert.equal(input.style.width, '6.5em', 'the date field is a bit narrower than labeled fields');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

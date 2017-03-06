@@ -1,7 +1,8 @@
+import {ActivityTitle} from "app/widgets/ActivityTitle";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('ActivityTitle', function() {
   'use strict';
-
-  var ActivityTitle = window.App.Widgets.ActivityTitle;
 
   var text, activityDescription, domElement;
 
@@ -25,7 +26,4 @@ describe('ActivityTitle', function() {
     assert.equal(css.fontWeight, 'bold', 'is bolded to stand out');
     assert.equal(css.verticalAlign, '-1px', 'align vertically with the text in the field');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

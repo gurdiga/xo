@@ -1,7 +1,8 @@
+import {PersonSection} from "app/widgets/PersonSection";
+import {assert, createSpy, getWidgetDOMElement, getDOMValue, getLabel, getOptionTexts} from "test/helper";
+
 describe('PersonSection', function() {
   'use strict';
-
-  var PersonSection = window.App.Widgets.PersonSection;
 
   var sandbox, fieldValues, label, personSection, domElement;
 
@@ -210,11 +211,4 @@ describe('PersonSection', function() {
   function getTagName(fieldElement) {
     return fieldElement.tagName.toLowerCase();
   }
-
-  var getOptionTexts = window.TestHelpers.getOptionTexts;
-  var getLabel = window.TestHelpers.getLabel;
-  var getDOMValue = window.TestHelpers.getDOMValue;
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

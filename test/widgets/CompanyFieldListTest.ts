@@ -1,7 +1,9 @@
+import {CompanyFieldList} from "app/widgets/CompanyFieldList";
+import {assert} from "test/helper";
+
 describe('CompanyFieldList', function() {
   'use strict';
 
-  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
   var companyFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   beforeEach(function() {
@@ -66,7 +68,4 @@ describe('CompanyFieldList', function() {
     companyFieldList.remove();
     assert.equal(sandbox.childNodes.length, 0, 'it removed its DOM element from the container');
   });
-
-  var assert = window.TestHelpers.assert;
-
 });

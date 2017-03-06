@@ -1,7 +1,8 @@
+import {CreateWritButton} from "app/widgets/CreateWritButton";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('CreateWritButton', function() {
   'use strict';
-
-  var CreateWritButton = window.App.Widgets.CreateWritButton;
 
   var createWritButton, domElement;
 
@@ -29,7 +30,4 @@ describe('CreateWritButton', function() {
     assert.equal(css.background, 'transparent', 'has transparent background');
     assert.equal(css.marginTop, '5px', 'leaves some space at the top');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

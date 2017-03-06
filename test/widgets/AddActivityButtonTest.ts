@@ -1,7 +1,10 @@
+import {AddActivityButton} from "app/widgets/AddActivityButton";
+import * as _ from "lodash";
+import {InstitutionActivity} from "app/widgets/activities/InstitutionActivity";
+import {assert, createSpy, getWidgetDOMElement} from "test/helper";
+
 describe('AddActivityButton', function() {
   'use strict';
-
-  var AddActivityButton = window.App.Widgets.AddActivityButton;
 
   var activities, activityAdder, addActivityButton, domElement, optionButtons;
 
@@ -41,10 +44,4 @@ describe('AddActivityButton', function() {
     var style = domElement.style;
     assert.equal(style.marginTop, '10px', 'has enough space before to not look like part of the activity');
   });
-
-  var InstitutionActivity = window.App.Widgets.Activities.InstitutionActivity;
-
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

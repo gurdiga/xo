@@ -1,3 +1,6 @@
+import * as _ from "lodash";
+import {assert} from "test/helper";
+
 describe('createEnumArray', function() {
   'use strict';
 
@@ -20,6 +23,4 @@ describe('createEnumArray', function() {
     assert.equal(ENUM.K3, 'v3', 'the array gets properties as per hash');
     assert.deepEqual(Object.keys(ENUM), ['0', '1', '2'], 'the additional properties are not enumerable');
   });
-
-  var assert = window.TestHelpers.assert;
 });

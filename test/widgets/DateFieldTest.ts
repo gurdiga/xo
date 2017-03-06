@@ -1,7 +1,9 @@
+import {DateField} from "app/widgets/DateField";
+import {DateFieldInput} from "app/widgets/DateFieldInput";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('DateField', function() {
   'use strict';
-
-  var DateField = window.App.Widgets.DateField;
 
   var defaultValue, dateField, domElement, input;
 
@@ -59,9 +61,4 @@ describe('DateField', function() {
     assert.equal(innerFieldDomElement.style.backgroundColor, style['background-color'],
       'sets the background color appropriately');
   });
-
-  var DateFieldInput = window.App.Widgets.DateFieldInput;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

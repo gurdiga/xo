@@ -1,7 +1,8 @@
+import {RefusalActivity} from "app/widgets/activities/RefusalActivity";
+import {assert} from "test/helper";
+
 describe('RefusalActivity', function() {
   'use strict';
-
-  var RefusalActivity = window.App.Widgets.Activities.RefusalActivity;
 
   var refusalActivity;
 
@@ -20,6 +21,4 @@ describe('RefusalActivity', function() {
 
     // TODO
   });
-
-  var assert = window.TestHelpers.assert;
 });

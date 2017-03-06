@@ -1,7 +1,8 @@
+import {makeTextUselectable} from "app/utils/makeTextUselectable";
+import {assert} from "test/helper";
+
 describe('makeTextUselectable', function() {
   'use strict';
-
-  var makeTextUselectable = window.App.Utils.makeTextUselectable;
 
   var domElement;
 
@@ -27,6 +28,4 @@ describe('makeTextUselectable', function() {
       'Throws a meaningful error when the argument is not a DOM element'
     );
   });
-
-  var assert = window.TestHelpers.assert;
 });

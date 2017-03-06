@@ -1,7 +1,10 @@
+import {LabeledContainer} from "app/widgets/LabeledContainer";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {LabeledCheckbox} from "app/widgets/LabeledCheckbox";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledContainer', function() {
   'use strict';
-
-  var LabeledContainer = window.App.Widgets.LabeledContainer;
 
   var labeledContainer, domElement, label, labelText;
 
@@ -87,10 +90,4 @@ describe('LabeledContainer', function() {
     assert.equal(domElement.children[1], childWidgetDOMElements[0]);
     assert.equal(domElement.children[2], childWidgetDOMElements[1]);
   });
-
-  var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

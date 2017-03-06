@@ -1,7 +1,13 @@
+import {PersonSection2} from "app/widgets/PersonSection2";
+import {CompanyFieldList} from "app/widgets/CompanyFieldList";
+import {IndividualFieldList} from "app/widgets/IndividualFieldList";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {rMap} from "app/utils/rMap";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('PersonSection2', function() {
   'use strict';
 
-  var PersonSection2 = window.App.Widgets.PersonSection2;
   var personSection, domElement, titleText, fieldValues;
 
   beforeEach(function() {
@@ -118,14 +124,4 @@ describe('PersonSection2', function() {
     assert.equal(domElement.getAttribute('aria-labelledby'), sectionTitle.id,
       'has the appropriate aria-labelledby');
   });
-
-  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
-  var CompanyFieldList = window.App.Widgets.CompanyFieldList;
-
-  var rMap = window.App.Utils.rMap;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
-
 });

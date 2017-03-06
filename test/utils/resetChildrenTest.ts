@@ -1,3 +1,7 @@
+import {createDOMElement} from "app/utils/createDOMElement";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert} from "test/helper";
+
 describe('resetChildren', function() {
   'use strict';
 
@@ -17,10 +21,4 @@ describe('resetChildren', function() {
     assert.equal(container.children[0].tagName, aNewChild.tagName, 'contains the new children only');
     assert.equal(container.children[1].tagName, 'LABELED-TEXT-FIELD', 'contains the new children only');
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-
 });

@@ -1,7 +1,8 @@
+import {TextFieldInput} from "app/widgets/TextFieldInput";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('TextFieldInput', function() {
   'use strict';
-
-  var TextFieldInput = window.App.Widgets.TextFieldInput;
 
   var fieldValue, textFieldInput, domElement;
 
@@ -41,7 +42,4 @@ describe('TextFieldInput', function() {
     textFieldInput.setStyle(style);
     assert.equal(domElement.style.color, style.color, 'has the color appropriately set');
   });
-
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
-  var assert = window.TestHelpers.assert;
 });

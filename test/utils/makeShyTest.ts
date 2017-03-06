@@ -1,7 +1,8 @@
+import {assert} from "test/helper";
+import {makeShy} from "app/utils/makeShy";
+
 describe('makeShy', function() {
   'use strict';
-
-  var makeShy = window.App.Utils.makeShy;
 
   var domElement;
 
@@ -33,7 +34,4 @@ describe('makeShy', function() {
     domElement.dispatchEvent(new Event('mouseleave'));
     assert.equal(domElement.style.opacity, '0.3', 'sets the element’s opacity back to initial on mouse leave');
   });
-
-  var assert = window.TestHelpers.assert;
-
 });

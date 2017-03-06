@@ -1,7 +1,9 @@
+import * as sinon from "sinon";
+import {DateFieldInput} from "app/widgets/DateFieldInput";
+import {assert, simulateEscapeKey, getWidgetDOMElement} from "test/helper";
+
 describe('DateFieldInput', function() {
   'use strict';
-
-  var DateFieldInput = window.App.Widgets.DateFieldInput;
 
   var sandbox, value, dateFieldInput, domElement, datePickerButton, bodyClickListener;
 
@@ -190,10 +192,4 @@ describe('DateFieldInput', function() {
   });
 
   var DateFormatting = window.App.Utils.DateFormatting;
-
-  var sinon = window.sinon;
-
-  var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

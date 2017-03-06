@@ -1,7 +1,9 @@
+import {IndividualFieldList} from "app/widgets/IndividualFieldList";
+import {assert} from "test/helper";
+
 describe('IndividualFieldList', function() {
   'use strict';
 
-  var IndividualFieldList = window.App.Widgets.IndividualFieldList;
   var personFieldList, defaultFieldValues, sandbox, domElement, fields;
 
   before(function() {
@@ -66,7 +68,4 @@ describe('IndividualFieldList', function() {
     personFieldList.remove();
     assert.equal(sandbox.childNodes.length, 0, 'it removed its DOM element from the container');
   });
-
-  var assert = window.TestHelpers.assert;
-
 });

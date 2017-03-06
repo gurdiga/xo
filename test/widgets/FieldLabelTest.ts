@@ -1,7 +1,8 @@
+import {FieldLabel} from "app/widgets/FieldLabel";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('FieldLabel', function() {
   'use strict';
-
-  var FieldLabel = window.App.Widgets.FieldLabel;
 
   var labelText, childText, child, fieldLabel, domElement;
 
@@ -53,7 +54,4 @@ describe('FieldLabel', function() {
 
     assert.equal(domElement.style.color, 'red', 'the color is set appropriately');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

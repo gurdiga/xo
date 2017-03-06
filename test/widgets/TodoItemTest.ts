@@ -1,7 +1,10 @@
+import {TodoItem} from "app/widgets/TodoItem";
+import {createDOMElement} from "app/utils/createDOMElement";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('TodoItem', function() {
   'use strict';
-
-  var TodoItem = window.App.Widgets.TodoItem;
 
   var todoItem, id, labelText, domElement, labeledCheckbox;
 
@@ -136,10 +139,4 @@ describe('TodoItem', function() {
     assert.equal(detailWidgetContainer.children.length, 1, 'resets the children');
     assert.equal(detailWidgetContainer.children[0].tagName, 'NEW-CHILD', 'the first child is the first widget');
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

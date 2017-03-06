@@ -1,3 +1,5 @@
+import {assert} from "test/helper";
+
 describe('makeRemovable', function() {
   'use strict';
 
@@ -91,7 +93,4 @@ describe('makeRemovable', function() {
       'makeRemovable: the second argument is required to be a function to call back on remove'
     );
   });
-
-  var assert = window.TestHelpers.assert;
-
 });

@@ -1,3 +1,6 @@
+import {delegateTo} from "app/utils/delegateTo";
+import {assert} from "test/helper";
+
 describe('delegateTo', function() {
   'use strict';
 
@@ -37,9 +40,4 @@ describe('delegateTo', function() {
       );
     });
   });
-
-  var delegateTo = window.App.Utils.delegateTo;
-
-  var assert = window.TestHelpers.assert;
-
 });

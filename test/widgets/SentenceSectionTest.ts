@@ -1,3 +1,5 @@
+import {assert, getWidgetDOMElement, getLabel, getDOMValue} from "test/helper";
+
 describe('SentenceSection', function() {
   'use strict';
 
@@ -123,9 +125,4 @@ describe('SentenceSection', function() {
       'returns the appendChild value for data-eliberării'
     );
   });
-
-  var getLabel = window.TestHelpers.getLabel;
-  var getDOMValue = window.TestHelpers.getDOMValue;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

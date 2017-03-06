@@ -1,7 +1,9 @@
+import * as _ from "lodash";
+import {OptionList} from "app/widgets/OptionList";
+import {assert, createSpy, getWidgetDOMElement} from "test/helper";
+
 describe('OptionList', function() {
   'use strict';
-
-  var OptionList = window.App.Widgets.OptionList;
 
   var optionHandler1, optionHandler2, options, optionList, domElement, optionButton1, optionButton2;
   var OPTION_BUTTON_HOVER_BACKGROUND = OptionList.HOVER_OPTION_BUTTON_STYLE['background-color'];
@@ -147,8 +149,4 @@ describe('OptionList', function() {
     optionList.hide();
     optionList.selectNext();
   }
-
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

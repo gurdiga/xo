@@ -1,7 +1,8 @@
+import {Activity} from "app/widgets/Activity";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('Activity', function() {
   'use strict';
-
-  var Activity = window.App.Widgets.Activity;
 
   var widgetName, descriptionText, activity, domElement, detailsSectionElement;
 
@@ -62,7 +63,4 @@ describe('Activity', function() {
       );
     });
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

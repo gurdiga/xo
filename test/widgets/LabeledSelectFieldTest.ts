@@ -1,7 +1,8 @@
+import {LabeledSelectField} from "app/widgets/LabeledSelectField";
+import {assert, createSpy, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledSelectField', function() {
   'use strict';
-
-  var LabeledSelectField = window.App.Widgets.LabeledSelectField;
 
   var labelText, optionValues, onChange, selectField, domElement, label, select;
 
@@ -96,8 +97,4 @@ describe('LabeledSelectField', function() {
     assert.equal(onChange.calls.length, 1, 'triggers the onChange callback when changing');
     assert.deepEqual(onChange.calls[0].args, [select.value], 'onChange callback was passed the new field value');
   });
-
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

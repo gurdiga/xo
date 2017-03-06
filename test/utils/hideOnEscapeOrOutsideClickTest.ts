@@ -1,3 +1,6 @@
+import {createDOMElement} from "app/utils/createDOMElement";
+import {simulateEscapeKey, createSpy, assert} from "test/helper";
+
 describe('hideOnEscapeOrOutsideClick', function() {
   'use strict';
 
@@ -36,10 +39,4 @@ describe('hideOnEscapeOrOutsideClick', function() {
       'argument is expected to be a DOM element or a thing that has a hide method'
     );
   });
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
 });

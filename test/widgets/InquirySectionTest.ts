@@ -1,7 +1,8 @@
+import {InquirySection} from "app/widgets/InquirySection";
+import {assert, getDOMValue, getWidgetDOMElement} from "test/helper";
+
 describe('InquirySection', function() {
   'use strict';
-
-  var InquirySection = window.App.Widgets.InquirySection;
 
   var fieldValues, inquirySection, domElement;
 
@@ -69,8 +70,4 @@ describe('InquirySection', function() {
   it('can tell its value', function() {
     assert.deepEqual(inquirySection.getValue(), fieldValues, 'returns the appropriate value');
   });
-
-  var getDOMValue = window.TestHelpers.getDOMValue;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

@@ -1,7 +1,9 @@
+import {Section} from "app/widgets/Section";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('Section', function() {
   'use strict';
-
-  var Section = window.App.Widgets.Section;
 
   var labelText, section, domElement, label;
 
@@ -61,9 +63,4 @@ describe('Section', function() {
     section.appendWidgets(childWidgets);
     assert.equal(domElement.children[1], childWidgetsDOMElements[0], 'has appended the given widget');
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

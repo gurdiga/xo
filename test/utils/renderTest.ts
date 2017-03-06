@@ -1,3 +1,6 @@
+import * as sinon from "sinon";
+import {assert} from "test/helper";
+
 describe('render', function() {
   'use strict';
 
@@ -56,7 +59,4 @@ describe('render', function() {
   });
 
   // TODO validate input
-
-  var assert = window.TestHelpers.assert;
-  var sinon = window.sinon;
 });

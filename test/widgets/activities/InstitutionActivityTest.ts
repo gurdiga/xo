@@ -1,7 +1,8 @@
+import {InstitutionActivity} from "app/widgets/activities/InstitutionActivity";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('InstitutionActivity', function() {
   'use strict';
-
-  var InstitutionActivity = window.App.Widgets.Activities.InstitutionActivity;
 
   var institutionActivity, domElement, detailsSectionElement;
 
@@ -69,7 +70,4 @@ describe('InstitutionActivity', function() {
 
     assert.equal(todoList.children.length, 2, 'has the appropriate number of TODO items');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

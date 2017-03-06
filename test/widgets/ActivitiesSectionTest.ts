@@ -1,7 +1,9 @@
+import * as _ from "lodash";
+import {ActivitiesSection} from "app/widgets/ActivitiesSection";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('ActivitiesSection', function() {
   'use strict';
-
-  var ActivitiesSection = window.App.Widgets.ActivitiesSection;
 
   var additionalStyle, activitiesSection, domElement;
 
@@ -71,7 +73,4 @@ describe('ActivitiesSection', function() {
 
     assert.equal(domElement.style.borderColor, additionalStyle['border-color'], 'border color is set');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

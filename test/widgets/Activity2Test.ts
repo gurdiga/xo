@@ -1,7 +1,9 @@
+import {Activity2} from "app/widgets/Activity2";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('Activity2', function() {
   'use strict';
-
-  var Activity2 = window.App.Widgets.Activity2;
 
   var activity, widgetName, labelText, domElement, container, label, dateField;
 
@@ -54,9 +56,4 @@ describe('Activity2', function() {
     label = domElement.children[0];
     assert.equal(label.textContent, labelText, 'has the appropriate label text');
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

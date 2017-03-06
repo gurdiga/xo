@@ -1,7 +1,8 @@
+import {ActivityStep} from "app/widgets/ActivityStep";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('ActivityStep', function() {
   'use strict';
-
-  var ActivityStep = window.App.Widgets.ActivityStep;
 
   var activityStep, stepId, description, domElement;
 
@@ -43,7 +44,4 @@ describe('ActivityStep', function() {
     activityStep.setValue(newValue);
     assert.deepEqual(activityStep.getValue()['is-completed'], newValue['is-completed']);
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

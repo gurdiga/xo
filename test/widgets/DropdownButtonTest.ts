@@ -1,7 +1,11 @@
+import * as _ from "lodash";
+import {OptionList} from "app/widgets/OptionList";
+import {DropdownButton} from "app/widgets/DropdownButton";
+import {assert, simulateKeyDown, simulateEscapeKey, createSpy, getWidgetDOMElement} from "test/helper";
+
 describe('DropdownButton', function() {
   'use strict';
 
-  var DropdownButton = window.App.Widgets.DropdownButton;
 
   var optionHandler1, optionHandler2, options,
     labelText, dropdownButton, domElement, toggleButton, optionList;
@@ -184,12 +188,4 @@ describe('DropdownButton', function() {
       assert.deepEqual(optionButtonLabels, expectedOptionLabels, 'options are updated');
     });
   });
-
-  var OptionList = window.App.Widgets.OptionList;
-
-  var simulateEscapeKey = window.TestHelpers.simulateEscapeKey;
-  var createSpy = window.TestHelpers.createSpy;
-  var simulateKeyDown = window.TestHelpers.simulateKeyDown;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

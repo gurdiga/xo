@@ -1,3 +1,5 @@
+import {assert} from "test/helper";
+
 describe('emptyDOMElement', function() {
   'use strict';
 
@@ -20,7 +22,4 @@ describe('emptyDOMElement', function() {
     );
 
   });
-
-  var assert = window.TestHelpers.assert;
-
 });

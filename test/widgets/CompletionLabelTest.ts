@@ -1,7 +1,10 @@
+import {CompletionLabel} from "app/widgets/CompletionLabel";
+import {createDOMElement} from "app/utils/createDOMElement";
+import * as moment from "moment";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('CompletionLabel', function() {
   'use strict';
-
-  var CompletionLabel = window.App.Widgets.CompletionLabel;
 
   var completionLabel, domElement, completionTime;
 
@@ -64,11 +67,4 @@ describe('CompletionLabel', function() {
       'CompletionLabel expects the completionTime argument to be a Date object'
     );
   });
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
-  var assert = window.TestHelpers.assert;
-
-  var moment = window.moment;
 });

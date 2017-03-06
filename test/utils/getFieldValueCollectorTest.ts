@@ -1,3 +1,7 @@
+import {LabeledDateField} from "app/widgets/LabeledDateField";
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert} from "test/helper";
+
 describe('getFieldValueCollector', function() {
   'use strict';
 
@@ -50,9 +54,4 @@ describe('getFieldValueCollector', function() {
       'Every field is expected to have a getValue method'
     );
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-  var LabeledDateField = window.App.Widgets.LabeledDateField;
-
-  var assert = window.TestHelpers.assert;
 });

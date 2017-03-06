@@ -1,7 +1,9 @@
+import {NewCaseButton} from "app/widgets/NewCaseButton";
+import {assert, createSpy} from "test/helper";
+
 describe('NewCaseButton', function() {
   'use strict';
 
-  var NewCaseButton = window.App.Widgets.NewCaseButton;
 
   var sandbox, newCaseButton, onClick;
 
@@ -35,7 +37,4 @@ describe('NewCaseButton', function() {
 
     assert(onClick.calls.length, 1, 'triggers the onClick function');
   });
-
-  var createSpy = window.TestHelpers.createSpy;
-  var assert = window.TestHelpers.assert;
 });

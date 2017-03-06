@@ -1,7 +1,10 @@
+import * as _ from "lodash";
+import {NewCaseDialog} from "app/widgets/NewCaseDialog";
+import {PersonSection} from "app/widgets/PersonSection";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('NewCaseDialog', function() {
   'use strict';
-
-  var NewCaseDialog = window.App.Widgets.NewCaseDialog;
 
   var newCaseDialog, domElement;
 
@@ -273,8 +276,4 @@ describe('NewCaseDialog', function() {
     });
   });
 
-  var PersonSection = window.App.Widgets.PersonSection;
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

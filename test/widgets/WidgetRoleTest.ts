@@ -1,8 +1,9 @@
+import {WidgetRole} from "app/widgets/WidgetRole"; // TODO: should this be WidgetDecorator?
+import {createDOMElement} from "app/utils/createDOMElement";
+import {assert} from "test/helper";
+
 describe('WidgetRole', function() {
   'use strict';
-
-  // TODO: should this be WidgetDecorator?
-  var WidgetRole = window.App.Widgets.WidgetRole;
 
   var field, container, firstChild, secondChild;
 
@@ -94,8 +95,4 @@ describe('WidgetRole', function() {
     assert.equal(container.childNodes.length, 2,
       '`remove` removes the widget’s DOM element from its parent');
   });
-
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
 });

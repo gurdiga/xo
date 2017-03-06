@@ -1,7 +1,9 @@
+import * as sinon from "sinon";
+import {LabeledCheckbox} from "app/widgets/LabeledCheckbox";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledCheckbox', function() {
   'use strict';
-
-  var LabeledCheckbox = window.App.Widgets.LabeledCheckbox;
 
   var labeledCheckbox, labelText, domElement, label, checkbox;
 
@@ -50,8 +52,4 @@ describe('LabeledCheckbox', function() {
     assert(callback.called, 'calls the given callback');
     assert(callback.calledWith(true), 'the callback is passed the current state of the checkbox');
   });
-
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
-  var assert = window.TestHelpers.assert;
-  var sinon = window.sinon;
 });

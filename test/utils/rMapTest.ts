@@ -1,7 +1,8 @@
+import {rMap} from "app/utils/rMap";
+import {assert} from "test/helper";
+
 describe('rMap', function() {
   'use strict';
-
-  var rMap = window.App.Utils.rMap;
 
   it('works for non structured values', function() {
     assert.equal(rMap('toString', 42), '42', 'returns the result of the given method call');
@@ -65,6 +66,4 @@ describe('rMap', function() {
       'an-array': ['function () {}', '18', 'false']
     }], 'recurses');
   });
-
-  var assert = window.TestHelpers.assert;
 });

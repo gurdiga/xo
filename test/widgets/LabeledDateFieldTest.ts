@@ -1,7 +1,8 @@
+import {LabeledDateField} from "app/widgets/LabeledDateField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledDateField', function() {
   'use strict';
-
-  var LabeledDateField = window.App.Widgets.LabeledDateField;
 
   var labelText, fieldValue, labeledDateField, domElement, label, input;
 
@@ -54,7 +55,4 @@ describe('LabeledDateField', function() {
     labeledDateField.setStyle(style);
     assert.equal(input.style.color, style.color, 'applies the given style to its input');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

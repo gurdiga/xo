@@ -1,7 +1,8 @@
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledTextField', function() {
   'use strict';
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
 
   var labelText, fieldValue, textField, domElement, label, input;
 
@@ -55,7 +56,4 @@ describe('LabeledTextField', function() {
     assert.equal(css.outlineWidth, '0px', 'it has no outline, it’s role is taken on by the box-shadow');
     assert.isTrue(input.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

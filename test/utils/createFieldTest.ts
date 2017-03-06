@@ -1,3 +1,6 @@
+import {LabeledTextField} from "app/widgets/LabeledTextField";
+import {assert, getLabel, getWidgetDOMElement} from "test/helper";
+
 describe('createField', function() {
   'use strict';
 
@@ -22,10 +25,4 @@ describe('createField', function() {
     assert.equal(fieldElement.getAttribute('internal-name'), internalName,
       'puts the given internal name in the “internal-name” attribute');
   });
-
-  var LabeledTextField = window.App.Widgets.LabeledTextField;
-
-  var getLabel = window.TestHelpers.getLabel;
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

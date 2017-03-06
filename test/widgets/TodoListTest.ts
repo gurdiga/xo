@@ -1,7 +1,9 @@
+import * as _ from "lodash";
+import {TodoList} from "app/widgets/TodoList";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('TodoList', function() {
   'use strict';
-
-  var TodoList = window.App.Widgets.TodoList;
 
   var todoList, domElement;
 
@@ -65,7 +67,4 @@ describe('TodoList', function() {
 
     assert.deepEqual(todoList.getData(), todoItemData, 'works');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });

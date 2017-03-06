@@ -1,7 +1,11 @@
+import {createDOMElement} from "app/utils/createDOMElement";
+import {addStyle} from "app/utils/addStyle";
+import {toggleStyle} from "app/utils/toggleStyle";
+import {assert} from "test/helper";
+
 describe('toggleStyle', function() {
   'use strict';
 
-  var toggleStyle = window.App.Utils.toggleStyle;
   var domElement, initialStyle;
 
   before(function() {
@@ -58,10 +62,4 @@ describe('toggleStyle', function() {
       'toggleStyle expects the third argument, offEventName, to be a string'
     );
   });
-
-  var addStyle = window.App.Utils.addStyle;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-
 });

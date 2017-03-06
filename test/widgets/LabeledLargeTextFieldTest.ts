@@ -1,7 +1,8 @@
+import {LabeledLargeTextField} from "app/widgets/LabeledLargeTextField";
+import {assert, getWidgetDOMElement} from "test/helper";
+
 describe('LabeledLargeTextField', function() {
   'use strict';
-
-  var LabeledLargeTextField = window.App.Widgets.LabeledLargeTextField;
 
   var labelText, fieldValue, largeLabeledTextField, domElement, label, textarea;
 
@@ -70,7 +71,4 @@ describe('LabeledLargeTextField', function() {
 
     assert(textarea.hasAttribute('has-on-focus-effect'), 'is outlined on focus');
   });
-
-  var assert = window.TestHelpers.assert;
-  var getWidgetDOMElement = window.TestHelpers.getWidgetDOMElement;
 });
