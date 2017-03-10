@@ -1,11 +1,11 @@
 import {WidgetRole} from "app/widgets/WidgetRole";
 import {Section} from "app/widgets/Section";
 import {AddActivityButton} from "app/widgets/AddActivityButton";
-import {ActivityWidgetClasses} from "app/widgets/Activities";
+import {InstitutionActivity} from "app/widgets/Activities/InstitutionActivity";
+import {RefusalActivity} from "app/widgets/Activities/RefusalActivity";
 import {createDOMElement} from "app/utils/createDOMElement";
 
-var InstitutionActivity = ActivityWidgetClasses.InstitutionActivity;
-var RefusalActivity = ActivityWidgetClasses.RefusalActivity;
+var ActivityWidgetClasses = {InstitutionActivity, RefusalActivity};
 
 export function ActivitiesSection() {
   var domElement = createElement();

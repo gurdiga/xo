@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import {toggleStyle} from "app/utils/toggleStyle";
 import {assert} from "app/utils/assert";
 

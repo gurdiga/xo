@@ -1,5 +1,3 @@
-import {Pikaday} from "pikaday";
-
 DatePicker.instance = new DatePicker();
 
 export function DatePicker() {
@@ -48,8 +46,7 @@ function createDateSelectedCallback(datePicker, getCurrentDateField) {
 }
 
 function createWidget(onDateSelectedCallback) {
-  /*global Pikaday*/
-  return new Pikaday({
+  return new window.Pikaday({
     onSelect: onDateSelectedCallback,
     bound: false,
     theme: 'xo',
