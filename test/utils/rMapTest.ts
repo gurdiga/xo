@@ -58,12 +58,12 @@ describe('rMap', function() {
       'a-number': 42,
       'a-string': 'A',
       'a-boolean': true,
-      'an-array': [function() {}, 0x12, false]
+      'an-array': [function() { }, 0x12, false]
     }]), [{
       'a-number': '42',
       'a-string': 'A',
       'a-boolean': 'true',
-      'an-array': ['function () {}', '18', 'false']
+      'an-array': ['function () { }', '18', 'false']
     }], 'recurses');
   });
 });
