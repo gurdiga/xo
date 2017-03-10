@@ -1,11 +1,10 @@
+import {getFieldValueCollector} from "app/utils/getFieldValueCollector";
 import {LabeledDateField} from "app/widgets/LabeledDateField";
 import {LabeledTextField} from "app/widgets/LabeledTextField";
 import {assert} from "test/helper";
 
 describe('getFieldValueCollector', function() {
   'use strict';
-
-  var getFieldValueCollector = window.App.Utils.getFieldValueCollector;
 
   var field1, field2, getValue;
 

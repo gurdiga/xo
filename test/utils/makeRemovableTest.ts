@@ -1,9 +1,8 @@
-import {assert} from "test/helper";
+import {makeRemovable} from "app/utils/makeRemovable";
+import {assert, createSpy} from "test/helper";
 
 describe('makeRemovable', function() {
   'use strict';
-
-  var makeRemovable = window.App.Utils.makeRemovable;
 
   var sandbox, domElement, additionalButtonStyle, onRemove;
 
@@ -14,7 +13,7 @@ describe('makeRemovable', function() {
     domElement.style.color = 'green';
     sandbox.appendChild(domElement);
 
-    onRemove = window.TestHelpers.createSpy();
+    onRemove = createSpy();
 
     additionalButtonStyle = {
       color: 'red',

@@ -1,3 +1,7 @@
+import {createDOMElement} from "app/utils/createDOMElement";
+import {addStyle} from "app/utils/addStyle";
+import {assert} from "test/helper";
+
 describe('addStyle', function() {
   'use strict';
 
@@ -33,10 +37,4 @@ describe('addStyle', function() {
       );
     });
   });
-
-  var addStyle = window.App.Utils.addStyle;
-  var createDOMElement = window.App.Utils.createDOMElement;
-
-  var assert = window.TestHelpers.assert;
-
 });

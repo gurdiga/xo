@@ -1,6 +1,6 @@
-import * as sinon from "sinon";
+import {DateFormatting} from "app/utils/DateFormatting";
 import {DateFieldInput} from "app/widgets/DateFieldInput";
-import {assert, simulateEscapeKey, getWidgetDOMElement} from "test/helper";
+import {assert, simulateEscapeKey, getWidgetDOMElement, createSpy} from "test/helper";
 
 describe('DateFieldInput', function() {
   'use strict';
@@ -17,7 +17,7 @@ describe('DateFieldInput', function() {
     sandbox = domElement.parentNode;
     document.body.appendChild(sandbox);
 
-    bodyClickListener = sinon.spy();
+    bodyClickListener = createSpy();
     document.body.addEventListener('click', bodyClickListener);
   });
 
@@ -94,7 +94,7 @@ describe('DateFieldInput', function() {
     assert.isNull(datePicker, 'date picker is not there before clicking the button');
 
     datePickerButton.click();
-    assert.isNotTrue(bodyClickListener.called, 'clicks do not propagate to <body>, and don’t hide the picker');
+    assert.isNotTrue(bodyClickListener.executed, 'clicks do not propagate to <body>, and don’t hide the picker');
 
     datePicker = getDatePicker();
     assert.isTrue(datePicker.classList.contains('xo'), 'has the “xo” theme');
@@ -190,6 +190,4 @@ describe('DateFieldInput', function() {
     document.body.removeChild(sandbox);
     document.body.removeEventListener('click', bodyClickListener);
   });
-
-  var DateFormatting = window.App.Utils.DateFormatting;
 });

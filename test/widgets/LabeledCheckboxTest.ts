@@ -1,6 +1,5 @@
-import * as sinon from "sinon";
 import {LabeledCheckbox} from "app/widgets/LabeledCheckbox";
-import {assert, getWidgetDOMElement} from "test/helper";
+import {assert, getWidgetDOMElement, createSpy} from "test/helper";
 
 describe('LabeledCheckbox', function() {
   'use strict';
@@ -43,13 +42,13 @@ describe('LabeledCheckbox', function() {
   });
 
   it('announces its changes', function() {
-    var callback = sinon.spy();
+    var callback = createSpy();
 
     labeledCheckbox.setValue(false);
     labeledCheckbox.onChange(callback);
     checkbox.click();
 
-    assert(callback.called, 'calls the given callback');
-    assert(callback.calledWith(true), 'the callback is passed the current state of the checkbox');
+    assert(callback.executed, 'calls the given callback');
+    assert(callback.calls[0].args[0] === true, 'the callback is passed the current state of the checkbox');
   });
 });

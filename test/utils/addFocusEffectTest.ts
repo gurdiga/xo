@@ -5,7 +5,6 @@ import {assert} from "test/helper";
 describe('addFocusEffect', function() {
   'use strict';
 
-
   var domElement, initialStyle, focusStyle;
 
   before(function() {
@@ -32,7 +31,4 @@ describe('addFocusEffect', function() {
     assert.equal(domElement.hasAttribute('has-on-focus-effect'), true,
       'marks the element as having on focus effect');
   });
-
-
-  var assert = window.TestHelpers.assert;
 });

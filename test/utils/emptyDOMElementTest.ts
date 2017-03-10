@@ -1,9 +1,8 @@
+import {emptyDOMElement} from "app/utils/emptyDOMElement";
 import {assert} from "test/helper";
 
 describe('emptyDOMElement', function() {
   'use strict';
-
-  var emptyDOMElement = window.App.Utils.emptyDOMElement;
 
   it('removes all the children from the given DOM element', function() {
     var domElement = document.createElement('div');

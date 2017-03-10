@@ -1,10 +1,9 @@
+import {hideOnEscapeOrOutsideClick} from "app/utils/hideOnEscapeOrOutsideClick";
 import {createDOMElement} from "app/utils/createDOMElement";
 import {simulateEscapeKey, createSpy, assert} from "test/helper";
 
 describe('hideOnEscapeOrOutsideClick', function() {
   'use strict';
-
-  var hideOnEscapeOrOutsideClick = window.App.Utils.hideOnEscapeOrOutsideClick;
 
   it('works with a DOM element', function() {
     var domElement = createDOMElement('div');

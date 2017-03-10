@@ -1,11 +1,9 @@
 import * as _ from "lodash";
+import {createEnumArray} from "app/utils/createEnumArray";
 import {assert} from "test/helper";
 
 describe('createEnumArray', function() {
   'use strict';
-
-  var createEnumArray = window.App.Utils.createEnumArray;
-
   it('works', function() {
     var hash = {
       K1: 'v1',

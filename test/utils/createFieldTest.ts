@@ -1,10 +1,9 @@
+import {createField} from "app/utils/createField";
 import {LabeledTextField} from "app/widgets/LabeledTextField";
 import {assert, getLabel, getWidgetDOMElement} from "test/helper";
 
 describe('createField', function() {
   'use strict';
-
-  var createField = window.App.Utils.createField;
 
   var labelText, internalName, fieldValues, field, fieldElement;
 
