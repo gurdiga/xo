@@ -1,3 +1,11 @@
+test-bundle:
+	webpack --config webpack.test.js
+
+bundle: app-bundle test-bundle
+
+app-bundle:
+	webpack --config webpack.app.js
+
 TSCONFIG_OPTIONS=$(shell jq --raw-output '.compilerOptions | to_entries | map("--\(.key) \(.value) ") | add' tsconfig.json)
 
 %.js: %.ts
