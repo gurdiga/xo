@@ -1,0 +1,43 @@
+{
+  "name": "xo",
+  "version": "1.0.0",
+  "description": "[![Code Climate](https://codeclimate.com/github/gurdiga/xo/badges/gpa.svg)](https://codeclimate.com/github/gurdiga/xo)",
+  "main": "bundle.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "3.5.0",
+    "@types/chai": "3.4.35",
+    "json-lint": "0.1.0",
+    "lodash": "4.17.4",
+    "@types/lodash": "4.14.55",
+    "mocha-loader": "1.1.1",
+    "pikaday": "1.5.1",
+    "@types/pikaday": "0.0.32",
+    "ts-loader": "2.0.1",
+    "ts-node": "2.1.0",
+    "uglify-js": "2.4.23",
+    "typescript": "2.2.1",
+    "webpack": "2.2.1"
+  },
+  "devDependencies": {
+    "@types/sinon": "1.16.35",
+    "mocha": "3.2.0",
+    "mocha-loader": "1.1.1",
+    "sinon": "1.17.7"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurdiga/xo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurdiga/xo/issues"
+  },
+  "homepage": "https://github.com/gurdiga/xo#readme"
+}

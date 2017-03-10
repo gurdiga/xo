@@ -1,2 +1,5 @@
 node_modules/
 *.timestamp
+
+app/bundle.js
+test/bundle.js
